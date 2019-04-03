@@ -1,0 +1,15 @@
+﻿@using WebUI.Models.BusinessProcess
+@model WorkflowToolbarVm
+
+@{
+    string aggrTooltip = string.IsNullOrEmpty(Model.LastComment)
+        ? "История согласования"
+        : string.Format("Последний комментарий: {0}", Model.LastComment);
+}
+
+
+<a href="#" class="k-button k-button-icon" title="@aggrTooltip" data-action="agreement-map">
+    <i class="mdi mdi-calendar-text"></i>
+</a>
+
+@Html.Partial("_ActionButtons", Model.Stages)

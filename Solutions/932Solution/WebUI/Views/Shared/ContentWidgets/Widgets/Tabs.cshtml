@@ -1,0 +1,42 @@
+﻿@{
+    var wrapID = Html.CreateSystemName("wrap_");
+}
+@(Html.ContentEditorWidget("tabs")
+    .Title("Вкладки")
+    .TitleTemplate(
+    @<text>
+        <span><i class="fa fa-fw fa-th-large"></i> Вкладки</span>
+    </text>
+    )
+    .Wrap(wrapID)
+    .Mnemonic("Content_Tabs")
+    .Template("tpl_" + wrapID)
+      .ExtendWith(
+    @<text>
+        <script>
+            new Object({
+                prepareToSave: function (element) {
+                    element.find('script').remove();
+
+                    var rowTemplate = '<script id="tabs_tpl" type="text/template">'
+                        + '<li class="page-tab__item"><a href="\\\\##: get(\'Anchor\') #" aria-controls="#: get(\'Anchor\') #" role="tab" data-toggle="tab">#: get(\'AnchorTitle\') #</a></li>';
+                    var row = $(element).find('[data-template="tabs_tpl"]');
+                    row.html('');
+                    row.after(rowTemplate);
+
+                    contentEditor.ContentWidget.fn.prepareToSave.call(this, element);
+                },
+                toHtml: function (element) {
+                    element.find('script').remove();
+                }
+            })
+        </script>
+    </text>)
+)
+<script id="tpl_@wrapID" type="text/template">
+    <ul class="nav nav-tabs" role="tablist" data-template="tabs_tpl" data-bind="source: model.Items"></ul>
+
+</script>
+<script id="tabs_tpl" type="text/template">
+    <li class="page-tab__item" role="presentation"><a href="\\##: get('Anchor') #" aria-controls="#: get('Anchor') #" role="tab" data-toggle="tab">#: get('AnchorTitle') #</a></li>
+</script>

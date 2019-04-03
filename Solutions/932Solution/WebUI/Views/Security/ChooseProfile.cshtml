@@ -1,0 +1,111 @@
+﻿@model BaseViewModel
+@{
+    ViewBag.Title = "ChooseProfile";
+    Layout = "";
+
+    var wrapID = Html.CreateSystemName("wrap_");
+    var templateID = Html.CreateSystemName("template_");
+
+    var listDiv = Html.CreateSystemName("listDiv_");
+    var back = Html.CreateSystemName("back_");
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>@ViewBag.Title</title>
+
+    @{ Html.RenderPartial("~/Views/Shared/_Favicons.cshtml"); }
+
+    @Styles.Render("~/CSS/Common")
+
+    @Scripts.Render("~/JS/BaseVendor")
+    @Scripts.Render("~/JS/Querybuilder")
+    @Scripts.Render("~/JS/Common")
+
+    @Scripts.Render("~/JS/Editors")
+</head>
+<body>
+    <div id="@back" class="choose-profile-back">
+        <div id="@listDiv" class="list-div">
+            <h4 style="text-align: center">Выберите профиль:</h4>
+            <ul class="list-group" id="@wrapID"></ul>
+        </div>
+    </div>
+
+    <script type="text/x-kendo-template" id="@templateID">
+        <li class="list-group-item profilename" data-mnemonic="#: Mnemonic #" data-id="#: ID #"> #:Name#</li>
+    </script>
+
+    <script>
+        $(function () {
+            var init = function () {
+
+                pbaAPI.proxyclient.crud.get({ mnemonic: "BaseProfile", id: '@Model.SecurityUser.ProfileInfo.ID' })
+                    .done( function (res) {
+                    if (res.error) {
+                        pbaAPI.errorMsg(res.error);
+                    } else {
+                        var exclusion = { "ID": null };
+                        $.get("/Users/GetAccessibleProfiles", function (result) {
+                            if (result.error) {
+                                pbaAPI.errorMsg(result.error);
+                            } else {
+                                $("#@wrapID").kendoListView({
+                                    dataSource: result.Data,
+                                    template: kendo.template($("#@templateID").html()),
+                                    selectable: true,
+                                    change: function () {
+                                        var chosenProfile = this.select();
+                                        if (chosenProfile) {
+                                            var mnemonic = chosenProfile.data("mnemonic");
+                                            pbaAPI.openDetailView(mnemonic, {
+                                                id: 0,
+                                                toSave: false,
+                                                initNewEntity: function (model) {
+                                                    for (var pr in res.model) {
+                                                        if (res.model.hasOwnProperty(pr)) {
+                                                            if (!(pr in exclusion)) {
+                                                                model[pr] = res.model[pr];
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                callback: function (e) {
+                                                    if (e.type === "save") {
+                                                        var listView = $("#@wrapID").data("kendoListView");
+                                                        var chosenProfile = listView.select();
+                                                        var mnemonic = chosenProfile.data("mnemonic");
+                                                        var categoryId = chosenProfile.data("id");
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: "/Users/ChangeMyProfile",
+                                                            data: JSON.stringify({ mnemonic: mnemonic, userCategoryID: categoryId, model: e.model }),
+                                                            contentType: "application/json; charset=utf-8",
+                                                            success: function (result) {
+                                                                if (result.error) {
+                                                                    pbaAPI.errorMsg(result.error);
+                                                                } else {
+                                                                    $(location).attr('href', '/Dashboard');
+                                                                }
+                                                            }
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+            init();
+        });
+    </script>
+</body>
+</html>

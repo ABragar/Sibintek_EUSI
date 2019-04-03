@@ -1,0 +1,98 @@
+﻿.km-checkbox {
+	line-height: @modular-scale *1em; 
+
+	height: @modular-scale *1em;
+	}
+
+.k-window .km-switch {
+	margin: .6em 1em;
+	}
+
+.km-switch {
+	line-height: 2em;
+
+	width: @modular-scale * 3em;
+	height: 2em;
+	margin: 1em;
+
+	cursor: pointer;
+
+	border: none;
+
+	&-on &-container,
+	&-on &-wrapper {
+		background-color: @color--success-pale;
+		}
+
+	&-off &-container,
+	&-off &-wrapper {
+		background-color: @color--danger-pale;
+		}
+
+	&-container, &-wrapper {
+		transition: background-color .15s @easing-curve--main;
+
+		border-radius: pow( @modular-scale *1em, 2 );
+		box-shadow: 0 .075em .075em fade( @color--dark, 25% ) inset, 0 0 .375em fade( @color--dark, 9% ) inset;
+		}
+
+	&-handle {
+		position: relative;
+		top: .1em;
+
+		width: @modular-scale *1em;
+		height: @modular-scale *1em;
+
+		vertical-align: middle;
+
+		color: fade( @color--dark, 41% );
+		border-radius: 50%;
+		background: @color--light;
+		box-shadow: 0 .075em .075em fade( @color--dark, 25% ), 0 0 .225em fade( @color--dark, 15% );
+
+		.k-icon {
+			display: inline-block;
+
+			width: 1.143rem;
+			height: 1.143rem;
+
+			vertical-align: initial;
+
+			opacity: .8;
+			background-size: contain;
+			}
+		}
+
+	&-on &-handle {
+		left: -.15rem;
+
+		.k-icon {
+			background-image: url(/Content/icons/icon-hierarchy.png);
+			}
+		}
+
+	&-off &-handle {
+		left: .286rem;
+
+		.k-icon {
+			background-image: url(/Content/icons/icon-no-hierarchy.png);
+			}
+		}
+
+	&-label-on {
+		left: -142%;
+		}
+
+	&-label-off {
+		left: 123%;
+		}
+
+	&-label-on,
+	&-label-off {
+		line-height: pow( @modular-scale *1em, 2 );
+
+		top: -.214rem; 
+
+		background-color: transparent;
+		}
+	}

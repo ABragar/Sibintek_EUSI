@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+  <AssetHolderRSBUs>
+    <AssetHolderRSBU>
+      <ID>0</ID>
+      <ExternalID>1</ExternalID>
+      <ExternalParentID/>
+      <Code>1</Code>
+      <PublishCode>1</PublishCode>
+      <Name>Арендатор</Name>
+      <DateFrom>2017-01-01</DateFrom>
+    </AssetHolderRSBU>
+    <AssetHolderRSBU>
+      <ID>0</ID>
+      <ExternalID>2</ExternalID>
+      <ExternalParentID/>
+      <Code>2</Code>
+      <PublishCode>2</PublishCode>
+      <Name>Арендодатель</Name>
+      <DateFrom>2017-01-01</DateFrom>
+    </AssetHolderRSBU>
+  </AssetHolderRSBUs>
+</DefaultDataHolder>

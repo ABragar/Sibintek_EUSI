@@ -1,0 +1,62 @@
+﻿@using Base.BusinessProcesses.Entities
+@model WebUI.Models.BusinessProcess.StageTimeLineElement
+
+@{
+    var renderDevider = true;
+}
+
+<div id="@Model.ID" class="timeline-badge" style="background-color: @Model.Color">
+    <i class="fa fa-check"></i>
+</div>
+
+<div class="timeline-panel">
+    <div class="timeline-panel-heading">
+        <h4 title="@Model.Description" class="timeline-panel-title">@Model.Title</h4>
+    </div>
+    <div class="timeline-panel-body">
+        <div class=timeline-panel-meta>
+            <span class="performer" data-id="@Model.Performer.ID" data-mnemonic="User">
+                <figure class="performer-thumb-wrap">
+                    <img class="performer-thumb" width="60" height="60" src="@Html.GetImageThumbnailSrc(Model.Performer.Image, Base.UI.Enums.ImageSize.XS)">
+                </figure>
+                <span class="performer-name">@Model.Performer.FullName</span>
+            </span>
+            <span title="@Model.Action.Description" class="timeline-action-description">
+                <i class="fa fa-bolt" style="background-color: @Model.Color"></i>&nbsp;@Model.Action.Title
+            </span>
+        </div>
+        <div class="timeline-panel-comment">@Model.Comment</div>
+
+        @if (Model.AgreementItem.File != null)
+        {
+            <a class="timeline-attach" onclick="window.open('@(Url.Action("GetFile", "Files", new {fileid = Model.AgreementItem.File.FileID}))', '_blank');return false; ">@Model.AgreementItem.File.FileName</a>
+        }
+    </div>
+    <div class="timeline-panel-footer">
+        <span class="timeline-panel-date">
+            <i class="mdi mdi-calendar"></i>&nbsp;@Model.Date.ToShortDateString()
+        </span>
+        @if (Model.Date.Date == Model.EndDateFact.GetValueOrDefault().Date)
+        {
+            <span class="timeline-panel-time">
+                <i class="fa fa-clock-o"></i>&nbsp;@Model.Date.ToShortTimeString()
+            </span>
+             if (Model.Step.StepType != FlowStepType.EntryPointStep)
+             {
+                 <span>&nbsp;~&nbsp;</span>
+                 <span><i class="fa fa-clock-o"></i>&nbsp;@Model.EndDateFact.GetValueOrDefault().ToShortTimeString()</span>
+             }
+        }
+        else
+        {
+            <span>&nbsp;~&nbsp;</span>
+                <span><i class="mdi mdi-calendar"></i>&nbsp;@Model.EndDateFact.GetValueOrDefault().ToShortDateString()</span>
+        }
+        @if (Model.Step.StepType != FlowStepType.EntryPointStep)
+        {
+            <span>&nbsp;=&nbsp;</span>
+            <span><i class="fa fa-clock-o"></i>&nbsp;@Model.ElapsedString</span>
+        }
+    </div>
+
+</div>

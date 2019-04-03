@@ -1,0 +1,34 @@
+﻿@using Base.PBX.Entities
+@model EditorViewModel
+
+<div id="@Model.UID">
+    <a id="info" href="#" class="k-button"><i class="halfling halfling-phone-alt"></i>&nbsp;SIP Аккаунт</a>
+</div>
+
+<script>
+    $(function () {
+        var $editor = $("#@Model.UID");
+
+        $editor.find("#info").click(function () {
+            var form = $editor.closest("form").data("pbaForm");
+
+            $.get("@Url.Action("GetSipAccountByUserId", "PBX")",
+                { userId: form.getPr("ID") },
+                    function (res) {
+                        pbaAPI.openDetailView("@nameof(SIPAccount)", {
+                            id: res ? res.ID : 0,
+                            parentForm: form,
+                            initProps: {
+                                User: form.getModel()
+                            },
+                            toSave: true,
+                            callback: function (e) {
+                                if (e.type === "save") {
+
+                                }
+                            }
+                        });
+                    });
+        });
+    });
+</script>

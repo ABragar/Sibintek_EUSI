@@ -1,0 +1,1345 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<VehicleLabels>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS</Code>
+		<PublishCode>KTS</PublishCode>
+		<Name>Каталог транспортных средств</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01</Code>
+		<PublishCode>KTS01</PublishCode>
+		<Name>Транспорт дорожный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0101</Code>
+		<PublishCode>KTS0101</PublishCode>
+		<Name>Технологический транспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010101</Code>
+		<PublishCode>KTS010101</PublishCode>
+		<Name>Агрегат депарафинизации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010101</Code>
+		<PublishCode>KTS01010101</PublishCode>
+		<Name>Производительность 12 м3/ч</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010102</Code>
+		<PublishCode>KTS01010102</PublishCode>
+		<Name>Производительность 16 м3/ч</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010102</Code>
+		<PublishCode>KTS010102</PublishCode>
+		<Name>Агрегат кислотной обработки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010201</Code>
+		<PublishCode>KTS01010201</PublishCode>
+		<Name>Максимальное рабочее давление до 10 Мпа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010202</Code>
+		<PublishCode>KTS01010202</PublishCode>
+		<Name>Максимальное рабочее давление более 10,1 Мпа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010103</Code>
+		<PublishCode>KTS010103</PublishCode>
+		<Name>Агрегат обслуживания и/или ремонта</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010301</Code>
+		<PublishCode>KTS01010301</PublishCode>
+		<Name>Агрегат обслуживания и/или ремонта</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010302</Code>
+		<PublishCode>KTS01010302</PublishCode>
+		<Name>Агрегат подъемный для ремонта скважин</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0101030201</Code>
+		<PublishCode>KTS0101030201</PublishCode>
+		<Name>Грузоподъемность до 50 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0101030202</Code>
+		<PublishCode>KTS0101030202</PublishCode>
+		<Name>Грузоподъемность от 60 до 80 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0101030203</Code>
+		<PublishCode>KTS0101030203</PublishCode>
+		<Name>Грузоподъемность 100 т и более</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010104</Code>
+		<PublishCode>KTS010104</PublishCode>
+		<Name>Агрегат с насосной установкой</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010401</Code>
+		<PublishCode>KTS01010401</PublishCode>
+		<Name>Максимальное давление насоса до 40 МПа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010402</Code>
+		<PublishCode>KTS01010402</PublishCode>
+		<Name>Максимальное давление насоса более 40,1 МПа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010105</Code>
+		<PublishCode>KTS010105</PublishCode>
+		<Name>Агрегат сбора конденсата и нефти</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010501</Code>
+		<PublishCode>KTS01010501</PublishCode>
+		<Name>Вместимость цистерны до 5 м3</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010502</Code>
+		<PublishCode>KTS01010502</PublishCode>
+		<Name>Вместимость цистерны от 5,1 до 10 м3</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010503</Code>
+		<PublishCode>KTS01010503</PublishCode>
+		<Name>Вместимость цистерны более 10,1 м3</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010106</Code>
+		<PublishCode>KTS010106</PublishCode>
+		<Name>Исследовательский</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010107</Code>
+		<PublishCode>KTS010107</PublishCode>
+		<Name>Компрессор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010701</Code>
+		<PublishCode>KTS01010701</PublishCode>
+		<Name>Производительность станции до 15 м3/мин</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010702</Code>
+		<PublishCode>KTS01010702</PublishCode>
+		<Name>Производительность станции более 15,1 м3/мин</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010108</Code>
+		<PublishCode>KTS010108</PublishCode>
+		<Name>Паропередвижная установка</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010801</Code>
+		<PublishCode>KTS01010801</PublishCode>
+		<Name> Производительность до 1000 кг/ч</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01010802</Code>
+		<PublishCode>KTS01010802</PublishCode>
+		<Name> Производительность более 1000,1 кг/ч</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010109</Code>
+		<PublishCode>KTS010109</PublishCode>
+		<Name>Передвижная ремонтная мастерская</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010110</Code>
+		<PublishCode>KTS010110</PublishCode>
+		<Name>Установка смесительная</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01011001</Code>
+		<PublishCode>KTS01011001</PublishCode>
+		<Name>Вместимость установки до 10 м3</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01011002</Code>
+		<PublishCode>KTS01011002</PublishCode>
+		<Name>Вместимость установки от 10,1 до 18 м3</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01011003</Code>
+		<PublishCode>KTS01011003</PublishCode>
+		<Name>Вместимость установки более 18,1 м3</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010111</Code>
+		<PublishCode>KTS010111</PublishCode>
+		<Name>Диспенсер </Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010112</Code>
+		<PublishCode>KTS010112</PublishCode>
+		<Name>Машина бурильная</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010113</Code>
+		<PublishCode>KTS010113</PublishCode>
+		<Name>Автокраны и автогидроподъемники</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01011301</Code>
+		<PublishCode>KTS01011301</PublishCode>
+		<Name>Автокран</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0101130101</Code>
+		<PublishCode>KTS0101130101</PublishCode>
+		<Name>Грузоподъемность до 25 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0101130102</Code>
+		<PublishCode>KTS0101130102</PublishCode>
+		<Name>Грузоподъемность от 25,1 до 60 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0101130103</Code>
+		<PublishCode>KTS0101130103</PublishCode>
+		<Name>Грузоподъемность более 60,1 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01011302</Code>
+		<PublishCode>KTS01011302</PublishCode>
+		<Name>Автогидроподъемник</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0101130201</Code>
+		<PublishCode>KTS0101130201</PublishCode>
+		<Name>Высота подъёма люльки до 20 м</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0101130202</Code>
+		<PublishCode>KTS0101130202</PublishCode>
+		<Name>Высота подъёма люльки более 20,1 м</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0102</Code>
+		<PublishCode>KTS0102</PublishCode>
+		<Name>Грузовой транспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010201</Code>
+		<PublishCode>KTS010201</PublishCode>
+		<Name>Автоцистерна</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020101</Code>
+		<PublishCode>KTS01020101</PublishCode>
+		<Name>Объем цистерны до 10 м3</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020102</Code>
+		<PublishCode>KTS01020102</PublishCode>
+		<Name>Объем цистерны от 10,1 до 20 м3</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020103</Code>
+		<PublishCode>KTS01020103</PublishCode>
+		<Name>Объем цистерны более 20,1 м3</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010202</Code>
+		<PublishCode>KTS010202</PublishCode>
+		<Name>Бортовой</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020201</Code>
+		<PublishCode>KTS01020201</PublishCode>
+		<Name>Грузоподъемность до 3,5 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020202</Code>
+		<PublishCode>KTS01020202</PublishCode>
+		<Name>Грузоподъемность от 3,5 до 10 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020203</Code>
+		<PublishCode>KTS01020203</PublishCode>
+		<Name>Грузоподъемность более 10,1 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010203</Code>
+		<PublishCode>KTS010203</PublishCode>
+		<Name>Фургон на грузовом шасси</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020301</Code>
+		<PublishCode>KTS01020301</PublishCode>
+		<Name>Грузоподъемность до 3,5 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020302</Code>
+		<PublishCode>KTS01020302</PublishCode>
+		<Name>Грузоподъемность от 3,5 до 10 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020303</Code>
+		<PublishCode>KTS01020303</PublishCode>
+		<Name>Грузоподъемность более 10,1 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010204</Code>
+		<PublishCode>KTS010204</PublishCode>
+		<Name>Самосвал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020401</Code>
+		<PublishCode>KTS01020401</PublishCode>
+		<Name>Грузоподъемность до 10 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020402</Code>
+		<PublishCode>KTS01020402</PublishCode>
+		<Name>Грузоподъемность более 10,1 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010205</Code>
+		<PublishCode>KTS010205</PublishCode>
+		<Name>Седельный тягач</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>62</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020501</Code>
+		<PublishCode>KTS01020501</PublishCode>
+		<Name>Нагрузка на седельно-сцепное устройство до 10 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>63</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020502</Code>
+		<PublishCode>KTS01020502</PublishCode>
+		<Name>Нагрузка на седельно-сцепное устройство от 10,1 до 18 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>64</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01020503</Code>
+		<PublishCode>KTS01020503</PublishCode>
+		<Name>Нагрузка на седельно-сцепное устройство от более 18,1 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>65</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010206</Code>
+		<PublishCode>KTS010206</PublishCode>
+		<Name>Автобетономеситель</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>66</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0103</Code>
+		<PublishCode>KTS0103</PublishCode>
+		<Name>Автобусы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>67</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010301</Code>
+		<PublishCode>KTS010301</PublishCode>
+		<Name>Автобус общего пользования</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>68</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01030101</Code>
+		<PublishCode>KTS01030101</PublishCode>
+		<Name>Кол-во посадочных мест до 20 чел</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>69</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01030102</Code>
+		<PublishCode>KTS01030102</PublishCode>
+		<Name>Кол-во посадочных мест от 21 до 40 чел</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>70</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01030103</Code>
+		<PublishCode>KTS01030103</PublishCode>
+		<Name>Кол-во посадочных мест более 41 чел</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>71</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010302</Code>
+		<PublishCode>KTS010302</PublishCode>
+		<Name>Автобус вахтовый на грузовом шасси</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>72</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01030201</Code>
+		<PublishCode>KTS01030201</PublishCode>
+		<Name>Кол-во посадочных мест до 20 чел</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>73</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01030202</Code>
+		<PublishCode>KTS01030202</PublishCode>
+		<Name>Кол-во посадочных мест от 21 до 30 чел</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>74</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01030203</Code>
+		<PublishCode>KTS01030203</PublishCode>
+		<Name>Кол-во посадочных мест более 31 чел</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>75</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0104</Code>
+		<PublishCode>KTS0104</PublishCode>
+		<Name>Легковой транспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>76</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010401</Code>
+		<PublishCode>KTS010401</PublishCode>
+		<Name>Легковой автомобиль общего назначения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>77</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01040101</Code>
+		<PublishCode>KTS01040101</PublishCode>
+		<Name>Легковой класс A</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>78</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01040102</Code>
+		<PublishCode>KTS01040102</PublishCode>
+		<Name>Легковой класс B</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>79</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01040103</Code>
+		<PublishCode>KTS01040103</PublishCode>
+		<Name>Легковой класс C</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>80</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01040104</Code>
+		<PublishCode>KTS01040104</PublishCode>
+		<Name>Легковой класс D</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>81</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01040105</Code>
+		<PublishCode>KTS01040105</PublishCode>
+		<Name>Легковой класс E</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>82</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01040106</Code>
+		<PublishCode>KTS01040106</PublishCode>
+		<Name>Легковой класс F</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>83</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01040107</Code>
+		<PublishCode>KTS01040107</PublishCode>
+		<Name>Легковой класс J</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>84</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01040108</Code>
+		<PublishCode>KTS01040108</PublishCode>
+		<Name>Легковой класс М</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>85</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01040109</Code>
+		<PublishCode>KTS01040109</PublishCode>
+		<Name>Легковой класс S</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>86</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010402</Code>
+		<PublishCode>KTS010402</PublishCode>
+		<Name>Пикап</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>87</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010403</Code>
+		<PublishCode>KTS010403</PublishCode>
+		<Name>Фургон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>88</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0105</Code>
+		<PublishCode>KTS0105</PublishCode>
+		<Name>Транспорт спец служб</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>89</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010501</Code>
+		<PublishCode>KTS010501</PublishCode>
+		<Name>Полицейский</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>90</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010502</Code>
+		<PublishCode>KTS010502</PublishCode>
+		<Name>Скорая помощь</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>91</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010503</Code>
+		<PublishCode>KTS010503</PublishCode>
+		<Name>Пожарный и МЧС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>92</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01050301</Code>
+		<PublishCode>KTS01050301</PublishCode>
+		<Name>Основной </Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>93</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01050302</Code>
+		<PublishCode>KTS01050302</PublishCode>
+		<Name>Специальный </Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>94</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01050303</Code>
+		<PublishCode>KTS01050303</PublishCode>
+		<Name>Вспомогательный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>95</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0106</Code>
+		<PublishCode>KTS0106</PublishCode>
+		<Name>Мототранспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>96</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010601</Code>
+		<PublishCode>KTS010601</PublishCode>
+		<Name>Колесный мототранспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>97</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010602</Code>
+		<PublishCode>KTS010602</PublishCode>
+		<Name>Снегоход</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>98</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0107</Code>
+		<PublishCode>KTS0107</PublishCode>
+		<Name>Буксируемый транспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>99</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010701</Code>
+		<PublishCode>KTS010701</PublishCode>
+		<Name>Прицепы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>100</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS010702</Code>
+		<PublishCode>KTS010702</PublishCode>
+		<Name>Полуприцепы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>101</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0199</Code>
+		<PublishCode>KTS0199</PublishCode>
+		<Name>Прочий транспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>102</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019901</Code>
+		<PublishCode>KTS019901</PublishCode>
+		<Name>Бульдозер</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>103</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990101</Code>
+		<PublishCode>KTS01990101</PublishCode>
+		<Name>Тяговый класс до 5</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>104</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990102</Code>
+		<PublishCode>KTS01990102</PublishCode>
+		<Name>Тяговый класс 6 - 10</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>105</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990103</Code>
+		<PublishCode>KTS01990103</PublishCode>
+		<Name>Тяговый класс свыше 10</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>106</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019902</Code>
+		<PublishCode>KTS019902</PublishCode>
+		<Name>Экскаватор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>107</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019903</Code>
+		<PublishCode>KTS019903</PublishCode>
+		<Name>Экскаватор-планировщик</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>108</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019904</Code>
+		<PublishCode>KTS019904</PublishCode>
+		<Name>Погрузчик</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>109</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990401</Code>
+		<PublishCode>KTS01990401</PublishCode>
+		<Name>Телескопический</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>110</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990402</Code>
+		<PublishCode>KTS01990402</PublishCode>
+		<Name>Вилочный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>111</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990403</Code>
+		<PublishCode>KTS01990403</PublishCode>
+		<Name>Ковшовый</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>112</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019905</Code>
+		<PublishCode>KTS019905</PublishCode>
+		<Name>Снегоболотоход</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>113</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019906</Code>
+		<PublishCode>KTS019906</PublishCode>
+		<Name>Коммунальный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>114</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990601</Code>
+		<PublishCode>KTS01990601</PublishCode>
+		<Name>Вакуумная</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>115</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990602</Code>
+		<PublishCode>KTS01990602</PublishCode>
+		<Name>Каналопромывочная</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>116</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990603</Code>
+		<PublishCode>KTS01990603</PublishCode>
+		<Name>Мусоровоз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>117</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990604</Code>
+		<PublishCode>KTS01990604</PublishCode>
+		<Name>Уборочная</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>118</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990605</Code>
+		<PublishCode>KTS01990605</PublishCode>
+		<Name>Комбинированные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>119</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019907</Code>
+		<PublishCode>KTS019907</PublishCode>
+		<Name>Трубоукладчик</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>120</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990701</Code>
+		<PublishCode>KTS01990701</PublishCode>
+		<Name>Грузоподъемность до 40 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>121</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01990702</Code>
+		<PublishCode>KTS01990702</PublishCode>
+		<Name>Грузоподъемность более 40,1 т</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>122</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019908</Code>
+		<PublishCode>KTS019908</PublishCode>
+		<Name>Автогрейдер</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>123</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019909</Code>
+		<PublishCode>KTS019909</PublishCode>
+		<Name>Дорожно-ремонтный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>124</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019910</Code>
+		<PublishCode>KTS019910</PublishCode>
+		<Name>Кран гусеничный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>125</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019911</Code>
+		<PublishCode>KTS019911</PublishCode>
+		<Name>Трактор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>126</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01991101</Code>
+		<PublishCode>KTS01991101</PublishCode>
+		<Name>Тяговый класс до 5</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>127</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01991102</Code>
+		<PublishCode>KTS01991102</PublishCode>
+		<Name>Тяговый класс 6 - 10</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>128</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS01991103</Code>
+		<PublishCode>KTS01991103</PublishCode>
+		<Name>Тяговый класс свыше 10</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>129</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS019999</Code>
+		<PublishCode>KTS019999</PublishCode>
+		<Name>Специализированный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>130</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS02</Code>
+		<PublishCode>KTS02</PublishCode>
+		<Name>Транспорт железнодорожный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>131</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS03</Code>
+		<PublishCode>KTS03</PublishCode>
+		<Name>Транспорт водный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>132</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0301</Code>
+		<PublishCode>KTS0301</PublishCode>
+		<Name>Морской</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>133</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS0302</Code>
+		<PublishCode>KTS0302</PublishCode>
+		<Name>Речной</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+	<VehicleLabel>
+		<ID>0</ID>
+		<ExternalID>134</ExternalID>
+		<ExternalParentID/>
+		<Code>KTS04</Code>
+		<PublishCode>KTS04</PublishCode>
+		<Name>Транспорт воздушный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</VehicleLabel>
+</VehicleLabels>
+  </DefaultDataHolder>

@@ -1,0 +1,66 @@
+﻿@model EditorViewModel
+
+@{
+    string name = "n_" + Guid.NewGuid().ToString("N");
+
+    string htmlFieldName = Model.PropertyName;
+}
+
+<script>
+    window["@name"] = {
+        onAdditionalData: function () {
+            return {
+                search: $("#@name").data("kendoDropDownList").filterInput.val(),
+            };
+        },
+
+        onSelect: function (e) {
+
+            var selObjectType = this.dataItem(e.item);
+
+            var form = $('#@name').closest('form').data('pbaForm');
+
+            form.addViewData("CreateObjectType", selObjectType.ID);
+        }
+    };
+</script>
+
+
+@(Html.Kendo().DropDownList()
+    .Name(name)
+    .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { style = "width: 100%;" }))
+    .DataTextField("Text")
+    .DataValueField("ID")
+    .OptionLabel("Выберите значение...")
+    .Filter(FilterType.Contains)
+    .Events(x => x.Select(name + ".onSelect"))
+    .Height(500)
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+            read.Url("/api/viewConfig/getTypes").Data(name + ".onAdditionalData");
+        }).ServerFiltering(false);
+    })
+)
+
+<script>
+
+
+
+    $(function () {
+
+        $("#@name").closest('form').on('onAfterBind', function (e, form) {
+            var selObjectType = form.getPr("@(htmlFieldName)");
+            form.addViewData("CreateObjectType", selObjectType);
+        });
+
+        $("#@name").closest("form").on("onSave", function (e, form) {
+
+            var selObjectType = $("#@name").data("kendoDropDownList").value();
+            form.addViewData("CreateObjectType", selObjectType);
+
+            form.setPr("@(htmlFieldName)", selObjectType);
+        });
+    });
+</script>

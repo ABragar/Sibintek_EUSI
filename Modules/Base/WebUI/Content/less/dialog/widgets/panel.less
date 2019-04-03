@@ -1,0 +1,29 @@
+﻿.kwidget.kwidget--inline-panel,
+.kwidget.kwidget--panel {
+	height: ~"calc(100% - .429rem)";
+
+	border: 1px solid @color--border;
+	background-color: @color--layout-bg;
+
+	.kwidget--toolbar .k-button-icon {
+		.fa, .mdi {
+			overflow: visible;
+			}
+
+		.fa {
+			font-size: 1.333em;
+			}
+		}
+	}
+
+.kwidget.kwidget--inline-panel {
+	display: inline-block;
+	}
+
+.kwidget.kwidget--panel-content {
+	padding: 1rem;
+	}
+
+.kwidget--toolbar ~ .kwidget.kwidget--panel-content {
+	height: calc(~"100% - "@dialog-toolbar-height);
+	}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<TaxRateTypes>
+	<TaxRateType>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>101</Code>
+		<PublishCode/>
+		<Name>Налог на имущество организаций</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxRateType>
+	<TaxRateType>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>102</Code>
+		<PublishCode/>
+		<Name>Земельный налог</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxRateType>
+	<TaxRateType>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>103</Code>
+		<PublishCode/>
+		<Name>Транспортный налог</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxRateType>
+</TaxRateTypes>
+  </DefaultDataHolder>

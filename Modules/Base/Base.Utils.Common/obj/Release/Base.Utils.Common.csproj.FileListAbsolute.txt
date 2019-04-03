@@ -1,0 +1,12 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\bin\Release\Base.Utils.Common.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\bin\Release\Base.Utils.Common.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\bin\Release\System.Linq.Dynamic.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\bin\Release\FluentValidationNA.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\bin\Release\System.Linq.Dynamic.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\bin\Release\System.Linq.Dynamic.xml
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\bin\Release\FluentValidationNA.xml
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\obj\Release\Base.Utils.Common.csprojAssemblyReference.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\obj\Release\Base.Utils.Common.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\obj\Release\Base.Utils.Common.csproj.CopyComplete
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\obj\Release\Base.Utils.Common.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Utils.Common\obj\Release\Base.Utils.Common.pdb

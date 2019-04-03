@@ -1,0 +1,268 @@
+﻿@{
+    /*
+     * INSPIRED BY:
+     * http://www.cliptheme.com/demo/packet/Html-Admin/LAYOUT-2/STANDARD/layouts.html
+     * http://lambdathemes.in/admin1/
+     * http://moltran.coderthemes.com/dark/inbox.html
+     * http://iarouse.com/dist-material-design-admin/v1.1/index.html#/dashboard
+     * http://coderthemes.com/ubold_1.5/dark/
+     */
+
+    string projectName = Html.GetProjectName();
+    string dashboardImage = @"/Content/images/background.png";
+}
+
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>@ViewBag.Title</title>
+
+    @{ Html.RenderPartial("~/Views/Shared/_Favicons.cshtml"); }
+
+    @Styles.Render("~/CSS/Common")
+
+    @Scripts.Render("~/JS/BaseVendor")
+    @Scripts.Render("~/JS/Querybuilder")
+    @Scripts.Render("~/JS/Common")
+    @Scripts.Render("~/JS/Editors")
+
+    <script>
+
+        //Typescript new init method
+        //App.Application.Run();
+
+        var application = application || {};
+
+        application.currentUser = {
+            id: @Html.Raw(Base.Ambient.AppContext.SecurityUser.ID),
+            imageId: "@Base.Ambient.AppContext.SecurityUser.ProfileInfo.ImageGuid.ToString()",
+            fullName: "@Base.Ambient.AppContext.SecurityUser.ProfileInfo.FullName"
+        };
+
+        application.reportService = "@Html.GetTelerikReportingService()";
+
+        application.DATE_TIME_FORMATE = "@JsonNetResult.DATE_TIME_FORMATE";
+        application.DATE_FORMATE = "@JsonNetResult.DATE_FORMATE";
+
+        $(function() {
+            pbaAPI.async(function() {
+                $(document.body).stop().animate({ opacity: 1 }, 400);
+            });
+
+            var dashboardImage = "@dashboardImage";
+
+            application.init();
+            application.setBackground({
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "right bottom",
+                backgroundImage: dashboardImage ? "url(" + dashboardImage + ")" : null
+            });
+        });
+    </script>
+
+    @if (Html.IsDebug())
+    {
+        <script>application.isDebug = true</script>
+    }
+
+    @Scripts.Render("~/JS/SignalR")
+
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+
+    @Scripts.Render("~/JS/Globalapp")
+
+    @RenderSection("styles", required: false)
+</head>
+<body class="@RenderSection("bodyClass", false)" style="opacity: 0;">
+
+    <div id="layout" class="layout">
+
+        <!-- SIDEBAR -->
+        <aside id="layout-sidebar" class="layout__sidebar">
+            <div class="partial-contect layout__sidebar-menu-wrap" data-url="@Url.Action("Menu", "View")"></div>
+            <script>layout.sidebar._readCookie() ? layout.sidebar.open() : layout.sidebar.close();</script>
+        </aside>
+		<a href="#" id="menu-toggle" class="navbar-brand">
+			<span class="halfling halfling-chevron-right"></span>
+		</a>
+
+        <!-- MAIN CONTAINER -->
+        <div class="layout__container">
+
+            <!-- FRAMES ANCHOR HELPER -->
+            <div id="frames-anchor" class="layout__frames-anchor"></div>
+
+            <!-- TOOLBAR -->
+            <header class="layout__toolbar" id="layout-toolbar">
+                @{ Html.RenderPartial("_Toolbar"); }
+            </header>
+
+            <!-- MAIN CONTENT CONTAINER -->
+            <div class="layout__main">
+                <div class="layout__content content" id="content">
+                    <div id="content-html" class="content__html">@RenderBody()</div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="layout__footer">
+                @(projectName)&nbsp;@( SibiAssemblyInfo.Version )
+                <a class="layout__footer-copyright" href="@SibiAssemblyInfo.URL" target="_blank" title="Перейти на сайт">
+                    <img src="/Content/images/developer-logo.png" alt="Логотип @SibiAssemblyInfo.Company" data-svg-filter="desaturate"  style="height: 35px;" />
+                </a>
+            </footer>
+
+            <!-- IKR VIDEO -->
+            <div id="video-wrapper" class="conf-video-player-wrapper">
+                <div class="video-controls">
+                    <button id="video-add-dialog" type="button" class="k-button success">
+                        <i class="fa fa-user-plus"></i>
+                    </button>
+                    <button id="video-stop-conference" type="button" class="k-button error">
+                        <i class="fa fa-power-off"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @{
+        Html.RenderPartial("~/Views/Shared/_SvgFilters.cshtml");
+        Html.RenderPartial("~/Views/Communication/Index.cshtml");
+    }
+
+    <script>
+        $(function() {
+			"use strict";
+
+			$('#menu-toggle')
+				.click(function () {
+					$("#layout").toggleClass("toggled");
+					$(window).resize();
+				});
+
+            $('#video-stop-conference')
+                .click(function() {
+                    globalapp.rtcService.stopRTC(true);
+                });
+
+            $('#video-add-dialog')
+                .click(function() {
+                    globalapp.rtcService.addMembersDialog();
+                });
+
+            $('#video-switch-dialog')
+                .click(function() {
+                    var $el = $(this);
+                    $el.toggleClass('checked');
+
+                    var videoStatus = $el.hasClass('checked');
+
+                    globalapp.rtcService.switchVideo(videoStatus);
+                });
+
+            $('#video-wrapper').perfectScrollbar();
+
+            var tabletsMediaQueries = "( max-device-width: 1024px ) and ( orientation: landscape )"
+                + ", ( min-device-width : 1366px )"
+                + " and ( max-device-width : 1366px )"
+                + " and ( min-device-height : 1024px )"
+                + " and ( max-device-height : 1024px )"
+                + " and ( min-width: 1366px ) and ( max-width: 1366px )"
+                + " and ( orientation: landscape )"
+                + ", ( min-device-width : 1024px ) and ( max-device-width : 1024px )"
+                + " and ( min-device-height : 1366px ) and ( max-device-height : 1366px )"
+                + " and ( min-width: 1024px ) and ( max-width: 1024px)"
+                + " and ( orientation: portrait ),"
+                + " ( min-device-width : 1366px ) and ( max-device-width : 1366px )"
+                + " and ( min-device-height : 1024px ) and ( max-device-height : 1024px )"
+                + " and ( min-width: 1366px ) and ( max-width: 1366px )"
+                + " and ( orientation: landscape )";
+
+            if ( window.matchMedia("( min-width: 992px )").matches ) {
+                $('#layout-sidebar').perfectScrollbar();
+            }
+
+            if ( window.matchMedia(tabletsMediaQueries).matches ) {
+                $('#layout-sidebar').perfectScrollbar('destroy');
+            }
+
+            $(".partial-contect").each(function(index, item) {
+                var url = $(item).data("url");
+                if (url && url.length > 0) {
+                    $(item).load(url);
+                }
+            });
+        });
+        $(document).ready(function () {
+			layout.setLayoutClass();
+
+			//---Выделение активной группы при редактировании реестров
+			$(document).on("focus", ".k-window form fieldset input, .k-window form fieldset textarea", function (e) {
+				$(".ShowActiveGroup").removeClass("ShowActiveGroup");
+				$(this).closest('fieldset').addClass("ShowActiveGroup");
+			});
+			$(document).on("focusout", ".k-window form fieldset input, .k-window form fieldset textarea", function (e) {
+				$(".ShowActiveGroup").removeClass("ShowActiveGroup");
+			});
+
+			//---Изменение ширины навигации в окнах
+			var DraggingNavBar_Start = 0,
+				DraggingNavBar = false;
+			$(document).on("mousedown", ".k-window form .k-tabstrip-items", function (e) {
+				if (e.offsetX > $(this).outerWidth() - 6) {
+					DraggingNavBar = true;
+					DraggingNavBar_Start = e.clientX;
+
+					var DatElement = $(this),
+						DatElementWidth = DatElement.width();
+
+					$(document).mousemove(function (e) {
+						DatElement.width(DatElementWidth - (DraggingNavBar_Start - e.clientX));
+					});
+
+					$(document).on("mouseup", ".k-window", function (e) {
+						
+						if (DraggingNavBar) {
+							DraggingNavBar = false;
+
+							$(document).unbind('mousemove');
+							$(document).unbind('mouseup');
+						}
+					});
+				}
+			});
+			//---
+
+            //---SIB REPORT ---//
+            //TODO: дописать выборку кода.
+            $(document).on("click", "a[href*=reportCode]", function (e) {
+                if (!this.href || this.href === "")
+                    return;
+
+                var code = this.href.split("=")[1];
+
+                if (!code || code.length < 1)
+                    return;
+
+                corpProp.reporting.getReportByCode(code);
+            });
+
+            window.onbeforeunload = function (e) {
+                corpProp.dv.wnd.setWndStatus();
+            };
+            //---
+
+		});
+		
+    </script>
+    @Scripts.Render("~/JS/DeferredVendor")
+    @Scripts.Render("~/JS/DeferredCommon")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿@using Base.BusinessProcesses.Entities
+@model EditorViewModel
+
+<div id="@Model.UID">
+    <a onclick="@(Model.UID).openConstructor()" href="#" class="k-button"><i class="fa fa-pencil"></i> Редактировать</a>
+</div>
+
+<script>
+    $(function () {
+
+        $("#@Model.UID").closest("form").on("onAfterBind", function (e, form) {
+            
+           var setNumber = function() {
+                var $element = $('#@Model.UID');
+                var form = $element.closest('form').data('pbaForm');
+                var data = form.getPr('@Model.PropertyName');
+                if (data) {
+                    if (data.length > 0) {
+                        $element.find(".badge").html(data.length);
+                    } else {
+                        $element.find(".badge").html('');
+                    }
+                }
+            };
+            setNumber();
+
+            window["@Model.UID"].openConstructor = function () {
+                var form = $('#@Model.UID').closest('form').data('pbaForm');
+                var data = form.getPr('@Model.PropertyName');
+                if (!data) {
+                    data = [];
+                    form.setPr('@Model.PropertyName', data);
+                }
+
+                var type = form.getViewData('ObjectType');
+
+                var parentObjectType = form.getViewData('ObjectType');             
+
+                if (type) {
+
+                    var url = "@Url.Action("GetConditionalList", "BusinessProcesses")" + '?objectType=' + (type.Value || type) + '&allprops=true';                   
+
+                    var kendoWindow = $("<div constructor-wnd />").kendoWindow({
+                        width: 600,
+                        content: url,
+                        height: $(window).height() - 100,
+                        maxHeight: 900,
+                        title: "Условия перехода",
+                        actions: ["Close"],
+                        modal: true,
+                        refresh: function() {
+                            kendoWindow.trigger('onLoad', {
+                                model: data,
+                                type: type,
+                                parentObjectType: parentObjectType,
+                                apply: function(newVal) {
+                                    form.setPr('@Model.PropertyName', newVal);
+                                }
+                            });
+                        },
+                        deactivate: function () {
+                            this.destroy();
+                        },
+                        close: setNumber
+                });
+                    var wnd = kendoWindow.data("kendoWindow");
+                wnd.center().open();
+
+            } else {
+                pbaAPI.errorMsg("Выберите тип объекта");
+            }
+        }
+        });
+    })
+</script>
+
+
+<script id="conditional-list" type="text/x-kendo-template">    
+        <ul class="kwidget kwidget--list" data-template="property-template" data-bind="source: properties">
+
+        </ul>    
+</script>
+
+<script id="property-template" type="text/x-kendo-template">
+    <li href="javascript:void(0)" data-bind="click: editProperty, text: Name, attr: { class: activeClass }"></li>
+</script>

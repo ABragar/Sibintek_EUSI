@@ -1,0 +1,35 @@
+.map-head .map-logo {
+	display: block;
+	float: left;
+
+	width: auto;
+	height: @header-height;
+	padding: @modular-scale *.5em @modular-scale *.25em;
+
+	&-wrap {
+		display: inline-block;
+		float: left;
+
+		width: 84%;
+		height: @header-height;
+
+		transition: color .15s ease;
+
+		.clearfix();
+
+		&:hover, &:focus {
+			cursor: pointer;
+			text-decoration: none;
+
+			color: @color--light;
+			}
+
+		@media ( min-width: @screen-width-md ) {
+			width: calc(~"100% - "@modular-scale *28rem);
+			}
+		}
+
+	@media ( min-width: @screen-width-sm ) {
+		padding: @modular-scale *.5em;
+		}
+	}

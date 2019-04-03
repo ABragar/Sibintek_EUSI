@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<TaxVehicleKindCodes>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>410 12</Code>
+		<PublishCode>411 12</PublishCode>
+		<Name>самолеты пассажирские</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>410 13</Code>
+		<PublishCode>411 13</PublishCode>
+		<Name>самолеты грузовые</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>410 20</Code>
+		<PublishCode>411 20</PublishCode>
+		<Name>Самолеты прочие</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>410 21</Code>
+		<PublishCode>411 21</PublishCode>
+		<Name>самолеты пожарные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>410 22</Code>
+		<PublishCode>411 22</PublishCode>
+		<Name>самолеты аварийно-технической службы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>410 24</Code>
+		<PublishCode>411 24</PublishCode>
+		<Name>другие самолеты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>411 12</Code>
+		<PublishCode>412 12</PublishCode>
+		<Name>вертолеты пассажирские</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>411 13</Code>
+		<PublishCode>412 13</PublishCode>
+		<Name>вертолеты грузовые</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>411 20</Code>
+		<PublishCode>412 20</PublishCode>
+		<Name>Вертолеты прочие</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>411 21</Code>
+		<PublishCode>412 21</PublishCode>
+		<Name>вертолеты пожарные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>411 22</Code>
+		<PublishCode>412 22</PublishCode>
+		<Name>вертолеты аварийно-технической службы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>411 24</Code>
+		<PublishCode>412 24</PublishCode>
+		<Name>другие вертолеты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>412 00</Code>
+		<PublishCode>413 00</PublishCode>
+		<Name>Воздушные транспортные средства, не имеющие двигателей</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>414 01</Code>
+		<PublishCode>414 01</PublishCode>
+		<Name>самолеты, имеющие реактивные двигатели</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>419 01</Code>
+		<PublishCode>419 01</PublishCode>
+		<Name>иные воздушные суда, имеющие двигатели</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>419 10</Code>
+		<PublishCode>420 10</PublishCode>
+		<Name>Суда пассажирские и грузовые морские и речные самоходные (кроме включенных по коду 421 00)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>419 12</Code>
+		<PublishCode>420 12</PublishCode>
+		<Name>суда пассажирские морские и речные (кроме включенных по коду 421 00)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>419 13</Code>
+		<PublishCode>420 13</PublishCode>
+		<Name>суда грузовые морские и речные самоходные (кроме включенных по коду 421 00)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>419 30</Code>
+		<PublishCode>420 30</PublishCode>
+		<Name>Суда спортивные, туристские и прогулочные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>419 32</Code>
+		<PublishCode>420 32</PublishCode>
+		<Name>спортивные, туристские и прогулочные суда самоходные (кроме включенных по кодам 422 00, 423 00 - 426 00)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>419 33</Code>
+		<PublishCode>420 33</PublishCode>
+		<Name>спортивные, туристские и прогулочные суда несамоходные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>421 00</Code>
+		<PublishCode>421 00</PublishCode>
+		<Name>Теплоходы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>422 00</Code>
+		<PublishCode>422 00</PublishCode>
+		<Name>Яхты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>423 00</Code>
+		<PublishCode>423 00</PublishCode>
+		<Name>Катера</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>424 00</Code>
+		<PublishCode>424 00</PublishCode>
+		<Name>Гидроциклы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>425 00</Code>
+		<PublishCode>425 00</PublishCode>
+		<Name>Моторные лодки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>426 00</Code>
+		<PublishCode>426 00</PublishCode>
+		<Name>Парусно-моторные суда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>427 00</Code>
+		<PublishCode>427 00</PublishCode>
+		<Name>Несамоходные (буксируемые) суда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>426 01</Code>
+		<PublishCode>427 01</PublishCode>
+		<Name>суда пассажирские и грузовые морские и речные несамоходные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>427 00</Code>
+		<PublishCode>428 00</PublishCode>
+		<Name>Водные транспортные средства, не имеющие двигателей (кроме весельных лодок)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>428 10</Code>
+		<PublishCode>429 10</PublishCode>
+		<Name>Другие водные транспортные средства самоходные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>428 11</Code>
+		<PublishCode>429 11</PublishCode>
+		<Name>пожарные суда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>428 12</Code>
+		<PublishCode>429 12</PublishCode>
+		<Name>суда аварийно-технической службы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>428 13</Code>
+		<PublishCode>429 13</PublishCode>
+		<Name>суда медицинской службы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>428 14</Code>
+		<PublishCode>429 14</PublishCode>
+		<Name>прочие водные транспортные средства</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>428 21</Code>
+		<PublishCode>429 21</PublishCode>
+		<Name>другие водные транспортные средства несамоходные, для которых определяется валовая вместимость</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>428 22</Code>
+		<PublishCode>429 22</PublishCode>
+		<Name>прочие водные транспортные средства несамоходные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>509 00</Code>
+		<PublishCode>510 00</PublishCode>
+		<Name>Автомобили легковые</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>509 03</Code>
+		<PublishCode>510 03</PublishCode>
+		<Name>автомобили легковые медицинской службы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>509 04</Code>
+		<PublishCode>510 04</PublishCode>
+		<Name>прочие автомобили легковые (кроме включенных по кодам 566 00, 567 00)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>520 01</Code>
+		<PublishCode>520 01</PublishCode>
+		<Name>Автомобили грузовые (кроме включенных по коду 570 00)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>530 01</Code>
+		<PublishCode>530 01</PublishCode>
+		<Name>тракторы сельскохозяйственные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>529 02</Code>
+		<PublishCode>530 02</PublishCode>
+		<Name>тракторы прочие</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>529 03</Code>
+		<PublishCode>530 03</PublishCode>
+		<Name>самоходные комбайны</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>529 04</Code>
+		<PublishCode>530 04</PublishCode>
+		<Name>специальные автомашины (кроме включенных по коду 590 15)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>529 05</Code>
+		<PublishCode>530 05</PublishCode>
+		<Name>прочие тракторы, комбайны и специальные машины</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>539 01</Code>
+		<PublishCode>540 01</PublishCode>
+		<Name>автобусы медицинской службы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>539 02</Code>
+		<PublishCode>540 02</PublishCode>
+		<Name>автобусы городского и междугороднего транспорта</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>539 03</Code>
+		<PublishCode>540 03</PublishCode>
+		<Name>прочие автобусы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>561 00</Code>
+		<PublishCode>561 00</PublishCode>
+		<Name>Мотоциклы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>562 00</Code>
+		<PublishCode>562 00</PublishCode>
+		<Name>Мотороллеры</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>566 00</Code>
+		<PublishCode>566 00</PublishCode>
+		<Name>Мотосани</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>567 00</Code>
+		<PublishCode>567 00</PublishCode>
+		<Name>Снегоходы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>569 01</Code>
+		<PublishCode>570 01</PublishCode>
+		<Name>Прочие самоходные транспортные средства, машины и механизмы на пневматическом и гусеничном ходу (кроме включенных по кодам 530 01 - 530 05)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>589 10</Code>
+		<PublishCode>590 10</PublishCode>
+		<Name>Автомобили специальные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>589 11</Code>
+		<PublishCode>590 11</PublishCode>
+		<Name>автомобили пожарные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>589 12</Code>
+		<PublishCode>590 12</PublishCode>
+		<Name>автомашины для очистки и уборки городов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>589 13</Code>
+		<PublishCode>590 13</PublishCode>
+		<Name>автомашины аварийно-технической службы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>589 14</Code>
+		<PublishCode>590 14</PublishCode>
+		<Name>автомобили-фургоны медицинской службы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>589 15</Code>
+		<PublishCode>590 15</PublishCode>
+		<Name>специальные автомашины (молоковозы, скотовозы, специальные машины для перевозки птицы, машины для перевозки минеральных удобрений, ветеринарной помощи, технического обслуживания)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+	<TaxVehicleKindCode>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>589 16</Code>
+		<PublishCode>590 16</PublishCode>
+		<Name>прочие специальные автомобили, на шасси которых установлено различное оборудование, агрегаты и установки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxVehicleKindCode>
+</TaxVehicleKindCodes>
+  </DefaultDataHolder>

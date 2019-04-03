@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<DefaultDataHolder>
+<!-- TODO сейчас данных нет - это будущий шаблон дефолтных данных
+  <TaxRegionExemptionLands>
+    <TaxRegionExemptionLand>
+      <ID>0</ID>
+      <ExternalID>1</ExternalID>
+      <TaxNameExternalID />
+      <TaxPeriodExternalID />
+      <SibRegionExternalID />
+      <OKTMOExternalID />
+      <TaxExemptionLandExternalID />
+      <DecisionsDetailsLandExternalID />
+      <TaxpayersCategory />
+      <NumArticleLawRF />
+      <NumParagraphLawRF />
+      <NumSubparagraphLawRF />
+      <ExemptionCodeSubjectRF />
+      <BasisForGranting />
+      <Value />
+      <Unit />
+      <ConditionForGranting />
+    </TaxRegionExemptionLand>
+  </TaxRegionExemptionLands>
+-->
+</DefaultDataHolder>

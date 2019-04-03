@@ -1,0 +1,30 @@
+﻿@{
+    var wrapID = Html.CreateSystemName("wrap");
+}
+
+@(Html.ContentEditorWidget("internal_file")
+    .Title("Файл")
+    .TitleTemplate(
+    @<text>
+        <span><i class="fa fa-fw fa-file-o"></i> Файл</span>
+    </text>)
+                .Wrap(wrapID)
+                .Mnemonic("Content_File_Internal")
+                .Template("tpl_" + wrapID).ExtendWith(
+                @<text>
+                    <script>
+                        new Object({
+                            toHtml: function (element) {
+                                if (this.viewModel.model.Title) {
+                                    element.find('a').html(this.viewModel.model.Title);
+                                }
+
+                                contentEditor.ContentWidget.fn.toHtml.call(this, element);
+                            }
+                        })
+                    </script>
+                </text>))
+
+<script id="tpl_@wrapID" type="text/template">
+    <a data-bind="content_file: model.File"></a>
+</script>

@@ -1,0 +1,50 @@
+﻿.leaflet-control-weather {
+	position: relative;
+
+	display: block;
+
+	width: @modular-scale *8em;
+	height: @modular-scale *4.94em;
+	margin: @modular-scale *.5em @modular-scale *.5em 0 0;
+	padding: @modular-scale *.5em;
+
+	opacity: .75;
+	background-color: @color--primary;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	background-size: contain;
+
+	&:hover {
+		opacity: 1;
+		}
+
+	&-temp {
+		font-size: 40px;
+		line-height: 41px;
+
+		position: absolute;
+		top: 10px;
+		right: 5px;
+
+		display: block;
+
+		padding: 5px;
+
+		color: darken( @color--light, 3% );
+		}
+
+	&-wind {
+		font-size: 12px;
+		line-height: 12px;
+
+		position: absolute;
+		right: 10px;
+		bottom: 3px;
+
+		display: block;
+
+		padding: 5px;
+
+		color: darken( @color--light, 5% );
+		}
+	}

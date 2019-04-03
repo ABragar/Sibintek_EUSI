@@ -1,0 +1,78 @@
+﻿@model EditorViewModel
+
+@{
+    string url = Url.Action("GetEditor", "Standart");
+
+    if (Model.EditorType == typeof (ColumnViewModel))
+    {
+        url = Url.Action("GetColumn", "Standart");
+    }
+}
+
+<div id="@Model.UID">
+    <input name="properties" />
+</div>
+
+<script>
+    $(function () {
+        var $wrap = $("#@Model.UID");
+        var $form = $wrap.closest("form");
+        var $pr = $wrap.find("[name=properties]");
+
+        var onSelect = function (e) {
+            var item = e.sender.dataItem(e.item);
+            var form = $form.data('pbaForm');
+
+            var objectType = form.getViewData('ObjectType');
+
+            $.get("@url", { objectType: objectType, propertyName: item.Name }, function (editor) {
+                if (editor)
+                    for (var pr in editor) {
+                        form.setPr(pr, editor[pr]);
+                    }
+
+            });
+
+        }
+
+        var dropdownlist = $pr.kendoDropDownList({
+            dataTextField: "Name",
+            dataValueField: "Name",
+            dataSource: null,
+            select: onSelect,
+        }).data('kendoDropDownList');
+
+        $pr.closest('.k-dropdown').addClass('properties');
+
+        $form.on("onSave", function (e, form) {
+            form.setPr("@Model.PropertyName", dropdownlist.value());
+        });
+
+        $form.on('onAfterBind', function (e, form) {
+
+            var entity = form.getViewData('ObjectType');
+
+            var dataSource = new kendo.data.DataSource({
+                serverFiltering: true,
+                transport: {
+                    dataType: "json",
+                    ajax: true,
+                    type: "GET",
+                    read: {
+                        url: "@Url.Action("GetFields", "ViewModelConfig")",
+                        data: function() { return { typeName: entity } }
+                    }
+                }
+            });
+
+            dropdownlist.setDataSource(dataSource);
+
+            var property = form.getPr("@Model.PropertyName");
+
+            if(property){
+                dropdownlist.value(property);
+            }
+        });
+    });
+
+</script>

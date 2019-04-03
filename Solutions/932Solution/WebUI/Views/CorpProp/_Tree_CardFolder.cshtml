@@ -1,0 +1,56 @@
+﻿@model StandartTreeView
+
+@{
+    int width = 24;
+    int height = 24;
+
+    string tmplID = Html.CreateSystemName("tv-template");
+
+    if (typeof(ITreeNodeImage).IsAssignableFrom(Model.ViewModelConfig.TypeEntity))
+    {
+        var commonEditorViewModel = Html.GetCommonEditor(Model.Mnemonic);
+
+        var editor = commonEditorViewModel.Editors.FirstOrDefault(x => x.PropertyName == "Image");
+
+        width =  width;
+        height =  height;
+    }
+}
+
+<script id="@tmplID" type="text/x-kendo-template">
+    # var icon; #
+    # if (item.Image) { #
+    # icon = '<img src="' + pbaAPI.imageHelpers.getsrc(item.Image.FileID, @width, @height) + '" />&nbsp;'; #
+    # } else if (item.Icon && item.Icon.Value) { #
+    # var color = item.Icon.Color ? item.Icon.Color : '\\#333';  #
+    # icon = '<span style="color: ' + color + '" class="' + item.Icon.Value + '"></span>'; #
+    # } else { #
+    # icon = '<span class="fa fa-fw fa-folder"></span>'; #
+    # } #
+    <div class='tree-node' id='#= item.id #'>
+         #= icon #
+         #= pbaAPI.htmlEncode(item.Title) #
+         (<span class="innerCount">#= item.InnerItemsCount != undefined ? pbaAPI.htmlEncode(item.InnerItemsCount) : "&\#9851;" #</span>)
+    </div>
+
+
+</script>
+
+@(Html.Kendo().TreeView()
+      .AutoBind(false)
+      .Name(Model.WidgetID)
+      .HtmlAttributes(new {style = "overflow-x: hidden;"})
+      .DragAndDrop(!Model.IsReadOnly && Model.IsPermission(TypePermission.Write | TypePermission.Delete | TypePermission.Create))
+      .TemplateId(tmplID)
+      .Events(e => e
+          .DataBound(Model.WidgetID + ".onDataBound")
+          .Select(Model.WidgetID + ".onSelect")
+          .Drop(Model.WidgetID + ".onBeforeDrop")
+          .DragEnd(Model.WidgetID + ".onAfterDrop"))
+      .DataSource(dataSource => dataSource
+          .Events(events => events.Error(Model.WidgetID + ".onErrorHandler"))
+          .Read(read => read
+              .Action("TreeView_Read", "CardFolder", new {area = "", mnemonic = Model.Mnemonic, searchStr = Model.SearchStr, filter = Model.SysFilter})
+          )
+      )
+      )

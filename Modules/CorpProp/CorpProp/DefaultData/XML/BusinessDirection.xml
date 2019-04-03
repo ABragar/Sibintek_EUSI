@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<BusinessDirections>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>3.1</Code>
+		<PublishCode>3.1</PublishCode>
+		<Name>Геологоразведка и шельфовые проекты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>3.3</Code>
+		<PublishCode>3.3</PublishCode>
+		<Name>Добыча нефти и газа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>3.4</Code>
+		<PublishCode>3.4</PublishCode>
+		<Name>Добыча ГБ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>3.5</Code>
+		<PublishCode>3.5</PublishCode>
+		<Name>Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>3.6</Code>
+		<PublishCode>3.6</PublishCode>
+		<Name>Снабжение и склад</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>3.7</Code>
+		<PublishCode>3.7</PublishCode>
+		<Name>ТКРС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>3.8</Code>
+		<PublishCode>3.8</PublishCode>
+		<Name>Нефтепереработка</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>3.9</Code>
+		<PublishCode>3.9</PublishCode>
+		<Name>Нефтехимия и газопереработка</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>3.11</Code>
+		<PublishCode>3.11</PublishCode>
+		<Name>Трейдинг нефтью и продуктами нефтепереработки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>3.12</Code>
+		<PublishCode>3.12</PublishCode>
+		<Name>Специальные продукты (В2В)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>3.13</Code>
+		<PublishCode>3.13</PublishCode>
+		<Name>Логистика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>3.14</Code>
+		<PublishCode>3.14</PublishCode>
+		<Name>Региональные продажи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>3.15</Code>
+		<PublishCode>3.15</PublishCode>
+		<Name>Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>3.16</Code>
+		<PublishCode>3.16</PublishCode>
+		<Name>Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>3.17</Code>
+		<PublishCode>3.17</PublishCode>
+		<Name>Прочие предприятия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>3.18</Code>
+		<PublishCode>3.18</PublishCode>
+		<Name>Ремонт НПО</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>3.19</Code>
+		<PublishCode>3.19</PublishCode>
+		<Name>Охрана и безопасность</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>3.20</Code>
+		<PublishCode>3.20</PublishCode>
+		<Name>Энергия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>3.21</Code>
+		<PublishCode>3.21</PublishCode>
+		<Name>КНИПИ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>3.27</Code>
+		<PublishCode>3.27</PublishCode>
+		<Name>Трейдинг ГБ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>3.28</Code>
+		<PublishCode>3.28</PublishCode>
+		<Name>Прочая деятельность ГБ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>3.29</Code>
+		<PublishCode>3.29</PublishCode>
+		<Name>Транспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>3.30</Code>
+		<PublishCode>3.30</PublishCode>
+		<Name>ГРП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>3.40</Code>
+		<PublishCode>3.40</PublishCode>
+		<Name>Трейдинг газом и продуктами газопереработки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>3.41</Code>
+		<PublishCode>3.41</PublishCode>
+		<Name>Прочая деятельность РиД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>3.45</Code>
+		<PublishCode>3.45</PublishCode>
+		<Name>Переработка в Германии</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>3.47</Code>
+		<PublishCode>3.47</PublishCode>
+		<Name>Прочие международные проекты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>3.48</Code>
+		<PublishCode>3.48</PublishCode>
+		<Name>Авиаперевозки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>3.54</Code>
+		<PublishCode>3.54</PublishCode>
+		<Name>Банки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>3.55</Code>
+		<PublishCode>3.55</PublishCode>
+		<Name>Прочая деятельность Холдинга</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>3.56</Code>
+		<PublishCode>3.56</PublishCode>
+		<Name>Прочая деятельность КиЛ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+	<BusinessDirection>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>3.57</Code>
+		<PublishCode>3.57</PublishCode>
+		<Name>Прочие ВНС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessDirection>
+</BusinessDirections>
+</DefaultDataHolder>

@@ -1,0 +1,124 @@
+﻿@model Dialog_WidgetViewModel
+
+@{
+    string nameToolbar = Html.CreateSystemName("toolbar");
+    string btnAddId = Html.CreateSystemName("add");
+    string btnEditId = Html.CreateSystemName("edit");
+    string btnDeleteId = Html.CreateSystemName("delete");
+    string btnPreviewId = Html.CreateSystemName("read");
+    string btnDownloadId = Html.CreateSystemName("download");
+}
+
+<div id="@nameToolbar">
+
+</div>
+
+<script>
+    window["@nameToolbar"] = new WrapToolbar("@nameToolbar", "ToolbarListView");
+    (function () {
+        var composite = window["@Model.DialogID"];
+
+        var toolbar = window["@nameToolbar"];
+
+        composite.registerWidget(toolbar);
+
+        toolbar.listViewSelectedObject = null;
+
+        toolbar.refreshListView = function () {
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "refresh",
+                    params: {}
+                });
+        };
+
+        toolbar.onNeighbourWidgetChanged = function (e) {
+            switch (e.sender.desc) {
+                case "GridView":
+                    if (e.event === "select" || e.event === "onDataBound") {
+                        if (!toolbar.widget()) return;
+
+                        if (e.event === "select")
+                            toolbar.listViewSelectedObject = e.params.dataItem;
+                        else toolbar.listViewSelectedObject = null;
+
+                        var isSelected = toolbar.listViewSelectedObject != null;
+
+                        toolbar.enable("#@btnEditId", isSelected);
+
+                        toolbar.enable("#@btnDeleteId", isSelected);
+
+                        toolbar.enable("#@btnPreviewId", isSelected);
+
+                        toolbar.enable("#@btnDownloadId", isSelected);
+
+
+                        toolbar.element().find("button[data-onlyForSelected=true]").each(function () { $(this).data("kendoButton").enable(isSelected); });
+
+                        if (e.event === "onDataBound") {
+                            var ds = e.sender.widget().dataSource;
+                            if (!ds.filter() || ds.filter().filters.length === 0) {
+                                toolbar.element()
+                                    .find("[data-action='clearFilters']")
+                                    .find(".btntoolbar").removeClass("animated tada");
+                            } else {
+                                toolbar.element()
+                                    .find("[data-action='clearFilters']")
+                                    .find(".btntoolbar").addClass("animated tada");
+                            }
+                        }
+
+                    } else if (e.event === "dblclick") {
+                        //hack
+                        if (composite.select) return;
+
+                        var $btnEdit = $("#@btnEditId");
+
+                        if (!$btnEdit.hasClass("k-state-disabled")) {
+                            composite.onWidgetChanged(
+                            {
+                                sender: toolbar,
+                                event: "click",
+                                params: { action: "edit" }
+                            });
+                        }
+                    }
+
+                    break;
+            }
+        };
+
+        //events
+        toolbar.onClick = function (e) {
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "click",
+                    params: {
+                        event: e,
+                        action: e.target[0].getAttribute("data-action")
+                    }
+                });
+        };
+    })();
+</script>
+
+<script>
+    (function () {
+        $("#@nameToolbar").kendoToolBar({
+            items: [
+                {
+                    type: "buttonGroup",
+                    buttons: [
+                        { text: "Создать", spriteCssClass: "btntoolbar fa fa-plus", attributes: { "title": "Создать", "data-action": "add" }, showText: "overflow", id: "@btnAddId", enable: true, click: window["@nameToolbar"].onClick },
+                        { text: "Редактировать", spriteCssClass: "btntoolbar fa fa-pencil", attributes: { "title": "Редактировать", "data-action": "edit" }, showText: "overflow", id: "@btnEditId", enable: false, click: window["@nameToolbar"].onClick },
+                        { text: "Просмотр", spriteCssClass: "btntoolbar fa fa-eye", attributes: { "title": "Просмотр", "data-action": "preview" }, showText: "overflow", id: "@btnPreviewId", enable: false, click: window["@nameToolbar"].onClick },
+                        { text: "Скачать", spriteCssClass: "btntoolbar fa fa-download", attributes: { "title": "Скачать", "data-action": "download" }, showText: "overflow", id: "@btnDownloadId", enable: false, click: window["@nameToolbar"].onClick },
+                        { text: "Удалить", spriteCssClass: "btntoolbar fa fa-trash-o", attributes: { "title": "Удалить", "data-action": "delete" }, showText: "overflow", id: "@btnDeleteId", enable: false, click: window["@nameToolbar"].onClick }
+                    ]
+                }
+            ]
+        });
+    })();
+</script>

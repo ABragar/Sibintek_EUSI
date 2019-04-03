@@ -1,0 +1,320 @@
+﻿@using Base.UI.ViewModal
+@using WebUI.Models;
+
+@model StandartDialogViewModel
+
+@{
+    string nameSplitter = Html.CreateSystemName("splitter");
+
+    bool isTreeNode = Model.ViewModelConfig.ListView.Type == ListViewType.Tree;
+    bool isCategorizedItem = typeof(ICategorizedItem).IsAssignableFrom(Model.ViewModelConfig.TypeEntity);
+
+    ViewModelConfig configCategory = null;
+
+    if (isCategorizedItem)
+    {
+        var listViewCategorizedItem = Model.ViewModelConfig.ListView as ListViewCategorizedItem;
+
+        if (listViewCategorizedItem != null)
+        {
+            string mnemonicCategory = listViewCategorizedItem.MnemonicCategory;
+
+            if (listViewCategorizedItem.HiddenTree)
+            {
+                isCategorizedItem = false;
+            }
+            else
+            {
+                if (String.IsNullOrEmpty(mnemonicCategory))
+                {
+                    //TODO: не очевидно (угадайка)
+                    var typeCategory = Model.ViewModelConfig.TypeEntity.GetProperties().FirstOrDefault(pr => pr.PropertyType.GetInterfaces().Contains(typeof(ITreeNode))).PropertyType;
+
+                    configCategory = Model.DefaultViewModelConfig(typeCategory);
+                }
+                else
+                {
+                    configCategory = Model.GetViewModelConfig(mnemonicCategory);
+                }
+            }
+        }
+    }
+
+    bool isRead = Model.IsPermission(TypePermission.Read);
+
+    if (isRead)
+    {
+        if (isCategorizedItem)
+        {
+            isRead = Model.SecurityUser.IsPermission(configCategory.TypeEntity, TypePermission.Read);
+        }
+    }
+}
+
+<script>
+    (function () {
+        var composite = window["@Model.DialogID"] = new CompositeControl("@Model.DialogID");
+        var splitter = window["@nameSplitter"] = new WrapSplitter("@nameSplitter", "DialogSplitter");
+
+        composite.params = {};
+        composite.dialogData = {};
+        composite.registerWidget(splitter);
+        composite.__listView = null;
+
+        composite.__searchStr = '@Html.Raw(Model.SearchStr)';
+        composite.__extrafilter = '@Html.Raw(Model.SysFilter)';
+
+        composite.listView = function () {
+            if (composite.__listView === null) {
+                for (var id in composite.widgets) {
+                    var widget = composite.widgets[id];
+
+                    if (widget.baseType === "ListView") {
+                        if (widget.mnemonic === "@Model.Mnemonic")
+                            composite.__listView = widget;
+                    }
+                }
+            }
+
+            return composite.__listView;
+        };
+
+        composite.__initProps = function () {
+            if (composite.params.initProps) {
+                for (var pr in composite.params.initProps) {
+                    if (composite.params.initProps.hasOwnProperty(pr)) {
+                        composite.listView().setInitProp(pr, composite.params.initProps[pr]);
+                    }
+                }
+            }
+        };
+
+        composite.init = function (params) {
+            composite.params = $.extend({
+                callbackSelect: null,
+                initProps: null,
+                transport: null,
+                customCommands: null,
+                add: null, // function () { },
+                edit: null, // function () { },
+                close: null // function () {}
+            }, params);
+
+            composite.dialogData = params.dialogData;
+
+            composite.select = composite.params.callbackSelect != null;
+
+            if (!composite.select) {
+                $("#@Model.DialogID").find(".dialog__toolbar").hide();
+            }
+
+            composite.__initProps();
+
+            if (composite.__searchStr || composite.__extrafilter) {
+                if (!composite.params.transport)
+                    composite.params.transport = {};
+                if (!composite.params.transport.read)
+                    composite.params.transport.read = {};
+                if (!composite.params.transport.read.data)
+                    composite.params.transport.read.data = {};
+
+                if (composite.__searchStr)
+                    $.extend(composite.params.transport.read.data, { SearchStr: composite.__searchStr });
+
+                if (composite.__extrafilter)
+                    $.extend(composite.params.transport.read.data, { Extrafilter: composite.__extrafilter });
+            }
+
+            composite.onWidgetChanged({
+                sender: composite,
+                event: "init",
+                params: composite.params
+            });
+        };
+
+        composite.setInitProp = function (prop, value) {
+            var initprops = composite.params.initProps || {};
+            initprops[prop] = value;
+            composite.params.initProps = initprops;
+            composite.__initProps();
+        }
+
+        composite.resize = function (h) {
+            var r = 5;
+
+            if (composite.select) {
+                r = $("#@Model.DialogID").find(".dialog__toolbar").height() + 5;
+            }
+
+            splitter.resize(h - r);
+        };
+
+        composite.getSelectItems = function () {
+            return composite.listView().getSelectItems();
+        };
+
+        composite.onSelect = function () {
+            if (composite.select) {
+                var res = composite.getSelectItems();
+
+                if (!res || res.length === 0) {
+                    pbaAPI.errorMsg('Выберите элемент...');
+                    return;
+                }
+                composite.params.callbackSelect(res);
+
+                if(composite.params.close)
+                    composite.params.close();
+            } else {
+                if (composite.params.close)
+                    composite.params.close();
+            }
+        };
+
+        composite.onChildWidgetChanged = function (e) {
+            if (composite.select) {
+                if (e.event === "dblclick") {
+                    composite.onSelect();
+                }
+            }
+        };
+
+        composite.refresh = function () {
+            composite.listView().dataSourceRead();
+        };
+
+    })();
+</script>
+
+<div id="@Model.DialogID" class="fit-in-screen-size dialog dialog-listview content__html--fit-in">
+    <script>
+        (function () {
+            $("#@Model.DialogID").data("dialogListView", window["@Model.DialogID"]);
+        })();
+    </script>
+
+    @Html.HiddenFor(m => m.DialogID)
+
+    @if (Model.Type == TypeDialog.Modal)
+    {
+        <div class="dialog__toolbar">
+            <div class="kwidget kwidget--toolbar">
+                @(Html.Kendo().ToolBar()
+                      .Name("toolbar_" + Model.DialogID)
+                      .Items(items =>
+                      {
+                          items.Add().HtmlAttributes(new { style = "float: right" }).Type(CommandType.ButtonGroup).Buttons(buttons =>
+                          {
+                              buttons.Add().Text("Выбрать").HtmlAttributes(new { @class = "success" }).SpriteCssClass("fa fa-check").Click(Model.DialogID + ".onSelect");
+                          });
+                      }))
+            </div>
+        </div>
+
+    }
+
+    @(Html.Kendo()
+      .Splitter()
+      .Name(nameSplitter)
+      .HtmlAttributes(new { style = "background-color: rgba(255, 255, 255, 0);" })
+      .Panes(pan =>
+      {
+          if (isRead)
+          {
+              if (isTreeNode)
+              {
+                  pan.Add()
+                     .Size("100%")
+                     .Content(@<text>@Html.Partial("~/Views/Standart/Builders/TreeView.cshtml", new StandartTreeView(Model))</text>);
+              }
+              else
+              {
+                  string listViewSize = "100%";
+                  if (isCategorizedItem)
+                  {
+                      pan.Add()
+                         .Collapsible(true)
+                         .Size("20%")
+                         .MinSize("255px")
+                         .Content(@<text>@Html.Partial("~/Views/Standart/Builders/TreeView.cshtml", new StandartTreeView(Model, configCategory.Mnemonic, Model.DialogID, Model.Type))</text>);
+
+              listViewSize = "80%";
+          }
+
+          string builder = null;
+
+          Dialog_WidgetViewModel widgetViewModel = null;
+
+          switch (Model.ViewModelConfig.ListView.Type)
+          {
+              case ListViewType.Grid:
+              case ListViewType.GridCategorizedItem:
+                  builder = "Standart/Builders/Grid";
+                  widgetViewModel = new StandartGridView(Model);
+                  break;
+              case ListViewType.TreeListView:
+                  builder = "Standart/Builders/TreeList";
+                  widgetViewModel = new StandartTreeListView(Model);
+                  break;
+              case ListViewType.Scheduler:
+                  builder = "Standart/Builders/Scheduler";
+                  widgetViewModel = new StandartScheduler(Model);
+                  break;
+              case ListViewType.Gantt:
+                  builder = "Standart/Builders/Gantt";
+                  widgetViewModel = new StandartGantt(Model);
+                  break;
+              case ListViewType.Pivot:
+                  builder = "Standart/Builders/Pivot";
+                  widgetViewModel = new StandartPivot(Model);
+                  break;
+              case ListViewType.Custom:
+                  if (Model.Mnemonic == "NSIMenu")
+                  {
+                      builder = "CorpProp/Menu/Menu";
+
+                  }
+                  else
+                  {
+                      builder = string.Format("{0}/_Dialog", Model.NameDir); //TODO :
+                  }
+                  widgetViewModel = new CustomDialogView(Model);
+                  break;
+              default:
+                  throw new NotImplementedException();
+          }
+
+          pan.Add()
+                 .Size(listViewSize)
+                 .MinSize("400px")
+                 .HtmlAttributes(new {style = "overflow-y: hidden !important;"})
+                 .Scrollable(false)
+                 .Content(@<text>@Html.Partial(string.Format("~/Views/{0}.cshtml", builder), widgetViewModel)</text>);
+              }
+          }
+          else
+          {
+              pan.Add().HtmlAttributes(new {@class = "lock"}).Size("100%").Content("<h1>НЕТ ДОСТУПА</h1>");
+          }
+      }))
+</div>
+
+@if (Model.Type == TypeDialog.Frame)
+{
+    <script>
+        $(function () {
+            var dialog = window["@Model.DialogID"];
+            var splitter = window["@nameSplitter"];
+
+            dialog.onWidgetChanged({
+                sender: dialog,
+                event: "init"
+            });
+
+            layout.on('resize', function () {
+                if (splitter.widget())
+                    splitter.widget().resize();
+            });
+        });
+    </script>
+}

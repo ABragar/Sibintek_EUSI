@@ -1,0 +1,1500 @@
+﻿@model EditorViewModel
+@using Base.BusinessProcesses.Entities
+@using Base.BusinessProcesses.Entities.Steps
+@using Kendo.Mvc.UI.Fluent
+
+@{
+    string wrapID = Html.CreateSystemName("wrap");
+
+    string graphID = Html.CreateSystemName("gr");
+
+    string tmplID = Html.CreateSystemName("tmpl");
+
+    string rangeID = Html.CreateSystemName("range");
+
+    string contextMenuID = Html.CreateSystemName("ctxt_menu");
+
+    string htmlFieldName = Model.PropertyName;
+}
+
+<script>
+    window['@wrapID'] = {
+        stepViewTemplate: {
+            size: {
+                width: 140,
+                height: 80
+            },
+            position: {
+                top: 20,
+                left: 20
+            },
+            backgroundColor: "#fff;"
+        },
+        scheme: {
+            backgroundColor: "#E8F8FF",
+            steps: {}
+        },
+
+        steps: {},
+
+        outputTemplate: {},
+
+        actionTemplate: {},
+
+        branchTemplate: {},
+
+        instance: {},
+
+        connectorPaintStyle: {
+            lineWidth: 4,
+            strokeStyle: "#61B7CF",
+            joinstyle: "round",
+            outlineColor: "white",
+            outlineWidth: 2,
+        },
+        connectorHoverStyle: {
+            lineWidth: 4,
+            strokeStyle: "#216477",
+            outlineWidth: 2,
+            outlineColor: "white"
+        },
+        endpointHoverStyle: {
+            fillStyle: "#216477",
+            strokeStyle: "#216477"
+        },
+        sourceEndpoint: {
+            endpoint: "Rectangle",
+            paintStyle: {
+                strokeStyle: "#7AB02C",
+                fillStyle: "#FFF",
+                radius: 7,
+                lineWidth: 3
+            },
+            uniqueEndpoint: true,
+            cssClass: "bp-action",
+            isSource: true,
+            isTarget: false,
+            maxConnections: 1,
+            connector: ["Flowchart", { stub: [60, 40], gap: 10, cornerRadius: 10, alwaysRespectStubs: true }],
+            connectorStyle: window['@wrapID'].connectorPaintStyle,
+            hoverPaintStyle: window['@wrapID'].endpointHoverStyle,
+            connectorHoverStyle: window['@wrapID'].connectorHoverStyle,
+            anchor: [0, 0.5, 1, 0],
+            dragOptions: {},
+            //overlays: [
+            //	["Label", {
+            //	    location: [0.5, 1.5],
+            //	    label: "Выход",
+            //	    cssClass: "endpointSourceLabel"
+            //	}]
+            //]
+        },
+
+        targetEndpoint: {
+            endpoint: "Dot",
+            uniqueEndpoint: true,
+            paintStyle: { fillStyle: "#7AB02C", radius: 11 },
+            isSource: false,
+            isTarget: true,
+            hoverPaintStyle: window['@wrapID'].endpointHoverStyle,
+            maxConnections: -1,
+            dropOptions: { hoverClass: "hover", activeClass: "active" },
+            anchor: [0, 0.5, -1, 0],
+            //overlays: [
+            //	["Label", { location: [0.5, -0.5], label: "Вход", cssClass: "endpointTargetLabel" }]
+            //]
+        },
+
+        refreshSteps: function() {
+            var self = this;
+            this.scheme = this.getScheme();
+
+            var $wrap = $('#@wrapID');
+            var $diagram = $wrap.find(".diagram");
+            var $handler = $wrap.find(".handler");
+
+            $handler.width($diagram[0].scrollWidth);
+            $handler.height($diagram[0].scrollHeight);
+
+            self.instance.detachEveryConnection({ fireEvent: false });
+            self.instance.deleteEveryEndpoint();
+
+            $.each($wrap.find(".diagram .bp-step"), function(i, element) {
+                element.remove();
+            });
+
+            this.renderSteps(this.steps);
+        },
+
+        fixEndpoints: function(step) {
+            var endpoints = this.instance.getEndpoints(step);
+            var inputAr = $.grep(endpoints, function(elementOfArray, indexInArray) {
+                return elementOfArray.isSource;
+            });
+            var outputAr = $.grep(endpoints, function(elementOfArray, indexInArray) {
+                return elementOfArray.isTarget;
+            });
+            this.calculateEndpoint(inputAr, true);
+            this.calculateEndpoint(outputAr, false);
+            window['@wrapID'].instance.repaintEverything();
+        },
+
+        calculateEndpoint: function(endpointArray, isInput) {
+            var mult = 1 / (endpointArray.length + 1);
+            for (var i = 0; i < endpointArray.length; i++) {
+                if (isInput) {
+                    endpointArray[i].anchor.x = 1;
+                    endpointArray[i].anchor.y = mult * (i + 1);
+                } else {
+                    endpointArray[i].anchor.x = 0;
+                    endpointArray[i].anchor.y = 0.5;
+                }
+            }
+        },
+
+        getForm: function() {
+            var e_form = $("#@wrapID").closest("form");
+            return e_form.data("pbaForm");
+        },
+
+        getStepByID: function(id) {
+            return this.steps[id];
+        },
+        removeStepByID: function(id) {
+            delete this.steps[id];
+
+            $.each(this.steps, function(i, step) {
+                if (step.Outputs) {
+                    $.each(step.Outputs, function(k, output) {
+                        if (output.NextStepViewID == id) {
+                            output.NextStep = null;
+                            output.NextStepID = null;
+                            output.NextStepViewID = null;
+                        }
+                    });
+                }
+            });
+        },
+        removeAllSteps: function() {
+            var self = this;
+
+            $.each($('#@wrapID').find('.diagram .bp-step'), function(i, element) {
+                self.instance.remove(element);
+            });
+
+            this.steps = {};
+        },
+
+        addEndStep: function() {
+            var wrap = window["@wrapID"];
+
+            pbaAPI.proxyclient.standard.create_default({ mnemonic: "EndStep" })
+                .done(function(e) {
+                    if (e.error) {
+                        pbaAPI.errorMsg(e.message);
+                    } else {
+                        var step = e.model;
+                        var endStep = wrap.renderEndStep(step);
+                        wrap.steps[endStep.ViewID] = endStep;
+                    }
+                });
+        },
+
+        addChangeObjectStep: function() {
+            var wrap = window["@wrapID"];
+            pbaAPI.proxyclient.standard.create_default({ mnemonic: "ChangeObjectStep" })
+                .done(function(e) {
+                    if (e.error) {
+                        pbaAPI.errorMsg(e.message);
+                    } else {
+                        var step = e.model;
+                        var changeobjectstep = wrap.renderChangeObjectStep(step);
+                        wrap.steps[changeobjectstep.ViewID] = changeobjectstep;
+                    }
+                });
+        },
+
+        addValidationStep: function() {
+            var wrap = window["@wrapID"];
+
+            pbaAPI.proxyclient.standard.create_default({ mnemonic: "ValidationStep" }).done(function(e) {
+                if (e.error) {
+                    pbaAPI.errorMsg(e.message);
+                } else {
+                    var step = e.model;
+                    var changeobjectstep = wrap.renderValidaitionStep(step);
+                    wrap.steps[changeobjectstep.ViewID] = changeobjectstep;
+                }
+            });
+        },
+
+        addWorkflowOwnerStep: function() {
+            var wrap = window["@wrapID"];
+
+            pbaAPI.proxyclient.standard.create_default( { mnemonic: "WorkflowOwnerStep" }).done(function(e) {
+                if (e.error) {
+                    pbaAPI.errorMsg(e.message);
+                } else {
+                    var step = e.model;
+                    var workflowOwnerStep = wrap.renderWorkflowOwnerStep(step);
+                    wrap.steps[workflowOwnerStep.ViewID] = workflowOwnerStep;
+                }
+            });
+        },
+
+        addStage: function() {
+            var wrap = window["@wrapID"];
+
+            pbaAPI.proxyclient.standard.create_default({ mnemonic: "Stage" }).done( function(e) {
+                if (e.error) {
+                    pbaAPI.errorMsg(e.message);
+                } else {
+                    var stage = wrap.renderStage(e.model);
+                    wrap.steps[stage.ViewID] = stage;
+                }
+            });
+        },
+
+        addConditionalStep: function() {
+            var wrap = window["@wrapID"];
+
+            pbaAPI.proxyclient.standard.create_default( { mnemonic: "ConditionalStep" }).done(function(e) {
+                if (e.error) {
+                    pbaAPI.errorMsg(e.message);
+                } else {
+                    var step = e.model;
+                    var conditionalStep = wrap.renderConditionalStep(step);
+                    wrap.steps[conditionalStep.ViewID] = conditionalStep;
+                }
+            });
+        },
+
+        addCreateObjectStep: function() {
+            var wrap = window["@wrapID"];
+
+            var objType = wrap.getForm().getViewData('ObjectType');
+
+            var typeStr = objType && objType.Value ? objType.Value : objType;
+
+            if (typeStr) {
+                pbaAPI.proxyclient.standard.create_default( { mnemonic: "CreateObjectStep" }).done(function(e) {
+                    if (e.error) {
+                        pbaAPI.errorMsg(e.message);
+                    } else {
+                        var createObjectStep = wrap.renderCreateObjectStep(e.model);
+                        if (!createObjectStep.ParentObjectType) {
+                            createObjectStep.ParentObjectType = typeStr;
+                        }
+                        wrap.steps[createObjectStep.ViewID] = createObjectStep;
+                    }
+                });
+            } else {
+                pbaAPI.errorMsg("Выберите тип объекта бизнес-процесса");
+            }
+        },
+
+        addParallelStep: function() {
+            var wrap = window["@wrapID"];
+            pbaAPI.proxyclient.standard.create_default({ mnemonic: "ParallelizationStep" }).done(function(e) {
+                if (e.error) {
+                    pbaAPI.errorMsg(e.message);
+                } else {
+                    var parallelStep = wrap.renderParallelStep(e.model);
+                    wrap.steps[parallelStep.ViewID] = parallelStep;
+                }
+            });
+        },
+
+        addParallelEndStep: function() {
+            var wrap = window["@wrapID"];
+            pbaAPI.proxyclient.standard.create_default({ mnemonic: "ParallelEndStep" }).done(function(e) {
+                if (e.error) {
+                    pbaAPI.errorMsg(e.message);
+                } else {
+                    var parallelEndStep = wrap.renderParallelEndStep(e.model);
+                    wrap.steps[parallelEndStep.ViewID] = parallelEndStep;
+                }
+            });
+        },
+
+
+        applyStepTemplate: function(id) {
+            var $wrap = $('#@wrapID');
+            var $step = $wrap.find('#' + id);
+            var template = this.scheme.steps[id];
+
+            if (template) {
+                $step.css({
+                    //backgroundColor: template.backgroundColor,
+                    left: template.position.left,
+                    top: template.position.top,
+                    height: template.size.height,
+                    width: template.size.width
+                });
+            }
+        },
+
+        getScheme: function() {
+            var scheme = {
+                backgroundColor: $('#@graphID').css('background-color'),
+                steps: {},
+            };
+
+            $.each(this.steps, function(i, element) {
+                var $wrap = $('#@wrapID');
+
+                var $element = $wrap.find('#' + element.ViewID);
+
+                scheme.steps[element.ViewID] = {
+                    size: {
+                        width: $element.css("width"),
+                        height: $element.css("height")
+                    },
+                    position: {
+                        top: $element.css("top"),
+                        left: $element.css("left")
+                    },
+                    backgroundColor: $element.css("background-color")
+                };
+            });
+
+            return scheme;
+        },
+
+        renderSteps: function(steps) {
+
+            $('#@graphID').html();
+
+            var self = window['@wrapID'];
+
+            $.each(steps, function(i, step) {
+
+                if (step.Hidden == false) {
+                    switch (step.StepType) {
+                        case @((int) FlowStepType.Stage):
+                            self.renderStage(step);
+                            break;
+                        case @((int) FlowStepType.CreateObjectTask):
+                            self.renderCreateObjectStep(step);
+                            break;
+                        case @((int) FlowStepType.WorkflowOwnerStep):
+                            self.renderWorkflowOwnerStep(step);
+                            break;
+                        case @((int) FlowStepType.EndStep):
+                            self.renderEndStep(step);
+                            break;
+                        case @((int) FlowStepType.ParalleizationStep):
+                            self.renderParallelStep(step);
+                            break;
+                        case @((int) FlowStepType.ParallelEndStep):
+                            self.renderParallelEndStep(step);
+                            break;
+                        case @((int) FlowStepType.EntryPointStep):
+                            self.renderEntryPointStep(step);
+                            break;
+                        case @((int) FlowStepType.ChangeObjectStep):
+                            self.renderChangeObjectStep(step);
+                            break;
+                        case @((int) FlowStepType.ValidationStep):
+                            self.renderValidaitionStep(step);
+                            break;
+                        case @( (int) FlowStepType.ConditionalStep):
+                            self.renderConditionalStep(step);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            });
+
+            for (var st in steps) {
+                var step = steps[st];
+                if (step.Outputs && step.Outputs.length) {
+                    $.each(step.Outputs, function(i, a) {
+                        if (!a.Hidden && a.NextStepViewID) {
+                            self.instance.connect({
+                                paintStyle: { lineWidth: 4, strokeStyle: a.Color },
+                                @*paintStyle: window['@wrapID'].connectorPaintStyle,*@
+                                //label: a.Title,
+                                labelStyle: { cssClass: "component label" },
+                                uuids: [a.uuid, a.NextStepViewID + "_target"]
+                            });
+                        }
+                    });
+                }
+            }
+
+            window['@wrapID'].instance.repaintEverything();
+        },
+
+        loadDiagram: function(steps) {
+            var self = this;
+
+            self.renderSteps(steps);
+
+            $.each(steps, function(i, step) {
+                self.steps[step.ViewID] = step;
+            });
+        },
+
+        addConnections: function() {
+            $.each(window['@wrapID'].steps, function(i, step) {
+                var endPoints = window['@wrapID'].instance.getEndpoints(step.ViewID);
+                var actions = step.Outputs;
+                $.each(endPoints, function(j, endPoint) {
+                    if (endPoint.isSource) {
+
+                    }
+                });
+            });
+            return window['@wrapID'].instance.getEndpoints(sourceActionID);
+        },
+
+        renderOutput: function($step, output) {
+            if (!output) {
+                output = $.extend({}, window['@wrapID'][$step.data("outputtemplate")], {
+                    Title: "Без названия"
+                });
+            }
+
+            var sourceID = pbaAPI.guid() + "_source";
+            var a = window['@wrapID'].instance.addEndpoint($step,
+                output.Color ? $.extend({}, window['@wrapID'].sourceEndpoint, { paintStyle: { fillStyle: output.Color }, connectorStyle: { lineWidth: 4, strokeStyle: output.Color } }) : window['@wrapID'].sourceEndpoint,
+                { uuid: sourceID });
+            $.extend(output, { uuid: sourceID });
+
+            // тут надо названия получить, пока х3
+            //if (action.MacrosTemplates) {
+            //    for (var i in action.MacrosTemplates) {
+            //        var macroItem = action.MacrosTemplates[i];
+            //    }
+            //}
+
+            //var descr = output.Description ? '<p>' + output.Description + '</p>' : '';
+
+            //$(a.canvas).popover({
+            //    trigger: 'hover',
+            //    title: output.Title,
+            //    html: true,
+            //    content: descr + '<div class="action-more">Двойной клик для дополнительной информации</div>'
+            //    //content: (action.Macros ? action.Macros : "Макрос не назначен") + '<br /><div class="action-more">Двойной клик для дополнительной информации</div>'
+            //});
+
+            $(a.canvas)
+                .attr("title", "Двойной клик для дополнительной информации")
+                .attr("data-popup", "right");
+
+            return output;
+        },
+
+        renderCreateObjectStep: function(step) {
+            if (!step.ViewID) {
+                step.ViewID = pbaAPI.guid();
+                this.scheme.steps[step.ViewID] = this.stepViewTemplate;
+            }
+
+            var $createObjectStep = $('<div data-mnemonic="CreateObjectStep" data-outputtemplate="outputTemplate" class="window bp-step step-container"' + 'id="' + step.ViewID + '" >')
+                .appendTo('#@graphID').html($("[data-mnemonic=CreateObjectStep]")[0].innerHTML);
+
+            $createObjectStep.find('.step-container-title').html(step.Title).attr('step-container-title', step.Title);
+            $createObjectStep.find('.step-description').html(step.Description);
+
+            this.instance.addEndpoint($createObjectStep, this.targetEndpoint, { uuid: step.ViewID + "_target" });
+
+            this.applyStepTemplate(step.ViewID);
+
+            this.instance.draggable($createObjectStep);
+
+            $.each(step.Outputs, function(i, action) {
+                if (!action.Hidden) {
+                    window['@wrapID'].renderOutput($createObjectStep, action);
+                }
+            });
+
+            this.fixEndpoints($createObjectStep);
+
+            return $.extend({ isDeleted: false }, step);
+        },
+
+        renderConditionalStep: function(branch) {
+            if (!branch.ViewID) {
+                branch.ViewID = pbaAPI.guid();
+                this.scheme.steps[branch.ViewID] = this.stepViewTemplate;
+            }
+
+            var $branch = $('<div data-mnemonic="ConditionalStep" data-outputtemplate="branchTemplate" class="bp-step branching-step"' + 'id="' + branch.ViewID + '" >')
+                .appendTo('#@graphID').html($(".branching-step")[0].innerHTML);
+
+            $branch.find('.stage-title').html(branch.Title).attr('title', branch.Title);
+
+            this.instance.addEndpoint($branch, this.targetEndpoint, { uuid: branch.ViewID + "_target" });
+
+            this.applyStepTemplate(branch.ViewID);
+
+            $.each(branch.Outputs, function(i, action) {
+                if (!action.Hidden) {
+                    window['@wrapID'].renderOutput($branch, action);
+                }
+            });
+
+            this.instance.draggable($branch, {
+                stop: function(event, ui) {
+                    @*window['@wrapID'].sheame.stages[ui.helper[0].id].size = { width: ui.helper[0].id.originalSize.width, width: ui.element[0].id.originalSize.height };*@
+                },
+            });
+            this.fixEndpoints($branch);
+
+            return $.extend({ isDeleted: false }, branch);
+        },
+
+        renderWorkflowOwnerStep: function(step) {
+            var self = window['@wrapID'];
+
+            mnemonic = 'WorkflowOwnerStep';
+
+            if (!step.ViewID) {
+                step.ViewID = pbaAPI.guid();
+                this.scheme.steps[step.ViewID] = this.stepViewTemplate;
+            }
+
+            var $workflowOwnerStep = $('<div data-mnemonic="WorkflowOwnerStep" data-outputtemplate="outputTemplate" class="window bp-step bp-stage typical-stage "' + 'id="' + step.ViewID + '" >')
+                .appendTo('#@graphID').html($("[data-mnemonic=WorkflowOwnerStep]")[0].innerHTML);
+
+            $workflowOwnerStep.find('.stage-title').html(step.Title).attr('step-container-title', step.Title);
+            $workflowOwnerStep.find('.step-description').html(step.Description);
+
+            this.instance.addEndpoint($workflowOwnerStep, this.targetEndpoint, { uuid: step.ViewID + "_target" });
+
+            this.applyStepTemplate(step.ViewID);
+
+
+            $.each(step.Outputs, function(i, action) {
+                if (!action.Hidden) {
+                    self.renderOutput($workflowOwnerStep, action);
+                }
+            });
+
+            this.instance.draggable($workflowOwnerStep);
+
+            this.fixEndpoints($workflowOwnerStep);
+
+            return $.extend({ isDeleted: false }, step);
+        },
+
+
+        renderEndStep: function(step) {
+            var self = window['@wrapID'];
+
+            if (!step.ViewID) {
+                step.ViewID = pbaAPI.guid();
+                this.scheme.steps[step.ViewID] = this.stepViewTemplate;
+            }
+
+            var $endStep = $('<div data-mnemonic="EndStep"   data-outputtemplate="outputTemplate" class="window bp-step bp-stage entrypoint endstep"' + ' id="' + step.ViewID + '"> ')
+                .appendTo('#@graphID').html($("[data-mnemonic=EndStep]")[0].innerHTML);
+
+            this.instance.addEndpoint($endStep, this.targetEndpoint, { uuid: step.ViewID + "_target" });
+
+            this.applyStepTemplate(step.ViewID);
+
+            this.instance.draggable($endStep);
+
+            this.fixEndpoints($endStep);
+
+            return $.extend({ isDeleted: false }, step);
+        },
+
+        renderChangeObjectStep: function(step) {
+
+            var self = window['@wrapID'];
+
+            if (!step.ViewID) {
+                step.ViewID = pbaAPI.guid();
+                this.scheme.steps[step.ViewID] = this.stepViewTemplate;
+            }
+
+            var $changeobjectstep = $('<div data-mnemonic="ChangeObjectStep"   data-outputtemplate="outputTemplate" class="window bp-step changeobjectstep"' + ' id="' + step.ViewID + '"> ')
+                .appendTo('#@graphID').html($("[data-mnemonic=ChangeObjectStep]")[0].innerHTML);
+
+            $changeobjectstep.find('.stage-title').html(step.Title).attr('step-container-title', step.Title);
+
+            this.instance.addEndpoint($changeobjectstep, this.targetEndpoint, { uuid: step.ViewID + "_target" });
+
+            this.applyStepTemplate(step.ViewID);
+
+            $.each(step.Outputs, function(i, action) {
+                if (!action.Hidden) {
+                    self.renderOutput($changeobjectstep, action);
+                }
+            });
+
+            this.instance.draggable($changeobjectstep);
+
+            this.fixEndpoints($changeobjectstep);
+
+            return $.extend({ isDeleted: false }, step);
+        },
+
+        renderValidaitionStep: function(step) {
+            var self = window['@wrapID'];
+
+            if (!step.ViewID) {
+                step.ViewID = pbaAPI.guid();
+                this.scheme.steps[step.ViewID] = this.stepViewTemplate;
+            }
+
+            var $validationstep = $('<div data-mnemonic="ValidationStep" data-outputtemplate="outputTemplate" class="window bp-step validationstep"' + ' id="' + step.ViewID + '"> ')
+                .appendTo('#@graphID').html($("[data-mnemonic=ValidationStep]")[0].innerHTML);
+
+            $validationstep.find('.stage-title').html(step.Title).attr('step-container-title', step.Title);
+
+            this.instance.addEndpoint($validationstep, this.targetEndpoint, { uuid: step.ViewID + "_target" });
+
+            this.applyStepTemplate(step.ViewID);
+
+            $.each(step.Outputs, function(i, action) {
+                if (!action.Hidden) {
+                    self.renderOutput($validationstep, action);
+                }
+            });
+
+            this.instance.draggable($validationstep);
+
+            this.fixEndpoints($validationstep);
+
+            return $.extend({ isDeleted: false }, step);
+        },
+
+
+        renderEntryPointStep: function(step) {
+
+            var self = window['@wrapID'];
+
+            var mnemonic = 'EntryPointStep';
+
+            if (!step.ViewID) {
+                step.ViewID = pbaAPI.guid();
+                this.scheme.steps[step.ViewID] = this.stepViewTemplate;
+            }
+
+
+            var $step = $('<div data-mnemonic="' + mnemonic + '" data-outputTemplate="actionTemplate" class="window bp-step bp-stage entrypoint "' + 'id="' + step.ViewID + '" >')
+                .appendTo('#@graphID').html($(".stage-template-container").find('.entrypoint')[0].innerHTML);
+
+            $step.find('.stage-title').html(step.Title);
+
+            if (step.Color) {
+                $step.css('color', step.Color);
+            }
+
+            if (step.Outputs) {
+                $.each(step.Outputs, function(i, action) {
+                    if (!action.Hidden) {
+                        self.renderOutput($step, action);
+                    }
+                });
+            }
+            this.applyStepTemplate(step.ViewID);
+            this.instance.draggable($step);
+            this.fixEndpoints($step);
+            return $.extend({ isDeleted: false }, step);
+        },
+
+
+        renderStage: function(stage, mnemonic) {
+            var self = window['@wrapID'];
+
+            mnemonic = mnemonic || 'Stage';
+
+            if (!stage.ViewID) {
+                stage.ViewID = pbaAPI.guid();
+                this.scheme.steps[stage.ViewID] = this.stepViewTemplate;
+            }
+
+            var $stage = $('<div data-mnemonic="' + mnemonic + '" data-outputTemplate="actionTemplate" class="window bp-step bp-stage typical-stage"' + 'id="' + stage.ViewID + '" >')
+                .appendTo('#@graphID').html($(".stage-template-container").find('.typical-stage')[0].innerHTML);
+
+            $stage.find('.stage-title').html(stage.Title).attr('title', stage.Title);
+
+            if (stage.Color) {
+                $stage.css('color', stage.Color);
+            }
+
+
+            this.instance.addEndpoint($stage, this.targetEndpoint, { uuid: stage.ViewID + "_target" });
+
+            $stage.resizable({
+                maxHeight: 32,
+                grid: 50,
+                resize: function(event, ui) {
+                    self.fixEndpoints(ui.element[0]);
+                },
+                handles: 'e, w'
+            });
+
+            self.renderUserList($stage, stage);
+
+            this.applyStepTemplate(stage.ViewID);
+
+            if (stage.Outputs) {
+                $.each(stage.Outputs, function(i, action) {
+                    if (!action.Hidden) {
+                        self.renderOutput($stage, action);
+                    }
+                });
+            }
+
+            $stage.height(32);
+
+            this.instance.draggable($stage);
+            this.fixEndpoints($stage);
+            return $.extend({ isDeleted: false }, stage);
+
+        },
+
+
+        renderParallelStep: function(step) {
+            var self = window['@wrapID'];
+            if (!step.ViewID) {
+                step.ViewID = pbaAPI.guid();
+                this.scheme.steps[step.ViewID] = this.stepViewTemplate;
+            }
+
+            var $parallelStep = $('<div data-mnemonic="ParallelStep" data-outputtemplate="outputTemplate" class="bp-step parallel-step"' + 'id="' + step.ViewID + '" >')
+                .appendTo('#@graphID').html($(".parallel-step")[0].innerHTML);
+
+            this.instance.addEndpoint($parallelStep, this.targetEndpoint, { uuid: step.ViewID + "_target" });
+
+            this.applyStepTemplate(step.ViewID);
+
+            if (step.Outputs) {
+                $.each(step.Outputs, function(i, action) {
+                    if (!action.Hidden) {
+                        self.renderOutput($parallelStep, action);
+                    }
+                });
+            }
+
+            this.instance.draggable($parallelStep);
+
+            this.fixEndpoints($parallelStep);
+
+            return $.extend({ isDeleted: false }, step);
+        },
+
+        renderParallelEndStep: function(step) {
+            var self = window['@wrapID'];
+            if (!step.ViewID) {
+                step.ViewID = pbaAPI.guid();
+                this.scheme.steps[step.ViewID] = this.stepViewTemplate;
+            }
+
+            var $parallelEndStep = $('<div data-mnemonic="ParallelEndStep" data-outputtemplate="outputTemplate" class="bp-step parallel-endstep"' + 'id="' + step.ViewID + '" >')
+                .appendTo('#@graphID').html($(".parallel-endstep")[0].innerHTML);
+
+            this.instance.addEndpoint($parallelEndStep, this.targetEndpoint, { uuid: step.ViewID + "_target" });
+
+            this.applyStepTemplate(step.ViewID);
+
+            if (step.Outputs) {
+                $.each(step.Outputs, function(i, action) {
+                    if (!action.Hidden) {
+                        self.renderOutput($parallelEndStep, action);
+                    }
+                });
+            }
+
+            this.instance.draggable($parallelEndStep);
+
+            this.fixEndpoints($parallelEndStep);
+
+            return $.extend({ isDeleted: false }, step);
+        },
+
+        renderUserList: function($stage, stage) {
+            var template = $("#@tmplID").html();
+            var renderTemplate = kendo.template(template);
+
+            var renderUserTooltip = function(user, $imgCont) {
+                if (user) {
+                    var $img = $('<img height="40" width="40" src=""></div>').appendTo($imgCont);
+                    var imgID = user.Image ? user.Image.FileID : "";
+                    var key = user.Image ? user.Image.Key : "";
+
+                    pbaAPI.imageHelpers.src($img, imgID, key);
+                    $img.popover({
+                        trigger: 'hover',
+                        title: user.UserCategoryName,
+                        container: 'body',
+                        html: true,
+                        placement: 'top',
+                        content: renderTemplate({ user: user, ImageID: imgID, Key: key })
+                    });
+                }
+            }
+
+            if (stage.AssignedToCategory) {
+                var $catContainer = $stage.find('.stage-footer-cats');
+                if (stage.AssignedToCategory.length && stage.AssignedToCategory.length === 1) {
+                    if (stage.AssignedToCategory[0].Object.Image) {
+                        var $img = $('<img height="40" width="40" src=""></div>').appendTo($catContainer);
+                        pbaAPI.imageHelpers.src($img, stage.AssignedToCategory[0].Object.Image.FileID, stage.AssignedToCategory[0].Object.Image.Key);
+                    }
+                    var $cat = $stage.find('.perf-cat');
+                    $cat.html(stage.AssignedToCategory[0].Object.Name);
+                } else {
+                    assignCount = stage.AssignedToCategory.length;
+                    $stage.find('.cat-count').html('Отдел исполнителей (' + assignCount + ')');
+                }
+            } else {
+                $stage.find('.perf-cat').html('- отдел исполнителей не назнчен -');
+            }
+
+            var assignCount = 0;
+
+            if (stage.AssignedToUsers && stage.AssignedToUsers.length) {
+                assignCount = stage.AssignedToUsers.length;
+                var $imgContainer = $stage.find('.stage-footer-users');
+                for (var i in stage.AssignedToUsers) {
+                    if (stage.AssignedToUsers[i].Performer) {
+                        renderUserTooltip(stage.AssignedToUsers[i].Performer, $imgContainer);
+                    }
+                }
+            }
+
+            $stage.find('.perf-count').html('Исполнители (' + assignCount + ')');
+        },
+
+
+        contextMenu_onSelect: function(e) {
+            var wrap = window["@wrapID"];
+
+            switch ($(e.item).attr("id")) {
+                case "btnCopy":
+                    wrap.copyStage(e.target.id);
+                    break;
+                case "btnEdit":
+                    wrap.contextEditStage(e.target.id);
+                    break;
+                case "btnAdd":
+                    wrap.contextAddAction(e.target.id);
+                    break;
+                case "btnDelete":
+                    wrap.contextDeleteStage(e.target.id);
+                    break;
+
+            }
+        },
+
+        copyStage: function(viewID) {
+            var wrap = window["@wrapID"];
+            var stageToCopy = wrap.steps[viewID];
+            var t = @((int)FlowStepType.Stage);
+            if (stageToCopy.StepType === t) {
+                pbaAPI.proxyclient.standard.create_default({ mnemonic: "Stage" })
+                    .done(function(e) {
+                        e.model.AssignedToCategory = stageToCopy.AssignedToCategory;
+                        e.model.AutoProcess = stageToCopy.AutoProcess;
+                        e.model.CategoryID = stageToCopy.CategoryID;
+                        e.model.Color = stageToCopy.Color;
+                        e.model.CreateTask = stageToCopy.CreateTask;
+                        e.model.Description = stageToCopy.Description;
+                        e.model.Help = stageToCopy.Help;
+                        e.model.ObjectType = stageToCopy.ObjectType;
+                        e.model.PerformancePeriod = stageToCopy.PerformancePeriod;
+                        e.model.TaskCategory = stageToCopy.TaskCategory;
+                        e.model.Title = stageToCopy.Title;
+                        var stage = wrap.renderStage(e.model);
+                        wrap.steps[stage.ViewID] = stage;
+                    });
+            }
+        },
+
+
+        contextDeleteStage: function(id) {
+            var wrap = window['@wrapID'];
+            pbaAPI.confirm("Удаление шага", "Вы действительно хотите удалить шаг?", function() {
+                wrap.removeStepByID(id);
+                wrap.refreshSteps();
+            });
+        },
+
+        contextEditStage: function(id) {
+            var wrap = window['@wrapID'];
+            var step = wrap.getStepByID(id);
+            var form = window['@wrapID'].getForm();
+
+            pbaAPI.openDetailView(step.RuntimeType, {
+                wid: "@wrapID",
+                title: "Редактировать",
+                parentForm : form,
+                entity: step,
+                callback: function(ev) {
+                    if (ev.type == "save") {
+                        wrap.steps[step.ViewID] = ev.model;
+                        wrap.refreshSteps();
+                    }
+                }
+            });
+        },
+
+        contextAddAction: function(id) {
+            var wrap = window['@wrapID'];
+            var step = wrap.steps[id];
+            var t1 = @( (int) FlowStepType.Stage );
+            var t2 = @( (int) FlowStepType.ParalleizationStep);
+
+            if (step.StepType ===  t1 || step.StepType === t2 )
+            {
+                var $step = $("#" + id);
+                var output = wrap.renderOutput($step);
+                wrap.fixEndpoints($step);
+                step.Outputs.push(output);
+            }
+        }
+    }
+
+</script>
+
+<div class="kwidget kwidget--panel">
+    <div class="kwidget kwidget--toolbar">
+        @(Html.Kendo().ToolBar()
+            .Name("workflow-toolbar_" + wrapID)
+            .Items(items =>
+            {
+            if (ViewBag.ReadOnly == null || !(bool)ViewBag.ReadOnly)
+            {
+                items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                {
+                    AddToolbarButton(buttons, wrapID, "Добавить этап", "addStage", "mdi mdi-plus-circle-outline");
+                    AddToolbarButton(buttons, wrapID, "Добавить условный переход", "addConditionalStep", "mdi mdi-shuffle");
+                    AddToolbarButton(buttons, wrapID, "Добавить изменение объекта", "addChangeObjectStep", "mdi mdi-pulse");
+                    AddToolbarButton(buttons, wrapID, "Добавить валидацию объекта", "addValidationStep", "mdi mdi-shield-outline");
+                    AddToolbarButton(buttons, wrapID, "Добавить создание объекта", "addCreateObjectStep", "mdi mdi-checkbox-multiple-blank-outline");
+                    AddToolbarButton(buttons, wrapID, "Добавить контейнер для бизнес-процесса", "addWorkflowOwnerStep", "mdi mdi-inbox");
+                    AddToolbarButton(buttons, wrapID, "Добавить завершение", "addEndStep", "fa fa-lg fa-flag-checkered");
+                    AddToolbarButton(buttons, wrapID, "Добавить параллельное выполнение", "addParallelStep", "mdi mdi-source-branch");
+                    AddToolbarButton(buttons, wrapID, "Добавить завершение параллельного выполнения", "addParallelEndStep", "mdi mdi-source-merge");
+                });
+
+                items.Add().Type(CommandType.Separator);
+            }
+
+            @* RANGE BAR *@
+                items.Add().HtmlAttributes(new { style = "margin-left: 10px" }).Template(string.Format("<input type=\"text\" id=\"{0}\">", rangeID));
+            }))
+    </div>
+    <div id="@wrapID" class="kwidget kwidget--panel-content" style="padding: 0;">
+        <div class="stage-template-container" style="display: none;">
+            <div class="bp-step branching-step" data-mnemonic="BranchingStep" data-outputtemplate="branchTemplate">
+                <div class="branch-tools">
+                    <a title="Редактировать" data-role="edit" class="k-icon k-i-custom">Edit</a>
+                    <a title="Добавить ветвление" data-role="add" class="k-icon k-i-plus">Add</a>
+                    <a title="Удалить ветвление" data-role="remove"><span class="fa fa-remove"></span></a>
+                </div>
+            </div>
+
+            <div class="bp-step branching-step" data-mnemonic="ConditionalStep" data-outputtemplate="branchTemplate">
+                <div class="branch-tools">
+                    <a title="Редактировать" data-role="edit" class="k-icon k-i-custom">Edit</a>
+                    <a title="Добавить ветвление" data-role="add" class="k-icon k-i-plus">Add</a>
+                    <a title="Удалить ветвление" data-role="remove"><span class="fa fa-remove"></span></a>
+                </div>
+            </div>
+
+            <div class="window bp-step bp-stage entrypoint" data-mnemonic="EntryPointStep" data-outputtemplate="actionTemplate" style="left: 600px" id="details">
+                <div class="stage-toolbar">
+                    <p class="stage-title"></p>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <div class="window bp-step bp-stage typical-stage context-menu-active" data-mnemonic="Stage" data-outputtemplate="actionTemplate" style="left: 600px; height: 32px !important;" id="details">
+                <div class="stage-toolbar">
+                    <a title="Удалить" style="float: right" data-role="remove"><span class="fa fa-trash-o"></span></a>
+                    <a title="Добавить действие" style="float: left" data-role="add" class="k-icon k-i-plus">Add</a>
+                    <a title="Редактировать" style="float: left" data-role="edit" class="k-icon k-i-custom">Edit</a>
+                    <p class="stage-title"></p>
+                    <div class="clear"></div>
+                </div>
+                <div class="stage-info">
+                    @*<div class="stage-image"></div>*@
+                    <div class="stage-content">
+                        <p class="stage-title">Наименование</p>
+                        @*<div class="stage-description"></div>*@
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="stage-footer">
+                    <div class="stage-footer-cats">
+                        <span class="label label-primary perf-cat cat-count"></span>
+                    </div>
+                    <hr style="margin: 5px 0;" />
+                    <div class="stage-footer-users">
+                        <span class="label label-primary perf-count"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="window bp-step entrypoint">
+                <p class="step-title">Старт</p>
+            </div>
+
+            <div class="window bp-step bp-stage typical-stage" data-mnemonic="WorkflowOwnerStep" style="left: 600px" data-outputtemplate="outputTemplate">
+                <div class="stage-toolbar">
+                    <a title="Удалить" style="float: right" data-role="remove"><span class="fa fa-trash-o"></span></a>
+                    <a title="Редактировать" style="float: left" data-role="editworkflowcontainer" class="k-icon k-i-custom">Edit</a>
+                    <p class="stage-title"></p>
+                    <div class="clear"></div>
+                </div>
+                <div class="stage-info">
+                    <div class="stage-content">
+                        <div class="stage-footer row">
+                            <div class="fa fa-thumbs-o-up col-xs-2 step-info-image"></div>
+                            <div class="col-xs-10">
+                                <p class="step-description"></p>
+                            </div>
+                            <a class="small btn ownerbutton " data-role="viewChildWorkflow">Открыть</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="window bp-step step-container" data-mnemonic="CreateObjectStep" data-outputtemplate="outputTemplate">
+                <div class="step-toolbar">
+                    <a title="Удалить" style="float: right" data-role="remove"><span class="fa fa-trash-o"></span></a>
+                    <a title="Редактировать" style="float: left" data-role="edit" class="k-icon k-i-custom">Edit</a>
+                    <p class="step-container-title">Создание объекта</p>
+                </div>
+                <div class="step-info">
+                    <span class="fa fa-play-circle-o col-xs-1 step-info-image"></span>
+                    <div class="step-description col-xs-10"></div>
+                </div>
+            </div>
+
+            <div class="window bp-step entrypoint" data-mnemonic="EndStep" data-outputtemplate="outputTemplate">
+                <div class="stage-toolbar">
+                    <a title="Удалить" style="float: right" data-role="remove"><span class="fa fa-trash-o"></span></a>
+                    <span class="stage-title">Завершение</span>
+                </div>
+            </div>
+
+            <div class="window bp-step step-container" data-mnemonic="GotoStep" data-outputtemplate="outputTemplate">
+                <div class="step-toolbar">
+                    <a title="Удалить" style="float: right" data-role="remove"><span class="fa fa-trash-o"></span></a>
+                    <a title="Редактировать" style="float: left" data-role="edit" class="k-icon k-i-custom"></a>
+                    <p class="step-container-title">Переход к шагу</p>
+                </div>
+                <div class="step-info">
+                    <div class="fa fa-registered  col-xs-1 step-info-image"></div>
+                    <div class="step-description col-xs-10 text-center"></div>
+                </div>
+            </div>
+
+            <div class="window bp-step parallel-step" data-mnemonic="ParallelStep" data-outputtemplate="branchTemplate">
+                <div class="parallel-tools">
+                    <a title="Удалить" style="float: right" data-role="remove"><span class="fa fa-trash-o"></span></a>
+                    <a title="Добавить действие" style="float: left" data-role="add" class="k-icon k-i-plus">Add</a>
+                    <a title="Редактировать" style="float: left" data-role="edit" class="k-icon k-i-custom"></a>
+                </div>
+            </div>
+
+            <div class="bp-step parallel-endstep" data-mnemonic="ParallelEndStep" data-outputtemplate="outputTemplate">
+                <div class="parallelend-tools">
+                    <a title="Удалить" data-role="remove"><span class="fa fa-trash-o"></span></a>
+                    <a title="Редактировать" data-role="edit" class="k-icon k-i-custom">Edit</a>
+                </div>
+            </div>
+
+            <div class="window bp-step changeobjectstep" data-mnemonic="ChangeObjectStep" data-outputtemplate="outputTemplate">
+                <div class="circle-conent">
+                    <span class="fa fa-bolt"></span>
+                </div>
+            </div>
+
+            <div class="window bp-step validationstep" data-mnemonic="ValidationStep" data-outputtemplate="outputTemplate">
+                <div class="circle-conent">
+                    <span class="glyphicon glyphicon-skull"></span>
+                </div>
+            </div>
+
+            <div class="window bp-step markerstep" data-mnemonic="MarkerStep" data-outputtemplate="outputTemplate">
+                <div class="circle-conent">
+                    <span class="fa fa-tag"></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="zoom-wrapper">
+            <div class="diagram-wrapper">
+                <div class="diagram" id="@graphID">
+                    <div class="handler"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@(Html.Kendo().ContextMenu()
+    .Name(contextMenuID)
+    .Target("#" + wrapID)
+    .Filter(".bp-step")
+    .Events(e => e.Select(wrapID + ".contextMenu_onSelect"))
+    .Items(items =>
+    {
+        items.Add().Text("Редактировать").HtmlAttributes(new { id = "btnEdit" }).SpriteCssClasses("btntoolbar fa fa-pencil");
+        items.Add().Text("Добавить действие").HtmlAttributes(new { id = "btnAdd" }).SpriteCssClasses("btntoolbar fa fa-plus");
+        items.Add().Text("Копировать").HtmlAttributes(new { id = "btnCopy" }).SpriteCssClasses("btntoolbar fa fa-copy");
+        items.Add().Text("Удалить").HtmlAttributes(new { id = "btnDelete" }).SpriteCssClasses("btntoolbar fa fa-trash-o");
+    })
+)
+
+<script id="@tmplID" type="text/x-kendo-template">
+    <div class="thumbnail">
+        <img style="width: 200px; height: 200px;" width="200" height="200" src="/Files/GetImage?id=<%= user.Image ? user.Image.FileID : '' %>&height=200&width=200" alt="...">
+    </div>
+    <dl>
+        <% if(user.FullName) {%>
+        <dd><%= user.FullName %></dd>
+        <% }%>
+    </dl>
+</script>
+
+<script>
+    $(function () {
+        var $wrap = $("#@wrapID");
+        var $form = $wrap.closest("form");
+
+        $form.on("onAfterBind", function (e, form) {
+
+            var img = form.getPr('Layout');
+            var $layout = $('#@wrapID .diagram');
+
+            if (img) {
+                $layout.css('background', 'url("' + pbaAPI.imageHelpers.getImageThumbnailSrc(img) + '") no-repeat');
+            } else {
+                $layout.css('background', 'none');
+            }
+
+            $('.handler').removeAttr('style');
+
+            if (window['@wrapID'].steps) {
+                window['@wrapID'].removeAllSteps();
+            }
+
+            var steps = form.getPr('@(htmlFieldName)');
+
+            if (steps) {
+                var scheme = form.getPr('Scheme');
+                if (scheme) {
+                    window['@wrapID'].scheme = JSON.parse(scheme);
+                }
+
+                steps = $.grep(steps, function(step) {
+                    return !step.Hidden;
+                });
+                window['@wrapID'].loadDiagram(steps);
+            } else {
+                var entryPointStep = window['@wrapID'].renderEntryPointStep({
+                    Hidden: false,
+                    Title: "Старт",
+                    StepType: @((int) FlowStepType.EntryPointStep),
+                    RuntimeType: "@(typeof(EntryPointStep).GetTypeName())",
+                    Outputs: [
+                        {
+                            Title: "Метод точки входа",
+                            Color: "#6f5499",
+                            CreateTask: true,
+                            Hidden: false
+                        }
+                    ]
+                });
+
+                window['@wrapID'].steps[entryPointStep.ViewID] = entryPointStep;
+
+                var endStep = window['@wrapID'].renderEndStep({
+                    Hidden: false,
+                    Title: "Точка выхода",
+                    IsEntryPoint: false,
+                    StepType: @((int) FlowStepType.EndStep),
+                    RuntimeType: "@(typeof(EndStep).GetTypeName())"
+                });
+
+                window['@wrapID'].steps[endStep.ViewID] = endStep;
+            }
+
+
+        });
+
+        $form.on("onShown", function() {
+            if (isCurrentTab()) {
+                window['@wrapID'].instance.repaintEverything();
+            }
+        });
+
+        $form.on("onTabShown", function() {
+            if (isCurrentTab()) {
+                window['@wrapID'].instance.repaintEverything();
+            }
+        });
+
+        $form.on("onSave", function (e, form) {
+            var steps = $.map(window['@wrapID'].steps, function (value) {
+                if (!value.Hidden) {
+                    return [value];
+                }
+            });
+
+            form.setPr("Scheme", JSON.stringify(window['@wrapID'].getScheme()));
+            form.setPr("@(htmlFieldName)", steps);
+        });
+
+        // #######
+        // ZOOMING
+        // #######
+
+        var zoomWrap = $("#@wrapID .zoom-wrapper .diagram-wrapper");
+
+        var $kendoSlider = $("#@rangeID");
+
+        $kendoSlider.kendoSlider({
+            min: 1,
+            max: 200,
+            dragHandleTitle: '',
+            showButtons: false,
+            tooltip: { enabled: false },
+            value: 100,
+            slide: function(evt) {
+                var val = evt.value / 100;
+
+                zoomWrap.css({
+                    "transform": "scale(" + val + "," + val + ")"
+                });
+            }
+        });
+
+        function isCurrentTab() {
+            return $wrap.closest("[data-tab-content]").hasClass("k-state-active");
+        }
+    });
+
+    jsPlumb.ready(function() {
+        var instance = jsPlumb.getInstance({
+            DragOptions: { cursor: 'pointer', zIndex: 2000 },
+            ConnectionOverlays: [
+                ["Arrow", { location: 1 }]
+                //["Label", {
+                //    location: 0.1,
+                //    id: "label",
+                //    cssClass: "aLabel"
+                //}]
+            ],
+            Container: "@graphID"
+        });
+
+        window['@wrapID'].instance = instance;
+
+        pbaAPI.proxyclient.standard.create_default({ mnemonic: "StageAction" }).done(function(data) {
+            if (data.error) {
+                pbaAPI.errorMsg(data.message);
+            } else {
+                window['@wrapID'].actionTemplate = data.model;
+            }
+        });
+
+
+        pbaAPI.proxyclient.standard.create_default({ mnemonic: "Branch" }).done( function(data) {
+            if (data.error) {
+                pbaAPI.errorMsg(data.message);
+            } else {
+                window['@wrapID'].branchTemplate = data.model;
+            }
+        });
+
+        pbaAPI.proxyclient.standard.create_default({ mnemonic: "Output" }).done( function(data) {
+            if (data.error) {
+                pbaAPI.errorMsg(data.message);
+            } else {
+                window['@wrapID'].outputTemplate = data.model;
+            }
+        });
+
+        instance.bind("endpointDblClick", function(endPoint, originalEvent) {
+            var wrap = window['@wrapID'];
+            var step = wrap.getStepByID(endPoint.elementId);
+            var uuid = endPoint._jsPlumb.uuid;
+            var form = window['@wrapID'].getForm();
+            var index;
+
+            for (var i = 0; i < step.Outputs.length; i++) {
+                if (step.Outputs[i]["uuid"] == uuid) {
+                    index = i;
+                    break;
+                }
+            }
+            var mnemonic;
+            switch (step.StepType) {
+                case @((int) FlowStepType.Stage):
+                    mnemonic = "StageAction";
+                    break;
+                case @((int) FlowStepType.BranchingStep):
+                    mnemonic = "Branch";
+                    break;
+                case @((int) FlowStepType.ParalleizationStep):
+                    mnemonic = "ParallelStep";
+                    break;
+                case @((int) FlowStepType.EntryPointStep):
+                    mnemonic = "StageAction";
+                    break;
+                case @((int) FlowStepType.ConditionalStep):
+                    mnemonic = "ConditionalBranch";
+                    break;
+                default:
+                    break;
+            }
+
+            form.addViewData('StepType', step.StepType);
+
+            var output = step.Outputs[index];
+
+            if (output) {
+                pbaAPI.openDetailView(mnemonic, {
+                    wid: "@wrapID",
+                    title: "Действие",
+                    entity: output,
+                    parentForm: form,
+                    callback: function(e) {
+                        if (e.type === "save") {
+                            step.Outputs[index] = e.model;
+                            wrap.refreshSteps();
+                        }
+                    }
+                });
+            }
+        });
+
+        instance.bind("connectionDetached", function(connection) {
+            var step = window['@wrapID'].getStepByID(connection.sourceId);
+            var uuid = connection.sourceEndpoint._jsPlumb.uuid;
+
+            var action = $.grep(step.Outputs, function(element) {
+                return element.uuid == uuid;
+            })[0];
+
+            action.NextStepViewID = null;
+        });
+
+        instance.bind("connectionDragStop", function(connection) {
+            if (connection.endpoints[0] && connection.target) {
+                var uuid = connection.endpoints[0]._jsPlumb.uuid;
+                var source = window['@wrapID'].getStepByID(connection.source.id);
+                var action = $.grep(source.Outputs, function(e) { return e.uuid == uuid; })[0];
+
+                action.NextStepViewID = window['@wrapID'].getStepByID(connection.target.id).ViewID;
+            }
+        });
+
+        $("#@graphID").on("click", "[data-role=add]", function() {
+            var $step = $(this).closest(".bp-step");
+            var output = window['@wrapID'].renderOutput($step);
+            window['@wrapID'].fixEndpoints($step);
+            window['@wrapID'].getStepByID($step.attr("id")).Outputs.push(output);
+        });
+
+        $("#@graphID").on("click", "[data-role=edit]", function(e) {
+            var wrap = window['@wrapID'];
+            var $step = $(this).closest(".bp-step");
+            wrap.contextEditStage($step.attr('id'));
+        });
+
+        $("#@graphID").on("click", "[data-role=editworkflowcontainer]", function(e) {
+            var wrap = window['@wrapID'];
+            var $step = $(this).closest(".bp-step");
+            var step = wrap.getStepByID($step.attr('id'));
+            pbaAPI.openDetailView($step.data('mnemonic'), {
+                wid: "@wrapID",
+                title: "Редактировать",
+                entity: step,
+                parentForm: window['@wrapID'].getForm(),
+                callback: function(ev) {
+                    if (ev.type == "save") {
+                        wrap.steps[step.ViewID] = ev.model;
+                        wrap.refreshSteps();
+                    }
+                }
+            });
+        });
+
+        $("#@graphID").on("click", "[data-role=remove]", function(e) {
+            var element = this;
+            pbaAPI.confirm("Удаление шага", "Вы действительно хотите удалить шаг?", function() {
+                var $step = $(element).closest('.bp-step');
+                instance.remove($step);
+                window['@wrapID'].removeStepByID($step.attr("id"));
+            });
+        });
+
+        $("#@graphID").on("click", "[data-role=viewChildWorkflow]", function(e) {
+            var wrap = window['@wrapID'];
+            var $step = $(this).closest(".bp-step");
+            var step = wrap.getStepByID($step.attr('id'));
+            if (!step.ChildWorkflowImplementationID) {
+                pbaAPI.errorMsg('Не указан бизнес процесс');
+            } else {
+                pbaAPI.openDetailView('WorkflowImplementation', {
+                    wid: "@wrapID",
+                    title: "Дочерний бизнес процесс",
+                    parentForm: window['@wrapID'].getForm(),
+                    id: step.ChildWorkflowImplementationID,
+                    callback: function (ev) {
+                        if (ev.type === "save") {
+
+                        }
+                    }
+                });
+            }});
+
+        $("#@graphID").on('mouseenter', 'path', function () {
+            $(this).parent().siblings('svg').finish().animate({
+                opacity: 0.1
+            }, 300);
+        });
+        $("#@graphID").on('mouseleave', 'path', function () {
+            $(this).parent().siblings('svg').animate({
+                opacity: 1
+            }, 300);
+        });
+
+        var tlbr = $('#workflow-toolbar_@(wrapID)');
+
+        tlbr.find(".extendedstage-list [mnemonic]").click(function () {
+            window['@wrapID'].addExtendedStage($(this).attr('mnemonic'));
+        });
+
+        // TODO: ON TAB SHOWN
+        var tabId = $("#@wrapID").closest('.tab-pane').attr('id');
+        $('a[href="#' + tabId + '"]').on('shown.bs.tab', function (e) {
+            window['@wrapID'].instance.repaintEverything();
+        });
+
+        $('#@graphID').on('dblclick', '.bp-step', function(e) {
+            e.preventDefault();
+            var wrap = window['@wrapID'];
+            var $step = $(e.target).closest(".bp-step");
+            wrap.contextEditStage($step.attr('id'));
+        });
+    });
+</script>
+
+@functions {
+
+    void AddToolbarButton(ToolBarItemButtonFactory factory, string wrapID, string caption, string onClick, string icon)
+    {
+        factory.Add()
+            .Text(caption)
+            .SpriteCssClass(icon)
+            .ShowText(ShowIn.Overflow)
+            .HtmlAttributes(new { title = caption, data_popup = "bottom" })
+            .Click(string.Format("window[\"{0}\"].{1}", wrapID, onClick));
+    }
+
+}

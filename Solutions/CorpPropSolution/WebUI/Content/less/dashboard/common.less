@@ -1,0 +1,162 @@
+﻿.dashboard {
+	height: 100%;
+
+	user-select: none;
+
+	 > .row:not(.toolbar) {
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		height: 100%;
+		}
+
+	&__main, &__sidebar {
+		float: left;
+
+		width: 100%;
+		min-height: @modular-scale * 10em;
+		padding: 0;
+
+		@media ( min-width: @screen-lg-min ) {
+			padding: 0 @base-font-size;
+			}
+		}
+
+	@media (min-width: @screen-lg-min) {
+		&__main {
+			width: 60%;
+			padding-left: 0;
+			}
+
+		&__sidebar {
+			width: 40%;
+			padding-right: 0;
+			}
+		}
+
+	&-panel {
+		font-size: 1.2856rem;
+		line-height: 2.857rem;
+
+		position: absolute;
+		z-index: 10;
+		top: 2.143rem;
+		right: 1.214rem;
+
+		width: 2.857rem;
+
+		cursor: pointer;
+		text-align: center;
+
+		opacity: .6;
+		background: @color--primary;
+		box-shadow: -1px 1px 2px fade( @color--dark, 15% );
+
+		&, & a {
+			color: @color--light;
+			}
+
+		&:hover {
+			opacity: 1;
+			}
+
+		&-item {
+			width: 2.857rem;
+			height: 2.857rem;
+
+			&:hover {
+				color: @color--light; 
+				background: darken( @color--accent, 20% );
+				}
+			}
+		}
+
+	/* WIDGETS */
+	&-widget {
+		margin: 0 0 @modular-scale *1em;
+		padding: 0;
+
+		transition: box-shadow .25s @easing-curve--main;
+
+		border: none;
+		border-radius: 3px;
+		background-color: @color--light;
+		.drop-shadow( 1px, @color--dark, 15% );
+
+		&:hover {
+			.drop-shadow( 2px, @color--dark, 20% );
+			}
+
+		&.placeholder {
+			opacity: .4;
+			border: 1px dashed darken( @color--light, 35% );
+			}
+
+		&.hint {
+			height: 3.571rem;
+			padding: .714rem;
+
+			text-transform: uppercase;
+			}
+
+		div.content {
+			min-height: @modular-scale * 4.5rem; 
+			padding: pow( @modular-scale *1em, -1 );
+			}
+
+		h3.header {
+			font-size: .9285rem;
+
+			margin: 0;
+			padding: .714rem;
+
+			cursor: move;
+			cursor: -webkit-grab;
+			text-transform: uppercase;
+
+			border-bottom: 1px solid darken( @color--light, 10% );
+			}
+
+		h3.header:active {
+			cursor: -webkit-grabbing;
+			}
+
+		&__action {
+			transition: opacity .1s linear;
+
+			opacity: .25;
+			color: @color--dark;
+
+			&:hover {
+				opacity: .6; 
+				color: @color--dark;
+				}
+
+			&s {
+				float: right;
+
+				.dashboard-widget.hint & {
+					display: none;
+					}
+				}
+			}
+		}
+
+	&__settings {
+		font-size: 18px;
+		line-height: 30px;
+
+		position: absolute;
+		top: 10%;
+		right: 0;
+
+		width: 30px;
+		height: 30px;
+
+		text-align: center;
+
+		color: @color--dark;
+		border-radius: 4px 0 0 4px;
+		background: @color--light;
+		}
+	}

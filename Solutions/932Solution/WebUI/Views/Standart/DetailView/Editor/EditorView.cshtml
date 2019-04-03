@@ -1,0 +1,39 @@
+﻿@model EditorViewModel
+
+@{
+    string formID = "wrap_" + Guid.NewGuid().ToString("N");
+
+    string editorName = "~/Views/Standart/DetailView/Editor/Common/Editor.cshtml";
+}
+
+<div class="common-form">
+    <form id="@formID" class="common-form">
+        @Html.Partial(editorName, Model)
+        
+        <hr/>
+
+        <a href="#" data-bind="click: save" class="k-button">Сохранить</a>
+        <a href="#" data-bind="click: cancel" class="k-button">Отменить</a>
+    </form>
+</div>
+
+<script>
+    (function () {
+        var $form = $('#@formID');
+        var form;
+        var $customeditorWnd = $form.closest('[data-role=customeditorWnd]');
+
+        var viewModel = kendo.observable({
+            model: {},
+            save: function () {
+                $form.trigger("onSave", form);
+                $customeditorWnd.trigger('onSave', form.getModel());
+            },
+            cancel: function () {
+                $customeditorWnd.trigger('onCancel');
+            }
+        });
+        
+        kendo.bind($form, viewModel);
+    })();
+</script>

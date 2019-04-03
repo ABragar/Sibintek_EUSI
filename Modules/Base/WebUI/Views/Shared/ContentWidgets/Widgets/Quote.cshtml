@@ -1,0 +1,28 @@
+﻿@{
+    var wrapID = Html.CreateSystemName("wrap");
+}
+
+@(Html.ContentEditorWidget("quote")
+    .Title("Цитата")
+    .TitleTemplate(
+    @<text>
+        <span><i class="fa fa-fw fa-quote-right"></i> Цитата</span>
+    </text>)
+        .Wrap(wrapID)
+        .Mnemonic("Content_Quote")
+          .Template("tpl_" + wrapID)
+)
+
+<script id="tpl_@wrapID" type="text/template">
+    <blockquote itemprop="citation" class="quote quote--with-author">
+        <div class="quote-author" itemscope itemtype="http://schema.org/Person">
+            <img class="quote-author__photo" data-bind="content_img: {
+                                                    url:null,
+                                                    file: model.File
+                                                }" />
+            <div class="quote-author__name" itemprop="name" data-bind="html: model.Title"></div>
+            <div class="quote-author__about" itemprop="jobTitle" data-bind="html: model.Description"></div>
+        </div>
+        <div class="quote-content" data-bind="html: model.QuoteText"> </div>
+    </blockquote>
+</script>

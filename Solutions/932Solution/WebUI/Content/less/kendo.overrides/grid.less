@@ -1,0 +1,269 @@
+.k-grid {
+	font-family: @font-stack--sans !important;
+
+	height: 100%;
+
+	border: none;
+
+	&-header th.k-header {
+		 > .k-link {
+			transition: color .15s @easing-curve--main;
+
+			color: fade( @color--dark, 60% );
+			}
+
+		&:focus {
+			outline: none;
+			}
+
+		&:active,
+		&:focus,
+		&.k-state-focused {
+			background-color: fade( @color--dark, 7% );
+			box-shadow: none;
+
+			 > .k-link {
+				color: @color--dark;
+				}
+			}
+		}
+
+	.k-grouping-header {
+		font-weight: 300;
+
+		padding: @modular-scale *.25rem @modular-scale *1rem;
+
+		color: @color--grid-grouping-header-text;
+		background-color: @color--grid-grouping-header-bg;
+
+		.k-group-indicator {
+			line-height: @modular-scale *1.5rem;
+
+			height: @modular-scale *1.5rem;
+			margin: 0 .5em 0 0;
+			padding: 0 .5em 0 .75em;
+
+			border: none;
+			background-color: @color--light;
+
+			.k-link {
+				color: @color--dark;
+				}
+
+			.k-button {
+				color: @color--dark;
+				}
+			}
+		}
+
+	.k-header {
+		&.k-grid-toolbar {
+			border-color: @color--dark;
+			}
+
+		.k-button {
+			font-weight: 500;
+
+			color: @color--dark;
+			border: 1px solid lighten( @color--dark, 70% );
+			background-color: transparent;
+
+			&:hover, &:focus {
+				border-color: lighten( @color--dark, 60% );
+				background-color: lighten( @color--dark, 80% );
+				}
+
+			&:active {
+				border-color: lighten( @color--dark, 70% );
+				background-color: transparent;
+				}
+
+			 > .k-i-excel {
+				background-position: -64px -96px;
+				}
+			}
+		}
+
+	.k-footer-template {
+		text-align: right;
+		}
+
+	.k-grouping-row.k-state-selected > td {
+		font-weight: 400;
+		line-height: @modular-scale *1.5rem;
+
+		padding: 0 1em;
+
+		letter-spacing: .025em;
+
+		color: @color--light;
+		border: none;
+		background-color: lighten( @color--accent, 10% ) !important;
+
+		.k-icon {
+			color: @color--light;
+			}
+		}
+	
+	&-content tr {
+		> td {
+		border-color: transparent lighten( @color--dark, 67% );
+		border-right-width: 1px;
+
+		&.cell {
+			&-string,
+			&-url,
+			&-color,
+			&-icon,
+			&-phone,
+			&-extraid,
+			&-address,
+			&-enum,
+			&-link_base_object,
+			&-location,
+			&-base_object {
+				text-align: left;
+				}
+
+			&-period,
+			&-date,
+			&-file_data,
+			&-image,
+			&-bool {
+				text-align: center;
+				}
+
+			&-bool {
+				.k-icon {
+					font-family: 'FontAwesome';
+
+					transition: opacity .3s @easing-curve--main;
+
+					background-image: none;
+					}
+
+				.icon-no:before {
+					content: '\f00d';
+
+					color: @color--danger;
+					}
+
+				.icon-yes:before {
+					content: '\f00c';
+
+					color: @color--success;
+					}
+				}
+
+			&-percent,
+			&-int,
+			&-decimal,
+			&-double {
+				text-align: right;
+				}
+
+			&-image img {
+				margin: auto;
+				}
+
+			&-extraid i {
+				margin-right: .61em;
+				}
+			}
+		}
+
+	&:hover {
+		background-color: transparent;
+
+			> td {
+			background-color: fade( @color--dark, 6% );
+			}
+		}
+
+		&:nth-child(2n+1) {
+			 > td {
+				background-color: fade( @color--dark, 3% );
+				}
+
+			&:hover > td {
+				background-color: fade( @color--dark, 7% );
+				}
+			}
+		}
+
+	&-header th.k-header,
+	tr > td {
+		line-height: @modular-scale;
+
+		padding: pow( @modular-scale *1em, -1 );
+		}
+
+	tr, td {
+		transition: .15s @easing-curve--main;
+		transition-property: background-color, border-color;
+
+		border-color: transparent;
+		}
+
+	td {
+		transition: background-color .15s @easing-curve--main;
+
+		border-width: 1px 0;
+
+		&.k-state-focused {
+			background-color: fade( @color--grid-cell-bg__focused, 50% ) !important;
+			box-shadow: none;
+			}
+		}
+
+	tr.k-state-selected:hover td {
+		background-color: darken( @color--grid-bg__selected, 4% );
+		}
+
+	img {
+		display: block;
+
+		margin: 0 pow( @modular-scale *1em, -1 );
+		}
+
+	&-content, &-content-locked {
+		table tr:first-child td {
+			border-top: 1px solid transparent;
+			}
+		}
+
+	td.k-state-selected,
+	tr.k-state-selected > td,
+	tr.k-state-selected:first-child > td,
+	tr.k-state-selected:hover > td {
+		border-width: 1px 1px 1px 0;
+		border-color: darken( @color--grid-bg__selected, 25% );
+		border-right-color: darken( @color--grid-bg__selected, 5% );
+		background-color: @color--grid-bg__selected;
+		}
+
+	tr.k-state-selected .k-state-focused {
+		background-color: darken( @color--grid-bg__selected, 10% ) !important;
+		}
+
+	&-content tr:last-child > td {
+		border-bottom-width: 1px;
+		}
+
+	.notdraft {
+		 > td {
+			background-color: fade( @color--grid-cell-bg__focused, 70% );
+			}
+
+		&:hover > td {
+			background-color: @color--grid-cell-bg__focused;
+			}
+
+		&.k-state-selected {
+			 > td, &:first-child > td, &:hover > td {
+				border-color: darken( @color--grid-cell-bg__focused, 25% );
+				background-color: darken( @color--grid-cell-bg__focused, 5% );
+				}
+			}
+		}
+	}

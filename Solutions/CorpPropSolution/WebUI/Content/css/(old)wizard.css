@@ -1,0 +1,25 @@
+﻿.w-header {
+    padding: 5px;
+    margin-top: 10px;
+}
+
+    .w-header .w-title {
+        font-size: 24px;
+    }
+
+    .w-header .w-description {
+        font-size: 14px;
+    }
+
+.education-wrap {
+    overflow: auto;
+    display: block;
+    height: 100%;
+}
+
+.loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: url('/Content/images/loader2.GIF') no-repeat center;
+}

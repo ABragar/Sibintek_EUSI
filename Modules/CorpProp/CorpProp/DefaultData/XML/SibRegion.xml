@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<SibRegions>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>1</Code>
+		<PublishCode>1</PublishCode>
+		<Name>Республика Адыгея (Адыгея)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>2</Code>
+		<PublishCode>2</PublishCode>
+		<Name>Республика Башкортостан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>3</Code>
+		<PublishCode>3</PublishCode>
+		<Name>Республика Бурятия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>4</Code>
+		<PublishCode>4</PublishCode>
+		<Name>Республика Алтай</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>5</Code>
+		<PublishCode>5</PublishCode>
+		<Name>Республика Дагестан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>6</Code>
+		<PublishCode>6</PublishCode>
+		<Name>Республика Ингушетия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>7</Code>
+		<PublishCode>7</PublishCode>
+		<Name>Кабардино-Балкарская Республика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>8</Code>
+		<PublishCode>8</PublishCode>
+		<Name>Республика Калмыкия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>9</Code>
+		<PublishCode>9</PublishCode>
+		<Name>Карачаево-Черкесская Республика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>10</Code>
+		<PublishCode>10</PublishCode>
+		<Name>Республика Карелия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>11</Code>
+		<PublishCode>11</PublishCode>
+		<Name>Республика Коми</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>12</Code>
+		<PublishCode>12</PublishCode>
+		<Name>Республика Марий Эл</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>13</Code>
+		<PublishCode>13</PublishCode>
+		<Name>Республика Мордовия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>14</Code>
+		<PublishCode>14</PublishCode>
+		<Name>Республика Саха (Якутия)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>15</Code>
+		<PublishCode>15</PublishCode>
+		<Name>Республика Северная Осетия-Алания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>16</Code>
+		<PublishCode>16</PublishCode>
+		<Name>Республика Татарстан (Татарстан)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>17</Code>
+		<PublishCode>17</PublishCode>
+		<Name>Республика Тыва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>18</Code>
+		<PublishCode>18</PublishCode>
+		<Name>Удмуртская Республика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>19</Code>
+		<PublishCode>19</PublishCode>
+		<Name>Республика Хакасия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>20</Code>
+		<PublishCode>20</PublishCode>
+		<Name>Чеченская Республика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>21</Code>
+		<PublishCode>21</PublishCode>
+		<Name>Чувашская Республика-Чувашия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>22</Code>
+		<PublishCode>22</PublishCode>
+		<Name>Алтайский край</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>23</Code>
+		<PublishCode>23</PublishCode>
+		<Name>Краснодарский край</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>24</Code>
+		<PublishCode>24</PublishCode>
+		<Name>Красноярский край</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>25</Code>
+		<PublishCode>25</PublishCode>
+		<Name>Приморский край</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>26</Code>
+		<PublishCode>26</PublishCode>
+		<Name>Ставропольский край</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>27</Code>
+		<PublishCode>27</PublishCode>
+		<Name>Хабаровский край</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>28</Code>
+		<PublishCode>28</PublishCode>
+		<Name>Амурская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>29</Code>
+		<PublishCode>29</PublishCode>
+		<Name>Архангельская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>30</Code>
+		<PublishCode>30</PublishCode>
+		<Name>Астраханская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>31</Code>
+		<PublishCode>31</PublishCode>
+		<Name>Белгородская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>32</Code>
+		<PublishCode>32</PublishCode>
+		<Name>Брянская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>33</Code>
+		<PublishCode>33</PublishCode>
+		<Name>Владимирская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>34</Code>
+		<PublishCode>34</PublishCode>
+		<Name>Волгоградская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>35</Code>
+		<PublishCode>35</PublishCode>
+		<Name>Вологодская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>36</Code>
+		<PublishCode>36</PublishCode>
+		<Name>Воронежская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>37</Code>
+		<PublishCode>37</PublishCode>
+		<Name>Ивановская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>38</Code>
+		<PublishCode>38</PublishCode>
+		<Name>Иркутская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>39</Code>
+		<PublishCode>39</PublishCode>
+		<Name>Калининградская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>40</Code>
+		<PublishCode>40</PublishCode>
+		<Name>Калужская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>41</Code>
+		<PublishCode>41</PublishCode>
+		<Name>Камчатский край</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>42</Code>
+		<PublishCode>42</PublishCode>
+		<Name>Кемеровская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>43</Code>
+		<PublishCode>43</PublishCode>
+		<Name>Кировская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>44</Code>
+		<PublishCode>44</PublishCode>
+		<Name>Костромская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>45</Code>
+		<PublishCode>45</PublishCode>
+		<Name>Курганская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>46</Code>
+		<PublishCode>46</PublishCode>
+		<Name>Курская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>47</Code>
+		<PublishCode>47</PublishCode>
+		<Name>Ленинградская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>48</Code>
+		<PublishCode>48</PublishCode>
+		<Name>Липецкая область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>49</Code>
+		<PublishCode>49</PublishCode>
+		<Name>Магаданская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>50</Code>
+		<PublishCode>50</PublishCode>
+		<Name>Московская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>51</Code>
+		<PublishCode>51</PublishCode>
+		<Name>Мурманская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>52</Code>
+		<PublishCode>52</PublishCode>
+		<Name>Нижегородская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>53</Code>
+		<PublishCode>53</PublishCode>
+		<Name>Новгородская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>54</Code>
+		<PublishCode>54</PublishCode>
+		<Name>Новосибирская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>55</Code>
+		<PublishCode>55</PublishCode>
+		<Name>Омская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>56</Code>
+		<PublishCode>56</PublishCode>
+		<Name>Оренбургская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>57</Code>
+		<PublishCode>57</PublishCode>
+		<Name>Орловская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>58</Code>
+		<PublishCode>58</PublishCode>
+		<Name>Пензенская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>59</Code>
+		<PublishCode>59</PublishCode>
+		<Name>Пермский край</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>60</Code>
+		<PublishCode>60</PublishCode>
+		<Name>Псковская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>61</Code>
+		<PublishCode>61</PublishCode>
+		<Name>Ростовская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>62</ExternalID>
+		<ExternalParentID/>
+		<Code>62</Code>
+		<PublishCode>62</PublishCode>
+		<Name>Рязанская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>63</ExternalID>
+		<ExternalParentID/>
+		<Code>63</Code>
+		<PublishCode>63</PublishCode>
+		<Name>Самарская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>64</ExternalID>
+		<ExternalParentID/>
+		<Code>64</Code>
+		<PublishCode>64</PublishCode>
+		<Name>Саратовская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>65</ExternalID>
+		<ExternalParentID/>
+		<Code>65</Code>
+		<PublishCode>65</PublishCode>
+		<Name>Сахалинская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>66</ExternalID>
+		<ExternalParentID/>
+		<Code>66</Code>
+		<PublishCode>66</PublishCode>
+		<Name>Свердловская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>67</ExternalID>
+		<ExternalParentID/>
+		<Code>67</Code>
+		<PublishCode>67</PublishCode>
+		<Name>Смоленская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>68</ExternalID>
+		<ExternalParentID/>
+		<Code>68</Code>
+		<PublishCode>68</PublishCode>
+		<Name>Тамбовская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>69</ExternalID>
+		<ExternalParentID/>
+		<Code>69</Code>
+		<PublishCode>69</PublishCode>
+		<Name>Тверская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>70</ExternalID>
+		<ExternalParentID/>
+		<Code>70</Code>
+		<PublishCode>70</PublishCode>
+		<Name>Томская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>71</ExternalID>
+		<ExternalParentID/>
+		<Code>71</Code>
+		<PublishCode>71</PublishCode>
+		<Name>Тульская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>72</ExternalID>
+		<ExternalParentID/>
+		<Code>72</Code>
+		<PublishCode>72</PublishCode>
+		<Name>Тюменская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>73</ExternalID>
+		<ExternalParentID/>
+		<Code>73</Code>
+		<PublishCode>73</PublishCode>
+		<Name>Ульяновская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>74</ExternalID>
+		<ExternalParentID/>
+		<Code>74</Code>
+		<PublishCode>74</PublishCode>
+		<Name>Челябинская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>75</ExternalID>
+		<ExternalParentID/>
+		<Code>75</Code>
+		<PublishCode>75</PublishCode>
+		<Name>Забайкальский край</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>76</ExternalID>
+		<ExternalParentID/>
+		<Code>76</Code>
+		<PublishCode>76</PublishCode>
+		<Name>Ярославская область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>77</ExternalID>
+		<ExternalParentID/>
+		<Code>77</Code>
+		<PublishCode>77</PublishCode>
+		<Name>г. Москва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>78</ExternalID>
+		<ExternalParentID/>
+		<Code>78</Code>
+		<PublishCode>78</PublishCode>
+		<Name>г. Санкт-Петербург</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>79</ExternalID>
+		<ExternalParentID/>
+		<Code>79</Code>
+		<PublishCode>79</PublishCode>
+		<Name>Еврейская автономная область</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>80</ExternalID>
+		<ExternalParentID/>
+		<Code>80</Code>
+		<PublishCode>80</PublishCode>
+		<Name>Агинский Бурятский автономный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2008-03-01</DateTo>
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>81</ExternalID>
+		<ExternalParentID/>
+		<Code>81</Code>
+		<PublishCode>81</PublishCode>
+		<Name>Коми-Пермяцкий автономный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2005-12-01</DateTo>
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>82</ExternalID>
+		<ExternalParentID/>
+		<Code>82</Code>
+		<PublishCode>82</PublishCode>
+		<Name>Корякский автономный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2007-07-01</DateTo>
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>83</ExternalID>
+		<ExternalParentID/>
+		<Code>83</Code>
+		<PublishCode>83</PublishCode>
+		<Name>Ненецкий автономный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>84</ExternalID>
+		<ExternalParentID/>
+		<Code>84</Code>
+		<PublishCode>84</PublishCode>
+		<Name>Таймырский (Долгано-Ненецкий) автономный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2007-01-01</DateTo>
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>85</ExternalID>
+		<ExternalParentID/>
+		<Code>85</Code>
+		<PublishCode>85</PublishCode>
+		<Name>Усть-Ордынский Бурятский автономный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2008-01-01</DateTo>
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>86</ExternalID>
+		<ExternalParentID/>
+		<Code>86</Code>
+		<PublishCode>86</PublishCode>
+		<Name>Ханты-Мансийский автономный округ-Югра</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>87</ExternalID>
+		<ExternalParentID/>
+		<Code>87</Code>
+		<PublishCode>87</PublishCode>
+		<Name>Чукотский автономный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>88</ExternalID>
+		<ExternalParentID/>
+		<Code>88</Code>
+		<PublishCode>88</PublishCode>
+		<Name>Эвенкийский автономный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2007-01-01</DateTo>
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>89</ExternalID>
+		<ExternalParentID/>
+		<Code>89</Code>
+		<PublishCode>89</PublishCode>
+		<Name>Ямало-Ненецкий автономный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>90</ExternalID>
+		<ExternalParentID/>
+		<Code>91</Code>
+		<PublishCode>91</PublishCode>
+		<Name>Республика Крым</Name>
+		<DateFrom>2014-03-18</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>91</ExternalID>
+		<ExternalParentID/>
+		<Code>92</Code>
+		<PublishCode>92</PublishCode>
+		<Name>г. Севастополь</Name>
+		<DateFrom>2014-03-18</DateFrom>
+		
+	</SibRegion>
+	<SibRegion>
+		<ID>0</ID>
+		<ExternalID>93</ExternalID>
+		<ExternalParentID/>
+		<Code>99</Code>
+		<PublishCode>99</PublishCode>
+		<Name>иные территории, включая город и космодром Байконур</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibRegion>
+</SibRegions>
+  </DefaultDataHolder>

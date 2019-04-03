@@ -1,0 +1,26 @@
+﻿@model  Base.Security.Entities.Concrete.AccessUserWizard
+@{
+    string wrapID = Guid.NewGuid().ToString("N");
+}
+
+<form id="@wrapID">
+    <div class="alert alert-success" role="alert">
+        Создание пользователя завершено. Проверьте правильность введенных данных перед сохранением.
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>ФИО: </strong>
+                    @(Model.LastName)&nbsp@(Model.FirstName)&nbsp@(Model.MiddleName)
+                </li>
+                <li class="list-group-item">
+                    <strong>Email: </strong>
+                    @Model.Email
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</form>

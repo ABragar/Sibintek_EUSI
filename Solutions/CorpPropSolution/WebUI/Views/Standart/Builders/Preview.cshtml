@@ -1,0 +1,39 @@
+﻿@model CommonPreview
+
+@{
+    var entityName = Model.ViewModelConfig.DetailView?.Title ?? Model.ViewModelConfig.Title;
+    var preview_header_id = Html.CreateSystemName("preview_head");
+    var preview_form_id = Html.CreateSystemName("preview_body");
+}
+
+<script>
+        window["#= uid #"].layout = {
+            openInfo: function() {
+                var layout = window["#= uid #"].layout;
+                var preview = window["#= uid #"].preview;
+
+                var shouldClosePreview = true;
+
+                // ONLY IF 'onInfoClick' RETURNED false - DON'T CLOSE PREVIEW AFTER CLICK
+                if (layout.onInfoClick && layout.onInfoClick() === false) {
+                    shouldClosePreview = false;
+                }
+
+                if (shouldClosePreview) {
+                    preview.deactivate();
+                }
+            },
+            onInfoClick: function() {
+                pbaAPI.openDetailView("@Model.ViewModelConfig.Mnemonic", { id: "#: model.ID #" });
+            }
+        };
+</script>
+
+<div id="@preview_header_id" class="preview-layout__header">
+    <h4 class="preview-layout__title">@entityName</h4>
+    <span class="preview-layout__btn-info fa fa-info-circle" onclick="window['#= uid #'].layout.openInfo();" title="Подробнее"></span>
+</div>
+
+<form id="@preview_form_id" class="preview-layout__body">
+    @Html.PartialEditor(Model)
+</form>

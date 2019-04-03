@@ -1,0 +1,75 @@
+﻿@using Newtonsoft.Json
+@model WebUI.Models.Validation.ValidationRulesVm
+
+@{
+    string wrapID = Guid.NewGuid().ToString("N");
+    string applybtnID = Guid.NewGuid().ToString("N");
+    string cnlbtnID = Guid.NewGuid().ToString("N");
+}
+
+
+<div id="@wrapID" style="height: 90%">
+    @foreach (var rule in Model.ValidationRules)
+    {
+        <div class="row rules-content">
+            <button class="col-md-8 rule-button btn btn-action btn-info" id="@rule.GetType().GetTypeName()" title="@rule.Description">
+                @rule.Title
+            </button>
+            <div class="col-md-2">
+                <input type="checkbox" class="my-checkbox" data-item="@rule.ToString()" />
+            </div>
+        </div>
+    }
+
+    <div class="footer-buttons">
+        <button class="btn btn-success" id="@applybtnID">Применить</button>
+        <button class="btn btn-default" id="@cnlbtnID">Отмена</button>
+    </div>
+</div>
+
+<script>
+
+    $(function () {
+        $("#@wrapID").closest('[constructor-wnd]').on('onLoad', function(e, args) {
+            
+            var data = args.model;
+
+            if (data) {
+                $.each(data, function (i, rule) {
+                    
+                    var item = $('[data-item="' + rule.ValidationRule + '"]');
+                    item.bootstrapSwitch('toggleState');
+                });
+            }
+
+            $(".my-checkbox").bootstrapSwitch();
+
+            $('.rule-button').on('click', function (e) {
+                var $checkbox = $(this).closest('.rules-content').find('.my-checkbox');
+                $checkbox.bootstrapSwitch('toggleState');
+            });
+
+            $('#@applybtnID').on('click', function() {
+                
+                var cheks = $('.my-checkbox');
+                var result = [];
+
+                $.each(cheks, function(i, checkbox) {
+                    var state = $(checkbox).bootstrapSwitch('state');
+                    if(state === true){
+                        var valRuleItem = {
+                            ValidationRule: $(checkbox).attr('data-item'),
+                        };
+                        result.push(valRuleItem);
+                    }
+                });
+                args.apply(result);
+                $("#@wrapID").closest('[data-role=window]').data('kendoWindow').close();
+            });
+
+            $('#@cnlbtnID').on('click', function() {
+            });
+
+        });
+    })
+</script>

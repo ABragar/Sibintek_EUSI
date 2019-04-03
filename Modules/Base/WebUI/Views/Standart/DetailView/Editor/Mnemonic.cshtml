@@ -1,0 +1,44 @@
+﻿@model EditorViewModel
+
+@{
+    string filter = null;
+    
+    if (Model.EditorTemplateParams.ContainsKey("filter"))
+    {
+        filter = Model.EditorTemplateParams["filter"];
+    }
+}
+
+<script>
+    window["@Model.UID"] = {
+        onAdditionalData: function () {
+            return {
+                search: $("#@Model.UID").data("kendoDropDownList").filterInput.val()
+            };
+        },
+        onChange: function () {
+
+            var form = $("#@Model.UID").closest("form").data("pbaForm");
+            form.setPr("@Model.PropertyName", this.value());
+        }
+    };
+</script>
+
+
+@(Html.Kendo().DropDownList()
+    .Name(Model.UID)
+    .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { style = "width: 100%;" }))
+    .DataTextField("Text")
+    .DataValueField("ID")
+    .OptionLabel("Выберите значение...")
+    .Filter(FilterType.Contains)
+    .Height(500)
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+            read.Url("/api/viewConfig/getMnemonics").Data(Model.UID + ".onAdditionalData");
+        }).ServerFiltering(false);
+    })
+    .Events(x => x.Change(Model.UID + ".onChange"))
+)

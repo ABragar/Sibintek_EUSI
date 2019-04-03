@@ -1,0 +1,141 @@
+﻿@using Base.BusinessProcesses.Entities
+@using Base.Task.Entities
+@model StandartFormModel
+@{
+    string objID = "prg_" + Guid.NewGuid().ToString("N");
+    string takePerformBtn = "take_" + Guid.NewGuid().ToString("N");
+    string releasPerformBtn = "rel_" + Guid.NewGuid().ToString("N");
+    string clockDown = "clc_" + Guid.NewGuid().ToString("N");
+    const string path = "~/Views/Standart/DetailView/Display/Common/Display.cshtml";
+
+}
+
+
+<script src="~/Scripts/ui/countdown/flipclock.min.js"></script>
+<link rel="stylesheet" href="~/Scripts/ui/countdown/flipclock.css" />
+
+<form id="@Model.FormName" class="form-horizontal">
+    <div class="k-toolbar k-widget k-toolbar-resizable row dialog__toolbar">
+        <div class="k-button-group" style="float:right">
+            <input type="button" class="k-button primary" id="@objID">
+            <input type="button" class="k-button success" value="Взять на исполнение" id="@takePerformBtn">
+            <input type="button" class="k-button danger" value="Снять с исполнения" id="@releasPerformBtn">
+        </div>
+    </div>
+    <div style="padding: 10px; float: right">@Html.Partial(path, Model.CommonEditorViewModel.Editors.Find(x => x.PropertyName == "Priority"))</div>
+    <div>
+        <div class="e-row" style="word-wrap: break-word">
+            <h1 data-bind="text: Title"></h1>
+        </div>
+        <div class="e-row" style="word-wrap: break-word">
+            <h3 data-bind="text: Description"></h3>
+        </div>
+    </div>
+    <div id="@clockDown" class="e-row"></div>
+</form>
+
+<script>
+    ($(function () {
+        var model = {};
+        var linkedObj = {};
+        var pbaForm = {};
+        var composite = window["@Model.DialogID"];
+
+        FlipClock.Lang.Custom = { days: 'Дней', hours: 'Часов', minutes: 'Минут', seconds: 'Секунд' };
+
+        var clock = new FlipClock($('#@clockDown'), {
+            clockFace: 'DailyCounter',
+            countdown: true,
+            language: 'Custom',
+            showSeconds: false,
+            autoStart: false
+        });
+
+        $('#@Model.FormName').closest('form').on('onAfterBind', function(e, form) {
+            pbaForm = form;
+            model = form.getModel();
+
+            if (model.Status !== (@((int) TaskStatus.NotRelevant)) && model.Status !== (@((int) TaskStatus.Complete))) {
+                var endDate = kendo.parseDate(model.Period.End, "@JsonNetResult.DATE_TIME_FORMATE");
+                clock.setTime(endDate);
+                clock.start();
+                $('#@clockDown').show();
+            } else {
+                $('#@clockDown').hide();
+            }
+
+
+            var objid = model.ObjectID;
+            var objType = model.ObjectType;
+
+            $('#@releasPerformBtn').hide();
+            $('#@takePerformBtn').hide();
+
+            if (model.Status === (@((int) TaskStatus.InProcess))) {
+                $('#@releasPerformBtn').show();
+            }
+            if (model.Status === (@((int) TaskStatus.New))) {
+                $('#@takePerformBtn').show();
+            }
+
+            pbaAPI.proxyclient.crud.get({ mnemonic: objType, id: objid }).done(function(result) {
+                if (result.error) {
+                    pbaAPI.errorMsg(result.error);
+                } else {
+                    linkedObj = result.model;
+                    application.viewModelConfigs.get(objType).done(function(cfg) {
+                        var $objView = $('#@objID');
+
+                        var tmpl = cfg.DetailView.Title;
+
+                        $objView.val(tmpl);
+                    });
+                }
+            });
+
+
+        });
+
+        $('#@objID').on('click', function () {
+            pbaAPI.openDetailView(model.ObjectType, {
+                entity: linkedObj,
+                toSave: true,
+                callback : function() {
+                    composite.refresh();
+                }
+            });
+        });
+
+        $('#@takePerformBtn').on('click', function () {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("TakeForPerform", "BusinessProcesses")",
+                data: { objectType: model.ObjectType, objectID: model.ObjectID, performID: model.StagePerformID },
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    if (result.error) {
+                        pbaAPI.errorMsg(result.error);
+                    } else {
+                        composite.refresh();
+                    }
+                }
+            });
+        });
+
+        $('#@releasPerformBtn').on('click', function () {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("ReleasePerform", "BusinessProcesses")",
+                data: { objectType: model.ObjectType, objectID: model.ObjectID, performID: model.StagePerformID },
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    if (result.error) {
+                        pbaAPI.errorMsg(result.error);
+                    } else {
+                        composite.refresh();
+                    }
+                }
+            });
+        });
+    }));
+</script>

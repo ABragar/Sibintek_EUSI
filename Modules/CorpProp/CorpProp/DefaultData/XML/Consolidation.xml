@@ -1,0 +1,7331 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<Consolidations>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>1000</Code>
+		<PublishCode>1000</PublishCode>
+		<Name>Публичное акционерное общество "Нефтяная компания "Роснефть"</Name>
+		<INN>7706107510</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>1002</Code>
+		<PublishCode>1002</PublishCode>
+		<Name>Публичное акционерное общество "НК "Роснефть" - МЗ "Нефтепродукт"</Name>
+		<INN>7720065580</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>1011</Code>
+		<PublishCode>1011</PublishCode>
+		<Name>Публичное акционерное общество "НК "Роснефть"-Алтайнефтепродукт"</Name>
+		<INN>2225007351</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>1012</Code>
+		<PublishCode>1012</PublishCode>
+		<Name>Открытое акционерное общество "НК "Роснефть"-Артаг"</Name>
+		<INN>1500000177</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>1014</Code>
+		<PublishCode>1014</PublishCode>
+		<Name>Публичное акционерное общество "НК "Роснефть"-Кабардино-Балкарская Топливная Компания"</Name>
+		<INN>0700000373</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>1015</Code>
+		<PublishCode>1015</PublishCode>
+		<Name>Публичное акционерное общество "НК "Роснефть"-Карачаево-Черкесскнефтепродукт"</Name>
+		<INN>0901021415</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>1016</Code>
+		<PublishCode>1016</PublishCode>
+		<Name>Публичное акционерное общество "НК "Роснефть"-Кубаньнефтепродукт"</Name>
+		<INN>2309003018</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>1017</Code>
+		<PublishCode>1017</PublishCode>
+		<Name>Публичное акционерное общество "НК "Роснефть"-Курганнефтепродукт"</Name>
+		<INN>4500000013</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>1019</Code>
+		<PublishCode>1019</PublishCode>
+		<Name>Публичное акционерное общество "НК "Роснефть"-Мурманскнефтепродукт"</Name>
+		<INN>5193102164</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>1021</Code>
+		<PublishCode>1021</PublishCode>
+		<Name>Публичное акционерное общество "НК "Роснефть"-Смоленскнефтепродукт"</Name>
+		<INN>6730017336</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>1024</Code>
+		<PublishCode>1024</PublishCode>
+		<Name>Публичное акционерное общество "НК "Роснефть"-Ямалнефтепродукт"</Name>
+		<INN>8901001325</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>1032</Code>
+		<PublishCode>1032</PublishCode>
+		<Name>Открытое акционерное общество "Грознефтегаз"</Name>
+		<INN>2020003571</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>1037</Code>
+		<PublishCode>1037</PublishCode>
+		<Name>Открытое акционерное общество "Роснефть-Сахалин"</Name>
+		<INN>6506006390</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>1043</Code>
+		<PublishCode>1043</PublishCode>
+		<Name>Акционерное общество "Сахалинморнефтегаз-Шельф"</Name>
+		<INN>6506006431</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>1044</Code>
+		<PublishCode>1044</PublishCode>
+		<Name>Акционерное общество "РН-Шельф-Дальний Восток"</Name>
+		<INN>6501094191</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>1051</Code>
+		<PublishCode>1051</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ДальСатКом"</Name>
+		<INN>6501104330</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>1063</Code>
+		<PublishCode>1063</PublishCode>
+		<Name>Акционерное общество "КНГ-Машиностроительный Завод Сервис"</Name>
+		<INN>2348007263</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>1065</Code>
+		<PublishCode>1065</PublishCode>
+		<Name>Акционерное общество Специализированное пусконаладочное управление "Роснефть-Термнефть"</Name>
+		<INN>0106000152</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>1076</Code>
+		<PublishCode>1076</PublishCode>
+		<Name>Акционерное общество "НК "Роснефть"-Ставрополье"</Name>
+		<INN>2636035027</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>1079</Code>
+		<PublishCode>1079</PublishCode>
+		<Name>Акционерное общество "Всероссийский банк развития регионов"</Name>
+		<INN>7736153344</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>1081</Code>
+		<PublishCode>1081</PublishCode>
+		<Name>Акционерное общество "РН-Астра"</Name>
+		<INN>7706206983</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>1082</Code>
+		<PublishCode>1082</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Эксплорейшн"</Name>
+		<INN>7706230432</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>1084</Code>
+		<PublishCode>1084</PublishCode>
+		<Name>Rosneft International Designated Activity Company</Name>
+		<INN>8252360J</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>1085</Code>
+		<PublishCode>1085</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Востокнефтепродукт"</Name>
+		<INN>2723049957</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>1094</Code>
+		<PublishCode>1094</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Комсомольский нефтеперерабатывающий завод-Сервис"</Name>
+		<INN>2703017428</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>1096</Code>
+		<PublishCode>1096</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Пурсатком"</Name>
+		<INN>8913000189</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>1111</Code>
+		<PublishCode>1111</PublishCode>
+		<Name>Закрытое акционерное общество "Каспий-1"</Name>
+		<INN>0541021689</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>1130</Code>
+		<PublishCode>1130</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Разведка и добыча"</Name>
+		<INN>2322026840</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>1131</Code>
+		<PublishCode>1131</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Туапсенефтепродукт-санаторий "Смена"</Name>
+		<INN>2355016340</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>1132</Code>
+		<PublishCode>1132</PublishCode>
+		<Name>Акционерное общество "Нефтегазтехнология-Энергия"</Name>
+		<INN>2349017673</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>1139</Code>
+		<PublishCode>1139</PublishCode>
+		<Name>Shelf Limited</Name>
+		<INN>CS 6826</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>1142</Code>
+		<PublishCode>1142</PublishCode>
+		<Name>Акционерное общество "Восточная нефтехимическая компания"</Name>
+		<INN>2508058205</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>1143</Code>
+		<PublishCode>1143</PublishCode>
+		<Name>Акционерное общество "Дагнефтегаз"</Name>
+		<INN>0515012247</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>1144</Code>
+		<PublishCode>1144</PublishCode>
+		<Name>Акционерное общество "Элвари Нефтегаз"</Name>
+		<INN>6501143635</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>1145</Code>
+		<PublishCode>1145</PublishCode>
+		<Name>Rosneft Investments Limited</Name>
+		<INN>CR4099JG1</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>1146</Code>
+		<PublishCode>1146</PublishCode>
+		<Name>Shelf Support Shiphold Limited</Name>
+		<INN>12090925G</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>1147</Code>
+		<PublishCode>1147</PublishCode>
+		<Name>Rosneft Shipping Limited</Name>
+		<INN>12126208E</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>1149</Code>
+		<PublishCode>1149</PublishCode>
+		<Name>Skyline Asset Management Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>1150</Code>
+		<PublishCode>1150</PublishCode>
+		<Name>Rosneft Stroytransgas Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>1154</Code>
+		<PublishCode>1154</PublishCode>
+		<Name>Anglo-Siberian Oil Company (Cyprus) Limited</Name>
+		<INN>12046496B</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>1155</Code>
+		<PublishCode>1155</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Санаторий "Изумрудный"</Name>
+		<INN>2305021665</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>1156</Code>
+		<PublishCode>1156</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Санаторий "Нефтяник Кубани"</Name>
+		<INN>2301048899</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>1157</Code>
+		<PublishCode>1157</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Санаторий "Минеральный"</Name>
+		<INN>2325016254</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>1158</Code>
+		<PublishCode>1158</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ТЭСКО"</Name>
+		<INN>2309074227</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>1159</Code>
+		<PublishCode>1159</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Кубань-Сервис"</Name>
+		<INN>2309085910</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>1169</Code>
+		<PublishCode>1169</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Коммерция"</Name>
+		<INN>7706238400</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>1171</Code>
+		<PublishCode>1171</PublishCode>
+		<Name>Акционерное общество "Ванкорнефть"</Name>
+		<INN>2437261631</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>1172</Code>
+		<PublishCode>1172</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Каспмор"</Name>
+		<INN>7706258741</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>1175</Code>
+		<PublishCode>1175</PublishCode>
+		<Name>Общество с ограниченной ответственностью "НК "Роснефть" - Научно-Технический Центр"</Name>
+		<INN>2310095895</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>1180</Code>
+		<PublishCode>1180</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Ю-Кубань"</Name>
+		<INN>2301035219</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>1186</Code>
+		<PublishCode>1186</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-СахалинНИПИморнефть"</Name>
+		<INN>6501156659</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>1188</Code>
+		<PublishCode>1188</PublishCode>
+		<Name>Акционерное общество "Роснефтефлот"</Name>
+		<INN>6501096047</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>1190</Code>
+		<PublishCode>1190</PublishCode>
+		<Name>Trumpet Limited</Name>
+		<INN>8285944W</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>1193</Code>
+		<PublishCode>1193</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Морское агентство "Шельф-Флот"</Name>
+		<INN>6501144276</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>1194</Code>
+		<PublishCode>1194</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Шельф-Юг"</Name>
+		<INN>7706503418</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>1197</Code>
+		<PublishCode>1197</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Нефтяной терминал "Белокаменка"</Name>
+		<INN>5190120165</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>1198</Code>
+		<PublishCode>1198</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-УфаНИПИнефть"</Name>
+		<INN>0278111264</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>1202</Code>
+		<PublishCode>1202</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ЮНГ-Нефтехимсервис"</Name>
+		<INN>8604035459</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>1204</Code>
+		<PublishCode>1204</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ЮНГ-Сервис"</Name>
+		<INN>8604035272</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>1205</Code>
+		<PublishCode>1205</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Снабжение-Нефтеюганск"</Name>
+		<INN>8604035265</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>1206</Code>
+		<PublishCode>1206</PublishCode>
+		<Name>Камчатнефтегаз</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>62</ExternalID>
+		<ExternalParentID/>
+		<Code>1207</Code>
+		<PublishCode>1207</PublishCode>
+		<Name>Товарищество с ограниченной ответственностью "Адай Петролеум Компани"</Name>
+		<INN>150100005390</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>63</ExternalID>
+		<ExternalParentID/>
+		<Code>1208</Code>
+		<PublishCode>1208</PublishCode>
+		<Name>Закрытое акционерное общество "ЗарИТ"</Name>
+		<INN>7708195783</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>64</ExternalID>
+		<ExternalParentID/>
+		<Code>1209</Code>
+		<PublishCode>1209</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Актив"</Name>
+		<INN>7706584449</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>65</ExternalID>
+		<ExternalParentID/>
+		<Code>1210</Code>
+		<PublishCode>1210</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Шельф-Арктика"</Name>
+		<INN>7706584456</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>66</ExternalID>
+		<ExternalParentID/>
+		<Code>1212</Code>
+		<PublishCode>1212</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Нефтяная компания "Приазовнефть"</Name>
+		<INN>2312099856</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>67</ExternalID>
+		<ExternalParentID/>
+		<Code>1213</Code>
+		<PublishCode>1213</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Венинефть"</Name>
+		<INN>6501162162</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>68</ExternalID>
+		<ExternalParentID/>
+		<Code>1214</Code>
+		<PublishCode>1214</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Юганскнефтегаз"</Name>
+		<INN>8604035473</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>69</ExternalID>
+		<ExternalParentID/>
+		<Code>1215</Code>
+		<PublishCode>1215</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Пурнефтегаз"</Name>
+		<INN>8913006455</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>70</ExternalID>
+		<ExternalParentID/>
+		<Code>1216</Code>
+		<PublishCode>1216</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Краснодарнефтегаз"</Name>
+		<INN>2309095298</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>71</ExternalID>
+		<ExternalParentID/>
+		<Code>1217</Code>
+		<PublishCode>1217</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Ставропольнефтегаз"</Name>
+		<INN>2614019198</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>72</ExternalID>
+		<ExternalParentID/>
+		<Code>1218</Code>
+		<PublishCode>1218</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Северная нефть"</Name>
+		<INN>1106019518</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>73</ExternalID>
+		<ExternalParentID/>
+		<Code>1220</Code>
+		<PublishCode>1220</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Сахалинморнефтегаз"</Name>
+		<INN>6501163102</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>74</ExternalID>
+		<ExternalParentID/>
+		<Code>1221</Code>
+		<PublishCode>1221</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Туапсинский нефтеперерабатывающий завод"</Name>
+		<INN>2365004375</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>75</ExternalID>
+		<ExternalParentID/>
+		<Code>1222</Code>
+		<PublishCode>1222</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Комсомольский НПЗ"</Name>
+		<INN>2703032881</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>76</ExternalID>
+		<ExternalParentID/>
+		<Code>1223</Code>
+		<PublishCode>1223</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Морской терминал Туапсе"</Name>
+		<INN>2365004417</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>77</ExternalID>
+		<ExternalParentID/>
+		<Code>1224</Code>
+		<PublishCode>1224</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Морской терминал Находка"</Name>
+		<INN>2508070844</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>78</ExternalID>
+		<ExternalParentID/>
+		<Code>1225</Code>
+		<PublishCode>1225</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Архангельскнефтепродукт"</Name>
+		<INN>2921009226</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>79</ExternalID>
+		<ExternalParentID/>
+		<Code>1226</Code>
+		<PublishCode>1226</PublishCode>
+		<Name>Rosneft-Shell Caspian Ventures Limited</Name>
+		<INN>12082455M</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>80</ExternalID>
+		<ExternalParentID/>
+		<Code>1227</Code>
+		<PublishCode>1227</PublishCode>
+		<Name>Закрытое акционерное общество "Рос&amp;Нефть"</Name>
+		<INN>3907008920</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>81</ExternalID>
+		<ExternalParentID/>
+		<Code>1228</Code>
+		<PublishCode>1228</PublishCode>
+		<Name>Закрытое акционерное общество "Российская компания по освоению шельфа"</Name>
+		<INN>2902011879</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>82</ExternalID>
+		<ExternalParentID/>
+		<Code>1229</Code>
+		<PublishCode>1229</PublishCode>
+		<Name>West Kamchatka Holding B.V.</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>83</ExternalID>
+		<ExternalParentID/>
+		<Code>1231</Code>
+		<PublishCode>1231</PublishCode>
+		<Name>Закрытое акционерное общество "Издательство "НЕФТЯНОЕ ХОЗЯЙСТВО"</Name>
+		<INN>7706012770</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>84</ExternalID>
+		<ExternalParentID/>
+		<Code>1232</Code>
+		<PublishCode>1232</PublishCode>
+		<Name>Акционерное общество "Верхнечонскнефтегаз"</Name>
+		<INN>3808079367</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>85</ExternalID>
+		<ExternalParentID/>
+		<Code>1234</Code>
+		<PublishCode>1234</PublishCode>
+		<Name>Общество с ограниченной ответственностью "КНГ-Питание Сервис"</Name>
+		<INN>2349026445</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>86</ExternalID>
+		<ExternalParentID/>
+		<Code>1243</Code>
+		<PublishCode>1243</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Нефтегазовая производственная экспедиция"</Name>
+		<INN>2308081623</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>87</ExternalID>
+		<ExternalParentID/>
+		<Code>1244</Code>
+		<PublishCode>1244</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Бурение"</Name>
+		<INN>7706613770</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>88</ExternalID>
+		<ExternalParentID/>
+		<Code>1246</Code>
+		<PublishCode>1246</PublishCode>
+		<Name>Rubio Holdings Limited</Name>
+		<INN>12163005V</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>89</ExternalID>
+		<ExternalParentID/>
+		<Code>1253</Code>
+		<PublishCode>1253</PublishCode>
+		<Name>Открытое акционерное общество "Удмуртнефть"</Name>
+		<INN>1831034040</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>90</ExternalID>
+		<ExternalParentID/>
+		<Code>1256</Code>
+		<PublishCode>1256</PublishCode>
+		<Name>Закрытое акционерное общество "Ижевский нефтяной научный центр"</Name>
+		<INN>1831100768</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>91</ExternalID>
+		<ExternalParentID/>
+		<Code>1258</Code>
+		<PublishCode>1258</PublishCode>
+		<Name>Закрытое акционерное общество "Капитальный ремонт скважин"</Name>
+		<INN>1834026449</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>92</ExternalID>
+		<ExternalParentID/>
+		<Code>1260</Code>
+		<PublishCode>1260</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Механик"</Name>
+		<INN>1834028848</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>93</ExternalID>
+		<ExternalParentID/>
+		<Code>1263</Code>
+		<PublishCode>1263</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Нефтетрубопроводсервис"</Name>
+		<INN>1834028894</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>94</ExternalID>
+		<ExternalParentID/>
+		<Code>1265</Code>
+		<PublishCode>1265</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ОЙЛ-ТЕЛЕКОМ"</Name>
+		<INN>1831087806</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>95</ExternalID>
+		<ExternalParentID/>
+		<Code>1268</Code>
+		<PublishCode>1268</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Технологический транспорт"</Name>
+		<INN>1840044615</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>96</ExternalID>
+		<ExternalParentID/>
+		<Code>1271</Code>
+		<PublishCode>1271</PublishCode>
+		<Name>Закрытое акционерное общество "Удмуртнефть-Бурение"</Name>
+		<INN>1834021289</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>97</ExternalID>
+		<ExternalParentID/>
+		<Code>1272</Code>
+		<PublishCode>1272</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Удмуртнефть-Снабжение"</Name>
+		<INN>1834028887</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>98</ExternalID>
+		<ExternalParentID/>
+		<Code>1273</Code>
+		<PublishCode>1273</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Удмуртэнергонефть"</Name>
+		<INN>1834028862</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>99</ExternalID>
+		<ExternalParentID/>
+		<Code>1276</Code>
+		<PublishCode>1276</PublishCode>
+		<Name>Акционерное общество "ПРОМЛИЗИНГ"</Name>
+		<INN>7735077820</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>100</ExternalID>
+		<ExternalParentID/>
+		<Code>1277</Code>
+		<PublishCode>1277</PublishCode>
+		<Name>Rosneft Holdings LTD S.A.</Name>
+		<INN>20062217929</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>101</ExternalID>
+		<ExternalParentID/>
+		<Code>1278</Code>
+		<PublishCode>1278</PublishCode>
+		<Name>Акционерное общество "Экспонефть"</Name>
+		<INN>5190500086</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>102</ExternalID>
+		<ExternalParentID/>
+		<Code>1280</Code>
+		<PublishCode>1280</PublishCode>
+		<Name>Shelf Crewing Services Limited</Name>
+		<INN>12090923Е</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>103</ExternalID>
+		<ExternalParentID/>
+		<Code>1281</Code>
+		<PublishCode>1281</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Восток-Энерджи" </Name>
+		<INN>7706637500</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>104</ExternalID>
+		<ExternalParentID/>
+		<Code>1282</Code>
+		<PublishCode>1282</PublishCode>
+		<Name>Taihu Limited</Name>
+		<INN>12180501S</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>105</ExternalID>
+		<ExternalParentID/>
+		<Code>1283</Code>
+		<PublishCode>1283</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Красноярский геологический научно-аналитический Центр"</Name>
+		<INN>2466083119</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>106</ExternalID>
+		<ExternalParentID/>
+		<Code>1286</Code>
+		<PublishCode>1286</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Развитие"</Name>
+		<INN>7706645719</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>107</ExternalID>
+		<ExternalParentID/>
+		<Code>1287</Code>
+		<PublishCode>1287</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Нефтепромлизинг"</Name>
+		<INN>7725594308</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>108</ExternalID>
+		<ExternalParentID/>
+		<Code>1288</Code>
+		<PublishCode>1288</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Нефть-Актив"</Name>
+		<INN>7725594298</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>109</ExternalID>
+		<ExternalParentID/>
+		<Code>1291</Code>
+		<PublishCode>1291</PublishCode>
+		<Name>Акционерное общество "Охинская ТЭЦ"</Name>
+		<INN>6506000623</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>110</ExternalID>
+		<ExternalParentID/>
+		<Code>1292</Code>
+		<PublishCode>1292</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Трубопроводный Консорциум "Бургас -Александруполис"</Name>
+		<INN>7706645772</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>111</ExternalID>
+		<ExternalParentID/>
+		<Code>1293</Code>
+		<PublishCode>1293</PublishCode>
+		<Name>Акционерное общество "Томскнефть" Восточной Нефтяной Компании</Name>
+		<INN>7022000310</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>112</ExternalID>
+		<ExternalParentID/>
+		<Code>1294</Code>
+		<PublishCode>1294</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Имущество-Сервис-Стрежевой"</Name>
+		<INN>7022012323</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>113</ExternalID>
+		<ExternalParentID/>
+		<Code>1295</Code>
+		<PublishCode>1295</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ЭПУ-Сервис"</Name>
+		<INN>7022009232</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>114</ExternalID>
+		<ExternalParentID/>
+		<Code>1296</Code>
+		<PublishCode>1296</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Аутсорсинг"</Name>
+		<INN>7022009881</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>115</ExternalID>
+		<ExternalParentID/>
+		<Code>1297</Code>
+		<PublishCode>1297</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Крон"</Name>
+		<INN>7021055814</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>116</ExternalID>
+		<ExternalParentID/>
+		<Code>1298</Code>
+		<PublishCode>1298</PublishCode>
+		<Name>Акционерное общество "Ангарская нефтехимическая компания"</Name>
+		<INN>3801009466</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>117</ExternalID>
+		<ExternalParentID/>
+		<Code>1299</Code>
+		<PublishCode>1299</PublishCode>
+		<Name>Акционерное общество "Ачинский нефтеперерабатывающий завод Восточной нефтяной компании"</Name>
+		<INN>2443000518</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>118</ExternalID>
+		<ExternalParentID/>
+		<Code>1301</Code>
+		<PublishCode>1301</PublishCode>
+		<Name>Акционерное общество "Ангарский завод полимеров"</Name>
+		<INN>3801046700</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>119</ExternalID>
+		<ExternalParentID/>
+		<Code>1302</Code>
+		<PublishCode>1302</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Стрежевской нефтеперерабатывающий завод"</Name>
+		<INN>7022010012</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>120</ExternalID>
+		<ExternalParentID/>
+		<Code>1303</Code>
+		<PublishCode>1303</PublishCode>
+		<Name>Публичное акционерное общество "Бурятнефтепродукт"</Name>
+		<INN>0323031768</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>121</ExternalID>
+		<ExternalParentID/>
+		<Code>1304</Code>
+		<PublishCode>1304</PublishCode>
+		<Name>Акционерное общество "Иркутскнефтепродукт"</Name>
+		<INN>3800000742</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>122</ExternalID>
+		<ExternalParentID/>
+		<Code>1306</Code>
+		<PublishCode>1306</PublishCode>
+		<Name>Акционерное общество "Томскнефтепродукт" Восточной Нефтяной Компании</Name>
+		<INN>7017004060</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>123</ExternalID>
+		<ExternalParentID/>
+		<Code>1308</Code>
+		<PublishCode>1308</PublishCode>
+		<Name>Акционерное общество "Хакаснефтепродукт ВНК"</Name>
+		<INN>1900000333</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>124</ExternalID>
+		<ExternalParentID/>
+		<Code>1311</Code>
+		<PublishCode>1311</PublishCode>
+		<Name>Акционерное общество "РН-Мамонтово"</Name>
+		<INN>8612008064</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>125</ExternalID>
+		<ExternalParentID/>
+		<Code>1312</Code>
+		<PublishCode>1312</PublishCode>
+		<Name>Акционерное общество "Хантымансийскнефтепродукт"</Name>
+		<INN>8601002920</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>126</ExternalID>
+		<ExternalParentID/>
+		<Code>1313</Code>
+		<PublishCode>1313</PublishCode>
+		<Name>Акционерное общество "Ангарскнефтехимпроект"</Name>
+		<INN>3801000449</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>127</ExternalID>
+		<ExternalParentID/>
+		<Code>1314</Code>
+		<PublishCode>1314</PublishCode>
+		<Name>Акционерное общество "Научно-производственная фирма "Геофит" Восточной нефтяной компании</Name>
+		<INN>7018002241</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>128</ExternalID>
+		<ExternalParentID/>
+		<Code>1315</Code>
+		<PublishCode>1315</PublishCode>
+		<Name>Акционерное общество "Томскнефтегеофизика" Восточной нефтяной компании</Name>
+		<INN>7022000960</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>129</ExternalID>
+		<ExternalParentID/>
+		<Code>1316</Code>
+		<PublishCode>1316</PublishCode>
+		<Name>Открытое акционерное общество "Томский научно - исследовательский и проектный институт нефти и газа"</Name>
+		<INN>7021049088</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>130</ExternalID>
+		<ExternalParentID/>
+		<Code>1317</Code>
+		<PublishCode>1317</PublishCode>
+		<Name>Акционерное общество "Восточно-Сибирская нефтегазовая компания"</Name>
+		<INN>7710007910</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>131</ExternalID>
+		<ExternalParentID/>
+		<Code>1320</Code>
+		<PublishCode>1320</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Центр досуга и спорта"</Name>
+		<INN>7017050524</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>132</ExternalID>
+		<ExternalParentID/>
+		<Code>1321</Code>
+		<PublishCode>1321</PublishCode>
+		<Name>Общество с ограниченной ответственностью "МНУ"</Name>
+		<INN>7022009112</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>133</ExternalID>
+		<ExternalParentID/>
+		<Code>1322</Code>
+		<PublishCode>1322</PublishCode>
+		<Name>Акционерное общество "Самаранефтегаз"</Name>
+		<INN>6315229162</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>134</ExternalID>
+		<ExternalParentID/>
+		<Code>1324</Code>
+		<PublishCode>1324</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Сервисный центр"</Name>
+		<INN>6330023159</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>135</ExternalID>
+		<ExternalParentID/>
+		<Code>1326</Code>
+		<PublishCode>1326</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Кинельский склад"</Name>
+		<INN>6315549317</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>136</ExternalID>
+		<ExternalParentID/>
+		<Code>1327</Code>
+		<PublishCode>1327</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Самарский инженерно-технический центр"</Name>
+		<INN>6315544654</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>137</ExternalID>
+		<ExternalParentID/>
+		<Code>1328</Code>
+		<PublishCode>1328</PublishCode>
+		<Name>Акционерное общество "Новокуйбышевский нефтеперерабатывающий завод"</Name>
+		<INN>6330000553</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>138</ExternalID>
+		<ExternalParentID/>
+		<Code>1329</Code>
+		<PublishCode>1329</PublishCode>
+		<Name>Акционерное общество "Куйбышевский нефтеперерабатывающий завод"</Name>
+		<INN>6314006396</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>139</ExternalID>
+		<ExternalParentID/>
+		<Code>1330</Code>
+		<PublishCode>1330</PublishCode>
+		<Name>Акционерное общество "Сызранский нефтеперерабатывающий завод"</Name>
+		<INN>6325004584</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>140</ExternalID>
+		<ExternalParentID/>
+		<Code>1331</Code>
+		<PublishCode>1331</PublishCode>
+		<Name>Акционерное общество "Отрадненский газоперерабатывающий завод"</Name>
+		<INN>6340005960</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>141</ExternalID>
+		<ExternalParentID/>
+		<Code>1332</Code>
+		<PublishCode>1332</PublishCode>
+		<Name>Акционерное общество "Нефтегорский газоперерабатывающий завод"</Name>
+		<INN>6377005317</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>142</ExternalID>
+		<ExternalParentID/>
+		<Code>1333</Code>
+		<PublishCode>1333</PublishCode>
+		<Name>Акционерное общество "Самаранефтепродукт"</Name>
+		<INN>6317019121</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>143</ExternalID>
+		<ExternalParentID/>
+		<Code>1339</Code>
+		<PublishCode>1339</PublishCode>
+		<Name>Акционерное общество "Ангарскнефтехимремстрой"</Name>
+		<INN>3801046690</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>144</ExternalID>
+		<ExternalParentID/>
+		<Code>1340</Code>
+		<PublishCode>1340</PublishCode>
+		<Name>Публичное акционерное общество "Самарский институт по проектированию предприятий нефтеперерабатывающей и нефтехимической промышленности"</Name>
+		<INN>6316012356</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>145</ExternalID>
+		<ExternalParentID/>
+		<Code>1341</Code>
+		<PublishCode>1341</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Самарский научно-исследовательский и проектный институт нефтедобычи"</Name>
+		<INN>6316058992</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>146</ExternalID>
+		<ExternalParentID/>
+		<Code>1342</Code>
+		<PublishCode>1342</PublishCode>
+		<Name>Публичное акционерное общество "Средневолжский научно-исследовательский институт по нефтепереработке"</Name>
+		<INN>6330000352</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>147</ExternalID>
+		<ExternalParentID/>
+		<Code>1343</Code>
+		<PublishCode>1343</PublishCode>
+		<Name>Публичное акционерное общество "Самаранефтегеофизика"</Name>
+		<INN>6315230513</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>148</ExternalID>
+		<ExternalParentID/>
+		<Code>1344</Code>
+		<PublishCode>1344</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Новокуйбышевский завод масел и присадок"</Name>
+		<INN>6330017363</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>149</ExternalID>
+		<ExternalParentID/>
+		<Code>1345</Code>
+		<PublishCode>1345</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Карт"</Name>
+		<INN>7743529527</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>150</ExternalID>
+		<ExternalParentID/>
+		<Code>1347</Code>
+		<PublishCode>1347</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Центр информационных технологий"</Name>
+		<INN>7022010816</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>151</ExternalID>
+		<ExternalParentID/>
+		<Code>1348</Code>
+		<PublishCode>1348</PublishCode>
+		<Name>Закрытое акционерное общество "Васюган"</Name>
+		<INN>7022009257</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>152</ExternalID>
+		<ExternalParentID/>
+		<Code>1350</Code>
+		<PublishCode>1350</PublishCode>
+		<Name>Акционерное общество "Манойл"</Name>
+		<INN>8619001131</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>153</ExternalID>
+		<ExternalParentID/>
+		<Code>1353</Code>
+		<PublishCode>1353</PublishCode>
+		<Name>Закрытое акционерное общество "Красноярскгеофизика"</Name>
+		<INN>2452018617</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>154</ExternalID>
+		<ExternalParentID/>
+		<Code>1357</Code>
+		<PublishCode>1357</PublishCode>
+		<Name>Закрытое акционерное общество "Томск-Петролеум-Унд-Газ"</Name>
+		<INN>7006003385</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>155</ExternalID>
+		<ExternalParentID/>
+		<Code>1359</Code>
+		<PublishCode>1359</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Самаранефтегаз-Сервис"</Name>
+		<INN>6316101817</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>156</ExternalID>
+		<ExternalParentID/>
+		<Code>1360</Code>
+		<PublishCode>1360</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Снабжение-Самара"</Name>
+		<INN>6315576582</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>157</ExternalID>
+		<ExternalParentID/>
+		<Code>1361</Code>
+		<PublishCode>1361</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Сервис-Экология"</Name>
+		<INN>6372005553</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>158</ExternalID>
+		<ExternalParentID/>
+		<Code>1363</Code>
+		<PublishCode>1363</PublishCode>
+		<Name>Акционерное общество "Восточно-Сибирский машиностроительный завод"</Name>
+		<INN>3801046683</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>159</ExternalID>
+		<ExternalParentID/>
+		<Code>1364</Code>
+		<PublishCode>1364</PublishCode>
+		<Name>Акционерное общество "Ангарский завод катализаторов и органического синтеза"</Name>
+		<INN>3801046676</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>160</ExternalID>
+		<ExternalParentID/>
+		<Code>1365</Code>
+		<PublishCode>1365</PublishCode>
+		<Name>Акционерное общество "Ангарское управление энергосистемы"</Name>
+		<INN>3801048497</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>161</ExternalID>
+		<ExternalParentID/>
+		<Code>1367</Code>
+		<PublishCode>1367</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Спортивный комплекс Ачинских нефтепереработчиков и автодорожников"</Name>
+		<INN>2443017751</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>162</ExternalID>
+		<ExternalParentID/>
+		<Code>1368</Code>
+		<PublishCode>1368</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Новокуйбышевский завод катализаторов"</Name>
+		<INN>6330016835</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>163</ExternalID>
+		<ExternalParentID/>
+		<Code>1369</Code>
+		<PublishCode>1369</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Отель Веста"</Name>
+		<INN>6330017701</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>164</ExternalID>
+		<ExternalParentID/>
+		<Code>1370</Code>
+		<PublishCode>1370</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Ремонтно-механический завод"</Name>
+		<INN>6330016850</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>165</ExternalID>
+		<ExternalParentID/>
+		<Code>1371</Code>
+		<PublishCode>1371</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Санаторно-оздоровительный комплекс "Здоровье"</Name>
+		<INN>6330017902</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>166</ExternalID>
+		<ExternalParentID/>
+		<Code>1372</Code>
+		<PublishCode>1372</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Сервис-Центр"</Name>
+		<INN>6330017660</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>167</ExternalID>
+		<ExternalParentID/>
+		<Code>1373</Code>
+		<PublishCode>1373</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Офис"</Name>
+		<INN>6330017035</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>168</ExternalID>
+		<ExternalParentID/>
+		<Code>1374</Code>
+		<PublishCode>1374</PublishCode>
+		<Name>Публичное акционерное общество "АЗС-СЕРВИС"</Name>
+		<INN>6314002377</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>169</ExternalID>
+		<ExternalParentID/>
+		<Code>1375</Code>
+		<PublishCode>1375</PublishCode>
+		<Name>Общество с ограниченной ответственностью "База отдыха "Энхалук"</Name>
+		<INN>0326010967</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>170</ExternalID>
+		<ExternalParentID/>
+		<Code>1376</Code>
+		<PublishCode>1376</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Сервис"</Name>
+		<INN>7706660065</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>171</ExternalID>
+		<ExternalParentID/>
+		<Code>1377</Code>
+		<PublishCode>1377</PublishCode>
+		<Name>Открытое акционерное общество "Енисейгеофизика"</Name>
+		<INN>2447000029</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>172</ExternalID>
+		<ExternalParentID/>
+		<Code>1378</Code>
+		<PublishCode>1378</PublishCode>
+		<Name>Акционерное общество "Белгороднефтепродукт"</Name>
+		<INN>3123001345</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>173</ExternalID>
+		<ExternalParentID/>
+		<Code>1379</Code>
+		<PublishCode>1379</PublishCode>
+		<Name>Акционерное общество "Брянскнефтепродукт"</Name>
+		<INN>3201000493</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>174</ExternalID>
+		<ExternalParentID/>
+		<Code>1380</Code>
+		<PublishCode>1380</PublishCode>
+		<Name>Акционерное общество "Воронежнефтепродукт"</Name>
+		<INN>3664002554</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>175</ExternalID>
+		<ExternalParentID/>
+		<Code>1381</Code>
+		<PublishCode>1381</PublishCode>
+		<Name>Акционерное общество "Липецкнефтепродукт"</Name>
+		<INN>4822000201</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>176</ExternalID>
+		<ExternalParentID/>
+		<Code>1382</Code>
+		<PublishCode>1382</PublishCode>
+		<Name>Акционерное общество "Орелнефтепродукт"</Name>
+		<INN>5752007636</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>177</ExternalID>
+		<ExternalParentID/>
+		<Code>1383</Code>
+		<PublishCode>1383</PublishCode>
+		<Name>Акционерное общество "Пензанефтепродукт"</Name>
+		<INN>5800000016</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>178</ExternalID>
+		<ExternalParentID/>
+		<Code>1384</Code>
+		<PublishCode>1384</PublishCode>
+		<Name>Акционерное общество "Тамбовнефтепродукт"</Name>
+		<INN>6831004608</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>179</ExternalID>
+		<ExternalParentID/>
+		<Code>1385</Code>
+		<PublishCode>1385</PublishCode>
+		<Name>Акционерное общество "Ульяновскнефтепродукт"</Name>
+		<INN>7300000036</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>180</ExternalID>
+		<ExternalParentID/>
+		<Code>1392</Code>
+		<PublishCode>1392</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Волгоград"</Name>
+		<INN>3460017993</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>181</ExternalID>
+		<ExternalParentID/>
+		<Code>1393</Code>
+		<PublishCode>1393</PublishCode>
+		<Name>Акционерное общество "РН-Москва"</Name>
+		<INN>7706091500</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>182</ExternalID>
+		<ExternalParentID/>
+		<Code>1396</Code>
+		<PublishCode>1396</PublishCode>
+		<Name>Публичное акционерное общество "Гермес-Москва"</Name>
+		<INN>7729060762</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>183</ExternalID>
+		<ExternalParentID/>
+		<Code>1397</Code>
+		<PublishCode>1397</PublishCode>
+		<Name>Акционерное общество "РН-Тверь"</Name>
+		<INN>6905035353</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>184</ExternalID>
+		<ExternalParentID/>
+		<Code>1404</Code>
+		<PublishCode>1404</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Битум"</Name>
+		<INN>4014003383</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>185</ExternalID>
+		<ExternalParentID/>
+		<Code>1405</Code>
+		<PublishCode>1405</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Аэро Красноярск"</Name>
+		<INN>7705561103</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>186</ExternalID>
+		<ExternalParentID/>
+		<Code>1406</Code>
+		<PublishCode>1406</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Авиазаправочный комплекс"</Name>
+		<INN>7705579326</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>187</ExternalID>
+		<ExternalParentID/>
+		<Code>1409</Code>
+		<PublishCode>1409</PublishCode>
+		<Name>Акционерное общество "Финанс-М-ком"</Name>
+		<INN>1326178432</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>188</ExternalID>
+		<ExternalParentID/>
+		<Code>1410</Code>
+		<PublishCode>1410</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Инвест-М-ком"</Name>
+		<INN>4014002911</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>189</ExternalID>
+		<ExternalParentID/>
+		<Code>1421</Code>
+		<PublishCode>1421</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Юг-Терминал"</Name>
+		<INN>2321012192</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>190</ExternalID>
+		<ExternalParentID/>
+		<Code>1422</Code>
+		<PublishCode>1422</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Юг-Миниоил"</Name>
+		<INN>2321012160</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>191</ExternalID>
+		<ExternalParentID/>
+		<Code>1424</Code>
+		<PublishCode>1424</PublishCode>
+		<Name>Акционерное общество "РН-Ростовнефтепродукт"</Name>
+		<INN>6165029228</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>192</ExternalID>
+		<ExternalParentID/>
+		<Code>1435</Code>
+		<PublishCode>1435</PublishCode>
+		<Name>Акционерное общество "РН-Транс"</Name>
+		<INN>6330017677</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>193</ExternalID>
+		<ExternalParentID/>
+		<Code>1451</Code>
+		<PublishCode>1451</PublishCode>
+		<Name>Акционерное общество "Нефтепромстройсервис"</Name>
+		<INN>0814117128</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>194</ExternalID>
+		<ExternalParentID/>
+		<Code>1461</Code>
+		<PublishCode>1461</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Томскнефть-Сервис"</Name>
+		<INN>7022013599</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>195</ExternalID>
+		<ExternalParentID/>
+		<Code>1474</Code>
+		<PublishCode>1474</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Дуома"</Name>
+		<INN>6315551901</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>196</ExternalID>
+		<ExternalParentID/>
+		<Code>1475</Code>
+		<PublishCode>1475</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Ремонт НПО"</Name>
+		<INN>6340006106</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>197</ExternalID>
+		<ExternalParentID/>
+		<Code>1476</Code>
+		<PublishCode>1476</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Альциона"</Name>
+		<INN>6315551940</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>198</ExternalID>
+		<ExternalParentID/>
+		<Code>1481</Code>
+		<PublishCode>1481</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Стрежевское дорожное ремонтно-строительное управление"</Name>
+		<INN>7022009144</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>199</ExternalID>
+		<ExternalParentID/>
+		<Code>1484</Code>
+		<PublishCode>1484</PublishCode>
+		<Name>Oxoil Limited</Name>
+		<INN>12110480B</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>200</ExternalID>
+		<ExternalParentID/>
+		<Code>1491</Code>
+		<PublishCode>1491</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Энергонефть Томск"</Name>
+		<INN>7022010799</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>201</ExternalID>
+		<ExternalParentID/>
+		<Code>1493</Code>
+		<PublishCode>1493</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ЮКОРТ"</Name>
+		<INN>8619007581</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>202</ExternalID>
+		<ExternalParentID/>
+		<Code>1494</Code>
+		<PublishCode>1494</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Алнасмаш"</Name>
+		<INN>7736236209</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>203</ExternalID>
+		<ExternalParentID/>
+		<Code>1501</Code>
+		<PublishCode>1501</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Пурнефтепереработка"</Name>
+		<INN>8913008332</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>204</ExternalID>
+		<ExternalParentID/>
+		<Code>1504</Code>
+		<PublishCode>1504</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Усинск-Снабсервис"</Name>
+		<INN>1106022768</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>205</ExternalID>
+		<ExternalParentID/>
+		<Code>1507</Code>
+		<PublishCode>1507</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Усинский коммунальный сервис"</Name>
+		<INN>1106022800</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>206</ExternalID>
+		<ExternalParentID/>
+		<Code>1511</Code>
+		<PublishCode>1511</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Алнасмашсервис"</Name>
+		<INN>7736237516</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>207</ExternalID>
+		<ExternalParentID/>
+		<Code>1513</Code>
+		<PublishCode>1513</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Контроль Сервис"</Name>
+		<INN>7017024838</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>208</ExternalID>
+		<ExternalParentID/>
+		<Code>1516</Code>
+		<PublishCode>1516</PublishCode>
+		<Name>Акционерное общество "ЭКЗА"</Name>
+		<INN>6311032158</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>209</ExternalID>
+		<ExternalParentID/>
+		<Code>1517</Code>
+		<PublishCode>1517</PublishCode>
+		<Name>Публичное акционерное общество "Нефтемаркет"</Name>
+		<INN>7535002680</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>210</ExternalID>
+		<ExternalParentID/>
+		<Code>1519</Code>
+		<PublishCode>1519</PublishCode>
+		<Name>Акционерное общество "Самаранефтехимавтоматика"</Name>
+		<INN>6330000560</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>211</ExternalID>
+		<ExternalParentID/>
+		<Code>1529</Code>
+		<PublishCode>1529</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Каспийская нефтяная компания"</Name>
+		<INN>3015053515</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>212</ExternalID>
+		<ExternalParentID/>
+		<Code>1532</Code>
+		<PublishCode>1532</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ПНГ-ОРС"</Name>
+		<INN>8913008195</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>213</ExternalID>
+		<ExternalParentID/>
+		<Code>1533</Code>
+		<PublishCode>1533</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ПНГ-Склад"</Name>
+		<INN>8911023102</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>214</ExternalID>
+		<ExternalParentID/>
+		<Code>1539</Code>
+		<PublishCode>1539</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Сахалин-Склад"</Name>
+		<INN>6506011431</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>215</ExternalID>
+		<ExternalParentID/>
+		<Code>1557</Code>
+		<PublishCode>1557</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ПНГ-Коммунальный сервис"</Name>
+		<INN>8913008220</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>216</ExternalID>
+		<ExternalParentID/>
+		<Code>1560</Code>
+		<PublishCode>1560</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Информ"</Name>
+		<INN>7725624249</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>217</ExternalID>
+		<ExternalParentID/>
+		<Code>1562</Code>
+		<PublishCode>1562</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Красноярскнефтепродукт"</Name>
+		<INN>2464204689</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>218</ExternalID>
+		<ExternalParentID/>
+		<Code>1568</Code>
+		<PublishCode>1568</PublishCode>
+		<Name>Акционерное общество "Харбижин"</Name>
+		<INN>0721006626</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>219</ExternalID>
+		<ExternalParentID/>
+		<Code>1570</Code>
+		<PublishCode>1570</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Пожарная безопасность"</Name>
+		<INN>6316130984</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>220</ExternalID>
+		<ExternalParentID/>
+		<Code>1573</Code>
+		<PublishCode>1573</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Бункер"</Name>
+		<INN>7705839398</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>221</ExternalID>
+		<ExternalParentID/>
+		<Code>1574</Code>
+		<PublishCode>1574</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Новосибирскнефтепродукт"</Name>
+		<INN>5402496638</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>222</ExternalID>
+		<ExternalParentID/>
+		<Code>1594</Code>
+		<PublishCode>1594</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Ванкорское УТТ"</Name>
+		<INN>2460207512</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>223</ExternalID>
+		<ExternalParentID/>
+		<Code>1598</Code>
+		<PublishCode>1598</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Аэро"</Name>
+		<INN>7705843041</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>224</ExternalID>
+		<ExternalParentID/>
+		<Code>1603</Code>
+		<PublishCode>1603</PublishCode>
+		<Name>Компания с ограниченной ответственностью  "Роснефть-Монголия"</Name>
+		<INN>5188822</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>225</ExternalID>
+		<ExternalParentID/>
+		<Code>1604</Code>
+		<PublishCode>1604</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Чеченнефтепродукт"</Name>
+		<INN>2013433358</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>226</ExternalID>
+		<ExternalParentID/>
+		<Code>1607</Code>
+		<PublishCode>1607</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Учет"</Name>
+		<INN>7705853829</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>227</ExternalID>
+		<ExternalParentID/>
+		<Code>1608</Code>
+		<PublishCode>1608</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Екатеринбургнефтепродукт"</Name>
+		<INN>6672278449</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>228</ExternalID>
+		<ExternalParentID/>
+		<Code>1611</Code>
+		<PublishCode>1611</PublishCode>
+		<Name>Venin Holding Limited</Name>
+		<INN>12185681X</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>229</ExternalID>
+		<ExternalParentID/>
+		<Code>1612</Code>
+		<PublishCode>1612</PublishCode>
+		<Name>Trumpet GmbH</Name>
+		<INN>263/6423</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>230</ExternalID>
+		<ExternalParentID/>
+		<Code>1613</Code>
+		<PublishCode>1613</PublishCode>
+		<Name>Elvary Neftegaz Holdings B.V.</Name>
+		<INN>813404356</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>231</ExternalID>
+		<ExternalParentID/>
+		<Code>1614</Code>
+		<PublishCode>1614</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Челябинскнефтепродукт"</Name>
+		<INN>7451272070</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>232</ExternalID>
+		<ExternalParentID/>
+		<Code>1617</Code>
+		<PublishCode>1617</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Кынско-Часельское нефтегаз"</Name>
+		<INN>7705856587</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>233</ExternalID>
+		<ExternalParentID/>
+		<Code>1618</Code>
+		<PublishCode>1618</PublishCode>
+		<Name>Rosneft Marine Holdings Limited</Name>
+		<INN>CR 5043</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>234</ExternalID>
+		<ExternalParentID/>
+		<Code>1619</Code>
+		<PublishCode>1619</PublishCode>
+		<Name>Акционерное общество "Инзернефть"</Name>
+		<INN>6452027577</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>235</ExternalID>
+		<ExternalParentID/>
+		<Code>1620</Code>
+		<PublishCode>1620</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Переработка"</Name>
+		<INN>2524124600</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>236</ExternalID>
+		<ExternalParentID/>
+		<Code>1621</Code>
+		<PublishCode>1621</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-КрасноярскНИПИнефть"</Name>
+		<INN>2465214545</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>237</ExternalID>
+		<ExternalParentID/>
+		<Code>1623</Code>
+		<PublishCode>1623</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана"</Name>
+		<INN>7708105476</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>238</ExternalID>
+		<ExternalParentID/>
+		<Code>1624</Code>
+		<PublishCode>1624</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Национальный нефтяной консорциум"</Name>
+		<INN>7705858739</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>239</ExternalID>
+		<ExternalParentID/>
+		<Code>1625</Code>
+		<PublishCode>1625</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Самара"</Name>
+		<INN>6315604141</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>240</ExternalID>
+		<ExternalParentID/>
+		<Code>1626</Code>
+		<PublishCode>1626</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-СК"</Name>
+		<INN>2614018765</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>241</ExternalID>
+		<ExternalParentID/>
+		<Code>1629</Code>
+		<PublishCode>1629</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Брянск"</Name>
+		<INN>3233501196</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>242</ExternalID>
+		<ExternalParentID/>
+		<Code>1630</Code>
+		<PublishCode>1630</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Краснодар"</Name>
+		<INN>2310033627</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>243</ExternalID>
+		<ExternalParentID/>
+		<Code>1631</Code>
+		<PublishCode>1631</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Югра"</Name>
+		<INN>8604034631</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>244</ExternalID>
+		<ExternalParentID/>
+		<Code>1632</Code>
+		<PublishCode>1632</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Липецк"</Name>
+		<INN>4825059316</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>245</ExternalID>
+		<ExternalParentID/>
+		<Code>1633</Code>
+		<PublishCode>1633</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Сахалин"</Name>
+		<INN>6501094699</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>246</ExternalID>
+		<ExternalParentID/>
+		<Code>1635</Code>
+		<PublishCode>1635</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Смоленск"</Name>
+		<INN>6731070540</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>247</ExternalID>
+		<ExternalParentID/>
+		<Code>1636</Code>
+		<PublishCode>1636</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Орел"</Name>
+		<INN>5751035454</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>248</ExternalID>
+		<ExternalParentID/>
+		<Code>1637</Code>
+		<PublishCode>1637</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Тамбов"</Name>
+		<INN>6829046343</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>249</ExternalID>
+		<ExternalParentID/>
+		<Code>1638</Code>
+		<PublishCode>1638</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Усинск"</Name>
+		<INN>1106023112</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>250</ExternalID>
+		<ExternalParentID/>
+		<Code>1639</Code>
+		<PublishCode>1639</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Белгород"</Name>
+		<INN>3123181909</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>251</ExternalID>
+		<ExternalParentID/>
+		<Code>1640</Code>
+		<PublishCode>1640</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Ангарск"</Name>
+		<INN>3801090530</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>252</ExternalID>
+		<ExternalParentID/>
+		<Code>1641</Code>
+		<PublishCode>1641</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Ванкор"</Name>
+		<INN>2437003084</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>253</ExternalID>
+		<ExternalParentID/>
+		<Code>1642</Code>
+		<PublishCode>1642</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Пенза"</Name>
+		<INN>5834042367</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>254</ExternalID>
+		<ExternalParentID/>
+		<Code>1643</Code>
+		<PublishCode>1643</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Томск"</Name>
+		<INN>7017186941</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>255</ExternalID>
+		<ExternalParentID/>
+		<Code>1645</Code>
+		<PublishCode>1645</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Уфа"</Name>
+		<INN>2225091378</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>256</ExternalID>
+		<ExternalParentID/>
+		<Code>1647</Code>
+		<PublishCode>1647</PublishCode>
+		<Name>Rosneft Marine (UK) Limited</Name>
+		<INN>680 29035 24000</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>257</ExternalID>
+		<ExternalParentID/>
+		<Code>1648</Code>
+		<PublishCode>1648</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Приморье"</Name>
+		<INN>2508084318</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>258</ExternalID>
+		<ExternalParentID/>
+		<Code>1650</Code>
+		<PublishCode>1650</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Сахалинские нефтегазовые технологии"</Name>
+		<INN>6501203041</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>259</ExternalID>
+		<ExternalParentID/>
+		<Code>1651</Code>
+		<PublishCode>1651</PublishCode>
+		<Name>Компания с ограниченной ответственностью "Мэргэван"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>260</ExternalID>
+		<ExternalParentID/>
+		<Code>1653</Code>
+		<PublishCode>1653</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Шельф Абхазии"</Name>
+		<INN>1141516</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>261</ExternalID>
+		<ExternalParentID/>
+		<Code>1654</Code>
+		<PublishCode>1654</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ЮКОС СНГ Инвестмент"</Name>
+		<INN>00071029</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>262</ExternalID>
+		<ExternalParentID/>
+		<Code>1657</Code>
+		<PublishCode>1657</PublishCode>
+		<Name>Китайско-Российская Восточная Нефтехимическая Компания</Name>
+		<INN>120115666143112</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>263</ExternalID>
+		<ExternalParentID/>
+		<Code>1658</Code>
+		<PublishCode>1658</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Абхазия"</Name>
+		<INN>1061647</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>264</ExternalID>
+		<ExternalParentID/>
+		<Code>1659</Code>
+		<PublishCode>1659</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Аэрокрафт"</Name>
+		<INN>7706734415</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>265</ExternalID>
+		<ExternalParentID/>
+		<Code>1661</Code>
+		<PublishCode>1661</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Ингушнефтепродукт"</Name>
+		<INN>0603285282</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>266</ExternalID>
+		<ExternalParentID/>
+		<Code>1664</Code>
+		<PublishCode>1664</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Иностранные проекты"</Name>
+		<INN>7705933009</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>267</ExternalID>
+		<ExternalParentID/>
+		<Code>1665</Code>
+		<PublishCode>1665</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Иностранные инвестиции"</Name>
+		<INN>7705932990</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>268</ExternalID>
+		<ExternalParentID/>
+		<Code>1666</Code>
+		<PublishCode>1666</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Драгмет"</Name>
+		<INN>7717687510</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>269</ExternalID>
+		<ExternalParentID/>
+		<Code>1667</Code>
+		<PublishCode>1667</PublishCode>
+		<Name>Rosneft Trading S.A.</Name>
+		<INN>060.758.034</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>270</ExternalID>
+		<ExternalParentID/>
+		<Code>1669</Code>
+		<PublishCode>1669</PublishCode>
+		<Name>Открытое акционерное общество "РН "Ингушнефть"</Name>
+		<INN>0601008540</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>271</ExternalID>
+		<ExternalParentID/>
+		<Code>1671</Code>
+		<PublishCode>1671</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Арктический Научно-Проектный Центр Шельфовых Разработок"</Name>
+		<INN>7842462369</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>272</ExternalID>
+		<ExternalParentID/>
+		<Code>1672</Code>
+		<PublishCode>1672</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Профессиональный хоккейный клуб ЦСКА"</Name>
+		<INN>7703570430</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>273</ExternalID>
+		<ExternalParentID/>
+		<Code>1674</Code>
+		<PublishCode>1674</PublishCode>
+		<Name>Colmati Trading Limited</Name>
+		<INN>12262285S</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>274</ExternalID>
+		<ExternalParentID/>
+		<Code>1676</Code>
+		<PublishCode>1676</PublishCode>
+		<Name>Общество с ограниченной ответственностью Полигон научного центра "Биосфера"</Name>
+		<INN>2318039349</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>275</ExternalID>
+		<ExternalParentID/>
+		<Code>1680</Code>
+		<PublishCode>1680</PublishCode>
+		<Name>Общество с ограниченной ответственностью "АрктикПроминвест"</Name>
+		<INN>7703673098</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>276</ExternalID>
+		<ExternalParentID/>
+		<Code>1681</Code>
+		<PublishCode>1681</PublishCode>
+		<Name>Закрытое акционерное общество "Арктикшельфнефтегаз"</Name>
+		<INN>5190412432</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>277</ExternalID>
+		<ExternalParentID/>
+		<Code>1682</Code>
+		<PublishCode>1682</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Объединенный центр исследований и разработок"</Name>
+		<INN>7736223048</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>278</ExternalID>
+		<ExternalParentID/>
+		<Code>1683</Code>
+		<PublishCode>1683</PublishCode>
+		<Name>Общество с ограниченной ответственностью "СевКомНефтегаз"</Name>
+		<INN>4101150169</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>279</ExternalID>
+		<ExternalParentID/>
+		<Code>1684</Code>
+		<PublishCode>1684</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Ермак Нефтегаз"</Name>
+		<INN>6501244577</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>280</ExternalID>
+		<ExternalParentID/>
+		<Code>1685</Code>
+		<PublishCode>1685</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Центр исследований и разработок"</Name>
+		<INN>7736563647</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>281</ExternalID>
+		<ExternalParentID/>
+		<Code>1687</Code>
+		<PublishCode>1687</PublishCode>
+		<Name>Rosneft JV Projects S.A.</Name>
+		<INN>20122203523</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>282</ExternalID>
+		<ExternalParentID/>
+		<Code>1688</Code>
+		<PublishCode>1688</PublishCode>
+		<Name>Rosneft European Holdings S.A.</Name>
+		<INN>20122203604</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>283</ExternalID>
+		<ExternalParentID/>
+		<Code>1689</Code>
+		<PublishCode>1689</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Харампурнефтегаз"</Name>
+		<INN>7536125117</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>284</ExternalID>
+		<ExternalParentID/>
+		<Code>1690</Code>
+		<PublishCode>1690</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Региональные продажи"</Name>
+		<INN>2540178987</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>285</ExternalID>
+		<ExternalParentID/>
+		<Code>1691</Code>
+		<PublishCode>1691</PublishCode>
+		<Name>RN CARDIUM OIL INK.</Name>
+		<INN>824660302</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>286</ExternalID>
+		<ExternalParentID/>
+		<Code>1692</Code>
+		<PublishCode>1692</PublishCode>
+		<Name>Neftegaz Holding America Limited</Name>
+		<INN>30-0721474</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>287</ExternalID>
+		<ExternalParentID/>
+		<Code>1693</Code>
+		<PublishCode>1693</PublishCode>
+		<Name>Neftegaz America LLC</Name>
+		<INN>45-4695833</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>288</ExternalID>
+		<ExternalParentID/>
+		<Code>1694</Code>
+		<PublishCode>1694</PublishCode>
+		<Name>Neftegaz America Onshore LP</Name>
+		<INN>45-4696749</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>289</ExternalID>
+		<ExternalParentID/>
+		<Code>1695</Code>
+		<PublishCode>1695</PublishCode>
+		<Name>Neftegaz America Shelf LP</Name>
+		<INN>80-0790943</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>290</ExternalID>
+		<ExternalParentID/>
+		<Code>1696</Code>
+		<PublishCode>1696</PublishCode>
+		<Name>NBI Trading Limited</Name>
+		<INN>12112627A</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>291</ExternalID>
+		<ExternalParentID/>
+		<Code>1697</Code>
+		<PublishCode>1697</PublishCode>
+		<Name>Pinktaknada Consultants Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>292</ExternalID>
+		<ExternalParentID/>
+		<Code>1698</Code>
+		<PublishCode>1698</PublishCode>
+		<Name>Lecaz Holdings Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>293</ExternalID>
+		<ExternalParentID/>
+		<Code>1701</Code>
+		<PublishCode>1701</PublishCode>
+		<Name>ZNF Holdings Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>294</ExternalID>
+		<ExternalParentID/>
+		<Code>1702</Code>
+		<PublishCode>1702</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Реестр-РН"</Name>
+		<INN>7705397301</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>295</ExternalID>
+		<ExternalParentID/>
+		<Code>1703</Code>
+		<PublishCode>1703</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Полярный терминал"</Name>
+		<INN>5190185540</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>296</ExternalID>
+		<ExternalParentID/>
+		<Code>1705</Code>
+		<PublishCode>1705</PublishCode>
+		<Name>Акционерное общество "РН-Влакра"</Name>
+		<INN>7725636702</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>297</ExternalID>
+		<ExternalParentID/>
+		<Code>1706</Code>
+		<PublishCode>1706</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-ГАЗ"</Name>
+		<INN>8911018906</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>298</ExternalID>
+		<ExternalParentID/>
+		<Code>1707</Code>
+		<PublishCode>1707</PublishCode>
+		<Name>Davonte Holding Limited</Name>
+		<INN>12183703C</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>299</ExternalID>
+		<ExternalParentID/>
+		<Code>1708</Code>
+		<PublishCode>1708</PublishCode>
+		<Name>Sabiedribas ar ierobezotu atbildibu "ITERA Latvija"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>300</ExternalID>
+		<ExternalParentID/>
+		<Code>1711</Code>
+		<PublishCode>1711</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ОВИТ"</Name>
+		<INN>7727568649</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>301</ExternalID>
+		<ExternalParentID/>
+		<Code>1714</Code>
+		<PublishCode>1714</PublishCode>
+		<Name>Акционерное общество "Регионгаз-инвест"</Name>
+		<INN>6659075136</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>302</ExternalID>
+		<ExternalParentID/>
+		<Code>1715</Code>
+		<PublishCode>1715</PublishCode>
+		<Name>Акционерное общество "Расчетный центр Урала"</Name>
+		<INN>6659190330</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>303</ExternalID>
+		<ExternalParentID/>
+		<Code>1717</Code>
+		<PublishCode>1717</PublishCode>
+		<Name>Акционерное общество "Уралсевергаз-независимая газовая компания"</Name>
+		<INN>6604008860</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>304</ExternalID>
+		<ExternalParentID/>
+		<Code>1719</Code>
+		<PublishCode>1719</PublishCode>
+		<Name>Закрытое акционерное общество "Пургаз"</Name>
+		<INN>8913000816</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>305</ExternalID>
+		<ExternalParentID/>
+		<Code>1720</Code>
+		<PublishCode>1720</PublishCode>
+		<Name>Акционерное общество "Сибирская нефтегазовая компания"</Name>
+		<INN>8904005920</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>306</ExternalID>
+		<ExternalParentID/>
+		<Code>1722</Code>
+		<PublishCode>1722</PublishCode>
+		<Name>Акционерное общество "Братскэкогаз"</Name>
+		<INN>3803101611</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>307</ExternalID>
+		<ExternalParentID/>
+		<Code>1724</Code>
+		<PublishCode>1724</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Ямал"</Name>
+		<INN>8913010010</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>308</ExternalID>
+		<ExternalParentID/>
+		<Code>1725</Code>
+		<PublishCode>1725</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частная охранная организация "РН-Охрана-Ижевск"</Name>
+		<INN>1831138306</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>309</ExternalID>
+		<ExternalParentID/>
+		<Code>1726</Code>
+		<PublishCode>1726</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Таас-Юрях Нефтегазодобыча"</Name>
+		<INN>1433015633</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>310</ExternalID>
+		<ExternalParentID/>
+		<Code>1727</Code>
+		<PublishCode>1727</PublishCode>
+		<Name>Rosneft Overseas SA</Name>
+		<INN>060.758.038/PM1</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>311</ExternalID>
+		<ExternalParentID/>
+		<Code>1728</Code>
+		<PublishCode>1728</PublishCode>
+		<Name>RN Nordic Oil AS</Name>
+		<INN>998433223</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>312</ExternalID>
+		<ExternalParentID/>
+		<Code>1735</Code>
+		<PublishCode>1735</PublishCode>
+		<Name>Акционерное общество "РН Менеджмент"</Name>
+		<INN>7705481874</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>313</ExternalID>
+		<ExternalParentID/>
+		<Code>1736</Code>
+		<PublishCode>1736</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Снабжение"</Name>
+		<INN>8603233401</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>314</ExternalID>
+		<ExternalParentID/>
+		<Code>1737</Code>
+		<PublishCode>1737</PublishCode>
+		<Name>Акционерное общество "Нижневартовское нефтегазодобывающее предприятие"</Name>
+		<INN>8603089941</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>315</ExternalID>
+		<ExternalParentID/>
+		<Code>1738</Code>
+		<PublishCode>1738</PublishCode>
+		<Name>Публичное акционерное общество "Варьеганнефтегаз"</Name>
+		<INN>8609000160</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>316</ExternalID>
+		<ExternalParentID/>
+		<Code>1739</Code>
+		<PublishCode>1739</PublishCode>
+		<Name>Акционерное общество "Самотлорнефтегаз"</Name>
+		<INN>8603089934</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>317</ExternalID>
+		<ExternalParentID/>
+		<Code>1741</Code>
+		<PublishCode>1741</PublishCode>
+		<Name>Акционерное общество "РН-Няганьнефтегаз"</Name>
+		<INN>8610010727</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>318</ExternalID>
+		<ExternalParentID/>
+		<Code>1742</Code>
+		<PublishCode>1742</PublishCode>
+		<Name>Акционерное общество "Корпорация Югранефть"</Name>
+		<INN>8603037291</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>319</ExternalID>
+		<ExternalParentID/>
+		<Code>1744</Code>
+		<PublishCode>1744</PublishCode>
+		<Name>Акционерное общество "РОСПАН ИНТЕРНЕШНЛ"</Name>
+		<INN>7727004530</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>320</ExternalID>
+		<ExternalParentID/>
+		<Code>1745</Code>
+		<PublishCode>1745</PublishCode>
+		<Name>Акционерное общество "Тюменнефтегаз"</Name>
+		<INN>7202027216</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>321</ExternalID>
+		<ExternalParentID/>
+		<Code>1746</Code>
+		<PublishCode>1746</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Уватнефтегаз"</Name>
+		<INN>7225003194</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>322</ExternalID>
+		<ExternalParentID/>
+		<Code>1747</Code>
+		<PublishCode>1747</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Западно-Никольское"</Name>
+		<INN>7202138950</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>323</ExternalID>
+		<ExternalParentID/>
+		<Code>1750</Code>
+		<PublishCode>1750</PublishCode>
+		<Name>Акционерное общество "Русско-Реченское"</Name>
+		<INN>8910002614</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>324</ExternalID>
+		<ExternalParentID/>
+		<Code>1751</Code>
+		<PublishCode>1751</PublishCode>
+		<Name>Акционерное общество "Сузун"</Name>
+		<INN>8401005829</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>325</ExternalID>
+		<ExternalParentID/>
+		<Code>1752</Code>
+		<PublishCode>1752</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Тагульское"</Name>
+		<INN>2464051552</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>326</ExternalID>
+		<ExternalParentID/>
+		<Code>1753</Code>
+		<PublishCode>1753</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Тюменский нефтяной научный центр"</Name>
+		<INN>7202157173</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>327</ExternalID>
+		<ExternalParentID/>
+		<Code>1761</Code>
+		<PublishCode>1761</PublishCode>
+		<Name>Акционерное общество "Мессояханефтегаз"</Name>
+		<INN>8910002621</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>328</ExternalID>
+		<ExternalParentID/>
+		<Code>1762</Code>
+		<PublishCode>1762</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Северо-Варьеганское"</Name>
+		<INN>8603157278</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>329</ExternalID>
+		<ExternalParentID/>
+		<Code>1768</Code>
+		<PublishCode>1768</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Аэро Шереметьево"</Name>
+		<INN>5047109130</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>330</ExternalID>
+		<ExternalParentID/>
+		<Code>1769</Code>
+		<PublishCode>1769</PublishCode>
+		<Name>Закрытое акционерное общество "Топливо-заправочный комплекс Шереметьево"</Name>
+		<INN>5047058580</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>331</ExternalID>
+		<ExternalParentID/>
+		<Code>1770</Code>
+		<PublishCode>1770</PublishCode>
+		<Name>Публичное акционерное общество "Оренбургнефть"</Name>
+		<INN>5612002469</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>332</ExternalID>
+		<ExternalParentID/>
+		<Code>1771</Code>
+		<PublishCode>1771</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Красноленинский нефтеперерабатывающий завод"</Name>
+		<INN>8610011223</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>333</ExternalID>
+		<ExternalParentID/>
+		<Code>1772</Code>
+		<PublishCode>1772</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Запсибнефтепродукт"</Name>
+		<INN>8603098248</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>334</ExternalID>
+		<ExternalParentID/>
+		<Code>1773</Code>
+		<PublishCode>1773</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Нижневартовское нефтеперерабатывающее объединение"</Name>
+		<INN>8603087285</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>335</ExternalID>
+		<ExternalParentID/>
+		<Code>1774</Code>
+		<PublishCode>1774</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Югра"</Name>
+		<INN>8603102328</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>336</ExternalID>
+		<ExternalParentID/>
+		<Code>1775</Code>
+		<PublishCode>1775</PublishCode>
+		<Name>Публичное акционерное общество "Рязаньнефтепродукт"</Name>
+		<INN>6227004160</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>337</ExternalID>
+		<ExternalParentID/>
+		<Code>1776</Code>
+		<PublishCode>1776</PublishCode>
+		<Name>Публичное акционерное общество "Калуганефтепродукт"</Name>
+		<INN>4029001011</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>338</ExternalID>
+		<ExternalParentID/>
+		<Code>1777</Code>
+		<PublishCode>1777</PublishCode>
+		<Name>Акционерное общество "Карелиянефтепродукт"</Name>
+		<INN>1001011293</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>339</ExternalID>
+		<ExternalParentID/>
+		<Code>1778</Code>
+		<PublishCode>1778</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Черноземье"</Name>
+		<INN>4629046705</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>340</ExternalID>
+		<ExternalParentID/>
+		<Code>1779</Code>
+		<PublishCode>1779</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Ново-Уренгойская газовая компания"</Name>
+		<INN>7704671745</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>341</ExternalID>
+		<ExternalParentID/>
+		<Code>1780</Code>
+		<PublishCode>1780</PublishCode>
+		<Name>Публичное акционерное общество "Туланефтепродукт"</Name>
+		<INN>7107036789</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>342</ExternalID>
+		<ExternalParentID/>
+		<Code>1781</Code>
+		<PublishCode>1781</PublishCode>
+		<Name>Акционерное общество "Рязанская нефтеперерабатывающая компания"</Name>
+		<INN>6227007322</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>343</ExternalID>
+		<ExternalParentID/>
+		<Code>1782</Code>
+		<PublishCode>1782</PublishCode>
+		<Name>Акционерное общество "Урал-Регион-нефтепродукт"</Name>
+		<INN>6658163220</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>344</ExternalID>
+		<ExternalParentID/>
+		<Code>1783</Code>
+		<PublishCode>1783</PublishCode>
+		<Name>Акционерное общество "Петрол Комплекс Эквипмент Кампани"</Name>
+		<INN>7707126064</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>345</ExternalID>
+		<ExternalParentID/>
+		<Code>1784</Code>
+		<PublishCode>1784</PublishCode>
+		<Name>Акционерное общество "РН-Столица"</Name>
+		<INN>7705379133</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>346</ExternalID>
+		<ExternalParentID/>
+		<Code>1785</Code>
+		<PublishCode>1785</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Трамонтана"</Name>
+		<INN>7708188391</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>347</ExternalID>
+		<ExternalParentID/>
+		<Code>1789</Code>
+		<PublishCode>1789</PublishCode>
+		<Name>Spolka z ograniczona odpowiedzialnoscia ''Magystral-Polska''</Name>
+		<INN>1070006480</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>348</ExternalID>
+		<ExternalParentID/>
+		<Code>1790</Code>
+		<PublishCode>1790</PublishCode>
+		<Name>Акционерное общество "БАМ"</Name>
+		<INN>7736159699</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>349</ExternalID>
+		<ExternalParentID/>
+		<Code>1793</Code>
+		<PublishCode>1793</PublishCode>
+		<Name>Акционерное общество "МТИ"</Name>
+		<INN>7709096457</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>350</ExternalID>
+		<ExternalParentID/>
+		<Code>1794</Code>
+		<PublishCode>1794</PublishCode>
+		<Name>Акционерное общество "ВЕКТОР-МОБИЛЬ"</Name>
+		<INN>7732024958</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>351</ExternalID>
+		<ExternalParentID/>
+		<Code>1799</Code>
+		<PublishCode>1799</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Маркетинг"</Name>
+		<INN>5024031889</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>352</ExternalID>
+		<ExternalParentID/>
+		<Code>1802</Code>
+		<PublishCode>1802</PublishCode>
+		<Name>Публичное акционерное общество "Саратовнефтепродукт"</Name>
+		<INN>6452034165</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>353</ExternalID>
+		<ExternalParentID/>
+		<Code>1805</Code>
+		<PublishCode>1805</PublishCode>
+		<Name>Публичное акционерное общество "Саратовский нефтеперерабатывающий завод"</Name>
+		<INN>6451114900</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>354</ExternalID>
+		<ExternalParentID/>
+		<Code>1808</Code>
+		<PublishCode>1808</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Смазочные материалы"</Name>
+		<INN>6227007682</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>355</ExternalID>
+		<ExternalParentID/>
+		<Code>1809</Code>
+		<PublishCode>1809</PublishCode>
+		<Name>Иностранное общество с ограниченной ответственностью "РН-Запад"</Name>
+		<INN>690653143</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>356</ExternalID>
+		<ExternalParentID/>
+		<Code>1810</Code>
+		<PublishCode>1810</PublishCode>
+		<Name>Акционерное общество "РН-Ярославль"</Name>
+		<INN>7604138678</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>357</ExternalID>
+		<ExternalParentID/>
+		<Code>1811</Code>
+		<PublishCode>1811</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Индастриз"</Name>
+		<INN>7704736350</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>358</ExternalID>
+		<ExternalParentID/>
+		<Code>1817</Code>
+		<PublishCode>1817</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ТБинформ"</Name>
+		<INN>7705754948</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>359</ExternalID>
+		<ExternalParentID/>
+		<Code>1822</Code>
+		<PublishCode>1822</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ДИНК-ИНВЕСТ"</Name>
+		<INN>7730125647</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>360</ExternalID>
+		<ExternalParentID/>
+		<Code>1826</Code>
+		<PublishCode>1826</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Генерал Авиа"</Name>
+		<INN>7702645725</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>361</ExternalID>
+		<ExternalParentID/>
+		<Code>1827</Code>
+		<PublishCode>1827</PublishCode>
+		<Name>Закрытое акционерное общество "Региональный Центр Сервисных Услуг-Нижневартовск"</Name>
+		<INN>8603103466</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>362</ExternalID>
+		<ExternalParentID/>
+		<Code>1828</Code>
+		<PublishCode>1828</PublishCode>
+		<Name>Публичное акционерное общество "РН-Западная Сибирь"</Name>
+		<INN>8620003528</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>363</ExternalID>
+		<ExternalParentID/>
+		<Code>1829</Code>
+		<PublishCode>1829</PublishCode>
+		<Name>Открытое акционерное общество "Белозернефть"</Name>
+		<INN>8603002852</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>364</ExternalID>
+		<ExternalParentID/>
+		<Code>1830</Code>
+		<PublishCode>1830</PublishCode>
+		<Name>Открытое акционерное общество "Нижневартовскнефть"</Name>
+		<INN>8603026148</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>365</ExternalID>
+		<ExternalParentID/>
+		<Code>1831</Code>
+		<PublishCode>1831</PublishCode>
+		<Name>Открытое акционерное общество "Приобьнефть"</Name>
+		<INN>8603014030</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>366</ExternalID>
+		<ExternalParentID/>
+		<Code>1832</Code>
+		<PublishCode>1832</PublishCode>
+		<Name>Открытое акционерное общество "Самотлорнефть"</Name>
+		<INN>8603032215</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>367</ExternalID>
+		<ExternalParentID/>
+		<Code>1835</Code>
+		<PublishCode>1835</PublishCode>
+		<Name>Акционерное общество "Рязанский завод нефтехимпродуктов"</Name>
+		<INN>6228007653</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>368</ExternalID>
+		<ExternalParentID/>
+		<Code>1841</Code>
+		<PublishCode>1841</PublishCode>
+		<Name>Rosneft Vietnam B.V.</Name>
+		<INN>8232.60.057</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>369</ExternalID>
+		<ExternalParentID/>
+		<Code>1843</Code>
+		<PublishCode>1843</PublishCode>
+		<Name>Rosneft Holdings B.V.</Name>
+		<INN>850416528</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>370</ExternalID>
+		<ExternalParentID/>
+		<Code>1844</Code>
+		<PublishCode>1844</PublishCode>
+		<Name>Boqueron Holdings B.V.</Name>
+		<INN>816051227</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>371</ExternalID>
+		<ExternalParentID/>
+		<Code>1845</Code>
+		<PublishCode>1845</PublishCode>
+		<Name>DZO Holdings B.V.</Name>
+		<INN>816051306</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>372</ExternalID>
+		<ExternalParentID/>
+		<Code>1846</Code>
+		<PublishCode>1846</PublishCode>
+		<Name>Petrolera RN Ltd.</Name>
+		<INN>115,189B</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>373</ExternalID>
+		<ExternalParentID/>
+		<Code>1847</Code>
+		<PublishCode>1847</PublishCode>
+		<Name>Rosneft Energia GmbH</Name>
+		<INN>27/151/00943</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>374</ExternalID>
+		<ExternalParentID/>
+		<Code>1852</Code>
+		<PublishCode>1852</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Базовый Авиатопливный Оператор"</Name>
+		<INN>7706693215</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>375</ExternalID>
+		<ExternalParentID/>
+		<Code>1858</Code>
+		<PublishCode>1858</PublishCode>
+		<Name>Fedynskmorneftegaz S.a r.l.</Name>
+		<INN>20132420794</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>376</ExternalID>
+		<ExternalParentID/>
+		<Code>1859</Code>
+		<PublishCode>1859</PublishCode>
+		<Name>Rosneft Enterprises Limited</Name>
+		<INN>473750</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>377</ExternalID>
+		<ExternalParentID/>
+		<Code>1865</Code>
+		<PublishCode>1865</PublishCode>
+		<Name>Акционерное общество "Единая энергоснабжающая компания"</Name>
+		<INN>7727232575</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>378</ExternalID>
+		<ExternalParentID/>
+		<Code>1870</Code>
+		<PublishCode>1870</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Редакция телепрограммы "Веста"</Name>
+		<INN>5617004452</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>379</ExternalID>
+		<ExternalParentID/>
+		<Code>1872</Code>
+		<PublishCode>1872</PublishCode>
+		<Name>Акционерное общество "РН-Медиа"</Name>
+		<INN>7705350335</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>380</ExternalID>
+		<ExternalParentID/>
+		<Code>1876</Code>
+		<PublishCode>1876</PublishCode>
+		<Name>Частное акционерное общество "Лисичанская нефтяная инвестиционная компания"</Name>
+		<INN>322929212017</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>381</ExternalID>
+		<ExternalParentID/>
+		<Code>1880</Code>
+		<PublishCode>1880</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН КОММЕРС"</Name>
+		<INN>335001926594</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>382</ExternalID>
+		<ExternalParentID/>
+		<Code>1900</Code>
+		<PublishCode>1900</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Трейд"</Name>
+		<INN>7804303914</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>383</ExternalID>
+		<ExternalParentID/>
+		<Code>1901</Code>
+		<PublishCode>1901</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Трейдинг"</Name>
+		<INN>7842354941</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>384</ExternalID>
+		<ExternalParentID/>
+		<Code>1941</Code>
+		<PublishCode>1941</PublishCode>
+		<Name>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "РН РАЗВЕДКА И ДОБЫЧА УКРАИНА"</Name>
+		<INN>372164205625</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>385</ExternalID>
+		<ExternalParentID/>
+		<Code>1945</Code>
+		<PublishCode>1945</PublishCode>
+		<Name>Rosneft Holding Limited</Name>
+		<INN>10361535E</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>386</ExternalID>
+		<ExternalParentID/>
+		<Code>1946</Code>
+		<PublishCode>1946</PublishCode>
+		<Name>Rosneft International Holdings Limited</Name>
+		<INN>10354574V</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>387</ExternalID>
+		<ExternalParentID/>
+		<Code>1948</Code>
+		<PublishCode>1948</PublishCode>
+		<Name>Novy Investments Limited</Name>
+		<INN>12109592Z</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>388</ExternalID>
+		<ExternalParentID/>
+		<Code>1949</Code>
+		<PublishCode>1949</PublishCode>
+		<Name>Rosneft Industrial Holdings Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>389</ExternalID>
+		<ExternalParentID/>
+		<Code>1950</Code>
+		<PublishCode>1950</PublishCode>
+		<Name>Rosneft Trade Limited</Name>
+		<INN>12122790L</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>390</ExternalID>
+		<ExternalParentID/>
+		<Code>1952</Code>
+		<PublishCode>1952</PublishCode>
+		<Name>East Siberia Holdings Limited</Name>
+		<INN>12091526C</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>391</ExternalID>
+		<ExternalParentID/>
+		<Code>1953</Code>
+		<PublishCode>1953</PublishCode>
+		<Name>Energico Holdings Co. Limited</Name>
+		<INN>12111683F</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>392</ExternalID>
+		<ExternalParentID/>
+		<Code>1955</Code>
+		<PublishCode>1955</PublishCode>
+		<Name>Shatskmorneftegaz S.a r.l.</Name>
+		<INN>20132420808</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>393</ExternalID>
+		<ExternalParentID/>
+		<Code>1956</Code>
+		<PublishCode>1956</PublishCode>
+		<Name>Martanco Holdings Co. Limited</Name>
+		<INN>12124130V</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>394</ExternalID>
+		<ExternalParentID/>
+		<Code>1960</Code>
+		<PublishCode>1960</PublishCode>
+		<Name>Rosneft European Services Group S.A.</Name>
+		<INN>060.886.015</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>395</ExternalID>
+		<ExternalParentID/>
+		<Code>1961</Code>
+		<PublishCode>1961</PublishCode>
+		<Name>Perseymorneftegaz S.a r.l.</Name>
+		<INN>20132419370</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>396</ExternalID>
+		<ExternalParentID/>
+		<Code>1963</Code>
+		<PublishCode>1963</PublishCode>
+		<Name>Rosneft SH Investments Limited</Name>
+		<INN>12135708I</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>397</ExternalID>
+		<ExternalParentID/>
+		<Code>1964</Code>
+		<PublishCode>1964</PublishCode>
+		<Name>TOC Investments Corporation Limited</Name>
+		<INN>10361500T</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>398</ExternalID>
+		<ExternalParentID/>
+		<Code>1965</Code>
+		<PublishCode>1965</PublishCode>
+		<Name>Rosneft Finance S.A.</Name>
+		<INN>20052207186</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>399</ExternalID>
+		<ExternalParentID/>
+		<Code>1967</Code>
+		<PublishCode>1967</PublishCode>
+		<Name>RN Overseas Holdings Limited</Name>
+		<INN>12268024P</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>400</ExternalID>
+		<ExternalParentID/>
+		<Code>1968</Code>
+		<PublishCode>1968</PublishCode>
+		<Name>Rosneft Operating Services B.V.</Name>
+		<INN>850579211</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>401</ExternalID>
+		<ExternalParentID/>
+		<Code>1969</Code>
+		<PublishCode>1969</PublishCode>
+		<Name>Rosneft BRASIL E&amp;P LTDA.</Name>
+		<INN>13.612.806/0001-82</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>402</ExternalID>
+		<ExternalParentID/>
+		<Code>1970</Code>
+		<PublishCode>1970</PublishCode>
+		<Name>Rosneft Latin America S.a r.l.</Name>
+		<INN>20112433385</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>403</ExternalID>
+		<ExternalParentID/>
+		<Code>1972</Code>
+		<PublishCode>1972</PublishCode>
+		<Name>Rosneft Pipelines Vietnam B.V.</Name>
+		<INN>8065.60.721</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>404</ExternalID>
+		<ExternalParentID/>
+		<Code>1973</Code>
+		<PublishCode>1973</PublishCode>
+		<Name>GRUPO ROSNEFT, C.A.</Name>
+		<INN>J296272360</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>405</ExternalID>
+		<ExternalParentID/>
+		<Code>1974</Code>
+		<PublishCode>1974</PublishCode>
+		<Name>Акционерное общество "Куйбышева"</Name>
+		<INN>5633003054</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>406</ExternalID>
+		<ExternalParentID/>
+		<Code>1975</Code>
+		<PublishCode>1975</PublishCode>
+		<Name>Акционерное общество "РН Холдинг"</Name>
+		<INN>7225004092</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>407</ExternalID>
+		<ExternalParentID/>
+		<Code>1976</Code>
+		<PublishCode>1976</PublishCode>
+		<Name>Акционерное общество "РН-СпецСтрой"</Name>
+		<INN>8610012900</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>408</ExternalID>
+		<ExternalParentID/>
+		<Code>1977</Code>
+		<PublishCode>1977</PublishCode>
+		<Name>Общество с ограниченной ответственностью "УватСтройИнвест"</Name>
+		<INN>7225003973</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>409</ExternalID>
+		<ExternalParentID/>
+		<Code>1978</Code>
+		<PublishCode>1978</PublishCode>
+		<Name>Акционерное общество "СЛ-Трейдинг"</Name>
+		<INN>7225004328</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>410</ExternalID>
+		<ExternalParentID/>
+		<Code>1982</Code>
+		<PublishCode>1982</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ТЗК-Актив"</Name>
+		<INN>6672322200</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>411</ExternalID>
+		<ExternalParentID/>
+		<Code>1983</Code>
+		<PublishCode>1983</PublishCode>
+		<Name>Акционерное общество Топливозаправочная компания "Кольцово"</Name>
+		<INN>6672303279</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>412</ExternalID>
+		<ExternalParentID/>
+		<Code>1986</Code>
+		<PublishCode>1986</PublishCode>
+		<Name>Tuapsemorneftegaz Holding SARL</Name>
+		<INN>20132402281</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>413</ExternalID>
+		<ExternalParentID/>
+		<Code>1987</Code>
+		<PublishCode>1987</PublishCode>
+		<Name>Karmorneftegaz Holding SARL</Name>
+		<INN>20132402338</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>414</ExternalID>
+		<ExternalParentID/>
+		<Code>1988</Code>
+		<PublishCode>1988</PublishCode>
+		<Name>Magadanmorneftegaz S.a r.l.</Name>
+		<INN>20132419583</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>415</ExternalID>
+		<ExternalParentID/>
+		<Code>1989</Code>
+		<PublishCode>1989</PublishCode>
+		<Name>Lisyanskmorneftegaz S.a r.l.</Name>
+		<INN>20132419575</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>416</ExternalID>
+		<ExternalParentID/>
+		<Code>1990</Code>
+		<PublishCode>1990</PublishCode>
+		<Name>Kashevarmorneftegaz S.a r.l.</Name>
+		<INN>20132419567</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>417</ExternalID>
+		<ExternalParentID/>
+		<Code>1991</Code>
+		<PublishCode>1991</PublishCode>
+		<Name>Barentsmorneftegaz S.a r.l.</Name>
+		<INN>20132420700</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>418</ExternalID>
+		<ExternalParentID/>
+		<Code>1992</Code>
+		<PublishCode>1992</PublishCode>
+		<Name>Tuapsemorneftegaz SARL</Name>
+		<INN>20132405329</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>419</ExternalID>
+		<ExternalParentID/>
+		<Code>1993</Code>
+		<PublishCode>1993</PublishCode>
+		<Name>Karmorneftegaz SARL</Name>
+		<INN>20132405434</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>420</ExternalID>
+		<ExternalParentID/>
+		<Code>1994</Code>
+		<PublishCode>1994</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Центральная Азия"</Name>
+		<INN>02607201310060</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>421</ExternalID>
+		<ExternalParentID/>
+		<Code>1995</Code>
+		<PublishCode>1995</PublishCode>
+		<Name>Trizneft Pilot SARL</Name>
+		<INN>20122442364</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>422</ExternalID>
+		<ExternalParentID/>
+		<Code>1996</Code>
+		<PublishCode>1996</PublishCode>
+		<Name>Rosneft Global Trade S.A.</Name>
+		<INN>20132218464</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>423</ExternalID>
+		<ExternalParentID/>
+		<Code>1997</Code>
+		<PublishCode>1997</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Ленский нефтепровод"</Name>
+		<INN>1414014480</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>424</ExternalID>
+		<ExternalParentID/>
+		<Code>1998</Code>
+		<PublishCode>1998</PublishCode>
+		<Name>AV Asia Developments Pte. Ltd.</Name>
+		<INN>201329287E</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>425</ExternalID>
+		<ExternalParentID/>
+		<Code>1999</Code>
+		<PublishCode>1999</PublishCode>
+		<Name>Акционерное общество "Современные Технологии Судостроения"</Name>
+		<INN>7725808905</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>426</ExternalID>
+		<ExternalParentID/>
+		<Code>1A01</Code>
+		<PublishCode>1A01</PublishCode>
+		<Name>CNP Venezuela C.A.</Name>
+		<INN>J299601217</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>427</ExternalID>
+		<ExternalParentID/>
+		<Code>1A02</Code>
+		<PublishCode>1A02</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Центр пожарной безопасности-Стрежевой"</Name>
+		<INN>7022017794</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>428</ExternalID>
+		<ExternalParentID/>
+		<Code>1A03</Code>
+		<PublishCode>1A03</PublishCode>
+		<Name>Акционерное общество "РН-Аэро Ростов-на-Дону"</Name>
+		<INN>6166045712</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>429</ExternalID>
+		<ExternalParentID/>
+		<Code>1A04</Code>
+		<PublishCode>1A04</PublishCode>
+		<Name>Rosneft Techno S.A.</Name>
+		<INN>20132226289</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>430</ExternalID>
+		<ExternalParentID/>
+		<Code>1A06</Code>
+		<PublishCode>1A06</PublishCode>
+		<Name>Закрытое акционерное общество "Роснефть-Армения"</Name>
+		<INN>02258424</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>431</ExternalID>
+		<ExternalParentID/>
+		<Code>1A07</Code>
+		<PublishCode>1A07</PublishCode>
+		<Name>Акционерное общество "Нижневартовская ГРЭС"</Name>
+		<INN>8620018330</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>432</ExternalID>
+		<ExternalParentID/>
+		<Code>1A08</Code>
+		<PublishCode>1A08</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-ТРАНС УКРАИНА"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>433</ExternalID>
+		<ExternalParentID/>
+		<Code>1A11</Code>
+		<PublishCode>1A11</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Центр экспертной поддержки и технического развития"</Name>
+		<INN>7203344634</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>434</ExternalID>
+		<ExternalParentID/>
+		<Code>1A12</Code>
+		<PublishCode>1A12</PublishCode>
+		<Name>Olmorneftegaz SARL</Name>
+		<INN>20142411912</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>435</ExternalID>
+		<ExternalParentID/>
+		<Code>1A13</Code>
+		<PublishCode>1A13</PublishCode>
+		<Name>Olmorneftegaz Holding SARL</Name>
+		<INN>20142410118</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>436</ExternalID>
+		<ExternalParentID/>
+		<Code>1A14</Code>
+		<PublishCode>1A14</PublishCode>
+		<Name>Anismorneftegaz SARL</Name>
+		<INN>20142411874</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>437</ExternalID>
+		<ExternalParentID/>
+		<Code>1A15</Code>
+		<PublishCode>1A15</PublishCode>
+		<Name>Anismorneftegaz Holding SARL</Name>
+		<INN>20142410215</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>438</ExternalID>
+		<ExternalParentID/>
+		<Code>1A16</Code>
+		<PublishCode>1A16</PublishCode>
+		<Name>Centrchukmorneftegaz SARL</Name>
+		<INN>20142411971</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>439</ExternalID>
+		<ExternalParentID/>
+		<Code>1A17</Code>
+		<PublishCode>1A17</PublishCode>
+		<Name>Centrchukmorneftegaz Holding SARL</Name>
+		<INN>20142410193</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>440</ExternalID>
+		<ExternalParentID/>
+		<Code>1A18</Code>
+		<PublishCode>1A18</PublishCode>
+		<Name>Lenmorneftegaz SARL</Name>
+		<INN>20142411890</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>441</ExternalID>
+		<ExternalParentID/>
+		<Code>1A19</Code>
+		<PublishCode>1A19</PublishCode>
+		<Name>Lenmorneftegaz Holding SARL</Name>
+		<INN>20142410088</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>442</ExternalID>
+		<ExternalParentID/>
+		<Code>1A20</Code>
+		<PublishCode>1A20</PublishCode>
+		<Name>Yuzhchukmorneftegaz SARL</Name>
+		<INN>20142412021</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>443</ExternalID>
+		<ExternalParentID/>
+		<Code>1A21</Code>
+		<PublishCode>1A21</PublishCode>
+		<Name>Yuzhchukmorneftegaz Holding SARL</Name>
+		<INN>20142410355</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>444</ExternalID>
+		<ExternalParentID/>
+		<Code>1A22</Code>
+		<PublishCode>1A22</PublishCode>
+		<Name>Sevkarmorneftegaz SARL</Name>
+		<INN>20142411858</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>445</ExternalID>
+		<ExternalParentID/>
+		<Code>1A23</Code>
+		<PublishCode>1A23</PublishCode>
+		<Name>Sevkarmorneftegaz Holding SARL</Name>
+		<INN>20142409934</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>446</ExternalID>
+		<ExternalParentID/>
+		<Code>1A24</Code>
+		<PublishCode>1A24</PublishCode>
+		<Name>Sevchukmorneftegaz SARL</Name>
+		<INN>20142411947</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>447</ExternalID>
+		<ExternalParentID/>
+		<Code>1A25</Code>
+		<PublishCode>1A25</PublishCode>
+		<Name>Sevchukmorneftegaz Holding SARL</Name>
+		<INN>20142410185</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>448</ExternalID>
+		<ExternalParentID/>
+		<Code>1A27</Code>
+		<PublishCode>1A27</PublishCode>
+		<Name>Акционерное общество "Белорусское управление по повышению нефтеотдачи пластов и капитальному ремонту скважин"</Name>
+		<INN>8603041837</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>449</ExternalID>
+		<ExternalParentID/>
+		<Code>1A33</Code>
+		<PublishCode>1A33</PublishCode>
+		<Name>Precision Drilling de Venezuela, C.A.</Name>
+		<INN>J300662217</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>450</ExternalID>
+		<ExternalParentID/>
+		<Code>1A34</Code>
+		<PublishCode>1A34</PublishCode>
+		<Name>P.D. Technical Services Inc</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>451</ExternalID>
+		<ExternalParentID/>
+		<Code>1A47</Code>
+		<PublishCode>1A47</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Транс Запад"</Name>
+		<INN>690659445</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>452</ExternalID>
+		<ExternalParentID/>
+		<Code>1A48</Code>
+		<PublishCode>1A48</PublishCode>
+		<Name>Закрытое акционерное общество "РН-Кыргызнефтепродукт"</Name>
+		<INN>02104200910037</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>453</ExternalID>
+		<ExternalParentID/>
+		<Code>1A49</Code>
+		<PublishCode>1A49</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Охранное детективное агентство "Mustang-Security" (Мустанг-Секьюрити)</Name>
+		<INN>02607201010038</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>454</ExternalID>
+		<ExternalParentID/>
+		<Code>1A50</Code>
+		<PublishCode>1A50</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Дельта петролиум"</Name>
+		<INN>02803200910031</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>455</ExternalID>
+		<ExternalParentID/>
+		<Code>1A51</Code>
+		<PublishCode>1A51</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Брасс оил"</Name>
+		<INN>01603200510016</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>456</ExternalID>
+		<ExternalParentID/>
+		<Code>1A54</Code>
+		<PublishCode>1A54</PublishCode>
+		<Name>RIG Research Pte. Ltd.</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>457</ExternalID>
+		<ExternalParentID/>
+		<Code>1A55</Code>
+		<PublishCode>1A55</PublishCode>
+		<Name>Petrocas Energy International Limited</Name>
+		<INN>12305192U</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>458</ExternalID>
+		<ExternalParentID/>
+		<Code>1A57</Code>
+		<PublishCode>1A57</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Прикладной инженерный и учебный центр "Сапфир"</Name>
+		<INN>7802261673</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>459</ExternalID>
+		<ExternalParentID/>
+		<Code>1A58</Code>
+		<PublishCode>1A58</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Ереван"</Name>
+		<INN>7725260961</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>460</ExternalID>
+		<ExternalParentID/>
+		<Code>1A62</Code>
+		<PublishCode>1A62</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН Газотопливная компания"</Name>
+		<INN>7725261891</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>461</ExternalID>
+		<ExternalParentID/>
+		<Code>1A63</Code>
+		<PublishCode>1A63</PublishCode>
+		<Name>Акционерное общество "Новокуйбышевская нефтехимическая компания"</Name>
+		<INN>6330017980</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>462</ExternalID>
+		<ExternalParentID/>
+		<Code>1A66</Code>
+		<PublishCode>1A66</PublishCode>
+		<Name>Pontos Energy Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>463</ExternalID>
+		<ExternalParentID/>
+		<Code>1A67</Code>
+		<PublishCode>1A67</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Нижневартовск"</Name>
+		<INN>8603214896</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>464</ExternalID>
+		<ExternalParentID/>
+		<Code>1A68</Code>
+		<PublishCode>1A68</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Ресурс"</Name>
+		<INN>7725270712</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>465</ExternalID>
+		<ExternalParentID/>
+		<Code>1A69</Code>
+		<PublishCode>1A69</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Лояльность"</Name>
+		<INN>7717287102</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>466</ExternalID>
+		<ExternalParentID/>
+		<Code>1A70</Code>
+		<PublishCode>1A70</PublishCode>
+		<Name>Закрытое акционерное общество "Кросс-инжиниринг"</Name>
+		<INN>7727553360</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>467</ExternalID>
+		<ExternalParentID/>
+		<Code>1A71</Code>
+		<PublishCode>1A71</PublishCode>
+		<Name>Закрытое акционерное общество "ОМОС-ТРЕЙД"</Name>
+		<INN>7714627745</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>468</ExternalID>
+		<ExternalParentID/>
+		<Code>1A72</Code>
+		<PublishCode>1A72</PublishCode>
+		<Name>Закрытое акционерное общество "Исодима-финанс"</Name>
+		<INN>7714622828</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>469</ExternalID>
+		<ExternalParentID/>
+		<Code>1A73</Code>
+		<PublishCode>1A73</PublishCode>
+		<Name>RN Refining &amp; Marketing GmbH</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>470</ExternalID>
+		<ExternalParentID/>
+		<Code>1A75</Code>
+		<PublishCode>1A75</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Частное охранное предприятие "РН-Охрана-Рязань"</Name>
+		<INN>6228040555</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>471</ExternalID>
+		<ExternalParentID/>
+		<Code>1A76</Code>
+		<PublishCode>1A76</PublishCode>
+		<Name>Акционерное общество "30 судоремонтный завод"</Name>
+		<INN>2512304968</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>472</ExternalID>
+		<ExternalParentID/>
+		<Code>1A77</Code>
+		<PublishCode>1A77</PublishCode>
+		<Name>Акционерное общество "Дальневосточный центр судостроения и судоремонта"</Name>
+		<INN>2536196045</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>473</ExternalID>
+		<ExternalParentID/>
+		<Code>1A78</Code>
+		<PublishCode>1A78</PublishCode>
+		<Name>Открытое акционерное общество "Научно-исследовательский институт "Берег"</Name>
+		<INN>2539056254</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>474</ExternalID>
+		<ExternalParentID/>
+		<Code>1A79</Code>
+		<PublishCode>1A79</PublishCode>
+		<Name>Акционерное общество "Центр судоремонта "Дальзавод"</Name>
+		<INN>2536210349</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>475</ExternalID>
+		<ExternalParentID/>
+		<Code>1A80</Code>
+		<PublishCode>1A80</PublishCode>
+		<Name>Акционерное общество "179 судоремонтный завод"</Name>
+		<INN>2725078713</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>476</ExternalID>
+		<ExternalParentID/>
+		<Code>1A81</Code>
+		<PublishCode>1A81</PublishCode>
+		<Name>Акционерное общество "ВОСТОК-РАФФЛС"</Name>
+		<INN>2536229029</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>477</ExternalID>
+		<ExternalParentID/>
+		<Code>1A82</Code>
+		<PublishCode>1A82</PublishCode>
+		<Name>Акционерное общество "Северо-Восточный ремонтный центр"</Name>
+		<INN>4102009338</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>478</ExternalID>
+		<ExternalParentID/>
+		<Code>1A83</Code>
+		<PublishCode>1A83</PublishCode>
+		<Name>Акционерное общество "92 ордена Трудового Красного Знамени судоремонтный завод"</Name>
+		<INN>2537055230</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>479</ExternalID>
+		<ExternalParentID/>
+		<Code>1A84</Code>
+		<PublishCode>1A84</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Амурский судостроительный завод–Гражданские проекты"</Name>
+		<INN>2703056138</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>480</ExternalID>
+		<ExternalParentID/>
+		<Code>1A85</Code>
+		<PublishCode>1A85</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Сервис-Восток"</Name>
+		<INN>2503019570</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>481</ExternalID>
+		<ExternalParentID/>
+		<Code>1A86</Code>
+		<PublishCode>1A86</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Амурский судостроительный завод-СПТБ"</Name>
+		<INN>2703006289</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>482</ExternalID>
+		<ExternalParentID/>
+		<Code>1A87</Code>
+		<PublishCode>1A87</PublishCode>
+		<Name>Общество с ограниченной ответственностью Дальневосточный проектный институт "Востокпроектверфь"</Name>
+		<INN>2536207610</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>483</ExternalID>
+		<ExternalParentID/>
+		<Code>1A90</Code>
+		<PublishCode>1A90</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ЗВЕЗДА-ДСМЕ"</Name>
+		<INN>2536231564</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>484</ExternalID>
+		<ExternalParentID/>
+		<Code>1A91</Code>
+		<PublishCode>1A91</PublishCode>
+		<Name>Rosneft Singapore Pte. Ltd.</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>485</ExternalID>
+		<ExternalParentID/>
+		<Code>1A92</Code>
+		<PublishCode>1A92</PublishCode>
+		<Name>Акционерное общество "Дальневосточный завод "Звезда"</Name>
+		<INN>2503026908</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>486</ExternalID>
+		<ExternalParentID/>
+		<Code>1A93</Code>
+		<PublishCode>1A93</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-ГРП"</Name>
+		<INN>8609016058</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>487</ExternalID>
+		<ExternalParentID/>
+		<Code>1A94</Code>
+		<PublishCode>1A94</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ПЕТРОЛ МАРКЕТ"</Name>
+		<INN>02625871</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>488</ExternalID>
+		<ExternalParentID/>
+		<Code>1A95</Code>
+		<PublishCode>1A95</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Ведомственная охрана"</Name>
+		<INN>7714359863</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>489</ExternalID>
+		<ExternalParentID/>
+		<Code>1A96</Code>
+		<PublishCode>1A96</PublishCode>
+		<Name>Акционерное общество "82 судоремонтный завод"</Name>
+		<INN>5110002842</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>490</ExternalID>
+		<ExternalParentID/>
+		<Code>1A97</Code>
+		<PublishCode>1A97</PublishCode>
+		<Name>AET-Raffineriebeteiligungsgesellschaft mbH</Name>
+		<INN>062/105/00241</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>491</ExternalID>
+		<ExternalParentID/>
+		<Code>1A98</Code>
+		<PublishCode>1A98</PublishCode>
+		<Name>PCK Raffinerie GmbH</Name>
+		<INN>062/116/00266</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>492</ExternalID>
+		<ExternalParentID/>
+		<Code>1A99</Code>
+		<PublishCode>1A99</PublishCode>
+		<Name>IP Industriepark Schwedt Verwaltungsgesellschaft mbH</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>493</ExternalID>
+		<ExternalParentID/>
+		<Code>1B00</Code>
+		<PublishCode>1B00</PublishCode>
+		<Name>IP Industriepark Schwedt GmbH &amp; Co. KG</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>494</ExternalID>
+		<ExternalParentID/>
+		<Code>1B02</Code>
+		<PublishCode>1B02</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Печора СПГ"</Name>
+		<INN>9705052332</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>495</ExternalID>
+		<ExternalParentID/>
+		<Code>1B04</Code>
+		<PublishCode>1B04</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Славнефть-Красноярскнефтегаз"</Name>
+		<INN>2464036561</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>496</ExternalID>
+		<ExternalParentID/>
+		<Code>1B05</Code>
+		<PublishCode>1B05</PublishCode>
+		<Name>Cetracore Energy GmbH</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>497</ExternalID>
+		<ExternalParentID/>
+		<Code>1B06</Code>
+		<PublishCode>1B06</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Ванкор"</Name>
+		<INN>2465142996</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>498</ExternalID>
+		<ExternalParentID/>
+		<Code>1B08</Code>
+		<PublishCode>1B08</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Печора СПГ"</Name>
+		<INN>7731590774</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>499</ExternalID>
+		<ExternalParentID/>
+		<Code>1B09</Code>
+		<PublishCode>1B09</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ЕвроСеверНефть"</Name>
+		<INN>7709765620</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>500</ExternalID>
+		<ExternalParentID/>
+		<Code>1B10</Code>
+		<PublishCode>1B10</PublishCode>
+		<Name>Акционерное общество "СН Инвест"</Name>
+		<INN>2983006955</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>501</ExternalID>
+		<ExternalParentID/>
+		<Code>1B11</Code>
+		<PublishCode>1B11</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Сибирская Интернет Компания"</Name>
+		<INN>7708119944</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>502</ExternalID>
+		<ExternalParentID/>
+		<Code>1B13</Code>
+		<PublishCode>1B13</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Завод по производству устьевых арматур Сапфир"</Name>
+		<INN>5190056417</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>503</ExternalID>
+		<ExternalParentID/>
+		<Code>1B14</Code>
+		<PublishCode>1B14</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Завод по производству винто-рулевых колонок Сапфир"</Name>
+		<INN>2503032563</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>504</ExternalID>
+		<ExternalParentID/>
+		<Code>1B15</Code>
+		<PublishCode>1B15</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Завод по производству судового электрооборудования Сапфир"</Name>
+		<INN>2503032556</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>505</ExternalID>
+		<ExternalParentID/>
+		<Code>1B16</Code>
+		<PublishCode>1B16</PublishCode>
+		<Name>Акционерное общество "Центральное конструкторское бюро "Лазурит"</Name>
+		<INN>5263000105</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>506</ExternalID>
+		<ExternalParentID/>
+		<Code>1B17</Code>
+		<PublishCode>1B17</PublishCode>
+		<Name>PETROCAS ENERGY SA</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>507</ExternalID>
+		<ExternalParentID/>
+		<Code>1B20</Code>
+		<PublishCode>1B20</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ВестИнвест"</Name>
+		<INN>7710708288</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>508</ExternalID>
+		<ExternalParentID/>
+		<Code>1B21</Code>
+		<PublishCode>1B21</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Стандарт"</Name>
+		<INN>5638064597</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>509</ExternalID>
+		<ExternalParentID/>
+		<Code>1B22</Code>
+		<PublishCode>1B22</PublishCode>
+		<Name>Petrocas Energy Investments Ltd</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>510</ExternalID>
+		<ExternalParentID/>
+		<Code>1B23</Code>
+		<PublishCode>1B23</PublishCode>
+		<Name>Petrocas Management Services Ltd</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>511</ExternalID>
+		<ExternalParentID/>
+		<Code>1B24</Code>
+		<PublishCode>1B24</PublishCode>
+		<Name>Petrocas Energy Management Limited</Name>
+		<INN>12297379K</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>512</ExternalID>
+		<ExternalParentID/>
+		<Code>1B25</Code>
+		<PublishCode>1B25</PublishCode>
+		<Name>Petrocas Energy Georgia LLC</Name>
+		<INN>404950095</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>513</ExternalID>
+		<ExternalParentID/>
+		<Code>1B26</Code>
+		<PublishCode>1B26</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Лещевское"</Name>
+		<INN>6315007071</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>514</ExternalID>
+		<ExternalParentID/>
+		<Code>1B27</Code>
+		<PublishCode>1B27</PublishCode>
+		<Name>Energy Investments Venture Holdings LLC</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>515</ExternalID>
+		<ExternalParentID/>
+		<Code>1B28</Code>
+		<PublishCode>1B28</PublishCode>
+		<Name>Agreston Holding Limited</Name>
+		<INN>12259078G</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>516</ExternalID>
+		<ExternalParentID/>
+		<Code>1B29</Code>
+		<PublishCode>1B29</PublishCode>
+		<Name>Porima Limited</Name>
+		<INN>12289660F</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>517</ExternalID>
+		<ExternalParentID/>
+		<Code>1B30</Code>
+		<PublishCode>1B30</PublishCode>
+		<Name>Black Sea Trans Ltd</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>518</ExternalID>
+		<ExternalParentID/>
+		<Code>1B31</Code>
+		<PublishCode>1B31</PublishCode>
+		<Name>Trum Petroleum Holding Limited</Name>
+		<INN>12201705U</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>519</ExternalID>
+		<ExternalParentID/>
+		<Code>1B32</Code>
+		<PublishCode>1B32</PublishCode>
+		<Name>ARGOMAX ENERGY GROUP LIMITED</Name>
+		<INN>12303622D</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>520</ExternalID>
+		<ExternalParentID/>
+		<Code>1B33</Code>
+		<PublishCode>1B33</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Славнефть-Научно-производственный центр"</Name>
+		<INN>6901005358</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>521</ExternalID>
+		<ExternalParentID/>
+		<Code>1B35</Code>
+		<PublishCode>1B35</PublishCode>
+		<Name>Trans-Balkan Pipeline B.V.</Name>
+		<INN>819005629</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>522</ExternalID>
+		<ExternalParentID/>
+		<Code>1B36</Code>
+		<PublishCode>1B36</PublishCode>
+		<Name>Акционерное общество "Топливно-заправочный комплекс "Славнефть-Туношна"</Name>
+		<INN>7627018793</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>523</ExternalID>
+		<ExternalParentID/>
+		<Code>1B37</Code>
+		<PublishCode>1B37</PublishCode>
+		<Name>Акционерное общество "Славнефть-Эстейт"</Name>
+		<INN>7729383844</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>524</ExternalID>
+		<ExternalParentID/>
+		<Code>1B38</Code>
+		<PublishCode>1B38</PublishCode>
+		<Name>Открытое акционерное общество "Славнефть-Мегионнефтегаз"</Name>
+		<INN>8605003932</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>525</ExternalID>
+		<ExternalParentID/>
+		<Code>1B39</Code>
+		<PublishCode>1B39</PublishCode>
+		<Name>Открытое акционерное общество "Славнефть-Ярославнефтеоргсинтез"</Name>
+		<INN>7601001107</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>526</ExternalID>
+		<ExternalParentID/>
+		<Code>1B40</Code>
+		<PublishCode>1B40</PublishCode>
+		<Name>Закрытое акционерное общество "Топливо-заправочный сервис"</Name>
+		<INN>7732538030</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>527</ExternalID>
+		<ExternalParentID/>
+		<Code>1B41</Code>
+		<PublishCode>1B41</PublishCode>
+		<Name>Открытое акционерное общество "Обьнефтегазгеология"</Name>
+		<INN>8602016394</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>528</ExternalID>
+		<ExternalParentID/>
+		<Code>1B42</Code>
+		<PublishCode>1B42</PublishCode>
+		<Name>Общество с ограниченной ответственностью "МегионЭнергоНефть"</Name>
+		<INN>8605016890</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>529</ExternalID>
+		<ExternalParentID/>
+		<Code>1B43</Code>
+		<PublishCode>1B43</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Мегионское Управление Буровых Работ"</Name>
+		<INN>8605016650</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>530</ExternalID>
+		<ExternalParentID/>
+		<Code>1B44</Code>
+		<PublishCode>1B44</PublishCode>
+		<Name>Antares Singapore Pte. Ltd.</Name>
+		<INN>201621701K</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>531</ExternalID>
+		<ExternalParentID/>
+		<Code>1B45</Code>
+		<PublishCode>1B45</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Инфраструктурные Проекты"</Name>
+		<INN>9705073621</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>532</ExternalID>
+		<ExternalParentID/>
+		<Code>1B46</Code>
+		<PublishCode>1B46</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ИнвестАктив"</Name>
+		<INN>7709948052</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>533</ExternalID>
+		<ExternalParentID/>
+		<Code>1B47</Code>
+		<PublishCode>1B47</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ПРОФИЛЬ"</Name>
+		<INN>6901085272</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>534</ExternalID>
+		<ExternalParentID/>
+		<Code>1B48</Code>
+		<PublishCode>1B48</PublishCode>
+		<Name>Prime International Limited</Name>
+		<INN>995941101</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>535</ExternalID>
+		<ExternalParentID/>
+		<Code>1B49</Code>
+		<PublishCode>1B49</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Звезда Морские Технологии"</Name>
+		<INN>2503033180</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>536</ExternalID>
+		<ExternalParentID/>
+		<Code>1B50</Code>
+		<PublishCode>1B50</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Адмиралтейская-8"</Name>
+		<INN>7838058604</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>537</ExternalID>
+		<ExternalParentID/>
+		<Code>1B51</Code>
+		<PublishCode>1B51</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Центр инженерно-технического проектирования "Звезда-Кеппель"</Name>
+		<INN>7736275448</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>538</ExternalID>
+		<ExternalParentID/>
+		<Code>1B53</Code>
+		<PublishCode>1B53</PublishCode>
+		<Name>Общество с ограниченной ответственностью "СИБИНТЕК-ЗВЕЗДА"</Name>
+		<INN>7726381006</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>539</ExternalID>
+		<ExternalParentID/>
+		<Code>1B54</Code>
+		<PublishCode>1B54</PublishCode>
+		<Name>Публичное акционерное общество "Акционерная нефтяная Компания "Башнефть"</Name>
+		<INN>0274051582</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>540</ExternalID>
+		<ExternalParentID/>
+		<Code>1B55</Code>
+		<PublishCode>1B55</PublishCode>
+		<Name>Bashneft International B.V.</Name>
+		<INN>8522.06.781</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>541</ExternalID>
+		<ExternalParentID/>
+		<Code>1B56</Code>
+		<PublishCode>1B56</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-ПЕТРОТЕСТ"</Name>
+		<INN>0274161458</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>542</ExternalID>
+		<ExternalParentID/>
+		<Code>1B57</Code>
+		<PublishCode>1B57</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-Инвест"</Name>
+		<INN>0275904466</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>543</ExternalID>
+		<ExternalParentID/>
+		<Code>1B58</Code>
+		<PublishCode>1B58</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Нефтяная Компания ВОСТОК НАО”</Name>
+		<INN>2983009748</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>544</ExternalID>
+		<ExternalParentID/>
+		<Code>1B59</Code>
+		<PublishCode>1B59</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РусПЭТФ"</Name>
+		<INN>0277133480</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>545</ExternalID>
+		<ExternalParentID/>
+		<Code>1B60</Code>
+		<PublishCode>1B60</PublishCode>
+		<Name>Товарищество с ограниченной ответственностью "Башнефть-Азия"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>546</ExternalID>
+		<ExternalParentID/>
+		<Code>1B61</Code>
+		<PublishCode>1B61</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-Розница"</Name>
+		<INN>1831090630</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>547</ExternalID>
+		<ExternalParentID/>
+		<Code>1B62</Code>
+		<PublishCode>1B62</PublishCode>
+		<Name>Акционерное общество "Объединенная нефтехимическая компания"</Name>
+		<INN>7710902359</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>548</ExternalID>
+		<ExternalParentID/>
+		<Code>1B63</Code>
+		<PublishCode>1B63</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Туймазинское газоперерабатывающее предприятие"</Name>
+		<INN>0269034133</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>549</ExternalID>
+		<ExternalParentID/>
+		<Code>1B64</Code>
+		<PublishCode>1B64</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Соровскнефть"</Name>
+		<INN>7202170632</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>550</ExternalID>
+		<ExternalParentID/>
+		<Code>1B65</Code>
+		<PublishCode>1B65</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-Строй"</Name>
+		<INN>0271006454</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>551</ExternalID>
+		<ExternalParentID/>
+		<Code>1B66</Code>
+		<PublishCode>1B66</PublishCode>
+		<Name>Публичное акционерное общество "Уфаоргсинтез"</Name>
+		<INN>0277014204</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>552</ExternalID>
+		<ExternalParentID/>
+		<Code>1B67</Code>
+		<PublishCode>1B67</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-Добыча"</Name>
+		<INN>0277106840</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>553</ExternalID>
+		<ExternalParentID/>
+		<Code>1B68</Code>
+		<PublishCode>1B68</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-Полюс"</Name>
+		<INN>2983998001</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>554</ExternalID>
+		<ExternalParentID/>
+		<Code>1B69</Code>
+		<PublishCode>1B69</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Гостиничный Комплекс "Башкортостан"</Name>
+		<INN>0275033258</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>555</ExternalID>
+		<ExternalParentID/>
+		<Code>1B70</Code>
+		<PublishCode>1B70</PublishCode>
+		<Name>Общество с ограниченной ответственностью "БашНИПИнефть"</Name>
+		<INN>0278127289</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>556</ExternalID>
+		<ExternalParentID/>
+		<Code>1B71</Code>
+		<PublishCode>1B71</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-Сервис НПЗ"</Name>
+		<INN>0275075378</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>557</ExternalID>
+		<ExternalParentID/>
+		<Code>1B72</Code>
+		<PublishCode>1B72</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Энергосбытовая компания"</Name>
+		<INN>0275075272</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>558</ExternalID>
+		<ExternalParentID/>
+		<Code>1B74</Code>
+		<PublishCode>1B74</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-Информ"</Name>
+		<INN>0245012250</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>559</ExternalID>
+		<ExternalParentID/>
+		<Code>1B76</Code>
+		<PublishCode>1B76</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башэнергонефть"</Name>
+		<INN>0265025917</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>560</ExternalID>
+		<ExternalParentID/>
+		<Code>1B77</Code>
+		<PublishCode>1B77</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-Логистика"</Name>
+		<INN>0264022409</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>561</ExternalID>
+		<ExternalParentID/>
+		<Code>1B78</Code>
+		<PublishCode>1B78</PublishCode>
+		<Name>Общество с ограниченной ответственностью "БашнефтьАвтоТранс"</Name>
+		<INN>0277110074</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>562</ExternalID>
+		<ExternalParentID/>
+		<Code>1B79</Code>
+		<PublishCode>1B79</PublishCode>
+		<Name>Акционерное общество "Реестр"</Name>
+		<INN>7704028206</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>563</ExternalID>
+		<ExternalParentID/>
+		<Code>1B80</Code>
+		<PublishCode>1B80</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Юмагузинское водохранилище"</Name>
+		<INN>0274062584</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>564</ExternalID>
+		<ExternalParentID/>
+		<Code>1B81</Code>
+		<PublishCode>1B81</PublishCode>
+		<Name>Акционерное общество "Спутниковые телекоммуникации Башкортостана"</Name>
+		<INN>0278101668</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>565</ExternalID>
+		<ExternalParentID/>
+		<Code>1B84</Code>
+		<PublishCode>1B84</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Башнефть-Сервис"</Name>
+		<INN>0277059276</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>566</ExternalID>
+		<ExternalParentID/>
+		<Code>1B85</Code>
+		<PublishCode>1B85</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Шкаповское газоперерабатывающее предприятие"</Name>
+		<INN>0255017547</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>567</ExternalID>
+		<ExternalParentID/>
+		<Code>1B87</Code>
+		<PublishCode>1B87</PublishCode>
+		<Name>Rosneft Deutschland GmbH</Name>
+		<INN>27/151/01338</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>568</ExternalID>
+		<ExternalParentID/>
+		<Code>1B92</Code>
+		<PublishCode>1B92</PublishCode>
+		<Name>Акционерное общество "Нефтяной терминал "Лавна"</Name>
+		<INN>5190932801</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>569</ExternalID>
+		<ExternalParentID/>
+		<Code>1B95</Code>
+		<PublishCode>1B95</PublishCode>
+		<Name>Акционерное общество "Таргин"</Name>
+		<INN>0272901636</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>570</ExternalID>
+		<ExternalParentID/>
+		<Code>1B97</Code>
+		<PublishCode>1B97</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Транспорт"</Name>
+		<INN>0274089610</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>571</ExternalID>
+		<ExternalParentID/>
+		<Code>1C01</Code>
+		<PublishCode>1C01</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Научно-Исследовательский центр Бурсервис"</Name>
+		<INN>0277136330</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>572</ExternalID>
+		<ExternalParentID/>
+		<Code>1C02</Code>
+		<PublishCode>1C02</PublishCode>
+		<Name>BAYERNOIL Raffinerie-gesellsсhaft mbH</Name>
+		<INN>124/122/10970</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>573</ExternalID>
+		<ExternalParentID/>
+		<Code>1C03</Code>
+		<PublishCode>1C03</PublishCode>
+		<Name>Mineralolraffinerie Oberrhein Gmbh&amp;Co. KG</Name>
+		<INN>35042/21302</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>574</ExternalID>
+		<ExternalParentID/>
+		<Code>1C04</Code>
+		<PublishCode>1C04</PublishCode>
+		<Name>Oberrheinische Mineralolwerke GmbH</Name>
+		<INN>35008/00119</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>575</ExternalID>
+		<ExternalParentID/>
+		<Code>1C05</Code>
+		<PublishCode>1C05</PublishCode>
+		<Name>Общество с ограниченной ответственностью "СИБИНТЕК-ИНВЕСТ"</Name>
+		<INN>7726394615</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>576</ExternalID>
+		<ExternalParentID/>
+		<Code>1C07</Code>
+		<PublishCode>1C07</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Судостроительный комплекс "Звезда"</Name>
+		<INN>2503032517</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>577</ExternalID>
+		<ExternalParentID/>
+		<Code>1C08</Code>
+		<PublishCode>1C08</PublishCode>
+		<Name>Upstream Projects Pte. Ltd.</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>578</ExternalID>
+		<ExternalParentID/>
+		<Code>1C09</Code>
+		<PublishCode>1C09</PublishCode>
+		<Name>Общество с ограниченной ответственностью "СИБИНТЕК-СОФТ"</Name>
+		<INN>7726398419</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>579</ExternalID>
+		<ExternalParentID/>
+		<Code>1C10</Code>
+		<PublishCode>1C10</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Топливозаправочный комплекс Пулково"</Name>
+		<INN>7810393786</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>580</ExternalID>
+		<ExternalParentID/>
+		<Code>1C11</Code>
+		<PublishCode>1C11</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Проекты"</Name>
+		<INN>7737700342</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>581</ExternalID>
+		<ExternalParentID/>
+		<Code>1C12</Code>
+		<PublishCode>1C12</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-КондаХолдинг"</Name>
+		<INN>7704839010</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>582</ExternalID>
+		<ExternalParentID/>
+		<Code>1C13</Code>
+		<PublishCode>1C13</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Ендырнефтегаз"</Name>
+		<INN>7704324702</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>583</ExternalID>
+		<ExternalParentID/>
+		<Code>1C14</Code>
+		<PublishCode>1C14</PublishCode>
+		<Name>Акционерное общество "Нефтяная компания "Конданефть"</Name>
+		<INN>7718890240</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>584</ExternalID>
+		<ExternalParentID/>
+		<Code>1C15</Code>
+		<PublishCode>1C15</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Бурение Сервис Технологии"</Name>
+		<INN>7703781914</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>585</ExternalID>
+		<ExternalParentID/>
+		<Code>1C16</Code>
+		<PublishCode>1C16</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-ЮганскГазПереработка"</Name>
+		<INN>9705096058</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>586</ExternalID>
+		<ExternalParentID/>
+		<Code>1C17</Code>
+		<PublishCode>1C17</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Приморье"</Name>
+		<INN>2508130532</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>587</ExternalID>
+		<ExternalParentID/>
+		<Code>1C19</Code>
+		<PublishCode>1C19</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Северо-Запад"</Name>
+		<INN>7839087502</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>588</ExternalID>
+		<ExternalParentID/>
+		<Code>1C20</Code>
+		<PublishCode>1C20</PublishCode>
+		<Name>PERFOROSVEN, S.A</Name>
+		<INN>J407108638</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>589</ExternalID>
+		<ExternalParentID/>
+		<Code>1C21</Code>
+		<PublishCode>1C21</PublishCode>
+		<Name>PB Volga Limited</Name>
+		<INN>12159623Q</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>590</ExternalID>
+		<ExternalParentID/>
+		<Code>1C22</Code>
+		<PublishCode>1C22</PublishCode>
+		<Name>PB Norge AS</Name>
+		<INN>892 043 612</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>591</ExternalID>
+		<ExternalParentID/>
+		<Code>1C23</Code>
+		<PublishCode>1C23</PublishCode>
+		<Name>Акционерный коммерческий банк содействия благотворительности и духовному развитию Отечества "ПЕРЕСВЕТ" (Акционерное общество)</Name>
+		<INN>7703074601</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>592</ExternalID>
+		<ExternalParentID/>
+		<Code>1C24</Code>
+		<PublishCode>1C24</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-СтройКонтроль"</Name>
+		<INN>7706449111</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>593</ExternalID>
+		<ExternalParentID/>
+		<Code>1C25</Code>
+		<PublishCode>1C25</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Арт Авиа"</Name>
+		<INN>7728852028</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>594</ExternalID>
+		<ExternalParentID/>
+		<Code>1C26</Code>
+		<PublishCode>1C26</PublishCode>
+		<Name>Акционерное общество "Топливно-обеспечивающая компания"</Name>
+		<INN>6501110189</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>595</ExternalID>
+		<ExternalParentID/>
+		<Code>1C27</Code>
+		<PublishCode>1C27</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ВосходИнвест"</Name>
+		<INN>7706423138</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>596</ExternalID>
+		<ExternalParentID/>
+		<Code>1C28</Code>
+		<PublishCode>1C28</PublishCode>
+		<Name>Акционерное общество "Аэропорт "Кубинка"</Name>
+		<INN>5032185113</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>597</ExternalID>
+		<ExternalParentID/>
+		<Code>1C29</Code>
+		<PublishCode>1C29</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Авиационный технический центр "Кубинка"</Name>
+		<INN>5032249141</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>598</ExternalID>
+		<ExternalParentID/>
+		<Code>1C30</Code>
+		<PublishCode>1C30</PublishCode>
+		<Name>Общество с ограниченной ответственностью "ПЕРЕСВЕТ-ФИНАНС"</Name>
+		<INN>7706447900</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>599</ExternalID>
+		<ExternalParentID/>
+		<Code>1C31</Code>
+		<PublishCode>1C31</PublishCode>
+		<Name>RN-Batil Pte. Ltd.</Name>
+		<INN>201723806R</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>600</ExternalID>
+		<ExternalParentID/>
+		<Code>1C32</Code>
+		<PublishCode>1C32</PublishCode>
+		<Name>RN-Darato Pte. Ltd.</Name>
+		<INN>201723792M</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>601</ExternalID>
+		<ExternalParentID/>
+		<Code>1C33</Code>
+		<PublishCode>1C33</PublishCode>
+		<Name>RN-Qasrok Pte. Ltd.</Name>
+		<INN>201723798W</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>602</ExternalID>
+		<ExternalParentID/>
+		<Code>1C34</Code>
+		<PublishCode>1C34</PublishCode>
+		<Name>RN-Zawita Pte. Ltd.</Name>
+		<INN>201723800K</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>603</ExternalID>
+		<ExternalParentID/>
+		<Code>1C35</Code>
+		<PublishCode>1C35</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Бузулукское газоперерабатывающее предприятие"</Name>
+		<INN>5603045522</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>604</ExternalID>
+		<ExternalParentID/>
+		<Code>1C36</Code>
+		<PublishCode>1C36</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Ближневосточная компания"</Name>
+		<INN>7706450526</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>605</ExternalID>
+		<ExternalParentID/>
+		<Code>1C37</Code>
+		<PublishCode>1C37</PublishCode>
+		<Name>Общество с ограниченной ответственностью "РН-Современные технологии"</Name>
+		<INN>2304072191</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>606</ExternalID>
+		<ExternalParentID/>
+		<Code>1C38</Code>
+		<PublishCode>1C38</PublishCode>
+		<Name>RN-Harir-Bejil Pte. Ltd.</Name>
+		<INN>201724906G</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>607</ExternalID>
+		<ExternalParentID/>
+		<Code>1C39</Code>
+		<PublishCode>1C39</PublishCode>
+		<Name>Общество с ограниченной ответственностью "АйЭмТи"</Name>
+		<INN>7735532780</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>608</ExternalID>
+		<ExternalParentID/>
+		<Code>1C40</Code>
+		<PublishCode>1C40</PublishCode>
+		<Name>Общество с ограниченной ответственностью "Снегирь Софт"</Name>
+		<INN>9705064850</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>609</ExternalID>
+		<ExternalParentID/>
+		<Code>1C41</Code>
+		<PublishCode>1C41</PublishCode>
+		<Name>Elecsnet Holding Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>610</ExternalID>
+		<ExternalParentID/>
+		<Code>1C42</Code>
+		<PublishCode>1C42</PublishCode>
+		<Name>Kurdistan Pipeline Company Pte. Ltd.</Name>
+		<INN>201217292H</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>611</ExternalID>
+		<ExternalParentID/>
+		<Code>1C43</Code>
+		<PublishCode>1C43</PublishCode>
+		<Name>Deutsche Transalpine Oelleitung GmbH</Name>
+		<INN>143/129/00018</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>612</ExternalID>
+		<ExternalParentID/>
+		<Code>1C44</Code>
+		<PublishCode>1C44</PublishCode>
+		<Name>Societa Italiana per I`Oleodotto Transalpino S.p.A.</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>613</ExternalID>
+		<ExternalParentID/>
+		<Code>1C45</Code>
+		<PublishCode>1C45</PublishCode>
+		<Name>Mineralolraffinerie Oberrhein Verwaltungs GmbH</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>614</ExternalID>
+		<ExternalParentID/>
+		<Code>1C46</Code>
+		<PublishCode>1C46</PublishCode>
+		<Name>Societe de Participations dans l`Industrie et le Transport du Petrole S.A.R.L.</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>615</ExternalID>
+		<ExternalParentID/>
+		<Code>1C47</Code>
+		<PublishCode>1C47</PublishCode>
+		<Name>Общество с ограниченной ответственностью Частное охранное предприятие "РН-Охрана-Ханты-Мансийск"</Name>
+		<INN>8601058916</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>616</ExternalID>
+		<ExternalParentID/>
+		<Code>1C53</Code>
+		<PublishCode>1C53</PublishCode>
+		<Name>PT Pertamina Rosneft Pengolahan dan Petrokimia</Name>
+		<INN>83.393.890.5-067.000</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>617</ExternalID>
+		<ExternalParentID/>
+		<Code>1C54</Code>
+		<PublishCode>1C54</PublishCode>
+		<Name>TNK Trading International S.A.</Name>
+		<INN>060.886.056</INN>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>618</ExternalID>
+		<ExternalParentID/>
+		<Code>A083</Code>
+		<PublishCode>A083</PublishCode>
+		<Name>АО "Вост.-Сибир. Топл. Комп."</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>619</ExternalID>
+		<ExternalParentID/>
+		<Code>A230</Code>
+		<PublishCode>A230</PublishCode>
+		<Name>Halliburton Sakhalin Ltd</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>620</ExternalID>
+		<ExternalParentID/>
+		<Code>A231</Code>
+		<PublishCode>A231</PublishCode>
+		<Name>Gara Tisselit</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>621</ExternalID>
+		<ExternalParentID/>
+		<Code>A234</Code>
+		<PublishCode>A234</PublishCode>
+		<Name>ПАО "ИНТЕР РАО"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>622</ExternalID>
+		<ExternalParentID/>
+		<Code>A267</Code>
+		<PublishCode>A267</PublishCode>
+		<Name>ЗАО "Авиац.-топливная комп."</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>623</ExternalID>
+		<ExternalParentID/>
+		<Code>A268</Code>
+		<PublishCode>A268</PublishCode>
+		<Name>PETROMIRANDA S.A.</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>624</ExternalID>
+		<ExternalParentID/>
+		<Code>A274</Code>
+		<PublishCode>A274</PublishCode>
+		<Name>ОАО НГК "Славнефть"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>625</ExternalID>
+		<ExternalParentID/>
+		<Code>A278</Code>
+		<PublishCode>A278</PublishCode>
+		<Name>Славнефть-Мегионнефтегазгеолог</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>626</ExternalID>
+		<ExternalParentID/>
+		<Code>A280</Code>
+		<PublishCode>A280</PublishCode>
+		<Name>ЗАО "Обьнефтегеология"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>627</ExternalID>
+		<ExternalParentID/>
+		<Code>A282</Code>
+		<PublishCode>A282</PublishCode>
+		<Name>ООО "Славнефть-Нижневартовск"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>628</ExternalID>
+		<ExternalParentID/>
+		<Code>A286</Code>
+		<PublishCode>A286</PublishCode>
+		<Name>АО Славнефть-Центрнефтепродукт</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>629</ExternalID>
+		<ExternalParentID/>
+		<Code>A289</Code>
+		<PublishCode>A289</PublishCode>
+		<Name>ЗАО "Славнефть-Бельгия"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>630</ExternalID>
+		<ExternalParentID/>
+		<Code>A290</Code>
+		<PublishCode>A290</PublishCode>
+		<Name>ООО "Реализация-Т"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>631</ExternalID>
+		<ExternalParentID/>
+		<Code>A291</Code>
+		<PublishCode>A291</PublishCode>
+		<Name>АО "Славвест"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>632</ExternalID>
+		<ExternalParentID/>
+		<Code>A292</Code>
+		<PublishCode>A292</PublishCode>
+		<Name>ООО "Байкитская НГРЭ"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>633</ExternalID>
+		<ExternalParentID/>
+		<Code>A295</Code>
+		<PublishCode>A295</PublishCode>
+		<Name>ООО "Мегионгеология"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>634</ExternalID>
+		<ExternalParentID/>
+		<Code>A297</Code>
+		<PublishCode>A297</PublishCode>
+		<Name>АО "Управление отгрузок"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>635</ExternalID>
+		<ExternalParentID/>
+		<Code>A298</Code>
+		<PublishCode>A298</PublishCode>
+		<Name>Ярославнефтеоргсинтез-Энерго</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>636</ExternalID>
+		<ExternalParentID/>
+		<Code>A310</Code>
+		<PublishCode>A310</PublishCode>
+		<Name>CSI Loyalty Partners Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>637</ExternalID>
+		<ExternalParentID/>
+		<Code>A311</Code>
+		<PublishCode>A311</PublishCode>
+		<Name>ЗАО "Медиатек"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>638</ExternalID>
+		<ExternalParentID/>
+		<Code>A314</Code>
+		<PublishCode>A314</PublishCode>
+		<Name>Boqueron</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>639</ExternalID>
+		<ExternalParentID/>
+		<Code>A315</Code>
+		<PublishCode>A315</PublishCode>
+		<Name>Petroperija</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>640</ExternalID>
+		<ExternalParentID/>
+		<Code>A316</Code>
+		<PublishCode>A316</PublishCode>
+		<Name>Petromonagas</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>641</ExternalID>
+		<ExternalParentID/>
+		<Code>A329</Code>
+		<PublishCode>A329</PublishCode>
+		<Name>PETROVICTORIA, S.A.</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>642</ExternalID>
+		<ExternalParentID/>
+		<Code>A332</Code>
+		<PublishCode>A332</PublishCode>
+		<Name>ФК "Томь"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>643</ExternalID>
+		<ExternalParentID/>
+		<Code>A335</Code>
+		<PublishCode>A335</PublishCode>
+		<Name>ООО "Прайм Шиппинг Холдинг"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>644</ExternalID>
+		<ExternalParentID/>
+		<Code>A355</Code>
+		<PublishCode>A355</PublishCode>
+		<Name>Domanik Oil AS</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>645</ExternalID>
+		<ExternalParentID/>
+		<Code>A356</Code>
+		<PublishCode>A356</PublishCode>
+		<Name>Mineralolverbundleitung GmbH S</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>646</ExternalID>
+		<ExternalParentID/>
+		<Code>A369</Code>
+		<PublishCode>A369</PublishCode>
+		<Name>ООО "ПРАЙМ ШИППИНГ"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>647</ExternalID>
+		<ExternalParentID/>
+		<Code>A370</Code>
+		<PublishCode>A370</PublishCode>
+		<Name>ООО "ПБ Самара"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>648</ExternalID>
+		<ExternalParentID/>
+		<Code>A371</Code>
+		<PublishCode>A371</PublishCode>
+		<Name>ООО "ПБ Самара III"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>649</ExternalID>
+		<ExternalParentID/>
+		<Code>A393</Code>
+		<PublishCode>A393</PublishCode>
+		<Name>ООО Северо-Асомкинское</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>650</ExternalID>
+		<ExternalParentID/>
+		<Code>A394</Code>
+		<PublishCode>A394</PublishCode>
+		<Name>ООО Лесное озеро</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>651</ExternalID>
+		<ExternalParentID/>
+		<Code>A395</Code>
+		<PublishCode>A395</PublishCode>
+		<Name>ООО СОК Атлант</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>652</ExternalID>
+		<ExternalParentID/>
+		<Code>A396</Code>
+		<PublishCode>A396</PublishCode>
+		<Name>ООО ЗОК Березка</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>653</ExternalID>
+		<ExternalParentID/>
+		<Code>A397</Code>
+		<PublishCode>A397</PublishCode>
+		<Name>ООО СП ЯНОС</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>654</ExternalID>
+		<ExternalParentID/>
+		<Code>A398</Code>
+		<PublishCode>A398</PublishCode>
+		<Name>ЗАО Славнефть-М</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>655</ExternalID>
+		<ExternalParentID/>
+		<Code>A399</Code>
+		<PublishCode>A399</PublishCode>
+		<Name>ОАО Мозырский НПЗ</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>656</ExternalID>
+		<ExternalParentID/>
+		<Code>A425</Code>
+		<PublishCode>A425</PublishCode>
+		<Name>ООО "КОРТИК-СЕРВИС"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>657</ExternalID>
+		<ExternalParentID/>
+		<Code>A426</Code>
+		<PublishCode>A426</PublishCode>
+		<Name>ООО "КапиталТайм"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>658</ExternalID>
+		<ExternalParentID/>
+		<Code>A427</Code>
+		<PublishCode>A427</PublishCode>
+		<Name>ООО "Инвест-Ойл"</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>659</ExternalID>
+		<ExternalParentID/>
+		<Code>A428</Code>
+		<PublishCode>A428</PublishCode>
+		<Name>Essar Oil Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>660</ExternalID>
+		<ExternalParentID/>
+		<Code>A429</Code>
+		<PublishCode>A429</PublishCode>
+		<Name>Vadinar Properties Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>661</ExternalID>
+		<ExternalParentID/>
+		<Code>A430</Code>
+		<PublishCode>A430</PublishCode>
+		<Name>Vadinar Oil Terminal Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>662</ExternalID>
+		<ExternalParentID/>
+		<Code>A431</Code>
+		<PublishCode>A431</PublishCode>
+		<Name>Vadinar Liquid Terminals Limit</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>663</ExternalID>
+		<ExternalParentID/>
+		<Code>A432</Code>
+		<PublishCode>A432</PublishCode>
+		<Name>Essar Oil Trading Mauritius Li</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>664</ExternalID>
+		<ExternalParentID/>
+		<Code>A433</Code>
+		<PublishCode>A433</PublishCode>
+		<Name>Vadinar Power Company Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>665</ExternalID>
+		<ExternalParentID/>
+		<Code>A434</Code>
+		<PublishCode>A434</PublishCode>
+		<Name>Enneagon Limited</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+	<Consolidation>
+		<ID>0</ID>
+		<ExternalID>666</ExternalID>
+		<ExternalParentID/>
+		<Code>A435</Code>
+		<PublishCode>A435</PublishCode>
+		<Name>Slavneft Holding AG</Name>
+		<INN/>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Consolidation>
+</Consolidations>
+</DefaultDataHolder>

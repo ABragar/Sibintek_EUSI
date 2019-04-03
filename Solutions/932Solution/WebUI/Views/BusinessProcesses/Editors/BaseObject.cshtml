@@ -1,0 +1,135 @@
+﻿@using Base.Entities
+@using Base.Macros
+@using Base.Macros.Entities
+@using Base.Rule
+@using Base.UI.ViewModal
+@model WebUI.Models.BusinessProcess.WithCustomEditorVm
+
+@{
+    Layout = "EditorLayout.cshtml";
+
+    var config = ViewBag.Config as ViewModelConfig;
+    var wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+}
+
+<div id="@wrapID" class="editor-wrapper">
+    <div class="input-group">
+        <div class="form-control">
+            <input type="text" data-bind="value: Title" class="k-textbox" readonly="readonly">
+        </div>
+            <div class="form-control">
+                <span class="label label-info" data-bind="text: Mnemonic"></span>
+            </div>
+            <div class="input-group-btn">
+                <a href="#" data-role="select" title="Выбрать объект"><i class="fa fa-navicon"></i></a>
+                <a href="#" data-role="clear" title="Очистить"><i class="fa fa-remove"></i></a>
+            </div>
+        </div>
+    <hr />
+    <div class="list-group">
+        @if (Model.Nullable)
+        {
+            <a href="#" data-type="@((int) MacroType.NotNull)" data-member="null" class="k-button">Не равно null</a>
+            <a href="#" data-type="@((int) MacroType.EqualNull)" data-member="null" class="k-button">Равно null</a>
+        }
+
+
+        @foreach (var item in Model.Editors)
+        {
+            <a href="#" data-type="@((int) MacroType.InitObject)" data-member="@item.Member" class="k-button">@item.Name</a>
+        }
+    </div>
+</div>
+
+<script>
+    @*[{ "MacroType":  4, "Value": "{ \"Type\": \"Base.Security.User\", \"ID\": 3 }" }]*@
+    $(function() {
+        var lookup = "@config.LookupProperty.Text";
+        var objType = "@config.TypeEntity.FullName";
+        var wrap = $('#@wrapID');
+
+        var viewModel = kendo.observable({ Title: "", Value: "", MacroType: null });
+        kendo.bind($("#@wrapID"), viewModel);
+
+        wrap.closest('[property-editor]').on('onLoad', function(e, args) {
+            var data = args.model;
+
+            if (data) {
+                if (data.Value) {
+                    var val = $.parseJSON(data.Value)[0];
+
+                    if (val.MacroType == "@((int) MacroType.BaseObject)") {
+                        var initObj = $.parseJSON(val.Value);
+                        if (initObj) {
+                            $.get("/BusinessProcesses/GetObject", { type: initObj.Type, id: initObj.ID }, function(resp) {
+                                if (resp.Object) {
+                                    viewModel.set("Value", val.Value);
+                                    viewModel.set("Title", resp.Object.Title);
+                                }
+                            });
+                        }
+                    } else if (val.MacroType == "@((int) MacroType.InitObject)") {
+                        viewModel.set("Title", $("#@wrapID").find('[data-member=' + val.Value + ']').html());
+                        viewModel.set("Value", val.Value);
+                    } else if (val.MacroType == "@((int) MacroType.NotNull)") {
+                        viewModel.set('Title', "Не равно null");
+                        viewModel.set("Value", "null");
+                    } else if (val.MacroType == "@((int) MacroType.EqualNull)") {
+                        viewModel.set('Title', "Равно null");
+                        viewModel.set("Value", "null");
+                    }
+
+                    viewModel.set("MacroType", val.MacroType);
+                }
+            }
+
+            wrap.closest('[data-role=wraplayout]').find('[data-role=apply]').click(function() {
+                if (viewModel.MacroType) {
+                    data.set('Value', JSON.stringify([
+                        {
+                            MacroType: viewModel.MacroType,
+                            Value: viewModel.Value
+                        }
+                    ]));
+                } else {
+                    data.set('Value', null);
+                }
+
+                $(this).closest('[data-role=window]').data('kendoWindow').close();
+            });
+        });
+
+
+        var methods = {
+            clear: function() {
+                viewModel.set("Value", "");
+                viewModel.set("Title", "");
+                viewModel.set("MacroType", null);
+            },
+            select: function() {
+                pbaAPI.openModalDialog("@config.Mnemonic", function(e) {
+                    if (e.length && e[0]) {
+                        viewModel.set("Value", JSON.stringify({
+                            ID: e[0].ID,
+                            Type: objType
+                        }));
+                        viewModel.set("Title", e[0][lookup]);
+                        viewModel.set("MacroType", @((int) MacroType.BaseObject));
+                    }
+                });
+            }
+        }
+
+        $("#@wrapID").on("click", "[data-role]", function() {
+            methods[$(this).data("role")]();
+        });
+
+        $("#@wrapID").on("click", "[data-member]", function() {
+            var self = $(this);
+
+            viewModel.set("Title", self.html());
+            viewModel.set("Value", self.data('member'));
+            viewModel.set("MacroType", self.data('type'));
+        });
+    });
+</script>

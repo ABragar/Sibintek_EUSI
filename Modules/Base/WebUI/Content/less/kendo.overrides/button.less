@@ -1,0 +1,47 @@
+﻿.k-button,
+.k-button:focus,
+.k-split-button,
+.k-split-button:focus {
+	background-color: transparent;
+	}
+
+.k-button {
+	font-weight: 400;
+	line-height: @modular-scale *1em;
+
+	padding: @modular-scale *.25em 1em;
+
+	transition: .15s @easing-curve--main;
+	transition-property: background-color, border-color, color, box-shadow;
+	letter-spacing: .025em;
+
+	color: @color--dark;
+	border: 1px solid lighten(@color--dark,65%);
+	border-radius: 0;
+	.drop-shadow( 1px, @color--dark, 12% );
+
+	.makeButton( primary, @color--primary );
+	.makeButton( secondary, @color--accent );
+	.makeButton( success, @color--success-bright );
+	.makeButton( error, @color--danger );
+
+	&.k-state-active:hover,
+	&.k-state-hover,
+	&:active:hover,
+	&:hover,
+	&.k-state-focused,
+	&:focus,
+	&:focus:not(.k-state-disabled):not([disabled]) {
+		border-color: lighten( @color--dark, 65% );
+
+		.drop-shadow( 2px, @color--dark, 15% );
+		}
+
+	&-icon, &-icontext, &.k-split-button-arrow {
+		border: none;
+		}
+
+	.k-icon {
+		transition: opacity .15s @easing-curve--main;
+		}
+	}

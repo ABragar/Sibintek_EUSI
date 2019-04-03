@@ -1,0 +1,42 @@
+﻿@{
+    var wrapID = Html.CreateSystemName("wrap_");
+}
+@(Html.ContentEditorWidget("navigation")
+    .Title("Панель навигации")
+    .TitleTemplate(
+    @<text>
+        <span><i class="fa fa-fw fa-anchor"></i> Навигация</span>
+    </text>
+    )
+    .Wrap(wrapID)
+    .Mnemonic("Content_Navigation")
+    .Template("tpl_" + wrapID)
+      .ExtendWith(
+    @<text>
+        <script>
+            new Object({
+                prepareToSave: function (element) {
+                    element.find('script').remove();
+
+                    var rowTemplate = '<script id="anchor_tpl" type="text/template">'
+                        + '<li class="page-nav__item"><a href="\\\\##: get(\'Anchor\') #">#: get(\'AnchorTitle\') #</a></li>';
+                    var row = $(element).find('[data-template="anchor_tpl"]');
+                    row.html('');
+                    row.after(rowTemplate);
+
+                    contentEditor.ContentWidget.fn.prepareToSave.call(this, element);
+                },
+                toHtml: function (element) {
+                    element.find('script').remove();
+                }
+
+            })
+        </script>
+    </text>)
+)
+<script id="tpl_@wrapID" type="text/template">
+    <ul class="nav nav-pills page-nav" data-template="anchor_tpl" role="tablist" data-bind="source: model.Items"></ul>
+</script>
+<script id="anchor_tpl" type="text/template">
+    <li class="page-nav__item" role="presentation"><a href="\\##: get('Anchor') #">#: get('AnchorTitle') #</a></li>
+</script>

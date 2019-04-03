@@ -1,0 +1,81 @@
+﻿@model EditorViewModel
+
+@{
+    var fileInfo = Html.CreateSystemName("file_info");
+    var name = Html.CreateSystemName("name");
+    string btnPreviewId = Html.CreateSystemName("read");
+    string btnDownloadId = Html.CreateSystemName("read");
+}
+<div id="@fileInfo">
+    <div id="@name"></div>
+    <a title="Предпросмотр" href="#" class="k-button k-button-icon" id="@btnPreviewId"><span class="k-sprite btntoolbar fa fa-eye"></span></a>
+    <a title="Скачать" href="#" class="k-button k-button-icon" id="@btnDownloadId"><span class="k-sprite btntoolbar fa fa-download"></span></a>
+</div>
+
+@(Html.Kendo().Upload()
+            .Name(Model.UID)
+            .Multiple(false)
+            .Events(e => e.Upload("kendoReporting.onFileUpload"))
+            .HtmlAttributes(new { accept = ".trdp, .trdx, .trbp" })
+            .Async(a => a
+                .SaveUrl(Html.GetTelerikReportingService() + "/manager/upload")
+                .AutoUpload(true)
+                .WithCredentials(false)))
+
+<script>
+    (function () {
+        var uploader = $("#@Model.UID").data("kendoUpload");
+
+        uploader.bind("success", function(e) {
+            var pbaForm = this.element.closest("form").data("pbaForm");
+
+            var file = e.files[0];
+
+            if (!pbaForm.getPr("Name")) {
+                pbaForm.setPr("Name", file.name.replace(file.extension, ""));
+            }
+
+            pbaForm.setPr("GuidId", e.response.GuidId);
+            pbaForm.setPr("Extension", file.extension);
+        });
+
+        uploader.bind("upload", function(e) {
+            var allowExtJson = ["trdp", "trdx", "trbp"];
+
+            if (allowExtJson.indexOf(e.files[0].extension.slice(1).toLowerCase()) > -1) return;
+
+            pbaAPI.errorMsg("Недопустимый формат!\nВыберите файл с расширением: " + allowExtJson.join(", "));
+            e.preventDefault();
+        });
+    })();
+</script>
+
+<script>
+    $(function () {
+        var $form = $("#@Model.UID").closest("form");
+
+        $("#@btnPreviewId").click(function () {
+            var model = $(this).closest("form").data("pbaForm").model.model;
+            if (model.ID !== 0) {
+                kendoReporting.preview(model.GuidId + model.Extension, {
+                    title: model.Name
+                });
+            }
+        });
+
+        $("#@btnDownloadId").click(function () {
+            var model = $(this).closest("form").data("pbaForm").model.model;
+            if (model.ID !== 0) {
+                kendoReporting.download(model.ID);
+            }
+        });
+
+        $form.on("onAfterBind", function (e, form) {
+            var model = form.model.model;
+
+            if (model.ID !== 0) {
+                $("#@name").html(model.Name + model.Extension);
+            }
+        });
+    });
+</script>

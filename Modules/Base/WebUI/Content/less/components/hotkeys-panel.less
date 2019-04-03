@@ -1,0 +1,67 @@
+﻿.k-widget.k-tooltip {
+	line-height: @modular-scale *1rem;
+
+	padding: 0 @modular-scale * .5rem @modular-scale * .5rem @modular-scale * .5rem;
+
+	color: @color--dark;
+	border: none;
+	border-radius: 4px;
+	background-color: @color--light;
+	.drop-shadow(1px, @color--dark, 25%);
+
+	.k-callout-n {
+		border-bottom-color: darken( @color--primary, 5% );
+		}
+
+	.hotkeys {
+		&__header {
+			font-size: 1.25em;
+			font-weight: 300;
+			line-height: @modular-scale * 1rem;
+
+			margin: 0 -@modular-scale * .5rem @modular-scale * .5rem;
+			padding: @modular-scale * .5rem 0;
+
+			letter-spacing: .025em;
+
+			color: @color--light;
+			border-radius: 3px 3px 0 0;
+			background-color: darken( @color--primary, 5% );
+			}
+
+		&-row {
+			padding: @modular-scale * .5rem;
+			}
+		}
+
+	.key-button {
+		display: inline-block;
+
+		min-width: 1.4286rem;
+		margin: 0;
+		padding: @modular-scale *.125rem @modular-scale *.25rem;
+
+		text-align: center;
+		text-decoration: none;
+
+		color: @color--dark;
+		border: 1px solid lighten( @color--dark, 45% );
+		border-radius: 3px;
+		box-shadow: 0 1px 0 lighten( @color--dark, 60% );
+		}
+
+	.key-text {
+		font-size: .9em; 
+
+		color: @color--dark;
+		}
+
+
+	.kwidget.kwidget--list > li {
+		border: none;
+
+		&.hotkeys-row {
+			text-align: left;
+			}
+		}
+	}

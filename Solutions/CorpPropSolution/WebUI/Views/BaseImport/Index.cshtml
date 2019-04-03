@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebUI.Models.ExportImport.ImportItemModel>
+
+<style>
+    .baseimport--button {
+        margin: 3px;
+        width: 100%;
+    }
+
+    .baseimport--message {
+        margin: 7px;
+    }
+</style>
+
+<div>
+    <h3>Список базовых импортов</h3>
+    <table style="border-collapse: collapse">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (item.Enabled)
+                    {
+                        <td><button type="button" class="k-button baseimport--button" data-form="@item.FormImport">@item.Name</button></td>
+                        <td><b class="baseimport--message">@item.FileName готов к импорту</b></td>
+                    }
+                    else
+                    {
+                        <td><button type="button" class="k-button baseimport--button" data-form="@item.FormImport" disabled>@item.Name</button></td>
+                        <td><b class="baseimport--message">@item.FileName отсутствует</b></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(".baseimport--button").click(function (e) {
+        var button = $(e.target);
+        button.removeClass("error");
+        button.removeClass("success");
+        button.addClass("primary");
+        $.ajax({
+            url: "../BaseImport/StartImport",
+            data: { form: button.attr("data-form") },
+            success: function (res) {
+                button.removeClass("primary");
+                var row = button.closest("tr");
+                var msg = row.find("b.baseimport--message");
+                if (res.error) {
+                    button.addClass("error");
+                    msg.text(res.error);
+                    msg.css("color", "red");
+                } else {
+                    button.addClass("success");
+                    msg.text(res.message);
+                    msg.css("color", "green");
+                }
+            }
+        });
+    });
+</script>

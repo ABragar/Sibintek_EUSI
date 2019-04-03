@@ -1,0 +1,46 @@
+﻿<section id="popups" class="k-pane">
+    <h2>Тултипы и выпадающие меню</h2>
+
+    <label for="tooltip1" class="collapsed" data-toggle="collapse" data-target="#tooltip1_code">Tooltip</label>
+    <div id="tooltip1">
+        <a href="#" class="k-button" title="Текст" data-popup="right">Кнопка</a>
+    </div>
+
+    <pre class="collapse" id="tooltip1_code"><code class="html">
+        &lt;a href="#" class="k-button" title="Текст" data-popup="right">Кнопка&lt;/a>
+    </code></pre>
+
+    <label for="tooltip2" class="collapsed" data-toggle="collapse" data-target="#tooltip2_code">Popup</label>
+    <div id="tooltip2">
+        <a href="#" class="k-button" data-dropdown="#popup1" data-popup="right">Кнопка</a>
+        <div class="popup-content" id="popup1">
+            <img src="~/Content/Images/pba.png" />
+        </div>
+    </div>
+
+    <pre class="collapse" id="tooltip2_code"><code class="html">
+        &lt;a href="#" class="k-button" data-dropdown="#popup1" data-popup="right">Кнопка&lt;/a>
+        &lt;div class="popup-content" id="popup1">
+            &lt;!-- POPUP CONTENT -->
+        &lt;/div>
+    </code></pre>
+
+    <label for="tooltip3" class="collapsed" data-toggle="collapse" data-target="#tooltip3_code">Actions popup</label>
+    <div id="tooltip3">
+        <a href="#" class="k-button" data-dropdown="#popup2" data-popup="right">Кнопка</a>
+        <ul class="popup-content popup-actions" id="popup2">
+            <li><a href="#">Действие 1</a></li>
+            <li><a href="#">Действие 2</a></li>
+            <li><a href="#">Действие 3</a></li>
+        </ul>
+    </div>
+
+    <pre class="collapse" id="tooltip3_code"><code class="html">
+        &lt;a href="#" class="k-button" data-dropdown="#popup2" data-popup="right">Кнопка&lt;/a>
+        &lt;ul class="popup-content popup-actions" id="popup2">
+            &lt;li>&lt;a href="#">Действие 1&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Действие 2&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Действие 3&lt;/a>&lt;/li>
+        &lt;/ul>
+    </code></pre>
+</section>

@@ -1,0 +1,188 @@
+﻿.conf-video-player-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    z-index: 9999999999999;
+    background-color: rgba(0, 0, 0, 0.65);
+    overflow: hidden;
+    text-align: center;
+    display: none;
+    font-size: 0;
+}
+
+.conf-video-player-wrapper video {
+    width: 100%;
+    height: 100%;
+}
+
+.conf-video-player-wrapper video.fakeaudio {
+    display: none;
+}
+
+    .conf-video-player-wrapper .local-media-wrapper,
+    .conf-video-player-wrapper .remote-media-wrapper {
+        background-color: rgba(0, 0, 0, 0.24);
+        padding: 5px;
+        margin: 5px;
+        transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+    }
+
+    .conf-video-player-wrapper .local-media-wrapper {
+        z-index: 1;
+    }
+
+    [data-video-layout="one-video"] .local-media-wrapper,
+    [data-video-layout="one-video"] .remote-media-wrapper,
+    [data-video-layout="private-call"] .remote-media-wrapper {
+        position: static;
+        height: 95%;
+        height: calc(100% - 10px);
+        width: 90%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    [data-video-layout] .fakeaudio-media-wrapper {
+        background-image: url(/Content/images/man-303792_640_0.png);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    [data-video-layout="private-call"] .local-media-wrapper {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        width: 15%;
+        height: 200px;
+    }
+
+    [data-video-layout="conference-call"] .local-media-wrapper,
+    [data-video-layout="conference-call"] .remote-media-wrapper {
+        position: static;
+        width: 25%;
+        height: 250px;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+[data-video-layout="one-video"].local-record::before {
+    display: block;
+    position: absolute;
+    content: 'REC';
+    color: #FF4242;
+    z-index: 1;
+    font-size: 30px;
+    text-align: left;
+    top: 5px;
+    left: 10px;
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@media only screen and (max-width: 1200px) {
+    [data-video-layout="conference-call"] .local-media-wrapper, 
+    [data-video-layout="conference-call"] .remote-media-wrapper {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    [data-video-layout="conference-call"] .local-media-wrapper,
+    [data-video-layout="conference-call"] .remote-media-wrapper {
+        width: 95%;
+        width: calc(100% - 10px);
+    }
+}
+
+.k-window-content .conf-dialog {
+    list-style-type: none;
+}
+
+.k-window-content .conf-dialog-list {
+    padding: 0;
+}
+
+.conf-call-request-user {
+    display: block;
+    overflow: hidden;
+    margin: 0 0 10px 0;
+    padding: 5px 0;
+    height: 80px;
+}
+
+    .conf-call-request-user img {
+        float: left;
+        margin-right: 15px;
+    }
+
+    .conf-call-request-user p {
+        font-size: 18px;
+    }
+
+    .conf-call-request-user + .btn-group.btn-group-justified .btn {
+        width: auto;
+    }
+
+    .video-controls {
+        position: fixed;
+        z-index: 99999999999;
+        bottom: 20px;
+        right: 25px;
+    }
+
+        .video-controls button {
+            height: 50px;
+            width: 50px;
+            padding: 2px 1px 0 0;
+            border-radius: 50% !important;
+            overflow: hidden;
+            margin: 15px 0;
+            font-size: 20px;
+            text-align: center;
+            float: left;
+        }
+
+        .video-controls button:not(:hover) {
+            background-color: transparent;
+            transition: all 0.2s;
+        }
+
+
+.media-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 1s;
+}
+
+.media-controls button {
+    border-radius: 20px !important;
+    background-color: rgba(31, 130, 177, 0.76);
+    color: #FFFFFF;
+    border-color: #18709A;
+    outline: 0;
+}
+
+.media-controls button:hover,
+.media-controls button:focus {
+    outline: 0;
+}
+
+.remote-media-wrapper:hover .media-controls,
+.local-media-wrapper:hover .media-controls {
+    opacity: 1;
+}

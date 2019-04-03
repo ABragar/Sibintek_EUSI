@@ -1,0 +1,7 @@
+﻿@model EditorViewModel
+
+@{
+    ViewData.Add(new KeyValuePair<string, object>("LayerType", Base.EntityFrameworkTypes.Complex.LayerType.Polygon));
+}
+
+@Html.Partial("~/Views/Standart/DetailView/Editor/Location.cshtml", Model, ViewData)

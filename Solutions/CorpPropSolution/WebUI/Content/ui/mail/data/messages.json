@@ -1,0 +1,10 @@
+{
+    "TotalCount": 100,
+    "Items": [
+        {
+            "UniqueId": 123,
+            "Subject": "Тестовое сообщение",
+            "FolderId": "123"
+        }
+    ]
+}

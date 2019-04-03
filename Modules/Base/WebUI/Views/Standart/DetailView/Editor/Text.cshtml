@@ -1,0 +1,40 @@
+﻿@model EditorViewModel
+
+@Html.TextBox(Model, new { style = "width: 100%;" })
+
+
+
+<script>
+    (function () {
+       
+        var editors = $("div.label-editor-row[data-field='@Model.PropertyName']");
+        var form = editors.closest("form");
+        var editor = editors.find("input");
+
+
+        form.on('onAfterBind', function (evt, form) {
+            
+            @if (!String.IsNullOrEmpty(Model.OnChangeClientScript))
+            {
+                
+                //внедряем текст скрипта
+                @Html.Raw(Model.OnChangeClientScript);
+            }
+        });
+
+        form.on("onChange", function (evt, obj)
+        {           
+            if (obj.field === "@Model.PropertyName")
+            {                
+                var form = obj.sender;
+                @if (!String.IsNullOrEmpty(Model.OnChangeClientScript))
+                {
+                    //внедряем текст скрипта
+                    @Html.Raw(Model.OnChangeClientScript);
+                }
+            }
+
+        });
+
+    })();
+</script>

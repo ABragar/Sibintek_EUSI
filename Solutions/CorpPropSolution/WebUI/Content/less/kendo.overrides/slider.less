@@ -1,0 +1,21 @@
+﻿.k-slider {
+	.k-slider-selection {
+		border-color: @color--primary;
+		background-color: @color--primary;
+		}
+
+	.k-draghandle {
+		transition: box-shadow .2s;
+
+		box-shadow: none;
+
+		&, &:hover, &.k-state-focused, &.k-state-focused:link {
+			border-color: @color--primary;
+			background-color: @color--primary;
+			}
+
+		&:hover {
+			box-shadow: 0 0 0 8px fade( @color--primary, 15% );
+			}
+		}
+	}

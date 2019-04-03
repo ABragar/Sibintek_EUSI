@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4D72D04-2B9F-4B99-A01F-FF260C27B0BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Base.BusinessProcesses</RootNamespace>
+    <AssemblyName>Base.BusinessProcesses</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Import|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Import\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Entities\BpHistory.cs" />
+    <Compile Include="Entities\InvokeStageContext.cs" />
+    <Compile Include="Services\Abstract\IWorkflowWizardService.cs" />
+    <Compile Include="Services\Concrete\WorkflowWizardService.cs" />
+    <Compile Include="Strategies\IWorkflowSelectStrategy.cs" />
+    <Compile Include="Strategies\WorkflowSelectStrategy.cs" />
+    <Compile Include="ViewModelConfigBuilderExtensions.cs" />
+    <Compile Include="Entities\ActionComment.cs" />
+    <Compile Include="Entities\ActionExecuteArgs.cs" />
+    <Compile Include="Entities\AgreementItem.cs" />
+    <Compile Include="Entities\BaseMacroItem.cs" />
+    <Compile Include="Entities\BaseStepUser.cs" />
+    <Compile Include="Entities\BPTask.cs" />
+    <Compile Include="Entities\Steps\BranchingStep.cs" />
+    <Compile Include="Entities\IInitWorkflow.cs" />
+    <Compile Include="Entities\PerfomancePeriodType.cs" />
+    <Compile Include="Entities\Steps\ChangeObjectStep.cs" />
+    <Compile Include="Entities\Steps\ConditionalStep.cs" />
+    <Compile Include="Entities\Steps\EntryPointStep.cs" />
+    <Compile Include="Entities\Steps\StageUserCategory.cs" />
+    <Compile Include="Entities\Steps\StepActionValidationItem.cs" />
+    <Compile Include="Entities\Steps\ValidationStep.cs" />
+    <Compile Include="Entities\ValidationContext.cs" />
+    <Compile Include="Entities\WorkflowImplementation.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="Services\Abstract\IChangeHistoryService.cs" />
+    <Compile Include="Services\Abstract\IChangeObjectStepService.cs" />
+    <Compile Include="Services\Abstract\IConditionalStepService.cs" />
+    <Compile Include="Services\Abstract\IEntryPointStepService.cs" />
+    <Compile Include="Services\Abstract\IStageInvoker.cs" />
+    <Compile Include="Services\Abstract\ITaskServiceFacade.cs" />
+    <Compile Include="Services\Abstract\IValidationStepService.cs" />
+    <Compile Include="Services\Abstract\IWeekendService.cs" />
+    <Compile Include="Services\Abstract\IProductionCalendarService.cs" />
+    <Compile Include="Entities\StagePerform.cs" />
+    <Compile Include="Entities\CreatedObject.cs" />
+    <Compile Include="Entities\Steps\EndStep.cs" />
+    <Compile Include="Entities\Steps\ExtendedStage.cs" />
+    <Compile Include="Entities\FlowStepType.cs" />
+    <Compile Include="Entities\Steps\CreateObjectStep.cs" />
+    <Compile Include="Entities\IWFObjectService.cs" />
+    <Compile Include="Entities\Steps\ParallelEndStep.cs" />
+    <Compile Include="Entities\Steps\ParallelizationStep.cs" />
+    <Compile Include="Entities\Steps\Stage.cs" />
+    <Compile Include="Entities\Steps\Step.cs" />
+    <Compile Include="Entities\Weekend.cs" />
+    <Compile Include="Entities\Workflow.cs" />
+    <Compile Include="Entities\ChangeHistory.cs" />
+    <Compile Include="Entities\ConditionalOperator.cs" />
+    <Compile Include="Entities\JumpCondition.cs" />
+    <Compile Include="Entities\Output.cs" />
+    <Compile Include="Entities\StageAction.cs" />
+    <Compile Include="Entities\StageUser.cs" />
+    <Compile Include="Entities\IBPObject.cs" />
+    <Compile Include="Entities\Steps\WorkflowOwnerStep.cs" />
+    <Compile Include="Entities\WorkflowContext.cs" />
+    <Compile Include="Exceptions\ActionInvokeException.cs" />
+    <Compile Include="Exceptions\ActionNotFoundException.cs" />
+    <Compile Include="Exceptions\ExceptionHelper.cs" />
+    <Compile Include="Exceptions\WorkflowException.cs" />
+    <Compile Include="Exceptions\WorkflowSaveException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IWorkflowUserService.cs" />
+    <Compile Include="Security\WorkflowUserService.cs" />
+    <Compile Include="Services\Abstract\ICreateObjectStepService.cs" />
+    <Compile Include="Services\Abstract\IEndStepService.cs" />
+    <Compile Include="Services\Abstract\IParallelEndStepService.cs" />
+    <Compile Include="Services\Abstract\IParallelStepService.cs" />
+    <Compile Include="Services\Abstract\IWorkflowCacheService.cs" />
+    <Compile Include="Services\Abstract\IWorkflowContextService.cs" />
+    <Compile Include="Services\Abstract\IWorkflowImplementationService.cs" />
+    <Compile Include="Services\Abstract\IWorkflowOwnerStepService.cs" />
+    <Compile Include="Services\Abstract\IWorkflowStrategyService.cs" />
+    <Compile Include="Services\Concrete\ChangeHistoryService.cs" />
+    <Compile Include="Services\Concrete\ChangeObjectStepService.cs" />
+    <Compile Include="Services\Concrete\ConditionalStepService.cs" />
+    <Compile Include="Services\Concrete\CreateObjectStepService.cs" />
+    <Compile Include="Services\Concrete\EndStepService.cs" />
+    <Compile Include="Services\Concrete\EntryPointStepService.cs" />
+    <Compile Include="Services\Concrete\ParallelEndStepService.cs" />
+    <Compile Include="Services\Concrete\ParallelStepService.cs" />
+    <Compile Include="Services\Concrete\StageInvoker.cs" />
+    <Compile Include="Services\Concrete\TaskServiceFacade.cs" />
+    <Compile Include="Services\Concrete\ValidationStepService.cs" />
+    <Compile Include="Services\Concrete\WeekendService.cs" />
+    <Compile Include="Services\Concrete\ProductionCalendarService.cs" />
+    <Compile Include="Services\Concrete\WorkflowCacheService.cs" />
+    <Compile Include="Services\Concrete\WorkflowContextService.cs" />
+    <Compile Include="Services\Concrete\WorkflowImplementationService.cs" />
+    <Compile Include="Services\Concrete\WorkflowOwnerStepService.cs" />
+    <Compile Include="Strategies\IWorkflowListStrategy.cs" />
+    <Compile Include="Strategies\WorkflowListStrategy.cs" />
+    <Compile Include="Services\Concrete\WorkflowStrategyService.cs" />
+    <Compile Include="Services\Abstract\IAgreementItemService.cs" />
+    <Compile Include="Services\Abstract\IBranchingStepService.cs" />
+    <Compile Include="Services\Abstract\ITemplateActionService.cs" />
+    <Compile Include="Services\Abstract\IStageService.cs" />
+    <Compile Include="Services\Abstract\ITemplateRenderer.cs" />
+    <Compile Include="Services\Abstract\IWorkflowService.cs" />
+    <Compile Include="Services\Abstract\IStageUserService.cs" />
+    <Compile Include="Services\Concrete\AgreementItemService.cs" />
+    <Compile Include="Services\Concrete\IWorkflowServiceResolver.cs" />
+    <Compile Include="Services\Concrete\IWorkflowServiceFacade.cs" />
+    <Compile Include="Services\Concrete\BranchingStepService.cs" />
+    <Compile Include="Services\Concrete\StageService.cs" />
+    <Compile Include="Services\Concrete\BPTaskService.cs" />
+    <Compile Include="Services\Concrete\TemplateRenderer.cs" />
+    <Compile Include="Services\Concrete\WorkflowService.cs" />
+    <Compile Include="Services\Concrete\StageUserService.cs" />
+    <Compile Include="Services\Concrete\WorkflowServiceFacade.cs" />
+    <Compile Include="Strategies\IStakeholdersSelectionStrategy.cs" />
+    <Compile Include="Strategies\СreatorOnlyObjectStrategy.cs" />
+    <Compile Include="Entities\WorkflowCategory.cs" />
+    <Compile Include="Wizard\WorkflowWizard.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base.Links\Base.Links.csproj">
+      <Project>{b6cdcd8a-d778-49c3-ad28-049cba1f73dd}</Project>
+      <Name>Base.Links</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Macros\Base.Macros.csproj">
+      <Project>{f4635398-af24-4259-81bb-e3d10d460bec}</Project>
+      <Name>Base.Macros</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Notification\Base.Notification.csproj">
+      <Project>{c26a8cc1-6822-481d-a2d5-52dc8295d402}</Project>
+      <Name>Base.Notification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Security\Base.Security.csproj">
+      <Project>{93a4c5a8-701d-4212-b338-dacb6ec8c670}</Project>
+      <Name>Base.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Task\Base.Task.csproj">
+      <Project>{3082a9de-189d-42fa-843e-517c8178fd55}</Project>
+      <Name>Base.Task</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.UI\Base.UI.csproj">
+      <Project>{3ae7843f-06ce-4989-a978-210f7dfcf1a9}</Project>
+      <Name>Base.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Utils.Common\Base.Utils.Common.csproj">
+      <Project>{AD97EF5C-E096-465D-9729-2D0524AF2476}</Project>
+      <Name>Base.Utils.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{b78a3750-fa57-41f2-927a-dfb795552548}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

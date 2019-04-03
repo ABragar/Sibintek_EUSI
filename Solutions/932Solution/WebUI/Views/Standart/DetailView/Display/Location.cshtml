@@ -1,0 +1,678 @@
+﻿@model EditorViewModel
+@using Base.EntityFrameworkTypes.Complex
+
+@{
+    LayerType layerType = LayerType.All;
+
+    if (ViewData["LayerType"] != null && ViewData["LayerType"] is LayerType)
+    {
+        layerType = (LayerType)ViewData["LayerType"];
+    }
+
+    string wrapID = Html.CreateSystemName("wrap_");
+
+    string mapID = Html.CreateSystemName("map_");
+
+    string wndID = Html.CreateSystemName("wnd_");
+
+    string latlngPolyWndID = Html.CreateSystemName("latlngPoly_");
+
+    string latlngPointWndID = Html.CreateSystemName("latlngPoint_");
+
+    string htmlFieldName = Model.PropertyName;
+
+    string addressHtmlFieldName = htmlFieldName + ".Address";
+
+    string inverseLine = Html.CreateSystemName("invl_");
+}
+
+
+<script>
+    $(function () {
+        window["@wndID"] = {
+
+            onOpen: function (e) {
+                var form = $("#@wrapID").closest("form").data("pbaForm");
+                var wnd = e.sender;
+                var lang = $.extend({}, form.getPr("@addressHtmlFieldName"));
+                var viewModel = kendo.observable({
+                    model: lang,
+                    save: function () {
+                        var wndForm = wnd.element.find("form").data("pbaForm");
+                        form.setPr("@addressHtmlFieldName", wndForm.getModel());
+                        wnd.close();
+                    },
+                    close: function () {
+                        wnd.close();
+                    }
+                });
+                if (!wnd["_init__"]) {
+                    wnd.element.find(".form").wrap("<form>");
+                    var $wndForm = wnd.element.find("form");
+                    $wndForm.addClass("common-form");
+                    buttons = {
+                        "ОК": {
+                            "click": "save",
+                            icon: "k-update",
+                            cssClass: "btn-primary"
+                        },
+                        "Отмена": {
+                            "click": "close",
+                            icon: "k-cancel",
+                            cssClass: "btn-default"
+                        }
+                    };
+                    $wndForm.pbaForm({
+                        model: viewModel,
+                        //wrap: "k-edit-form-container",
+                        buttons: buttons,
+                        nameModel: "model",
+                        attrBind: true
+                    });
+                    $wndForm.data("pbaForm").bind();
+                    wnd["_init__"] = true;
+                } else {
+                    var $wndForm = wnd.element.find("form");
+                    $wndForm.data("pbaForm").unbind();
+                    $wndForm.data("pbaForm").bind(viewModel);
+                }
+                window["@wndID"].form = $wndForm.data("pbaForm");
+            }
+        };
+    });
+</script>
+
+<div id="@wrapID" style="top:0; bottom:0; left:0; right: 0; height: 400px; width: 600px;">
+    <div class="lat-lng">
+        <div class="lat-lng-wrap">
+            <span class="label label-default">Широта</span>
+            <span class="label label-primary lat"></span>
+        </div>
+        <div class="lat-lng-wrap" style="margin-top:50px;">
+            <span class="label label-default">Долгота</span>
+            <span class="label label-primary lng"></span>
+        </div>
+    </div>
+
+    <div id="@mapID" style="position:absolute; top:0; bottom:0; left:0; right:0"></div>
+</div>
+
+<script>
+    $(function () {
+        window.onkeydown = function (e) {
+            if (e.ctrlKey) {
+                window["@wrapID"].showlatlng = true;
+                $("#@wrapID").find(".lat-lng").show();
+            }
+        }
+        window.onkeyup = function (e) {
+            if (e.keyCode == 17) {
+                window["@wrapID"].showlatlng = false;
+                $("#@wrapID").find(".lat-lng").hide();
+            }
+        }
+
+        window["@wrapID"] = {
+            layers: {
+                OSM: null,
+                yandex: null,
+                objectLayers: null,
+                startEndLine: null
+            },
+            allows: {
+                point: "@(layerType.HasFlag(LayerType.Point) ? "true" : "false")" == "true",
+                polyline: "@(layerType.HasFlag(LayerType.PolyLine) ? "true" : "false")" == "true",
+                poloygon: "@(layerType.HasFlag(LayerType.Polygon) ? "true" : "false")" == "true",
+            },
+            drawControl: null,
+            map: null,
+            defaultLatLng: [parseFloat("@Html.GetDefaultLatAsString()"), parseFloat("@Html.GetDefaultLongAsString()")],
+            defaultZoom: @Html.GetDefaultZoom(),
+            searchURL: 'https://geocode-maps.yandex.ru/1.x/',
+            reverseSearchURL: 'https://geocode-maps.yandex.ru/1.x/',
+            osmTileURL: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            attribution: '<div class="copyBlock">' +
+                    '<a class="copy" target="_blank" href="http://pba.su">' +
+                    '<img src="/Content/images/pba.png"></a>' +
+                    '</div>',
+            clearMap: function () {
+                this.layers.objectLayers.clearLayers();
+                this.layers.startEndLine.clearLayers();
+            },
+            setDistanceCalculator: function () {
+                var createdLayer = this.layers.objectLayers.getLayers()[0];
+                if (createdLayer && createdLayer.toGeoJSON().geometry.type === "LineString") {
+                    createdLayer.on("click", function (e) {
+                        var self = this;
+                        var currentPoint = e.latlng;
+                        //находим ближайшую точку (по ум. - конец отрезка)
+                        var nearestPoint = self._latlngs[self._latlngs.length - 1];
+                        var curNearestPointDistance = currentPoint.distanceTo(nearestPoint);
+                        var nearestPointPosition = self._latlngs.length - 1;
+                        for (var i = 0 ; i < self._latlngs.length - 1 ; i++) {
+                            var curPointDistance = currentPoint.distanceTo(self._latlngs[i]);
+                            if (curPointDistance < curNearestPointDistance) {
+                                nearestPointPosition = i;
+                                curNearestPointDistance = curPointDistance;
+                            }
+                        }
+                        //по умолчанию - ближайшая точка - начало
+                        var finalDistance = self._latlngs[0].distanceTo(currentPoint);
+                        if (nearestPointPosition !== 0) {
+                            //строим путь от начала до ближайшей точки - 1
+                            var distanceMinusOne = 0;
+                            for (var i = 1 ; i < nearestPointPosition; i++) {
+                                distanceMinusOne += self._latlngs[i - 1].distanceTo(self._latlngs[i]);
+                            }
+                            var distanceWithCurrent = distanceMinusOne
+                                + self._latlngs[nearestPointPosition - 1].distanceTo(currentPoint)
+                                + currentPoint.distanceTo(self._latlngs[nearestPointPosition]);
+                            var distanceWithNearest = distanceMinusOne
+                                + self._latlngs[nearestPointPosition - 1].distanceTo(self._latlngs[nearestPointPosition]);
+                            finalDistance = distanceMinusOne + self._latlngs[nearestPointPosition - 1].distanceTo(currentPoint);
+                            if (distanceWithCurrent.toFixed(1) !== distanceWithNearest.toFixed(1)) {
+                                finalDistance = distanceMinusOne
+                                    + self._latlngs[nearestPointPosition - 1].distanceTo(self._latlngs[nearestPointPosition])
+                                    + self._latlngs[nearestPointPosition].distanceTo(currentPoint);
+                            }
+                        }
+                        var popup = L.popup(currentPoint)
+                              .setLatLng(currentPoint)
+                              .setContent("<p>Расстояние от начала:</p><p>" + (finalDistance / 1000).toFixed(3) + " км</p>")
+                              .openOn(self._map);
+                    });
+                    window["@wrapID"].redrawStartEndLine();
+                }
+            },
+            redrawStartEndLine: function () {
+                //перерисовка начала/конца
+                this.layers.startEndLine.clearLayers();
+                var layer = this.layers.objectLayers.getLayers()[0];
+
+                var endDistance = 0;
+                for (var i = 0 ; i < layer._latlngs.length - 1 ; i++) {
+                    endDistance += layer._latlngs[i].distanceTo(layer._latlngs[i + 1]);
+                }
+
+                if (layer && layer.toGeoJSON().geometry.type === "LineString") {
+                    var startPoint = layer._latlngs[0];
+                    var endPoint = layer._latlngs[layer._latlngs.length - 1];
+                    var startIcon = L.icon({
+                        iconUrl: '/Content/icons/green_marker.png',
+                        iconSize: [25, 41],
+                        popupAnchor: [0, -25],
+                        className: 'startend-geoicon'
+                    });
+
+                    var endIcon = L.icon({
+                        iconUrl: '/Content/icons/red_marker.png',
+                        iconSize: [25, 41],
+                        popupAnchor: [0, -25],
+                        className: 'startend-geoicon'
+                    });
+
+                    var startMarker = L.marker([startPoint.lat, startPoint.lng], { icon: startIcon }).addTo(window["@wrapID"].layers.startEndLine);
+                    startMarker.bindPopup("<p>Начало дороги</p>");
+                    var endMarker = L.marker([endPoint.lat, endPoint.lng], { icon: endIcon }).addTo(window["@wrapID"].layers.startEndLine);
+                    endMarker.bindPopup("<p>Конец дороги. Расстояние от начала:</p><p>" + (endDistance / 1000).toFixed(3) + " км</p>");
+                }
+            },
+            showlatlng: false,
+            latlngDisplay: $("#@wrapID").find(".lat-lng"),
+            latDisplay: $("#@wrapID").find(".lat-lng .lat"),
+            lngDisplay: $("#@wrapID").find(".lat-lng .lng"),
+            onMapMouseMove: function (event) {
+                window["@wrapID"].latlngDisplay.css({
+                    top: event.containerPoint.y - 45,
+                    left: event.containerPoint.x - 220,
+                });
+                window["@wrapID"].latDisplay.html(event.latlng.lat);
+                window["@wrapID"].lngDisplay.html(event.latlng.lng);
+            },
+            _bindAccuratePoly: function (model, onSaveChanges) {
+                kendo.bind($("#@latlngPolyWndID").find("#polylatlngs"), kendo.observable({
+                    latlngs: new kendo.data.DataSource({
+                        data: model,
+                        schema: {
+                            model: {
+                                id: "id",
+                                fields: {
+                                    lat: {
+                                        title: "Широта",
+                                        editable: true,
+                                        type: "string",
+                                        validation: { required: true },
+                                    },
+                                    lng: {
+                                        title: "Долгота",
+                                        editable: true,
+                                        type: "string",
+                                        validation: { required: true }
+                                    }
+                                }
+                            }
+                        }
+                    }),
+                    onSaveChanges: onSaveChanges
+                }));
+            },
+            _onAccuratePointOpen: function (e) {
+                var layer = window["@wrapID"].layers.objectLayers.getLayers()[0];
+                var model = {};
+                if (layer) {
+                    if (layer._latlng) {
+                        model = {
+                            lat: layer._latlng.lat,
+                            lng: layer._latlng.lng,
+                        }
+                    } else if (layer._latlngs && layer._latlngs.length) {
+                        model = {
+                            lat: layer._latlngs[0].lat,
+                            lng: layer._latlngs[0].lng,
+                        }
+                    }
+                }
+
+                var observ = kendo.observable({
+                    model: model,
+                    savePoint: function (e) {
+                        var wrap = window["@wrapID"];
+                        var latlng = wrap._arraylatlngsToDoubles([this.model]);
+                        $("#@latlngPointWndID").data("kendoWindow").close();
+                        wrap.clearMap();
+                        var wkt = wrap.latlngsToWKT(latlng, true);
+                        if (wkt) {
+                            wrap.draw(wkt, true);
+                            wrap.setGetAddressOfPolygonByCenter(latlng);
+                        }
+                    }
+                });
+                var form = $("#@latlngPointWndID").find("#pointlatlngs");
+                kendo.bind(form, observ);
+            },
+            _onAccuratePolygonOpen: function (e) {
+                var layer = window["@wrapID"].layers.objectLayers.getLayers()[0];
+                var model = [];
+                if (layer) {
+                    if (layer._latlng) {
+                        model = {
+                            lat: layer._latlng.lat,
+                            lng: layer._latlng.lng,
+                        }
+                    } else if (layer._latlngs.length > 1) {
+                        for (var i in layer._latlngs) {
+                            model.push({
+                                id: i,
+                                lat: layer._latlngs[i].lat,
+                                lng: layer._latlngs[i].lng
+                            });
+                        }
+                    }
+                }
+
+                window["@wrapID"]._bindAccuratePoly(model, function (e) {
+                    var wrap = window["@wrapID"];
+                    $("#@latlngPolyWndID").data("kendoWindow").close();
+                    wrap.clearMap();
+                    var latlngs = wrap._arraylatlngsToDoubles(e.sender._data);
+                    var wkt = wrap.latlngsToWKT(latlngs, true);
+                    if (wkt) {
+                        if (wrap.allows.point || latlngs.length > 1) {
+                            wrap.draw(wkt, true);
+                        } else if (latlngs.length && latlngs[0].lat && latlngs[0].lng) {
+                            window["@wrapID"].map.panTo(latlngs[0]);
+                        }
+                        wrap.setGetAddressOfPolygonByCenter(latlngs);
+                    }
+                });
+            },
+            _onAccuratePolylineOpen: function (e) {
+                var layer = window["@wrapID"].layers.objectLayers.getLayers()[0];
+                var model = [];
+                if (layer) {
+                    if (layer._latlng) {
+                        model = {
+                            lat: layer._latlng.lat,
+                            lng: layer._latlng.lng,
+                        }
+                    } else if (layer._latlngs.length > 1) {
+                        for (var i in layer._latlngs) {
+                            model.push({
+                                id: i,
+                                lat: layer._latlngs[i].lat,
+                                lng: layer._latlngs[i].lng
+                            });
+                        }
+                    }
+                }
+                window["@wrapID"]._bindAccuratePoly(model, function (e) {
+                    $("#@latlngPolyWndID").data("kendoWindow").close();
+                    window["@wrapID"].clearMap();
+                    var latlngs = window["@wrapID"]._arraylatlngsToDoubles(e.sender._data);
+                    var wkt = window["@wrapID"].latlngsToWKT(latlngs, false);
+                    if (wkt) {
+                        if (window["@wrapID"].allows.point || latlngs.length > 1) {
+                            window["@wrapID"].draw(wkt, true);
+                        } else if (latlngs.length && latlngs[0].lat && latlngs[0].lng) {
+                            window["@wrapID"].map.panTo(latlngs[0]);
+                        }
+                        window["@wrapID"].setGetAddressOfPolygonByCenter(latlngs);
+                    }
+                });
+            },
+            _arraylatlngsToDoubles: function (latlngs) {
+                var result = [];
+                for (var i = 0; i < latlngs.length; i++) {
+                    result.push({
+                        lat: parseFloat(latlngs[i].lat),
+                        lng: parseFloat(latlngs[i].lng)
+                    });
+                }
+                return result;
+            },
+            setPoint: function (latlng, focus) {
+                var self = this;
+                self.clearMap();
+                if (focus) {
+                    self.map.panTo(latlng);
+                }
+                L.marker([latlng.lat, latlng.lng]).addTo(self.layers.objectLayers);
+            },
+            draw: function (geoObj, focus) {
+                var self = this;
+                //var wkt = new Wkt.Wkt();
+                //wkt.read(wktString);
+                //var geoObj = wkt.toObject(self.map.defaults);
+                //if (wkt.type === 'polygon' || wkt.type === 'linestring') {
+                //}
+                geoObj.addTo(self.map);
+                self.layers.objectLayers.addLayer(geoObj);
+
+                if (focus) {
+                    self.focus(geoObj);
+                }
+            },
+            focus: function (layer) {
+                var self = window["@wrapID"];
+
+                setTimeout(function () {
+                    if (!layer) {
+                        layer = self.layers.objectLayers.getLayers()[0];
+                    }
+                    if (layer) {
+                        if (layer.getBounds !== undefined && typeof layer.getBounds === 'function') {
+                            self.map.fitBounds(layer.getBounds());
+                        } else {
+                            if (layer.getLatLng !== undefined && typeof layer.getLatLng === 'function') {
+                                self.map.panTo(layer.getLatLng());
+                            }
+                        }
+                    }
+                }, 200);
+            },
+
+            latlngsToWKT: function (latlngs, isPolygon) {
+                if (latlngs.length == 1) {
+                    return "POINT(" + latlngs[0].lng + " " + latlngs[0].lat + ")";
+                }
+
+                var lng, lat, coords = [];
+                for (var i = 0; i < latlngs.length; i++) {
+                    coords.push(latlngs[i].lng + " " + latlngs[i].lat);
+                    if (i === 0) {
+                        lng = latlngs[i].lng;
+                        lat = latlngs[i].lat;
+                    }
+                };
+                if (isPolygon) {
+                    return "POLYGON((" + coords.join(",") + "," + lng + " " + lat + "))";
+                } else {
+                    return "LINESTRING(" + coords.join(",") + ")";
+                }
+            },
+            toWKT: function (layer) {
+                var lng, lat, coords = [];
+                if (layer instanceof L.Polygon || layer instanceof L.Polyline) {
+                    var latlngs = layer.getLatLngs();
+                    for (var i = 0; i < latlngs.length; i++) {
+                        coords.push(latlngs[i].lng + " " + latlngs[i].lat);
+                        if (i === 0) {
+                            lng = latlngs[i].lng;
+                            lat = latlngs[i].lat;
+                        }
+                    };
+                    if (layer instanceof L.Polygon) {
+                        return "POLYGON((" + coords.join(",") + "," + lng + " " + lat + "))";
+                    } else if (layer instanceof L.Polyline) {
+                        return "LINESTRING(" + coords.join(",") + ")";
+                    }
+                } else if (layer instanceof L.Marker) {
+                    return "POINT(" + layer.getLatLng().lng + " " + layer.getLatLng().lat + ")";
+                }
+            },
+            initialize: function () {
+                L.Icon.Default.imagePath = "/Content/vendor/leaflet/Leaflet.core/images";
+
+                var self = this;
+                self.map = L.map('@mapID', {
+                    zoomAnimation: false
+                }).on("mousemove", self.onMapMouseMove);
+
+                console.log(self.map);
+
+                //self.layers.yandex = new L.Yandex();
+                self.layers.OSM = L.tileLayer(self.osmTileURL, {
+                    maxZoom: 18
+                }).addTo(self.map);
+                self.map.addControl(new L.Control.Layers({
+                    //"Слой 2": self.layers.yandex,
+                    "Слой 1": self.layers.OSM
+                }, null, { position: "bottomright" }));
+
+                self.layers.startEndLine = new L.FeatureGroup();
+                self.map.addLayer(self.layers.startEndLine);
+
+                self.layers.objectLayers = new L.FeatureGroup();
+                self.map.addLayer(self.layers.objectLayers);
+                self.map.setView(self.defaultLatLng, self.defaultZoom);
+            },
+            setGetAddressOfPolygonByCenter: function (latlngs) {
+                var self = this;
+                var center = self.getCenter(latlngs);
+                this.getPointAddress(center, function (data) {
+                    var geoObject = null;
+                    for (var i in data) {
+                        var lowerCorner = data[i].GeoObject.boundedBy.Envelope.lowerCorner.split(" ");
+                        var upperCorner = data[i].GeoObject.boundedBy.Envelope.upperCorner.split(" ");
+                        var allIn = true;
+                        for (var j in latlngs) {
+                            if (latlngs[j].lat > upperCorner[1] || latlngs[j].lat < lowerCorner[1] || latlngs[j].lng > upperCorner[0] || latlngs[j].lng < lowerCorner[0]) {
+                                allIn = false;
+                                break;
+                            }
+                        }
+                        if (allIn) {
+                            geoObject = data[i];
+                            break;
+                        }
+                    }
+                    if (geoObject) {
+                        $("#@wrapID").closest("form").data("pbaForm").setPr("@(addressHtmlFieldName)", geoObject.GeoObject.metaDataProperty.GeocoderMetaData.text);
+                    } else {
+                        $("#@wrapID").closest("form").data("pbaForm").setPr("@(addressHtmlFieldName)", "");
+                    }
+                }, true);
+            },
+            getCenter: function (points) {
+                if (points.length == 1) {
+                    return points[0];
+                }
+                if (points.length == 2) {
+                    return {
+                        lat: (points[0].lat + points[1].lat) / 2,
+                        lng: (points[0].lng + points[1].lng) / 2,
+                    }
+                }
+                var i, j, len, p1, p2, f, area, x, y,
+                area = x = y = 0;
+                for (i = 0, len = points.length, j = len - 1; i < len; j = i++) {
+                    p1 = points[i];
+                    p2 = points[j];
+
+                    f = p1.lat * p2.lng - p2.lat * p1.lng;
+                    x += (p1.lng + p2.lng) * f;
+                    y += (p1.lat + p2.lat) * f;
+                    area += f * 3;
+                }
+                return window["@wrapID"].map.layerPointToLatLng([x / area, y / area]);
+            },
+            onPlaceSelect: function (e) {
+                var dataItem = this.dataItem(e.item.index());
+                var latlng = dataItem.GeoObject.Point.pos.split(" ");
+                if (window["@wrapID"].allows.point) {
+                    window["@wrapID"].setPoint({
+                        lat: latlng[1],
+                        lng: latlng[0]
+                    }, true);
+                } else {
+                    window["@wrapID"].map.panTo({
+                        lat: latlng[1],
+                        lng: latlng[0]
+                    });
+                }
+            },
+            getPointAddress: function (latlng, callback, all) {
+                $.get(window["@wrapID"].reverseSearchURL, {
+                    format: "json",
+                    geocode: latlng.lng + "," + latlng.lat
+                }, function (data) {
+                    if (callback && data.response.GeoObjectCollection.featureMember.length) {
+                        if (all) {
+                            callback(data.response.GeoObjectCollection.featureMember);
+                        } else {
+                            callback(data.response.GeoObjectCollection.featureMember[0]);
+                        }
+                    }
+                });
+            },
+            initAddress: function (geoObj) {
+                var self = this;
+                //var wkt = new Wkt.Wkt();
+                //wkt.read(wktString);
+                //var geoObj = wkt.toObject();
+
+                if (geoObj instanceof L.Marker) {
+                    self.getPointAddress({
+                        lat: geoObj._latlng.lat,
+                        lng: geoObj._latlng.lng
+                    }, function (data) {
+                        $("#@wrapID")
+                            .closest("form")
+                            .data("pbaForm")
+                        .setPr("@(addressHtmlFieldName)", data.GeoObject.metaDataProperty.GeocoderMetaData.text);
+                    });
+                } else if (geoObj instanceof L.Path) {
+                    self.setGetAddressOfPolygonByCenter(geoObj._latlngs);
+                }
+            }
+        }
+
+        if ($("#@wrapID").closest("[data-role=window]").length) {
+            $("#@wrapID").closest("[data-role=window]").data('kendoWindow').bind('activate', function () {
+                if (window["@wrapID"].map) {
+                    window["@wrapID"].map._onResize();
+                    window["@wrapID"].focus();
+                }
+            });
+
+            $("#@wrapID").closest("[data-role=window]").data('kendoWindow').bind('resize', function () {
+                if (window["@wrapID"].map) {
+                    window["@wrapID"].map._onResize();
+                }
+            });
+        } else {
+
+        }
+
+        var tabId = $("#@wrapID").closest('.tab-pane').attr('id');
+        $('a[href="#' + tabId + '"]').on('shown.bs.tab', function (e) {
+            if (window["@wrapID"].map) {
+                window["@wrapID"].map._onResize();
+                setTimeout(window["@wrapID"].focus, 200);
+            }
+        });
+
+        $("#@wrapID").closest("form").on("onShown", function (e, form) {
+            if (window["@wrapID"].map) {
+                var $tab = $("#@wrapID").closest(".k-tabstrip");
+                var $tabToolBar = $tab.find(".k-tabstrip-items");
+                $tabToolBar.on("click", function (e) {
+                    window["@wrapID"].map._onResize();
+                    setTimeout(window["@wrapID"].focus, 200);
+                });
+            }
+        });
+
+        $("#@wrapID").closest("form").on("onAfterBind", function (e, form) {
+            if (!window["@wrapID"].map) {
+
+
+                window["@wrapID"].initialize();
+
+                $('.leaflet-control-attribution').remove();
+            } else {
+                window["@wrapID"].clearMap();
+                // Тут как то так
+                var drawControl = window["@wrapID"].drawControl;
+                if (drawControl) {
+                    for (var i in drawControl._toolbars) {
+                        if (typeof drawControl._toolbars[i]._modes.edit != 'undefined') {
+                            var editHandler = drawControl._toolbars[i]._modes.edit.handler;
+                            editHandler.enable();
+                            editHandler.disable();
+                        }
+                    }
+                }
+            }
+
+            var address = form.getPr("@(addressHtmlFieldName)");
+            var geoObjJson = form.getPr("@(htmlFieldName).Disposition");
+            var geoObj = geoObjJson ? L.GeoJSON.geometryToLayer(geoObjJson) : null;
+
+            if (geoObj) {
+                window["@wrapID"].draw(geoObj, true);
+                window["@wrapID"].setDistanceCalculator();
+            }
+
+            if (geoObj && !address) {
+                window["@wrapID"].initAddress(geoObj);
+            }
+        });
+
+        $("#@wrapID").closest("form").on("onSave", function (e, form) {
+            var layer = window["@wrapID"].layers.objectLayers.getLayers()[0];
+            if (layer) {
+                form.setPr("@(htmlFieldName).Disposition", layer.toGeoJSON().geometry);
+            }
+
+        });
+
+        $("#@inverseLine").on("click", function (e) {
+            var layer = window["@wrapID"].layers.objectLayers.getLayers()[0];
+            if (layer && layer.toGeoJSON().geometry.type === "LineString") {
+                layer._latlngs.reverse();
+                window["@wrapID"].draw(layer, true);
+                window["@wrapID"].redrawStartEndLine();
+            }
+        });
+
+
+        $(".geosearch-wrapper .glyphicon-remove").on("click", function () {
+            window["@wrapID"].clearMap();
+        });
+
+        $("#@mapID").on("DOMNodeInserted", ".ymaps-copyrights-pane", function () {
+            $(this).remove();
+        });
+    });
+</script>

@@ -1,0 +1,82 @@
+﻿@model EditorViewModel
+
+@{
+    var config = Model.ViewModelConfig;
+    var lookup = config.LookupProperty;
+    var hasPreview = config.Preview.Enable;
+    var parentConfig = Model.ParentViewModelConfig;
+
+    //определение атрибута карточки Право Росреестр
+    //bool isRightRecordEstate = Model.ParentViewModelConfig?.Mnemonic == "RightRecord" && config.Mnemonic == "Estate";
+    //string linkStyle = isRightRecordEstate ? "font-weight:bold;" : "";
+
+    string linkStyle = "color: blue; text-decoration: underline;";
+
+    string className = "";
+
+    string template = hasPreview
+        ? $"<span>#: model.{lookup.Text} #</span>"
+        : $"<a href='javascript: void 0' onclick='{Model.UID}.openDetailView()' style='line-height:1;{linkStyle}'>#: model.{lookup.Text} #</a>";
+
+    if (lookup.Image != null)
+    {
+        className = "valign";
+
+        template = string.Format("<img class='img-circle' src='#: pbaAPI.imageHelpers.getImageThumbnailSrc(model.{0}, 'XXS') #' alt=''>&nbsp;", lookup.Image)
+            + template;
+    }
+    else if(lookup.Icon != null)
+    {
+        className = "valign";
+
+        template = string.Format("<span class='#: model.{0}.Value #' style='color: #= model.{0}.Color #'></span>&nbsp;", lookup.Icon)
+            + template;
+    }
+}
+
+@if (!hasPreview)
+{
+    <script>
+        window["@Model.UID"] = {
+            openDetailView: function() {
+                var id = +$("#@Model.UID").attr("data-id");
+
+                if (!id /*NaN || 0*/) {
+                    return;
+                }
+
+                pbaAPI.openDetailView("@config.Mnemonic", {
+                    isReadOnly: true,
+                    wid: "@Model.UID",
+                    id: id
+                });
+            }
+        };
+    </script>
+}
+
+<div id="@Model.UID" class="@className" data-mnemonic="@Model.ViewModelConfig.Mnemonic"></div>
+
+<script>
+    $(function() {
+        var template = kendo.template("@Html.Raw(template.Replace("\"", "\\\""))");
+
+        var $wrap = $("#@Model.UID");
+
+        $wrap.closest("form").on("onAfterBind", function(e, form) {
+            var obj = form.getPr("@Model.PropertyName");
+
+            if (!obj) {
+                $wrap
+                    .empty()
+                    .hide();
+                return;
+            }
+
+            $wrap
+                .attr("data-id", obj.ID)
+                .html(template({ model: obj }))
+                .show();
+        });
+    });
+</script>

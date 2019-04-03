@@ -1,0 +1,879 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:viewer="clr-namespace:Telerik.ReportViewer.Silverlight;assembly=Telerik.ReportViewer.Silverlight"
+    xmlns:winControls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:telerikNav="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation"
+    xmlns:telerikControls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+    xmlns:telerikPrimitives ="clr-namespace:Telerik.Windows.Controls.Primitives;assembly=Telerik.Windows.Controls"
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input">
+    
+    <!-- Office_BlueTheme -->
+    <SolidColorBrush x:Key="OuterControlBorderBrush" Color="#3FFFFFFF" />
+    <SolidColorBrush x:Key="InnerControlBorderBrush" Color="#FF6995D1" />
+    <LinearGradientBrush x:Key="ControlBackgroundBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFEDF6FF"/>
+        <GradientStop Color="#FFE5EFFC" Offset="0.1"/>
+        <GradientStop Color="#FFDEEDFF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="OuterViewerAreaBorderBrush" Color="#66FFFFFF" />
+    <SolidColorBrush x:Key="InnerViewerAreaBorderBrush" Color="#FF6995D1" />
+    <SolidColorBrush x:Key="InnerViewerAreaBackground" Color="White" />
+
+    <SolidColorBrush x:Key="ForegroundBrush" Color="Black" />
+
+    <SolidColorBrush x:Key="PageBorderBackground" Color="White" />
+    <SolidColorBrush x:Key="PageBorderBorderBrush" Color="DarkGray" />
+
+    <SolidColorBrush x:Key="ErrorMessageForeground" Color="Gray" />
+    <!-- Office_BlueTheme -->
+
+    <viewer:VisibilityConverter x:Key="VisibilityConverter" />
+    <viewer:ZoomConverter x:Key="ZoomConverter" />
+    <viewer:ScaleFactorConverter x:Key="ScaleFactorConverter" />
+    <viewer:MultivalueParameterConverter x:Key="MultivalueParameterConverter" />
+
+    <Style TargetType="viewer:DialogBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="viewer:DialogBox">
+                    <Border>
+                        <Border.Background>
+                            <SolidColorBrush Color="Gray" Opacity=".3" />
+                        </Border.Background>
+                        <Border Background="White" 
+                                CornerRadius="10" 
+                                Margin="20"
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center">
+                            <Border.Effect>
+                                <DropShadowEffect />
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="viewer:ErrorStatus">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="viewer:ErrorStatus">
+                    <Grid x:Name="LayoutRoot" >
+                        <Ellipse Fill="Red"/>
+                        <TextBlock Foreground="White" 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Stretch" 
+                                   FontWeight="Bold" >!</TextBlock>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <telerikControls:ContainerBindingCollection  x:Name="DocumentMapItemBindingsCollection">
+        <telerikControls:ContainerBinding PropertyName="IsExpanded" Binding="{Binding IsExpanded, Mode=TwoWay}" />
+    </telerikControls:ContainerBindingCollection>
+
+    <Style TargetType="ContentControl" x:Key="ParameterEditorStyle">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Grid Margin="5" Height="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" MinWidth="100" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" 
+                                                           TextWrapping="Wrap" 
+                                                           Foreground="{StaticResource ForegroundBrush}"
+                                                           Text="{Binding Text}" 
+                                                           VerticalAlignment="Center" 
+                                                           HorizontalAlignment="Left" />
+                        <ContentPresenter Grid.Column="1" Margin="5, 0" VerticalAlignment="Center" />
+                        <CheckBox Grid.Column="2" 
+                                                          VerticalAlignment="Center"
+                                                          Foreground="{StaticResource ForegroundBrush}"
+                                                          Content="{Binding TextResources.ReportParametersNullText}"
+                                                          IsChecked="{Binding IsNull, Mode=TwoWay}"                                   
+                                                          Visibility="{Binding AllowNull, Converter={StaticResource VisibilityConverter}}" />
+                        <viewer:ErrorStatus Grid.Column="3" IsTabStop="False" PropertyName="Error" Width="15" Height="15" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <viewer:ReportParameterEditorTemplateSelector x:Key="ReportParameterEditorTemplateSelector">
+        <viewer:ReportParameterEditorTemplateSelector.Templates>
+            <!-- 
+                                                Note:
+                                                Order the templates from most specific to most general (less specific).
+                                                The 1st template that matches the parameter is picked 
+                                            -->
+
+            <!-- BOOLEAN -->
+            <viewer:ReportParameterTemplate Type="System.Boolean">
+                <ContentControl Style="{StaticResource ParameterEditorStyle}">
+                    <CheckBox IsChecked="{Binding Value, Mode=TwoWay}" IsEnabled="{Binding IsEnabled}"/>
+                </ContentControl>
+            </viewer:ReportParameterTemplate>
+
+            <!-- MULTIVALUE + AVAILABLE VALUES -->
+            <viewer:ReportParameterTemplate AvailableValues="true" Multivalue="True">
+                <ContentControl Style="{StaticResource ParameterEditorStyle}">
+                    <telerikInput:RadComboBox Width="200" 
+                                              ItemsSource="{Binding AvailableValues}" 
+                                              SelectedIndex="0"
+                                              IsDropDownOpen="{Binding IsDropDownOpen, Mode=TwoWay}"
+                                              IsEnabled="{Binding IsEnabled}">
+                        <telerikInput:RadComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" Content="{Binding Name}" />
+                            </DataTemplate>
+                        </telerikInput:RadComboBox.ItemTemplate>
+                        <telerikInput:RadComboBox.SelectionBoxTemplate>
+                            <DataTemplate>
+                                <TextBlock HorizontalAlignment="Stretch" 
+                                           Text="{Binding Owner.SelectedLabels, Mode=OneWay, Converter={StaticResource MultivalueParameterConverter}}" />
+                            </DataTemplate>
+                        </telerikInput:RadComboBox.SelectionBoxTemplate>
+                    </telerikInput:RadComboBox>
+                </ContentControl>
+            </viewer:ReportParameterTemplate>
+
+            <!-- MULTIVALUE + NO AVAILABLE VALUES -->
+            <viewer:ReportParameterTemplate Multivalue="True" AvailableValues="False">
+                <ContentControl Style="{StaticResource ParameterEditorStyle}">
+                    <TextBox Text="{Binding Value, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, Converter={StaticResource MultivalueParameterConverter}}"
+                             Width="200" IsEnabled="{Binding IsEnabled}" />
+                </ContentControl>
+            </viewer:ReportParameterTemplate>
+
+            <!-- AVAILABLE VALUES -->
+            <viewer:ReportParameterTemplate AvailableValues="true">
+                <ContentControl Style="{StaticResource ParameterEditorStyle}">
+                    <telerikInput:RadComboBox Width="200" IsEnabled="{Binding IsEnabled}"
+                                                                              ItemsSource="{Binding AvailableValues}" 
+                                                                              SelectedItem="{Binding SelectedSingleValue, Mode=TwoWay}">
+                        <telerikInput:RadComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </telerikInput:RadComboBox.ItemTemplate>
+                    </telerikInput:RadComboBox>
+                </ContentControl>
+            </viewer:ReportParameterTemplate>
+
+            <!-- DATETIME -->
+            <viewer:ReportParameterTemplate Type="System.DateTime">
+                <ContentControl Style="{StaticResource ParameterEditorStyle}">
+                    <telerikInput:RadDatePicker Width="200" 
+                                                IsEnabled="{Binding IsEnabled}"
+                                                SelectedDate="{Binding Value, Mode=TwoWay}" />
+                </ContentControl>
+            </viewer:ReportParameterTemplate>
+
+            <!-- GENERIC EDITOR -->
+            <viewer:ReportParameterTemplate Multivalue="False">
+                <ContentControl Style="{StaticResource ParameterEditorStyle}">
+                    <TextBox Text="{Binding Value, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             Width="200" 
+                             IsEnabled="{Binding IsEnabled}"/>
+                </ContentControl>
+            </viewer:ReportParameterTemplate>
+
+        </viewer:ReportParameterEditorTemplateSelector.Templates>
+    </viewer:ReportParameterEditorTemplateSelector>
+
+    <Style x:Key="ExportDialogStyle" TargetType="viewer:DialogBox">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid Width="270">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Margin="20" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="{Binding Status}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                            <telerikControls:RadProgressBar Grid.Row="1" 
+                                                            Visibility="Collapsed"
+                                                            IsIndeterminate="True"
+                                                            Height="10"
+                                                            Margin="0 10 0 0"
+                                                            IsTabStop="False" />
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="SaveExport"
+                                                                    Grid.Column="1"
+                                                                    Padding="10, 3"
+                                                                    Margin="5"
+                                                                    IsEnabled="{Binding DocumentReady}"
+                                                                    Content="{Binding TextResources.SaveButtonText}" />
+                            <HyperlinkButton Grid.Column="2"
+                                                                             Padding="10, 3" 
+                                                                             Margin="5"
+                                                                             x:Name="CancelExport"
+                                                                             Content="{Binding TextResources.CancelExportButtonText}" />
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="viewer:ReportViewer">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="viewer:ReportViewer">
+                    <Grid x:Name="LayoutRoot" DataContext="{x:Null}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="ExportReportStateGroup">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="ExportNoExportState" />
+                                <VisualState x:Name="ExportInProgressState">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExportDialog"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExportProgressBar"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ExportCompleteState">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ExportDialog"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+
+                            <VisualStateGroup x:Name="PrintReportStateGroup">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="PrintNoPrintState" />
+                                <VisualState x:Name="PrintInProgressState">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PrintDialog"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PrintProgressBar"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="PrintCompleteState">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PrintDialog"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+
+                            <VisualStateGroup x:Name="ViewerStateGroup">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="ViewerPageState"/>
+                                <VisualState x:Name="ViewerErrorState">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ViewerError"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PageScrollViewer"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ViewerWorkInProgressState">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ViewerProgressMessage"
+                                                                       Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderBrush="{StaticResource OuterControlBorderBrush}" 
+                                  BorderThickness="1" 
+                                  CornerRadius="6">
+                            <Border Padding="6" 
+                                    Background="{StaticResource ControlBackgroundBrush}"
+                                    BorderBrush="{StaticResource InnerControlBorderBrush}" 
+                                    BorderThickness="1" 
+                                    CornerRadius="5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="6" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="6" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Toolbar -->
+                                    <telerikNav:RadToolBar Grid.Row="0">
+                                        <telerikControls:RadButton Command="{Binding NavigateBackCommand}" Margin="0,2" Padding="2">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/NavBack.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.BackToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadButton>
+
+                                        <telerikControls:RadButton Command="{Binding NavigateForwardCommand}" Margin="0,2" Padding="2">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/NavForward.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.ForwardToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadButton>
+
+                                        <telerikNav:RadToolBarSeparator />
+
+                                        <telerikControls:RadButton Command="{Binding RefreshReportCommand}" Margin="0,2" Padding="2">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/Refresh.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.RefreshToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadButton>
+
+                                        <telerikNav:RadToolBarSeparator />
+
+                                        <telerikControls:RadButton Command="{Binding MoveToFirstPageCommand}" Margin="0,2" Padding="2">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/FirstPage.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.FirstPageToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadButton>
+
+                                        <telerikControls:RadButton Command="{Binding MoveToPreviousPageCommand}" Margin="0,2" Padding="2">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/PrevPage.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.PreviousPageToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadButton>
+
+                                        <telerikNav:RadToolBarSeparator />
+                                        <viewer:TextBoxEx Text="{Binding PageNumberModel, Mode=TwoWay}" 
+                                                          IsEnabled="{Binding IsMoveToPageEnabled}" 
+                                                          MinWidth="30" 
+                                                          Margin="10, 0, 0, 0" 
+                                                          VerticalAlignment="Center" 
+                                                          TextAlignment="Center"
+                                                          viewer:KeyDown.Command="{Binding NavigateToSpecificPageCommand}">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.CurrentPageToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </viewer:TextBoxEx>
+
+                                        <TextBlock Text="{Binding TextResources.LabelOf}" 
+                                                       Margin="2, 0, 2, 0"  
+                                                       VerticalAlignment="Center" 
+                                                       TextAlignment="Center">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.TotalPagesToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding PageCount}" 
+                                                       Margin="2, 0, 10, 0"  
+                                                       VerticalAlignment="Center" 
+                                                       TextAlignment="Center">
+                                             <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.TotalPagesToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </TextBlock>
+                                        <telerikNav:RadToolBarSeparator />
+
+                                        <telerikControls:RadButton Command="{Binding MoveToNextPageCommand}" Margin="0,2" Padding="2">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/NextPage.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.NextPageToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadButton>
+
+                                        <telerikControls:RadButton Command="{Binding MoveToLastPageCommand}" Margin="0,2" Padding="2">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/LastPage.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.LastPageToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadButton>
+
+                                        <telerikNav:RadToolBarSeparator />
+
+                                        <telerikControls:RadToggleButton Command="{Binding TogglePrintPreviewCommand}" 
+                                                                         IsChecked="{Binding IsPrintPreviewChecked, Mode=OneWay}"
+                                                                         Margin="0,2" Padding="2">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/PrintPreview.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding PrintPreviewToolTip}" />
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadToggleButton>
+
+                                        <telerikControls:RadButton x:Name="PrintButton"
+                                                                    Command="{Binding PrintReportCommand}" 
+                                                                   
+                                                                   Margin="0,2"
+                                                                    Padding="2">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/Print.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.PrintToolTip}"/>
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadButton>
+
+                                        <telerikControls:RadToggleButton Margin="2" 
+                                                                         Padding="2, 0" 
+                                                                         Width="35"
+                                                                         IsEnabled="{Binding IsExportEnabled}"
+                                                                         IsChecked="{Binding IsOpen, 
+                                                                                     ElementName=radExportButtonContextMenu, 
+                                                                                     Mode=TwoWay}">
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding TextResources.ExportToolTip}" />
+                                            </ToolTipService.ToolTip>
+                                            <telerikControls:RadToggleButton.ContentTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                            <ColumnDefinition></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image HorizontalAlignment="Left" 
+                                                               Grid.Column="0"
+                                                               Width="16" 
+                                                               Height="16" 
+                                                               Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/Export.png" />
+                                                        <Path x:Name="DropDownIndicator"                                                               
+                                                              Grid.Column="1" 
+                                                              IsHitTestVisible="False"
+                                                              Fill="Black" 
+                                                              HorizontalAlignment="Center"
+                                                              VerticalAlignment="Center" 
+                                                              RenderTransformOrigin="0.5,0.5" 
+                                                              Margin="5,3,5,3"
+                                                              Data="M0,0 L5,0 5,1 4,1 4,2 3,2 3,3 2,3 2,2 1,2 1,1 0,1 0,0 z">
+                                                        </Path>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </telerikControls:RadToggleButton.ContentTemplate>
+                                            <telerikNav:RadContextMenu.ContextMenu>
+                                                <telerikNav:RadContextMenu 
+                                                    x:Name="radExportButtonContextMenu" 
+                                                    Placement="Bottom"
+                                                    IconColumnWidth="0"
+                                                    ItemsSource="{Binding RenderingExtensions}"
+                                                    MaxHeight="300">
+                                                    <telerikNav:RadContextMenu.ItemTemplate>
+                                                        <telerikControls:HierarchicalDataTemplate>
+                                                            <TextBlock Text="{Binding LocalizedName}" />
+                                                            <telerikControls:ContainerBinding.ContainerBindings>
+                                                                <telerikControls:ContainerBindingCollection>
+                                                                    <telerikControls:ContainerBinding PropertyName="Command" Binding="{Binding ExportReportCommand}" />
+                                                                    <telerikControls:ContainerBinding PropertyName="CommandParameter" Binding="{Binding}" />
+                                                                </telerikControls:ContainerBindingCollection>
+                                                            </telerikControls:ContainerBinding.ContainerBindings>
+                                                        </telerikControls:HierarchicalDataTemplate>
+                                                    </telerikNav:RadContextMenu.ItemTemplate>
+                                                </telerikNav:RadContextMenu>
+                                            </telerikNav:RadContextMenu.ContextMenu>
+                                        </telerikControls:RadToggleButton >
+
+                                        <telerikNav:RadToolBarSeparator />
+
+                                        <telerikControls:RadToggleButton Visibility="{Binding HasDocumentMap, Converter={StaticResource VisibilityConverter}}"
+                                                                    Margin="0,2" Padding="2"
+                                                                    IsChecked="{Binding IsDocumentMapVisible, Mode=TwoWay}"
+                                                                    IsEnabled="{Binding IsToggleDocumentMapEnabled}">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/DocumentMap.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding DocumentMapToolTip}" />
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadToggleButton>
+
+                                        <telerikControls:RadToggleButton Margin="0,2" Padding="2"
+                                                                    Visibility="{Binding HasParameters, Converter={StaticResource VisibilityConverter}}"
+                                                                    IsChecked="{Binding IsParametersAreaVisible, Mode=TwoWay}"
+                                                                    IsEnabled="{Binding IsToggleParametersAreaEnabled}">
+                                            <Image Width="16" Height="16" Source="/Telerik.ReportViewer.Silverlight;Component/Images/Office/Parameters.png" />
+                                            <ToolTipService.ToolTip>
+                                                <ToolTip Content="{Binding ParametersToolTip}" />
+                                            </ToolTipService.ToolTip>
+                                        </telerikControls:RadToggleButton>
+                                    </telerikNav:RadToolBar>
+
+                                    <!-- Parameters Area -->
+                                    <Border Grid.Row="1" 
+                                            x:Name="ParametersAreaPane" 
+                                            Visibility="{Binding IsParametersAreaVisible, Converter={StaticResource VisibilityConverter}}">
+                                        <Grid>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0">
+                                                    <viewer:ReportParametersControl IsTabStop="False"
+                                                                                    ParameterTemplateSelector="{StaticResource ReportParameterEditorTemplateSelector}"
+                                                                                    Foreground="{StaticResource ForegroundBrush}"
+                                                                                    ItemsSource="{Binding ParameterModels}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <telerikPrimitives:RadUniformGrid Columns="2" />
+                                                                <!--<telerikControls:RadWrapPanel />-->
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                    </viewer:ReportParametersControl>
+                                                </Grid>
+                                                <Grid Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                                    <telerikControls:RadButton Content="{Binding TextResources.PreviewButtonText}" 
+                                                                               Command="{Binding ApplyReportParametersCommand}"
+                                                                               Visibility="{Binding IsPreviewButtonVisible, Converter={StaticResource VisibilityConverter}}"
+                                                                               Padding="10, 3" 
+                                                                               Margin="3"
+                                                                               />
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+
+                                    <Grid Grid.Row="3" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="{Binding DocumentMapWidth, Mode=TwoWay}"/>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Document Map -->
+                                        <Border Grid.Column="0" 
+                                                x:Name="DocumentMapPane" 
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                Visibility="{Binding IsDocumentMapVisible, Converter={StaticResource VisibilityConverter}}">
+                                            <Border CornerRadius="4"
+                                                    BorderThickness="1"
+                                                    BorderBrush="{StaticResource OuterViewerAreaBorderBrush}">
+                                                <Border BorderThickness="1" 
+                                                        CornerRadius="3" 
+                                                        Background="{StaticResource InnerViewerAreaBackground}"
+                                                        BorderBrush="{StaticResource InnerViewerAreaBorderBrush}">
+                                                    <telerikNav:RadTreeView x:Name="DocumentMapTreeView"
+                                                                            Background="{StaticResource InnerViewerAreaBackground}" 
+                                                                            SelectedItem="{Binding SelectedDocumentMapNode, Mode=TwoWay}"
+                                                                            ItemsSource="{Binding DocumentMapNodes}">
+                                                        <telerikNav:RadTreeView.ItemTemplate>
+                                                            <telerikControls:HierarchicalDataTemplate 
+                                                                telerikControls:ContainerBinding.ContainerBindings="{StaticResource DocumentMapItemBindingsCollection}"
+                                                                ItemsSource="{Binding Children}">
+                                                                <TextBlock Text="{Binding Path=Text}" />
+                                                            </telerikControls:HierarchicalDataTemplate>
+                                                        </telerikNav:RadTreeView.ItemTemplate>
+                                                    </telerikNav:RadTreeView>
+                                                </Border>
+                                            </Border>
+                                        </Border>
+
+                                        <!-- Grid splitter -->
+                                        <winControls:GridSplitter Grid.Column="1"
+                                                                  HorizontalAlignment="Center"
+                                                                  Width="3"
+                                                                  VerticalAlignment="Stretch" 
+                                                                  ShowsPreview="True"     
+                                                                  Background="Transparent"    
+                                                                  Opacity="0"
+                                                                  Visibility="{Binding IsDocumentMapVisible, Converter={StaticResource VisibilityConverter}}">
+                                        </winControls:GridSplitter>
+
+                                        <!-- Viewer Area -->
+                                        <Border Grid.Column="2" 
+                                                CornerRadius="4"
+                                                BorderThickness="1"
+                                                BorderBrush="{StaticResource OuterViewerAreaBorderBrush}">
+                                            <Border BorderThickness="1" 
+                                                    CornerRadius="3" 
+                                                    Background="{StaticResource InnerViewerAreaBackground}"
+                                                    BorderBrush="{StaticResource InnerViewerAreaBorderBrush}">
+                                                <Grid>
+                                                    <ScrollViewer x:Name="PageScrollViewer" 
+                                                          Visibility="Visible"
+                                                          BorderThickness="0"
+                                                          telerikControls:ScrollViewerExtensions.EnableMouseWheel="True"
+                                                          HorizontalScrollBarVisibility="Auto" 
+                                                          VerticalScrollBarVisibility="Visible">
+
+                                                        <ContentControl x:Name="PageContentControl">
+                                                            <ContentControl.Resources>
+                                                                <ControlTemplate x:Key="PrintPreviewTemplate">
+                                                                    <Border x:Name="PageBorder"
+                                                                            Background="{StaticResource PageBorderBackground}"
+                                                                            BorderBrush="{StaticResource PageBorderBorderBrush}" 
+                                                                            BorderThickness="1"
+                                                                            Margin="10"
+                                                                            HorizontalAlignment="Center"
+                                                                            VerticalAlignment="Center">
+                                                                        <ContentPresenter />
+                                                                    </Border>
+                                                                </ControlTemplate>
+                                                                <ControlTemplate x:Key="InteractiveTemplate">
+                                                                    <ContentPresenter Margin="10" 
+                                                                                          HorizontalAlignment="Left"
+                                                                                          VerticalAlignment="Top" />
+                                                                </ControlTemplate>
+                                                            </ContentControl.Resources>
+
+                                                            <ContentControl.Content>
+                                                                <telerikPrimitives:LayoutTransformControl 
+                                                                                            x:Name="PageContainer" 
+                                                                                            LayoutTransform="{Binding PageTransform}"
+                                                                                            Content="{Binding PageRoot}" />
+                                                            </ContentControl.Content>
+                                                        </ContentControl>
+                                                    </ScrollViewer>
+
+                                                    <!-- Progress -->
+                                                    <viewer:DialogBox x:Name="ViewerProgressMessage" Visibility="Collapsed">
+                                                        <Grid Margin="20">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition />
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+
+                                                            <TextBlock Text="{Binding ProgressMessage}"                                                       
+                                                               VerticalAlignment="Center" 
+                                                               HorizontalAlignment="Center" />
+                                                            <telerikControls:RadProgressBar Grid.Row="1" 
+                                                                                            IsIndeterminate="True"
+                                                                                            Height="10"
+                                                                                            Margin="0 10 0 0"
+                                                                                            IsTabStop="False" />
+                                                        </Grid>
+                                                    </viewer:DialogBox>
+
+                                                    <!-- Error message -->
+                                                    <TextBox x:Name="ViewerError" 
+                                                       Visibility="Collapsed" 
+                                                       Text="{Binding ErrorMessage}"
+                                                       Padding="20"  
+                                                       IsReadOnly="True"                                                       
+                                                       BorderThickness="0"
+                                                       Background="{StaticResource InnerViewerAreaBackground}"
+                                                       Foreground="{StaticResource ErrorMessageForeground}" 
+                                                       FontFamily="Verdana" 
+                                                       TextWrapping="Wrap"
+                                                       TextAlignment="Center"
+                                                       VerticalAlignment="Stretch" 
+                                                       HorizontalAlignment="Stretch" />
+
+                                                    <!-- Export dialog -->
+                                                    <viewer:DialogBox x:Name="ExportDialog" Visibility="Collapsed">
+                                                        <Grid Width="270">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="100" />
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid Margin="20" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition />
+                                                                    <RowDefinition Height="auto" />
+                                                                </Grid.RowDefinitions>
+                                                                <TextBlock Text="{Binding ExportProgress}" 
+                                                                   VerticalAlignment="Center" 
+                                                                   HorizontalAlignment="Center" />
+                                                                <telerikControls:RadProgressBar Grid.Row="1" 
+                                                                                                x:Name="ExportProgressBar"
+                                                                                                Visibility="Collapsed"
+                                                                                                IsIndeterminate="True"
+                                                                                                Height="10"
+                                                                                                Margin="0 10 0 0"
+                                                                                                IsTabStop="False" />
+                                                            </Grid>
+                                                            <Grid Grid.Row="1">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <telerikControls:RadButton Command="{Binding SaveExportCommand}"
+                                                                                   Grid.Column="1"                                                           
+                                                                                   Padding="10, 3"
+                                                                                   Margin="5"
+                                                                                   Content="{Binding TextResources.SaveButtonText}" 
+                                                                                   />
+                                                                <telerikControls:RadButton Command="{Binding CancelExportCommand}"
+                                                                                   Grid.Column="2"
+                                                                                   Padding="10, 3"                                         
+                                                                                   Margin="5"                                                                               
+                                                                                   Content="{Binding TextResources.CancelExportButtonText}"
+                                                                                   />
+                                                            </Grid>
+                                                        </Grid>
+                                                    </viewer:DialogBox>
+
+                                                    <!-- Print dialog -->
+                                                    <viewer:DialogBox x:Name="PrintDialog" Visibility="Collapsed">
+                                                        <Grid Width="270">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="100" />
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid Margin="20" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition />
+                                                                    <RowDefinition Height="auto" />
+                                                                </Grid.RowDefinitions>
+                                                                <TextBlock Text="{Binding PrintProgress}" 
+                                                                   VerticalAlignment="Center"
+                                                                   HorizontalAlignment="Center"
+                                                                           TextAlignment="Center" />
+                                                                <telerikControls:RadProgressBar Grid.Row="1" 
+                                                                                                x:Name="PrintProgressBar"
+                                                                                                Visibility="Collapsed"
+                                                                                                IsIndeterminate="True"
+                                                                                                Height="10"
+                                                                                                Margin="0 10 0 0"
+                                                                                                IsTabStop="False" />
+                                                            </Grid>
+                                                            <Grid Grid.Row="1">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <telerikControls:RadButton Command="{Binding PrintDocumentCommand}"
+                                                                                   Grid.Column="1"                                                           
+                                                                                   Padding="10, 3"
+                                                                                   Margin="5"
+                                                                                   Content="{Binding TextResources.PrintButtonText}" 
+                                                                                   />
+
+                                                                <telerikControls:RadButton Command="{Binding CancelPrintDocumentCommand}"
+                                                                                   Grid.Column="2"
+                                                                                   Padding="10, 3"                                         
+                                                                                   Margin="5"                                                                               
+                                                                                   Content="{Binding TextResources.CancelPrintButtonText}"
+                                                                                   />
+                                                            </Grid>
+                                                        </Grid>
+                                                    </viewer:DialogBox>
+                                                </Grid>
+                                            </Border>
+                                        </Border>
+                                    </Grid>
+
+                                    <!-- Status Area -->
+                                    <Grid  Grid.Row="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="1" 
+                                                Orientation="Horizontal"
+                                                VerticalAlignment="Center">
+
+                                            <telerikControls:RadSlider Width="200" 
+                                                                    Value="{Binding Zoom, Mode=TwoWay, Converter={StaticResource ScaleFactorConverter}}" 
+                                                                    Minimum="-100" 
+                                                                    SmallChange="10"                                                                   
+                                                                    Maximum="100" 
+                                                                    VerticalAlignment="Center"
+                                                                    HandlesVisibility="Visible">
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip Content="{Binding TextResources.ZoomToolTip}"/>
+                                                </ToolTipService.ToolTip>
+                                            </telerikControls:RadSlider>
+
+                                            <telerikInput:RadComboBox Margin="10 0 3 0" Width="70"
+                                                                      HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                      IsEditable="True" IsTextSearchEnabled="False"
+                                                                      MaxDropDownHeight="300"
+                                                                      ItemsSource="{Binding AvailableZoomValues}"
+                                                                      Text="{Binding ZoomText, Mode=TwoWay}">
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip Content="{Binding TextResources.ZoomToolTip}"/>
+                                                </ToolTipService.ToolTip>
+                                            </telerikInput:RadComboBox>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

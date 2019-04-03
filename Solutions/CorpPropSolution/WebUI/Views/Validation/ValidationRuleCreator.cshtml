@@ -1,0 +1,85 @@
+﻿
+@model WebUI.Models.Validation.CreateValidationVm
+
+@{
+    string wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+    string leftPanel = "pnl_" + Guid.NewGuid().ToString("N");
+    string dropZone = "drp_" + Guid.NewGuid().ToString("N");
+    string resultID = "res_" + Guid.NewGuid().ToString("N");
+}
+
+
+
+<div id="@wrapID" class="create-panel">
+    <div class="property-panel">
+
+        <ul id="@leftPanel">
+            <li class="k-state-active">
+                Свойства
+                <ul>
+                    @foreach (var item in Model.Properties)
+                    {@:
+                        <li class="propItem" data="@item.Member">
+                            <span>@item.PropertyName</span>
+                        </li>
+                    }
+                </ul>
+            </li>
+            <li>
+                Опарации
+                <ul>
+                    <li data="==" class="propItem">==</li>
+                    <li data="!=" class="propItem">!=</li>
+                    <li data="<=" class="propItem">&lt;=</li>
+                    <li data=">=" class="propItem">>=</li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    <div id="@dropZone" class="drop-zone k-dropzone">
+        <span id="@resultID"></span>
+    </div>
+</div>
+
+<script>
+
+    function draggableOnDragStart(e) {
+        $(".propItem").addClass("hollow");
+    }
+
+    function droptargetOnDrop(e) {
+        $(e.dropTarget).text("You did great!");
+        $(".propItem").removeClass("hollow");
+    }
+
+    function draggableOnDragEnd(e) {
+        var draggable = e.currentTarget;
+        var resstr = $('#@resultID');
+
+        var data = draggable.attr('data');
+
+        resstr.append(data).append(' ');
+
+        if (!draggable.data("kendoDraggable").dropped) {
+
+        }
+
+        draggable.removeClass("hollow");
+    }
+
+    $('#@leftPanel').kendoPanelBar({
+        expandMode: "single"
+    });
+
+    $('.propItem').kendoDraggable({
+        hint: function (prop) {
+            var v = prop.clone();
+            return v;
+        },
+        dragstart: draggableOnDragStart,
+        dragend: draggableOnDragEnd
+    });
+
+    $('#@dropZone').kendoDropTarget();
+</script>

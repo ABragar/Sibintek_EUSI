@@ -1,0 +1,37 @@
+﻿@model StandartGridView
+
+@{Html.RenderPartial("~/Views/Standart/_Grid.cshtml", Model);}
+
+<script>
+    $(function () {
+
+        var grid = window["@Model.WidgetID"];
+
+        grid.addRow = function () {
+            var window = $('<div>').kendoWindow({
+                width: 400,
+                height: 150,
+                title: "Новый звонок",
+                actions: ["Close"],
+                modal: true,
+                content: {
+                    url: "@Url.Action("NewCall","Event")",
+                    data: { outcall: true }
+                },
+                activate: function () {
+                    window.trigger('onActivate');
+                },
+                deactivate: function () {
+                    this.destroy();
+                },
+                resize: function () {
+                    window.trigger('onResize');
+                },
+                close: function () { }
+            });
+
+            window.data('kendoWindow').center().open();
+        };
+
+    });
+</script>

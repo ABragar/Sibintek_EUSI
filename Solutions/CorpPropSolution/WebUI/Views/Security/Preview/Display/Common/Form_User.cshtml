@@ -1,0 +1,93 @@
+﻿@model CommonPreview
+
+<div id="#= uid #" class="hovercard">
+    <img class="hovercard__photo" src="#= pbaAPI.imageHelpers.getImageSrc(model.Image, 120, 120, 'NoPhoto') #" width="120" height="120" alt=""/>
+    <p class="hovercard__title" title="#: model.FullName #">#: model.FullName #</p>
+    <small class="hovercard__desc" title="#: model.Job #" aria-hidden="#= !model.Job #">#: model.Job #</small>
+    <div class="hovercard__status">#= pbaAPI.getUserState(model.ID, { showDesc: true }) #</div>
+    <ul class="hovercard__actions">
+        <li class="hovercard__action">
+            <a href="\#" data-action="videocall" title="Видеозвонок" data-popup="bottom"><i class="fa fa-video-camera"></i></a>
+        </li>
+        <li class="hovercard__action">
+            <a href="\#" data-action="audiocall" title="Аудиозвонок" data-popup="bottom"><i class="fa fa-phone"></i></a>
+        </li>
+        <li class="hovercard__action">
+            <a href="\#" data-action="chat" title="Открыть чат" data-popup="bottom"><i class="mdi mdi-message-text-outline"></i></a>
+        </li>
+        <li class="hovercard__action">
+            <a href="\#" data-action="task" title="Поставить задачу" data-popup="bottom"><i class="mdi mdi-calendar"></i></a>
+        </li>
+    </ul>
+</div>
+<script>
+    (function() {
+        "use strict";
+
+        var api = window["#= uid #"];
+        var $actionWrappers = $("\##= uid #").find(".hovercard__action");
+        var $actions = $actionWrappers.find("[data-action]");
+        var previewUserId = +'#: model.ID #';
+        var currentUserId = application.currentUser.id;
+        
+        if (!previewUserId || previewUserId < 0 || previewUserId === currentUserId) {
+            $actionWrappers.addClass("hovercard__action--disabled");
+            $actions.removeAttr("title");
+            return;
+        }
+        
+        $actions.off("click").click(function(evt) {
+            evt.preventDefault();
+
+            switch ($(this).attr("data-action")) {
+                case "audiocall":
+                    api.preview.deactivate();
+                    globalapp.rtcService.sendCallRequest(previewUserId, "PrivateMessage", null, "audio");
+                    break;
+                case "videocall":
+                    api.preview.deactivate();
+                    globalapp.rtcService.sendCallRequest(previewUserId, "PrivateMessage", null, "video");
+                    break;
+                case "chat":
+                    api.preview.deactivate();
+                    application.chat.openDialog("PrivateMessage", previewUserId);
+                    break;
+                case "task":
+                    api.preview.deactivate();
+                    $.get("/Users/GetUser?id=" + previewUserId, function(user) {
+                        if (!user || !user.model || user.error) {
+                            $actions.filter("[data-action=\"task\"]").attr("disabled", true);
+
+                            pbaAPI.errorMsg(user && user.error || "Ошибка при загрузке пользователя");
+                            
+                            return;
+                        }
+
+                        pbaAPI.openDetailView("OutTask", {
+                            toSave: true,
+                            entity: {
+                                AssignedFrom: {
+                                    ID: application.currentUser.id,
+                                    Image: { FileID: application.currentUser.imageId },
+                                    FullName: application.currentUser.fullName
+                                },
+                                AssignedTo: user.model,
+                                Priority: 1,
+                                Status: 0,
+                                StatusMessage: "Срок окончания не определен"
+                            },
+                            callback: function(e) {
+                                if (e.type === "save") {
+                                    pbaAPI.uploadMsg("Задача поставлена");
+                                }
+                            }
+                        });
+                    });
+                    break;
+                default:
+                    pbaAPI.infoMsg("Действие не поддерживается");
+                    break;
+            }
+        });
+    }());
+</script>

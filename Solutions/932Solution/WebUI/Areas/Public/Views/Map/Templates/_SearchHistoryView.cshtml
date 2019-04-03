@@ -1,0 +1,22 @@
+﻿@model WebUI.Areas.Public.Models.VmMap
+
+<script type="text/ng-template" id="search.container.html">
+    <pageslide ps-cloak="true" class="ng-pageslide-custom" ps-open="search.opened" ps-side="right" ps-size="400px" ps-custom-height="auto" ps-custom-top="75px" ps-container="@Model.UID">
+        <div class="page-slide-controls">
+            <a href="#" class="btn btn-close">×</a>
+            <a ng-click="$event.stopPropagation();search.switchAll()" class="btn btn-primary"><span class="glyphicon" ng-class="{'glyphicon-eye-close': search.hasChecked(), 'glyphicon-eye-open': !search.hasChecked() }"></span></a>
+            <p class="title">Результаты поиска</p>
+        </div>
+
+        <perfect-scrollbar class="scroller-absolute-with-top">
+            <div ng-repeat="(mnemonic, items) in search.data" ng-if="search.isSearchData(mnemonic)">
+                <div class="search-panel-heading" ng-repeat="item in items">
+                    <input type="checkbox" ng-icheck ng-icheck-color="purple" ng-icheck-theme="square" ng-model="search.options[mnemonic][item.ID]" />
+                    <div class="search-layer-icon" ng-style="{ 'background-color': search.getColor(mnemonic) }"><span class="{{::search.getIcon(mnemonic)}}"></span></div>
+                    {{::search.getTitle(item.Title, mnemonic)}}
+                </div>
+            </div>
+        </perfect-scrollbar>
+    </pageslide>
+</script>
+

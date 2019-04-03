@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<ProductionBlocks>
+	<ProductionBlock>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>2.1</Code>
+		<PublishCode>2.1</PublishCode>
+		<Name>Разведка и добыча</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ProductionBlock>
+	<ProductionBlock>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>2.3</Code>
+		<PublishCode>2.3</PublishCode>
+		<Name>Внутренний нефтесервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ProductionBlock>
+	<ProductionBlock>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>2.4</Code>
+		<PublishCode>2.4</PublishCode>
+		<Name>Нефтепереработка и нефтехимия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ProductionBlock>
+	<ProductionBlock>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>2.5</Code>
+		<PublishCode>2.5</PublishCode>
+		<Name>Коммерция и логистика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ProductionBlock>
+	<ProductionBlock>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>2.6</Code>
+		<PublishCode>2.6</PublishCode>
+		<Name>Прочая деятельность</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ProductionBlock>
+	<ProductionBlock>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>2.8</Code>
+		<PublishCode>2.8</PublishCode>
+		<Name>Корпоративный сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ProductionBlock>
+	<ProductionBlock>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>2.10</Code>
+		<PublishCode>2.10</PublishCode>
+		<Name>Газовый блок</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ProductionBlock>
+	<ProductionBlock>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>2.14</Code>
+		<PublishCode>2.14</PublishCode>
+		<Name>Совместные и международные проекты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ProductionBlock>
+</ProductionBlocks>
+  </DefaultDataHolder>

@@ -1,0 +1,54 @@
+﻿@model EditorViewModel
+
+<script>
+    window["@Model.UID"] = {
+        openDialog: function () {
+
+            var $form = $("#@Model.UID").closest("form");
+            var form = $form.data("pbaForm");
+            var profile = form.getPr("Profile");
+            var model = form.getModel();
+
+            if (profile) {
+                pbaAPI.openDetailView("SimpleProfile", {
+                    entity: profile,
+                    toSave: false,
+                    callback: function (e) {
+                        if (e.type === "save") {
+                            form.setPr("Profile", e.model);
+                        }
+                    }
+                });
+            } else {
+                pbaAPI.openDetailView("SimpleProfile", {
+                    id: 0,
+                    toSave: false,
+                    initNewEntity: function (entity) {
+                        entity.Image = model.Image;
+                        entity.LastName = model.LastName;
+                        entity.FirstName = model.FirstName;
+                        entity.MiddleName = model.MiddleName;
+                        entity.Gender = model.Gender;
+                        entity.Emails = [
+                            {
+                                ID: 0,
+                                IsPrimary: true,
+                                Email: model.Email
+                            }
+                        ];
+                    },
+                    callback: function (e) {
+                        if (e.type === "save") {
+                            form.setPr("Profile", e.model);
+                        }
+                    }
+                });
+            }
+        }
+    };
+</script>
+
+
+<div id="@Model.UID">
+    <a class='k-button' onclick="window['@Model.UID'].openDialog(); return false;" title="Редактировать">...</a>
+</div>

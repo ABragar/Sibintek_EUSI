@@ -1,0 +1,14 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\bin\Release\Base.Wrappers.Web.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\bin\Release\Base.Wrappers.Web.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\bin\Release\Base.Utils.Common.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\bin\Release\System.Linq.Dynamic.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\bin\Release\FluentValidationNA.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\bin\Release\Base.Utils.Common.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\bin\Release\System.Linq.Dynamic.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\bin\Release\System.Linq.Dynamic.xml
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\bin\Release\FluentValidationNA.xml
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\obj\Release\Base.Wrappers.Web.csprojAssemblyReference.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\obj\Release\Base.Wrappers.Web.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\obj\Release\Base.Wrappers.Web.csproj.CopyComplete
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\obj\Release\Base.Wrappers.Web.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Base.Wrappers.Web\obj\Release\Base.Wrappers.Web.pdb

@@ -1,0 +1,516 @@
+﻿@model EditorViewModel
+
+@{
+    var eViewModel = Model;
+
+    string htmlFieldName = eViewModel.PropertyName;
+
+    string wrapID = "wrap_" + Guid.NewGuid().ToString("N");
+
+    string validationmsg = "v_" + Guid.NewGuid().ToString("N");
+}
+
+<script src="/Content/vendor/roseestr/TileLayer.Rosreestr.js"></script>
+
+<div id="@wrapID" class="kadastr-wrap">
+    <div class="input-group">
+        <input type="text" readonly class="form-control kadastr_item">
+
+        <span class="input-group-btn ">
+            <button data-open-modal class="btn btn-default" type="button">
+                <span class="fa fa-align-justify"></span>
+            </button>
+            <button data-remove-modal class="btn btn-default" type="button">
+                <span class="fa fa-trash"></span>
+            </button>
+        </span>
+    </div>
+    <input id="@validationmsg" name="@validationmsg" type="hidden" @(Model.IsRequired ? "required" : "") validationmessage="Выберите адрес" />
+    <span class="k-invalid-msg" data-for="@validationmsg"></span>
+</div>
+
+<script id="tmpl_@wrapID" type="text/x-kendo-tmpl">
+    <div class="kadastr-modal container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input class="form-control info-class" name="info" type="text" readonly="readonly">
+
+                    <div class="input-group">
+                        <input type="text" data-country class="form-control" name="coordinates">
+                    </div>
+                    <button data-find class="btn btn-success">Найти</button>
+                    <button geolocation-find class="btn btn-success">Geo</button>
+                </div>
+
+                <div class="js-form-kadastr non-visible">
+                    <label>Список Кадастровых объектов</label>
+                    <div class="demo-section k-content wide">
+                        <div class="kadastr-listview"></div>
+                        <div class="k-pager-wrap pager"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div style="width: 100%;" class="panel-map"></div>
+            </div>
+        </div>
+        <hr />
+        <div class="pull-right">
+            <button data-save class="btn btn-success">Сохранить</button>
+            <button data-close class="btn btn-default">Отменить</button>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-kendo-tmpl" id="kendo_kadastr_template">
+    <div class="listitem kadastr-listitem">
+        <h3>#:data.id#</h3>
+        <p>#:data.title#</p>
+    </div>
+</script>
+
+@*todo*@
+
+<script type="text/x-kendo-tmpl" id="kendo_detailkadastr_template">
+    @*<pre style="color: black;">
+            #: JSON.stringify(data, null, '\t') #
+        </pre>*@
+
+    <div class="detail-item kadastr-detail-item">        
+        <p><span>Вид разрешенного использования: </span>#:data.feature.attrs.util_by_doc#</p>
+        <p><span>Дата: </span>#:data.feature.attrs.adate#</p>
+        <p><span>Адрес: </span>#:data.feature.attrs.address#</p>
+        <p><span>Округ: </span>#:data.feature.attrs.okrug#</p>        
+        <p><span>Район: </span>#:data.feature.attrs.rayon#</p>    
+    </div>
+</script>
+
+<script>
+    (function () {
+        var original;
+
+        var clickUnlocked = true;
+
+        var kadastrTypeStr;
+        var onclickPoint;
+        var kadastrMap;
+
+        var dataSource = new kendo.data.DataSource({
+            data: [],
+            pageSize: 4
+        });
+
+        function setInput() {
+            var inputStr = "";
+
+            if (original.Number) {
+                inputStr = original.Number;
+            }
+
+            if (original.Title) {
+                inputStr += " " + original.Title;
+            }
+
+            $("#@wrapID input").val(inputStr);
+        };
+
+        $("#@wrapID").closest("form").on("onAfterBind", function (e, form) {
+
+            original = form.getPr("@htmlFieldName");
+            console.log("ONAFTERBIND", original);
+            setInput();
+
+            switch (original.KadastrTypeEnum) {
+                case 0:
+                    kadastrTypeStr = "Неопределен";
+                    break;
+                case 1:
+                    kadastrTypeStr = "Регион";
+                    break;
+                case 2:
+                    kadastrTypeStr = "Участок";
+                    break;
+                case 3:
+                    kadastrTypeStr = "Квартал";
+                    break;
+                case 4:
+                    kadastrTypeStr = "Район";
+                    break;
+                default:
+                    kadastrTypeStr = "Неопределен";
+                    break;
+            }
+        });
+
+        $("#@wrapID").closest("form").on("onSave", function (e, form) {
+            var obj = form.getPr("@htmlFieldName");
+
+            obj.KadastrTypeEnum = original.KadastrTypeEnum;
+            obj.Number = original.Number;
+            obj.Title = original.Title;
+
+            console.log("ONSAVE", obj);
+
+            form.setPr("@htmlFieldName", obj);
+        });
+
+        //remove btn
+        $("#@wrapID [data-remove-modal]").click(function () {
+            $(".kadastr_item").val("");
+            original.Number = "";
+            original.Title = "";
+        });
+
+        //open modal btn
+        $("#@wrapID [data-open-modal]").click(function () {
+            var $wnd = $("<div>").kendoWindow({
+                width: 1200,
+                height: 700,
+                maxHeight: 900,
+                title: "Инициализатор свойства",
+                actions: ["Maximize", "Close"],
+                modal: true,
+                content: {
+                    template: $("#tmpl_@wrapID").html()
+                },
+                deactivate: function () {
+                    this.destroy();
+
+                    dataSource = new kendo.data.DataSource({
+                        data: [],
+                        pageSize: 4
+                    });
+                },
+                open: function () {
+                    var mapId = pbaAPI.guid("map");
+                    $wnd.find(".panel-map").attr("id", mapId);
+                    $wnd.find(".pager").kendoPager({ dataSource: dataSource });
+
+                    $wnd.find('.kadastr-listview').kendoListView({
+                        dataSource: dataSource,
+                        template: kendo.template($("#kendo_kadastr_template").html()),
+                        selectable: "single",
+                        change: listViewOnChange,
+                    }).data("kendoListView");
+
+                    function listViewOnChange() {
+                        var data = dataSource.view();
+                        var selected = $.map(this.select(), function (item) {
+                            return data[$(item).index()];
+                        });
+
+                        original.Number = selected[0].id.toString();
+                        original.Title = selected[0].title;
+
+                        setInfoInput();
+
+                        var zoom;
+
+                        switch (original.KadastrTypeEnum) {                                                                                                                                                                                                                                                          
+                            case 2://Parcel
+                            {
+                                zoom = 24; 
+                                break;
+                            }
+                            case 3://Quarter
+                            {
+                                zoom = 14;
+                                break;
+                            }
+                            case 4://District
+                            {
+                                zoom = 12;
+                                break;
+                            }
+                            default:
+                                zoom = 1;
+                                break;
+                        }
+
+                        if (onclickPoint != undefined) {
+                            setTimeout(function () {
+                                kadastrMap.setView([onclickPoint.x, onclickPoint.y], zoom);
+                            }, 0);
+                        }
+                    }
+
+                    initializeMap($wnd, mapId);
+
+                    var kladrWnd = this;
+
+                    $wnd.find('.js-form-kadastr').removeClass('non-visible');
+
+                    setInfoInput();
+
+                    $wnd.find('[data-save]').click(function () {
+                        setInput();
+                        kladrWnd.close();
+                    });
+
+                    $wnd.find('[data-close]').click(function () {
+                        kladrWnd.close();
+                    });
+
+                    $wnd.find('[data-find]').click(function () {
+                        var coordinates = $wnd.find('.form-group input[name="coordinates"]');
+
+                        var x = coordinates.val().split(" ")[0].substring(0, 9);
+                        var y = coordinates.val().split(" ")[1].substring(0, 9);
+
+                        onclickPoint = { x: x, y: y };
+
+                        var type = original.KadastrTypeEnum;
+
+                        var zoom = kadastrMap.getZoom();
+                        var tolerance = Math.pow(2, 20 - zoom);
+
+                        var url = generateUrl(x, y, type, tolerance);
+
+                        sendResponse(url, firstResponse);
+                    });
+
+                    $wnd.find('[geolocation-find]').click(function () {
+                        console.log("GEOLOCATION");
+
+                        var options = {
+                            enableHighAccuracy: true,
+                            timeout: 5000,
+                            maximumAge: 0
+                        };
+
+                        function success(pos) {
+                            var crd = pos.coords;
+
+                            var x = crd.latitude.toString().substring(0, 9);
+                            var y = crd.longitude.toString().substring(0, 9);
+
+                            $wnd.find('.form-group input[name="coordinates"]').val(x + " " + y);
+
+                            onclickPoint = { x: x, y: y };
+
+                            var type = original.KadastrTypeEnum;
+
+                            var zoom = kadastrMap.getZoom();
+
+                            setTimeout(function () {
+                                kadastrMap.setView([x, y], 24);
+                            }, 0);
+
+                            var tolerance = Math.pow(2, 20 - zoom);
+
+                            var url = generateUrl(x, y, type, tolerance);
+
+                            sendResponse(url, firstResponse);
+                        };
+
+                        function error(err) {
+                            console.warn('ERROR(' + err.code + '): ' + err.message);
+                        };
+
+                        navigator.geolocation.getCurrentPosition(success, error, options);
+                    });
+
+                    function setInfoInput() {
+                        var $infoInput = $wnd.find('input[name="info"]');
+                        var infoInputStr = kadastrTypeStr;
+
+                        if (original.Number) {
+                            infoInputStr += " " + original.Number;
+                        }
+
+                        if (original.Title) {
+                            infoInputStr += " " + original.Title;
+                        }
+
+                        $infoInput.val(infoInputStr);
+                        $infoInput.attr("title", infoInputStr);
+                    }
+                }
+            });
+
+            $wnd.data("kendoWindow").center().open();
+
+            function firstResponse(data) {
+                if (data) {
+                    console.log("Json RESPONSE", data);
+
+                    var features = data.features;
+
+                    if (features) {
+                        var dataForList;
+
+                        switch (original.KadastrTypeEnum) {
+                            case 0://Unknown
+                                {
+                                    break;
+                                }
+                            case 1://Region
+                                {
+                                    //NO VALUES
+                                    break;
+                                }
+                            case 2://Parcel
+                                {
+                                    dataForList = pbaAPI.map(features, function (value) {
+                                        return {
+                                            title: value.attrs.address,
+                                            id: value.attrs.id,
+                                            center: value.center
+                                        };
+                                    });
+                                    break;
+                                }
+                            case 3://Quarter
+                                {
+                                    dataForList = pbaAPI.map(features, function (value) {
+                                        return {
+                                            title: "",
+                                            id: value.attrs.id,
+                                            center: value.center
+                                        };
+                                    });
+                                    break;
+                                }
+                            case 4://District
+                                {
+                                    dataForList = pbaAPI.map(features, function (value) {
+                                        return {
+                                            title: value.attrs.name,
+                                            id: value.attrs.id,
+                                            center: value.center
+                                        };
+                                    });
+                                    break;
+                                }
+                            case 5://Estate
+                                {
+                                    //NO VALUES
+                                    break;
+                                }
+                            default:
+                                break;
+                        }
+
+                        if (dataForList) {
+                            dataSource.data(dataForList);
+
+
+                            //SecondResponse
+                            $wnd.find(".kadastr-listview .listitem").kendoTooltip({
+                                width: 400,
+                                heigth: 300,
+                                show: function (evt) {
+                                    var el = evt.sender.element;
+                                    var tooltip = $(el).data("kendoTooltip");
+                                    var listData = $wnd.find(".kadastr-listview").data("kendoListView").dataItem(el);
+
+                                    var url = generateSecondUrl(listData.id);
+
+                                    sendResponse(url, function (data) {
+                                        if (tooltip.popup.element.css('display') === 'none') {                                            
+                                            console.log("display none");
+                                            return;
+                                        }
+
+                                        console.log("SecondResponse", data);
+                                        console.log(url);
+
+                                        var template = kendo.template($("#kendo_detailkadastr_template").html());
+                                        //todo
+                                        var html = template({ data: data });
+
+                                        tooltip.popup.element.find(".k-tooltip-content").html(html);
+                                    });
+                                }
+                            });
+                        }
+                    }
+                } else {
+                    console.log("data from ajax request is null");
+                }
+            }
+
+            function generateUrl(x, y, type, tolerance) {
+                var enumType = type - 1;
+
+                //0 - регион
+                //1 - участки
+                //2 - кварталы
+                //3 - районы
+
+                if (enumType === 0 || enumType === 1 || enumType === 2 || enumType === 3) {
+                    var url = "http://pkk5.rosreestr.ru/api/features/" + enumType + "?text=" + x + "%20" + y + "&tolerance=" + tolerance;
+                }
+
+                return url;
+            };
+
+            function generateSecondUrl(kadastrNumber) {
+                var enumType = original.KadastrTypeEnum - 1;
+
+                if (enumType === 0 || enumType === 1 || enumType === 2 || enumType === 3) {
+                    var url = "http://pkk5.rosreestr.ru/api/features/" + enumType + "/" + kadastrNumber;
+                }
+                return url;
+            }
+
+            function sendResponse(url, callback) {
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    dataType: "jsonp",
+                    cache: false,
+                    success: function (data) {
+                        clickUnlocked = true;
+                        callback(data);
+                    }
+                });
+            };
+
+            function initializeMap($wrap, mapId) {
+                console.log("INITIALIZE MAP");
+
+                kadastrMap = new L.Map(mapId, {
+                    zoomAnimation: true,
+                    minZoom: 6,
+                    maxZoom: 18
+                });
+
+                L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18
+                }).addTo(kadastrMap);
+
+                L.tileLayer.Rosreestr('http://{s}.maps.rosreestr.ru/arcgis/rest/services/Cadastre/Cadastre/MapServer/export?dpi=96&transparent=true&format=png32&bbox={bbox}&size=1024,1024&bboxSR=102100&imageSR=102100&f=image', {
+                    tileSize: 1024,
+                    clickable: true
+                }).on('click', function (ev) {
+
+                    if (clickUnlocked) {
+                        clickUnlocked = false;
+
+                        //map click
+                        var x = ev.latlng.lat.toString().substring(0, 9);
+                        var y = ev.latlng.lng.toString().substring(0, 9);
+                        onclickPoint = { x: x, y: y };
+
+                        var type = original.KadastrTypeEnum;
+
+                        var zoom = kadastrMap.getZoom();
+                        var tolerance = Math.pow(2, 20 - zoom);
+
+                        var url = generateUrl(x, y, type, tolerance);
+
+                        $wrap.find('.form-group input[name="coordinates"]').val(x + " " + y);
+
+                        sendResponse(url, firstResponse);
+                    }
+                }).addTo(kadastrMap);
+
+                setTimeout(function () {
+                    kadastrMap.setView([55.75222, 37.61555], 10);//Moscow
+                }, 0);
+            }
+        });
+    })();
+</script>

@@ -1,0 +1,128 @@
+﻿
+@model WebUI.Models.CorpProp.ImportExport.ImportExcelVm
+@{
+    string mnemonic = Model.Mnemonic;
+    string wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+    string reportID = "report_" + Guid.NewGuid().ToString("N");
+    string impbtnid = "impbtn_" + Guid.NewGuid().ToString("N");
+}
+
+
+<script>
+    (function () {
+        window['@wrapID'] = {
+             getFileInfo: function (e) {
+                 return $.map(e.files, function (file) {
+                     var info = file.name;
+
+                     // File size is not available in all browsers
+                     if (file.size > 0) {
+                         info += " (" + Math.ceil(file.size / 1024) + " KB)";
+                     }
+                     return info;
+                 }).join(", ");
+             },
+
+                onUpload: function (e) {
+
+                },
+
+                onError: function (e) {
+                    if (e.XMLHttpRequest && e.XMLHttpRequest.responseText) {
+                        console.log(e.XMLHttpRequest.responseText);
+                        pbaAPI.errorMsg("При загрузке возникла системная ошибка. Обратитесь к администратору.");
+                    }                   
+                },
+
+                onComplete: function (e) {
+
+                },
+
+                onProgress: function (e) {
+                    $(".k-upload-button").hide();
+                    this.disable();
+                },
+                onSuccess: function (e) {
+                    var msg = "";
+                    var response = e.response;
+                    if (response) {
+                        msg = response.importReport;
+
+                        if (response.error > 0) {
+                           
+                            $(".k-progress").css("background-color", "red");
+                            $(".k-file-name").css("color", "red");
+                            $(".k-icon.k-i-loading").removeClass("k-i-loading").addClass(".k-i-warning");
+                            $(".k-upload-status").hide();
+                        }
+                    }
+                    var form = $("#@reportID");
+                    if (form) {
+                        var report = $("#ReportTextBox");
+                        report.val(msg);
+                        form.removeClass("sib-import-report-disable");
+                        form.addClass("sib-import-report");
+                    }
+
+                }
+            }
+
+
+
+        })();
+
+</script>
+
+
+<div id="@wrapID">
+    @(Html.Kendo().Upload()
+          .Name(wrapID)
+          .Multiple(true)
+          .Enable(true)
+          .Async(x => x
+              .Save("ImportXml", "ImportExportExcel", new { mnemonic = mnemonic })
+              .AutoUpload(true))
+          .Events(e => e
+              .Complete(wrapID + ".onComplete")
+              .Error(wrapID + ".onError")
+              .Progress(wrapID + ".onProgress")
+              .Success(wrapID + ".onSuccess"))
+          .Validation(validation => validation.AllowedExtensions(new string[] { ".xml" }))
+          .Messages(mes => mes.InvalidFileExtension("Неверный формат файла. Разрешенные форматы: XML."))
+    )
+
+</div>
+
+<div id="@reportID" class="sib-import-report-disable">
+    @(Html.Label("Отчет:"))
+
+    @(Html.TextArea("ReportTextBox", null, new { cols = 20, rows = 20, style = "width: 100%; border-color: #e6e6e6;", @readonly = "readonly" })
+        //.Name("ReportTextBox")
+        //.HtmlAttributes(new { style = "width: 100%;" })
+        //.Enable(false)
+    )
+
+</div>
+<style>
+    .sib-import-report-disable {
+        display: none;
+    }
+
+    .sib-import-report {
+        display: block;
+    }
+</style>
+
+<script>
+    (function () {
+        window['@wrapID'].on('onAfterBind', function () {
+
+            $('#@impbtnid').on('click', function () {
+                console.log('imp btn click');
+                $.post("ImportExcel");
+            });
+
+        });
+    })
+</script>
+

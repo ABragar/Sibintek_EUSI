@@ -1,0 +1,152 @@
+﻿.preview-tooltip .hovercard {
+	font-size: .857rem;
+
+	position: relative;
+
+	min-width: 23.214rem;
+	max-width: 30.357rem;
+	min-height: 7.142rem + .714rem * 2;
+	padding: .714rem (7.142rem + .714rem * 2 + .714rem) .714rem .714rem;
+
+	text-align: left;
+
+	@prop-graphics-size: 2rem;
+
+	&__photo {
+		position: absolute;
+		top: .714rem;
+		right: .714rem;
+
+		width: 7.142rem;
+		height: 7.142rem;
+
+		border-radius: 50%;
+		}
+
+	&__title {
+		margin: 0;
+
+		.nowrapHiddenTextMultiline(1rem, 1.2, 2);
+		}
+
+	&__desc {
+		font-size: .786rem;
+
+		margin: .25em 0 .5em;
+
+		.nowrapHiddenText();
+		}
+
+	&__status, &__props {
+		margin: .75em 0;
+		}
+
+	&__props, &__actions {
+		margin-bottom: 0;
+		padding-left: 0;
+
+		list-style: none;
+		}
+
+	&__props {
+		.clearfix();
+		}
+
+	&__prop {
+		float: left;
+		clear: left;
+
+		width: 100%;
+
+		&-caption {
+			font-size: .85em;
+
+			display: block;
+
+			margin-bottom: .25em;
+
+			color: darken( @color--light, 40% );
+			}
+
+		&-caption + .hovercard__prop-image {
+			margin-left: .25em;
+			}
+
+		&-icon, &-image {
+			line-height: 2rem;
+
+			float: left;
+
+			height: 2rem;
+			}
+
+		&-image {
+			width: 2rem;
+			}
+
+		&-icon {
+			width: 2rem - .143rem - .286rem;
+			margin-left: .143rem;
+			}
+
+		&-icon + .hovercard__prop-action {
+			line-height: 2rem;
+
+			.nowrapHiddenText();
+			}
+
+		&-image + .hovercard__prop-action {
+			display: flex;
+			align-items: center;
+
+			height: 2rem;
+			margin-left: 2.5rem;
+
+			 > span {
+				display: block;
+
+				.nowrapHiddenTextMultiline(.857rem, 1, 2);
+				}
+			}
+
+		&-action:not([data-preview]) {
+			cursor: pointer;
+
+			&:hover {
+				text-decoration: underline;
+				}
+			}
+		}
+
+	&__prop + .hovercard__prop {
+		margin-top: .75em;
+		}
+
+	&__actions {
+		margin-top: 1em;
+
+		.clearfix();
+		}
+
+	&__action {
+		font-size: 1.4286rem;
+
+		float: left;
+
+		box-sizing: content-box;
+		width: 1.4286rem;
+		height: 1.4286rem;
+		padding: .357rem;
+
+		&--disabled {
+			opacity: .5;
+			&, & a {
+				cursor: not-allowed;
+				}
+			}
+		}
+
+	[aria-hidden=true] {
+		display: none;
+		}
+	}

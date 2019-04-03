@@ -1,0 +1,87 @@
+﻿/* SUPPORT */
+
+.support-form-wrapper { top: 0; overflow-y: auto; position: relative; border-bottom: 1px; }
+
+.support-form-centered { max-width: 85.7143rem; margin-left: auto; margin-right: auto; }
+
+.support-history .message {
+    margin-bottom: .7143rem;
+    padding: .357rem .7143rem;
+    background-color: #F9F9F3;
+    border: 1px solid #E2E0CE;
+    color: #292519;
+    min-height: 4.572rem;
+}
+
+    .support-history .message:nth-of-type(odd) { margin-right: 10%; }
+
+    .support-history .message:nth-of-type(even) {
+        margin-left: 10%;
+        margin-right: .357rem;
+        background-color: #EEF4F9;
+        border: 1px solid #B6D1E8;
+        color: #192229;
+    }
+
+    .support-history .message.own {
+        background-color: #D9F5D9;
+        border: 1px solid #9CD09C;
+        color: #1f241f;
+    }
+
+    .support-history .message .user-image { float: left; padding-top: .143rem; }
+
+    .support-history .message .body { margin-left: 4rem; }
+
+.support-history .header {
+    font-size: .929rem;
+    font-weight: bold;
+    margin-bottom: .357rem;
+    cursor: default;
+}
+
+.support-history .support-attach {
+    display: table;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+    .support-history .support-attach:before {
+        font-family: 'Glyphicons Halflings';
+        content: "\E142";
+        vertical-align: middle;
+        margin-right: .2143rem;
+    }
+
+.support-form .support-info { margin-bottom: .572rem; }
+
+    .support-form .support-info > span { display: block; font-size: 1.143rem; }
+
+.support-form .support-header h2 { margin-top: 0; }
+
+.support-form .support-npa:before {
+    font-family: 'Glyphicons Regular';
+    vertical-align: middle;
+    content: "\e342";
+    color: #428BCA;
+}
+
+/* ------------- */
+
+.enum-SupportType:before {
+    margin-right: .357rem;
+    font-family: 'Glyphicons Regular';
+    vertical-align: middle;
+}
+
+.enum-SupportType[data-val='System']:before { content: "\e138"; color: #6f5499; }
+
+.enum-SupportType[data-val='Methodic']:before { content: "\e352"; color: #76e0ff; }
+
+.enum-SupportType[data-val='Proposal']:before { content: "\e065"; color: #5DD95D; }
+
+.enum-SupportType[data-val='Error']:before { content: "\e361"; color: #d9534f; }
+
+.enum-SupportType[data-val='Bitch']:before { content: "\E345"; color: #f0ad4e; }
+
+.enum-SupportType[data-val='Change']:before { content: "\E230"; color: #7d90ae; }

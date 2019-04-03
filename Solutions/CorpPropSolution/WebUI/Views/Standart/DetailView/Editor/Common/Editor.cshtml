@@ -1,0 +1,63 @@
+﻿@model EditorViewModel
+
+@if (Model.IsReadOnly)
+{
+    <text>
+        @*<div style="width:100%;">
+
+            </div>*@
+        @*<input class="k-textbox k-valid" style="width: 100%;">
+            test test*@
+    </text>
+    <script>
+        $(function () {
+            pbaAPI.wrapDisplay("@Model.EditorTemplate", "@Model.UID", "@(Model.PropertyName ?? Model.UID)");
+        });
+    </script>
+}
+else
+{
+    <script>
+        $(function () {
+            pbaAPI.wrapEditor("@Model.EditorTemplate", "@Model.UID", "@(Model.PropertyName ?? Model.UID)");
+        });
+    </script>
+}
+
+@if (Model.IsReadOnly)
+{
+    if (Model.EditorTemplate == "Text" ||
+        Model.EditorTemplate == "Date" ||
+        Model.EditorTemplate == "BaseObjectOne" ||
+        Model.EditorTemplate == "MultilineText" ||
+        Model.EditorTemplate == "Decimal" ||
+        Model.EditorTemplate == "Integer")
+    {
+        //окраска полей в зависимости от источника данных.
+        if (String.IsNullOrEmpty(Model.BgColor) && Model.Params != null && Model.Params.Count != 0 && Model.Params.Where(p => p.Key == "Source").Any())
+        {
+            if (Model.Params.Where(p => p.Key == "Source").FirstOrDefault().Value == "ER")
+            {
+                //источник - заявка: светло-зеленая
+                Model.BgColor = "#dcf9dc";
+            }
+            if (Model.Params.Where(p => p.Key == "Source").FirstOrDefault().Value == "BU")
+            {
+                //источник - БУС: светло-желтая
+                Model.BgColor = "#eff2c4";
+            }
+
+        }
+        string bgColor = @String.IsNullOrEmpty(Model.BgColor) ? "#ececec" : @Model.BgColor;
+        <text><div class="FakeInputField" style="border: 1px solid #cccccc;background-color: @bgColor ;min-height: 36px;padding:0 10px;">@Html.PartialEditor(Model)</div></text>
+    }
+    else
+    {
+        @Html.PartialEditor(Model)
+    }
+    @*<text><div style="border: 1px solid #cccccc;background-color: #fafafa;min-height: 36px;">@Html.PartialEditor(Model)</div></text>*@
+}
+else
+{
+    @Html.PartialEditor(Model)
+}

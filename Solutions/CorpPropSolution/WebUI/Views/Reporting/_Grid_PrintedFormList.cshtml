@@ -1,0 +1,192 @@
+﻿@model Dialog_WidgetViewModel
+
+@{
+                            var grid = Model.WidgetID;
+}
+
+<div class="kwidget kwidget--grid">
+    <div id="@grid"></div>
+    <div id="reportviewver" style="height: 500px; width: 500px;"></div>
+</div>
+
+<script>
+    (function () {
+        kendoReporting.setService("@Html.GetTelerikReportingService()");
+
+        var grid = window["@grid"] = new WrapGrid({
+            id: "@grid",
+            mnemonic: "@Model.Mnemonic",
+            isCategorizedItem: false,
+            desc: "GridView"
+        });
+
+        var composite = window["@Model.DialogID"];
+        composite.registerWidget(grid);
+
+        grid.onChange = function (e) {
+            grid.initCurrentRow();
+            grid.onselect();
+            grid.element().trigger("onChange", this);
+        };
+
+        grid.dblclick = function (btn) {
+            debugger;
+            grid.previewReport();
+            composite.onWidgetChanged(
+            {
+                sender: grid,
+                event: "dblclick"
+            });
+        };
+
+        grid.onDataBound = function () {
+            this.element.find(".k-grid-content-locked").find('span[data-bg]').each(function () {
+                var $cond = $(this);
+                $cond.closest('td').css('background-color', $cond.data('bg'));
+            });
+
+            this.element.find(".k-grid-content").find('span[data-bg]').each(function () {
+                var $cond = $(this);
+                $cond.closest('td').css('background-color', $cond.data('bg'));
+            });
+
+            this.element.find(".k-icon.k-i-collapse").click();
+
+            composite.onWidgetChanged({
+                sender: grid,
+                event: "onDataBound"
+            });
+
+            grid.activeRow();
+
+            this.element.find("tr[data-uid]").dblclick(function () {
+                grid.dblclick(this);
+            });
+
+            if (grid.isSearchRequest) {
+                grid.isSearchRequest = false;
+            }
+
+            $("#@Model.WidgetID").trigger("onDataBound", this);
+
+            if (grid["__idx_select_row"]) {
+                grid.select("tr:eq(" + (grid["__idx_select_row"]) + ")");
+                delete grid["__idx_select_row"];
+            }
+
+            if (grid["__scroll_top"]) {
+                grid.content().scrollTop(grid["__scroll_top"]);
+                delete grid["__scroll_top"];
+            }
+        };
+
+        grid.bind = function() {
+            grid.dataSourceRead();
+        };
+
+
+        grid.previewReport = function () {
+            var selected = grid.getSelectItems();
+
+            if (selected.length === 1) {
+                var obj = selected[0];
+                var reportParams = obj.Params;
+                var params = null;
+                pbaAPI.proxyclient.corpProp.getUserProfile({ id: application.currentUser.id }).done(function (res) {
+                    if (reportParams) {                       
+                        params = reportParams.replace("@@currentUserId", application.currentUser.id).replace("@@currentSocietyId", res.SocietyIDEUP).replace("@@currentYear", (new Date()).getFullYear());
+                    }
+                    //                    kendoReporting.preview(obj.GuidId + obj.Extension, {
+                    //                        title: obj.Name,
+                    //                        Params: params
+                    //                    });
+                    debugger;
+                    obj.Params = params;
+                    corpProp.reporting.showReport(obj);
+                });
+            }
+        }
+
+        grid.onNeighbourWidgetChanged = function (e) {
+            if (e.sender.desc === "ToolbarListView" || e.sender.desc === "ContextMenuListView") {
+                if (e.event === "click") {
+                    switch (e.params.action) {
+                        case "preview":
+                            grid.previewReport();
+                            break;
+                    }
+                }
+            }
+        };
+    })();
+</script>
+
+<script>
+    $(function () {
+        $("#@grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: function (e) {
+                        kendoReporting.getGridData().done(function (result) {
+                            e.success(result);
+                        }).fail(function (result) {
+                            e.error(result);
+                        });
+
+                    }
+                },
+                group: [
+                    { field: "ReportType" }
+                ],
+                schema: {
+                    model: {
+                        id: "Id",
+                        GuidId: "GuidId",
+                        Extension: "Extension",
+                        Description: "Description"
+                    }
+                },
+                error: function (res) {
+                    pbaAPI.errorMsg("Произошла ошибка. Обратитесь к администратору.");
+                    console.log("Необработанная ошибка.", res);
+                }
+            },
+            selectable: true,
+            groupable: true,
+            resizable: true,
+            columns: [
+                {
+                    field: "Number",
+                    title: "Номер"
+                },
+                {
+                    field: "ReportPublishCode",
+                    title: "Код"
+                },
+                {
+                    field: "ReportVersion",
+                    title: "Версия"
+                },
+                {
+                    field: "ReportType",
+                    title: "Тип"
+                },
+                {
+                    field: "Name",
+                    title: "Наименование"
+                },
+                {
+                    field: "Module",
+                    title: "Функциональный модуль"
+                },
+                {
+                    field: "Description",
+                    title: "Описание"
+                }
+
+            ],
+            change: window["@grid"].onChange,
+            dataBound: window["@grid"].onDataBound
+        });
+    })
+</script>

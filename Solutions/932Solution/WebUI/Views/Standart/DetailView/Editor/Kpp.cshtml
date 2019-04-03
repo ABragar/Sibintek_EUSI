@@ -1,0 +1,13 @@
+﻿@model EditorViewModel
+
+@{
+    int masklength = Model.MaxLength ?? 0;
+    if (masklength == 0)
+    {
+        masklength = 9;
+    }
+    string mask = new string('0', masklength);
+
+}
+
+@(Html.Kendo().MaskedTextBox().Name(Model.UID).Mask(mask).HtmlAttributes(Html.CreateHtmlAttributes(Model)))

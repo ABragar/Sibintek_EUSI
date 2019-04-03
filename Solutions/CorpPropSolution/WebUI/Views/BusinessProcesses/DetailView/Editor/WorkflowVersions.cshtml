@@ -1,0 +1,167 @@
+﻿@model EditorViewModel
+
+@{
+    string mnemonic = Model.ViewModelConfig.Mnemonic;
+
+    string addBtnID = Html.CreateSystemName("add_btn");
+    string editBtnID = Html.CreateSystemName("edit_btn");
+    string deleteBtnID = Html.CreateSystemName("delete_btn");
+    string rowTemplateID = Html.CreateSystemName("row_template");
+    string toolbarID = Html.CreateSystemName("toolbar_template");
+}
+
+<script>
+    window["@Model.UID"] = new WrapGrid("@Model.UID", "GridView");
+</script>
+
+<script id="@rowTemplateID" type="text/x-kendo-template">
+    <tr class="workflowrow #: (IsDraft ? 'draft' : 'notdraft') #" data-item="#: ID #">
+        <td><span>#: Title #</span></td>
+        <td><span>#: Version #</span></td>
+        <td><span>#: CreateDate #</span></td>
+        <td><span>#: LastChangeDate #</span></td>
+    </tr>
+</script>
+
+<div class="kwidget kwidget--panel">
+    <div class="kwidget kwidget--toolbar">
+        @(Html.Kendo().ToolBar()
+              .Name(toolbarID)
+              .Items(items =>
+              {
+                  items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                  {
+                      buttons.Add().Id(addBtnID).Text("Добавить").HtmlAttributes(new {title = "Добавить", data_popup = "bottom"}).SpriteCssClass("fa fa-plus").ShowText(ShowIn.Overflow);
+                      buttons.Add().Id(editBtnID).Text("Редактировать").HtmlAttributes(new {title = "Редактировать", data_popup = "bottom"}).SpriteCssClass("fa fa-pencil").ShowText(ShowIn.Overflow);
+                      buttons.Add().Id(deleteBtnID).Text("Удалить").HtmlAttributes(new {title = "Удалить", data_popup = "bottom"}).SpriteCssClass("fa fa-trash-o").ShowText(ShowIn.Overflow);
+                  });
+              }))
+    </div>
+    <div class="kwidget kwidget--grid versions">
+        <div id="@Model.UID"></div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        var $editor = $('#@Model.UID');
+        var $form = $editor.closest('form');
+        var grid = window["@Model.UID"];
+        var mnemonic = '@mnemonic';
+
+        var kendoGrid = $editor.kendoGrid({
+            sortable: true,
+            pageable: true,
+            selectable: "row",
+            rowTemplate: kendo.template($("#@rowTemplateID").html()),
+            columns: [
+                { field: "Title", title: "Название" },
+                { field: "Version", title: "Версия" },
+                { field: "CreateDate", title: "Дата создания" },
+                { field: "LastChangeDate", title: "Дата изменения" }
+            ]
+        }).data('kendoGrid');
+
+        $editor.on('dblclick', "tbody > tr", function(e) {
+            e.preventDefault();
+            editRow();
+        });
+        
+        $("#@addBtnID").click(function(e) {
+            e.preventDefault();
+            addRow();
+        });
+
+        $("#@editBtnID").click(function(e) {
+            e.preventDefault();
+            editRow();
+        });
+
+        $("#@deleteBtnID").click(function(e) {
+            e.preventDefault();
+            deleteRow();
+        });
+
+        $form.on('onAfterBind', function(e, form) {
+            form.addViewData('ObjectType', form.getPr('ObjectType'));
+            setDataSource();
+        });
+
+        function addRow() {
+            var pbaForm = $form.data("pbaForm");
+
+            var model = pbaForm.getModel();
+
+            pbaAPI.openDetailView(mnemonic, {
+                wid: "@Model.UID",
+                toSave: true,
+                parentForm: pbaForm,
+                initNewEntity: function(entity) {
+                    entity.WorkflowID = model.ID;
+                },
+                callback: function(e) {
+                    if (e.type === "save") {
+
+                        model.WorkflowImplementations.push(e.model);
+                        setDataSource();
+                    }
+                }
+            });
+        }
+
+        function editRow() {
+            var pbaForm = $form.data('pbaForm');
+
+            var id = $(kendoGrid.select()).attr('data-item');
+
+            if (!id) {
+                pbaAPI.errorMsg('Выберите версию');
+                return;
+            }
+
+            pbaAPI.openDetailView(mnemonic, {
+                wid: "@Model.UID",
+                toSave: true,
+                parentForm: pbaForm,
+                id: id
+            });
+        }
+
+        function deleteRow() {
+            var id = $(kendoGrid.select()).attr("data-item");
+
+            if (!id) {
+                pbaAPI.errorMsg('Выберите версию');
+                return;
+            }
+
+            pbaAPI.confirm("@Model.ViewModelConfig.ListView.Title", "Удалить запись?", function () {
+
+                pbaAPI.proxyclient.crud.destroy({ mnemonic: mnemonic, id: id })
+                    .done(function (res) {
+                    if (res.error === 0) {
+                        grid.removeRow(grid.select());
+                        pbaAPI.uploadMsg(res.message);
+                    } else {
+                        pbaAPI.errorMsg(res.message);
+                    }
+                });
+            });
+        }
+
+        function setDataSource() {
+            var form = $form.data('pbaForm');
+            var model = form.getModel();
+            var data = [];
+            if (model.WorkflowImplementations) {
+                data = $.grep(model.WorkflowImplementations, function(wf) { return wf.Hidden === false });
+            }
+
+            kendoGrid.setDataSource(new kendo.data.DataSource({
+                data: data
+            }));
+
+            kendoGrid.dataSource.read();
+        }
+    });
+</script>

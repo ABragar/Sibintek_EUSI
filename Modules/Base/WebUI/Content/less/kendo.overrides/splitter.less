@@ -1,0 +1,28 @@
+﻿.k-splitter {
+	width: 100%;
+	height: 100%;
+
+	border: none;
+
+	.k-pane.k-scrollable {
+		overflow: hidden;
+		}
+
+	 > .k-pane,
+	.k-splitbar-horizontal {
+		height: 100% !important;
+		}
+
+	.k-splitbar {
+		border-color: transparent;
+		background-color: transparent;
+
+		&-horizontal {
+			width: 1rem;
+
+			.k-icon {
+				margin-left: calc(~"1rem / 2 - .179rem");
+				}
+			}
+		}
+	}

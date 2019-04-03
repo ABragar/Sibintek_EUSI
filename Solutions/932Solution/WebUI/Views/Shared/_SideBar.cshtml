@@ -1,0 +1,87 @@
+﻿@using Base.UI.Presets
+
+@model MenuPreset
+
+<ul id="layout-sidebar-menu" class="layout__sidebar-menu sidebar-menu">
+    @foreach (var item in Model.MenuElements)
+    {
+        @: @RenderMenuItem(item)
+    }
+</ul>
+
+@helper RenderMenuItem(MenuElement item, string parentId = "layout-sidebar-menu")
+{
+if (item.Children != null && item.Children.Any())
+{
+    string collapseID = Html.CreateSystemName("menu");
+
+    string UrlNode = null;
+    string AHrefId = null;
+    if (!string.IsNullOrWhiteSpace(item.Mnemonic))
+    {
+        UrlNode = Url.Action("Index", "View", new { mnemonic = item.Mnemonic });
+        AHrefId = "href_" + Guid.NewGuid().ToString("N");
+    }
+
+    <li class="sidebar-menu__item panel">
+        <a class="collapsed" data-toggle="collapse" data-parent="#@parentId" href="#@collapseID">
+            @if (!string.IsNullOrWhiteSpace(item.Icon?.Value))
+            {
+                <i class="sidebar-menu__item-icon @item.Icon.Value"></i>
+            }
+            else
+            {
+                <i class="sidebar-menu__item-icon halfling halfling-chevron-right"></i>
+            }
+			@*<span @if (UrlNode != null) { <text> onclick="document.getElementById('@AHrefId').click();" </text> } class="sidebar-menu__item-caption" title="@(item.Name.Length > 14 ? item.Name : "")">@item.Name</span>*@
+            <span @if (UrlNode != null) {<text>onclick="document.getElementById('@AHrefId').click();"</text>} class="sidebar-menu__item-caption" title="@(item.Name)">@item.Name</span>
+            <i class="sidebar-menu__item-tree-arrow fa fa-angle-up"></i>
+        </a>
+
+        @if(UrlNode != null){
+            <a href="@UrlNode" id="@AHrefId" style="display:none;">@item.Mnemonic</a>
+        }
+
+        <ul class="collapse" id="@collapseID">
+            @foreach (var nestedItem in item.Children)
+            {
+                @: @RenderMenuItem(nestedItem, collapseID)
+            }
+        </ul>
+    </li>
+}
+else
+{
+        @: @RenderMenuLink(item)
+    }
+}
+
+@helper RenderMenuLink(MenuElement item)
+{
+if (!string.IsNullOrWhiteSpace(item.Mnemonic))
+{
+    item.URL = Url.Action("Index", "View", new { mnemonic = item.Mnemonic });
+}
+
+if (!string.IsNullOrWhiteSpace(item.URL))
+{
+        <li class="sidebar-menu__item">
+            <a href="@item.URL">
+                @if (!string.IsNullOrWhiteSpace(item.Icon?.Value))
+                {
+                    <i class="sidebar-menu__item-icon @item.Icon.Value"></i>
+                }
+                else
+                {
+                    <i class="sidebar-menu__item-icon halfling halfling-chevron-right"></i>
+                }
+				@*<span class="sidebar-menu__item-caption" title="@(item.Name.Length > 20 ? item.Name : "")">@item.Name</span>*@
+                <span class="sidebar-menu__item-caption" title="@(item.Name)">@item.Name</span>
+            </a>
+        </li>
+}
+else
+{
+        <li class="sidebar-menu__heading">@item.Name</li>
+}
+}

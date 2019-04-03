@@ -1,0 +1,25 @@
+﻿@{
+    var wrapID = Html.CreateSystemName("wrap");
+}
+
+@(Html.ContentEditorWidget("external_image")
+    .Title("Изображение")
+    .TitleTemplate(
+    @<text>
+        <span><i class="fa fa-fw fa-image"></i> Изображение по ссылке</span>
+    </text>)
+    .Wrap(wrapID)
+    .Mnemonic("Content_Image_External")
+    .Template("tpl_" + wrapID))
+
+<script id="tpl_@wrapID" type="text/template">
+    <p data-bind="html: model.Title"></p>
+    <img class="center-block" data-bind="content_img: {
+        width: model.Width,
+        height: model.Height,
+        url: model.Url,
+        file: null,
+        custom: model.Custom
+    }" />
+    <p data-bind="html: model.ImageSignature"></p>
+</script>

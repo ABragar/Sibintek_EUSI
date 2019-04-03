@@ -1,0 +1,63 @@
+﻿@model EditorViewModel
+
+@{
+    string selectButtonID = Html.CreateSystemName("btn_");
+    string bindString = Model.PropertyName + ".Link.Title";
+    var config = Model.ViewModelConfig;
+}
+
+<script>
+
+    (function () {
+        var editor = window['@Model.UID'] = {
+            getForm: function () {
+                var form = $('#@Model.UID').closest('form').data('pbaForm');
+                return form;
+
+            },
+        };
+
+        editor.openDialog = function () {
+
+            var callback = function (e) {
+                var form = editor.getForm();
+                var linkObject = form.getPr('@Model.PropertyName');
+
+                if (!linkObject) {
+                    linkObject = new kendo.data.ObservableObject({
+                        ID: 0,
+                        Hidden: false,
+                        Link: {}
+                    });
+                }
+
+                linkObject.set('Link', e);
+
+                form.setPr('@Model.PropertyName', linkObject);
+            };
+            pbaAPI.openModalDialog("@config.Mnemonic", callback);
+        };
+
+
+    })()
+</script>
+
+
+
+<div id="@Model.UID" class="input-group">
+    <div class="form-control">
+        <span class="k-widget k-autocomplete k-header base-object-one k-state-default">
+            <input class="k-input k-valid k-readonly" disabled style="width: 100%;" data-bind="value: @bindString" />
+        </span>
+    </div>
+
+    <span class="input-group-btn">
+        <a href="#" id="@selectButtonID" onclick="@(Model.UID).openDialog(); return false;" title="Выбрать"><i class="fa fa-navicon"></i></a>
+    </span>
+
+
+</div>
+
+<script>
+
+</script>

@@ -1,0 +1,84 @@
+﻿
+/*Цвета фона в навигации по меню*/
+.layout__sidebar {
+    background: #3D464B !important;
+}
+
+    .layout__sidebar ul {
+        background: #3D464B !important;
+    }
+
+    /*Цвета текста и иконок в навигации по меню*/
+    .layout__sidebar i {
+        color: white !important;
+    }
+
+    .layout__sidebar span {
+        color: white !important;
+    }
+
+    /*Цвета фона, текста и иконок в навигации по меню при наведении*/
+    .layout__sidebar a:hover {
+        background: #FFD200 !important;
+    }
+
+        .layout__sidebar a:hover i {
+            color: #3D464B !important;
+        }
+
+        .layout__sidebar a:hover span {
+            color: #3D464B !important;
+        }
+
+/*Цвета Тулбара*/
+.k-toolbar {
+    background-color: #F9DD16 !important;
+}
+
+    /*Цвета отключеных кнопок при наведении и без*/
+    .k-toolbar .k-state-disabled {
+        background-color: inherit !important;
+    }
+
+        .k-toolbar .k-state-disabled:hover {
+            background-color: #aaaaaa !important;
+        }
+
+    /*Сделать кнопки выгрузки в эксель прозрачными (использовать задний фон), до этого почему-то там фиксированно цвет задавался.*/
+    /*TODO стоит вынести в стандарные стили*/
+    .k-toolbar .k-button-icontext {
+        background-color: transparent;
+    }
+
+    .k-toolbar .k-split-button-arrow {
+        background-color: transparent;
+    }
+
+/*Цвета кнопок на тулбаре всплывающих окон*/
+.dialog__toolbar .k-toolbar .btntoolbar {
+    color: #424242 !important;
+}
+
+/*Цвета кнопки, текста и границы кнопки "Сохранить"*/
+.k-button.success {
+    background-color: #ffcc00 !important;
+    color: rgba(0, 0, 0, 0.85) !important;
+    font-weight: 500;
+    border-color: #ffcc00 !important;
+}
+
+/*Цвета кнопки, текста и границы кнопки "Сохранить и закрыть"*/
+.k-button.primary {
+    background-color: #fa9d10 !important;
+    color: rgba(0, 0, 0, 0.85) !important;
+    font-weight: 500;
+    border-color: #fa9d10 !important;
+}
+
+.sidebar-menu > .sidebar-menu__item > a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-menu > .sidebar-menu__item > a:after {
+    background-color: #F9DD16;
+}

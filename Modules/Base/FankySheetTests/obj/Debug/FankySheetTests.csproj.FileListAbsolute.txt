@@ -1,0 +1,11 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\bin\Debug\FankySheetTests.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\bin\Debug\FankySheetTests.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\bin\Debug\FankySheet.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\bin\Debug\DocumentFormat.OpenXml.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\bin\Debug\FankySheet.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\obj\Debug\FankySheetTests.csprojAssemblyReference.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\obj\Debug\FankySheetTests.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\obj\Debug\FankySheetTests.csproj.CopyComplete
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\obj\Debug\FankySheetTests.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheetTests\obj\Debug\FankySheetTests.pdb

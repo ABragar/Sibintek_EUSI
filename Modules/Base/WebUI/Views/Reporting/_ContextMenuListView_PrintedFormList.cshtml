@@ -1,0 +1,79 @@
+﻿@using Base.UI.ViewModal
+@model Dialog_WidgetViewModel
+
+@{
+    string nameContextMenu = Html.CreateSystemName("context");
+    string btnPreviewId = Html.CreateSystemName("preview");
+}
+
+<script>
+    window["@nameContextMenu"] = new WrapContextMenu("@nameContextMenu", "ContextMenuListView");
+
+    (function() {
+        var composite = window["@Model.DialogID"];
+        var contextMenu = window["@nameContextMenu"];
+
+        composite.registerWidget(contextMenu);
+
+        contextMenu.onNeighbourWidgetChanged = function(e) {
+            switch (e.sender.desc) {
+            case "GridView":
+                if (e.event === "select") {
+                    contextMenu.listViewSelectedObject = e.params.dataItem;
+                } else if (e.event == "onDataBound") {
+                    contextMenu.listViewSelectedObject = null;
+                }
+                break;
+            }
+        };
+
+        //events
+        contextMenu.onSelect = function(e) {
+            composite.onWidgetChanged({
+                sender: contextMenu,
+                event: "click",
+                params: {
+                    event: e,
+                    action: e.item.getAttribute("data-action")
+                }
+            });
+        };
+        contextMenu.onOpen = function(e) {
+            composite.onWidgetChanged({
+                sender: contextMenu,
+                event: "select",
+                params: { el: $(e.target) }
+            });
+        };
+    })();
+</script>
+
+@(Html.Kendo().ContextMenu()
+
+    .Name(nameContextMenu)
+
+    .Target("#" + Model.WidgetID)
+    .Filter("table[data-role=selectable] tr[role=row]")
+
+    .Events(e =>
+    {
+        e.Select(nameContextMenu + ".onSelect");
+        e.Open(nameContextMenu + ".onOpen");
+    })
+
+    .Items(items =>
+    {
+        items.Add().Text("Предпросмотр").HtmlAttributes(new { id = btnPreviewId, data_action = "preview" }).SpriteCssClasses("btntoolbar fa fa-eye");
+    })
+)
+
+<script>
+    $(function () {
+        var contextMenu = window["@nameContextMenu"];
+        var $contextMenu = contextMenu.element();
+
+        //NOTE: в данной версии возможно использовать иконки только из кендо-спрайтов
+        //TODO: убрать!!!
+        $contextMenu.find(".k-sprite.glyphicon").removeClass("k-sprite");
+    });
+</script>

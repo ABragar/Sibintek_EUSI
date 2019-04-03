@@ -1,0 +1,6 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\bin\Debug\Esia.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\bin\Debug\Esia.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\obj\Debug\Esia.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\obj\Debug\Esia.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\obj\Debug\Esia.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\obj\Debug\Esia.csprojAssemblyReference.cache

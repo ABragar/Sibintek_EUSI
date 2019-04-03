@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+  <TaxExemptionTSs>
+    <TaxExemptionTS>
+      <ID>0</ID>
+      <ExternalID>1</ExternalID>
+      <Code>20200</Code>
+      <Name>Льготы по транспортному налогу, устанавливаемые законами субъектов Российской Федерации из них:</Name>
+      <Basis>Статья 356 Налогового кодекса Российской Федерации</Basis>
+    </TaxExemptionTS>
+    <TaxExemptionTS>
+      <ID>0</ID>
+      <ExternalID>2</ExternalID>
+      <Code>20210</Code>
+      <Name>льготы в виде освобождения от налогообложения по транспортному налогу</Name>
+      <Basis>Статья 356 Налогового кодекса Российской Федерации</Basis>
+    </TaxExemptionTS>
+    <TaxExemptionTS>
+      <ID>0</ID>
+      <ExternalID>3</ExternalID>
+      <Code>20220</Code>
+      <Name>льготы в виде уменьшения суммы транспортного налога</Name>
+      <Basis>Статья 356 Налогового кодекса Российской Федерации</Basis>
+    </TaxExemptionTS>
+    <TaxExemptionTS>
+      <ID>0</ID>
+      <ExternalID>4</ExternalID>
+      <Code>20230</Code>
+      <Name>льготы в виде снижения налоговой ставки транспортного налога</Name>
+      <Basis>Статья 356 Налогового кодекса Российской Федерации</Basis>
+    </TaxExemptionTS>
+    <TaxExemptionTS>
+      <ID>0</ID>
+      <ExternalID>5</ExternalID>
+      <Code>30200</Code>
+      <Name>Льготы (освобождения) по транспортному налогу, предусмотренные международными договорами Российской Федерации</Name>
+      <Basis>Статья 7 Налогового кодекса Российской Федерации</Basis>
+    </TaxExemptionTS>
+    <TaxExemptionTS>
+      <ID>0</ID>
+      <ExternalID>6</ExternalID>
+      <Code>40200</Code>
+      <Name>Налоговый вычет в отношении каждого транспортного средства, имеющего разрешенную максимальную массу свыше 12 тонн, зарегистрированного в реестре транспортных средств системы взимания платы</Name>
+      <Basis>Статья 362 Налогового кодекса Российской Федерации</Basis>
+    </TaxExemptionTS>
+  </TaxExemptionTSs>
+</DefaultDataHolder>

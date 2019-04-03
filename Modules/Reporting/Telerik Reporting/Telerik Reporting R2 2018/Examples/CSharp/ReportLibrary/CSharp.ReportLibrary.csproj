@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{45DCEC9A-B73B-45F3-B199-DA974C511B6D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Telerik.Reporting.Examples.CSharp</RootNamespace>
+    <AssemblyName>CSharp.ReportLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=12.1.18.516, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Map\OlympicMedalsByNationalTeams.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Map\OlympicMedalsByNationalTeams.designer.cs">
+      <DependentUpon>OlympicMedalsByNationalTeams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Barcodes\BarcodesReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Barcodes\BarcodesReport.Designer.cs">
+      <DependentUpon>BarcodesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Choropleth\PopulationDensity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Choropleth\PopulationDensity.Designer.cs">
+      <DependentUpon>PopulationDensity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crosstab\ProductSales.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crosstab\ProductSales.Designer.cs">
+      <DependentUpon>ProductSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\DashBoard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dashboard\DashBoard.Designer.cs">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBinding\Car.cs" />
+    <Compile Include="DataBinding\Cars.cs" />
+    <Compile Include="DataBinding\ListBoundReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataBinding\ListBoundReport.Designer.cs">
+      <DependentUpon>ListBoundReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeSales\EmployeeSalesSummary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EmployeeSales\EmployeeSalesSummary.Designer.cs">
+      <DependentUpon>EmployeeSalesSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice\Invoice.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoice\Invoice.designer.cs">
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice\SalesOrderDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoice\SalesOrderDetails.designer.cs">
+      <DependentUpon>SalesOrderDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\SalesByRegionDashboard.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dashboard\SalesByRegionDashboard.Designer.cs">
+      <DependentUpon>SalesByRegionDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Multicolumn\ProductTag.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Multicolumn\ProductTag.designer.cs">
+      <DependentUpon>ProductTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportBook\ReportBook.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProductCatalog\ProductCatalog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProductCatalog\ProductCatalog.Designer.cs">
+      <DependentUpon>ProductCatalog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductLineSales\ProductLineSales.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProductLineSales\ProductLineSales.Designer.cs">
+      <DependentUpon>ProductLineSales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ReportBook\ReportBookToc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportBook\ReportBookToc.Designer.cs">
+      <DependentUpon>ReportBookToc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportCatalog\ReportCatalog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportCatalog\ReportCatalog.Designer.cs">
+      <DependentUpon>ReportCatalog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Resources\world.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\world.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Choropleth\Resources\world.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Choropleth\Resources\world.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Map\OlympicMedalsByNationalTeams.resx">
+      <DependentUpon>OlympicMedalsByNationalTeams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Barcodes\BarcodesReport.resx">
+      <DependentUpon>BarcodesReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Choropleth\PopulationDensity.resx">
+      <DependentUpon>PopulationDensity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crosstab\ProductSales.resx">
+      <DependentUpon>ProductSales.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard\DashBoard.resx">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBinding\ListBoundReport.resx">
+      <DependentUpon>ListBoundReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeSales\EmployeeSalesSummary.resx">
+      <DependentUpon>EmployeeSalesSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice\Invoice.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice\SalesOrderDetails.resx">
+      <DependentUpon>SalesOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard\SalesByRegionDashboard.resx">
+      <DependentUpon>SalesByRegionDashboard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multicolumn\ProductTag.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProductTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductCatalog\ProductCatalog.resx">
+      <DependentUpon>ProductCatalog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductLineSales\ProductLineSales.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProductLineSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="ReportBook\ReportBook.resx">
+      <DependentUpon>ReportBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportBook\ReportBookToc.resx">
+      <DependentUpon>ReportBookToc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportCatalog\ReportCatalog.resx">
+      <DependentUpon>ReportCatalog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

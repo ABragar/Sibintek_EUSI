@@ -1,0 +1,2515 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<SibCountrys>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>AB</Code>
+		<PublishCode>AB</PublishCode>
+		<Name>Абхазия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>AD</Code>
+		<PublishCode>AD</PublishCode>
+		<Name>Андорра</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>AE</Code>
+		<PublishCode>AE</PublishCode>
+		<Name>ОАЭ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>AF</Code>
+		<PublishCode>AF</PublishCode>
+		<Name>Афганистан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>AG</Code>
+		<PublishCode>AG</PublishCode>
+		<Name>Антигуа/Барбуда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>AI</Code>
+		<PublishCode>AI</PublishCode>
+		<Name>Ангилья</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>AL</Code>
+		<PublishCode>AL</PublishCode>
+		<Name>Албания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>AM</Code>
+		<PublishCode>AM</PublishCode>
+		<Name>Армения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>AN</Code>
+		<PublishCode>AN</PublishCode>
+		<Name>Антил. (Нидер.)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>AO</Code>
+		<PublishCode>AO</PublishCode>
+		<Name>Ангола</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>AQ</Code>
+		<PublishCode>AQ</PublishCode>
+		<Name>Антарктика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>AR</Code>
+		<PublishCode>AR</PublishCode>
+		<Name>Аргентина</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>AS</Code>
+		<PublishCode>AS</PublishCode>
+		<Name>Амер. Самоа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>AT</Code>
+		<PublishCode>AT</PublishCode>
+		<Name>Австрия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>AU</Code>
+		<PublishCode>AU</PublishCode>
+		<Name>Австралия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>AW</Code>
+		<PublishCode>AW</PublishCode>
+		<Name>Аруба</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>AZ</Code>
+		<PublishCode>AZ</PublishCode>
+		<Name>Азербайджан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>BA</Code>
+		<PublishCode>BA</PublishCode>
+		<Name>Босния-Герц.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>BB</Code>
+		<PublishCode>BB</PublishCode>
+		<Name>Барбадос</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>BD</Code>
+		<PublishCode>BD</PublishCode>
+		<Name>Бангладеш</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>BE</Code>
+		<PublishCode>BE</PublishCode>
+		<Name>Бельгия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>BF</Code>
+		<PublishCode>BF</PublishCode>
+		<Name>Буркина-Фасо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>BG</Code>
+		<PublishCode>BG</PublishCode>
+		<Name>Болгария</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>BH</Code>
+		<PublishCode>BH</PublishCode>
+		<Name>Бахрейн</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>BI</Code>
+		<PublishCode>BI</PublishCode>
+		<Name>Бурунди</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>BJ</Code>
+		<PublishCode>BJ</PublishCode>
+		<Name>Бенин</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>BM</Code>
+		<PublishCode>BM</PublishCode>
+		<Name>Бермудcкие о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>BN</Code>
+		<PublishCode>BN</PublishCode>
+		<Name>Бруней</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>BO</Code>
+		<PublishCode>BO</PublishCode>
+		<Name>Боливия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>BR</Code>
+		<PublishCode>BR</PublishCode>
+		<Name>Бразилия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>BS</Code>
+		<PublishCode>BS</PublishCode>
+		<Name>Багамcкие о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>BT</Code>
+		<PublishCode>BT</PublishCode>
+		<Name>Бутан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>BV</Code>
+		<PublishCode>BV</PublishCode>
+		<Name>о. Буве</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>BW</Code>
+		<PublishCode>BW</PublishCode>
+		<Name>Ботсвана</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>BY</Code>
+		<PublishCode>BY</PublishCode>
+		<Name>Респ. Беларусь</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>BZ</Code>
+		<PublishCode>BZ</PublishCode>
+		<Name>Белиз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>CA</Code>
+		<PublishCode>CA</PublishCode>
+		<Name>Канада</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>CC</Code>
+		<PublishCode>CC</PublishCode>
+		<Name>Кокосовые о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>CD</Code>
+		<PublishCode>CD</PublishCode>
+		<Name>Респ. Конго</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>CF</Code>
+		<PublishCode>CF</PublishCode>
+		<Name>ЦАР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>CG</Code>
+		<PublishCode>CG</PublishCode>
+		<Name>Конго</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>CH</Code>
+		<PublishCode>CH</PublishCode>
+		<Name>Швейцария</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>CI</Code>
+		<PublishCode>CI</PublishCode>
+		<Name>Кот-д'Ивуар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>CK</Code>
+		<PublishCode>CK</PublishCode>
+		<Name>О-ва Кука</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>CL</Code>
+		<PublishCode>CL</PublishCode>
+		<Name>Чили</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>CM</Code>
+		<PublishCode>CM</PublishCode>
+		<Name>Камерун</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>CN</Code>
+		<PublishCode>CN</PublishCode>
+		<Name>Китай</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>CO</Code>
+		<PublishCode>CO</PublishCode>
+		<Name>Колумбия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>CR</Code>
+		<PublishCode>CR</PublishCode>
+		<Name>Коста-Рика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>CS</Code>
+		<PublishCode>CS</PublishCode>
+		<Name>Сербия и Черн.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>CU</Code>
+		<PublishCode>CU</PublishCode>
+		<Name>Куба</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>CV</Code>
+		<PublishCode>CV</PublishCode>
+		<Name>Кабо-Верде</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>CX</Code>
+		<PublishCode>CX</PublishCode>
+		<Name>О. Рождества</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>CY</Code>
+		<PublishCode>CY</PublishCode>
+		<Name>Кипр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>CZ</Code>
+		<PublishCode>CZ</PublishCode>
+		<Name>Чехия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>DE</Code>
+		<PublishCode>DE</PublishCode>
+		<Name>Германия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>DJ</Code>
+		<PublishCode>DJ</PublishCode>
+		<Name>Джибути</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>DK</Code>
+		<PublishCode>DK</PublishCode>
+		<Name>Дания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>DM</Code>
+		<PublishCode>DM</PublishCode>
+		<Name>Доминика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>DO</Code>
+		<PublishCode>DO</PublishCode>
+		<Name>Доминик. респ.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>DZ</Code>
+		<PublishCode>DZ</PublishCode>
+		<Name>Алжир</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>62</ExternalID>
+		<ExternalParentID/>
+		<Code>EC</Code>
+		<PublishCode>EC</PublishCode>
+		<Name>Эквадор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>63</ExternalID>
+		<ExternalParentID/>
+		<Code>EE</Code>
+		<PublishCode>EE</PublishCode>
+		<Name>Эстония</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>64</ExternalID>
+		<ExternalParentID/>
+		<Code>EG</Code>
+		<PublishCode>EG</PublishCode>
+		<Name>Египет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>65</ExternalID>
+		<ExternalParentID/>
+		<Code>EH</Code>
+		<PublishCode>EH</PublishCode>
+		<Name>Зап.-сахара</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>66</ExternalID>
+		<ExternalParentID/>
+		<Code>ER</Code>
+		<PublishCode>ER</PublishCode>
+		<Name>Эритрея</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>67</ExternalID>
+		<ExternalParentID/>
+		<Code>ES</Code>
+		<PublishCode>ES</PublishCode>
+		<Name>Испания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>68</ExternalID>
+		<ExternalParentID/>
+		<Code>ET</Code>
+		<PublishCode>ET</PublishCode>
+		<Name>Эфиопия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>69</ExternalID>
+		<ExternalParentID/>
+		<Code>FI</Code>
+		<PublishCode>FI</PublishCode>
+		<Name>Финляндия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>70</ExternalID>
+		<ExternalParentID/>
+		<Code>FJ</Code>
+		<PublishCode>FJ</PublishCode>
+		<Name>Фиджи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>71</ExternalID>
+		<ExternalParentID/>
+		<Code>FK</Code>
+		<PublishCode>FK</PublishCode>
+		<Name>Фолкленд. о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>72</ExternalID>
+		<ExternalParentID/>
+		<Code>FM</Code>
+		<PublishCode>FM</PublishCode>
+		<Name>Микронезия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>73</ExternalID>
+		<ExternalParentID/>
+		<Code>FO</Code>
+		<PublishCode>FO</PublishCode>
+		<Name>Фарерские о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>74</ExternalID>
+		<ExternalParentID/>
+		<Code>FR</Code>
+		<PublishCode>FR</PublishCode>
+		<Name>Франция</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>75</ExternalID>
+		<ExternalParentID/>
+		<Code>GA</Code>
+		<PublishCode>GA</PublishCode>
+		<Name>Габон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>76</ExternalID>
+		<ExternalParentID/>
+		<Code>GB</Code>
+		<PublishCode>GB</PublishCode>
+		<Name>Великобритания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>77</ExternalID>
+		<ExternalParentID/>
+		<Code>GD</Code>
+		<PublishCode>GD</PublishCode>
+		<Name>Гренада</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>78</ExternalID>
+		<ExternalParentID/>
+		<Code>GE</Code>
+		<PublishCode>GE</PublishCode>
+		<Name>Грузия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>79</ExternalID>
+		<ExternalParentID/>
+		<Code>GF</Code>
+		<PublishCode>GF</PublishCode>
+		<Name>Гайана</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>80</ExternalID>
+		<ExternalParentID/>
+		<Code>GG</Code>
+		<PublishCode>GG</PublishCode>
+		<Name>Гернси</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>81</ExternalID>
+		<ExternalParentID/>
+		<Code>GH</Code>
+		<PublishCode>GH</PublishCode>
+		<Name>Гана</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>82</ExternalID>
+		<ExternalParentID/>
+		<Code>GI</Code>
+		<PublishCode>GI</PublishCode>
+		<Name>Гибралтар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>83</ExternalID>
+		<ExternalParentID/>
+		<Code>GL</Code>
+		<PublishCode>GL</PublishCode>
+		<Name>Гренландия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>84</ExternalID>
+		<ExternalParentID/>
+		<Code>GM</Code>
+		<PublishCode>GM</PublishCode>
+		<Name>Гамбия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>85</ExternalID>
+		<ExternalParentID/>
+		<Code>GN</Code>
+		<PublishCode>GN</PublishCode>
+		<Name>Гвинея</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>86</ExternalID>
+		<ExternalParentID/>
+		<Code>GP</Code>
+		<PublishCode>GP</PublishCode>
+		<Name>ГВАДЕЛУПА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>87</ExternalID>
+		<ExternalParentID/>
+		<Code>GQ</Code>
+		<PublishCode>GQ</PublishCode>
+		<Name>Экват. Гвинея</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>88</ExternalID>
+		<ExternalParentID/>
+		<Code>GR</Code>
+		<PublishCode>GR</PublishCode>
+		<Name>Греция</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>89</ExternalID>
+		<ExternalParentID/>
+		<Code>GS</Code>
+		<PublishCode>GS</PublishCode>
+		<Name>САНДВИЧЕВЫ о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>90</ExternalID>
+		<ExternalParentID/>
+		<Code>GT</Code>
+		<PublishCode>GT</PublishCode>
+		<Name>Гватемала</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>91</ExternalID>
+		<ExternalParentID/>
+		<Code>GU</Code>
+		<PublishCode>GU</PublishCode>
+		<Name>Гуам</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>92</ExternalID>
+		<ExternalParentID/>
+		<Code>GW</Code>
+		<PublishCode>GW</PublishCode>
+		<Name>Гвинея-Бисау</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>93</ExternalID>
+		<ExternalParentID/>
+		<Code>GY</Code>
+		<PublishCode>GY</PublishCode>
+		<Name>Гайана</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>94</ExternalID>
+		<ExternalParentID/>
+		<Code>HK</Code>
+		<PublishCode>HK</PublishCode>
+		<Name>Китай (Гонконг)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>95</ExternalID>
+		<ExternalParentID/>
+		<Code>HM</Code>
+		<PublishCode>HM</PublishCode>
+		<Name>о. Херд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>96</ExternalID>
+		<ExternalParentID/>
+		<Code>HN</Code>
+		<PublishCode>HN</PublishCode>
+		<Name>Гондурас</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>97</ExternalID>
+		<ExternalParentID/>
+		<Code>HR</Code>
+		<PublishCode>HR</PublishCode>
+		<Name>Хорватия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>98</ExternalID>
+		<ExternalParentID/>
+		<Code>HT</Code>
+		<PublishCode>HT</PublishCode>
+		<Name>Гаити</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>99</ExternalID>
+		<ExternalParentID/>
+		<Code>HU</Code>
+		<PublishCode>HU</PublishCode>
+		<Name>Венгрия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>100</ExternalID>
+		<ExternalParentID/>
+		<Code>ID</Code>
+		<PublishCode>ID</PublishCode>
+		<Name>Индонезия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>101</ExternalID>
+		<ExternalParentID/>
+		<Code>IE</Code>
+		<PublishCode>IE</PublishCode>
+		<Name>Ирландия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>102</ExternalID>
+		<ExternalParentID/>
+		<Code>IL</Code>
+		<PublishCode>IL</PublishCode>
+		<Name>Израиль</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>103</ExternalID>
+		<ExternalParentID/>
+		<Code>IM</Code>
+		<PublishCode>IM</PublishCode>
+		<Name>Остров Мэн</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>104</ExternalID>
+		<ExternalParentID/>
+		<Code>IN</Code>
+		<PublishCode>IN</PublishCode>
+		<Name>Индия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>105</ExternalID>
+		<ExternalParentID/>
+		<Code>IO</Code>
+		<PublishCode>IO</PublishCode>
+		<Name>БритТерр ИндОк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>106</ExternalID>
+		<ExternalParentID/>
+		<Code>IQ</Code>
+		<PublishCode>IQ</PublishCode>
+		<Name>Ирак</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>107</ExternalID>
+		<ExternalParentID/>
+		<Code>IR</Code>
+		<PublishCode>IR</PublishCode>
+		<Name>Иран</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>108</ExternalID>
+		<ExternalParentID/>
+		<Code>IS</Code>
+		<PublishCode>IS</PublishCode>
+		<Name>Исландия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>109</ExternalID>
+		<ExternalParentID/>
+		<Code>IT</Code>
+		<PublishCode>IT</PublishCode>
+		<Name>Италия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>110</ExternalID>
+		<ExternalParentID/>
+		<Code>JE</Code>
+		<PublishCode>JE</PublishCode>
+		<Name>о.Джерси</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>111</ExternalID>
+		<ExternalParentID/>
+		<Code>JM</Code>
+		<PublishCode>JM</PublishCode>
+		<Name>Ямайка</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>112</ExternalID>
+		<ExternalParentID/>
+		<Code>JO</Code>
+		<PublishCode>JO</PublishCode>
+		<Name>Иордания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>113</ExternalID>
+		<ExternalParentID/>
+		<Code>JP</Code>
+		<PublishCode>JP</PublishCode>
+		<Name>Япония</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>114</ExternalID>
+		<ExternalParentID/>
+		<Code>KE</Code>
+		<PublishCode>KE</PublishCode>
+		<Name>Кения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>115</ExternalID>
+		<ExternalParentID/>
+		<Code>KG</Code>
+		<PublishCode>KG</PublishCode>
+		<Name>Киргизия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>116</ExternalID>
+		<ExternalParentID/>
+		<Code>KH</Code>
+		<PublishCode>KH</PublishCode>
+		<Name>Камбоджа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>117</ExternalID>
+		<ExternalParentID/>
+		<Code>KI</Code>
+		<PublishCode>KI</PublishCode>
+		<Name>Кирибати</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>118</ExternalID>
+		<ExternalParentID/>
+		<Code>KM</Code>
+		<PublishCode>KM</PublishCode>
+		<Name>КОМОРЫ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>119</ExternalID>
+		<ExternalParentID/>
+		<Code>KN</Code>
+		<PublishCode>KN</PublishCode>
+		<Name>Ст. Китс&amp;Невис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>120</ExternalID>
+		<ExternalParentID/>
+		<Code>KP</Code>
+		<PublishCode>KP</PublishCode>
+		<Name>КНДР (СевКорея)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>121</ExternalID>
+		<ExternalParentID/>
+		<Code>KR</Code>
+		<PublishCode>KR</PublishCode>
+		<Name>Южная Корея</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>122</ExternalID>
+		<ExternalParentID/>
+		<Code>KW</Code>
+		<PublishCode>KW</PublishCode>
+		<Name>Кувейт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>123</ExternalID>
+		<ExternalParentID/>
+		<Code>KY</Code>
+		<PublishCode>KY</PublishCode>
+		<Name>Каймановы о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>124</ExternalID>
+		<ExternalParentID/>
+		<Code>KZ</Code>
+		<PublishCode>KZ</PublishCode>
+		<Name>Казахстан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>125</ExternalID>
+		<ExternalParentID/>
+		<Code>LA</Code>
+		<PublishCode>LA</PublishCode>
+		<Name>Лаос</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>126</ExternalID>
+		<ExternalParentID/>
+		<Code>LB</Code>
+		<PublishCode>LB</PublishCode>
+		<Name>Ливан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>127</ExternalID>
+		<ExternalParentID/>
+		<Code>LC</Code>
+		<PublishCode>LC</PublishCode>
+		<Name>Сент-Люсия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>128</ExternalID>
+		<ExternalParentID/>
+		<Code>LI</Code>
+		<PublishCode>LI</PublishCode>
+		<Name>Лихтенштейн</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>129</ExternalID>
+		<ExternalParentID/>
+		<Code>LK</Code>
+		<PublishCode>LK</PublishCode>
+		<Name>Шри-Ланка</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>130</ExternalID>
+		<ExternalParentID/>
+		<Code>LR</Code>
+		<PublishCode>LR</PublishCode>
+		<Name>Либерия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>131</ExternalID>
+		<ExternalParentID/>
+		<Code>LS</Code>
+		<PublishCode>LS</PublishCode>
+		<Name>Лесото</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>132</ExternalID>
+		<ExternalParentID/>
+		<Code>LT</Code>
+		<PublishCode>LT</PublishCode>
+		<Name>Литва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>133</ExternalID>
+		<ExternalParentID/>
+		<Code>LU</Code>
+		<PublishCode>LU</PublishCode>
+		<Name>Люксембург</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>134</ExternalID>
+		<ExternalParentID/>
+		<Code>LV</Code>
+		<PublishCode>LV</PublishCode>
+		<Name>Латвия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>135</ExternalID>
+		<ExternalParentID/>
+		<Code>LY</Code>
+		<PublishCode>LY</PublishCode>
+		<Name>Ливия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>136</ExternalID>
+		<ExternalParentID/>
+		<Code>MA</Code>
+		<PublishCode>MA</PublishCode>
+		<Name>Марокко</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>137</ExternalID>
+		<ExternalParentID/>
+		<Code>MC</Code>
+		<PublishCode>MC</PublishCode>
+		<Name>Монако</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>138</ExternalID>
+		<ExternalParentID/>
+		<Code>MD</Code>
+		<PublishCode>MD</PublishCode>
+		<Name>Молдова</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>139</ExternalID>
+		<ExternalParentID/>
+		<Code>ME</Code>
+		<PublishCode>ME</PublishCode>
+		<Name>Черногория</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>140</ExternalID>
+		<ExternalParentID/>
+		<Code>MG</Code>
+		<PublishCode>MG</PublishCode>
+		<Name>Мадагаскар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>141</ExternalID>
+		<ExternalParentID/>
+		<Code>MH</Code>
+		<PublishCode>MH</PublishCode>
+		<Name>Маршалловы о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>142</ExternalID>
+		<ExternalParentID/>
+		<Code>MK</Code>
+		<PublishCode>MK</PublishCode>
+		<Name>Македония</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>143</ExternalID>
+		<ExternalParentID/>
+		<Code>ML</Code>
+		<PublishCode>ML</PublishCode>
+		<Name>Мали</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>144</ExternalID>
+		<ExternalParentID/>
+		<Code>MM</Code>
+		<PublishCode>MM</PublishCode>
+		<Name>Мьянма</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>145</ExternalID>
+		<ExternalParentID/>
+		<Code>MN</Code>
+		<PublishCode>MN</PublishCode>
+		<Name>Монголия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>146</ExternalID>
+		<ExternalParentID/>
+		<Code>MO</Code>
+		<PublishCode>MO</PublishCode>
+		<Name>Макао</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>147</ExternalID>
+		<ExternalParentID/>
+		<Code>MP</Code>
+		<PublishCode>MP</PublishCode>
+		<Name>С.-Мариан. о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>148</ExternalID>
+		<ExternalParentID/>
+		<Code>MQ</Code>
+		<PublishCode>MQ</PublishCode>
+		<Name>Мартиника</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>149</ExternalID>
+		<ExternalParentID/>
+		<Code>MR</Code>
+		<PublishCode>MR</PublishCode>
+		<Name>Мавритания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>150</ExternalID>
+		<ExternalParentID/>
+		<Code>MS</Code>
+		<PublishCode>MS</PublishCode>
+		<Name>Монтсеррат</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>151</ExternalID>
+		<ExternalParentID/>
+		<Code>MT</Code>
+		<PublishCode>MT</PublishCode>
+		<Name>Мальта</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>152</ExternalID>
+		<ExternalParentID/>
+		<Code>MU</Code>
+		<PublishCode>MU</PublishCode>
+		<Name>Маврикий</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>153</ExternalID>
+		<ExternalParentID/>
+		<Code>MV</Code>
+		<PublishCode>MV</PublishCode>
+		<Name>Мальдивы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>154</ExternalID>
+		<ExternalParentID/>
+		<Code>MW</Code>
+		<PublishCode>MW</PublishCode>
+		<Name>Малави</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>155</ExternalID>
+		<ExternalParentID/>
+		<Code>MX</Code>
+		<PublishCode>MX</PublishCode>
+		<Name>Мексика</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>156</ExternalID>
+		<ExternalParentID/>
+		<Code>MY</Code>
+		<PublishCode>MY</PublishCode>
+		<Name>Малайзия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>157</ExternalID>
+		<ExternalParentID/>
+		<Code>MZ</Code>
+		<PublishCode>MZ</PublishCode>
+		<Name>Мозамбик</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>158</ExternalID>
+		<ExternalParentID/>
+		<Code>N1</Code>
+		<PublishCode>N1</PublishCode>
+		<Name>Нормандские о</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>159</ExternalID>
+		<ExternalParentID/>
+		<Code>NA</Code>
+		<PublishCode>NA</PublishCode>
+		<Name>Намибия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>160</ExternalID>
+		<ExternalParentID/>
+		<Code>NC</Code>
+		<PublishCode>NC</PublishCode>
+		<Name>Новая Каледония</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>161</ExternalID>
+		<ExternalParentID/>
+		<Code>NE</Code>
+		<PublishCode>NE</PublishCode>
+		<Name>Нигер</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>162</ExternalID>
+		<ExternalParentID/>
+		<Code>NF</Code>
+		<PublishCode>NF</PublishCode>
+		<Name>О-В НОРФОЛК</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>163</ExternalID>
+		<ExternalParentID/>
+		<Code>NG</Code>
+		<PublishCode>NG</PublishCode>
+		<Name>Нигерия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>164</ExternalID>
+		<ExternalParentID/>
+		<Code>NI</Code>
+		<PublishCode>NI</PublishCode>
+		<Name>Никарагуа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>165</ExternalID>
+		<ExternalParentID/>
+		<Code>NL</Code>
+		<PublishCode>NL</PublishCode>
+		<Name>Нидерланды</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>166</ExternalID>
+		<ExternalParentID/>
+		<Code>NO</Code>
+		<PublishCode>NO</PublishCode>
+		<Name>Норвегия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>167</ExternalID>
+		<ExternalParentID/>
+		<Code>NP</Code>
+		<PublishCode>NP</PublishCode>
+		<Name>Непал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>168</ExternalID>
+		<ExternalParentID/>
+		<Code>NR</Code>
+		<PublishCode>NR</PublishCode>
+		<Name>Науру</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>169</ExternalID>
+		<ExternalParentID/>
+		<Code>NU</Code>
+		<PublishCode>NU</PublishCode>
+		<Name>О-ва Ниуэ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>170</ExternalID>
+		<ExternalParentID/>
+		<Code>NZ</Code>
+		<PublishCode>NZ</PublishCode>
+		<Name>Новая Зеландия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>171</ExternalID>
+		<ExternalParentID/>
+		<Code>OM</Code>
+		<PublishCode>OM</PublishCode>
+		<Name>Оман</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>172</ExternalID>
+		<ExternalParentID/>
+		<Code>OS</Code>
+		<PublishCode>OS</PublishCode>
+		<Name>Южная Осетия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>173</ExternalID>
+		<ExternalParentID/>
+		<Code>PA</Code>
+		<PublishCode>PA</PublishCode>
+		<Name>Панама</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>174</ExternalID>
+		<ExternalParentID/>
+		<Code>PE</Code>
+		<PublishCode>PE</PublishCode>
+		<Name>Перу</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>175</ExternalID>
+		<ExternalParentID/>
+		<Code>PF</Code>
+		<PublishCode>PF</PublishCode>
+		<Name>Фр. Полинезия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>176</ExternalID>
+		<ExternalParentID/>
+		<Code>PG</Code>
+		<PublishCode>PG</PublishCode>
+		<Name>Папуа-Н. Гвинея</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>177</ExternalID>
+		<ExternalParentID/>
+		<Code>PH</Code>
+		<PublishCode>PH</PublishCode>
+		<Name>Филиппины</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>178</ExternalID>
+		<ExternalParentID/>
+		<Code>PK</Code>
+		<PublishCode>PK</PublishCode>
+		<Name>Пакистан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>179</ExternalID>
+		<ExternalParentID/>
+		<Code>PL</Code>
+		<PublishCode>PL</PublishCode>
+		<Name>Польша</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>180</ExternalID>
+		<ExternalParentID/>
+		<Code>PM</Code>
+		<PublishCode>PM</PublishCode>
+		<Name>С.-Пьер,Микелон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>181</ExternalID>
+		<ExternalParentID/>
+		<Code>PN</Code>
+		<PublishCode>PN</PublishCode>
+		<Name>ПИТКЕРН</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>182</ExternalID>
+		<ExternalParentID/>
+		<Code>PR</Code>
+		<PublishCode>PR</PublishCode>
+		<Name>Пуэрто-Рико</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>183</ExternalID>
+		<ExternalParentID/>
+		<Code>PS</Code>
+		<PublishCode>PS</PublishCode>
+		<Name>ПНА (Палестина)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>184</ExternalID>
+		<ExternalParentID/>
+		<Code>PT</Code>
+		<PublishCode>PT</PublishCode>
+		<Name>Португалия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>185</ExternalID>
+		<ExternalParentID/>
+		<Code>PW</Code>
+		<PublishCode>PW</PublishCode>
+		<Name>Палау</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>186</ExternalID>
+		<ExternalParentID/>
+		<Code>PY</Code>
+		<PublishCode>PY</PublishCode>
+		<Name>Парагвай</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>187</ExternalID>
+		<ExternalParentID/>
+		<Code>QA</Code>
+		<PublishCode>QA</PublishCode>
+		<Name>Катар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>188</ExternalID>
+		<ExternalParentID/>
+		<Code>RE</Code>
+		<PublishCode>RE</PublishCode>
+		<Name>Реюньон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>189</ExternalID>
+		<ExternalParentID/>
+		<Code>RO</Code>
+		<PublishCode>RO</PublishCode>
+		<Name>Румыния</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>190</ExternalID>
+		<ExternalParentID/>
+		<Code>RS</Code>
+		<PublishCode>RS</PublishCode>
+		<Name>Сербия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>191</ExternalID>
+		<ExternalParentID/>
+		<Code>RU</Code>
+		<PublishCode>RU</PublishCode>
+		<Name>Россия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>192</ExternalID>
+		<ExternalParentID/>
+		<Code>RW</Code>
+		<PublishCode>RW</PublishCode>
+		<Name>Руанда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>193</ExternalID>
+		<ExternalParentID/>
+		<Code>SA</Code>
+		<PublishCode>SA</PublishCode>
+		<Name>Сауд. Аравия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>194</ExternalID>
+		<ExternalParentID/>
+		<Code>SB</Code>
+		<PublishCode>SB</PublishCode>
+		<Name>Соломоновы о-ва</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>195</ExternalID>
+		<ExternalParentID/>
+		<Code>SC</Code>
+		<PublishCode>SC</PublishCode>
+		<Name>Сейшелы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>196</ExternalID>
+		<ExternalParentID/>
+		<Code>SD</Code>
+		<PublishCode>SD</PublishCode>
+		<Name>Судан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>197</ExternalID>
+		<ExternalParentID/>
+		<Code>SE</Code>
+		<PublishCode>SE</PublishCode>
+		<Name>Швеция</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>198</ExternalID>
+		<ExternalParentID/>
+		<Code>SG</Code>
+		<PublishCode>SG</PublishCode>
+		<Name>Сингапур</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>199</ExternalID>
+		<ExternalParentID/>
+		<Code>SH</Code>
+		<PublishCode>SH</PublishCode>
+		<Name>О. Св. Елены</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>200</ExternalID>
+		<ExternalParentID/>
+		<Code>SI</Code>
+		<PublishCode>SI</PublishCode>
+		<Name>Словения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>201</ExternalID>
+		<ExternalParentID/>
+		<Code>SJ</Code>
+		<PublishCode>SJ</PublishCode>
+		<Name>Шпицберген</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>202</ExternalID>
+		<ExternalParentID/>
+		<Code>SK</Code>
+		<PublishCode>SK</PublishCode>
+		<Name>Словакия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>203</ExternalID>
+		<ExternalParentID/>
+		<Code>SL</Code>
+		<PublishCode>SL</PublishCode>
+		<Name>Сьерра-Леоне</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>204</ExternalID>
+		<ExternalParentID/>
+		<Code>SM</Code>
+		<PublishCode>SM</PublishCode>
+		<Name>Сан-Марино</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>205</ExternalID>
+		<ExternalParentID/>
+		<Code>SN</Code>
+		<PublishCode>SN</PublishCode>
+		<Name>Сенегал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>206</ExternalID>
+		<ExternalParentID/>
+		<Code>SO</Code>
+		<PublishCode>SO</PublishCode>
+		<Name>Сомали</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>207</ExternalID>
+		<ExternalParentID/>
+		<Code>SR</Code>
+		<PublishCode>SR</PublishCode>
+		<Name>Суринам</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>208</ExternalID>
+		<ExternalParentID/>
+		<Code>ST</Code>
+		<PublishCode>ST</PublishCode>
+		<Name>С.-Томе и Прин.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>209</ExternalID>
+		<ExternalParentID/>
+		<Code>STL</Code>
+		<PublishCode>STL</PublishCode>
+		<Name>Без гражданства</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>210</ExternalID>
+		<ExternalParentID/>
+		<Code>SU</Code>
+		<PublishCode>SU</PublishCode>
+		<Name>СССР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>211</ExternalID>
+		<ExternalParentID/>
+		<Code>SV</Code>
+		<PublishCode>SV</PublishCode>
+		<Name>Сальвадор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>212</ExternalID>
+		<ExternalParentID/>
+		<Code>SY</Code>
+		<PublishCode>SY</PublishCode>
+		<Name>Сирия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>213</ExternalID>
+		<ExternalParentID/>
+		<Code>SZ</Code>
+		<PublishCode>SZ</PublishCode>
+		<Name>Свазиленд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>214</ExternalID>
+		<ExternalParentID/>
+		<Code>TC</Code>
+		<PublishCode>TC</PublishCode>
+		<Name>Теркс, Кайкос</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>215</ExternalID>
+		<ExternalParentID/>
+		<Code>TD</Code>
+		<PublishCode>TD</PublishCode>
+		<Name>Чад</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>216</ExternalID>
+		<ExternalParentID/>
+		<Code>TF</Code>
+		<PublishCode>TF</PublishCode>
+		<Name>Франц. Юж.Терр.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>217</ExternalID>
+		<ExternalParentID/>
+		<Code>TG</Code>
+		<PublishCode>TG</PublishCode>
+		<Name>Того</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>218</ExternalID>
+		<ExternalParentID/>
+		<Code>TH</Code>
+		<PublishCode>TH</PublishCode>
+		<Name>Таиланд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>219</ExternalID>
+		<ExternalParentID/>
+		<Code>TJ</Code>
+		<PublishCode>TJ</PublishCode>
+		<Name>Таджикистан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>220</ExternalID>
+		<ExternalParentID/>
+		<Code>TK</Code>
+		<PublishCode>TK</PublishCode>
+		<Name>Токелау</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>221</ExternalID>
+		<ExternalParentID/>
+		<Code>TM</Code>
+		<PublishCode>TM</PublishCode>
+		<Name>Туркмения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>222</ExternalID>
+		<ExternalParentID/>
+		<Code>TN</Code>
+		<PublishCode>TN</PublishCode>
+		<Name>Тунис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>223</ExternalID>
+		<ExternalParentID/>
+		<Code>TO</Code>
+		<PublishCode>TO</PublishCode>
+		<Name>Тонга</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>224</ExternalID>
+		<ExternalParentID/>
+		<Code>TP</Code>
+		<PublishCode>TP</PublishCode>
+		<Name>Восточный Тимор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>225</ExternalID>
+		<ExternalParentID/>
+		<Code>TR</Code>
+		<PublishCode>TR</PublishCode>
+		<Name>Турция</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>226</ExternalID>
+		<ExternalParentID/>
+		<Code>TT</Code>
+		<PublishCode>TT</PublishCode>
+		<Name>Тринидад,Тобаго</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>227</ExternalID>
+		<ExternalParentID/>
+		<Code>TV</Code>
+		<PublishCode>TV</PublishCode>
+		<Name>Тувалу</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>228</ExternalID>
+		<ExternalParentID/>
+		<Code>TW</Code>
+		<PublishCode>TW</PublishCode>
+		<Name>ТАЙВАНЬ (КИТАЙ)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>229</ExternalID>
+		<ExternalParentID/>
+		<Code>TZ</Code>
+		<PublishCode>TZ</PublishCode>
+		<Name>Танзания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>230</ExternalID>
+		<ExternalParentID/>
+		<Code>UA</Code>
+		<PublishCode>UA</PublishCode>
+		<Name>Украина</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>231</ExternalID>
+		<ExternalParentID/>
+		<Code>UG</Code>
+		<PublishCode>UG</PublishCode>
+		<Name>Уганда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>232</ExternalID>
+		<ExternalParentID/>
+		<Code>UM</Code>
+		<PublishCode>UM</PublishCode>
+		<Name>Мал. Аутл. о.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>233</ExternalID>
+		<ExternalParentID/>
+		<Code>US</Code>
+		<PublishCode>US</PublishCode>
+		<Name>США</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>234</ExternalID>
+		<ExternalParentID/>
+		<Code>UY</Code>
+		<PublishCode>UY</PublishCode>
+		<Name>Уругвай</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>235</ExternalID>
+		<ExternalParentID/>
+		<Code>UZ</Code>
+		<PublishCode>UZ</PublishCode>
+		<Name>Узбекистан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>236</ExternalID>
+		<ExternalParentID/>
+		<Code>VA</Code>
+		<PublishCode>VA</PublishCode>
+		<Name>Ватикан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>237</ExternalID>
+		<ExternalParentID/>
+		<Code>VC</Code>
+		<PublishCode>VC</PublishCode>
+		<Name>Сент-Винсент</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>238</ExternalID>
+		<ExternalParentID/>
+		<Code>VE</Code>
+		<PublishCode>VE</PublishCode>
+		<Name>Венесуэла</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>239</ExternalID>
+		<ExternalParentID/>
+		<Code>VG</Code>
+		<PublishCode>VG</PublishCode>
+		<Name>Брит.Виргинс.о.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>240</ExternalID>
+		<ExternalParentID/>
+		<Code>VI</Code>
+		<PublishCode>VI</PublishCode>
+		<Name>Амер.Виргинс.о.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>241</ExternalID>
+		<ExternalParentID/>
+		<Code>VN</Code>
+		<PublishCode>VN</PublishCode>
+		<Name>Вьетнам</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>242</ExternalID>
+		<ExternalParentID/>
+		<Code>VU</Code>
+		<PublishCode>VU</PublishCode>
+		<Name>Вануату</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>243</ExternalID>
+		<ExternalParentID/>
+		<Code>WF</Code>
+		<PublishCode>WF</PublishCode>
+		<Name>Уоллис, Футуна</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>244</ExternalID>
+		<ExternalParentID/>
+		<Code>WS</Code>
+		<PublishCode>WS</PublishCode>
+		<Name>Самоа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>245</ExternalID>
+		<ExternalParentID/>
+		<Code>YE</Code>
+		<PublishCode>YE</PublishCode>
+		<Name>Йемен</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>246</ExternalID>
+		<ExternalParentID/>
+		<Code>YT</Code>
+		<PublishCode>YT</PublishCode>
+		<Name>Майотта</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>247</ExternalID>
+		<ExternalParentID/>
+		<Code>YU</Code>
+		<PublishCode>YU</PublishCode>
+		<Name>Югославия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>248</ExternalID>
+		<ExternalParentID/>
+		<Code>ZA</Code>
+		<PublishCode>ZA</PublishCode>
+		<Name>ЮАР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>249</ExternalID>
+		<ExternalParentID/>
+		<Code>ZM</Code>
+		<PublishCode>ZM</PublishCode>
+		<Name>Замбия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>250</ExternalID>
+		<ExternalParentID/>
+		<Code>ZR</Code>
+		<PublishCode>ZR</PublishCode>
+		<Name>Заир</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+	<SibCountry>
+		<ID>0</ID>
+		<ExternalID>251</ExternalID>
+		<ExternalParentID/>
+		<Code>ZW</Code>
+		<PublishCode>ZW</PublishCode>
+		<Name>Зимбабве</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibCountry>
+</SibCountrys>
+ </DefaultDataHolder>

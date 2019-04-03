@@ -1,0 +1,97 @@
+﻿@model WebUI.Models.Social.CommentToolbarModelVm
+@{
+    string btnThumpID = "btnThumpID_" + Guid.NewGuid().ToString("N");
+    string windowID = "windowID_" + Guid.NewGuid().ToString("N");
+    string btnCommentID = "btnCommentID_" + Guid.NewGuid().ToString("N");
+}
+
+<style>
+    .rating-value {
+        margin-left: 3px;
+    }
+</style>
+
+<div class="btn-group" id="@btnThumpID">
+    <button id="@btnCommentID" type="button" class="k-button k-button-icon tooltipstered" title="Комментировать">
+        <i class="data-comments">
+            <span class="icon glyphicon glyphicon-quote"></span>
+        </i>
+        <span class="rating-value">@Model.Count</span>
+    </button>
+</div>
+
+<script>
+    $(function () {
+
+        window["@windowID"] = {
+            _update: function () {
+            },
+            onOpen: function () {
+                var grid = $("#@windowID > div.k-widget.k-grid").getKendoGrid();
+                if (grid) {
+                    if (grid.virtualScrollable) {
+                        grid.virtualScrollable.verticalScrollbar.perfectScrollbar();
+                    }
+                    grid.dataSource.fetch(function () {
+                        if (grid.virtualScrollable) {
+                            var gridScrollBar = grid.virtualScrollable.verticalScrollbar;
+                            gridScrollBar.scrollTop(gridScrollBar[0].scrollHeight);
+                        }
+
+                        setTimeout(function () {
+                            if (grid.virtualScrollable) {
+                                grid.virtualScrollable.verticalScrollbar.perfectScrollbar("update");
+                            }
+                        }, 400);
+                    });
+
+                }
+            },
+            onClose: function (e) {
+                $.ajax({
+                    url: "@Url.Action("GetCommentCount", "Social")",
+                    data: {
+                        mnemonic: "@Model.Mnemonic",
+                        objectID: "@Model.ObjectId"
+                    },
+                    success: function (data) {
+                        $("#@btnCommentID .rating-value").text(data.count);
+                    }
+                });
+                e.sender.destroy();
+            }
+        }
+
+        $("#@btnThumpID").click(function (evt) {
+            
+            var $w = $('#' + "@windowID");
+
+            if (!$w.length) {
+                $('body').append('<div id="' + "@windowID" + '" class="view-model-window wnd-loading-content"></div>');
+
+                $w = $('#' + "@windowID");
+
+                $w.kendoWindow({
+                    close: window["@windowID"].onClose,
+                    open: window["@windowID"].onOpen,
+                    modal: true,
+                    scrollable: true,
+                    title: "Комментарии",
+                    actions: ["Close"],
+                    content: {
+                        url: "/Social/GetGrid",
+                        data: { mnemonic: "@Model.Mnemonic", objectID: "@Model.ObjectId" }
+                    },
+                    refresh: function (e) {
+                        var wnd = e.sender.element;
+                        wnd.removeClass("wnd-loading-content");
+                    }
+                });
+            }
+            var w = $w.data("kendoWindow");
+
+            w.open();
+            w.maximize();
+        });
+    });
+</script>

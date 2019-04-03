@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E055131B-D8E9-49DB-A664-948E345F3703}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>VB.ReportLibrary</AssemblyName>
+    <MyType>Windows</MyType>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=12.1.18.516, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Map\OlympicMedalsByNationalTeams.designer.vb">
+      <DependentUpon>OlympicMedalsByNationalTeams.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Map\OlympicMedalsByNationalTeams.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Choropleth\PopulationDensity.Designer.vb">
+      <DependentUpon>PopulationDensity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Choropleth\PopulationDensity.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crosstab\ProductSales.Designer.vb">
+      <DependentUpon>ProductSales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Crosstab\ProductSales.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dashboard\SalesByRegionDashboard.Designer.vb">
+      <DependentUpon>SalesByRegionDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\SalesByRegionDashboard.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EmployeeSales\EmployeeSalesSummary.Designer.vb">
+      <DependentUpon>EmployeeSalesSummary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeSales\EmployeeSalesSummary.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportBook\ReportBookToc.Designer.vb">
+      <DependentUpon>ReportBookToc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReportBook\ReportBookToc.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportCatalog\ReportCatalog.Designer.vb">
+      <DependentUpon>ReportCatalog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReportCatalog\ReportCatalog.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportManager.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Map\OlympicMedalsByNationalTeams.resx">
+      <DependentUpon>OlympicMedalsByNationalTeams.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Barcodes\BarcodesReport.resx">
+      <DependentUpon>BarcodesReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Choropleth\PopulationDensity.resx">
+      <DependentUpon>PopulationDensity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crosstab\ProductSales.resx">
+      <DependentUpon>ProductSales.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard\DashBoard.resx">
+      <DependentUpon>DashBoard.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard\SalesByRegionDashboard.resx">
+      <DependentUpon>SalesByRegionDashboard.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBinding\ListBoundReport.resx">
+      <DependentUpon>ListBoundReport.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeSales\EmployeeSalesSummary.resx">
+      <DependentUpon>EmployeeSalesSummary.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice\Invoice.resx">
+      <DependentUpon>Invoice.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice\SalesOrderDetails.resx">
+      <DependentUpon>SalesOrderDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multicolumn\ProductTag.resx">
+      <DependentUpon>ProductTag.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductCatalog\ProductCatalog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProductCatalog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductLineSales\ProductLineSales.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProductLineSales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportBook\ReportBookToc.resx">
+      <DependentUpon>ReportBookToc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportCatalog\ReportCatalog.resx">
+      <DependentUpon>ReportCatalog.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <Content Include="Choropleth\Resources\world.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Choropleth\Resources\world.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Resources\world.dbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\world.shp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataBinding\Car.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataBinding\ListBoundReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Barcodes\BarcodesReport.Designer.vb">
+      <DependentUpon>BarcodesReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Barcodes\BarcodesReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportBook\ReportBook.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dashboard\DashBoard.Designer.vb">
+      <DependentUpon>DashBoard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard\DashBoard.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataBinding\Cars.vb" />
+    <Compile Include="DataBinding\ListBoundReport.Designer.vb">
+      <DependentUpon>ListBoundReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice\SalesOrderDetails.Designer.vb">
+      <DependentUpon>SalesOrderDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice\SalesOrderDetails.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Invoice\Invoice.Designer.vb">
+      <DependentUpon>Invoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice\Invoice.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Multicolumn\ProductTag.Designer.vb">
+      <DependentUpon>ProductTag.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Multicolumn\ProductTag.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCatalog\ProductCatalog.Designer.vb">
+      <DependentUpon>ProductCatalog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCatalog\ProductCatalog.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProductLineSales\ProductLineSales.Designer.vb">
+      <DependentUpon>ProductLineSales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProductLineSales\ProductLineSales.vb">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

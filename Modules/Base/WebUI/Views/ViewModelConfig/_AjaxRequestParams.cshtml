@@ -1,0 +1,61 @@
+﻿@model Base.UI.ViewModal.AjaxAction
+    @{
+        string wrapID = Guid.NewGuid().ToString("N");
+        string applyID = Guid.NewGuid().ToString("N");
+        string cancelID = Guid.NewGuid().ToString("N");
+    }
+
+<div id="@wrapID">
+    <script>pbaAPI.errorMsg("bad tag id!");console.error('отрефакторить: не уникальные id (paramKey, paramValue)!');</script>
+    <div class="ajax-param e-row">
+        <div class="label">Ключ</div>
+        <div class="editor">
+            <input class="k-textbox" type="text" id="paramKey" />
+        </div>
+    </div>
+    <div class="ajax-param e-row">
+        <div class="label">Значение</div>
+        <div class="editor">
+            <input class="col-md-8 k-textbox" type="text" id="paramValue" />
+        </div>
+    </div>
+
+    <div class="footer-buttons">
+        <button id="@applyID" class="btn btn-primary" title="Добавить"><span>Добавить</span></button>
+        <button id="@cancelID" class="btn" title="Отмена"><span>Отмена</span></button>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var wrap = $('#@wrapID');
+
+        var viewModel = kendo.observable({ Key: "", Value: "" });
+        kendo.bind($('#@wrapID'), viewModel);
+
+        wrap.closest('[params-editor]').on('onLoad', function (e, args) {
+            var model = args.model;
+
+            if (!model) {
+                model = {};
+            }
+
+            $('#paramKey').val(model.Key);
+            $('#paramValue').val(model.Value);
+
+            $('#@applyID').on('click', function () {
+
+                model.Key = $('#paramKey').val();
+                model.Value = $('#paramValue').val();
+
+                args.apply(model);
+
+                $(this).closest('[data-role=window]').data('kendoWindow').close();
+            });
+
+            $('#@cancelID').on('click', function () {
+                $(this).closest('[data-role=window]').data('kendoWindow').close();
+            });
+        });
+    });
+</script>

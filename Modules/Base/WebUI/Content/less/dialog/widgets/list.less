@@ -1,0 +1,43 @@
+﻿.kwidget.kwidget--list {
+	max-width: 40rem;
+
+	.resetList();
+
+	 > li {
+		margin-bottom: -.0714rem;
+		padding: 1rem 1.5rem;
+
+		transition: background-color .1s linear, color .1s linear;
+
+		color: @color--text;
+		border: 1px solid @color--border;
+		background-color: transparent;
+
+		&:first-child {
+			border-radius: 2px 2px 0 0;
+			}
+		&:last-child {
+			border-radius: 0 0 2px 2px;
+			}
+
+		&.active {
+			margin-bottom: 0;
+
+			color: @color--dark;
+			border-top-color: darken( @color--accent-pale, 25% );
+			border-bottom-color: darken( @color--accent-pale, 25% );
+			background-color: darken( @color--accent-pale, 10% );
+
+			 + li {
+				border-top: 0;
+				}
+			}
+		}
+
+	.stage-name {
+		font-size: 1em;
+		font-weight: 500; 
+
+		margin: 0 0 @modular-scale * .5em;
+		}
+	}

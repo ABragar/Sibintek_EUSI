@@ -1,0 +1,1235 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<OPFs>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>1 00 00</Code>
+		<PublishCode>1 00 00</PublishCode>
+		<Name>ОРГАНИЗАЦИОННО-ПРАВОВЫЕ ФОРМЫ ЮРИДИЧЕСКИХ ЛИЦ, ЯВЛЯЮЩИХСЯ КОММЕРЧЕСКИМИ КОРПОРАТИВНЫМИ ОРГАНИЗАЦИЯМИ</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>1 10 00</Code>
+		<PublishCode>1 10 00</PublishCode>
+		<Name>Хозяйственные товарищества</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>1 10 51</Code>
+		<PublishCode>1 10 51</PublishCode>
+		<Name>Полные товарищества</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>1 10 64</Code>
+		<PublishCode>1 10 64</PublishCode>
+		<Name>Товарищества на вере (коммандитные товарищества)</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>1 20 00</Code>
+		<PublishCode>1 20 00</PublishCode>
+		<Name>Хозяйственные общества</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>1 21 00</Code>
+		<PublishCode>1 21 00</PublishCode>
+		<Name>Общества с ограниченной или дополнительной ответственностью</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>1 21 65</Code>
+		<PublishCode>1 21 65</PublishCode>
+		<Name>Общества с ограниченной ответственностью</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>1 21 66</Code>
+		<PublishCode>1 21 66</PublishCode>
+		<Name>Общества с дополнительной ответственностью</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>1 22 00</Code>
+		<PublishCode>1 22 00</PublishCode>
+		<Name>Акционерные общества</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>1 22 47</Code>
+		<PublishCode>1 22 47</PublishCode>
+		<Name>Публичные акционерные общества</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>1 22 67</Code>
+		<PublishCode>1 22 67</PublishCode>
+		<Name>Непубличные акционерные общества</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>1 23 00</Code>
+		<PublishCode>1 23 00</PublishCode>
+		<Name>Общества с ограниченной ответственностью</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>1 30 00</Code>
+		<PublishCode>1 30 00</PublishCode>
+		<Name>Хозяйственные партнерства</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>1 40 00</Code>
+		<PublishCode>1 40 00</PublishCode>
+		<Name>Производственные кооперативы (артели)</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>1 41 00</Code>
+		<PublishCode>1 41 00</PublishCode>
+		<Name>Сельскохозяйственные производственные кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>1 41 53</Code>
+		<PublishCode>1 41 53</PublishCode>
+		<Name>Сельскохозяйственные артели (колхозы)</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>1 41 54</Code>
+		<PublishCode>1 41 54</PublishCode>
+		<Name>Рыболовецкие артели (колхозы)</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>1 41 55</Code>
+		<PublishCode>1 41 55</PublishCode>
+		<Name>Кооперативные хозяйства (коопхозы)</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>1 42 00</Code>
+		<PublishCode>1 42 00</PublishCode>
+		<Name>Производственные кооперативы (кроме сельскохозяйственных производственных кооперативов)</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>1 50 00</Code>
+		<PublishCode>1 50 00</PublishCode>
+		<Name>Унитарные предприятия</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>1 51 00</Code>
+		<PublishCode>1 51 00</PublishCode>
+		<Name>Унитарные предприятия, основанные на праве оперативного управления (казенные предприятия)</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>1 51 41</Code>
+		<PublishCode>1 51 41</PublishCode>
+		<Name>Федеральные казенные предприятия</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>1 51 42</Code>
+		<PublishCode>1 51 42</PublishCode>
+		<Name>Казенные предприятия субъектов Российской Федерации</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>1 51 43</Code>
+		<PublishCode>1 51 43</PublishCode>
+		<Name>Муниципальные казенные предприятия</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>1 52 00</Code>
+		<PublishCode>1 52 00</PublishCode>
+		<Name>Унитарные предприятия, основанные на праве хозяйственного ведения</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>1 52 41</Code>
+		<PublishCode>1 52 41</PublishCode>
+		<Name>Федеральные государственные унитарные предприятия</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>1 52 42</Code>
+		<PublishCode>1 52 42</PublishCode>
+		<Name>Государственные унитарные предприятия субъектов Российской Федерации</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>1 52 43</Code>
+		<PublishCode>1 52 43</PublishCode>
+		<Name>Муниципальные унитарные предприятия</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>1 53 00</Code>
+		<PublishCode>1 53 00</PublishCode>
+		<Name>Крестьянские (фермерские) хозяйства</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>1 90 00</Code>
+		<PublishCode>1 90 00</PublishCode>
+		<Name>Прочие юридические лица, являющиеся коммерческими организациями</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>2 00 00</Code>
+		<PublishCode>2 00 00</PublishCode>
+		<Name>ОРГАНИЗАЦИОННО-ПРАВОВЫЕ ФОРМЫ ЮРИДИЧЕСКИХ ЛИЦ, ЯВЛЯЮЩИХСЯ НЕКОММЕРЧЕСКИМИ КОРПОРАТИВНЫМИ ОРГАНИЗАЦИЯМИ </Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 00</Code>
+		<PublishCode>2 01 00</PublishCode>
+		<Name>Потребительские кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 01</Code>
+		<PublishCode>2 01 01</PublishCode>
+		<Name>Гаражные и гаражно-строительные кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 02</Code>
+		<PublishCode>2 01 02</PublishCode>
+		<Name>Жилищные или жилищно-строительные кооперативы </Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 03</Code>
+		<PublishCode>2 01 03</PublishCode>
+		<Name>Жилищные накопительные кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 04</Code>
+		<PublishCode>2 01 04</PublishCode>
+		<Name>Кредитные потребительские кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 05</Code>
+		<PublishCode>2 01 05</PublishCode>
+		<Name>Кредитные потребительские кооперативы граждан</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 06</Code>
+		<PublishCode>2 01 06</PublishCode>
+		<Name>Кредитные кооперативы второго уровня</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 07</Code>
+		<PublishCode>2 01 07</PublishCode>
+		<Name>Потребительские общества</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 08</Code>
+		<PublishCode>2 01 08</PublishCode>
+		<Name>Общества взаимного страхования</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 09</Code>
+		<PublishCode>2 01 09</PublishCode>
+		<Name>Сельскохозяйственные потребительские перерабатывающие кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 10</Code>
+		<PublishCode>2 01 10</PublishCode>
+		<Name>Сельскохозяйственные потребительские сбытовые (торговые) кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 11</Code>
+		<PublishCode>2 01 11</PublishCode>
+		<Name>Сельскохозяйственные потребительские обслуживающие кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 12</Code>
+		<PublishCode>2 01 12</PublishCode>
+		<Name>Сельскохозяйственные потребительские снабженческие кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 13</Code>
+		<PublishCode>2 01 13</PublishCode>
+		<Name>Сельскохозяйственные потребительские садоводческие кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 14</Code>
+		<PublishCode>2 01 14</PublishCode>
+		<Name>Сельскохозяйственные потребительские огороднические кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 15</Code>
+		<PublishCode>2 01 15</PublishCode>
+		<Name>Сельскохозяйственные потребительские животноводческие кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 20</Code>
+		<PublishCode>2 01 20</PublishCode>
+		<Name>Садоводческие, огороднические или дачные потребительские кооперативы</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>2 01 21</Code>
+		<PublishCode>2 01 21</PublishCode>
+		<Name>Фонды проката</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>2 02 00</Code>
+		<PublishCode>2 02 00</PublishCode>
+		<Name>Общественные организации </Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>2 02 01</Code>
+		<PublishCode>2 02 01</PublishCode>
+		<Name>Политические партии</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>2 02 02</Code>
+		<PublishCode>2 02 02</PublishCode>
+		<Name>Профсоюзные организации</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>2 02 10</Code>
+		<PublishCode>2 02 10</PublishCode>
+		<Name>Общественные движении</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>2 02 11</Code>
+		<PublishCode>2 02 11</PublishCode>
+		<Name>Органы общественной самодеятельности</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>2 02 17</Code>
+		<PublishCode>2 02 17</PublishCode>
+		<Name>Территориальные общественные самоуправления</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>2 03 00</Code>
+		<PublishCode>2 03 00</PublishCode>
+		<Name>Религиозные организации</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>2 04 00</Code>
+		<PublishCode>2 04 00</PublishCode>
+		<Name>Фонды</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>2 04 01</Code>
+		<PublishCode>2 04 01</PublishCode>
+		<Name>Благотворительные фонды</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>2 04 02</Code>
+		<PublishCode>2 04 02</PublishCode>
+		<Name>Негосударственные пенсионные фонды</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>2 04 03</Code>
+		<PublishCode>2 04 03</PublishCode>
+		<Name>Общественные фонды</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>2 04 04</Code>
+		<PublishCode>2 04 04</PublishCode>
+		<Name>Экологические фонды</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>62</ExternalID>
+		<ExternalParentID/>
+		<Code>2 05 00</Code>
+		<PublishCode>2 05 00</PublishCode>
+		<Name>Некоммерческие партнерства</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>63</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 00</Code>
+		<PublishCode>2 06 00</PublishCode>
+		<Name>Ассоциации (союзы)</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>64</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 01</Code>
+		<PublishCode>2 06 01</PublishCode>
+		<Name>Ассоциации (союзы) экономического взаимодействия субъектов Российской Федерации</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>65</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 03</Code>
+		<PublishCode>2 06 03</PublishCode>
+		<Name>Советы муниципальных образований субъектов Российской Федерации</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>66</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 04</Code>
+		<PublishCode>2 06 04</PublishCode>
+		<Name>Союзы (ассоциации) кредитных кооперативов</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>67</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 05</Code>
+		<PublishCode>2 06 05</PublishCode>
+		<Name>Союзы (ассоциации) кооперативов</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>68</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 06</Code>
+		<PublishCode>2 06 06</PublishCode>
+		<Name>Союзы (ассоциации) общественных объединений</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>69</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 07</Code>
+		<PublishCode>2 06 07</PublishCode>
+		<Name>Союзы (ассоциации) общин малочисленных народов</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>70</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 08</Code>
+		<PublishCode>2 06 08</PublishCode>
+		<Name>Союзы потребительских обществ</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>71</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 09</Code>
+		<PublishCode>2 06 09</PublishCode>
+		<Name>Адвокатские палаты</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>72</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 10</Code>
+		<PublishCode>2 06 10</PublishCode>
+		<Name>Нотариальные палаты</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>73</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 11</Code>
+		<PublishCode>2 06 11</PublishCode>
+		<Name>Торгово-промышленные палаты</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>74</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 12</Code>
+		<PublishCode>2 06 12</PublishCode>
+		<Name>Объединения работодателей</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>75</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 13</Code>
+		<PublishCode>2 06 13</PublishCode>
+		<Name>Объединения фермерских хозяйств</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>76</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 14</Code>
+		<PublishCode>2 06 14</PublishCode>
+		<Name>Некоммерческие партнерства</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>77</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 15</Code>
+		<PublishCode>2 06 15</PublishCode>
+		<Name>Адвокатские бюро</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>78</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 16</Code>
+		<PublishCode>2 06 16</PublishCode>
+		<Name>Коллегии адвокатов</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>79</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 17</Code>
+		<PublishCode>2 06 17</PublishCode>
+		<Name>Садоводческие, огороднические или дачные некоммерческие партнерства</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>80</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 18</Code>
+		<PublishCode>2 06 18</PublishCode>
+		<Name>Ассоциации (союзы) садоводческих, огороднических и дачных некоммерческих объединений</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>81</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 19</Code>
+		<PublishCode>2 06 19</PublishCode>
+		<Name>Саморегулируемые организации</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>82</ExternalID>
+		<ExternalParentID/>
+		<Code>2 06 20</Code>
+		<PublishCode>2 06 20</PublishCode>
+		<Name>Объединения (ассоциации и союзы) благотворительных организаций</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>83</ExternalID>
+		<ExternalParentID/>
+		<Code>2 07 00</Code>
+		<PublishCode>2 07 00</PublishCode>
+		<Name>Товарищества собственников недвижимости</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>84</ExternalID>
+		<ExternalParentID/>
+		<Code>2 07 01</Code>
+		<PublishCode>2 07 01</PublishCode>
+		<Name>Садоводческие, огороднические или дачные некоммерческие товарищества</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>85</ExternalID>
+		<ExternalParentID/>
+		<Code>2 07 16</Code>
+		<PublishCode>2 07 16</PublishCode>
+		<Name>Товарищества собственников жилья</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>86</ExternalID>
+		<ExternalParentID/>
+		<Code>2 08 00</Code>
+		<PublishCode>2 08 00</PublishCode>
+		<Name>Палаты</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>87</ExternalID>
+		<ExternalParentID/>
+		<Code>2 08 01</Code>
+		<PublishCode>2 08 01</PublishCode>
+		<Name>Адвокатские палаты</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>88</ExternalID>
+		<ExternalParentID/>
+		<Code>2 08 02</Code>
+		<PublishCode>2 08 02</PublishCode>
+		<Name>Нотариальные палаты</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>89</ExternalID>
+		<ExternalParentID/>
+		<Code>2 08 03</Code>
+		<PublishCode>2 08 03</PublishCode>
+		<Name>Торгово-промышленные палаты</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>90</ExternalID>
+		<ExternalParentID/>
+		<Code>2 09 00</Code>
+		<PublishCode>2 09 00</PublishCode>
+		<Name>Учреждения</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>91</ExternalID>
+		<ExternalParentID/>
+		<Code>2 09 01</Code>
+		<PublishCode>2 09 01</PublishCode>
+		<Name>Автономные учреждения</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>92</ExternalID>
+		<ExternalParentID/>
+		<Code>2 09 02</Code>
+		<PublishCode>2 09 02</PublishCode>
+		<Name>Благотворительные учреждения</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>93</ExternalID>
+		<ExternalParentID/>
+		<Code>2 09 03</Code>
+		<PublishCode>2 09 03</PublishCode>
+		<Name>Бюджетные учреждения</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>94</ExternalID>
+		<ExternalParentID/>
+		<Code>2 09 04</Code>
+		<PublishCode>2 09 04</PublishCode>
+		<Name>Казенные учреждения</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>95</ExternalID>
+		<ExternalParentID/>
+		<Code>2 09 05</Code>
+		<PublishCode>2 09 05</PublishCode>
+		<Name>Общественные учреждения</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>96</ExternalID>
+		<ExternalParentID/>
+		<Code>2 09 06</Code>
+		<PublishCode>2 09 06</PublishCode>
+		<Name>Частные учреждения</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>97</ExternalID>
+		<ExternalParentID/>
+		<Code>2 09 07</Code>
+		<PublishCode>2 09 07</PublishCode>
+		<Name>Учреждения академий наук</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>98</ExternalID>
+		<ExternalParentID/>
+		<Code>2 09 08</Code>
+		<PublishCode>2 09 08</PublishCode>
+		<Name>Учреждения религиозных организаций</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>99</ExternalID>
+		<ExternalParentID/>
+		<Code>2 10 00</Code>
+		<PublishCode>2 10 00</PublishCode>
+		<Name>Садоводческие, огороднические или дачные объединения граждан</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>100</ExternalID>
+		<ExternalParentID/>
+		<Code>2 10 01</Code>
+		<PublishCode>2 10 01</PublishCode>
+		<Name>Садоводческие, огороднические или дачные некоммерческие товарищества</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>101</ExternalID>
+		<ExternalParentID/>
+		<Code>2 10 02</Code>
+		<PublishCode>2 10 02</PublishCode>
+		<Name>Садоводческие, огороднические или дачные потребительские кооперативы</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>102</ExternalID>
+		<ExternalParentID/>
+		<Code>2 10 03</Code>
+		<PublishCode>2 10 03</PublishCode>
+		<Name>Садоводческие, огороднические или дачные некоммерческие партнерства</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>103</ExternalID>
+		<ExternalParentID/>
+		<Code>2 11 00</Code>
+		<PublishCode>2 11 00</PublishCode>
+		<Name>Казачьи общества, внесенные в государственный реестр казачьих обществ в Российской Федерации</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>104</ExternalID>
+		<ExternalParentID/>
+		<Code>2 12 00</Code>
+		<PublishCode>2 12 00</PublishCode>
+		<Name>Общины коренных малочисленных народов Российской Федерации</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>105</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 00</Code>
+		<PublishCode>2 80 00</PublishCode>
+		<Name>Юридические лица, являющиеся некоммерческими организациями, не включенные в другие группировки</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>106</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 01</Code>
+		<PublishCode>2 80 01</PublishCode>
+		<Name>Автономные некоммерческие организации</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>107</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 02</Code>
+		<PublishCode>2 80 02</PublishCode>
+		<Name>Адвокатские бюро</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>108</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 03</Code>
+		<PublishCode>2 80 03</PublishCode>
+		<Name>Государственные академии наук</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>109</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 04</Code>
+		<PublishCode>2 80 04</PublishCode>
+		<Name>Государственные компании</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>110</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 05</Code>
+		<PublishCode>2 80 05</PublishCode>
+		<Name>Государственные корпорации</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>111</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 06</Code>
+		<PublishCode>2 80 06</PublishCode>
+		<Name>Казачьи общества</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>112</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 07</Code>
+		<PublishCode>2 80 07</PublishCode>
+		<Name>Коллегии адвокатов</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>113</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 08</Code>
+		<PublishCode>2 80 08</PublishCode>
+		<Name>Общества взаимного страхования</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>114</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 10</Code>
+		<PublishCode>2 80 10</PublishCode>
+		<Name>Общины коренных малочисленных народов</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>115</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 12</Code>
+		<PublishCode>2 80 12</PublishCode>
+		<Name>Объединения работодателей</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>116</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 13</Code>
+		<PublishCode>2 80 13</PublishCode>
+		<Name>Объединения (союзы) крестьянских (фермерских) хозяйств</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>117</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 14</Code>
+		<PublishCode>2 80 14</PublishCode>
+		<Name>Отделения иностранных некоммерческих неправительственных организаций</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>118</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 16</Code>
+		<PublishCode>2 80 16</PublishCode>
+		<Name>Товарищества собственников жилья</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>119</ExternalID>
+		<ExternalParentID/>
+		<Code>2 80 17</Code>
+		<PublishCode>2 80 17</PublishCode>
+		<Name>Территориальные общественные самоуправления</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>120</ExternalID>
+		<ExternalParentID/>
+		<Code>2 90 00</Code>
+		<PublishCode>2 90 00</PublishCode>
+		<Name>Иные некоммерческие организации, не включенные в другие группировки</Name>
+		<DateFrom>2014-01-01</DateFrom>
+		<DateTo>2014-01-01</DateTo>
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>121</ExternalID>
+		<ExternalParentID/>
+		<Code>3 00 00</Code>
+		<PublishCode>3 00 00</PublishCode>
+		<Name>ОРГАНИЗАЦИОННО-ПРАВОВЫЕ ФОРМЫ ОРГАНИЗАЦИЙ, СОЗДАННЫХ БЕЗ ПРАВ ЮРИДИЧЕСКОГО ЛИЦА</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>122</ExternalID>
+		<ExternalParentID/>
+		<Code>3 00 01</Code>
+		<PublishCode>3 00 01</PublishCode>
+		<Name>Представительства юридических лиц</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+	<OPF>
+		<ID>0</ID>
+		<ExternalID>123</ExternalID>
+		<ExternalParentID/>
+		<Code>3 00 02</Code>
+		<PublishCode>3 00 02</PublishCode>
+		<Name>Филиалы юридических лиц</Name>
+		<DateFrom>2014-01-02</DateFrom>
+		
+	</OPF>
+</OPFs>
+  </DefaultDataHolder>

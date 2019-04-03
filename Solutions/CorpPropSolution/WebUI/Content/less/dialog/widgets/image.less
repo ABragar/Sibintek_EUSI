@@ -1,0 +1,81 @@
+﻿.kwidget.kwidget--image {
+	display: inline-block;
+
+	border: none;
+	background-color: transparent;
+	.clearfix();
+
+	 > .image-output {
+		float: left;
+
+		 > img {
+			display: block;
+			float: left;
+
+			width: 250px;
+			height: 250px;
+			margin: 0 auto;
+			padding: 0;
+
+			cursor: pointer;
+
+			border: 1px solid darken( @color--light, 20% );
+			}
+		}
+
+	.k-upload {
+		border-width: 0 !important;
+		background: 0 !important;
+		}
+
+	.k-upload-status,
+	.k-dropzone > em {
+		display: none;
+		}
+
+	.kwidget--toolbar {
+		float: right;
+
+		margin-left: -.0714em;
+		}
+
+	.k-button-group {
+		border: 1px solid darken( @color--light, 20% );
+		background-color: @color--light;
+
+		.drop-shadow( 1px, @color--dark, 15% );
+
+		.k-button {
+			position: relative;
+
+			overflow: hidden;
+
+			padding: 0 1em;
+
+			border: none;
+
+			 > span,  > i {
+				font-size: 1em;
+
+				z-index: 3;
+				}
+
+			 > input[type=file] {
+				font-size: 0;
+				line-height: 0;
+
+				position: absolute;
+				z-index: 5;
+				top: 0;
+				left: 0;
+
+				width: 100%;
+				height: 100%;
+
+				cursor: pointer;
+
+				opacity: 0;
+				}
+			}
+		}
+	}

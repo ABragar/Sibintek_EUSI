@@ -1,0 +1,9 @@
+﻿@model EditorViewModel
+@{
+    string maskParam = "";
+
+    Model.EditorTemplateParams?.TryGetValue("Mask", out maskParam);
+}
+
+@(Html.Kendo().MaskedTextBox().Name(Model.UID).HtmlAttributes(Html.CreateHtmlAttributes(Model)).Mask(maskParam))
+

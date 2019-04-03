@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://portal.rosreestr.ru/xsl/EGRP/Reestr_Extract_Subject/07/Common.xsl"?>
+<Extract>
+	<eDocument CodeType="111" Version="07" Scope="EGRP">
+		<Sender Kod="00.0.9.4" Name="Сервис обработки обобщённых прав" Appointment="Государственный регистратор" FIO="Ежов Артем Евгеньевич" />
+		<Recipient Kod="77.0.1.29" Name="" />
+	</eDocument>
+	<ReestrExtract>
+		<DeclarAttribute ID_KUVI="20662066"
+            ExtractTypeCode="050200" ExtractTypeText="Выписка из Единого государственного реестра недвижимости о правах отдельного лица на имевшиеся (имеющиеся) у него объекты недвижимости"
+			ExtractNumber="77/001/001-48_1" ExtractDate="13.03.2017"
+			RequeryNumber="77/100/022/2017-864" RequeryDate="02.03.2017"
+			ExtractCount="1" NoticeCount="0" RefuseCount="0" 
+			Registrator="Ежов Артем Евгеньевич">
+				<ReceivName>Публичное акционерное общество &quot;Нефтяная компания &quot;Роснефть&quot;&quot;   </ReceivName>
+				<Representativ>Несмашный Дмитрий Евгеньевич</Representativ>
+				<ReceivAdress></ReceivAdress>
+		</DeclarAttribute>
+		
+			<ExtractPeriod>
+				<ExtractPeriodSDate>01.01.1998</ExtractPeriodSDate>
+				<ExtractPeriodEDate>02.03.2017</ExtractPeriodEDate>
+			</ExtractPeriod>
+		
+			<ExtractSubjectRights>
+				<HeadContent>
+					<ID_REC_KUVI>20662066</ID_REC_KUVI>
+					<Title>ФЕДЕРАЛЬНАЯ СЛУЖБА ГОСУДАРСТВЕННОЙ РЕГИСТРАЦИИ, КАДАСТРА И КАРТОГРАФИИ</Title>
+					<DeptName></DeptName>
+					<ExtractTitle>Выписка из Единого государственного реестра недвижимости о правах отдельного лица на имевшиеся (имеющиеся) у него объекты недвижимости</ExtractTitle>
+					<Content>На основании запроса от 02.03.2017, поступившего на
+						рассмотрение 02.03.2017, сообщаем, что правообладателю</Content>
+				</HeadContent>
+				
+					<ExtractSubj><Subject>
+    <ID_Subject>48</ID_Subject>
+    <Organization>
+      <Code_SP>007002000000</Code_SP>
+      <Content></Content>
+      <Name>ООО "РН-Трейд"</Name>
+      <INN>7804303914</INN>
+      <Code_OGRN></Code_OGRN>
+      <RegDate>01.01.1994</RegDate>
+    </Organization>
+  </Subject>
+<HeadLast>принадлежат следующие объекты недвижимого имущества</HeadLast>
+<ObjectRight ObjectNumber="1">
+    <Object>
+      <ID_Object>1</ID_Object>
+      <CadastralNumber>50:20:0070303:345</CadastralNumber>
+      <ObjectType>002002001000</ObjectType>
+      <ObjectTypeText>Здание</ObjectTypeText>
+      <Name>Здание АЗС - 41</Name>
+      <Assignation_Code_Text>Нежилое здание</Assignation_Code_Text>
+      <GroundCategoryText>данные отсутствуют</GroundCategoryText>
+      <Area>
+        <AreaText>6,9 кв. м</AreaText>
+      </Area>
+      <Address>
+        <Content>Архангельская область, р-н Котласский, г Сольвычегодск, ул Красная, д 84</Content>
+        <Region Code="29" Name="Архангельская область"/>
+      </Address>
+      <ReEndDate/>
+    </Object>
+    <Registration>
+      <ID_Record>1</ID_Record>
+      <RegNumber>77-77/017-77/017/080/2015-24/8</RegNumber>
+      <Type>001001000000</Type>
+      <Name>Собственность</Name>
+      <RegDate>08.05.2003</RegDate>
+      <RestorCourt/>
+      <EndDate/>
+      <DocFound>
+        <ID_Document>1</ID_Document>
+        <Content>План приватизации, утвержденный Председателем комитета по  управлению госимуществом.</Content>
+        <Type_Document>010006000000</Type_Document>
+        <Name>План приватизации, утвержденный Председателем комитета по  управлению госимуществом.</Name>
+        <Date>27.05.1994</Date>
+      </DocFound>
+    </Registration>
+  </ObjectRight>
+<ObjectRight ObjectNumber="1">
+    <Object>
+      <ID_Object>2</ID_Object>
+      <CadastralNumber>50:20:0070303:347</CadastralNumber>
+      <ObjectType>002002001000</ObjectType>
+      <ObjectTypeText>Здание</ObjectTypeText>
+      <Name>Пост технического обслуживания АЗС - 41</Name>
+      <Assignation_Code_Text>Нежилое здание</Assignation_Code_Text>
+      <GroundCategoryText>данные отсутствуют</GroundCategoryText>
+      <Area>
+        <AreaText>6,9 кв. м</AreaText>
+      </Area>
+      <Address>
+        <Content>Архангельская область, р-н Котласский, г Сольвычегодск, ул Красная, д 84</Content>
+        <Region Code="29" Name="Архангельская область"/>
+      </Address>
+      <ReEndDate/>
+    </Object>
+    <Registration>
+      <ID_Record>2</ID_Record>
+      <RegNumber>77-77/018-77/201/090/2015-25/9</RegNumber>
+      <Type>001001000000</Type>
+      <Name>Собственность</Name>
+      <RegDate>08.05.2003</RegDate>
+      <RestorCourt/>
+      <EndDate/>
+      <DocFound>
+        <ID_Document>2</ID_Document>
+        <Content>План приватизации, утвержденный Председателем комитета по  управлению госимуществом.</Content>
+        <Type_Document>010006000000</Type_Document>
+        <Name>План приватизации, утвержденный Председателем комитета по  управлению госимуществом.</Name>
+        <Date>27.05.1994</Date>
+      </DocFound>
+    </Registration>
+  </ObjectRight>
+<ObjectRight ObjectNumber="1">
+    <Object>
+      <ID_Object>5</ID_Object>
+      <CadastralNumber>37:23:060115:1032</CadastralNumber>
+      <ObjectType>002002001000</ObjectType>
+      <ObjectTypeText>Здание</ObjectTypeText>
+      <Name>Земельный участок под Зданием АЗС - 42</Name>
+      <Assignation_Code_Text>Нежилое здание</Assignation_Code_Text>
+      <GroundCategoryText>данные отсутствуют</GroundCategoryText>
+      <Area>
+        <AreaText>6,9 кв. м</AreaText>
+      </Area>
+      <Address>
+        <Content>Архангельская область, р-н Котласский, г Сольвычегодск, ул Красная, д 84</Content>
+        <Region Code="29" Name="Архангельская область"/>
+      </Address>
+      <ReEndDate/>
+    </Object>
+    <Registration>
+      <ID_Record>5</ID_Record>
+      <RegNumber>77-77/018-77/211/090/2015-26/75</RegNumber>
+      <Type>001001000000</Type>
+      <Name>Собственность</Name>
+      <RegDate>08.05.2003</RegDate>
+      <RestorCourt/>
+      <EndDate/>
+      <DocFound>
+        <ID_Document>5</ID_Document>
+        <Content>План приватизации, утвержденный Председателем комитета по  управлению госимуществом.</Content>
+        <Type_Document>010006000000</Type_Document>
+        <Name>План приватизации, утвержденный Председателем комитета по  управлению госимуществом.</Name>
+        <Date>27.05.1994</Date>
+      </DocFound>
+    </Registration>
+  </ObjectRight>
+<ObjectRight ObjectNumber="1">
+    <Object>
+      <ID_Object>6</ID_Object>
+      <CadastralNumber>37:23:060115:1033</CadastralNumber>
+      <ObjectType>002002001000</ObjectType>
+      <ObjectTypeText>Здание</ObjectTypeText>
+      <Name>Земельный участок под магазином АЗС - 42</Name>
+      <Assignation_Code_Text>Нежилое здание</Assignation_Code_Text>
+      <GroundCategoryText>данные отсутствуют</GroundCategoryText>
+      <Area>
+        <AreaText>6,9 кв. м</AreaText>
+      </Area>
+      <Address>
+        <Content>Архангельская область, р-н Котласский, г Сольвычегодск, ул Красная, д 84</Content>
+        <Region Code="29" Name="Архангельская область"/>
+      </Address>
+      <ReEndDate/>
+    </Object>
+    <Registration>
+      <ID_Record>6</ID_Record>
+      <RegNumber>77-77/018-77/213/090/2015-27/77</RegNumber>
+      <Type>001001000000</Type>
+      <Name>Собственность</Name>
+      <RegDate>08.05.2003</RegDate>
+      <RestorCourt/>
+      <EndDate/>
+      <DocFound>
+        <ID_Document>6</ID_Document>
+        <Content>План приватизации, утвержденный Председателем комитета по  управлению госимуществом.</Content>
+        <Type_Document>010006000000</Type_Document>
+        <Name>План приватизации, утвержденный Председателем комитета по  управлению госимуществом.</Name>
+        <Date>27.05.1994</Date>
+      </DocFound>
+    </Registration>
+  </ObjectRight>
+</ExtractSubj>
+				
+				<FootContent>
+					<Recipient>Публичное акционерное общество &quot;Нефтяная компания &quot;Роснефть&quot;&quot;    (Несмашный Дмитрий Евгеньевич)</Recipient>
+	<ExtractRegion>
+		<CodRegion>29</CodRegion>
+		<Region>Архангельская область и Ненецкий АО</Region>	
+		<CodRegion>24</CodRegion>
+		<Region>Красноярский край, Таймырский АО и Эвенкийский АО</Region>	
+		<CodRegion>78</CodRegion>
+		<Region>Санкт-Петербург</Region>	
+		<CodRegion>01</CodRegion>
+		<Region>Республика Адыгея</Region>	
+		<CodRegion>02</CodRegion>
+		<Region>Республика Башкортостан</Region>	
+		<CodRegion>03</CodRegion>
+		<Region>Республика Бурятия</Region>	
+		<CodRegion>04</CodRegion>
+		<Region>Республика Алтай</Region>	
+		<CodRegion>05</CodRegion>
+		<Region>Республика Дагестан</Region>	
+		<CodRegion>06</CodRegion>
+		<Region>Республика Ингушетия</Region>	
+		<CodRegion>07</CodRegion>
+		<Region>Кабардино-Балкарская Республика</Region>	
+		<CodRegion>08</CodRegion>
+		<Region>Республика Калмыкия</Region>	
+		<CodRegion>09</CodRegion>
+		<Region>Карачаево-Черкесская Республика</Region>	
+		<CodRegion>10</CodRegion>
+		<Region>Республика Карелия</Region>	
+		<CodRegion>11</CodRegion>
+		<Region>Республика Коми</Region>	
+		<CodRegion>12</CodRegion>
+		<Region>Республика Марий Эл</Region>	
+		<CodRegion>13</CodRegion>
+		<Region>Республика Мордовия</Region>	
+		<CodRegion>14</CodRegion>
+		<Region>Республика Саха (Якутия)</Region>	
+		<CodRegion>15</CodRegion>
+		<Region>Республика Северная Осетия</Region>	
+		<CodRegion>16</CodRegion>
+		<Region>Республика Татарстан</Region>	
+		<CodRegion>17</CodRegion>
+		<Region>Республика Тыва</Region>	
+		<CodRegion>18</CodRegion>
+		<Region>Удмуртская Республика</Region>	
+		<CodRegion>19</CodRegion>
+		<Region>Республика Хакасия</Region>	
+		<CodRegion>20</CodRegion>
+		<Region>Чеченская Республика</Region>	
+		<CodRegion>21</CodRegion>
+		<Region>Чувашская Республика</Region>	
+		<CodRegion>22</CodRegion>
+		<Region>Алтайский край</Region>	
+		<CodRegion>23</CodRegion>
+		<Region>Краснодарский край</Region>	
+		<CodRegion>25</CodRegion>
+		<Region>Приморский край</Region>	
+		<CodRegion>26</CodRegion>
+		<Region>Ставропольский край</Region>	
+		<CodRegion>27</CodRegion>
+		<Region>Хабаровский край</Region>	
+		<CodRegion>28</CodRegion>
+		<Region>Амурская область</Region>	
+		<CodRegion>30</CodRegion>
+		<Region>Астраханская область</Region>	
+		<CodRegion>31</CodRegion>
+		<Region>Белгородская область</Region>	
+		<CodRegion>32</CodRegion>
+		<Region>Брянская область</Region>	
+		<CodRegion>33</CodRegion>
+		<Region>Владимирская область</Region>	
+		<CodRegion>34</CodRegion>
+		<Region>Волгоградская область</Region>	
+		<CodRegion>35</CodRegion>
+		<Region>Вологодская область</Region>	
+		<CodRegion>36</CodRegion>
+		<Region>Воронежская область</Region>	
+		<CodRegion>37</CodRegion>
+		<Region>Ивановская область</Region>	
+		<CodRegion>38</CodRegion>
+		<Region>Иркутская область и Усть-Ордынский Бурятский АО</Region>	
+		<CodRegion>39</CodRegion>
+		<Region>Калининградская область</Region>	
+		<CodRegion>40</CodRegion>
+		<Region>Калужская область</Region>	
+		<CodRegion>41</CodRegion>
+		<Region>Камчатский край и Корякский АО</Region>	
+		<CodRegion>42</CodRegion>
+		<Region>Кемеровская область</Region>	
+		<CodRegion>43</CodRegion>
+		<Region>Кировская область</Region>	
+		<CodRegion>44</CodRegion>
+		<Region>Костромская область</Region>	
+		<CodRegion>45</CodRegion>
+		<Region>Курганская область</Region>	
+		<CodRegion>46</CodRegion>
+		<Region>Курская область</Region>	
+		<CodRegion>47</CodRegion>
+		<Region>Ленинградская область</Region>	
+		<CodRegion>48</CodRegion>
+		<Region>Липецкая область</Region>	
+		<CodRegion>49</CodRegion>
+		<Region>Магаданская область и Чукотский АО</Region>	
+		<CodRegion>50</CodRegion>
+		<Region>Московская область</Region>	
+		<CodRegion>51</CodRegion>
+		<Region>Мурманская область</Region>	
+		<CodRegion>52</CodRegion>
+		<Region>Нижегородская область</Region>	
+		<CodRegion>53</CodRegion>
+		<Region>Новгородская область</Region>	
+		<CodRegion>54</CodRegion>
+		<Region>Новосибирская область</Region>	
+		<CodRegion>55</CodRegion>
+		<Region>Омская область</Region>	
+		<CodRegion>56</CodRegion>
+		<Region>Оренбургская область</Region>	
+		<CodRegion>57</CodRegion>
+		<Region>Орловская область</Region>	
+		<CodRegion>58</CodRegion>
+		<Region>Пензенская область</Region>	
+		<CodRegion>59</CodRegion>
+		<Region>Пермский край</Region>	
+		<CodRegion>60</CodRegion>
+		<Region>Псковская область</Region>	
+		<CodRegion>61</CodRegion>
+		<Region>Ростовская область</Region>	
+		<CodRegion>62</CodRegion>
+		<Region>Рязанская область</Region>	
+		<CodRegion>63</CodRegion>
+		<Region>Самарская область</Region>	
+		<CodRegion>64</CodRegion>
+		<Region>Саратовская область</Region>	
+		<CodRegion>65</CodRegion>
+		<Region>Сахалинская область</Region>	
+		<CodRegion>66</CodRegion>
+		<Region>Свердловская область</Region>	
+		<CodRegion>67</CodRegion>
+		<Region>Смоленская область</Region>	
+		<CodRegion>68</CodRegion>
+		<Region>Тамбовская область</Region>	
+		<CodRegion>69</CodRegion>
+		<Region>Тверская область</Region>	
+		<CodRegion>70</CodRegion>
+		<Region>Томская область</Region>	
+		<CodRegion>71</CodRegion>
+		<Region>Тульская область</Region>	
+		<CodRegion>72</CodRegion>
+		<Region>Тюменская область</Region>	
+		<CodRegion>73</CodRegion>
+		<Region>Ульяновская область</Region>	
+		<CodRegion>74</CodRegion>
+		<Region>Челябинская область</Region>	
+		<CodRegion>75</CodRegion>
+		<Region>Забайкальский край и Агинский Бурятский АО</Region>	
+		<CodRegion>76</CodRegion>
+		<Region>Ярославская область</Region>	
+		<CodRegion>77</CodRegion>
+		<Region>Москва</Region>	
+		<CodRegion>79</CodRegion>
+		<Region>Еврейская А.обл.</Region>	
+		<CodRegion>86</CodRegion>
+		<Region>Ханты-Мансийский АО</Region>	
+		<CodRegion>89</CodRegion>
+		<Region>Ямало-Ненецкий АО</Region>	
+		<CodRegion>91</CodRegion>
+		<Region>Республика Крым</Region>	
+		<CodRegion>92</CodRegion>
+		<Region>Севастополь</Region>	
+	</ExtractRegion>
+					<ExtractDate>13.03.2017</ExtractDate>
+                    <Content>
+                            Выписка содержит сведения Единого государственного реестра недвижимости о правах на объекты недвижимости, расположенные на территории субъектов(а) Российской Федерации, указанных(ого) Вами в запросе.
+                        Использование сведений, содержащихся в настоящей выписке, способами или в форме, которые наносят ущерб правам и законным интересам правообладателей, влечет ответственность, предусмотренную законодательством РоссийскойФедерации.
+                    </Content>
+				</FootContent>
+			</ExtractSubjectRights>
+		
+		
+		
+	</ReestrExtract>
+</Extract>
+

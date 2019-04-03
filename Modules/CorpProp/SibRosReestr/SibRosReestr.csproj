@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E94F3295-70F8-4B29-8695-1494092A7D4C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SibRosReestr</RootNamespace>
+    <AssemblyName>SibRosReestr</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\EGRN\Unknown\AdditionalEncumbranceInfoType.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Address.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AddressCity.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AddressLocationBuild.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AddressLocationCarParkingSpace.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AddressLocationConstruction.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AddressLocationLand.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AddressLocationRoom.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AddressMain.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AddressOksLocation.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AllowedUse.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AnotherRestricted.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AnotherRight.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AnotherTypeRestricted.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AnotherTypeRight.cs" />
+    <Compile Include="Entities\EGRN\Unknown\AparthouseOwners.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Apartment.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Area.cs" />
+    <Compile Include="Entities\EGRN\Unknown\BaseParametersBase_parameter.cs" />
+    <Compile Include="Entities\EGRN\Unknown\BondsHoldersOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\BuilderShare.cs" />
+    <Compile Include="Entities\EGRN\Unknown\BuilderShareWithObject.cs" />
+    <Compile Include="Entities\EGRN\Unknown\BuildRecordBaseParams.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CadLinks.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CadLinksCarParkingSpaceBase.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CadLinksLandIncludedOld.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CadLinksLandOld.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CadLinksRealEstateBase.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CadLinksRoom.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CadNumber.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CarParkingSpaceLocationInBuildPlans.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CarParkingSpaceRecordBaseParams.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CertificatesHoldersOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Citizenship.cs" />
+    <Compile Include="Entities\EGRN\Unknown\City.cs" />
+    <Compile Include="Entities\EGRN\Unknown\CommonData.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ConstructionRecordBaseParams.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Contacts.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ContentRestrictions.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ContourOKSOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ContoursLocationOKSOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ContoursLocationZUOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ContoursZUOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ContourZUOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Cost.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DateRemovedCadAccount.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DealDataType.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DealRecordType.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DetailedLevel.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DetailsRequest.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DetailsStatementRealty.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DetailsStatementRealtyGroup_lower_requisites.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DetailsStatementRealtyGroup_top_requisites.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Dict.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DissentingEntitiesDissenting_entity.cs" />
+    <Compile Include="Entities\EGRN\Unknown\District.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DocNotarized.cs" />
+    <Compile Include="Entities\EGRN\Unknown\DocRequisiteMain.cs" />
+    <Compile Include="Entities\EGRN\Unknown\EntityOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\EntitySpatialOKSOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\EntitySpatialZUOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\EntityUL.cs" />
+    <Compile Include="Entities\EGRN\Unknown\EquityParticipantsInfo.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ExpropriationInfo.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ExtractBaseParamsBuild.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ExtractBaseParamsCarParkingSpace.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ExtractBaseParamsConstruction.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ExtractBaseParamsLand.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ExtractBaseParamsRoom.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ExtractBaseParamsUnderConstruction.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ExtractBaseParamsUnifiedRealEstateComplex.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Fio.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ForeignPublic.cs" />
+    <Compile Include="Entities\EGRN\Unknown\GovementEntity.cs" />
+    <Compile Include="Entities\EGRN\Unknown\IndividualOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\InvestmentUnitOwnerOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\LandArea.cs" />
+    <Compile Include="Entities\EGRN\Unknown\LandRecordBaseParams.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Law.cs" />
+    <Compile Include="Entities\EGRN\Unknown\LegalEntityOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\LegalEntityUL.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Level1.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Level2.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Level3.cs" />
+    <Compile Include="Entities\EGRN\Unknown\LevelAll.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Locality.cs" />
+    <Compile Include="Entities\EGRN\Unknown\LocationByARefPoint.cs" />
+    <Compile Include="Entities\EGRN\Unknown\LocationCity.cs" />
+    <Compile Include="Entities\EGRN\Unknown\LocationOks.cs" />
+    <Compile Include="Entities\EGRN\Unknown\MarkContent.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Municipality.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Name.cs" />
+    <Compile Include="Entities\EGRN\Unknown\NoCitizenshipPerson.cs" />
+    <Compile Include="Entities\EGRN\Unknown\NotEquityParticipantsInfo.cs" />
+    <Compile Include="Entities\EGRN\Unknown\NotResidentOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ObjectCadNumber.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ObjectCommonData.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ObjectLandAndWithdrawal.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ObjectPartNumberRestrictions.cs" />
+    <Compile Include="Entities\EGRN\Unknown\OldNumber.cs" />
+    <Compile Include="Entities\EGRN\Unknown\OrdinateOKSOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\OrdinateZUOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\OriginContent.cs" />
+    <Compile Include="Entities\EGRN\Unknown\OtherSubject.cs" />
+    <Compile Include="Entities\EGRN\Unknown\OwnerlessRight.cs" />
+    <Compile Include="Entities\EGRN\Unknown\OwnerlessRightRecordOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ParamsBuildWithoutMaterials.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ParamsComplex.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ParamsConstructionAll.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ParamsLandCategoryUses.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ParamsLandCategoryUsesCategory.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ParamsRoomBase.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ParamsUnderConstructionDegree.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Partnership.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PartnershipParticipant.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PeriodDDU.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PeriodInfoType.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PeriodType.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PeriodTypeLand.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PermittedUse.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PermittedUseEstablished.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PermittesUsesGradReg.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PersonCitizenshipCountry.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PersonDocument.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Plan.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PublicFormations.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PublicFormationType.cs" />
+    <Compile Include="Entities\EGRN\Unknown\PublicServitude.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RecordInfo.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Registration.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RegistrationDate.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RegNumberBorder.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ReinstatementDate.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ResidentOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RestrictedRightsPartyOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RestrictionsEncumbrancesData.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RestrictionsEncumbrancesDataLand.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RestrictParties.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RestrictRecordLandType.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RestrictRecordNumber.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RestrictRecordType.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RightDataReinstatement.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RightHolderOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RightRecordNumber.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RightRecordsBaseParamsRight_record.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RoomLocationInBuildPlans.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RoomOwnersShare.cs" />
+    <Compile Include="Entities\EGRN\Unknown\RoomRecordBaseParams.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Russia.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ServitudeType.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Share.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ShareBalHectare.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ShareHectare.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Shares.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ShareUnknown.cs" />
+    <Compile Include="Entities\EGRN\Unknown\SovietVillage.cs" />
+    <Compile Include="Entities\EGRN\Unknown\SpatialElementOKSOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\SpatialsElementZUOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\StateExpropriation.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Street.cs" />
+    <Compile Include="Entities\EGRN\Unknown\SubjectOfRF.cs" />
+    <Compile Include="Entities\EGRN\Unknown\SubjectRestricted.cs" />
+    <Compile Include="Entities\EGRN\Unknown\ThirdPartyConsent.cs" />
+    <Compile Include="Entities\EGRN\Unknown\Undefined.cs" />
+    <Compile Include="Entities\EGRN\Unknown\UnderConstructionRecordBaseParams.cs" />
+    <Compile Include="Entities\EGRN\Unknown\UnderlyingDocumentOut.cs" />
+    <Compile Include="Entities\EGRN\Unknown\UnderlyingDocumentOutAll.cs" />
+    <Compile Include="Entities\EGRN\Unknown\UnifiedRealEstateComplexRecordBaseParams.cs" />
+    <Compile Include="Entities\EGRN\Unknown\UnionState.cs" />
+    <Compile Include="Entities\EGRN\Unknown\UrbanDistrict.cs" />
+    <Compile Include="Entities\EGRN\Unknown\WithdrawalStateMunicNeeds.cs" />
+    <Compile Include="Entities\EGRP\04\01_EXTRACT_OBJ.cs" />
+    <Compile Include="Entities\EGRP\06\01_EXTRACT_OBJ.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\EGRP\04\04_EXTRACT_SBJ.cs" />
+    <Compile Include="RosReestrXmlUrlResolver.cs" />
+    <Compile Include="Entities\EGRP\06\04_EXTRACT_SBJ.cs" />
+    <Compile Include="Shemas\EGRP\06\01_EXTRACT_OBJ.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\commonSimpleTypes.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\extract_base_params_build_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\extract_base_params_car_parking_space_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\extract_base_params_construction_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\extract_base_params_land_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\extract_base_params_room_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\extract_base_params_under_construction_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\extract_base_params_unified_real_estate_complex_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tAddress_All_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tBaseParametrs_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tCad_number_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tCommonTypesObjects_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tContacts_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tDduDealSubject_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tDetailsStatement_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tDict_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tDocument_requisites_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tFIO_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tOtherSubject_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tPublic_formations_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tRecordNumber_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tResolutionRequisites_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRN\Unknown\tRightHolderOut_v01.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\01_EXTRACT_OBJ.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\02_EXTRACT_RULEDOC.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\03_EXTRACT_LIST.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\04_EXTRACT_SBJ.XSD">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\05_EXTRACT_UNABLED.XSD">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\09_EXTRACT_INFO.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dAssignation.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dCategories.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dCertificates.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dDepartments.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dDocuments.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dEncumbrances.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dGovernance.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dOPF.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dRealty.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dRefusal.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dRegionsRF.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dRights.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dTypeInfo.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\dUnit.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\STD_Address.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\STD_Document.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\STD_ExtrAtribut.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\STD_Object.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\STD_Refusal.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\STD_Rights.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\STD_ServisInf.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\STD_ShereHolding.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\04\STD_Subject.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\01_EXTRACT_OBJ.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\02_EXTRACT_RULEDOC.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\03_EXTRACT_LIST.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\04_EXTRACT_SBJ.XSD">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\05_EXTRACT_UNABLED.XSD">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\09_EXTRACT_INFO.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\10_EXTRACT_CRT.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dAssignation.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dCategories.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dCertificates.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dDepartments.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dDocuments.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dEncumbrances.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dGovernance.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dOPF.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dRealty.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dRefusal.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dRegionsRF.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dRights.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dTypeInfo.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\dUnit.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\STD_Address.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\STD_Document.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\STD_ExtrAtribut.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\STD_Object.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\STD_Refusal.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\STD_Rights.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\STD_ServisInf.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\STD_ShereHolding.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shemas\EGRP\06\STD_Subject.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

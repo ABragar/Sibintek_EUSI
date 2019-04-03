@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<SubjectTypes>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>000000</Code>
+		<PublishCode>000000</PublishCode>
+		<Name>Деловой партнер: общее</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>FS0000</Code>
+		<PublishCode>FS0000</PublishCode>
+		<Name>Деловой партнер: ФинУсл</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>TR0150</Code>
+		<PublishCode>TR0150</PublishCode>
+		<Name>Эмитент (определено)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>TR0151</Code>
+		<PublishCode>TR0151</PublishCode>
+		<Name>Контрагент (определено)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>TR0152</Code>
+		<PublishCode>TR0152</PublishCode>
+		<Name>Банк-депозитарий (определено)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>TR0200</Code>
+		<PublishCode>TR0200</PublishCode>
+		<Name>Поручитель (определено)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>ZZ0001</Code>
+		<PublishCode>ZZ0001</PublishCode>
+		<Name>Покупатель (определено)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>ZZ0002</Code>
+		<PublishCode>ZZ0002</PublishCode>
+		<Name>Поставщик (определено)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>ZZ0007</Code>
+		<PublishCode>ZZ0007</PublishCode>
+		<Name>Таможенный орган</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+	<SubjectType>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>ZZ0009</Code>
+		<PublishCode>ZZ0009</PublishCode>
+		<Name>Банк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SubjectType>
+</SubjectTypes>
+  </DefaultDataHolder>

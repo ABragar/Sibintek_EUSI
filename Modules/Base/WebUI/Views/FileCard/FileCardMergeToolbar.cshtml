@@ -1,0 +1,91 @@
+﻿@using CorpProp.Entities.Document
+@model int?
+
+@{
+    var mergeId = Html.CreateSystemName("merge");
+    var addMergeId = Html.CreateSystemName("addmerge");
+    var mergeDocsUrl = Url.Action("SetMergeDocuments", "FileCard");
+    var mergeDocsToUrl = Url.Action("SetMergeDocumentsTo", "FileCard");
+    var fileCardManyMnemonic = nameof(FileCardMany);  
+}
+
+<script src="~/Scripts/links/one-to-many-association-links.js"></script>
+
+<button id="@(mergeId)" type="button" class="k-button" >Объединить в пакет</button>
+<button id="@(addMergeId)" type="button" class="k-button" >Добавить в пакет</button>
+
+<script>
+    $(function () {
+        var lv = $("#@mergeId").closest('.dialog-listview').data('dialogListView');
+
+        function mergeObjectPost(url, saveObject, onSuccess) {
+                  pbaAPI.ajax.post(url, saveObject)
+                .then(function(response) {
+                        pbaAPI.msg('Данные успешно сохранены', 'upload-success');
+                              onSuccess();
+                              //$Btn.prop('disabled', false);
+                              //grid.dataSource.read();
+                          },
+                    function(err) {
+                        pbaAPI.errorMsg('Во время операции произошла ошибка');
+                        //$Btn.prop('disabled', false);
+                    });
+        };
+
+        function getIdsFromObject(selectedItems) {
+            var ids = [];
+            selectedItems.forEach(function(item) {
+                ids.push(item.ID);
+            });
+            return ids;
+        };
+
+        $("#@mergeId").click(function () {
+            debugger;
+            var selectedItems = lv.getSelectItems();
+            if (selectedItems.length < 1) {
+                pbaAPI.errorMsg('Для создания пакета нужно выбрать несколько документов. Выбрано:' +
+                    selectedItems.length);
+                return false;
+            };
+            var ids = getIdsFromObject(selectedItems);
+            pbaAPI.confirm('Предупреждение',
+                'Собрать документы в пакет?',
+                function() {
+                    var saveObject = { ObjectIds: ids };
+                    mergeObjectPost("@(mergeDocsUrl)", saveObject, function() {
+                        lv.refresh();
+                    });
+                });
+        });
+
+        $("#@addMergeId").click(function () {
+            var selectedItems = lv.getSelectItems();
+            var srcIds = getIdsFromObject(selectedItems);
+            pbaAPI.openModalDialog("@(fileCardManyMnemonic)",
+                function (res) {
+                    if (res.length <= 0)
+                        return;
+                    var dest = res[0].ID;
+
+                    var saveObject = { ObjectIds: srcIds, dest: dest };
+                    mergeObjectPost("@(mergeDocsToUrl)", saveObject, function () {
+                        lv.refresh();
+                    });
+                },
+                {
+                    @*title: "ВЫБОР - @Model.Title",*@
+                    multiselect: false
+                });
+            if (selectedItems.length < 1) {
+                pbaAPI.errorMsg('Для создания пакета нужно выбрать несколько документов. Выбрано:' + selectedItems.length);
+                return false;
+            };
+            var ids = [];
+            selectedItems.forEach(function(item) {
+                ids.push(item.ID);
+            });
+        });
+        return false;
+    });
+</script>

@@ -1,0 +1,94 @@
+﻿@model Dialog_WidgetViewModel
+
+@{
+    string nameToolbar = Html.CreateSystemName("toolbar");
+    string btnPreviewId = Html.CreateSystemName("read");
+}
+
+<div id="@nameToolbar">
+
+</div>
+
+<script>
+    window["@nameToolbar"] = new WrapToolbar("@nameToolbar", "ToolbarListView");
+    (function () {
+        var composite = window["@Model.DialogID"];
+
+        var toolbar = window["@nameToolbar"];
+
+        composite.registerWidget(toolbar);
+
+        toolbar.listViewSelectedObject = null;
+
+        toolbar.refreshListView = function () {
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "refresh",
+                    params: {}
+                });
+        };
+
+        toolbar.onNeighbourWidgetChanged = function (e) {
+            switch (e.sender.desc) {
+                case "GridView":
+                    if (e.event === "select" || e.event === "onDataBound") {
+                        if (!toolbar.widget()) return;
+
+                        if (e.event === "select")
+                            toolbar.listViewSelectedObject = e.params.dataItem;
+                        else toolbar.listViewSelectedObject = null;
+
+                        var isSelected = toolbar.listViewSelectedObject != null;
+
+                        toolbar.enable("#@btnPreviewId", isSelected);
+
+                        toolbar.element().find("button[data-onlyForSelected=true]").each(function () { $(this).data("kendoButton").enable(isSelected); });
+
+                        if (e.event === "onDataBound") {
+                            var ds = e.sender.widget().dataSource;
+                            if (!ds.filter() || ds.filter().filters.length === 0) {
+                                toolbar.element()
+                                    .find("[data-action='clearFilters']")
+                                    .find(".btntoolbar").removeClass("animated tada");
+                            } else {
+                                toolbar.element()
+                                    .find("[data-action='clearFilters']")
+                                    .find(".btntoolbar").addClass("animated tada");
+                            }
+                        }
+
+                    }
+                    break;
+            }
+        };
+
+        //events
+        toolbar.onClick = function (e) {
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "click",
+                    params: {
+                        event: e,
+                        action: e.target[0].getAttribute("data-action")
+                    }
+                });
+        };
+    })();
+</script>
+
+<script>
+    (function () {
+        $("#@nameToolbar").kendoToolBar({
+            items: [
+                {
+                    type: "buttonGroup",
+                    buttons: [
+                        { text: "Просмотр", spriteCssClass: "btntoolbar fa fa-eye", attributes: { "title": "Просмотр", "data-action": "preview" }, showText: "overflow", id: "@btnPreviewId", enable: false, click: window["@nameToolbar"].onClick },
+                    ]
+                }
+            ]
+        });
+    })();
+</script>

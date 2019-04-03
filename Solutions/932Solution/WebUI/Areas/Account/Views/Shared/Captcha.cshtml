@@ -1,0 +1,12 @@
+﻿@model CaptchaViewModel
+
+<img class="captcha" alt="Captcha Image" src="@Model.ImgSrc"/>
+
+<div class="input-field">
+    <input class="validate" type="text" name="@Model.Name" required/>
+    <label for="@Model.Name">Введите результат</label>
+</div>
+
+<div class="validations">
+    <div data-validation-for="@Model.Name">@Html.ValidationMessage(Model.Name)</div>
+</div>

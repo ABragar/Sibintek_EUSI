@@ -1,0 +1,306 @@
+﻿@using Base.Contact.Entities
+@model EditorViewModel
+
+@{
+    string templateId = "template_" + Guid.NewGuid().ToString("N");
+    string toolbarId = "tb_" + Guid.NewGuid().ToString("N");
+    string pageId = "page_" + Guid.NewGuid().ToString("N");
+}
+
+<div class="lv-contact-parent">
+    <div id="@toolbarId"></div>
+    <div id="@Model.UID" class="lv-contact-persons clearfix"></div>
+    <div id="@pageId" class="k-pager-wrap"></div>
+</div>
+
+<script type="text/x-kendo-template" id="@templateId">
+    <div data-mnemonic="@nameof(BaseEmployee)" data-id="#: ID #" class="lv-contact">
+            <div>
+                <img src="#= pbaAPI.imageHelpers.getImageThumbnailSrc(data.Image , 'XS', 'NoPhoto') #" alt="" class="lv-contact-photo"/>
+
+                <div class="lv-contact-title">#= data.Title #</div>
+            </div>
+        </div>
+
+</script>
+
+<script>
+    $(function () {
+        var $form = $("#@templateId").closest("form");
+        var $listView = $("#@Model.UID");
+
+        var $toolbar = $("#@toolbarId");
+
+        var editor = {
+            createNewContact: function () {
+                var form = $form.data("pbaForm");
+                pbaAPI.openDetailView("@nameof(BaseEmployee)", {
+                    wid: "@toolbarId",
+                    initNewEntity: function (employee) {
+                        employee.Company = form.getModel();
+                    },
+                    callback: function (e) {
+                        if (e.type === "save") {
+                            editor.getCollection();
+                        }
+                    }
+                });
+            },
+
+            sendJob: function (curForm, employeeID, curModel) {
+                curModel.CompanyID = curForm.getPr("ID");
+                curModel.EmployeeID = employeeID;
+                curModel.IsPublicPerson = true;
+
+                return  $.ajax({
+                    type: "POST",
+                    url: "/Standart/Save",
+                    data: JSON.stringify({ mnemonic: "@nameof(EmployeeJob)", model: curModel }),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (finalres) {
+                    }
+                });
+            },
+
+            addExistingContact: function () {
+                pbaAPI.openModalDialog("@nameof(BaseEmployee)",
+                    function (employee) {
+                        if (employee.length > 0) {
+                            var addToCompanyEmployees = [];
+                            for (var i = 0; i < employee.length; i++) {
+                                var employeeID = employee[i].id;
+                                var selector = "[data-id=" + employeeID + "]";
+                                var contactArray = $listView.find(selector);
+                                if (contactArray.length === 0) {
+                                    addToCompanyEmployees.push(employeeID);
+                                }
+                            }
+
+                            $.get("/Standart/CreateDefault", { mnemonic: "@nameof(EmployeeJob)" }, function (job) {
+                                var form = $form.data("pbaForm");
+                                var jobModel = job.model;
+
+                                var queries = [];
+                                for (var j = 0; j < addToCompanyEmployees.length; j++) {
+                                    var elem = editor.sendJob(form, addToCompanyEmployees[j], jobModel);
+                                    queries.push(elem);
+                                }
+                                $.when.apply($, queries).done(function () {
+                                    editor.getCollection();
+                                });
+                            });
+                        }
+                    },
+                    {
+                        title: "ВЫБОР - @Model.Title",
+                        multiselect: false
+                    });
+            },
+            remove: function () {
+
+                pbaAPI.confirm("", "Удалить запись?", function () {
+                    var listView = $listView.data("kendoListView");
+                    var selectedID = listView.select().data("id");
+                    var form = $form.data("pbaForm");
+                    if (selectedID) {
+
+                        $.get("/Standart/Get", { mnemonic: "@nameof(BaseEmployee)", id: selectedID }, function (employee) {
+                            var employeeModel = employee.model;
+                            if (employeeModel) {
+                                var neededJobIndex = -1;
+                                for (var i = 0; i < employeeModel.Jobs.length; i++) {
+                                    if (employeeModel.Jobs[i].Title.indexOf(form.getPr("Title")) > -1) {
+                                        neededJobIndex = i;
+                                        break;
+                                    }
+                                }
+
+                                employeeModel.Jobs.splice(neededJobIndex, 1);
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/Standart/Save",
+                                    data: JSON.stringify({ mnemonic: "@nameof(BaseEmployee)", model: employeeModel }),
+                                    contentType: "application/json; charset=utf-8",
+                                    success: function (res) {
+                                        if (res.error) {
+                                            pbaAPI.errorMsg(res.error);
+                                        } else {
+
+                                            if (res.model.ID == form.getPr("MainContactID")) {
+                                                form.setPr("MainContactID", null);
+                                                form.setPr("MainContact", null);
+                                            }
+
+                                            editor.getCollection();
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    } else {
+                        pbaAPI.errorMsg("Выберите контакт, который хотите удалить");
+                    }
+                });
+
+
+            },
+            markMain: function () {
+
+                var listView = $listView.data("kendoListView");
+                var selectedID = listView.select().data("id");
+                var form = $form.data("pbaForm");
+                if (selectedID) {
+                    var curMain = $listView.find(".lv-contact.main");
+                    if (selectedID != curMain.attr("data-id")) {
+                        $listView.find(".lv-contact.main").removeClass("main");
+                        var selected = listView.select();
+                        selected.addClass("main");
+
+                        $.get("/Standart/Get", { mnemonic: "@nameof(BaseEmployee)", id: selectedID }, function (employee) {
+                            form.setPr("MainContactID", selectedID);
+                            form.setPr("MainContact", employee.model);
+                            editor.getCollection();
+                        });
+                    } else {
+                        pbaAPI.errorMsg("Этот контакт уже является основным");
+                    }
+
+                } else {
+                    pbaAPI.errorMsg("Выберите контакт, который хотите назначить основным");
+                }
+            },
+            onChange: function () {
+            },
+            onDataBinding: function () {
+            },
+            onDataBound: function () {
+                var form = $form.data("pbaForm");
+                if (form) {
+                    var mainContactID = form.getPr("MainContactID");
+                    var selector = "[data-id=" + mainContactID + "]";
+                    var contactArray = $listView.find(selector);
+                    if (contactArray && contactArray[0]) {
+                        $(contactArray[0]).removeClass("main");
+                        $(contactArray[0]).addClass("main");
+                    }
+                }
+            },
+
+            getCollection: function () {
+                var pbaform = $form.data("pbaForm");
+                var companyID = pbaform.getPr("ID");
+
+                if (companyID === 0) {
+
+                } else {
+                    var filter = "it.Jobs.Any(it.CompanyID=" + companyID + "and it.IsPublicPerson=true)";
+                    $.get(application.url.GetStandart("KendoUI_CollectionRead", { mnemonic: "BaseEmployee", searchStr: "", extrafilter: filter }), function (res) {
+                        var listView = $listView.data("kendoListView");
+                        var kendoData = new kendo.data.DataSource({
+                            data: res.Data,
+                            pageSize: 20
+                        });
+
+                        $("#@pageId").kendoPager({
+                            dataSource: kendoData
+                        });
+
+                        listView.setDataSource(kendoData);
+                    });
+                }
+            },
+            changeHeightDynamically: function () {
+                var $list = $("#@Model.UID");
+                var $page = $("#@pageId");
+                var $toolbar = $("#@toolbarId");
+
+                var listHeight = $list.parent().height() - $page.outerHeight(true) - $toolbar.outerHeight(true);
+                $list.outerHeight(listHeight);
+            }
+        }
+
+        $toolbar.kendoToolBar({
+            items: [
+                 {
+                     type: "buttonGroup",
+                     id: "g1",
+                     buttons: [
+                        {
+                            id: "createNewContact",
+                            type: "button",
+                            text: "Создать новый контакт",
+                            spriteCssClass: "btntoolbar fa fa-plus",
+                            showText: "overflow",
+                            click: editor.createNewContact
+                        },
+                        {
+                            id: "addExistingContact",
+                            type: "button",
+                            text: "Добавить существующий контакт",
+                            spriteCssClass: "btntoolbar fa fa-align-justify",
+                            showText: "overflow",
+                            click: editor.addExistingContact
+                        },
+                        {
+                            id: "remove",
+                            type: "button",
+                            text: "Удалить",
+                            spriteCssClass: "btntoolbar fa fa-trash-o",
+                            showText: "overflow",
+                            click: editor.remove
+                        }
+                     ]
+                 },
+                {
+                    type: "separator"
+                },
+                {
+                    id: "markMain",
+                    type: "button",
+                    text: "Основной контакт",
+                    click: editor.markMain
+                }
+            ]
+        });
+
+        $toolbar.find(".k-sprite.glyphicon").removeClass("k-sprite");
+
+        $listView.kendoListView({
+            selectable: "single",
+            change: editor.onChange,
+            dataBinding: editor.onDataBinding,
+            dataBound: editor.onDataBound,
+            template: kendo.template($("#@templateId").html())
+        });
+
+
+
+        $form.on("onAfterBind", function (e, form) {
+            $listView.data("kendoListView").dataSource.data([]);
+            editor.getCollection();
+
+            var pbaform = $form.data("pbaForm");
+            var kendoWindow = pbaform.element.closest(".k-window-content").data("kendoWindow");
+
+            kendoWindow.resize = function () {
+                editor.changeHeightDynamically();
+            }
+        });
+
+        $form.on("onTabShown", function (tabID) {
+            editor.changeHeightDynamically();
+        });
+
+        $listView.on("dblclick", ".lv-contact", function () {
+            var curId = $(this).data("id");
+            pbaAPI.openDetailView("@nameof(BaseEmployee)", {
+                id: curId,
+                isReadOnly: true
+            });
+        });
+
+        $form.on("onSave", function (e, form) {
+
+        });
+    });
+</script>

@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3AE7843F-06CE-4989-A978-210F7DFCF1A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Base.UI</RootNamespace>
+    <AssemblyName>Base.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Columns\ImageColumnViewModel.cs" />
+    <Compile Include="Dashboard\DashboardService.cs" />
+    <Compile Include="Dashboard\DashboardVm.cs" />
+    <Compile Include="Dashboard\DashboardWidgetBuilder.cs" />
+    <Compile Include="Dashboard\IDashboardService.cs" />
+    <Compile Include="Editors\AssociationParams.cs" />
+    <Compile Include="Editors\EditorViewModel.cs" />
+    <Compile Include="Editors\ImageEditorViewModel.cs" />
+    <Compile Include="Editors\ManyToManyAssociationEditor.cs" />
+    <Compile Include="Editors\ManyToManyExtensions\OneToManyAssociationParamsExtensions.cs" />
+    <Compile Include="Editors\OneToManyAssociationEditor.cs" />
+    <Compile Include="Editors\OneToManyExtensions\OneToManyAssociationParamsExtensions.cs" />
+    <Compile Include="Enums\ImageSize.cs" />
+    <Compile Include="Extensions\ViewModelConfigExtensions.cs" />
+    <Compile Include="Filter\GlobalMnemonicFilter.cs" />
+    <Compile Include="Filter\MnemonicFilter.cs" />
+    <Compile Include="Filter\OperatorInValues.cs" />
+    <Compile Include="Filter\UsersMnemonicFilter.cs" />
+    <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="ImageSetting.cs" />
+    <Compile Include="Initializer.ImageSetting.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presets\GridExtendedFilterPreset.cs" />
+    <Compile Include="QueryFilter\IQueryTreeBuilderContext.cs" />
+    <Compile Include="QueryFilter\IQueryTreeFilter.cs" />
+    <Compile Include="QueryFilter\IQueryTreeService.cs" />
+    <Compile Include="QueryFilter\LambdaBuilder.cs" />
+    <Compile Include="QueryFilter\OperatorKind.cs" />
+    <Compile Include="QueryFilter\QueryTreeBuilder.cs" />
+    <Compile Include="QueryFilter\QueryTreeBuilderContext.cs" />
+    <Compile Include="QueryFilter\QueryTreeFilter.cs" />
+    <Compile Include="QueryFilter\QueryTreeFilterItemModel.cs" />
+    <Compile Include="QueryFilter\QueryTreeFilterModel.cs" />
+    <Compile Include="QueryFilter\QueryTreeItemViewModel.cs" />
+    <Compile Include="QueryFilter\QueryTreeOperator.cs" />
+    <Compile Include="QueryFilter\QueryTreeService.cs" />
+    <Compile Include="QueryFilter\QueryTreeServiceOptions.cs" />
+    <Compile Include="QueryFilter\QueryTreeViewModel.cs" />
+    <Compile Include="QueryFilter\TreeOperatorResult.cs" />
+    <Compile Include="RegisterMnemonics\Entities\ClientMnemonicItem.cs" />
+    <Compile Include="RegisterMnemonics\Entities\ColumnEx.cs" />
+    <Compile Include="RegisterMnemonics\Entities\DeatilViewEx.cs" />
+    <Compile Include="RegisterMnemonics\Entities\EditorEx.cs" />
+    <Compile Include="RegisterMnemonics\Entities\ListViewEx.cs" />
+    <Compile Include="RegisterMnemonics\Entities\ListViewFilterEx.cs" />
+    <Compile Include="RegisterMnemonics\Entities\MnemonicEx.cs" />
+    <Compile Include="RegisterMnemonics\Entities\MnemonicItem.cs" />
+    <Compile Include="RegisterMnemonics\Entities\SystemMnemonicItem.cs" />
+    <Compile Include="RegisterMnemonics\Entities\TitleEx.cs" />
+    <Compile Include="RegisterMnemonics\Services\ClientMnemonicService.cs" />
+    <Compile Include="RegisterMnemonics\Services\IMnemonicErrorDescriber.cs" />
+    <Compile Include="RegisterMnemonics\Services\IMnemonicExCrudService.cs" />
+    <Compile Include="RegisterMnemonics\Services\IMnemonicExtensionService.cs" />
+    <Compile Include="RegisterMnemonics\Services\IMnemonicItemService.cs" />
+    <Compile Include="RegisterMnemonics\Services\ListViewExService.cs" />
+    <Compile Include="RegisterMnemonics\Services\MnemonicExCrudService.cs" />
+    <Compile Include="RegisterMnemonics\Services\MnemonicExtensionService.cs" />
+    <Compile Include="RegisterMnemonics\Services\MnemonicItemService.cs" />
+    <Compile Include="RegisterMnemonics\Services\SystemMnemonicService.cs" />
+    <Compile Include="SelectBuilder.cs" />
+    <Compile Include="ColumnViewModel.cs" />
+    <Compile Include="CommonEditorViewModel.cs" />
+    <Compile Include="CommonPreview.cs" />
+    <Compile Include="Dashboard\DashboardWidget.cs" />
+    <Compile Include="DecoratorConfiguration.cs" />
+    <Compile Include="DetailViewMacroItem.cs" />
+    <Compile Include="DetailViewSetting\BaseEditorVmSetting.cs" />
+    <Compile Include="DetailViewSetting\DvSetting.cs" />
+    <Compile Include="DetailViewSetting\DvSettingForMnemonic.cs" />
+    <Compile Include="DetailViewSetting\DvSettingForType.cs" />
+    <Compile Include="DetailViewSetting\DvSettWizard.cs" />
+    <Compile Include="DetailViewSetting\EditorVmSetting.cs" />
+    <Compile Include="Extensions\QueryableEx.cs" />
+    <Compile Include="Helpers\ViewModelConfigHelper.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="InitializerExtensions.cs" />
+    <Compile Include="Macros\IRuleForTypeWizardService.cs" />
+    <Compile Include="Macros\RuleForTypeWizard.cs" />
+    <Compile Include="Preset.cs" />
+    <Compile Include="PresetRegistor.cs" />
+    <Compile Include="PresetRegistorWizard.cs" />
+    <Compile Include="Presets\DashboardPreset.cs" />
+    <Compile Include="Presets\Factories\DashboardPresetFactory.cs" />
+    <Compile Include="Presets\Factories\DefaultPresetFactory.cs" />
+    <Compile Include="Presets\Factories\MenuPresetFactory.cs" />
+    <Compile Include="Presets\Factories\QuickAccessBarPresetFactory.cs" />
+    <Compile Include="Presets\GridPreset.cs" />
+    <Compile Include="Presets\Factories\GridPresetFactory.cs" />
+    <Compile Include="Presets\MenuPreset.cs" />
+    <Compile Include="Presets\QuickAccessBarPreset.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyViewModel.cs" />
+    <Compile Include="Service\Abstract\IMnemonicFilterService.cs" />
+    <Compile Include="Service\Concrete\DvSettingService.cs" />
+    <Compile Include="Service\Concrete\DvSettingsForTypeService.cs" />
+    <Compile Include="Service\Concrete\DvSettWizardService.cs" />
+    <Compile Include="Service\Abstract\IDvSettingManager.cs" />
+    <Compile Include="Service\Abstract\IDvSettingService.cs" />
+    <Compile Include="Service\Abstract\IDvSettWizardService.cs" />
+    <Compile Include="Service\Abstract\IIconService.cs" />
+    <Compile Include="Service\Abstract\IImageSettingService.cs" />
+    <Compile Include="Service\Concrete\ImageSettingService.cs" />
+    <Compile Include="Service\Abstract\IPresetFactory.cs" />
+    <Compile Include="Service\Abstract\IPresetRegistorService.cs" />
+    <Compile Include="Service\Abstract\IPresetRegistorWizardService.cs" />
+    <Compile Include="Service\Abstract\IPresetService.cs" />
+    <Compile Include="Service\Abstract\IUiEnumService.cs" />
+    <Compile Include="Service\Abstract\IUiFasade.cs" />
+    <Compile Include="Service\Abstract\IViewModelConfigService.cs" />
+    <Compile Include="Service\Concrete\MnemonicFilterService.cs" />
+    <Compile Include="Service\Concrete\PresetRegistorService.cs" />
+    <Compile Include="Service\Concrete\PresetRegistorWizardService.cs" />
+    <Compile Include="Service\Concrete\UiEnumService.cs" />
+    <Compile Include="Service\Concrete\UiFasade.cs" />
+    <Compile Include="Service\Concrete\UsersMnemonicFilterService.cs" />
+    <Compile Include="Service\Concrete\ViewModelConfigFactory.cs" />
+    <Compile Include="Service\Concrete\ViewModelConfigService.cs" />
+    <Compile Include="UiEnum.cs" />
+    <Compile Include="UnionExtensions.cs" />
+    <Compile Include="ViewModal\Aggregate.cs" />
+    <Compile Include="ViewModal\AjaxFormAction.cs" />
+    <Compile Include="ViewModal\AjaxFormBuilder.cs" />
+    <Compile Include="ViewModal\AjaxFormParamsBuilder.cs" />
+    <Compile Include="ViewModal\CalcFieldsBuilder.cs" />
+    <Compile Include="ViewModal\CompositeFilter.cs" />
+    <Compile Include="ViewModal\ConditionalAppearance.cs" />
+    <Compile Include="ViewModal\DataSoruceSortsFactory.cs" />
+    <Compile Include="ViewModal\DataSource.cs" />
+    <Compile Include="ViewModal\DataSourceActionFactory.cs" />
+    <Compile Include="ViewModal\DataSourceAggregatesFactory.cs" />
+    <Compile Include="ViewModal\DataSourceBuilder.cs" />
+    <Compile Include="ViewModal\DataSourceGroupsFactory.cs" />
+    <Compile Include="ViewModal\DetailView.cs" />
+    <Compile Include="ViewModal\DetailViewBuilder.cs" />
+    <Compile Include="ViewModal\EditorBuilder.cs" />
+    <Compile Include="ViewModal\EditorsFactory.cs" />
+    <Compile Include="ViewModal\Group.cs" />
+    <Compile Include="ViewModal\GroupCollection.cs" />
+    <Compile Include="ViewModal\GanttView.cs" />
+    <Compile Include="ViewModal\ListView.cs" />
+    <Compile Include="ViewModal\ListViewAction.cs" />
+    <Compile Include="ViewModal\ListViewBuilder.cs" />
+    <Compile Include="ViewModal\ListViewCategorizedItem.cs" />
+    <Compile Include="ViewModal\ListViewCategorizedItemBuilder.cs" />
+    <Compile Include="ViewModal\ListViewColumnBuilder.cs" />
+    <Compile Include="ViewModal\ListViewColumnFactory.cs" />
+    <Compile Include="ViewModal\ListViewCondApprearanceFactory.cs" />
+    <Compile Include="ViewModal\ListViewType.cs" />
+    <Compile Include="ViewModal\LookupProperty.cs" />
+    <Compile Include="ViewModal\LookupPropertyBuilder.cs" />
+    <Compile Include="ViewModal\LvAction.cs" />
+    <Compile Include="ViewModal\ManyToManyAssociationEditorBuilder.cs" />
+    <Compile Include="ViewModal\OneToManyAssociationEditorBuilder.cs" />
+    <Compile Include="ViewModal\Preview.cs" />
+    <Compile Include="ViewModal\PreviewBuilder.cs" />
+    <Compile Include="ViewModal\PreviewField.cs" />
+    <Compile Include="ViewModal\PreviewFieldBuilder.cs" />
+    <Compile Include="ViewModal\PreviewFieldsBuilder.cs" />
+    <Compile Include="ViewModal\PreviewFieldsFactory.cs" />
+    <Compile Include="ViewModal\SchedulerView.cs" />
+    <Compile Include="ViewModal\Sort.cs" />
+    <Compile Include="ViewModal\StepProperty.cs" />
+    <Compile Include="ViewModal\Toolbar.cs" />
+    <Compile Include="ViewModal\ToolbarBuilder.cs" />
+    <Compile Include="ViewModal\ToolbarBuilderFactory.cs" />
+    <Compile Include="ViewModal\ToolbarParam.cs" />
+    <Compile Include="ViewModal\ToolbarParamsBuilder.cs" />
+    <Compile Include="ViewModal\TreeListView.cs" />
+    <Compile Include="ViewModal\TreeView.cs" />
+    <Compile Include="ViewModal\TreeViewBuilder.cs" />
+    <Compile Include="ViewModal\View.cs" />
+    <Compile Include="ViewModal\ViewModelConfig.cs" />
+    <Compile Include="ViewModal\ViewModelConfigBuilder.cs" />
+    <Compile Include="ViewModal\ViewModelConfigDto.cs" />
+    <Compile Include="ViewModal\WizardConfig.cs" />
+    <Compile Include="ViewModal\WizardDetailView.cs" />
+    <Compile Include="ViewModal\WizzardDetailViewBuilder.cs" />
+    <Compile Include="ViewModal\WizzardStep.cs" />
+    <Compile Include="Wizard\BaseWizardService.cs" />
+    <Compile Include="Wizard\DecoratedWizardObject.cs" />
+    <Compile Include="Wizard\IWizardService.cs" />
+    <Compile Include="Wizard\IWizardObject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base.Macros\Base.Macros.csproj">
+      <Project>{f4635398-af24-4259-81bb-e3d10d460bec}</Project>
+      <Name>Base.Macros</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Utils.Common\Base.Utils.Common.csproj">
+      <Project>{AD97EF5C-E096-465D-9729-2D0524AF2476}</Project>
+      <Name>Base.Utils.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{b78a3750-fa57-41f2-927a-dfb795552548}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Linq.Dynamic\System.Linq.Dynamic.csproj">
+      <Project>{b6edf157-6153-4684-a577-de33896dbaa8}</Project>
+      <Name>System.Linq.Dynamic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

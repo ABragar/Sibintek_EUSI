@@ -1,0 +1,72 @@
+﻿@{
+    string btnExportExcel = Html.CreateSystemName("export_excel");
+    string btnBlock = Html.CreateSystemName("btn_block");
+    string btnCollapseConfig = Html.CreateSystemName("collapse_conf");
+    string nameToolbar = Html.CreateSystemName("toolbar");
+}
+
+@(Html.Kendo().ToolBar()
+    .Name("pvt_tb")
+    .Items(itm => itm.Add().Type(CommandType.ButtonGroup).Text(" Excel").Id(btnBlock).Buttons(buttons =>
+    {
+        buttons.Add().Text(" Excel").SpriteCssClass("mdi mdi-file-excel-box").HtmlAttributes(new { data_action = "exportExcel" }).Id(btnExportExcel);
+        buttons.Add().Text(" Скрыть/показать настройки").SpriteCssClass("mdi mdi-checkbox-blank-circle").Id(btnCollapseConfig);
+    }
+    )))
+
+<script>
+    $(function () {
+        $("#@btnCollapseConfig").click(function () {
+            closeConfig();
+        });
+        $("#@btnExportExcel").click(function () {
+            $("#pivot-grid").getKendoPivotGrid().saveAsExcel();
+        });
+    });
+
+    function onError(e) {
+        alert("error: " + kendo.stringify(e.errors[0]));
+    }
+
+    window["@nameToolbar"] = new WrapToolbar("@nameToolbar", "ToolbarListView");
+    (function () {
+
+        var composite = window["@Model.DialogID"];
+
+        var toolbar = window["@nameToolbar"];
+
+        composite.registerWidget(toolbar);
+        toolbar.onClick = function (e) {
+            debugger;
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "click",
+                    params: {
+                        event: e,
+                        action: e.target[0].getAttribute("data-action")
+                    }
+                });
+        };
+    });
+
+    var closeConfig = function () {
+	    var elConf = $('#pivot-config');
+        var elData = $('#pivot-grid');
+        var btn = $('#@btnCollapseConfig');
+        var header = $('.k-pivot-rowheaders').parent();
+
+	    if (elConf.css('display') !== 'none') {
+		    elConf.hide();
+            elData.css('width', '100%');
+            header.css('width', '30%');
+            btn.children().removeClass('mdi-checkbox-blank-circle').addClass('mdi-checkbox-blank-circle-outline');
+        }
+	    else {
+		    elConf.show();
+            elData.css('width', '74%');
+            header.css('width', '50%');
+            btn.children().removeClass('mdi-checkbox-blank-circle-outline').addClass('mdi-checkbox-blank-circle');
+        }
+    }
+</script>

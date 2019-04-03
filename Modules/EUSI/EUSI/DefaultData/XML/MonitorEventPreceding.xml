@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+  <MonitorEventPrecedings>
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Screen_DraftOS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>IMP_AccStateRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>IMP_AccStateRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_Rent</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>IMP_AccStateMovRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>IMP_AccStateMovRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMov</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>IMP_AccStateMovRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMovSimpleTemplate</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>IMP_AccStateMovRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_Rent</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_Acc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_Acc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMov</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_Acc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMovSimpleTemplate</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansAcc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansAcc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMov</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansAcc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMovSimpleTemplate</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansAcc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_CoordinationBalanceAcc</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansAcc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>Report_Part_VerifFlows_Acc</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_IFRS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_IFRS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMov</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_IFRS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMovSimpleTemplate</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_IFRS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_Rent</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_IFRS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateRent</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_IFRS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMovRent</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_Part_VerifFlows_IFRS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>Report_Part_VerifFlows_Acc</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansBCS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansBCS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMov</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansBCS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMovSimpleTemplate</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansBCS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_CoordinationBalanceAcc</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansBCS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>Report_Part_VerifFlows_Acc</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifBalansBCS</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>Report_VerifBalansAcc</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifGrMoveRealization</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifGrMoveRealization</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMov</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifGrMoveRealization</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMovSimpleTemplate</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifGrMoveRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifGrMoveRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_Rent</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifGrMoveRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateRent</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_VerifGrMoveRent</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccStateMovRent</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_PropertyTaxRatesControl</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_AvAnnualCostValidCalc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_PropertyTaxValidCalc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_TransportTaxRatesControl</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_TransportTaxValidCalc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_LandTaxRatesControl</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+    <MonitorEventPreceding>
+      <ObjLeft>
+        <Code>Report_LandTaxValidCalc</Code>
+      </ObjLeft>
+      <ObjRigth>
+        <Code>IMP_AccState</Code>
+      </ObjRigth>
+    </MonitorEventPreceding>
+
+  </MonitorEventPrecedings>
+</DefaultDataHolder>

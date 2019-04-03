@@ -1,0 +1,27 @@
+.k-checkbox-label {
+	padding-left: 2em;
+
+	&:before {
+		font-family: FontAwesome;
+		font-size: 1.25em;
+
+		position: absolute;
+		top: 1px;
+		left: 0;
+
+		content: '\f096';
+		transition: color .15s @easing-curve--main;
+
+		color: @color--dark;
+		border: none;
+		background-color: transparent;
+		}
+	}
+
+.k-checkbox:checked + .k-checkbox-label:before {
+	content: '\f14a';
+
+	color: darken( @color--primary, 5% );
+	border: none;
+	background-color: transparent;
+	}

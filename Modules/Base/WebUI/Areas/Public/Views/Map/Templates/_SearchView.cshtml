@@ -1,0 +1,30 @@
+﻿@model WebUI.Areas.Public.Models.VmMap
+
+<script type="text/ng-template" id="globalsearch.container.html">
+    <pageslide ps-cloak="true" ps-open="search.opened" class="ng-pageslide-custom ng-pageslide-custom-left" ps-side="left" ps-custom-top="75px" ps-custom-height="auto" ps-size="400px" ps-container="@Model.UID">
+        <div class="page-slide-controls">
+            <div class="page-slide-controls-icon" ng-style="{ 'background-color': '#2e81b7' }"><span class="fa fa-search"></span></div>
+            <a href="#" class="btn btn-close">×</a>
+            <p class="title">Поиск</p>
+        </div>
+
+        <perfect-scrollbar class="scroller-absolute-with-top" ng-class="{'scroller-absolute-with-pager': search.pages > 1}">
+            <ul class="map-items-list">
+                <li ng-repeat="item in search.data" class="with-icon" ng-class="{'selected':$index == search.selected}" ng-disabled="search.isLoad()" ng-click="search.focus(item, $index)">
+                    <div class="property-value fill">
+                        <div class="baseobject-one">
+                            <div class="baseobject-one-icon" ng-style="{ 'background-color': search.getColor(item.Mnemonic) }"><span class="{{::search.getIcon(item.Mnemonic)}}"></span></div>
+                            <p class="baseobject-one-title">{{item.GeoObject.Title}}</p>
+                        </div>
+                        <p>{{item.GeoObject.Description}}</p>
+                    </div>
+                </li>
+            </ul>
+        </perfect-scrollbar>
+
+        <uib-pagination class="map-items-pager pagination-sm" ng-if="search.data.length && search.pages > 1" previous-text="<" next-text=">" ng-disabled="search.loading" total-items="search.count" items-per-page="search.size" ng-change="search.update()" ng-model="search.page" max-size="3" boundary-link-numbers="true" rotate="false"></uib-pagination>
+        <div class="content-loading-cloak" ng-if="search.loading"></div>
+    </pageslide>
+</script>
+
+

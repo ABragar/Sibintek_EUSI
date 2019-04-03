@@ -1,0 +1,6 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibAssemblyInfo\bin\Release\SibAssemblyInfo.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibAssemblyInfo\bin\Release\SibAssemblyInfo.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibAssemblyInfo\obj\Release\SibAssemblyInfo.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibAssemblyInfo\obj\Release\SibAssemblyInfo.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibAssemblyInfo\obj\Release\SibAssemblyInfo.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibAssemblyInfo\obj\Release\SibAssemblyInfo.csprojAssemblyReference.cache

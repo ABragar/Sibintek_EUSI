@@ -1,0 +1,93 @@
+@base-font-size: 14px;
+@modular-scale: 1.618;
+
+@font-stack--sans: Roboto, Helvetica, sans-serif;
+
+// Color palette
+// ==========================================================================
+
+//greys
+@charleston-green: #262b33;
+@anti-flash-white: #e8f1f2;
+
+	//neutral greys (washes)
+	@white: #fff;
+	@arsenic: #424242;
+	@granite-gray: #616161;
+
+//reds
+@color-ruby-red: #931621;
+@color-tomato: #f06449;
+@french-pink: #ff6f92;
+@bubble-gum: #ffcdd2;
+@infra-red: #ff4471;
+@vivid-red: #ff1414;
+
+//yellows
+@sunglow: #ffbe33;
+
+//greens
+@magic-mint: #b9f6ca;
+@celadon: #b3efb2;
+@lime-green: #1ddf1b;
+
+//blues
+@bubbles: #e4f8ff;
+@bleu-de-france: #3c91e6;
+@vivid-cerulean: #00a7e1;
+
+
+
+@color--light: @white;
+@color--light-mild: @anti-flash-white;
+@color--dark: @charleston-green;
+
+@color--primary: lighten( @vivid-cerulean, 5% );
+
+@color--accent: darken( @bleu-de-france, 10% );
+@color--accent-pale: lighten( saturate( @color--primary, 90% ), 45% );
+@color--accent-alt: @color-tomato;
+@color--accent-dark-alt: @color-ruby-red;
+
+
+@color--text: fade( @color--dark, 85% );
+@color--text-light: @color--light;
+
+@color--success: #4caf50;
+// @color--success-bright: lighten( saturate( @color--success, 30% ), 18% );
+// @color--success-bright: @celadon;
+@color--success-bright: @color--success;
+@color--success-pale: @celadon;
+@color--danger: #d32f2f;
+@color--danger-alt: @vivid-red;
+@color--danger-pale: @bubble-gum;
+@color--link: #337ab7;
+@color--warning: @sunglow;
+@color--active: @bubbles;
+
+
+@color--border: darken( @color--light, 14% );
+
+@color--layout-bg: lighten( @color--dark, 81% );
+
+@color--sidebar-bg: @color--dark;
+@color--sidebar-text: @color--light;
+
+@color--sidebar-heading: lighten( @color--primary, 20% );
+
+@color--toolbar-bg: @color--light;
+@color--toolbar-text: @color--dark;
+
+@color--dialog-toolbar-bg: @color--light;
+@color--dialog-toolbar-text: @color--dark;
+
+@color--wdialog-toolbar-bg: @color--dark;
+@color--wdialog-toolbar-text: @color--light;
+
+@color--grid-grouping-header-bg: @color--accent;
+@color--grid-grouping-header-text: @color--light;
+@color--grid-bg__selected: @color--accent-pale;
+@color--grid-cell-bg__focused: @color--success-pale;
+
+@color--scheduler-header-bg: @color--accent-alt;
+@color--scheduler-header-text: @color--light;

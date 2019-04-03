@@ -1,0 +1,221 @@
+﻿.conf-video-player-wrapper {
+	font-size: 0;
+
+	position: fixed;
+	z-index: 9999999999999;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	display: none;
+	overflow: hidden;
+
+	padding: 1.4286rem;
+
+	text-align: center;
+
+	background-color: fade( @color--dark, 65% );
+
+	video {
+		width: 100%;
+		height: 100%;
+
+		&.fakeaudio {
+			display: none;
+			}
+		}
+
+	.local-media-wrapper,
+	.remote-media-wrapper {
+		margin: .357rem;
+		padding: .357rem;
+
+		transition: all .45s cubic-bezier(.23, 1, .32, 1);
+		transform: translate3d(0, 0, 0);
+
+		background-color: fade( @color--dark, 24% );
+
+		backface-visibility: hidden;
+		}
+
+	.local-media-wrapper {
+		z-index: 1;
+		}
+	}
+
+[data-video-layout='one-video'] .local-media-wrapper,
+[data-video-layout='one-video'] .remote-media-wrapper,
+[data-video-layout='private-call'] .remote-media-wrapper {
+	position: static;
+
+	width: 90%;
+	max-width: 100%;
+	height: 95%;
+	height: calc(~"100% - ".714rem);
+	margin: 0 auto;
+	}
+
+[data-video-layout] .fakeaudio-media-wrapper {
+	background-image: url(/Content/images/man-303792_640_0.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	}
+
+[data-video-layout='private-call'] .local-media-wrapper {
+	position: absolute;
+	top: 1.786rem;
+	left: 1.786rem;
+
+	width: 15%;
+	height: 14.286rem;
+	}
+
+[data-video-layout='conference-call'] .local-media-wrapper,
+[data-video-layout='conference-call'] .remote-media-wrapper {
+	position: static;
+
+	display: inline-block;
+	overflow: hidden;
+
+	width: 25%;
+	height: 17.857rem;
+	}
+
+[data-video-layout='one-video'].local-record::before {
+	font-size: 2.143rem;
+
+	position: absolute;
+	z-index: 1;
+	top: .358rem;
+	left: .714rem;
+
+	display: block;
+
+	content: 'REC';
+	animation: blinker 1s linear infinite;
+	text-align: left;
+
+	color: @color--danger;
+	}
+
+@keyframes blinker {
+	0% {
+		opacity: 1.0;
+		}
+	50% {
+		opacity: .0;
+		}
+	100% {
+		opacity: 1.0;
+		}
+	}
+
+@media only screen and (max-width: @screen-lg-min) {
+	[data-video-layout='conference-call'] .local-media-wrapper,
+	[data-video-layout='conference-call'] .remote-media-wrapper {
+		width: 40%;
+		}
+	}
+
+@media only screen and (max-width: 900px) {
+	[data-video-layout='conference-call'] .local-media-wrapper,
+	[data-video-layout='conference-call'] .remote-media-wrapper {
+		width: 95%;
+		width: calc(~"100% - ".714rem);
+		}
+	}
+
+.k-window-content .conf-dialog {
+	list-style-type: none;
+	}
+
+.k-window-content .conf-dialog-list {
+	padding: 0;
+	}
+
+.conf-call-request-user {
+	display: block;
+	overflow: hidden;
+
+	height: 5.714rem;
+	margin: 0 0 .714rem 0;
+	padding: .357rem 0;
+
+	img {
+		float: left;
+
+		margin-right: 1.0714rem;
+		}
+
+	p {
+		font-size: 1.286rem;
+		}
+
+	 + .btn-group.btn-group-justified .btn {
+		width: auto;
+		}
+	}
+
+.video-controls {
+	position: fixed;
+	z-index: 99999999999;
+	right: 1.786rem;
+	bottom: 1.4286rem;
+
+	.clearfix();
+
+	button {
+		float: left;
+		clear: left;
+
+		&:not(:hover) {
+			background-color: transparent;
+			}
+		}
+	}
+
+.media-controls button,
+.video-controls button {
+	font-size: 1.428rem;
+
+	overflow: hidden;
+
+	width: @modular-scale * 2rem;
+	height: @modular-scale * 2rem;
+	margin: .357rem 0;
+	padding: .143rem .0714rem 0 0;
+
+	text-align: center;
+
+	border-radius: 50% !important;
+	}
+
+.media-controls {
+	position: absolute;
+	z-index: 10;
+	right: 0;
+	bottom: .714rem;
+	left: 0;
+
+	transition: opacity 1s;
+
+	opacity: 0;
+
+	button {
+		color: @color--light;
+		border-color: darken( @color--primary, 33% );
+		outline: 0;
+		background-color: fade( darken( @color--primary, 24% ), 76% );
+
+		&:hover, &:focus {
+			outline: 0;
+			}
+		}
+	}
+
+.remote-media-wrapper:hover .media-controls,
+.local-media-wrapper:hover .media-controls {
+	opacity: 1;
+	}

@@ -1,0 +1,55 @@
+.image-crop-modal {
+	&.k-window {
+		padding-top: 0 !important;
+		}
+
+	.k-window-titlebar .k-window-actions {
+		z-index: 2;
+		top: @modular-scale *1.5em;
+
+		margin: @modular-scale *.5rem 0 0;
+		padding: 0 !important;
+
+		background-color: @color--light;
+
+		.k-window-action {
+			border: none;
+			}
+		}
+
+	div.k-window-content {
+		top: -1px;
+
+		overflow: hidden;
+
+		height: calc( 100% + 1px ); 
+		padding: 0;
+		}
+
+	.croppie-container .cr-viewport {
+		box-shadow: 0 0 2000px 2000px fade( @color--dark, 50% ); 
+		}
+
+	.cr-slider-wrap {
+		width: 69%;
+		margin: 0;
+		padding: pow( @modular-scale, -1 ) *1em 1em;
+
+		.cr-slider {
+			width: 100%;
+			}
+		}
+
+	.apply-button {
+		line-height: 42px;
+
+		position: absolute;
+		z-index: 100;
+		right: 0;
+		bottom: 0;
+
+		width: 25%;
+
+		border-radius: 0;
+		}
+	}

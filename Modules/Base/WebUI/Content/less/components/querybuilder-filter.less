@@ -1,0 +1,187 @@
+﻿.query-builder {
+	font-family: @font-stack--sans;
+
+	display: flex;
+	align-items: center;
+
+	box-sizing: border-box;
+
+	*, * > * {
+		box-sizing: border-box;
+		}
+
+	&-window .dialog__toolbar .k-button.success {
+		line-height: 2.618;
+
+		float: right;
+
+		height: 100%;
+
+		border-radius: 0;
+		}
+
+	.base-object-one-wrapper {
+		display: flex;
+
+		.base-object-one-value {
+			line-height: 2.618;
+
+			overflow: hidden;
+
+			width: 150px;
+
+			text-align: center;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			}
+		}
+
+	.query-builder-textfield {
+		line-height: 1.618;
+
+		overflow: hidden;
+
+		width: 379px;
+		height: 2.617924rem;
+		margin: 0 1em 0 0;
+		padding: .4045em 1em;
+		padding-right: 15px;
+
+		cursor: default;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+
+		border: 1px solid darken( @color--light, 20% );
+		}
+
+	.rules-group-container {
+		width: 100%;
+
+		select.form-control {
+			height: 2.618rem;
+			}
+		}
+
+	.hide {
+		display: none;
+		}
+
+	.pull-right {
+		float: right !important;
+		}
+
+	.btn {
+		line-height: @modular-scale *1.5rem;
+
+		display: inline-block;
+
+		margin-bottom: 0;
+		padding: 0 1rem;
+
+		cursor: pointer;
+		user-select: none;
+		text-align: center;
+		vertical-align: middle;
+		white-space: nowrap;
+		text-transform: none;
+
+		border: 1px solid transparent;
+		border-radius: 4px;
+		background-image: none;
+
+		touch-action: manipulation;
+
+		&.focus, &:focus, &:hover {
+			text-decoration: none;
+
+			color: darken( @color--light, 80% );
+			}
+
+		&.active, &:active {
+			outline: 0 none;
+			background-image: none;
+			box-shadow: 0 3px 5px fade( @color--dark, .125 ) inset;
+			}
+
+		&-success {
+			color: @color--light;
+			border-color: darken( @color--success, 5% );
+			background-color: @color--success;
+
+			&.active, &:active, &.focus, &:focus, &:hover {
+				color: @color--light;
+				border-color: darken( @color--success, 15% );
+				background-color: darken( @color--success, 10% );
+				}
+			}
+
+		&-primary {
+			color: @color--light;
+			border-color: darken( @color--primary, 5% );
+			background-color: @color--primary;
+
+			&.active, &:active, &.focus, &:focus, &:hover {
+				color: @color--light;
+				border-color: darken( @color--primary, 15% );
+				background-color: darken( @color--primary, 10% );
+				}
+			}
+
+		&-danger {
+			color: @color--light;
+			border-color: darken( @color--danger, 5% );
+			background-color: @color--danger;
+
+			&.active, &:active, &.focus, &:focus, &:hover {
+				color: @color--light;
+				border-color: darken( @color--danger, 15% );
+				background-color: darken( @color--danger, 10% );
+				}
+			}
+		}
+
+	.btn-group {
+		position: relative;
+
+		display: inline-block;
+
+		vertical-align: middle;
+
+		 > .btn {
+			position: relative;
+
+			float: left;
+
+			&:first-child {
+				margin-left: 0;
+
+				&:not(:last-child) {
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;
+					}
+				}
+
+			&:last-child:not(:first-child) {
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				}
+			}
+
+		.btn + .btn,
+		.btn + .btn-group,
+		.btn-group + .btn,
+		.btn-group + .btn-group {
+			margin-left: -1px;
+			}
+		}
+
+	.btn-xs,
+	.btn-group-xs > .btn {
+		font-size: 12px;
+		line-height: 1.5;
+
+		padding: 1px 5px;
+
+		border-radius: 3px;
+		}
+	}

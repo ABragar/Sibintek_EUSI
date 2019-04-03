@@ -1,0 +1,58 @@
+﻿@using CorpProp.Entities.Document
+@model int?
+
+@{
+    var massDownloadId = Html.CreateSystemName("massDownload");
+    var getFileCardsFileDatasUrl = Url.Action("GetFileCardsFileDatas", "FileCard");
+}
+
+@*<script src="~/Scripts/links/one-to-many-association-links.js"></script>*@
+
+<button id="@(massDownloadId)" type="button" class="k-button" >Скачать всё</button>
+
+<script>
+    $(function () {
+        var lv = $("#@massDownloadId").closest('.dialog-listview').data('dialogListView');
+
+        function objectPost(url, saveObject, onSuccess) {
+                  pbaAPI.ajax.post(url, saveObject)
+                .then(function(response) {
+                            pbaAPI.msg('Данные успешно сохранены', 'upload-success');
+                            onSuccess(response);
+                          },
+                    function(err) {
+                        pbaAPI.errorMsg('Во время операции произошла ошибка');
+                    });
+        };
+
+        function getIdsFromObject(selectedItems) {
+            var ids = [];
+            selectedItems.forEach(function(item) {
+                ids.push(item.ID);
+            });
+            return ids;
+        };
+
+        $("#@massDownloadId").click(function () {
+            var selectedItems = lv.getSelectItems();
+            if (selectedItems.length < 1) {
+                pbaAPI.errorMsg('Выберите документы');
+                return false;
+            };
+            var ids = getIdsFromObject(selectedItems);
+            var saveObject = { ObjectIds: ids };
+            objectPost("@getFileCardsFileDatasUrl",
+                       saveObject,
+                       function (data) {
+                           data.every(function (fileDataId) {
+                               var fileUrl = "/Files/GetFile?fileid=" + fileDataId;
+                               window.open(fileUrl, '_blank');
+                               //window.location.assign(fileUrl);
+                               return true;
+                           });
+                       });
+            return true;
+        });
+        return false;
+    });
+</script>

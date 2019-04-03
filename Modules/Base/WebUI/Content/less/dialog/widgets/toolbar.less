@@ -1,0 +1,96 @@
+﻿.kwidget.kwidget--toolbar {
+	height: @dialog-toolbar-height;
+
+	.k-toolbar {
+		&,
+		.k-button-group,
+		.k-split-button,
+		.k-button {
+			line-height: @dialog-toolbar-height; 
+
+			height: @dialog-toolbar-height;
+			}
+
+		.k-datepicker {
+			margin-top: @modular-scale *.25rem;
+			}
+
+		.k-separator {
+			margin: @modular-scale *.25rem .2em;
+			}
+
+		.k-autocomplete .k-i-close {
+			position: absolute;
+			}
+
+		.k-slider {
+			height: @modular-scale * 2rem;
+			}
+		}
+
+	.search-tools {
+		position: relative;
+
+		.k-textbox {
+			height: pow( @modular-scale *1rem, 2 );
+			padding-right: @modular-scale *1rem;
+			}
+
+		.cancel-search {
+			position: absolute;
+			z-index: 2;
+			top: 1.143rem;
+			right: pow( @modular-scale *1rem, -1 );
+
+			width: 1.143rem;
+			height: 1.143rem;
+
+			cursor: pointer;
+			transition: opacity .15s @easing-curve--main;
+
+			opacity: .5;
+
+			&:hover, &:focus {
+				opacity: 1;
+				}
+			}
+		}
+
+	.mdi {
+		font-size: 1.25em;
+		}
+
+	.k-dropdown {
+		margin-top: pow(@modular-scale *1rem, -2);
+
+		.k-i-arrow-s {
+			position: relative;
+			top: -.143rem;
+			}
+		}
+	}
+
+.layout__main .k-pane .kwidget.kwidget--toolbar {
+	height: @modular-scale * 2.5rem;
+
+	.k-toolbar {
+		&,
+		.k-button-group,
+		.k-split-button,
+		.k-button {
+			line-height: @modular-scale * 2.5rem;
+
+			height: @modular-scale * 2.5rem;
+
+			box-shadow: none;
+			}
+
+		.k-separator {
+			margin: @modular-scale *.5rem .2rem;
+			}
+		}
+
+	.search-tools .cancel-search {
+		top: @modular-scale *.9rem;
+		}
+	}

@@ -1,0 +1,174 @@
+﻿@model StandartFormModel
+
+@{
+    string path = Html.GetStandartDetailView("Common/Display", false);
+
+    var editors = new Dictionary<string, EditorViewModel>()
+    {
+        {"Image",            Model.CommonEditorViewModel.Editors.FirstOrDefault(x => x.PropertyName == "Image")},
+        {"FullName",         Model.CommonEditorViewModel.Editors.FirstOrDefault(x => x.PropertyName == "Title")},
+//        {"Post",             Model.CommonEditorViewModel.Editors.FirstOrDefault(x => x.PropertyName == "Post")},
+//        {"OfficePhone",      Model.CommonEditorViewModel.Editors.FirstOrDefault(x => x.PropertyName == "OfficePhone")},
+//        {"PersonPhone",      Model.CommonEditorViewModel.Editors.FirstOrDefault(x => x.PropertyName == "PersonPhone")},
+//        {"MailAddress",      Model.CommonEditorViewModel.Editors.FirstOrDefault(x => x.PropertyName == "MailAddress")},
+//       {"UserCategoryName", Model.CommonEditorViewModel.Editors.FirstOrDefault(x => x.PropertyName == "UserCategoryName") },
+//        {"BirthDate" ,       Model.CommonEditorViewModel.Editors.FirstOrDefault(x => x.PropertyName == "BirthDate") }
+    };
+}
+
+<form class="form-horizontal common-form user-form" role="form" id="@Model.FormName">
+    <div class="contact-info">
+        <header class="row contact-info__section contact-info__header">
+            <div class="col-xs-4">
+                @Html.Partial(path, editors["Image"])
+            </div>
+            <div class="col-xs-8">
+                <h3 data-bind="text: FullName"></h3>
+            </div>
+        </header>
+        <hr />
+        <div class="contact-info__section contact-info__actions clearfix">
+            <div class="contact-info__action">
+                <a class="contact-action" href="#" data-user-action="video">
+                    <label>Видео</label>
+                    <span class="fa fa-video-camera"></span>
+                </a>
+            </div>
+            <div class="contact-info__action">
+                <a class="contact-action" href="#" data-user-action="audio">
+                    <label>Аудио</label>
+                    <span class="fa fa-phone"></span>
+                </a>
+            </div>
+            <div class="contact-info__action">
+                <a class="contact-action" href="#" data-user-action="chat">
+                    <label>Чат</label>
+                    <span class="fa fa-comment-o"></span>
+                </a>
+            </div>
+            <div class="contact-info__action">
+                <a class="contact-action" href="#" data-user-action="mail">
+                    <label>Почта</label>
+                    <span class="fa fa-send"></span>
+                </a>
+            </div>
+            <div class="contact-info__action">
+                <a class="contact-action" href="#" data-user-action="task">
+                    <label>Задача</label>
+                    <span class="mdi mdi-calendar"></span>
+                </a>
+            </div>
+        </div>
+        <hr />
+        <div class="contact-info__section contact-info__other">
+            <table>
+                <tbody>
+                    @*@RenderRow(path, editors["Post"])*@
+                    @*@RenderRow(path, editors["UserCategoryName"])*@
+                    @*@RenderRow(path, editors["OfficePhone"])
+                        @RenderRow(path, editors["PersonPhone"])
+                        @RenderRow(path, editors["MailAddress"])
+                        @RenderRow(path, editors["BirthDate"])*@
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(function () {
+        "use strict";
+
+        var onAfterBind = function (form) {
+            var user = form.getModel();
+
+            var closeModal = function () {
+                var kendoWindow = form.element.closest(".k-window-content").data("kendoWindow");
+                if (kendoWindow && kendoWindow.destroy) {
+                    kendoWindow.destroy();
+                }
+            };
+
+            form.element.on("click", "[data-user-action]", function (e) {
+                e.preventDefault();
+
+                var actionName = this.getAttribute("data-user-action");
+
+                switch (actionName) {
+                    case "video":
+                        globalapp.rtcService.sendCallRequest(user.ID, "PrivateMessage", null, "video");
+                        break;
+                    case "audio":
+                        globalapp.rtcService.sendCallRequest(user.ID, "PrivateMessage", null, "audio");
+                        break;
+                    case "chat":
+                        application.chat.openDialog('private', user.ID);
+                        closeModal();
+                        break;
+                    case "mail":
+                        pbaAPI.openDetailView("Mail", {
+                            toSave: true,
+                            entity: {
+                                To: [user]
+                            },
+                            callback: function (e) {
+                                if (e.type === "save") {
+                                    pbaAPI.uploadMsg("Письмо отправлено");
+                                }
+                            }
+                        });
+                        break;
+                    case "task":
+                        pbaAPI.openDetailView("OutTask", {
+                                toSave: true,
+                                entity: {
+                                    AssignedFrom: {
+                                        ID: application.currentUser.id,
+                                        Image: {
+                                            FileID: application.currentUser.imageId
+                                        },
+                                        FullName: application.currentUser.fullName
+                                    },
+                                    AssignedTo: user,
+                                    Priority: 1,
+                                    Status: 0,
+                                    StatusMessage: "Срок окончания не определен"
+                                },
+                                callback: function (e) {
+                                    if (e.type === "save") {
+                                        pbaAPI.uploadMsg("Задача поставлена");
+                                    }
+                                }
+                            });
+                        break;
+                }
+            });
+        };
+
+        $("#@Model.FormName").on("onAfterBind", function (e, form) {
+            onAfterBind(form);
+        });
+
+    });
+</script>
+
+@helper RenderRow(string path, EditorViewModel editor)
+{
+    <tr>
+        <td><label>@editor.Title</label></td>
+        <td>@{ Html.RenderPartial(path, editor); }</td>
+    </tr>
+}
+
+@helper RenderField(string path, EditorViewModel editor, bool readOnly = false)
+{
+    <label>@editor.Title</label>
+
+
+    <div class="@(readOnly ? "d" : "e")-row">
+        <label class="label control-label">@editor.Title</label>
+        <div class="editor">
+            @{ Html.RenderPartial(path, editor); }
+        </div>
+    </div>
+}

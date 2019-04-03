@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="CSharp.SilverlightDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="clr-namespace:Telerik.ReportViewer.Silverlight;assembly=Telerik.ReportViewer.Silverlight"
+    xmlns:telerikNav="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Navigation"
+    xmlns:telerikControls="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls"
+    xmlns:telerikPrimitives ="clr-namespace:Telerik.Windows.Controls.Primitives;assembly=Telerik.Windows.Controls"
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+    xmlns:local="clr-namespace:CSharp.SilverlightDemo"
+    mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480">
+
+  <Grid x:Name="LayoutRoot">
+    <Grid HorizontalAlignment="Center" Margin="20" >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <telerik:ReportViewer Grid.Row="1" x:Name="ReportViewer1"
+                            Width="1300"
+                            ReportServiceUri="../ReportService.svc"
+                            Report="Telerik.Reporting.Examples.CSharp.ReportCatalog, CSharp.ReportLibrary" />
+
+      <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" Orientation="Horizontal">
+          <TextBlock Text="Theme:" Margin="5, 0" FontWeight="Bold" Foreground="Gray" VerticalAlignment="Center"/>
+          <telerikInput:RadComboBox x:Name="ThemeSelector"
+                                    Width="160"
+                                    VerticalAlignment="Center"
+                                    SelectedIndex="0"
+                                    MaxDropDownHeight="650"
+                                    SelectionChanged="ThemeSelector_SelectionChanged">
+                        <telerikInput:RadComboBoxItem Content="VisualStudio2013_Blue"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="VisualStudio2013_Dark"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="VisualStudio2013_Light"></telerikInput:RadComboBoxItem>
+
+                        <telerikInput:RadComboBoxItem Content="Windows8Touch"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="Windows8"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="Windows7"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="Vista"></telerikInput:RadComboBoxItem>
+
+                        <telerikInput:RadComboBoxItem Content="Office2013_White"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="Office2013_LightGray"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="Office2013_DarkGray"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="OfficeBlack"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="OfficeBlue"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="OfficeSilver"></telerikInput:RadComboBoxItem>
+
+                        <telerikInput:RadComboBoxItem Content="ExpressionDark"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="Transparent"></telerikInput:RadComboBoxItem>
+                        <telerikInput:RadComboBoxItem Content="Summer"></telerikInput:RadComboBoxItem>
+
+                </telerikInput:RadComboBox>
+        </StackPanel>
+      </Grid>
+    </Grid>
+  </Grid>
+</UserControl>

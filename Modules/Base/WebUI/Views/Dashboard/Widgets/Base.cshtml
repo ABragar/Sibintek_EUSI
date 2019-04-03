@@ -1,0 +1,47 @@
+﻿@using System.Text
+
+@model HtmlDashboardWidget
+
+<div id="@Model.Name" class="dashboard-widget" data-title="@Model.Title">
+    <h3 class="header">
+        <span><i class="@Model.Icon"></i>&nbsp;@Model.Title</span>
+        <span class="dashboard-widget__actions">
+            @*@if (!string.IsNullOrEmpty(Model.Preset))
+            {
+            @RenderWidgetAction("params", "fa fa-cog")
+            }*@
+            @RenderWidgetAction("hide", "fa fa-remove")
+        </span>
+    </h3>
+    @{
+        bool renderClass = true;
+
+        var attrs = new StringBuilder();
+        foreach (var pair in HtmlHelper.AnonymousObjectToHtmlAttributes(Model.HtmlAttributes))
+        {
+            if (pair.Key == "class")
+            {
+                renderClass = false;
+                attrs.AppendFormat(@"{0}=""{1} content""", pair.Key, pair.Value);
+            }
+            else
+            {
+                attrs.AppendFormat(@"{0}=""{1}""", pair.Key, pair.Value);
+            }
+        }
+    }
+
+    <div @(renderClass ? "class=content" : "") @MvcHtmlString.Create(attrs.ToString())>
+        @Html.Raw(Model.Html)
+        <script>
+            $("#@Model.Name").data("dashboardWidget", {
+                onRefresh: function() {}
+            });
+        </script>
+    </div>
+</div>
+
+@helper RenderWidgetAction(string action, string icon)
+{
+    <a class="dashboard-widget__action" href="javascript: void 0;" data-widget-action="@action"><i class="@icon"></i></a>
+}

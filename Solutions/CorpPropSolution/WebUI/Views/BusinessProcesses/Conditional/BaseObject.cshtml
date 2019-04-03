@@ -1,0 +1,133 @@
+﻿@using Base.Entities
+@using Base.Macros
+@using Base.Macros.Entities
+@using Base.Rule
+@using Base.UI.ViewModal
+@model WebUI.Models.BusinessProcess.WithCustomEditorVm
+
+@{
+    Layout = "~/Views/BusinessProcesses/Editors/EditorLayout.cshtml";
+
+    var config = ViewBag.Config as ViewModelConfig;
+    var wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+}
+
+<div id="@wrapID">
+    <div class="input-group" style="margin-bottom: 10px;">
+        <input type="text" data-bind="value: Title" class="k-textbox" readonly="readonly">
+        <span class="label label-info" data-bind="text: Mnemonic" style="position: absolute; right: 90px; top: 10px;"></span>
+        <div class="input-group-btn">
+            <button data-role="select" title="Выбрать объект" type="button" class="k-button" tabindex="-1"><span class="fa fa-navicon"></span></button>
+            <button data-role="clear" title="Очистить" type="button" class="k-button" tabindex="-1"><span class="fa fa-remove"></span></button>
+        </div>
+    </div>
+    <div class="form-group">
+        <span data-member="==" data-role="operation" class="k-button">==</span>
+        <span data-member="!=" data-role="operation" class="k-button">!=</span>
+        <span></span>
+    </div>
+    <hr />
+    <ul class="kwidget kwidget--list">
+        @if (Model.Nullable)
+        {
+            <li href="#" data-role="value" data-type="@((int) MacroType.NotNull)" data-member="null" class="list-group-item">Не равно null</li>
+            <li href="#" data-role="value" data-type="@((int) MacroType.EqualNull)" data-member="null" class="list-group-item">Равно null</li>
+        }
+
+
+        @foreach (var item in Model.Editors)
+        {
+            <li href="#" data-type="@((int) MacroType.InitObject)" data-member="@item.Member" class="list-group-item">@item.Name</li>
+        }
+    </ul>
+</div>
+
+
+<script>
+    $(function () {
+        var wrap = $('#@wrapID');
+        var lookup = "@config.LookupProperty.Text";
+        var objType = "@config.TypeEntity.FullName";
+
+        var viewModel = kendo.observable({ Title: "", Value: "", MacroType: null, Operator: "==", Member: "@Model.Property" });
+        kendo.bind($("#@wrapID"), viewModel);
+
+
+        $('[data-clear]', wrap).click(function () {
+            viewModel.set('MacroType', null);
+            viewModel.set('Title', null);
+            viewModel.set('Value', null);
+            viewModel.set('Operator', '==');
+        });  
+
+        $('#@wrapID').on("click", '[data-role=select]', function() {
+            pbaAPI.openModalDialog("@config.Mnemonic", function (e) {
+                if (e.length && e[0]) {                    
+                    var value = JSON.stringify({
+                        ID: e[0].ID,
+                        Type: objType
+                    });
+
+                    viewModel.set("Value", value);
+                    viewModel.set("MacroType", @((int)MacroType.BaseObject));
+                    viewModel.set("Title", e[0][lookup]);
+                }
+            });
+        });
+
+        $('#@wrapID').on('click', '[data-role=clear]', function() {
+            viewModel.set("Value", "");
+            viewModel.set("Title", "");
+            viewModel.set("MacroType", null);
+        });
+
+        $("#@wrapID").on("click", "[data-role=value]", function () {
+            var self = $(this);
+            viewModel.set("Value", self.data('member'));
+            viewModel.set("MacroType", self.data('type'));
+            viewModel.set("Title", self.html());
+            viewModel.set("Source", self.data('source'));
+        });
+
+        $("#@wrapID").on("click", "[data-role=operation]", function () {
+            var self = $(this);
+
+            $("[data-role=operation]").removeClass('active');
+            $("[data-role=operation]").removeClass('k-button success');
+            $("[data-role=operation]").addClass('k-button');
+            self.removeClass('k-button');
+            self.addClass('active');
+            self.addClass('k-button success');
+
+            viewModel.set("Operator", self.data('member'));
+        });
+
+        wrap.closest('[property-editor]').on('onLoad', function (e, args) {
+            var data = args.model;
+
+            if (data && data.Value) {
+                var val = $.parseJSON(data.Value);
+                viewModel.set('MacroType', val.MacroType);
+                viewModel.set('Title', val.Title);
+                viewModel.set('Value', val.Value);
+                viewModel.set('Operator', val.Operator || '==');
+
+                $.find('[data-member="' + val.Operator + '"]')[0].click();
+            }
+
+            wrap.closest('[data-role=wraplayout]').find('[data-role=apply]').click(function () {
+                if (!viewModel.MacroType) {
+                    data.set('Value', null);
+                } else {
+
+                    var result = { "MacroType": viewModel.MacroType, "Value": viewModel.Value, "Title": viewModel.Title, "Operator": viewModel.Operator, "Member": viewModel.Member };
+                    data.set('Value', JSON.stringify(result));
+                }
+
+                $(this).closest('[data-role=window]').data('kendoWindow').close();
+            });
+        });
+
+
+    });
+</script>

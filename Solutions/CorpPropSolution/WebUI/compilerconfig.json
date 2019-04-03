@@ -1,0 +1,36 @@
+﻿[
+  {
+    "outputFile": "Areas/Account/Content/style.css",
+    "inputFile": "Areas/Account/Content/style.less",
+    "sourceMap": false
+  },
+  {
+    "outputFile": "Content/less/example.css",
+    "inputFile": "Content/less/example.less",
+    "sourceMap": false
+  },
+  {
+    "outputFile": "Areas/Public/Content/styles.css",
+    "inputFile": "Areas/Public/Content/styles.less",
+    "sourceMap": false
+  },
+  {
+    "outputFile": "Content/less/styles.css",
+    "inputFile": "Content/less/styles.less",
+    "sourceMap": false
+  },
+  {
+    "outputFile": "Content/less/kendo.overrides.css",
+    "inputFile": "Content/less/kendo.overrides.less",
+    "sourceMap": false
+  },
+  {
+    "outputFile": "Scripts/api/api.min.js",
+    "inputFile": "Scripts/api/api.js",
+    "sourceMap": false
+  },
+  {
+    "outputFile": "Content/less/sib.css",
+    "inputFile": "Content/less/sib.less"
+  }
+]

@@ -1,0 +1,208 @@
+﻿@model WebUI.Models.BusinessProcess.WorkflowToolbarVm
+
+@{
+    string tlbrName = Html.CreateSystemName("tlbr");
+}
+
+<div id="@tlbrName">
+    @Html.Partial("_DetailViewToolbar", Model)
+</div>
+
+<script id="invoke-action-confirmation" type="text/x-kendo-template">
+    <div style="display:none" class="panel panel-default data-user-wrap">
+        <div data-user class="panel-body"></div>
+    </div>
+    <textarea class="form-control action-comment" rows="10" placeholder="При необходимости, введите дополнительную информацию по принятому решению"></textarea>
+    <div style="position:absolute; bottom: 10px; right:10px;">
+        <button data-action="cancel" type="button" class="btn btn-default">Отменить</button>
+        <button data-action="invoke" type="button" class="btn btn-primary disabled">Выполнить</button>
+    </div>
+</script>
+
+<script>
+    (function() {
+        "use strict";
+
+        var $wrap = $("#@tlbrName");
+        var $toolbar = $wrap.closest("[data-role=toolbar]");
+        var $dialog = $wrap.closest(".dialog-vm");
+        var dialog = $dialog.data("dialogVM");
+
+        $wrap.find("[data-action=\"agreement-map\"]").click(function() {
+            pbaAPI.openWorkflowTimelineModal("@Model.ObjectType", @Model.ObjectID);
+        });
+
+        $wrap.find("[data-wfaction]").click(function(evt) {
+            evt.preventDefault();
+
+            var editorVm = dialog.getViewModel();
+
+            var $editor = editorVm.element();
+            var form = editorVm.widget();
+
+            if ($editor && form && $editor.is(":visible")) {
+                $editor.trigger("onSave", form);
+
+                if (!form.validate()) {
+                    pbaAPI.errorMsg("Заполнены не все обязательные поля!");
+                    return;
+                }
+            }
+
+            var $action = $(this);
+            var wfAction = $action.attr("data-wfaction");
+            var wfShowComment = $action.attr("data-wfshowcomment") === "true";
+            var wfCloseDV = $action.attr("data-wfclosedv") === "true";
+            var wfRequiredComment = $action.attr("data-wfrequiredcomment") === "true";
+            var allowLoadFile = $action.attr("data-allowloadfile") === "true";
+
+            sendAction();
+
+            function sendAction() {
+                var actionUrl = "@Url.Action("CheckNextStage", "BusinessProcesses")";
+                var actionData = {
+                    actionID: wfAction,
+                    objectType: "@Model.ObjectType",
+                    objectID: +"@Model.ObjectID"
+                };
+
+                $action.addClass("k-state-disabled square-loader transparent-color");
+
+                $.get(actionUrl, actionData).always(function() {
+                    $action.removeClass("k-state-disabled square-loader transparent-color");
+                }).done(function(res) {
+
+                    // TODO: привести к одному виду имена св-в, либо уже с большой буквы (Success), либо с маленькой (error)!
+                    if (!res) {
+                        console.error("No data returns!");
+                        return;
+                    }
+
+                    if (res.error) {
+                        pbaAPI.errorMsg(res.message || "Ошибка на сервере");
+                        return;
+                    }
+
+                    if (!res.IsCustomPerformer) {
+                        if (res.Success) {
+                            onActionInvoke();
+                        }
+
+                        return;
+                    }
+
+                    var $wnd = $("<div>").kendoWindow({
+                        resizable: false,
+                        width: 600,
+                        height: 600,
+                        title: "Выберите исполнителя",
+                        actions: ["Close"],
+                        content: {
+                            url: "@Url.Action("UsersList", "BusinessProcesses")",
+                            data: {
+                                objectType: "@Model.ObjectType",
+                                objectID: "@Model.ObjectID",
+                                stageID: res.StageID
+                            }
+                        },
+                        modal: true,
+                        deactivate: function() {
+                            this.destroy();
+                        },
+                        close: function() {
+                            // TODO: this.user ???
+                            if (this.user) onActionInvoke(this.user.ID);
+                        }
+                    });
+
+                    $wnd.getKendoWindow().center().open();
+                }).fail(function(err) {
+                    pbaAPI.errorMsg("Возникла ошибка (" + err.status + ")");
+                });
+            }
+
+            function onActionInvoke(userId) {
+                userId = userId || null;
+
+                if (!wfShowComment) {
+                    onActionConfirm(userId, "");
+                    return;
+                }                    
+
+                var mnemonic = "ActionComment";
+                if (wfRequiredComment) mnemonic += "Required";
+                if (allowLoadFile) mnemonic += "WithFile";
+
+                pbaAPI.openDetailView(mnemonic, {
+                    title: $action.text(),
+                    entity: {},
+                    callback: function(e) {
+                        if (e.type !== "save")
+                            return;
+
+                        onActionConfirm(userId, e.model);
+                    }
+                });
+            }
+
+            function onActionConfirm(userId, comment) {
+                var params = {
+                    objectID: +"@Model.ObjectID",
+                    objectType: "@Model.ObjectType",
+                    userID: userId,
+                    actionID: wfAction,
+                    comment: comment
+                };
+
+                $toolbar.trigger("onActionInvoke", {
+                    save: function() {
+                        return $.ajax({
+                            type: "POST",
+                            dataType: "json",
+                            contentType: "application/json",
+                            url: "@Url.Action("ExecuteAction", "BusinessProcesses")",
+                            data: pbaAPI.json.stringify(params),
+                            success: function (res) {
+                                if (res && res.error) {
+                                    pbaAPI.errorMsg(res.message || "Ошибка сервера");
+                                }
+                                else {
+                                    onConfirmEstateRegistration();
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            //sib
+            function onConfirmEstateRegistration() {
+                pbaAPI.proxyclient.EUSI.getWorkflowActionInfo({
+                    actionId: wfAction
+                }).then(function (res) {
+                    if (res.error && res.error === 1)
+                        return pbaAPI.errorMsg(res.message);
+
+                    if (res.actionInfo && res.actionInfo.sysName === "VERIFIED") {
+                        pbaAPI.proxyclient.EUSI.estateRegistrExport({
+                            elementsIds: "@Model.ObjectID",
+                            isAccountingObject: false
+                        }).then(function (res) {                            
+                            if (res.error && res.error === 1)
+                                return pbaAPI.errorMsg(res.message);
+                            else {
+                                var data = pbaAPI.base64ToBlob(res.data, res.mimeType);
+                                pbaAPI.download(data, res.filename, res.mimetype);
+                            }
+                        });
+                    }
+                    if (wfCloseDV) {
+                        dialog.close();
+                        if (dialog.params.parentLV)
+                            dialog.params.parentLV.composite.refresh();
+                        return;
+                    } 
+                });
+            }
+        });
+    }());
+</script>

@@ -1,0 +1,55 @@
+﻿@model WebUI.Models.Social.VoitingModelVm
+@{
+    string btnThumpID = "btnThumpID_" + Guid.NewGuid().ToString("N");
+    string btnThumpUpID = "btnThumpUpID_" + Guid.NewGuid().ToString("N");
+    string btnThumpDownID = "btnThumpDownID_" + Guid.NewGuid().ToString("N");
+}
+<style>
+    .rating-value {
+        margin-left: 3px;
+    }
+
+    .data-thumbs-up {
+        color: #21ad75;
+    }
+
+    .data-thumbs-down {
+        color: #d9534f;
+    }
+</style>
+
+<div class="btn-group" id="@btnThumpID">
+    <button id="@btnThumpUpID" type="button" class="k-button k-button-icon tooltipstered" title="Проголосовать за"><i class="data-thumbs-up"><span class="icon glyphicon glyphicon-thumbs-up"></span></i><span class="rating-value">@Model.ThumpUp</span></button>
+    <button id="@btnThumpDownID" type="button" class="k-button k-button-icon tooltipstered" title="Проголосовать против"><i class="data-thumbs-down"><span class="icon glyphicon glyphicon-thumbs-down"></span></i><span class="rating-value">@Model.ThumpDown</span></button>
+</div>
+
+
+<script>
+    $(function () {
+        var votingHub = $.connection.votingHub;
+
+        votingHub.client.sendVote = function (countUp, countDown) {
+            $("#@btnThumpUpID .rating-value").text(countUp);
+            $("#@btnThumpDownID .rating-value").text(countDown);
+        };
+
+        $("#@btnThumpID button").click(function () {
+            var toggle = $(this).is("[id=@btnThumpUpID]");
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("ThumpToggle", "Social")",
+                data: {
+                    mnemonic: "@Model.Mnemonic",
+                    objectID: "@Model.ObjectId",
+                    toggle: toggle
+                },
+                success: function (data) {
+                    $.connection.hub.start().done(function () {
+                        votingHub.server.vote(data.thumpUp, data.thumpDown);
+                        $('#message').val('').focus();
+                    });
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,140 @@
+﻿@using Base.Utils.Common.Maybe
+@model EditorViewModel
+
+@{
+    var htmlFieldName = Model.PropertyName;
+
+    string toolbarID = Html.CreateSystemName("toolbar");
+    string hiddenUploadID = Html.CreateSystemName("hidden_upload");
+
+    var wrapId = Html.CreateSystemName("wrap_");
+    var imgId = Html.CreateSystemName("img_");
+
+    const string select = "Select";
+    const string upload = "Upload";
+    const string extensions = "Ext";
+    const string defaultImage = "Default";
+
+
+    var hideSelect = Model.EditorTemplateParams.ContainsKey(@select) && !bool.Parse(Model.EditorTemplateParams.FirstOrDefault(x => x.Key == @select).Value);
+    var hideUpload = Model.EditorTemplateParams.ContainsKey(@upload) && !bool.Parse(Model.EditorTemplateParams.FirstOrDefault(x => x.Key == @upload).Value);
+
+    var allowExtensions = Model.EditorTemplateParams.ContainsKey(extensions) ? Model.EditorTemplateParams.FirstOrDefault(x => x.Key == extensions)
+    .Value
+        .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToArray() : new string[] { };
+
+    var allowExtJson = Json.Encode(allowExtensions);
+    var acceptAttr = allowExtensions.With(x => x.Aggregate("", (y, z) => y + ",." + z).TrimStart(',')) ?? "";
+
+    var defImage = Model.EditorTemplateParams.ContainsKey(@defaultImage)
+                ? Model.EditorTemplateParams.FirstOrDefault(x => x.Key == @defaultImage).Value
+                : "NoImage";
+}
+
+<script>
+    window['@wrapId'] = {
+        getForm: function () {
+            var e_form = $("#@wrapId").closest("form");
+            return e_form.data("pbaForm");
+        },
+        onSuccess: function (e) {
+            if (e.response) {
+                var form = window['@wrapId'].getForm();
+
+                var file = e.response;
+                file.State = 1;                
+                form.setPr("@htmlFieldName", file);
+
+                pbaAPI.imageHelpers.src($("#@imgId"), file.FileID, '@defImage');
+            }
+        },
+        onSelect: function () {
+            $(".k-upload-files").empty();
+        },
+        onSelectFile: function (e) {
+            pbaAPI.openModalDialog('FileStorageItemImage', function (items) {
+                if (!items || items.length === 0)
+                    return pbaAPI.errorMsg('Ошибка при выборе изображения');
+
+                var file = items[0].File;
+                var form = window['@wrapId'].getForm();
+
+                form.setPr('@htmlFieldName', { ID: file.ID, FileID: file.FileID });
+                pbaAPI.imageHelpers.src($('#@imgId'), file.FileID, '@defImage');
+            });
+        },
+        onDelete: function (e) {
+            var form = window['@wrapId'].getForm();
+
+            form.setPr("@htmlFieldName", null);
+            pbaAPI.imageHelpers.src($("#@imgId"), null, '@defImage');
+        },
+        onUpload: function (e) {            
+            var allowExt = ["jpeg", "jpg", "gif", "png"]; // ? Must init from config
+
+            if (allowExt.indexOf(e.files[0].extension.slice(1).toLowerCase()) > -1) return;
+
+            pbaAPI.errorMsg("Недопустимый формат!\nВыберите файл с расширением: jpeg, gif, png");
+
+            e.preventDefault();
+        }
+    };
+</script>
+
+<div id="@wrapId" class="kwidget kwidget--inline-panel kwidget--image">
+
+    <div style="display: none;">
+        @(Html.Kendo().Upload()
+                .Name(hiddenUploadID)
+                .HtmlAttributes(new { accept = "image/*", style = "display: none" })
+                .Multiple(false)
+                .ShowFileList(false)
+                .Events(e => e.Upload(wrapId + ".onUpload").Success(wrapId + ".onSuccess").Select(wrapId + ".onSelect"))
+                .Messages(m => m.Select("<i class=\"fa fa-upload\"></i>"))
+                .Async(a => a
+                    .Save("SaveFile", "FileData")
+                    .AutoUpload(true)
+                )
+        )
+    </div>
+
+    <div class="kwidget kwidget--toolbar">
+        @(Html.Kendo().ToolBar()
+            .Name(toolbarID)
+            .Items(items =>
+            {
+                items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                {
+                    buttons.Add().Text("Выбрать").HtmlAttributes(new { title = "Выбрать" }).SpriteCssClass("fa fa-navicon").ShowText(ShowIn.Overflow).Enable(!hideSelect).Click(wrapId + ".onSelectFile");
+                    buttons.Add().Text("Загрузить").HtmlAttributes(new { title = "Загрузить" }).SpriteCssClass("fa fa-image").ShowText(ShowIn.Overflow).Enable(!hideUpload).Click(@<text>function() { $('#@hiddenUploadID').click() }</text>);
+                    buttons.Add().Text("Очистить").HtmlAttributes(new { title = "Очистить" }).SpriteCssClass("fa fa-close").ShowText(ShowIn.Overflow).Click(wrapId + ".onDelete");
+                });
+            }))
+    </div>
+
+    <img id="@imgId" src="" width="@(Model.Width ?? 150)" height="@(Model.Height ?? 150)" />
+</div>
+
+<script>
+    $(function () {
+        $("#@wrapId").closest("form").on("onAfterBind", function (e, form) {
+            $(this).find(".k-upload-status").remove();
+            $(this).find(".k-upload-files").remove();
+
+            var img = form.getPr('@(htmlFieldName)');
+            var $img = $('#@imgId');
+
+            if (img) {
+                img.State = 0;
+                pbaAPI.imageHelpers.src($img, img.FileID, '@defImage');
+            } else {
+                pbaAPI.imageHelpers.src($img, null, '@defImage');
+            }
+
+            $img.attr('title', 'Открыть изображение').off().on('click', function () {
+                if (!img) return;
+                pbaAPI.showImage(img.FileID, img.FileName);
+            });
+        });
+    });
+</script>

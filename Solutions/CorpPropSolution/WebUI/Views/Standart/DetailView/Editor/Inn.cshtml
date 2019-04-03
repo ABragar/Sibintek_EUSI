@@ -1,0 +1,15 @@
+﻿@model EditorViewModel
+
+@{
+    string name = "n_" + Guid.NewGuid().ToString("N");
+
+    int masklength = Model.MaxLength ?? 0;
+    if (masklength == 0)
+    {
+        masklength = 10;
+    }
+    string mask = new string('0', masklength);
+
+}
+
+@(Html.Kendo().MaskedTextBox().Name(name).Mask(mask).HtmlAttributes(Html.CreateHtmlAttributes(Model)))

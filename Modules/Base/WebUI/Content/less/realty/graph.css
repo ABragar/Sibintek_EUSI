@@ -1,0 +1,266 @@
+﻿[data-realty-graph],
+[data-realty-graph] * {
+  box-sizing: border-box;
+}
+[data-realty-graph] {
+  position: absolute;
+  top: .714rem;
+  left: .714rem;
+  right: 25rem;
+  bottom: .714rem;
+  padding: 1.0714rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  text-align: center;
+  overflow: auto;
+}
+[data-realty-graph]:before,
+[data-realty-graph]:after {
+  display: table;
+  content: " ";
+}
+[data-realty-graph]:after {
+  clear: both;
+}
+[data-realty-graph] .realty_graph-sections {
+  margin: 0 auto;
+  font-size: 0;
+}
+[data-realty-graph] .realty_graph-section {
+  position: relative;
+  display: inline-block;
+  padding: .714rem .714rem 2.857rem 1.7857rem;
+  background: rgba(115, 115, 135, 0.75);
+  font-size: 1rem;
+  text-align: left;
+  transition: background-color 0.2s linear;
+}
+[data-realty-graph] .realty_graph-section:hover {
+  background: #737387;
+}
+[data-realty-graph] .realty_graph-section_title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  bottom: .5714rem;
+  left: 2.143rem;
+  right: 1.0714rem;
+  color: #FFF;
+  font-size: 1.0714rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+[data-realty-graph] .realty_graph-section_title:after {
+  position: relative;
+  top: .0714rem;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\E144";
+  margin-left: .357rem;
+  font-size: .857rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .1s linear;
+}
+[data-realty-graph] .realty_graph-section_title:hover:after {
+  opacity: 1;
+}
+[data-realty-graph] .realty_graph-levels {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background: #FFF;
+}
+[data-realty-graph] .realty_graph-level {
+  position: relative;
+}
+[data-realty-graph] .realty_graph-level:before {
+  display: block;
+  position: absolute;
+  left: -1.786rem;
+  width: 1.786rem;
+  height: 1.714rem;
+  line-height: 1.714rem;
+  color: #FFF;
+  font-size: 1.0714rem;
+  text-align: center;
+  content: attr(data-level);
+}
+[data-realty-graph] .realty_graph-level--empty {
+  background-color: #EBE9EC;
+}
+[data-realty-graph] .realty_graph-apartments {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+[data-realty-graph] .realty_graph-apartments:before,
+[data-realty-graph] .realty_graph-apartments:after {
+  display: table;
+  content: " ";
+}
+[data-realty-graph] .realty_graph-apartments:after {
+  clear: both;
+}
+[data-realty-graph] .realty_graph-apartment {
+  position: relative;
+  display: block;
+  float: left;
+  margin: .143rem;
+  text-align: center;
+  cursor: pointer;
+  outline: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+  transition: color 0.1s linear, box-shadow 0.1s linear;
+}
+[data-realty-graph] .realty_graph-apartment:after {
+  content: "кв. " attr(data-room);
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #3f51b5;
+  color: white;
+  vertical-align: middle;
+  font-size: .857rem;
+  opacity: 0;
+  transition: opacity .05s linear;
+}
+[data-realty-graph] .realty_graph-apartment:hover:after {
+  opacity: 1;
+}
+[data-realty-graph] .realty_graph-apartment--cap {
+  width: calc(100% - .2857rem);
+  pointer-events: none;
+}
+[data-realty-graph] .realty_graph-apartment--cap:after {
+  content: "Нет квартир";
+  background: transparent;
+  color: #AAA;
+  opacity: 1;
+}
+[data-realty-graph] .realty_graph-apartment_status {
+  position: absolute;
+  top: .0714rem;
+  left: .0714rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: .857rem .857rem 0 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  opacity: .85;
+}
+[data-realty-graph] .realty_graph-apartment_top,
+[data-realty-graph] .realty_graph-apartment_bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: .143rem;
+  font-size: .714rem;
+  opacity: 1;
+  transition: opacity .1s linear;
+}
+[data-realty-graph] .realty_graph-apartment_top {
+  top: 0;
+}
+[data-realty-graph] .realty_graph-apartment_bottom {
+  bottom: 0;
+  padding-top: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+[data-realty-graph] .realty_graph-apartment_title:before {
+  content: "№";
+}
+[data-realty-graph] .realty_graph-apartment_rooms:after {
+  content: " к.";
+}
+[data-realty-graph] .realty_graph-apartment_price:after {
+  content: " тыс. р.";
+}
+[data-realty-graph="House"] .realty_graph-section + .realty_graph-section {
+  margin-left: .357rem;
+}
+[data-realty-graph="House"] .realty_graph-level:before {
+  top: 1.0714rem;
+}
+[data-realty-graph="House"] .realty_graph-apartment {
+  min-width: 3.5714rem;
+  height: 3.5714rem;
+}
+[data-realty-graph="House"] .realty_graph-apartment:after {
+  line-height: 3.5714rem;
+}
+[data-realty-graph="House"] .realty_graph-apartment_top,
+[data-realty-graph="House"] .realty_graph-apartment_bottom {
+  height: 1.7857rem;
+  line-height: 1.7857rem;
+}
+[data-realty-graph="House"] .realty_graph-apartment_top > .realty_graph-apartment_rooms {
+  display: none;
+}
+[data-realty-graph="House"] .realty_graph-apartment_price {
+  display: none;
+}
+[data-realty-graph="Section"] .realty_graph-section {
+  padding: .7143rem .7143rem 2.857rem 2.857rem;
+}
+[data-realty-graph="Section"] .realty_graph-section_title {
+  bottom: .4286rem;
+  left: 3.2143rem;
+  font-size: 1.143rem;
+}
+[data-realty-graph="Section"] .realty_graph-level:before {
+  left: -2.857rem;
+  top: 2.1427rem;
+  width: 2.857rem;
+}
+[data-realty-graph="Section"] .realty_graph-apartment {
+  min-width: 5.714rem;
+  height: 5.714rem;
+}
+[data-realty-graph="Section"] .realty_graph-apartment:after {
+  line-height: 5.714rem;
+}
+[data-realty-graph="Section"] .realty_graph-apartment_top,
+[data-realty-graph="Section"] .realty_graph-apartment_bottom {
+  height: 2.857rem;
+  line-height: 2.857rem;
+}
+[data-realty-graph="Section"] .realty_graph-apartment_top {
+  display: flex;
+  align-content: space-around;
+  padding: .143rem .857rem;
+}
+[data-realty-graph="Section"] .realty_graph-apartment_title,
+[data-realty-graph="Section"] .realty_graph-apartment_rooms {
+  flex: 1;
+}
+[data-realty-graph="Section"] .realty_graph-apartment_bottom > .realty_graph-apartment_rooms {
+  display: none;
+}
+.realty_graph-charts {
+  position: absolute;
+  top: .714rem;
+  right: .714rem;
+  bottom: .714rem;
+  width: 22.86rem;
+  padding-left: .357rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
+.realty_graph-charts_wrapper {
+  min-width: 100%;
+  font-size: 0;
+}
+.realty_graph-charts .k-chart {
+  margin: 1.0714rem 0;
+}

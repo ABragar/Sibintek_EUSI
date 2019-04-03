@@ -1,0 +1,33 @@
+﻿.kwidget.kwidget--tabstrip {
+	.k-tabstrip-wrapper,
+	.k-tabstrip {
+		height: 100%;
+
+		 > .k-content {
+			position: relative;
+
+			box-sizing: border-box;
+			height: ~"calc(100% - 3.5rem)";
+			padding: @modular-scale *1em 1rem;
+
+			border: none;
+			}
+
+		.k-listview {
+			overflow: auto; 
+
+			height: ~"calc(100% - .143rem)";
+			}
+		}
+	}
+
+.form-vertical {
+	.kwidget.kwidget--tabstrip {
+		.k-tabstrip-wrapper,
+		.k-tabstrip {
+			 > .k-content {
+				padding: pow( @modular-scale *1em, -1 ) 0 pow( @modular-scale *1em, 2 );
+				}
+			}
+		}
+	}

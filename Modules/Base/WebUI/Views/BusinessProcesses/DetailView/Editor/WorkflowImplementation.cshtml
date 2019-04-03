@@ -1,0 +1,285 @@
+﻿@model EditorViewModel
+
+@using Base.UI.ViewModal
+@using WebUI.Helpers
+
+@{
+    EditorViewModel eViewModel = Model;
+    ViewModelConfig config = eViewModel.ViewModelConfig;
+
+    string workflowMnemonic = "BPWorkflow";
+    string htmlFieldName = eViewModel.PropertyName;
+    string wrapID = "wrap_" + Guid.NewGuid().ToString("N");
+    string autoCompleteID = "ac_" + Guid.NewGuid().ToString("N");
+    string lookupProperty = config.LookupPropertyForUI;
+    string template = "";
+    string className = "base-object-one";
+    string icon = String.Format("<span class='{0}'></span>", config.Icon);
+    string templateIcon = "";
+    string placeholder = "Введите значение...";
+    string openButtonID = "btn_" + Guid.NewGuid().ToString("N");
+}
+
+<script>
+    (function () {
+        var $wrap = $('#@wrapID');
+
+        window['@wrapID'] = {
+            _selectValue: null,
+
+            setVervsion: function (ver) {
+                var $form = $("#@wrapID").closest("form");
+                var form = $form.data("pbaForm");
+                if (window['@wrapID'].isCurrent(ver)) {
+                    pbaAPI.errorMsg("Нельзя указать себя");
+                } else {
+                    $("#@wrapID").find("#@autoCompleteID").data("kendoAutoComplete").value(ver["@lookupProperty"]);
+                    form.setPr("@htmlFieldName", ver);
+                    $wrap.trigger('changeValue', { value: ver });
+                    this.setBtnTitle();
+                }
+            },
+
+            onAdditionalData: function () {
+
+                var autoComplete = $("#@autoCompleteID").data("kendoAutoComplete");
+
+                var val = autoComplete.value();
+
+                if (val === "@placeholder") val = "";
+
+                var form = $("#@wrapID").closest("form").data("pbaForm");
+
+                var objectType = form.getViewData('ObjectType');
+
+                return {
+                    startswith: val,
+                    objectType: objectType
+                };
+            },
+
+            onChange: function (e) {
+                if (window['@wrapID']._selectValue == null) {
+                    this.value("");
+                }
+                window['@wrapID'].setBtnTitle();
+            },
+
+            onSelect: function(e) {
+                var selected = this.dataItem(e.item.index());
+
+                if (window['@wrapID'].isCurrent(selected.ID)) {
+                    pbaAPI.errorMsg("Нельзя указать себя");
+                } else {
+                    window['@wrapID']._selectValue = this.value();
+
+                    $wrap.trigger('changeValue',
+                    {
+                        value: this.dataItem(e.item.index())
+                    });
+                }
+            },
+
+            isCurrent: function (selectedID) {
+                var $form = $("#@wrapID").closest("form");
+                var form = $form.data("pbaForm");
+
+                var currentVersionID = form.getPr('WorkflowImplementationID');
+
+                return currentVersionID === selectedID;
+            },
+
+            onDataBound: function (e) {
+                window['@wrapID']._selectValue = null;
+            },
+
+            openDialog: function () {
+                pbaAPI.openModalDialog("@workflowMnemonic",
+                    function (res) {
+                        var wf = res[0];
+
+                        pbaAPI.proxyclient.crud.get({
+                                mnemonic: '@workflowMnemonic',
+                                id: wf.id
+                            })
+                            .done(function (res) {
+                                if (res.error) {
+                                    pbaAPI.errorMsg(res.error);
+                                }
+                                else {
+                                    var vers = res.model.WorkflowImplementations;
+
+                                    if (!vers) {
+                                        return;
+                                    }
+
+                                    if (vers.length === 1) {
+                                        var ver = vers[0];
+                                        window['@wrapID'].setVervsion(ver);
+                                    } else {
+                                        pbaAPI.openModalDialog("@Model.Mnemonic", function (data) {
+                                            var ver = data[0];
+                                            window['@wrapID'].setVervsion(ver);
+                                        }, {
+                                            filter: "WorkflowID = " + wf.ID,
+                                            title: "Выбор версии",
+                                            multiselect: false
+                                        });
+                                    }
+                                }
+                            });
+                    },
+                    {
+                        title: "ВЫБОР - @Model.Title",
+                        multiselect: false
+                    });
+            },
+
+            openObject: function () {
+                var $form = $("#@wrapID").closest("form");
+                var form = $form.data("pbaForm");
+
+                var bo = form.getPr("@htmlFieldName") || { ID: 0 };
+
+                pbaAPI.openDetailView("@Model.Mnemonic",
+                {
+                    wid: "@Model.UID",
+                    id: bo.ID,
+                    callback: function (e) {
+                        if (e.type === "save") {
+                            var model = {
+                                ID: e.model.ID
+                            };
+
+                            model["@lookupProperty"] = e.model["@lookupProperty"];
+
+                            form.setPr("@htmlFieldName", model);
+
+                            $wrap.trigger('changeValue', {
+                                value: model
+                            });
+
+                            this.setBtnTitle();
+                        }
+                    }
+                });
+            },
+            clear: function () {
+                var $form = $("#@wrapID").closest("form");
+                var form = $form.data("pbaForm");
+
+                $("#@wrapID").find("#@autoCompleteID").data("kendoAutoComplete").value("");
+
+                form.setPr("@htmlFieldName", null);
+
+                $wrap.trigger('changeValue', {
+                    value: null
+                });
+
+                this.setBtnTitle();
+            },
+
+            setBtnTitle: function () {
+                var $form = $("#@wrapID").closest("form");
+                var form = $form.data("pbaForm");
+                var state = form.getPr("@htmlFieldName");
+                var btn = $('#@openButtonID');
+                var spn = btn.children();
+
+                if (state == undefined) {
+                    btn.addClass('disabled');
+                    btn.attr('title', 'Создать');
+                    spn.attr('class', 'fa fa-asterisk');
+                } else {
+                    btn.attr('title', 'Открыть');
+                    btn.removeClass('disabled');
+                    spn.attr('class', 'fa fa-pencil');
+                }
+            }
+        }
+    })();
+</script>
+
+<div data-editortemplate="BaseObjectOne" id="@wrapID" class="input-group">
+    <div class="form-control">
+        @(Html.Kendo().AutoComplete()
+                .Name(autoCompleteID)
+                .Enable(true)
+                .DataTextField(lookupProperty)
+                .Placeholder(placeholder)
+                .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { @class = className }))
+                .Filter("startswith")
+                .Template(template)
+                .MinLength(1)
+                .Height(370)
+                .Events(e => e.Change(wrapID + ".onChange").DataBound(wrapID + ".onDataBound").Select(wrapID + ".onSelect"))
+                .DataSource(source =>
+                {
+                    source.Read(read =>
+                    {
+                        read.Action("GetWorkflowVersions", "BusinessProcesses").Data(wrapID + ".onAdditionalData");
+                    })
+                    .ServerFiltering(true);
+                })
+        )
+
+        <span class="@className icon">@Html.Raw(icon)</span>
+    </div>
+    <span class="input-group-btn">
+        @if (!typeof(ICategorizedItem).IsAssignableFrom(eViewModel.ViewModelConfig.TypeEntity))
+        {
+            <a href="#" id="@openButtonID" onclick="@(wrapID).openObject(); return false;" title=" создать - открыть"><i class="fa fa-asterisk"></i></a>
+        }
+        <a href="#" onclick="@(wrapID).openDialog(); return false;" title="Выбрать"><i class="fa fa-navicon"></i></a>
+        <a href="#" onclick="@(wrapID).clear(); return false;" title="Очистить"><i class="fa fa-close"></i></a>
+    </span>
+</div>
+
+
+@if (templateIcon != "")
+{
+    <script>
+        $(function () {
+            var $icon = $("#@wrapID").find(".base-object-one.icon");
+            var $form = $icon.closest("form");
+
+            var templateIcon = kendo.template("@Html.Raw(templateIcon)");
+
+            var initImg = function (form) {
+                var obj = form.getPr("@htmlFieldName");
+
+                if (obj) {
+                    $icon.html(templateIcon({ model: obj }));
+                } else {
+                    $icon.html("");
+                }
+            };
+
+            $form.on("onAfterBind", function (e, form) {
+                initImg(form);
+            });
+
+            $form.on("onChange", function (e, params) {
+                if (params.field === "@htmlFieldName") {
+                    initImg(params.sender);
+                }
+            });
+        });
+    </script>
+}
+
+
+<script>
+    $(function () {
+        var $autocomplete = $("#@autoCompleteID");
+
+        $autocomplete.on("focus", function () {
+            $autocomplete.data("kendoAutoComplete").search("");
+        });
+
+    });
+
+    $('#@wrapID').closest('form').on('onAfterBind', function () {
+        window['@wrapID'].setBtnTitle();
+    });
+</script>

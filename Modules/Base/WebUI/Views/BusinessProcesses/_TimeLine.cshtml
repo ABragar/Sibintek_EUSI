@@ -1,0 +1,71 @@
+﻿@using WebUI.Models.BusinessProcess
+@model TimeLineVm
+
+
+@{
+    string wrapID = "wrap_" + Guid.NewGuid().ToString("N");    
+}
+
+<div id="@wrapID" class="timeline-window">
+    <div class="container flow-timeline">
+        @if (Model.ShowCurrentStages)
+        {
+            @Html.Partial("_CurrentStages", Model)
+        }
+
+        <div class="page-header" style="margin-top: 0">
+            <h3 id="timeline" class="timeline-page-title">История движения :</h3>
+        </div>
+        <ul class="timeline">
+            @foreach (TimeLineElementVm item in Model.GetElements())
+            {              
+                @RenderTimelLineElement(item)
+            }
+            <li style="margin-bottom: 40px;">
+                <div class="timeline-badge" style="background-color: #6f5499;">
+                    <i class="fa fa-angle-up"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        $("#@wrapID").find("[data-report]").click(function() {
+            $("<div />").kendoWindow({
+                width: $(window).width(),
+                height: $(window).height(),
+                title: "История движения объекта",
+                content: "/BusinessProcesses/WorkflowReport?id=@Model.WorkflowId",
+                resizable: false,
+                maximize: true,
+                actions: ["Close"],
+                modal: true,
+                deactivate: function() {
+                    this.destroy();
+                },
+            }).data("kendoWindow").center().open().maximize();
+        }); 
+    })
+</script>
+
+@helper RenderTimelLineElement(TimeLineElementVm item)
+{
+
+    <li class="@(item.IsOdd ? "timeline-inverted" : "")">
+        @if (item is StageTimeLineElement)
+        {
+            @Html.Partial("_ClosedTimeLineElementVm", (StageTimeLineElement)item)
+        }
+        else if (item is EndStepTimeLineElement)
+        {
+            @Html.Partial("_TerminatedTimeLineElementVm", (EndStepTimeLineElement)item)
+        }
+        else if (item is WorkflowOwnerStepTimeLineLementVm)
+        {
+            @Html.Partial("_WFOwnerTimeLineElementVm", (WorkflowOwnerStepTimeLineLementVm)item)
+        }
+    </li>
+}
+

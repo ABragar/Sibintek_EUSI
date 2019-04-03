@@ -1,0 +1,123 @@
+﻿@model WebUI.Models.MultiEdit.MultiEditViewModel
+@{
+    string form_id = Html.CreateSystemName("form");
+    var toolbarID = Html.CreateSystemName("multieditToolbar");
+    const string editorName = "~/Views/Standart/DetailView/Editor/Common/Editor.cshtml";
+    var countTemplateId = Html.CreateSystemName("countTempl");
+}
+
+
+
+@helper RenderHelp(EditorViewModel editor)
+{
+if (string.IsNullOrEmpty(editor.Description))
+{
+    return;
+}
+
+    <i title="@editor.Description" class="fa fa-question-circle-o"></i>
+}
+
+@helper RenderLabel(EditorViewModel editor)
+{
+    <label for="@editor.UID">@editor.Title</label>
+
+if (editor.IsRequired)
+{
+        <span class="required-mark">•</span>
+}
+    @RenderHelp(editor)
+}
+
+<script id="@countTemplateId" type="text/x-kendo-template">
+    <div>Количество: <span data-bind="html: total"></span></div>
+</script>
+
+<div class="dialog">
+    <div class="dialog__content view-model dialog__content--with-tabstrip">
+        <div class="multiedit__command">
+            <div class="dialog__toolbar">
+                <div class="kwidget kwidget--toolbar">
+                    @(Html.Kendo().ToolBar()
+                  .Name(toolbarID)
+                  .Items(items =>
+                  {
+                      items.Add().HtmlAttributes(new { @class = "total" }).TemplateId(countTemplateId);
+                      items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                      {
+                      });
+                      items.Add().HtmlAttributes(new { style = "float: right" }).Type(CommandType.ButtonGroup).Buttons(buttons =>
+                      {
+                          buttons.Add().Text("Применить").HtmlAttributes(new { title = "Применить ко всем объектам", @class = "success", data_bind = "click: apply ,enabled: apply_enabled,visible: form_visible" }).ShowText(ShowIn.Toolbar);
+                          buttons.Add().Text("Прервать").HtmlAttributes(new { title = "Прервать выполнение", @class = "error", data_bind = "click: cancel ,visible: apply_run" }).ShowText(ShowIn.Toolbar);
+                          buttons.Add().Text("Назад").HtmlAttributes(new { title = "Вернуться назад", @class = "primary", data_bind = "click: show_form ,visible: show_form_visible" }).ShowText(ShowIn.Toolbar);
+                      });
+                  }))
+                </div>
+            </div>
+
+            <div class="multiedit__command-widget" data-bind="invisible: form_visible">
+                <div data-role="progressbar"
+                     data-min="0"
+                     data-max="100"
+                     data-bind="value: current_progress ,visible: apply_run"
+                     style="width: 100%;"></div>
+                <div class="e-row">
+                    <div class="col-md-3">ID текущего объекта:</div>
+                    <div class="col-md-3" data-bind="html: current_index"></div>
+                </div>
+                <div class="e-row">
+                    <div class="col-md-3">Статус:</div><div class="col-md-3" data-bind="html: status"></div>
+                </div>
+                <div class="multiedit__command-notify"></div>
+                <script type="text/x-kendo-template" id="multiedit-row-template">
+                    <div class="e-row">
+                        <div class="col-md-3 title">${Title}</div>
+                        <div class="col-md-3 id">${Description}</div>
+                    </div>
+                </script>
+            </div>
+
+        </div>
+
+        <form id="@form_id" class="multiedit__form">
+
+            <div data-role="panelbar" data-bind="">
+
+                @foreach (var tab in Model.Tabs)
+            {
+                    <div class="k-state-active">
+                        <span class="k-link k-state-selected">@System.Text.RegularExpressions.Regex.Replace(tab.TabName, @"\[[0-9]*\]", "")</span>
+                        <div class="dialog__tab" id="@tab.TabID">
+
+                            @foreach (var editor in tab.Editors.Select((e, i) => new { e, i }))
+                            {
+                                <div class="e-row multiedit__form-editor">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="@editor.i" class="k-checkbox" data-bind="checked: @Model.Property.@editor.e.PropertyName" />
+                                        <label class="k-checkbox-label" for="@editor.i"></label>
+                                    </div>
+                                    <div class="label">
+                                        @RenderLabel(editor.e)
+                                    </div>
+                                    <div class="editor property_disabled" data-bind="css : {property_skip_disabled : model.@Model.Property.@editor.e.PropertyName }">
+                                        @{ Html.RenderPartial(editorName, editor.e); }
+                                    </div>
+                                </div>
+                                            }
+                        </div>
+                    </div>
+                                            }
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<style>
+    #@form_id .editor.property_disabled:not(.property_skip_disabled)  {
+        pointer-events: none;
+        opacity: .5;
+    }
+</style>
+

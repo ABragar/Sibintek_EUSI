@@ -1,0 +1,97 @@
+﻿@model int?
+
+@{
+    var serverId = Model.GetValueOrDefault();
+    var user_btn_id = Html.CreateSystemName("pbx_users");
+    var apply_btn_id = Html.CreateSystemName("pbx_apply");
+    var reboot_btn_id = Html.CreateSystemName("pbx_reboot");
+
+
+    var userListUrl = Url.Action("GetUsersListBuilder", "PBX", new { serverId });
+    var applyUrl = Url.Action("ApplyChanges", "PBX", new { serverId });
+    var rebootUrl = Url.Action("Reboot", "PBX", new { serverId });
+    var serverStatusUrl = Url.Action("GetServerStatus", "PBX", new { serverId });
+}
+
+<button id="@(user_btn_id)" class="k-button success">Пользователи</button>
+<button id="@(reboot_btn_id)" class="k-button warning">Перезагрузить сервер</button>
+<button id="@(apply_btn_id)" class="k-button warning" style="display: none">Применить изменения</button>
+
+
+<script>
+    (function(serverId, $usersBtn, usersUrl, $applyBtn, applyUrl, statusUrl, $rebootBtn, rebootUrl) {
+        var $listWnd;
+
+        if (!serverId) {
+            $usersBtn.remove();
+            $applyBtn.remove();
+            $rebootBtn.remove();
+            return;
+        }
+
+
+        var analizeStatus = function(status) {
+            status.need_apply ? $applyBtn.show() : $applyBtn.hide();
+        };
+
+        var checkStatus = function() {
+            pbaAPI.ajax.get(statusUrl).then(function(res) {
+                if (res) {
+                    analizeStatus(res);
+                }
+            }, function(err) {
+                console.log(err);
+            });
+        };
+
+        $usersBtn.on('click', function() {
+            $listWnd = $('<div />').kendoWindow({
+                title: 'Управление пользователями',
+                actions: [ 'Maximize', 'Close' ],
+                appendTo: 'body',
+                width: '80%',
+                height: '80%',
+                minHeight: '300px',
+                minWidth: '500px',
+                modal: true,
+                content: usersUrl,
+                visible: true,
+                close: function(e) {
+                    checkStatus();
+                }
+            });
+
+            var dialog = $listWnd.data("kendoWindow");
+
+            dialog.center().open();
+        });
+
+        $applyBtn.on('click', function() {
+            $applyBtn.prop('disabled', true);
+            pbaAPI.ajax.get(applyUrl).then(function(res) {
+                pbaAPI.msg('Настройки успешно применены', 'upload-success');
+                checkStatus();
+                $applyBtn.prop('disabled', false);
+            }, function(err) {
+                pbaAPI.errorMsg('Во время операции произошла ошибка');
+                checkStatus();
+                $applyBtn.prop('disabled', false);
+            });
+        });
+
+        $rebootBtn.on('click', function() {
+            pbaAPI.confirm('Внимание', 'Данная операция займет несколько минут. Вы уверены, что хотите перезагрузить сервер?', function() {
+                $rebootBtn.prop('disabled', true);
+                pbaAPI.ajax.get(rebootUrl).then(function(res) {
+                    pbaAPI.msg('Сервер перезагружен, возобновление работы займет несколько минут.', 'upload-success');
+                    $rebootBtn.prop('disabled', false);
+                }, function(err) {
+                    pbaAPI.errorMsg('Во время операции произошла ошибка');
+                    $rebootBtn.prop('disabled', false);
+                });
+            });
+        });
+
+        checkStatus();
+    })(@serverId, $("#@user_btn_id"), "@userListUrl", $("#@apply_btn_id"), "@applyUrl", "@serverStatusUrl", $("#@reboot_btn_id"), "@rebootUrl");
+</script>

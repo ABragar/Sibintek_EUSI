@@ -1,0 +1,44 @@
+﻿@using Base.UI.ViewModal
+@model EditorViewModel
+
+@{
+    EditorViewModel eViewModel = Model;
+    ViewModelConfig config = eViewModel.ViewModelConfig;
+
+    string htmlFieldName = Model.PropertyName;
+    string wrapID = Html.CreateSystemName("wrap");
+
+    string lookupProperty = config.LookupPropertyForUI;
+}
+
+<div id="@wrapID">
+    <ui id="@htmlFieldName"></ui>
+</div>
+
+<script>
+    $(function () {
+        var $f = $("#@wrapID").find("#@htmlFieldName");
+
+        var finit = function (objs) {
+            if (objs) {
+                for (var i = 0; i < objs.length; i++) {
+                    var obj = objs[i];
+
+                    $f.append($("<li>").append($("<a href='javascript:void(0)' data-id='" + obj.ID + "'>").html(obj["@lookupProperty"]).click(function () {
+                        pbaAPI.openDetailView("@config.Mnemonic",
+                            {
+                                wid: "@wrapID",
+                                id: $(this).attr("data-id"),
+                                isReadOnly: true
+                            });
+                    })));
+                }
+            }
+        }
+
+        $f.closest("form").on("onAfterBind", function(e, form) {
+            $f.empty();
+            finit(form.getPr("@htmlFieldName"));
+        });
+    });
+</script>

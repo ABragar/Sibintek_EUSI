@@ -1,0 +1,96 @@
+﻿<section id="toolbars" class="k-pane">
+    <h2>Тулбары</h2>
+
+    <label for="toolbar1" class="collapsed" data-toggle="collapse" data-target="#toolbar1_code">Дефолтный тулбар</label>
+    <div id="toolbar1">
+        @RenderToolBar("kendoToolbar1")
+    </div>
+
+    <pre class="collapse" id="toolbar1_code"><code class="html">
+        &lt;div class="kwidget kwidget--toolbar">
+            &lt;!-- KENDO TOOLBAR HERE -->
+        &lt;/div>
+    </code></pre>
+
+    <label for="toolbar2" class="collapsed" data-toggle="collapse" data-target="#toolbar2_code">Тулбар в панели</label>
+    <div id="toolbar2">
+        <div class="kwidget kwidget--panel">
+            @RenderToolBar("kendoToolbar2")
+        </div>
+    </div>
+
+    <pre class="collapse" id="toolbar2_code"><code class="html">
+        &lt;div class="kwidget kwidget--panel">
+            &lt;div class="kwidget kwidget--toolbar">
+                &lt;!-- KENDO TOOLBAR HERE -->
+            &lt;/div>
+        &lt;/div>
+    </code></pre>
+
+    <label for="toolbar3" class="collapsed" data-toggle="collapse" data-target="#toolbar3_code">Тулбар в диалоге</label>
+    <div id="toolbar3">
+        <div class="dialog">
+            <div class="dialog__toolbar">
+                @RenderToolBar("kendoToolbar3")
+            </div>
+        </div>
+    </div>
+
+    <pre class="collapse" id="toolbar3_code"><code class="html">
+        &lt;div class="dialog">
+            &lt;div class="dialog__toolbar">
+                &lt;div class="kwidget kwidget--toolbar">
+                    &lt;!-- KENDO TOOLBAR HERE -->
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    </code></pre>
+
+    <label class="collapsed" data-toggle="collapse" data-target="#toolbar4_code">Кендо тулбар из примеров выше</label>
+    <pre class="collapse" id="toolbar4_code"><code class="cs">
+        @@(Html.Kendo().ToolBar()
+            .Name(toolbarName)
+            .Items(items =>
+            {
+                items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                {
+                    buttons.Add().Text("Действие 1").HtmlAttributes(new { title = "Описание действия 1" }).SpriteCssClass("fa fa-navicon").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 2").HtmlAttributes(new { title = "Описание действия 2" }).SpriteCssClass("fa fa-user").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 3").HtmlAttributes(new { title = "Выключено" }).SpriteCssClass("fa fa-bug").ShowText(ShowIn.Overflow).Enable(false);
+                });
+                items.Add().HtmlAttributes(new { style = "float: right" }).Type(CommandType.ButtonGroup).Buttons(buttons =>
+                {
+                    buttons.Add().Text("Действие 1").HtmlAttributes(new { title = "Описание действия 1", @@class = "primary" }).SpriteCssClass("fa fa-check").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 2").HtmlAttributes(new { title = "Описание действия 2", @@class = "secondary" }).SpriteCssClass("fa fa-user").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 3").HtmlAttributes(new { title = "Описание действия 3", @@class = "success" }).SpriteCssClass("mdi mdi-message-text-outline").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 4").HtmlAttributes(new { title = "Выключено", @@class = "error" }).SpriteCssClass("fa fa-bug").ShowText(ShowIn.Overflow).Enable(false);
+                });
+            }))
+    </code></pre>
+
+</section>
+
+@helper RenderToolBar(string toolbarName)
+{
+    <div class="kwidget kwidget--toolbar">
+        @(Html.Kendo().ToolBar()
+            .Name(toolbarName)
+            .Items(items =>
+            {
+                items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                {
+                    buttons.Add().Text("Действие 1").HtmlAttributes(new { title = "Описание действия 1" }).SpriteCssClass("fa fa-navicon").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 2").HtmlAttributes(new { title = "Описание действия 2" }).SpriteCssClass("fa fa-user").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 3").HtmlAttributes(new { title = "Выключено" }).SpriteCssClass("fa fa-bug").ShowText(ShowIn.Overflow).Enable(false);
+                });
+
+                items.Add().HtmlAttributes(new { style = "float: right" }).Type(CommandType.ButtonGroup).Buttons(buttons =>
+                {
+                    buttons.Add().Text("Действие 1").HtmlAttributes(new { title = "Описание действия 1", @class = "primary" }).SpriteCssClass("fa fa-check").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 2").HtmlAttributes(new { title = "Описание действия 2", @class = "secondary" }).SpriteCssClass("fa fa-user").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 3").HtmlAttributes(new { title = "Описание действия 3", @class = "success" }).SpriteCssClass("mdi mdi-message-text-outline").ShowText(ShowIn.Overflow);
+                    buttons.Add().Text("Действие 4").HtmlAttributes(new { title = "Выключено", @class = "error" }).SpriteCssClass("fa fa-bug").ShowText(ShowIn.Overflow).Enable(false);
+                });
+            }))
+    </div>
+}

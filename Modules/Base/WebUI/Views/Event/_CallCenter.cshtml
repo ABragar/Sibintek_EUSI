@@ -1,0 +1,171 @@
+﻿@model StandartFormModel
+
+@{
+    const string path = "~/Views/Shared/EditorTemplates/Common/Editor.cshtml";
+}
+
+
+<form id="@Model.FormName">
+    <div class="tab-pane container active">
+        <div class="e-row">
+            <div class="label">
+                <label>Название</label>
+            </div>
+            <div class="editor">
+                @Html.Partial(path, Model.CommonEditorViewModel.Editors.Find(x => x.PropertyName == "Title"))
+            </div>
+        </div>
+        <div class="e-row">
+            <div class="label">
+                <label>Тип</label>
+            </div>
+            <div class="editor">
+                @Html.Partial(path, Model.CommonEditorViewModel.Editors.Find(x => x.PropertyName == "CallType"))
+            </div>
+        </div>
+        <div class="e-row">
+            <div class="label">
+                <label>Приоритет</label>
+            </div>
+            <div class="editor">
+                @Html.Partial(path, Model.CommonEditorViewModel.Editors.Find(x => x.PropertyName == "Prority"))
+            </div>
+        </div>
+        <div class="e-row">
+            <div class="label">
+                <label>Продолжительность</label>
+            </div>
+            <div class="editor">
+                @Html.Partial(path, Model.CommonEditorViewModel.Editors.Find(x => x.PropertyName == "Period"))
+            </div>
+        </div>
+        <div class="e-row">
+            <div class="label">
+                <label>Контакт</label>
+            </div>
+            <div class="editor">
+                @Html.Partial(path, Model.CommonEditorViewModel.Editors.Find(x => x.PropertyName == "Contact"))
+            </div>
+        </div>
+        <div class="e-row">
+            <div class="label">
+                <label>Автор</label>
+            </div>
+            <div class="editor">
+                @Html.Partial(path, Model.CommonEditorViewModel.Editors.Find(x => x.PropertyName == "Creator"))
+            </div>
+        </div>
+        <div class="e-row">
+            <div class="label">
+                <label>Описание</label>
+            </div>
+            <div class="editor">
+                @Html.Partial(path, Model.CommonEditorViewModel.Editors.Find(x => x.PropertyName == "Description"))
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<script>
+    (function () {
+        var model = {};
+        var pbaForm = {};
+
+        var openContact = function (contact) {
+            pbaForm.setPr('Contact', contact);
+            pbaForm.setPr('ContactID', contact.ID);
+            var form = $('#@Model.FormName').closest('form');
+            var call = form.data('pbaForm').getModel();
+
+            pbaAPI.openDetailView(contact.BoType.Mnemonic, {
+                entity: contact,
+                toSave: true,
+                link: { LinkSourceID: call.ID, Mnemonic: call.BoType.Mnemonic }
+            });
+        };
+
+        var searchContact = function (phone, code) {
+
+            var $w = $('<div>').kendoWindow({
+                width: 600,
+                height: 600,
+                title: "Создание контакта",
+                actions: ["Maximize", "Close"],
+                modal: true,
+                content: {
+                    url: "@Url.Action("CreateCallContact","Event")",
+                    data: { phone: phone , code : code}
+                },
+                activate: function () {
+                    $w.trigger('onActivate');
+                },
+                deactivate: function () {
+                    this.destroy();
+                },
+                resize: function () {
+                    $w.trigger('onResize');
+                },
+                close: function () {
+                    var contact = this.contact;
+                    if(contact){
+                        openContact(contact);
+                    }
+                    this.destroy();
+                }
+            });
+
+            $w.data('kendoWindow').center().open();
+
+        };
+
+        var selectContact = function (contacts) {
+            pbaAPI.selectSimple(contacts,
+            {
+                template: "<a href='\\\\#' class=\"list-group-item links-mnemonic-template \" style=\"text-align: center;\" data-id=\"#: ID #\">#: Title #</a>",
+                callback: function (res) {
+                    if (res.error) {
+                        pbaAPI.errorMsg(result.error);
+                    } else {
+                        openContact(res);
+                    }
+                }
+            });
+        };
+
+        var searchNumber = function (phone, code) {
+
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("CheckPhoneNumber", "Event")",
+                data: { number: phone, code: code },
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+
+                    if (result) {
+                        if (result.length === 0) {
+                            searchContact(phone, code);
+                        } else if (result.length === 1) {
+                            openContact(result[0]);
+                        } else if (result.length > 1) {
+                            selectContact(result);
+                        }
+                    }
+                }
+            });
+        }
+
+
+        $('#@Model.FormName').closest('form').on('onAfterBind', function (e, form) {
+            pbaForm = form;
+            model = form.getModel();
+
+            if (!model.Contact) {
+                searchNumber(model.Phone, model.Code);
+            }
+        });
+
+
+    })();
+
+</script>

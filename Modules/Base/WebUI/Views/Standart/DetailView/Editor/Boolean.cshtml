@@ -1,0 +1,44 @@
+﻿@model EditorViewModel
+
+
+<script>
+    (function () {
+        var editors = $("div.label-editor-row[data-field='@Model.PropertyName']");
+        var form = editors.closest("form");
+        //var editor = editors.find("input#@Model.UID");
+
+
+        form.on('onAfterBind', function (evt, form) {
+
+            var isChange = false;
+            @if (!String.IsNullOrEmpty(Model.OnChangeClientScript))
+            {
+
+                //внедряем текст скрипта
+                @Html.Raw(Model.OnChangeClientScript);
+            }
+        });
+
+        form.on("onChange", function (evt, obj)
+        {
+
+            var isChange = true;
+            if (obj.field === "@Model.PropertyName")
+            {
+                var form = obj.sender;
+                @if (!String.IsNullOrEmpty(Model.OnChangeClientScript))
+                {
+                    //внедряем текст скрипта
+                    @Html.Raw(Model.OnChangeClientScript);
+                }
+            }
+
+        });
+
+    })();
+</script>
+
+
+
+@Html.CheckBox(Model)
+

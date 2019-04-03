@@ -1,0 +1,173 @@
+﻿@using Newtonsoft.Json
+@model StandartFormModel
+
+@{
+    string tabstripID = Html.CreateSystemName("tabstrip");
+}
+
+<form id="@Model.FormName" class="common-form">
+    @if (Model.TabsCount > 1 && !Model.ViewModelConfig.DetailView.HideTabs)
+    {
+        <script>
+            (function() {
+                "use strict";
+
+                var $tabstrip = $();
+                var $form = $();
+                var form = null;
+                
+                window["@tabstripID"] = {
+                    onActivate: function (event) {
+                        $tabstrip = $tabstrip.length ? $tabstrip : $("#@tabstripID");
+                        $form = $form.length ? $form : $("#@Model.FormName");
+                        form = $form.data("pbaForm");
+
+                        if (!form) {
+                            return;
+                        }
+
+                        var tabId = $(event.item).attr('data-tab');
+
+                        if (!tabId) {
+                            pbaAPI.errorMsg('tab id is undefined');
+                            return;
+                        }
+
+                        if (event && event.type === "click")
+                            corpProp.dv.wnd.setTabIndex(form, $(event.item).attr('tab-index'));
+
+                        // UPDATE SCROLLBAR ON TAB SHOWN
+                        $tabstrip.find(".k-state-active[data-tab-content]").perfectScrollbar("update");
+
+                        // EMIT TAB SHOWN
+                        form.onTabShown(tabId);
+                    }
+                };
+            }());
+        </script>
+
+        <div class="kwidget kwidget--tabstrip">
+            @(Html.Kendo().TabStrip()
+                  .Name(tabstripID)
+                  .Animation(false)
+                  .SelectedIndex(0)
+                  .Scrollable(true)
+                  .TabPosition(TabStripTabPosition.Left)
+                  .Events(events => events.Activate(string.Format("window[\"{0}\"].onActivate", tabstripID)))
+                  .Items(items =>
+                  {
+                      int tabIndex = 0;
+                      foreach (var tab in Model.Tabs)
+                      {
+                          
+                          string tabName = System.Text.RegularExpressions.Regex.Replace(tab.TabName, @"\[[0-9]*\]", "");
+                          items.Add()
+                              .Text(tabName.Substring(0, Math.Min(tabName.Length, 18)) + (tabName.Length > 18 ? "..." : ""))
+                              .HtmlAttributes(new { data_tab = tab.TabID, Title = tabName, tab_index = tabIndex })
+                              .ContentHtmlAttributes(new { data_tab_content = tab.TabID });
+                          tabIndex++;
+                      }
+                  }))
+
+            <div id="@(tabstripID)_content" style="display: none;">@RenderBody()</div>
+        </div>
+
+        <script>
+            $(function() {
+                "use strict";
+
+                var $form = $("#@Model.FormName");
+                var $tabstrip = $("#@tabstripID");
+                var $content = $("#@(tabstripID)_content");
+                var tabs = @Html.Raw(JsonConvert.SerializeObject(Model.Tabs.Select(x => x.TabID)));
+                for (var i = 0; i < tabs.length; i++) {
+                    var tabId = tabs[i];
+
+                    $content.find('#' + tabId)
+                        .appendTo(
+                            $tabstrip.find('[data-tab-content="' + tabId + '"]')
+                            .perfectScrollbar({
+                                suppressScrollX: true,
+                                wheelSpeed: 0.6
+                            }));
+                }
+
+                $form.on('onValidate',
+                    function(e, event) {
+
+                    });
+
+                // SCROLL OF ANY TAB CONTENT
+                $form.on("ps-scroll-y",
+                    function() {
+                        $form.trigger("onScroll");
+                    });
+
+                // BIND SCROLLBAR UPDATE ON WINDOW SHOW & RESIZE
+                $form.on("onShown onResize",
+                    function() {
+                        $tabstrip.find(".k-state-active[data-tab-content]").perfectScrollbar("update");
+                    });
+
+                $form.on("onShown",
+                    function () {
+                        var selectedTab = $tabstrip.data("kendoTabStrip").select();
+                        $form.data("pbaForm").onTabShown($(selectedTab).attr("data-tab"));
+                    });
+
+            });
+        </script>
+    }
+    else
+    {
+        @RenderBody()
+
+        <script>
+            $(function() {
+                "use strict";
+
+                var $form = $("#@Model.FormName");
+
+                $form.perfectScrollbar({ suppressScrollX: true, wheelSpeed: 0.6 });
+
+                // PERFECTSCROLLBAR PROPAGATES SCROLL TO PARENT ELEMENTS
+                $form.on("ps-scroll-y",
+                    function() {
+                        $form.trigger("onScroll");
+                    });
+
+                // BIND SCROLLBAR UPDATE ON WINDOW SHOW & RESIZE
+                $form.on("onShown onResize",
+                    function() {
+                        $form.perfectScrollbar("update");
+                    });
+            });
+        </script>
+    }
+
+    <script>
+        $(function() {
+            var $form = $("#@Model.FormName");
+
+            $form.on("onShown onResize",
+                function() {
+                    if ($form.width() < 800) {
+                        $form.addClass("form-vertical");
+                    } else {
+                        $form.removeClass("form-vertical");
+                    }
+                });
+
+            $form.on('onShown',
+                function () {
+                    var form = $form.data('pbaForm');
+                    var tabId = $form.find('[role=tabpanel][aria-expanded=true]').data('tab-content');
+                    // CURRENT TAB SHOWN
+                    //form.onTabShown(tabId);
+                    setTimeout(function () {
+                        corpProp.dv.wnd.selectTab(form);
+                    }, 500)
+                });
+        });
+    </script>
+</form>

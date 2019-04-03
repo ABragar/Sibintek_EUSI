@@ -1,0 +1,52 @@
+﻿#content {
+    position: relative;
+    padding: 15px;
+    opacity: 1;
+    transition: opacity 0.25s;
+}
+
+#content.loading {
+    opacity: 0.5;
+}
+
+#content:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background: url(/Content/loaders/puff.svg) rgba(255, 255, 255, 0.25) no-repeat center center;
+    background-size: 100px;
+    transition: opacity 0.25s;
+    pointer-events: none;
+    visibility: hidden;
+    z-index: 2;
+}
+
+#content.loading:after {
+    opacity: 0.85;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+#content > .content__html {
+    height: 100%;
+}
+
+#content > .content__next {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#page-title {
+    display: none;
+}

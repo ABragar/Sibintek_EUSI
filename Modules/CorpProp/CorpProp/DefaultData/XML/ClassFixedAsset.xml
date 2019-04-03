@@ -1,0 +1,2495 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<ClassFixedAssets>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>1100001</Code>
+		<PublishCode>1100001</PublishCode>
+		<Name>ЗемельныеУчастки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>1100002</Code>
+		<PublishCode>1100002</PublishCode>
+		<Name>ОбъектыПриродопольз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>1110001</Code>
+		<PublishCode>1110001</PublishCode>
+		<Name>ЗданияПроизвНепроизв</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>1110002</Code>
+		<PublishCode>1110002</PublishCode>
+		<Name>Передвижные здания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>1110003</Code>
+		<PublishCode>1110003</PublishCode>
+		<Name>Автозаправочные стан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>1121001</Code>
+		<PublishCode>1121001</PublishCode>
+		<Name>Сооружения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>1121002</Code>
+		<PublishCode>1121002</PublishCode>
+		<Name>Скважины</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>1122010</Code>
+		<PublishCode>1122010</PublishCode>
+		<Name>Линейные Сооружения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>1122011</Code>
+		<PublishCode>1122011</PublishCode>
+		<Name>Трубопроводы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>1130001</Code>
+		<PublishCode>1130001</PublishCode>
+		<Name>Жилые здания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>1141001</Code>
+		<PublishCode>1141001</PublishCode>
+		<Name>СиловМашинОборуд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>1141002</Code>
+		<PublishCode>1141002</PublishCode>
+		<Name>РабочМашинОборуд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>1141012</Code>
+		<PublishCode>1141012</PublishCode>
+		<Name>СпецтранспСилМашОбор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>1141013</Code>
+		<PublishCode>1141013</PublishCode>
+		<Name>СпецтранспРабочМашин</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>1142003</Code>
+		<PublishCode>1142003</PublishCode>
+		<Name>ОборудСКоличУчетом</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>1142008</Code>
+		<PublishCode>1142008</PublishCode>
+		<Name>ИзмерРегулирПриборЛа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>1142009</Code>
+		<PublishCode>1142009</PublishCode>
+		<Name>СредМеханАвтомхУправ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>1142010</Code>
+		<PublishCode>1142010</PublishCode>
+		<Name>ВычислительнТехника</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>1142011</Code>
+		<PublishCode>1142011</PublishCode>
+		<Name>Инструмент</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>1150001</Code>
+		<PublishCode>1150001</PublishCode>
+		<Name>Транспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>1160001</Code>
+		<PublishCode>1160001</PublishCode>
+		<Name>ПроизвХозИнв</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>1160002</Code>
+		<PublishCode>1160002</PublishCode>
+		<Name>Мебель</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>1190001</Code>
+		<PublishCode>1190001</PublishCode>
+		<Name>Библиотечный фонд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>1190002</Code>
+		<PublishCode>1190002</PublishCode>
+		<Name>Прочие ОС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>3100000</Code>
+		<PublishCode>3100000</PublishCode>
+		<Name>ДхВлжЗемляОбПрирод</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>3110000</Code>
+		<PublishCode>3110000</PublishCode>
+		<Name>ДхВлжЗдания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>3121000</Code>
+		<PublishCode>3121000</PublishCode>
+		<Name>ДхВлжСооружения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>3122000</Code>
+		<PublishCode>3122000</PublishCode>
+		<Name>ДхВлжПередатУстройст</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>3141000</Code>
+		<PublishCode>3141000</PublishCode>
+		<Name>ДхВлжСилМашИОборудов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>3142000</Code>
+		<PublishCode>3142000</PublishCode>
+		<Name>ДхВлжРабочМашИОборуд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>3142008</Code>
+		<PublishCode>3142008</PublishCode>
+		<Name>ДхВлжИзмРегПрибЛабОб</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>3142009</Code>
+		<PublishCode>3142009</PublishCode>
+		<Name>ДхВлжСрМеханАвтУпрТр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>3142010</Code>
+		<PublishCode>3142010</PublishCode>
+		<Name>ДхВлжВычислитТехника</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>3142011</Code>
+		<PublishCode>3142011</PublishCode>
+		<Name>ДхВлжВИнструмент</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>3150000</Code>
+		<PublishCode>3150000</PublishCode>
+		<Name>ДхВлжТранспСредства</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>3160000</Code>
+		<PublishCode>3160000</PublishCode>
+		<Name>ДхВлжПроизвХозИнвент</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>3190000</Code>
+		<PublishCode>3190000</PublishCode>
+		<Name>ДхВлжПрочие ОС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>4011501</Code>
+		<PublishCode>4011501</PublishCode>
+		<Name>НМА Сейсмика 3Д, 4Д</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>4011511</Code>
+		<PublishCode>4011511</PublishCode>
+		<Name>НМА ИнфПолучеПоРезул</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>4110600</Code>
+		<PublishCode>4110600</PublishCode>
+		<Name>ИсклПр_Ноу-Хау</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>4111000</Code>
+		<PublishCode>4111000</PublishCode>
+		<Name>ИсклПравоНаПатенты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>4111010</Code>
+		<PublishCode>4111010</PublishCode>
+		<Name>ПользНедрНеСвязСДобы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>4112000</Code>
+		<PublishCode>4112000</PublishCode>
+		<Name>ПравоАвтНаИнтегрСхем</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>4121000</Code>
+		<PublishCode>4121000</PublishCode>
+		<Name>ПатентИзоПромОбразМд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>4122000</Code>
+		<PublishCode>4122000</PublishCode>
+		<Name>ПравоНаТоварныйЗнак</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>4122100</Code>
+		<PublishCode>4122100</PublishCode>
+		<Name>СвИсклПрНаимМестПрТв</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>4123000</Code>
+		<PublishCode>4123000</PublishCode>
+		<Name>ПравоНаСелекцДостиж</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>4130000</Code>
+		<PublishCode>4130000</PublishCode>
+		<Name>НИОКР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>4131000</Code>
+		<PublishCode>4131000</PublishCode>
+		<Name>НИОКР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>4200000</Code>
+		<PublishCode>4200000</PublishCode>
+		<Name>ИсклАвтПрНаПрЭВМиБД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>4200001</Code>
+		<PublishCode>4200001</PublishCode>
+		<Name>ИскПрНаПрЭВМиБД_НеАм</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>4207000</Code>
+		<PublishCode>4207000</PublishCode>
+		<Name>МультимедПродукты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>4208000</Code>
+		<PublishCode>4208000</PublishCode>
+		<Name>АудиовизПроиз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>4209000</Code>
+		<PublishCode>4209000</PublishCode>
+		<Name>ЦифрЭлрКартПрострД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>4210000</Code>
+		<PublishCode>4210000</PublishCode>
+		<Name>ИнтернетСайт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>4400000</Code>
+		<PublishCode>4400000</PublishCode>
+		<Name>ОрганизРасходы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>4500000</Code>
+		<PublishCode>4500000</PublishCode>
+		<Name>Деловая репутация</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>4900000</Code>
+		<PublishCode>4900000</PublishCode>
+		<Name>Право пользовНедрами</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>4911000</Code>
+		<PublishCode>4911000</PublishCode>
+		<Name>ЛицензДобНефтиГаза</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>4912000</Code>
+		<PublishCode>4912000</PublishCode>
+		<Name>ППН_ПриЗаклМеждунДог</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>4913000</Code>
+		<PublishCode>4913000</PublishCode>
+		<Name>СмешанныеЛицензии</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>62</ExternalID>
+		<ExternalParentID/>
+		<Code>4914000</Code>
+		<PublishCode>4914000</PublishCode>
+		<Name>ПрочЛицензППН</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>63</ExternalID>
+		<ExternalParentID/>
+		<Code>4990000</Code>
+		<PublishCode>4990000</PublishCode>
+		<Name>ПрочиеНМА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>64</ExternalID>
+		<ExternalParentID/>
+		<Code>6010100</Code>
+		<PublishCode>6010100</PublishCode>
+		<Name>ГРА_ПравоПользНедр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>65</ExternalID>
+		<ExternalParentID/>
+		<Code>6010101</Code>
+		<PublishCode>6010101</PublishCode>
+		<Name>ЛицДобНефГазБезПрДоб</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>66</ExternalID>
+		<ExternalParentID/>
+		<Code>6010102</Code>
+		<PublishCode>6010102</PublishCode>
+		<Name>Лиценз_Доб_Нефт_Газ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>67</ExternalID>
+		<ExternalParentID/>
+		<Code>6010103</Code>
+		<PublishCode>6010103</PublishCode>
+		<Name>Лицензии прочие</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>68</ExternalID>
+		<ExternalParentID/>
+		<Code>6010201</Code>
+		<PublishCode>6010201</PublishCode>
+		<Name>ГРА_ГеологразвРаботы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>69</ExternalID>
+		<ExternalParentID/>
+		<Code>6010202</Code>
+		<PublishCode>6010202</PublishCode>
+		<Name>ГРА_НепродСкважины</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>70</ExternalID>
+		<ExternalParentID/>
+		<Code>6010300</Code>
+		<PublishCode>6010300</PublishCode>
+		<Name>ГРА_ГеоэкологМонитор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>71</ExternalID>
+		<ExternalParentID/>
+		<Code>6010400</Code>
+		<PublishCode>6010400</PublishCode>
+		<Name>ГРА_ ТехнПроекДокТПД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>72</ExternalID>
+		<ExternalParentID/>
+		<Code>6040100</Code>
+		<PublishCode>6040100</PublishCode>
+		<Name>Актив_ARO_ОЛОС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>73</ExternalID>
+		<ExternalParentID/>
+		<Code>6041100</Code>
+		<PublishCode>6041100</PublishCode>
+		<Name>Актив_ARO_ОЛПМА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>74</ExternalID>
+		<ExternalParentID/>
+		<Code>7020300</Code>
+		<PublishCode>7020300</PublishCode>
+		<Name>Затраты оборудования</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>75</ExternalID>
+		<ExternalParentID/>
+		<Code>8010000</Code>
+		<PublishCode>8010000</PublishCode>
+		<Name>КапВложенияЗемУчастк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>76</ExternalID>
+		<ExternalParentID/>
+		<Code>8020000</Code>
+		<PublishCode>8020000</PublishCode>
+		<Name>КапВложенияОбПрирод</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>77</ExternalID>
+		<ExternalParentID/>
+		<Code>8030000</Code>
+		<PublishCode>8030000</PublishCode>
+		<Name>КапВложенияНКС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>78</ExternalID>
+		<ExternalParentID/>
+		<Code>8030002</Code>
+		<PublishCode>8030002</PublishCode>
+		<Name>Реконструкция, КапСт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>79</ExternalID>
+		<ExternalParentID/>
+		<Code>8030011</Code>
+		<PublishCode>8030011</PublishCode>
+		<Name>НКС:КапСтр - НовСтр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>80</ExternalID>
+		<ExternalParentID/>
+		<Code>8030012</Code>
+		<PublishCode>8030012</PublishCode>
+		<Name>НКС:КапСтр -Реконстр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>81</ExternalID>
+		<ExternalParentID/>
+		<Code>8030013</Code>
+		<PublishCode>8030013</PublishCode>
+		<Name>НКС:ПодготОбщепрРаб</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>82</ExternalID>
+		<ExternalParentID/>
+		<Code>8030021</Code>
+		<PublishCode>8030021</PublishCode>
+		<Name>НКС:Бурение-НовСтр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>83</ExternalID>
+		<ExternalParentID/>
+		<Code>8030022</Code>
+		<PublishCode>8030022</PublishCode>
+		<Name>НКС:Бурение-Реконстр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>84</ExternalID>
+		<ExternalParentID/>
+		<Code>8030023</Code>
+		<PublishCode>8030023</PublishCode>
+		<Name>НКС:ЭкологМеропр-я</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>85</ExternalID>
+		<ExternalParentID/>
+		<Code>8030030</Code>
+		<PublishCode>8030030</PublishCode>
+		<Name>НКС:ПИР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>86</ExternalID>
+		<ExternalParentID/>
+		<Code>8030031</Code>
+		<PublishCode>8030031</PublishCode>
+		<Name>НКС:СтрахованиеСМР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>87</ExternalID>
+		<ExternalParentID/>
+		<Code>8030040</Code>
+		<PublishCode>8030040</PublishCode>
+		<Name>НКС:ЗУС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>88</ExternalID>
+		<ExternalParentID/>
+		<Code>8030051</Code>
+		<PublishCode>8030051</PublishCode>
+		<Name>НКС:ПРБУчУстКЦДНов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>89</ExternalID>
+		<ExternalParentID/>
+		<Code>8030052</Code>
+		<PublishCode>8030052</PublishCode>
+		<Name>НКС:ПРБУчНеУстКЦДНов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>90</ExternalID>
+		<ExternalParentID/>
+		<Code>8030053</Code>
+		<PublishCode>8030053</PublishCode>
+		<Name>НКС:ПРБУчУстКЦДРек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>91</ExternalID>
+		<ExternalParentID/>
+		<Code>8030054</Code>
+		<PublishCode>8030054</PublishCode>
+		<Name>НКС:ПРБУчНеУстКЦДРек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>92</ExternalID>
+		<ExternalParentID/>
+		<Code>8030055</Code>
+		<PublishCode>8030055</PublishCode>
+		<Name>НКС:НеУстКЦД3DСейРаз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>93</ExternalID>
+		<ExternalParentID/>
+		<Code>8030090</Code>
+		<PublishCode>8030090</PublishCode>
+		<Name>НКС:ИнвестКонтракты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>94</ExternalID>
+		<ExternalParentID/>
+		<Code>8031000</Code>
+		<PublishCode>8031000</PublishCode>
+		<Name>ЗавершСтр-воОсСр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>95</ExternalID>
+		<ExternalParentID/>
+		<Code>8031010</Code>
+		<PublishCode>8031010</PublishCode>
+		<Name>ЗаверМонтОбНеВхСмСтр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>96</ExternalID>
+		<ExternalParentID/>
+		<Code>8032000</Code>
+		<PublishCode>8032000</PublishCode>
+		<Name>Монтаж  оборудования</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>97</ExternalID>
+		<ExternalParentID/>
+		<Code>8032002</Code>
+		<PublishCode>8032002</PublishCode>
+		<Name>МодерОборНеВхВсмСтр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>98</ExternalID>
+		<ExternalParentID/>
+		<Code>8040000</Code>
+		<PublishCode>8040000</PublishCode>
+		<Name>КапВложенияПриобрОС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>99</ExternalID>
+		<ExternalParentID/>
+		<Code>8040001</Code>
+		<PublishCode>8040001</PublishCode>
+		<Name>КапВлПриобрНескладОС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>100</ExternalID>
+		<ExternalParentID/>
+		<Code>8040002</Code>
+		<PublishCode>8040002</PublishCode>
+		<Name>Модернизация</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>101</ExternalID>
+		<ExternalParentID/>
+		<Code>8040003</Code>
+		<PublishCode>8040003</PublishCode>
+		<Name>КапВлПриобрТранспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>102</ExternalID>
+		<ExternalParentID/>
+		<Code>8040004</Code>
+		<PublishCode>8040004</PublishCode>
+		<Name>МодернизацияАвтотран</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>103</ExternalID>
+		<ExternalParentID/>
+		<Code>8041000</Code>
+		<PublishCode>8041000</PublishCode>
+		<Name>КВлжПриобрОСТрбГосРг</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>104</ExternalID>
+		<ExternalParentID/>
+		<Code>8042000</Code>
+		<PublishCode>8042000</PublishCode>
+		<Name>КраткосрМонтажОбор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>105</ExternalID>
+		<ExternalParentID/>
+		<Code>8050000</Code>
+		<PublishCode>8050000</PublishCode>
+		<Name>КапВложенияНМА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>106</ExternalID>
+		<ExternalParentID/>
+		<Code>8050021</Code>
+		<PublishCode>8050021</PublishCode>
+		<Name>КВНМА:ППНУчУстнКЦДПД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>107</ExternalID>
+		<ExternalParentID/>
+		<Code>8050022</Code>
+		<PublishCode>8050022</PublishCode>
+		<Name>КВНМА:ОбПАУчУстКЦДПД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>108</ExternalID>
+		<ExternalParentID/>
+		<Code>8050023</Code>
+		<PublishCode>8050023</PublishCode>
+		<Name>НМА ИнфПолучеПоРезул</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>109</ExternalID>
+		<ExternalParentID/>
+		<Code>8050024</Code>
+		<PublishCode>8050024</PublishCode>
+		<Name>КВНМА:ГРР-Сейсм3Д4Д</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>110</ExternalID>
+		<ExternalParentID/>
+		<Code>8050100</Code>
+		<PublishCode>8050100</PublishCode>
+		<Name>ПриобСздНМА_НеАмИм</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>111</ExternalID>
+		<ExternalParentID/>
+		<Code>8050101</Code>
+		<PublishCode>8050101</PublishCode>
+		<Name>НКС:ПатентИзоПромОбр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>112</ExternalID>
+		<ExternalParentID/>
+		<Code>8050102</Code>
+		<PublishCode>8050102</PublishCode>
+		<Name>НКС:ИсклАвтПрНаПрЭВМ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>113</ExternalID>
+		<ExternalParentID/>
+		<Code>8050103</Code>
+		<PublishCode>8050103</PublishCode>
+		<Name>НКС:ПравоАвтНаИнтегр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>114</ExternalID>
+		<ExternalParentID/>
+		<Code>8050104</Code>
+		<PublishCode>8050104</PublishCode>
+		<Name>НКС:ПравоНаТоварныйЗ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>115</ExternalID>
+		<ExternalParentID/>
+		<Code>8050106</Code>
+		<PublishCode>8050106</PublishCode>
+		<Name>НКС:ИсклПр_Ноу-Хау</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>116</ExternalID>
+		<ExternalParentID/>
+		<Code>8050107</Code>
+		<PublishCode>8050107</PublishCode>
+		<Name>НКС:МультимедПродукт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>117</ExternalID>
+		<ExternalParentID/>
+		<Code>8050108</Code>
+		<PublishCode>8050108</PublishCode>
+		<Name>НКС:АудиовизПроиз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>118</ExternalID>
+		<ExternalParentID/>
+		<Code>8050109</Code>
+		<PublishCode>8050109</PublishCode>
+		<Name>НКС:ЦифрЭлрКартПрост</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>119</ExternalID>
+		<ExternalParentID/>
+		<Code>8050121</Code>
+		<PublishCode>8050121</PublishCode>
+		<Name>НКС:ИнтернетСайт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>120</ExternalID>
+		<ExternalParentID/>
+		<Code>8050190</Code>
+		<PublishCode>8050190</PublishCode>
+		<Name>НКС:ПрочиеНМА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>121</ExternalID>
+		<ExternalParentID/>
+		<Code>8051010</Code>
+		<PublishCode>8051010</PublishCode>
+		<Name>КВ:ПатИзоПромОбразМд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>122</ExternalID>
+		<ExternalParentID/>
+		<Code>8051011</Code>
+		<PublishCode>8051011</PublishCode>
+		<Name>КВТР:ПатИзоПромОбрМд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>123</ExternalID>
+		<ExternalParentID/>
+		<Code>8051020</Code>
+		<PublishCode>8051020</PublishCode>
+		<Name>КВ:ИсклПрНаПрЭВМиБД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>124</ExternalID>
+		<ExternalParentID/>
+		<Code>8051021</Code>
+		<PublishCode>8051021</PublishCode>
+		<Name>КВТР:ИсклПрНаПрЭВМБД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>125</ExternalID>
+		<ExternalParentID/>
+		<Code>8051030</Code>
+		<PublishCode>8051030</PublishCode>
+		<Name>КВ:ПравоАвтНаИнтегСх</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>126</ExternalID>
+		<ExternalParentID/>
+		<Code>8051031</Code>
+		<PublishCode>8051031</PublishCode>
+		<Name>КВТР:ПравоАвтНаИнтСх</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>127</ExternalID>
+		<ExternalParentID/>
+		<Code>8051040</Code>
+		<PublishCode>8051040</PublishCode>
+		<Name>КВ:ПравоНаТоварнЗнак</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>128</ExternalID>
+		<ExternalParentID/>
+		<Code>8051041</Code>
+		<PublishCode>8051041</PublishCode>
+		<Name>КВТР:ПравоНаТоварЗнк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>129</ExternalID>
+		<ExternalParentID/>
+		<Code>8051060</Code>
+		<PublishCode>8051060</PublishCode>
+		<Name>КВ:ИсклПр_Ноу-Хау</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>130</ExternalID>
+		<ExternalParentID/>
+		<Code>8051061</Code>
+		<PublishCode>8051061</PublishCode>
+		<Name>КВТР:ИсклПр_Ноу-Хау</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>131</ExternalID>
+		<ExternalParentID/>
+		<Code>8051070</Code>
+		<PublishCode>8051070</PublishCode>
+		<Name>КВ:МультимПродукты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>132</ExternalID>
+		<ExternalParentID/>
+		<Code>8051071</Code>
+		<PublishCode>8051071</PublishCode>
+		<Name>КВТР:МультимПродукты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>133</ExternalID>
+		<ExternalParentID/>
+		<Code>8051080</Code>
+		<PublishCode>8051080</PublishCode>
+		<Name>КВ:АудиовизПроиз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>134</ExternalID>
+		<ExternalParentID/>
+		<Code>8051081</Code>
+		<PublishCode>8051081</PublishCode>
+		<Name>КВТР:АудиовизПроиз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>135</ExternalID>
+		<ExternalParentID/>
+		<Code>8051090</Code>
+		<PublishCode>8051090</PublishCode>
+		<Name>КВ:ЦифрЭлрКартПростД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>136</ExternalID>
+		<ExternalParentID/>
+		<Code>8051091</Code>
+		<PublishCode>8051091</PublishCode>
+		<Name>КВТР:ЦифрЭлКартПрДан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>137</ExternalID>
+		<ExternalParentID/>
+		<Code>8051210</Code>
+		<PublishCode>8051210</PublishCode>
+		<Name>КВ:ИнтернетСайт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>138</ExternalID>
+		<ExternalParentID/>
+		<Code>8051211</Code>
+		<PublishCode>8051211</PublishCode>
+		<Name>КВТР:ИнтернетСайт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>139</ExternalID>
+		<ExternalParentID/>
+		<Code>8051900</Code>
+		<PublishCode>8051900</PublishCode>
+		<Name>КВ:ПрочиеНМА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>140</ExternalID>
+		<ExternalParentID/>
+		<Code>8051901</Code>
+		<PublishCode>8051901</PublishCode>
+		<Name>КВТР:ПрочиеНМА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>141</ExternalID>
+		<ExternalParentID/>
+		<Code>8090000</Code>
+		<PublishCode>8090000</PublishCode>
+		<Name>КапВложенияГРА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>142</ExternalID>
+		<ExternalParentID/>
+		<Code>8090001</Code>
+		<PublishCode>8090001</PublishCode>
+		<Name>КапВложенияГРА_СОД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>143</ExternalID>
+		<ExternalParentID/>
+		<Code>8090003</Code>
+		<PublishCode>8090003</PublishCode>
+		<Name>КапВложенияГеоРазвБр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>144</ExternalID>
+		<ExternalParentID/>
+		<Code>8090021</Code>
+		<PublishCode>8090021</PublishCode>
+		<Name>КВПА:ППНУчНустКЦДПД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>145</ExternalID>
+		<ExternalParentID/>
+		<Code>8090022</Code>
+		<PublishCode>8090022</PublishCode>
+		<Name>КВПА:ППНУчНустКЦДБПД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>146</ExternalID>
+		<ExternalParentID/>
+		<Code>8091000</Code>
+		<PublishCode>8091000</PublishCode>
+		<Name>ПрЗатНИОКР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>147</ExternalID>
+		<ExternalParentID/>
+		<Code>8096021</Code>
+		<PublishCode>8096021</PublishCode>
+		<Name>Об_ПА_УчНеКЦД_ПрДоб</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>148</ExternalID>
+		<ExternalParentID/>
+		<Code>8096022</Code>
+		<PublishCode>8096022</PublishCode>
+		<Name>Об_ПА_УчНеКЦДБезПрД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>149</ExternalID>
+		<ExternalParentID/>
+		<Code>8096023</Code>
+		<PublishCode>8096023</PublishCode>
+		<Name>Об_ИнфБурУспЛикПРСкв</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>150</ExternalID>
+		<ExternalParentID/>
+		<Code>8096024</Code>
+		<PublishCode>8096024</PublishCode>
+		<Name>Об_ИнфБурУспЛикПРСкв</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>151</ExternalID>
+		<ExternalParentID/>
+		<Code>10100000</Code>
+		<PublishCode>10100000</PublishCode>
+		<Name>СпецОдеждаЭксплуат</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>152</ExternalID>
+		<ExternalParentID/>
+		<Code>10100001</Code>
+		<PublishCode>10100001</PublishCode>
+		<Name>СпецДежурнОдеждЭкспл</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>153</ExternalID>
+		<ExternalParentID/>
+		<Code>10140100</Code>
+		<PublishCode>10140100</PublishCode>
+		<Name>Прочие МПЗ_ОбъектыОС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>154</ExternalID>
+		<ExternalParentID/>
+		<Code>41050000</Code>
+		<PublishCode>41050000</PublishCode>
+		<Name>ТоварыНеклассифНМА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>155</ExternalID>
+		<ExternalParentID/>
+		<Code>43050000</Code>
+		<PublishCode>43050000</PublishCode>
+		<Name>ГП_ОпытнОбразец_прод</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>156</ExternalID>
+		<ExternalParentID/>
+		<Code>43060000</Code>
+		<PublishCode>43060000</PublishCode>
+		<Name>ГП_НКС для продажи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>157</ExternalID>
+		<ExternalParentID/>
+		<Code>49000000</Code>
+		<PublishCode>49000000</PublishCode>
+		<Name>ЕСВ_ПредназнДляПрода</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>158</ExternalID>
+		<ExternalParentID/>
+		<Code>91000000</Code>
+		<PublishCode>91000000</PublishCode>
+		<Name>НКС:ИнвестКонтракты</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>159</ExternalID>
+		<ExternalParentID/>
+		<Code>96040000</Code>
+		<PublishCode>96040000</PublishCode>
+		<Name>Дс_ARO_ОЛОС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>160</ExternalID>
+		<ExternalParentID/>
+		<Code>96041000</Code>
+		<PublishCode>96041000</PublishCode>
+		<Name>Дс_ARO_ОЛМПА</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>161</ExternalID>
+		<ExternalParentID/>
+		<Code>96050100</Code>
+		<PublishCode>96050100</PublishCode>
+		<Name>Дс_ОЭО_Актив_АмбарШл</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>162</ExternalID>
+		<ExternalParentID/>
+		<Code>96050110</Code>
+		<PublishCode>96050110</PublishCode>
+		<Name>Дс_ОЭО_ОВД_Нефтешл</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>163</ExternalID>
+		<ExternalParentID/>
+		<Code>96050200</Code>
+		<PublishCode>96050200</PublishCode>
+		<Name>Дс_ОЭО_ОВД_ВоднОб</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>164</ExternalID>
+		<ExternalParentID/>
+		<Code>96050300</Code>
+		<PublishCode>96050300</PublishCode>
+		<Name>Дс_ОЭО_Актив_ПРС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>165</ExternalID>
+		<ExternalParentID/>
+		<Code>96050500</Code>
+		<PublishCode>96050500</PublishCode>
+		<Name>Дс_ОЭО_ОВД_Земля</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>166</ExternalID>
+		<ExternalParentID/>
+		<Code>96058000</Code>
+		<PublishCode>96058000</PublishCode>
+		<Name>Дс_ОЭО_Актив_Прочие</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>167</ExternalID>
+		<ExternalParentID/>
+		<Code>96058019</Code>
+		<PublishCode>96058019</PublishCode>
+		<Name>Дс_ОЭО_ОВД_ПрочиеОВД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>168</ExternalID>
+		<ExternalParentID/>
+		<Code>96059000</Code>
+		<PublishCode>96059000</PublishCode>
+		<Name>Дс_ОЭО_ПРЧ_НеСвОсАк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>169</ExternalID>
+		<ExternalParentID/>
+		<Code>96059019</Code>
+		<PublishCode>96059019</PublishCode>
+		<Name>Дс_ОЭО_ПРЧ_ПрочРасх</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>170</ExternalID>
+		<ExternalParentID/>
+		<Code>96059029</Code>
+		<PublishCode>96059029</PublishCode>
+		<Name>Дс_ОЭО_ПереликвидОС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>171</ExternalID>
+		<ExternalParentID/>
+		<Code>97010000</Code>
+		<PublishCode>97010000</PublishCode>
+		<Name>Лицензии(долгосроч)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>172</ExternalID>
+		<ExternalParentID/>
+		<Code>97010001</Code>
+		<PublishCode>97010001</PublishCode>
+		<Name>Лицензии(кратксрочн)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>173</ExternalID>
+		<ExternalParentID/>
+		<Code>97020000</Code>
+		<PublishCode>97020000</PublishCode>
+		<Name>ПрогОбесНеИскПр(долг</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>174</ExternalID>
+		<ExternalParentID/>
+		<Code>97020001</Code>
+		<PublishCode>97020001</PublishCode>
+		<Name>ПроОбесНеИскПр(крат)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>175</ExternalID>
+		<ExternalParentID/>
+		<Code>97090000</Code>
+		<PublishCode>97090000</PublishCode>
+		<Name>ДоначАмортЛиквидСква</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>176</ExternalID>
+		<ExternalParentID/>
+		<Code>97110000</Code>
+		<PublishCode>97110000</PublishCode>
+		<Name>ПускНалРаб(АрОС(Дол</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>177</ExternalID>
+		<ExternalParentID/>
+		<Code>97110001</Code>
+		<PublishCode>97110001</PublishCode>
+		<Name>ПускНалРаб(АрОС)крат</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>178</ExternalID>
+		<ExternalParentID/>
+		<Code>97150000</Code>
+		<PublishCode>97150000</PublishCode>
+		<Name>Ремонт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>179</ExternalID>
+		<ExternalParentID/>
+		<Code>97160000</Code>
+		<PublishCode>97160000</PublishCode>
+		<Name>МедСтрахование</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>180</ExternalID>
+		<ExternalParentID/>
+		<Code>97160001</Code>
+		<PublishCode>97160001</PublishCode>
+		<Name>СтрахРаботн_Кср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>181</ExternalID>
+		<ExternalParentID/>
+		<Code>97160002</Code>
+		<PublishCode>97160002</PublishCode>
+		<Name>СтрахРаботн_Дср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>182</ExternalID>
+		<ExternalParentID/>
+		<Code>97170000</Code>
+		<PublishCode>97170000</PublishCode>
+		<Name>Страхование Имуществ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>183</ExternalID>
+		<ExternalParentID/>
+		<Code>97170001</Code>
+		<PublishCode>97170001</PublishCode>
+		<Name>СтрахИмущ_Кср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>184</ExternalID>
+		<ExternalParentID/>
+		<Code>97170002</Code>
+		<PublishCode>97170002</PublishCode>
+		<Name>СтрахИмущ_Дср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>185</ExternalID>
+		<ExternalParentID/>
+		<Code>97180000</Code>
+		<PublishCode>97180000</PublishCode>
+		<Name>ПодпискаНаПериодИзда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>186</ExternalID>
+		<ExternalParentID/>
+		<Code>97190000</Code>
+		<PublishCode>97190000</PublishCode>
+		<Name>ПрочиеРасходы(СбЗат)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>187</ExternalID>
+		<ExternalParentID/>
+		<Code>97190001</Code>
+		<PublishCode>97190001</PublishCode>
+		<Name>СбЗтрДоУстСрСпис_Кср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>188</ExternalID>
+		<ExternalParentID/>
+		<Code>97190002</Code>
+		<PublishCode>97190002</PublishCode>
+		<Name>СбЗтрДоУстСрСпис_Дср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>189</ExternalID>
+		<ExternalParentID/>
+		<Code>97200000</Code>
+		<PublishCode>97200000</PublishCode>
+		<Name>Услуги</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>190</ExternalID>
+		<ExternalParentID/>
+		<Code>97410001</Code>
+		<PublishCode>97410001</PublishCode>
+		<Name>ЛицензНаВидДеят_Кср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>191</ExternalID>
+		<ExternalParentID/>
+		<Code>97410002</Code>
+		<PublishCode>97410002</PublishCode>
+		<Name>ЛицензНаВидДеят_Дср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>192</ExternalID>
+		<ExternalParentID/>
+		<Code>97420001</Code>
+		<PublishCode>97420001</PublishCode>
+		<Name>ПравПользИнтлСоб_Кср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>193</ExternalID>
+		<ExternalParentID/>
+		<Code>97420002</Code>
+		<PublishCode>97420002</PublishCode>
+		<Name>ПравПользИнтлСоб_Дср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>194</ExternalID>
+		<ExternalParentID/>
+		<Code>97430001</Code>
+		<PublishCode>97430001</PublishCode>
+		<Name>АдаптМодифОтдМод_Кср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>195</ExternalID>
+		<ExternalParentID/>
+		<Code>97430002</Code>
+		<PublishCode>97430002</PublishCode>
+		<Name>АдаптМодифОтдМод_Дср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>196</ExternalID>
+		<ExternalParentID/>
+		<Code>97440001</Code>
+		<PublishCode>97440001</PublishCode>
+		<Name>ПраваПользНедр_Кср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>197</ExternalID>
+		<ExternalParentID/>
+		<Code>97440002</Code>
+		<PublishCode>97440002</PublishCode>
+		<Name>ПраваПользНедр_Дср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>198</ExternalID>
+		<ExternalParentID/>
+		<Code>97450001</Code>
+		<PublishCode>97450001</PublishCode>
+		<Name>РаспЗнанНИОКТР_Кср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>199</ExternalID>
+		<ExternalParentID/>
+		<Code>97450002</Code>
+		<PublishCode>97450002</PublishCode>
+		<Name>РаспЗнанНИОКТР_Дср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>200</ExternalID>
+		<ExternalParentID/>
+		<Code>97900000</Code>
+		<PublishCode>97900000</PublishCode>
+		<Name>ПрочиеРасходы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>201</ExternalID>
+		<ExternalParentID/>
+		<Code>97900001</Code>
+		<PublishCode>97900001</PublishCode>
+		<Name>ПрочиеРБП_Кср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>202</ExternalID>
+		<ExternalParentID/>
+		<Code>97900002</Code>
+		<PublishCode>97900002</PublishCode>
+		<Name>ПрочиеРБП_Дср</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>203</ExternalID>
+		<ExternalParentID/>
+		<Code>M0167000</Code>
+		<PublishCode>M0167000</PublishCode>
+		<Name>МСФО:ОС-%поКредитам</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>204</ExternalID>
+		<ExternalParentID/>
+		<Code>M0196000</Code>
+		<PublishCode>M0196000</PublishCode>
+		<Name>МСФО:РезервARO</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>205</ExternalID>
+		<ExternalParentID/>
+		<Code>M0198000</Code>
+		<PublishCode>M0198000</PublishCode>
+		<Name>МСФО:ПравНаДобПИ(MR)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>206</ExternalID>
+		<ExternalParentID/>
+		<Code>M0867000</Code>
+		<PublishCode>M0867000</PublishCode>
+		<Name>МСФО:КС-%поКредитам</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>207</ExternalID>
+		<ExternalParentID/>
+		<Code>M110000</Code>
+		<PublishCode>M110000</PublishCode>
+		<Name>УВ:ЗемельныеУчастки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>208</ExternalID>
+		<ExternalParentID/>
+		<Code>M111000</Code>
+		<PublishCode>M111000</PublishCode>
+		<Name>УВ:Здания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>209</ExternalID>
+		<ExternalParentID/>
+		<Code>M112000</Code>
+		<PublishCode>M112000</PublishCode>
+		<Name>УВ:Сооружения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>210</ExternalID>
+		<ExternalParentID/>
+		<Code>M113000</Code>
+		<PublishCode>M113000</PublishCode>
+		<Name>УВ:Жилые здания</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>211</ExternalID>
+		<ExternalParentID/>
+		<Code>M114000</Code>
+		<PublishCode>M114000</PublishCode>
+		<Name>УВ:СиловМашинОборуд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>212</ExternalID>
+		<ExternalParentID/>
+		<Code>M115000</Code>
+		<PublishCode>M115000</PublishCode>
+		<Name>УВ:Транспорт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>213</ExternalID>
+		<ExternalParentID/>
+		<Code>M116000</Code>
+		<PublishCode>M116000</PublishCode>
+		<Name>УВ:ПроизвХозИнв</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>214</ExternalID>
+		<ExternalParentID/>
+		<Code>M119000</Code>
+		<PublishCode>M119000</PublishCode>
+		<Name>УВ:Прочие ОС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>215</ExternalID>
+		<ExternalParentID/>
+		<Code>M604010</Code>
+		<PublishCode>M604010</PublishCode>
+		<Name>ARO_НфГзАктив</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>216</ExternalID>
+		<ExternalParentID/>
+		<Code>M604110</Code>
+		<PublishCode>M604110</PublishCode>
+		<Name>ARO(ОЛПМА)_НфГзАктив</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>217</ExternalID>
+		<ExternalParentID/>
+		<Code>M700000</Code>
+		<PublishCode>M700000</PublishCode>
+		<Name>УВ:ОбТребМонтажа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>218</ExternalID>
+		<ExternalParentID/>
+		<Code>M800001</Code>
+		<PublishCode>M800001</PublishCode>
+		<Name>УВ:КапВложения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>219</ExternalID>
+		<ExternalParentID/>
+		<Code>M800002</Code>
+		<PublishCode>M800002</PublishCode>
+		<Name>УВ:НКС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>220</ExternalID>
+		<ExternalParentID/>
+		<Code>N0100000</Code>
+		<PublishCode>N0100000</PublishCode>
+		<Name>Пересчет ОС_НУ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>221</ExternalID>
+		<ExternalParentID/>
+		<Code>N0803000</Code>
+		<PublishCode>N0803000</PublishCode>
+		<Name>НУ:ФормМатерРасх</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>222</ExternalID>
+		<ExternalParentID/>
+		<Code>N0803500</Code>
+		<PublishCode>N0803500</PublishCode>
+		<Name>НУ:ФормМатерРасхЗБС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>223</ExternalID>
+		<ExternalParentID/>
+		<Code>N3491000</Code>
+		<PublishCode>N3491000</PublishCode>
+		<Name>ОсобыйПорядокДляНУ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>224</ExternalID>
+		<ExternalParentID/>
+		<Code>N3608090</Code>
+		<PublishCode>N3608090</PublishCode>
+		<Name>НУ:ФормРасхОсвПрРес</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>225</ExternalID>
+		<ExternalParentID/>
+		<Code>N9180900</Code>
+		<PublishCode>N9180900</PublishCode>
+		<Name>НУ:ФормВнереалРасх</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>226</ExternalID>
+		<ExternalParentID/>
+		<Code>N9180910</Code>
+		<PublishCode>N9180910</PublishCode>
+		<Name>НУ:ФормВнереалПрочПЛ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>227</ExternalID>
+		<ExternalParentID/>
+		<Code>N9700000</Code>
+		<PublishCode>N9700000</PublishCode>
+		<Name>НУ:УбыткДлНалогНаПри</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>228</ExternalID>
+		<ExternalParentID/>
+		<Code>NIR91000</Code>
+		<PublishCode>NIR91000</PublishCode>
+		<Name>ОтрРасх НИР 91 счет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>229</ExternalID>
+		<ExternalParentID/>
+		<Code>NOBZ0000</Code>
+		<PublishCode>NOBZ0000</PublishCode>
+		<Name>ОтрРасхЗБС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>230</ExternalID>
+		<ExternalParentID/>
+		<Code>NOKB0000</Code>
+		<PublishCode>NOKB0000</PublishCode>
+		<Name>ОтрМатРасх</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>231</ExternalID>
+		<ExternalParentID/>
+		<Code>NOPR0000</Code>
+		<PublishCode>NOPR0000</PublishCode>
+		<Name>ОтрРасхОПР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>232</ExternalID>
+		<ExternalParentID/>
+		<Code>NOPR0001</Code>
+		<PublishCode>NOPR0001</PublishCode>
+		<Name>ОтрРасхОПП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>233</ExternalID>
+		<ExternalParentID/>
+		<Code>NOPR9000</Code>
+		<PublishCode>NOPR9000</PublishCode>
+		<Name>ОтрВнереалРасх(Проч)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>234</ExternalID>
+		<ExternalParentID/>
+		<Code>X0010700</Code>
+		<PublishCode>X0010700</PublishCode>
+		<Name>ОС_СписПределахЛимит</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>235</ExternalID>
+		<ExternalParentID/>
+		<Code>X0010800</Code>
+		<PublishCode>X0010800</PublishCode>
+		<Name>ОС_НеПринадлНаПрСобс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>236</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0010000</Code>
+		<PublishCode>Z0010000</PublishCode>
+		<Name>АрендовОсновнСредств</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>237</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0010500</Code>
+		<PublishCode>Z0010500</PublishCode>
+		<Name>СписанОС_НоНеЛиквид</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>238</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0010600</Code>
+		<PublishCode>Z0010600</PublishCode>
+		<Name>СписанНКС_НоНеЛиквид</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>239</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0011000</Code>
+		<PublishCode>Z0011000</PublishCode>
+		<Name>АрендовЗемельнУчастк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>240</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0020000</Code>
+		<PublishCode>Z0020000</PublishCode>
+		<Name>ВзятыеОтвет.Хранение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>241</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0030000</Code>
+		<PublishCode>Z0030000</PublishCode>
+		<Name>ВзятЛизингОсновныеСр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>242</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0110000</Code>
+		<PublishCode>Z0110000</PublishCode>
+		<Name>ОС_арест_списанные</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>243</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0125012</Code>
+		<PublishCode>Z0125012</PublishCode>
+		<Name>СписанМПЗ_НоНеЛиквид</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>244</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0160000</Code>
+		<PublishCode>Z0160000</PublishCode>
+		<Name>ОбИнтелСоб_НеисклПр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>245</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0180000</Code>
+		<PublishCode>Z0180000</PublishCode>
+		<Name>КолУчРБП_СтНижеУрСущ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>246</ExternalID>
+		<ExternalParentID/>
+		<Code>Z0810000</Code>
+		<PublishCode>Z0810000</PublishCode>
+		<Name>НКС_арест_ликвидир</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>247</ExternalID>
+		<ExternalParentID/>
+		<Code>Z1100000</Code>
+		<PublishCode>Z1100000</PublishCode>
+		<Name>ОсСр ДрИмущКоличУчет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>248</ExternalID>
+		<ExternalParentID/>
+		<Code>Z9401000</Code>
+		<PublishCode>Z9401000</PublishCode>
+		<Name>СписанОС_ПоНедостаче</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+	<ClassFixedAsset>
+		<ID>0</ID>
+		<ExternalID>249</ExternalID>
+		<ExternalParentID/>
+		<Code>Z9408000</Code>
+		<PublishCode>Z9408000</PublishCode>
+		<Name>СписанНКС_ПоНедостач</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</ClassFixedAsset>
+</ClassFixedAssets>
+  </DefaultDataHolder>

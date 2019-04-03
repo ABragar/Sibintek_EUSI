@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{380A3DEA-4A1B-4B27-BA37-C498143D0FAC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CorpProp.RosReestr</RootNamespace>
+    <AssemblyName>CorpProp.RosReestr</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="Entities\AnotherSubject.cs" />
+    <Compile Include="Entities\BaseParameter.cs" />
+    <Compile Include="Entities\BuildRecord.cs" />
+    <Compile Include="Entities\CadNumber.cs" />
+    <Compile Include="Entities\CarParkingSpaceLocationInBuildPlans.cs" />
+    <Compile Include="Entities\ContourOKSOut.cs" />
+    <Compile Include="Entities\DealRecord.cs" />
+    <Compile Include="Entities\DocumentRecord.cs" />
+    <Compile Include="Entities\ExtractBuild.cs" />
+    <Compile Include="Entities\ExtractLand.cs" />
+    <Compile Include="Entities\ExtractNZS.cs" />
+    <Compile Include="Entities\ExtractObject.cs" />
+    <Compile Include="Entities\ExtractSubj.cs" />
+    <Compile Include="Entities\Governance.cs" />
+    <Compile Include="Entities\IndividualSubject.cs" />
+    <Compile Include="Entities\LandRecord.cs" />
+    <Compile Include="Entities\LegalSubject.cs" />
+    <Compile Include="Entities\NameRecord.cs" />
+    <Compile Include="Entities\Notice.cs" />
+    <Compile Include="Entities\NoticeSubj.cs" />
+    <Compile Include="Entities\ObjectPartNumberRestrictions.cs" />
+    <Compile Include="Entities\ObjectRecord.cs" />
+    <Compile Include="Entities\OldNumber.cs" />
+    <Compile Include="Entities\Organization.cs" />
+    <Compile Include="Entities\PermittedUse.cs" />
+    <Compile Include="Entities\PublicSubject.cs" />
+    <Compile Include="Entities\Refusal.cs" />
+    <Compile Include="Entities\RefusalSubj.cs" />
+    <Compile Include="Entities\RestrictedRightsPartyOut.cs" />
+    <Compile Include="Entities\RestrictRecord.cs" />
+    <Compile Include="Entities\RightHolder.cs" />
+    <Compile Include="Entities\RightRecord.cs" />
+    <Compile Include="Entities\RightRecordNumber.cs" />
+    <Compile Include="Entities\RoomLocationInBuildPlans.cs" />
+    <Compile Include="Entities\StatusCorpProp.cs" />
+    <Compile Include="Entities\SubjectRecord.cs" />
+    <Compile Include="Entities\SubjRight.cs" />
+    <Compile Include="Entities\TPerson.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\ContourExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\DealExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\BuildExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\DocExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\ObjectExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\RestrictExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\RightExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\SubjectExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V04\DocExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V04\ExtractSubjExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V04\ObjectExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V04\RestrictExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V04\RightExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V04\SubjectExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V06\DocExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\ExtractBuildExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\ExtractLandExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\ExtractObjectExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V06\ExtractSubjExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\LandExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V06\ObjectExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V06\SubjectExtentions.cs" />
+    <Compile Include="Extentions\ObjectExtentions.cs" />
+    <Compile Include="Extentions\EGRN\Unknown\OtherExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V06\RestrictExtentions.cs" />
+    <Compile Include="Extentions\EGRP\V06\RightExtentions.cs" />
+    <Compile Include="Import\ImportChecker.cs" />
+    <Compile Include="Import\ImportHelper.cs" />
+    <Compile Include="Import\ImportHolder.cs" />
+    <Compile Include="Import\ImportHolderVoids.cs" />
+    <Compile Include="Import\ImportLoader.cs" />
+    <Compile Include="Import\ImportStarter.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="Migration\MigrateEstate.cs" />
+    <Compile Include="Migration\MigrateExtract.cs" />
+    <Compile Include="Migration\MigrateFileCard.cs" />
+    <Compile Include="Migration\MigrateEncumbrance.cs" />
+    <Compile Include="Migration\MigrateHistory.cs" />
+    <Compile Include="Migration\MigrateHolder.cs" />
+    <Compile Include="Migration\MigrateLog.cs" />
+    <Compile Include="Migration\MigrateRights.cs" />
+    <Compile Include="Migration\MigrateState.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\Model.ExtractBuild.cs" />
+    <Compile Include="Model\Model.ExtractLand.cs" />
+    <Compile Include="Model\Model.ExtractNZS.cs" />
+    <Compile Include="Model\Model.ExtractObject.cs" />
+    <Compile Include="Model\Model.ExtractSubj.cs" />
+    <Compile Include="Model\Model.Extract.cs" />
+    <Compile Include="Model\Model.ObjectRecord.cs" />
+    <Compile Include="Model\Model.RightRecord.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AnotherSubjectService.cs" />
+    <Compile Include="Services\BuildRecordService.cs" />
+    <Compile Include="Services\CadNumberService.cs" />
+    <Compile Include="Services\CarParkingSpaceLocationInBuildPlansService.cs" />
+    <Compile Include="Services\ContourOKSOutService.cs" />
+    <Compile Include="Services\DealRecordService.cs" />
+    <Compile Include="Services\DocumentRecordService.cs" />
+    <Compile Include="Services\ExtractBuildService.cs" />
+    <Compile Include="Services\ExtractLandService.cs" />
+    <Compile Include="Services\ExtractObjectService.cs" />
+    <Compile Include="Services\ExtractSubjService.cs" />
+    <Compile Include="Services\IndividualSubjectService.cs" />
+    <Compile Include="Services\LandRecordService.cs" />
+    <Compile Include="Services\LegalSubjectService.cs" />
+    <Compile Include="Services\NameRecordService.cs" />
+    <Compile Include="Services\ObjectPartNumberRestrictionsService.cs" />
+    <Compile Include="Services\ObjectRecordService.cs" />
+    <Compile Include="Services\OldNumberService.cs" />
+    <Compile Include="Services\PermittedUseService.cs" />
+    <Compile Include="Services\PublicSubjectService.cs" />
+    <Compile Include="Services\RestrictedRightsPartyOutService.cs" />
+    <Compile Include="Services\RestrictRecordService.cs" />
+    <Compile Include="Services\RightHolderService.cs" />
+    <Compile Include="Services\RightRecordNumberService.cs" />
+    <Compile Include="Services\RightRecordService.cs" />
+    <Compile Include="Services\RoomLocationInBuildPlansService.cs" />
+    <Compile Include="Services\SubjectRecordService.cs" />
+    <Compile Include="Tabs\ExtractGroups.cs" />
+    <Compile Include="Tabs\Tabs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Base\Base.DAL.EF\Base.DAL.EF.csproj">
+      <Project>{3EFB8CC9-6A65-4A10-925F-0DF1624EE13B}</Project>
+      <Name>Base.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Security\Base.Security.csproj">
+      <Project>{93a4c5a8-701d-4212-b338-dacb6ec8c670}</Project>
+      <Name>Base.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.UI\Base.UI.csproj">
+      <Project>{3ae7843f-06ce-4989-a978-210f7dfcf1a9}</Project>
+      <Name>Base.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Utils.Common\Base.Utils.Common.csproj">
+      <Project>{ad97ef5c-e096-465d-9729-2d0524af2476}</Project>
+      <Name>Base.Utils.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base\Base.csproj">
+      <Project>{b78a3750-fa57-41f2-927a-dfb795552548}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CorpProp\CorpProp.csproj">
+      <Project>{2e747cf0-6c14-4d66-bd1b-b6841a761519}</Project>
+      <Name>CorpProp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SibRosReestr\SibRosReestr.csproj">
+      <Project>{e94f3295-70f8-4b29-8695-1494092a7d4c}</Project>
+      <Name>SibRosReestr</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,59 @@
+.scroller-absolute {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	overflow-y: hidden;
+
+	&-with-top {
+		position: absolute;
+		top: 55px;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		overflow-y: hidden;
+
+		padding: 0;
+
+		.panel-heading {
+			font-weight: 300;
+			line-height: @modular-scale *1em;
+
+			padding: 0;
+
+			 > .panel-buttons {
+				float: right;
+
+				.btn-link {
+					font-size: 1.15em;
+					line-height: 1;
+
+					margin-bottom: .025em;
+					padding: 0;
+
+					color: @color--light;
+					border: none;
+					}
+				}
+			}
+		}
+
+	&-with-search {
+		top: pow(@modular-scale *1em, -1) *11;
+		}
+
+	&-with-pager {
+		bottom: @modular-scale *2em;
+
+		 + .map-items-pager {
+			position: absolute;
+			bottom: @modular-scale *.5em;
+			left: pow(@modular-scale *1em, -1);
+
+			margin: 0;
+			}
+		}
+	}

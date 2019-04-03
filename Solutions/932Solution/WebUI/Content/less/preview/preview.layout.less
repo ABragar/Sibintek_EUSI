@@ -1,0 +1,38 @@
+﻿.preview-layout {
+    &__header {
+        position: relative;
+        height: 2.857rem;
+        line-height: 2.857rem;
+        padding: 0 .714rem;
+        background-color: @color--dark;
+    }
+
+    &__title {
+        display: inline-block;
+        margin: 0;
+        vertical-align: middle;
+        color: @color--light;
+        font-size: 1.4286rem;
+    }
+
+    &__btn-info {
+        position: absolute;
+        display: block;
+        top: 2.857rem / 2 - 1.1429rem / 2;
+        right: .714rem;
+        width: 1.1429rem;
+        height: 1.1429rem;
+        line-height: 1.1429rem;
+        color: @color--light;
+        font-size: 1.1429rem;
+        cursor: pointer;
+    }
+
+    &__body {
+        position: relative;
+        min-width: 17.143rem;
+        min-height: 5.714rem;
+        background: @color--light;
+        color: darken( @color--light, 80% );
+    }
+}

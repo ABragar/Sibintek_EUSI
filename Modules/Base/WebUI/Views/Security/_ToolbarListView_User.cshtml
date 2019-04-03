@@ -1,0 +1,131 @@
+﻿@model Dialog_WidgetViewModel
+@{
+    string nameToolbar = Html.CreateSystemName("toolbar");
+    string statusdrpDwnID = Html.CreateSystemName("drp_");
+
+}
+
+<script>
+    window["@nameToolbar"] = new WrapToolbar("@nameToolbar", "ToolbarListView_User");
+
+    (function () {
+        var composite = window["@Model.DialogID"];
+        var toolbar = window["@nameToolbar"];
+
+        composite.registerWidget(toolbar);
+
+        toolbar.listViewSelectedObject = null;
+
+        toolbar.refreshListView = function () {
+            composite.onWidgetChanged(
+            {
+                sender: toolbar,
+                event: "refresh",
+                params: {}
+            });
+        };
+
+        toolbar.onNeighbourWidgetChanged = function (e) {
+            switch (e.sender.desc) {
+                case "GridView":
+                    if (e.event === "onDataBound") {
+                        toolbar.element().find('#searchbox').find('.cancel-search').removeClass('k-loading').addClass('k-i-close');
+                        toolbar.popupEl().find('#searchbox').find('.cancel-search').removeClass('k-loading').addClass('k-i-close');
+                    }
+                    break;
+            }
+        };
+
+        toolbar.onClick = function (e) {
+            composite.onWidgetChanged(
+            {
+                sender: toolbar,
+                event: "click",
+                params: {
+                    event: e,
+                    action: e.target[0].getAttribute("data-action")
+                }
+            });
+        };
+
+        toolbar.searchBox_onClick = function (e) {
+            if (e.str) {
+                e.sender.find('.cancel-search').addClass('k-loading').removeClass('k-i-close');
+            }
+
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "search",
+                    params: { str: e.str }
+                });
+        };
+
+    })();
+</script>
+
+@(Html.Kendo().ToolBar()
+        .Name(nameToolbar)
+        .Events(e => e.OverflowOpen(nameToolbar + ".onOverflowOpen"))
+        .Items(items =>
+        {
+            items.Add().Template("<label style='padding-left:25px;'>Статус:</label>");
+            items.Add().Template("<input id=" + statusdrpDwnID + " style='width: 200px;' />").Overflow(ShowInOverflowPopup.Never);
+
+            items.Add().Type(CommandType.Separator);
+
+            items.Add().Template(
+                  String.Format(@"<div id='searchbox'>
+                            <div class='search-tools'>
+                                <span class='k-icon k-i-close cancel-search'></span>
+                                <input class='k-textbox pull-right' placeholder='Поиск' value='{0}'>
+                            </div>
+                        </div>", Model.SearchStr)).Overflow(ShowInOverflowPopup.Never);
+        })
+)
+
+<script>
+    $(function () {
+        var toolbar = window["@nameToolbar"];
+        var $toolbar = toolbar.element();
+
+        $toolbar.find("#searchbox").pbaSearchBox(toolbar.searchBox_onClick);
+        toolbar.popupEl().find("#searchbox").pbaSearchBox(toolbar.searchBox_onClick);
+
+        //NOTE: в данной версии toolbar-а возможно использовать иконки только из кендо-спрайтов
+        //TODO: убрать!!!
+        $toolbar.find(".k-sprite.fa").removeClass("k-sprite");
+        toolbar.popupEl().find(".k-sprite.fa").removeClass("k-sprite");
+
+
+        var arrValues = [];
+        var values = application.UiEnums.get("@typeof(Base.Security.CustomStatus).GetTypeName()").Values;
+
+        for (var key in values) {
+            if (values.hasOwnProperty(key)) {
+                arrValues.push(values[key]);
+            }
+        }
+
+        var composite = window["@Model.DialogID"];
+
+        $('#@statusdrpDwnID').kendoDropDownList({
+            optionLabel: "Все",
+            dataTextField: "Title",
+            dataValueField: "Value",
+            dataSource: arrValues,
+            select: function (e) {
+                var dataItem = this.dataItem(e.item);
+
+                composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "selectStatus",
+                    params: {
+                        status: dataItem.Value
+                    }
+                });
+            }
+        });
+    });
+</script>

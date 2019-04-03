@@ -1,0 +1,123 @@
+2018-10-08 14:59:45.4896 RestService.TicketFormatService RestService.TicketFormatService.GetAesTicketFormat - GetAesTicketFormat
+2018-10-08 14:59:45.6142 RestService.TicketFormatService RestService.TicketFormatService.GetAesDataProtector - GetAesDataProtector
+2018-10-08 14:59:57.0841 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-08 15:43:39.7718 RestService.TicketFormatService RestService.TicketFormatService.GetAesTicketFormat - GetAesTicketFormat
+2018-10-08 15:43:39.8067 RestService.TicketFormatService RestService.TicketFormatService.GetAesDataProtector - GetAesDataProtector
+2018-10-08 15:43:49.3981 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-08 15:45:42.9797 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 15:45:42.9927 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 15:45:43.0435 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 15:45:43.0525 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 15:45:43.0784 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 15:46:01.8158 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 15:46:01.8158 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 15:46:01.8856 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 15:46:01.8856 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 15:46:01.9285 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 15:52:33.3959 RestService.TicketFormatService RestService.TicketFormatService.GetAesTicketFormat - GetAesTicketFormat
+2018-10-08 15:52:33.4308 RestService.TicketFormatService RestService.TicketFormatService.GetAesDataProtector - GetAesDataProtector
+2018-10-08 15:52:38.0988 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-08 15:53:45.3470 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 15:53:45.3470 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 15:53:45.3789 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 15:53:45.3789 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 15:53:45.3979 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 15:54:15.5453 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 15:54:16.7052 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 15:54:20.8004 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 15:54:22.0990 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 15:54:34.7681 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 15:55:24.4772 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 15:55:24.4841 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 15:55:24.5101 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 15:55:24.5101 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 15:55:24.5350 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 16:10:41.0422 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 16:10:41.0731 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 16:10:41.0971 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 16:10:41.0971 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 16:10:41.1200 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 16:11:00.2556 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 16:11:00.2556 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 16:11:00.3085 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 16:11:00.3285 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 16:11:00.3783 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 16:20:14.1590 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 16:20:14.1590 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 16:20:14.2178 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 16:20:14.2218 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 16:20:14.2547 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 16:27:36.3947 RestService.TicketFormatService RestService.TicketFormatService.GetAesTicketFormat - GetAesTicketFormat
+2018-10-08 16:27:36.4566 RestService.TicketFormatService RestService.TicketFormatService.GetAesDataProtector - GetAesDataProtector
+2018-10-08 16:27:38.8414 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-08 17:01:17.9162 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 17:01:17.9342 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 17:01:18.0998 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 17:01:18.0998 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 17:01:18.1406 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 17:03:29.3632 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 17:03:29.3632 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 17:03:29.4071 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 17:03:29.4071 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 17:03:29.4420 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 17:24:38.3303 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 17:24:38.3303 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 17:24:38.4390 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 17:24:38.4390 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 17:24:38.4709 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 17:25:06.1031 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 17:25:06.1031 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 17:25:06.1390 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 17:25:06.1419 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 17:25:06.1759 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 17:28:13.6953 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 17:28:13.6953 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 17:28:13.7342 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 17:28:13.7342 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 17:28:13.7960 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 17:28:30.3355 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 17:28:30.3355 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 17:28:30.3675 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 17:28:30.3675 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 17:28:30.4014 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 17:33:55.2141 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 17:33:55.2141 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 17:33:55.2969 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 17:33:55.2969 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 17:33:55.3907 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 17:34:52.3450 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 17:34:52.3450 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 17:34:52.3740 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 17:34:52.3770 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 17:34:52.3999 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 17:37:04.0594 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 17:37:04.0893 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 17:37:04.1511 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2018-10-08 17:37:04.1511 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 17:37:04.2259 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 0
+2018-10-08 17:45:33.2489 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-08 18:01:13.6477 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-08 18:01:13.6477 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-08 18:01:13.6796 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-08 18:01:13.6796 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-08 18:01:13.7824 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 55
+2018-10-08 18:01:24.8737 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:29
+2018-10-08 18:01:24.9146 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:8193529d-01db-486b-9d51-2e1c1065c9a8, Params:[]}
+2018-10-08 18:01:30.5894 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:29
+2018-10-08 18:01:30.6193 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:8193529d-01db-486b-9d51-2e1c1065c9a8, Params:[]}
+2018-10-08 18:01:32.9711 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:29
+2018-10-08 18:01:32.9990 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:8193529d-01db-486b-9d51-2e1c1065c9a8, Params:[]}
+2018-10-08 18:01:40.2556 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:54
+2018-10-08 18:01:40.2745 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по транспортному налогу, Guid:1c000972-cb12-4e77-a409-305fbab0cf7b, Params:[]}
+2018-10-08 18:01:43.5418 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:29
+2018-10-08 18:01:43.5667 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:8193529d-01db-486b-9d51-2e1c1065c9a8, Params:[]}
+2018-10-08 18:01:50.9041 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:33
+2018-10-08 18:01:50.9310 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:518783ce-3a4f-492f-9e39-890eda670cf6, Params:[]}
+2018-10-08 18:01:53.1671 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:12
+2018-10-08 18:01:53.1920 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Отчёт по имуществу в разрезе ОГ 2, Guid:7d554b90-2c75-47a5-a6ea-0037571d8071, Params:[]}
+2018-10-08 18:01:54.0696 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:2
+2018-10-08 18:01:54.0946 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Перечень ННА в формате как в ЛНД, Guid:41358222-f1ee-4280-a951-e8dce56d3fb2, Params:[]}
+2018-10-08 18:01:57.8675 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:1
+2018-10-08 18:01:57.8844 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контрольный отчёт по основным характеристикам ОБУ_ОИ_Росреестр, Guid:25d17a5c-560e-4443-a1fc-9d6a71aa80b4, Params:[]}
+2018-10-08 18:02:01.2634 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:3
+2018-10-08 18:02:01.2873 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контрольный отчёт по основным характеристикам ОБУ_ОИ_Сделка, Guid:a3a55507-fb9d-450e-8bb3-bbbb9514b9e4, Params:[]}

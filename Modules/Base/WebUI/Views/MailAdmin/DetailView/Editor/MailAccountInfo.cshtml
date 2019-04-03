@@ -1,0 +1,48 @@
+﻿@using Base.MailAdmin.Entities
+@model EditorViewModel
+
+<div id="@Model.UID">
+    <a id="info" href="#" class="k-button"><i class="fa fa-envelope-o"></i>&nbsp;Почтовый аккаунт</a>
+</div>
+
+<script>
+    $(function () {
+        var $editor = $("#@Model.UID");
+
+        $editor.find("#info").click(function () {
+            var form = $editor.closest("form").data("pbaForm");
+
+            $.get("@Url.Action("GetAccountByUserId", "MailAdmin")",
+                { userId: form.getPr("ID") },
+                function (res) {
+                    if (res.error) {
+                        pbaAPI.errorMsg(res.error);
+                    } else {
+                        pbaAPI.openDetailView("@nameof(MailAccount)",
+                        {
+                            entity: res,
+                            toSave: false,
+                            parentForm: form,
+                            callback: function (e) {
+                                if (e.type === "save") {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "@Url.Action("SaveAccount", "MailAdmin")",
+                                        data: JSON.stringify({ model: e.model }),
+                                        contentType: "application/json; charset=utf-8",
+                                        success: function (res) {
+                                            if (res.error)
+                                                pbaAPI.errorMsg(res.error);
+                                            else
+                                                pbaAPI.uploadMsg("Данные успешно сохранены");
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+
+                });
+        });
+    });
+</script>

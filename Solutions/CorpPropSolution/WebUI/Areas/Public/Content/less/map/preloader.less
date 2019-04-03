@@ -1,0 +1,131 @@
+﻿.map-progress {
+	position: absolute;
+	z-index: 1;
+	top: 70px;
+	right: 0;
+	left: 400px;
+
+	display: block;
+	overflow: hidden;
+
+	height: 4px;
+	margin: .5rem 0 1rem 0;
+	margin-top: 0;
+	margin-bottom: 0;
+
+	border-radius: 2px;
+	background-color: desaturate( darken( @color--accent, 11% ), 20% );
+	background-clip: padding-box;
+
+	.determinate {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+
+		transition: width .3s linear;
+
+		background-color: inherit;
+		background-color: desaturate( @color--accent, 49% );
+		}
+
+	.indeterminate {
+		background-color: desaturate( @color--accent, 49% );
+
+		&:before {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+
+			content: '';
+			-webkit-animation: indeterminate 2.1s cubic-bezier(.65, .815, .735, .395) infinite;
+			        animation: indeterminate 2.1s cubic-bezier(.65, .815, .735, .395) infinite;
+
+			background-color: inherit;
+
+			will-change: left, right;
+			}
+
+		&:after {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+
+			content: '';
+			-webkit-animation: indeterminate-short 2.1s cubic-bezier(.165, .84, .44, 1) infinite;
+			        animation: indeterminate-short 2.1s cubic-bezier(.165, .84, .44, 1) infinite;
+			-webkit-animation-delay: .3s;
+			        animation-delay: .3s;
+
+			background-color: inherit;
+
+			will-change: left, right;
+			}
+		}
+	}
+
+.ng-pageslide-body-closed .map-progress {
+	left: 0;
+	}
+
+
+@-webkit-keyframes indeterminate {
+	0% {
+		right: 100%;
+		left: -35%;
+		}
+	60% {
+		right: -90%;
+		left: 100%;
+		}
+	100% {
+		right: -90%;
+		left: 100%;
+		}
+	}
+
+@keyframes indeterminate {
+	0% {
+		right: 100%;
+		left: -35%;
+		}
+	60% {
+		right: -90%;
+		left: 100%;
+		}
+	100% {
+		right: -90%;
+		left: 100%;
+		}
+	}
+
+@-webkit-keyframes indeterminate-short {
+	0% {
+		right: 100%;
+		left: -200%;
+		}
+	60% {
+		right: -8%;
+		left: 107%;
+		}
+	100% {
+		right: -8%;
+		left: 107%;
+		}
+	}
+
+@keyframes indeterminate-short {
+	0% {
+		right: 100%;
+		left: -200%;
+		}
+	60% {
+		right: -8%;
+		left: 107%;
+		}
+	100% {
+		right: -8%;
+		left: 107%;
+		}
+	}

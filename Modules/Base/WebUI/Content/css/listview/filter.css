@@ -1,0 +1,50 @@
+﻿.k-filter-menu {
+  width: 30em !important;
+  border-radius: 3px;
+  padding: 0.809rem;
+  line-height: 1.618rem;
+}
+.k-filter-menu .k-filter-help-text {
+  margin-top: 0;
+  margin-bottom: 0.809rem;
+}
+.k-filter-menu .k-dropdown {
+  margin-top: 0;
+  margin-bottom: 0.4045rem;
+  width: 9.99924rem;
+}
+.k-filter-menu span.k-filter-and {
+  margin: 0 0.809rem 0.4045rem 0;
+  display: inline-block;
+}
+.k-filter-menu span.k-filter-and + .k-dropdown {
+  display: inline-block;
+}
+.k-filter-menu .k-autocomplete {
+  margin-top: 0;
+  margin-bottom: 1.618rem;
+}
+.k-filter-menu .input-group {
+  margin-top: 0;
+  margin-bottom: 0.809rem;
+}
+.k-filter-menu .k-multiselect-wrap .k-input {
+  height: 1.618rem !important;
+}
+.k-filter-menu ul.k-multicheck-wrap {
+  padding: 0.809rem 0 1.618rem;
+}
+.k-filter-menu ul.k-multicheck-wrap li {
+  padding-top: .2rem;
+}
+.k-filter-menu .k-checkbox {
+  padding-left: 0.61804697rem;
+}
+.k-filter-menu .k-button:hover,
+.k-filter-menu .k-button:focus {
+  background-color: #f2f3f5 !important;
+}
+.k-filter-menu > div > div:last-child {
+  border: none;
+  margin: 0.809rem 0 0 0;
+}

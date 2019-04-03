@@ -1,0 +1,52 @@
+﻿@using WebUI.Areas.Account
+@model WebUI.Areas.Account.Models.Account.PasswordLoginModel
+@{
+    var routevalues = Url.FromCurrent();
+
+    ViewBag.Title = "Вход";
+    ViewBag.ShowLogo = true;
+}
+
+@using (Html.BeginForm("Login", "Account", routevalues, FormMethod.Post, new Dictionary<string, object> { { "class", "account-card__form" } }))
+{
+    <!-- OPTIONAL ACTIONS -->
+    @*@Html.Action("LoginActions")*@
+    
+    @Html.AntiForgeryToken()
+
+    @Html.InputFieldFor(x => x.Login, "text")
+
+    @Html.InputFieldFor(x => x.Password, "password")
+
+    if (Model?.ValidateCaptcha == true)
+    {
+        @Html.HiddenFor(x => x.ValidateCaptcha)
+        @Html.Captcha(Model.CaptchaName, 140, 30)
+    }
+
+    <!-- REMEMBER_ME FIELD -->
+    @*<p>
+        <input id="field_remember-me" type="checkbox" name="@Html.NameFor(x => x.RememberMe)" data-checked="@Html.ValueFor(x => x.RememberMe)" class="filled-in"/>
+        <label for="field_remember-me">Запомнить меня</label>
+    </p>*@
+
+    <!-- SUBMIT BUTTON -->
+    <button class="btn btn-large btn-block" type="submit">Войти</button>
+
+    <!-- HIDDEN VALIDATION MESSAGES -->
+    <div class="validations">
+        <div data-validation-summary>@Html.ValidationSummary(true)</div>
+    </div>
+
+}
+<script>
+	//Отключить автозаполнение для полей авторизации
+	document.addEventListener('DOMContentLoaded', function () { 
+		$(".input-field input").each(function () {
+			$(this).attr("autocomplete", "off");
+		});
+	});
+</script>
+@*Секция с авторизацией по соцсетям*@
+@*@section card_footer
+{@Html.Action("Socials", new { action = "ExternalLogin" })}*@

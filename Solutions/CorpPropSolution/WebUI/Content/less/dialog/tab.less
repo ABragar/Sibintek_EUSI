@@ -1,0 +1,71 @@
+﻿.dialog__tab .grid-preset-columns {
+	max-width: pow( @modular-scale *1em, -1 ) *50 !important;
+
+	.column {
+		&.placeholder {
+			color: darken( @color--light, 67% );
+			background-color: fade( @color--success-pale, 45% );
+			background-image: linear-gradient( 45deg, fade( @color--light, 15% ) 25%, transparent 25%, transparent 50%, fade( @color--light, 15% ) 50%, fade( @color--light, 15% ) 75%, transparent 75%, transparent );
+			-webkit-background-size: 40px 40px;
+			        background-size: 40px 40px;
+
+			.drop-shadow( 1px, @color--success, 100% );
+			}
+
+		&-setting {
+			font-size: 1.333em;
+			line-height: 1;
+
+			top: .08em;
+
+			width: 1em;
+			margin-right: pow( @modular-scale *1em, -1 );
+
+			text-align: center;
+			}
+		}
+
+	 > li {
+		position: relative;
+
+		margin-bottom: pow( @modular-scale *1em, -1 ) !important;
+		padding: 0 !important;
+
+		border: none !important;
+		border-radius: 3px !important;
+
+		 > a {
+			line-height: @modular-scale;
+
+			display: block;
+
+			padding: @modular-scale *.5em 1em;
+
+			transition: background-color .15s @easing-curve--main;
+			letter-spacing: .025em;
+
+			border-radius: 3px;
+
+			&:hover, &:focus {
+				background-color: darken( @color--layout-bg, 5% );
+				}
+
+			&:active {
+				background-color: lighten( @color--layout-bg, 5% );
+				}
+			}
+
+		&.active > a {
+			color: @color--light;
+			background-color: darken( @color--primary, 5% );
+
+			&:hover, &:focus {
+				background-color: darken( @color--primary, 10% );
+				}
+
+			&:active {
+				background-color: @color--primary;
+				}
+			}
+		}
+	}

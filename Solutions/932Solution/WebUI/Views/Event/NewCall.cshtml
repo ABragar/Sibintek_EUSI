@@ -1,0 +1,137 @@
+﻿@{
+    string wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+    string phoneID = "inp_" + Guid.NewGuid().ToString("N");
+    string codeID = "code_" + Guid.NewGuid().ToString("N");
+    string acceptID = "accept_" + Guid.NewGuid().ToString("N");
+}
+
+
+
+<div id="@wrapID" class="new-call-wrap">
+    <input type="text" class="k-textbox county-code" id="@codeID" maxlength="3" placeholder="+7" value="+7">
+    <input type="tel" class="k-textbox k-valid phone-number" id="@phoneID" maxlength="14" placeholder="(XXX) XXX XXXX" />
+    <div class="accept accept-btn-wrap">
+        <button id="@acceptID" class="btn btn-success" disabled="disabled">Принять</button>
+    </div>
+    <div data-role="selectContact"></div>
+</div>
+
+
+<script>
+
+    (function () {
+
+        var parent = $('#@wrapID').closest("[data-role=window]");
+        var $accept = $('#@acceptID');
+        var $phone = $('#@phoneID');
+        var $code = $('#@codeID');
+        var callType = '@Model' === 'True';
+
+        $accept.width(parent.width() - 25);
+
+        parent.on('onActivate', function () {
+            $accept.width(parent.width() - 25);
+            $phone.focus();
+        });
+
+        parent.on('onResize', function () {
+            $accept.width(parent.width() - 25);
+        });
+
+        var createCall = function () {
+            var phone = $phone.val();
+            var code = $code.val() === "" ? null : $code.val();
+
+            $.get('@Url.Action("CreateCall","Event")', { phone: phone, code: code , isOutCall : callType}, function (e) {
+                if (e.error) {
+                    pbaAPI.errorMsg(e.message);
+                } else {
+                    var call = e;
+
+                    call.BoType.Mnemonic = "CallCenter";
+
+                    pbaAPI.openDetailView('Call', {
+                        entity: call,
+                        toSave: true
+                    });
+
+                    parent.data('kendoWindow').close();
+                }
+            });
+        };
+
+
+        $phone.blur(function () {
+            var $phone = $(this);
+
+            if ($phone.val() === '(') {
+                $phone.val('');
+            }
+        });
+
+        $phone.bind('click', function () {
+            var $phone = $(this);
+
+            if ($phone.val().length === 0) {
+                $phone.val('(');
+            } else {
+                var val = $phone.val();
+                $phone.val('').val(val); // Ensure cursor remains at the end
+            }
+
+        });
+
+        $phone.keyup(function (e) {
+            var $phone = $(this);
+
+            if ($phone.val().length === 14) {
+                $accept.removeAttr('disabled');
+            } else {
+                $accept.attr('disabled', 'disabled');
+            }
+        });
+
+        $phone.keydown(function (e) {
+            var key = e.charCode || e.keyCode || 0;
+            var $phone = $(this);
+
+            if (key !== 8 && key !== 9) {
+                if ($phone.val().length === 4) {
+                    $phone.val($phone.val() + ')');
+                }
+                if ($phone.val().length === 5) {
+                    $phone.val($phone.val() + ' ');
+                }
+                if ($phone.val().length === 9) {
+                    $phone.val($phone.val() + '-');
+                }
+                if ($phone.val().length === 0) {
+                    $phone.val($phone.val() + '(');
+                }
+            }
+
+            return (key == 8 ||
+                key == 9 ||
+                key == 46 ||
+                (key >= 48 && key <= 57) ||
+                (key >= 96 && key <= 105));
+        });
+
+
+
+        $('#@acceptID').on('click', function (e) {
+            createCall();
+        });
+
+        $('#@wrapID').keyup(function (e) {
+            if ($phone.val().length === 14 && e.which === 13) {
+                createCall();
+            }
+        });
+
+        $phone.focus();
+    })();
+
+
+
+</script>

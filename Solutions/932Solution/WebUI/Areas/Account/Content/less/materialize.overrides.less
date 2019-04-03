@@ -1,0 +1,160 @@
+﻿// INPUTS
+.input-field {
+	 + .input-field {
+		margin-top: 1.5rem;
+		}
+
+	&.center label {
+		right: 0;
+		left: 0;
+		}
+
+	&.center input {
+		text-align: center;
+		}
+
+	[type=password] {
+		letter-spacing: 2px;
+		}
+
+	input:-webkit-autofill + label {
+		font-size: .8rem;
+
+		transform: translateY(-140%);
+		}
+	}
+
+// BUTTONS
+.btn {
+	font-size: .95rem;
+
+	&-block {
+		width: 100%;
+		}
+
+	&-icon {
+		padding: .75rem;
+		}
+	}
+
+// CHECKBOX
+[type='checkbox'] + label {
+	font-size: 1rem;
+	line-height: 21px;
+
+	position: relative;
+
+	display: inline-block;
+
+	height: 21px;
+	padding-left: 35px;
+
+	cursor: pointer;
+	}
+
+// SWITCHES
+.switch > .checked {
+	color: @color--primary;
+	}
+
+// TOASTS
+#toast-container {
+	top: 2%;
+	right: 2%;
+	}
+
+.toast.error {
+	background: @color--danger;
+	}
+
+.switch {
+	margin: 2.5rem 0 1.5rem -.5rem;
+	}
+
+// WAVES
+.waves-circle {
+	line-height: 2.2em;
+
+	width: auto;
+	height: 2.2em;
+
+	border-radius: 0;
+	}
+
+// ICONS
+.mdi.prefix {
+	top: .5rem;
+	}
+
+// CARDS
+.card {
+	&--local-account {
+		margin-top: 0;
+
+		border: 1px solid fade( @color--dark, 10% );
+		}
+
+	&--local-account .card-content {
+		 > div {
+			position: relative;
+			}
+
+		&__icon {
+			position: absolute;
+			top: 0;
+			left: 0;
+			}
+
+		&__info {
+			padding: 1rem 0;
+			text-align: center;
+
+			strong {
+				-webkit-user-select: text;
+				   -moz-user-select: text;
+				    -ms-user-select: text;
+				        user-select: text;
+				}
+			}
+		}
+
+	&--local-account .card-action {
+		padding-top: 0;
+		padding-bottom: 1rem;
+
+		border-top: none;
+
+		a:not(.btn):not(.btn-large):not(.btn-floating) {
+			font-size: .9rem;
+
+			color: fade( @color--dark, 55% );
+
+			&:hover, &:focus, &:active {
+				color: @color--primary;
+				}
+			}
+		}
+	}
+
+// COLLECTIONS
+.collection .collection-item {
+	&.avatar i.circle {
+		background-color: darken( @color--light, 38% );
+		}
+
+	&.avatar--singleline {
+		min-height: 64px;
+
+		.title {
+			line-height: 43px;
+			}
+
+		.secondary-content {
+			top: 5px;
+			}
+		}
+
+	&.avatar--with-secondary-content .title {
+		padding-right: 80px;
+		}
+	}

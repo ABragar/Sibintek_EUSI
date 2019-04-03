@@ -1,0 +1,71 @@
+﻿@model EditorViewModel
+
+
+<div id="@Model.UID" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0"></div>
+
+<script>
+    $(function() {
+        var $form = $("#@Model.UID").closest("form");
+
+        $form.on("onAfterBind",
+            function(e, form) {
+                if (!window["@Model.UID"].map) {
+                    var map = L.map('@Model.UID',
+                    {
+                        zoomAnimation: false
+                    });
+
+                    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+                    map.setView(
+                        [
+                            parseFloat("@Html.GetDefaultLatAsString()"),
+                            parseFloat("@Html.GetDefaultLongAsString()")
+                        ],
+                        @Html.GetDefaultZoom());
+
+                    window["@Model.UID"].map = map;
+                }
+            });
+
+
+        $form.on("onSave",
+            function(e, form) {
+                var map = window["@Model.UID"].map;
+
+                var center = map.getCenter();
+
+                form.setPr("MapPosition",
+                {
+                    Longitude: center.lng,
+                    Latitude: center.lat,
+                    Zoom: map.getZoom()
+                });
+            });
+
+
+        if ($("#@Model.UID").closest("[data-role=window]").length) {
+            $("#@Model.UID").closest("[data-role=window]").data('kendoWindow').bind('activate', function () {
+                if (window["@Model.UID"].map) {
+                    window["@Model.UID"].map._onResize();
+                }
+            });
+
+            $("#@Model.UID").closest("[data-role=window]").data('kendoWindow').bind('resize', function () {
+                if (window["@Model.UID"].map) {
+                    window["@Model.UID"].map._onResize();
+                }
+            });
+        }
+
+        $("#@Model.UID").closest("form").on("onShown", function (e, form) {
+            if (window["@Model.UID"].map) {
+
+                var $tab = $("#@Model.UID").closest(".k-tabstrip");
+                var $tabToolBar = $tab.find(".k-tabstrip-items");
+                $tabToolBar.on("click", function (e) {
+                    window["@Model.UID"].map._onResize();
+                });
+            }
+        });
+    });
+</script>

@@ -1,0 +1,53 @@
+.map-splash {
+	position: absolute;
+	z-index: 999999999;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	display: none;
+
+	background: linear-gradient(180deg, @color--splash-top 0%, @color--splash-bottom 100%);
+	background-size: cover;
+
+	& &-center {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		display: block;
+
+		width: 350px;
+		height: 400px;
+		margin: -220px auto auto -175px;
+		}
+
+	& &-logo {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 350px;
+		height: 350px;
+
+		background: ~"url("@splash-logo~")" center center no-repeat;
+		background-size: contain;
+		}
+
+	& &-preloader {
+		position: absolute;
+		top: 400px;
+		left: 0;
+
+		width: 350px;
+		height: 90px;
+
+		background: ~"url(Images/gears-pba.svg)" center center no-repeat;
+		background-size: contain;
+		}
+
+	&[ng-cloak] {
+		display: block !important;
+		}
+	}

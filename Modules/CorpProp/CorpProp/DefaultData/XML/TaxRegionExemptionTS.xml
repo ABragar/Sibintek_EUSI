@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+  <TaxRegionExemptionTSs>
+    <TaxRegionExemptionTS>
+      <ExternalID>1</ExternalID>
+      <TaxNameExternalID>3</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionTSExternalID>2</TaxExemptionTSExternalID>
+      <DecisionsDetailsTSExternalID>3</DecisionsDetailsTSExternalID>
+      <TaxpayersCategory>общественные объединения пожарной охраны, созданные для участия в осуществлении деятельности в области пожарной безопасности и проведении аварийно-спасательных работ </TaxpayersCategory>
+      <NumArticleLawRF>5</NumArticleLawRF>
+      <NumParagraphLawRF>1</NumParagraphLawRF>
+      <NumSubparagraphLawRF>4</NumSubparagraphLawRF>
+      <ExemptionCodeSubjectRF>000500010004</ExemptionCodeSubjectRF>
+      <BasisForGranting>документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении специальных и (или) специализированных автомобилей, зарегистрированных на общественные объединения пожарной охраны и предназначенных для тушения пожаров и проведения аварийно-спасательных работ; </ConditionForGranting>
+    </TaxRegionExemptionTS>
+  </TaxRegionExemptionTSs>
+</DefaultDataHolder>

@@ -1,0 +1,656 @@
+﻿/*
+* CorpProp 09.04.2018
+*/
+
+
+.trv-pages-area .trv-error-pane {
+    left: 50%;
+    position: relative;
+    float: left;
+    display: none;
+    max-width: 80%
+}
+
+.trv-pages-area > .trv-error-pane > .centered {
+    position: relative;
+    float: left;
+    left: -50%;
+    padding: 1em
+}
+
+.trv-pages-area .trv-page-overlay {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #fff;
+    opacity: .6
+}
+
+.trv-pages-area.loading .trv-page-overlay {
+    display: block
+}
+
+.trv-pages-area.error .trv-error-pane {
+    display: block
+}
+
+.trv-pages-area .trv-page-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: auto
+}
+
+.trv-pages-area.printpreview .trv-page-container .trv-page-wrapper {
+    margin: 20px;
+    text-align: center;
+    position: relative
+}
+
+    .trv-pages-area.printpreview .trv-page-container .trv-page-wrapper .trv-report-page {
+        border: 2px solid #ccc;
+        background-color: #fff;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+        position: relative
+    }
+
+    .trv-pages-area.printpreview .trv-page-container .trv-page-wrapper.active .trv-report-page {
+        border: 2px solid #ccc
+    }
+
+.trv-pages-area.interactive .trv-page-container .trv-page-wrapper {
+    text-align: center;
+    position: relative
+}
+
+    .trv-pages-area.interactive .trv-page-container .trv-page-wrapper .trv-report-page {
+        background-color: #fff;
+        overflow: hidden;
+        position: relative;
+        padding: 0px 5px 5px 5px
+    }
+
+    .trv-pages-area.interactive .trv-page-container .trv-page-wrapper.active .trv-report-page {
+        border: 0
+    }
+
+.trv-pages-area-kendo-tooltip {
+    font-size: .7em
+}
+
+.trv-pages-area-kendo-tooltip-title {
+    font-weight: 700
+}
+
+.trv-pages-area-kendo-tooltip-text {
+    font-weight: 400
+}
+
+.trv-parameter-container .trv-parameter-title {
+    font-weight: 700;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.trv-parameters-area .trv-parameters-area-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    opacity: .6
+}
+
+.trv-parameters-area.loading .trv-parameters-area-overlay {
+    display: block
+}
+
+.trv-parameter-container .trv-parameter-error {
+    font-size: 8pt
+}
+
+.trv-parameters-area-min {
+    height: 8em !important;
+}
+
+    .trv-parameters-area-min .trv-parameters-area-content {
+        height: 5.5em !important;
+    }
+
+.trv-parameters-area .trv-parameters-area-content {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    max-height: 11.5em;
+    -ms-overflow-style: none;
+}
+
+/*.trv-parameters-area .trv-parameters-area-content::-webkit-scrollbar {
+	width: 0 !important
+}*/
+
+.trv-parameters-area .trv-parameters-area-footer {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3em;
+    display: none;
+    position: absolute;
+}
+
+    .trv-parameters-area .trv-parameters-area-footer .trv-parameters-area-clean-button {
+        float: right;
+        background-color: rgba(254, 201, 54, 1);
+    }
+
+    .trv-parameters-area .trv-parameters-area-footer .trv-parameters-area-preview-button {
+        background-color: rgba(249, 154, 49, 1);
+    }
+
+.trv-parameters-area.preview .trv-parameters-area-content {
+    bottom: 3em;
+    float: left;
+}
+
+.trv-parameters-area.preview .trv-parameters-area-footer {
+    display: block
+}
+
+.trv-parameters-area .trv-error-pane {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none
+}
+
+.trv-parameters-area.error .trv-error-pane {
+    display: block
+}
+
+.trv-parameters-area .trv-parameters-area-preview-button {
+    top: .5em;
+    right: .4em;
+    float: right;
+    margin: 0px 5px;
+}
+
+.trv-parameters-area-preview-button.k-state-disabled:hover {
+    background-color: transparent !important
+}
+
+.trv-parameters-area .trv-parameter-container {
+    margin: .3em;
+    margin-bottom: 10px;
+    padding: .1em;
+    background-color: transparent;
+    width: 300px;
+    height: 60px;
+    display: inline-table;
+}
+
+.trv-parameter-container .k-dropdown {
+    width: 300px;
+}
+
+.trv-parameter-container .k-list-container {
+    content: "╥";
+}
+
+/*
+.trv-parameter-container .k-multiselect-wrap::before {
+    content: "b";
+}*/
+
+.trv-parameter-container .k-multiselect-wrap input {
+    height: 2.16rem;
+}
+
+.trv-parameter-title {
+}
+
+.trv-parameter-header {
+    width: 300px;
+    position: relative
+}
+
+.trv-half {
+    width: 145px !important;
+}
+
+.trv-double {
+    width: 610px !important;
+}
+
+.trv-parameter-header .trv-parameter-title {
+    text-overflow: ellipsis;
+}
+
+.trv-parameter-error {
+    padding: 3px;
+    margin-bottom: 3px
+}
+
+.trv-parameter-value {
+}
+
+.trv-parameter-error-message {
+    vertical-align: middle
+}
+
+.trv-parameter-editor-available-values-multiselect {
+}
+
+    .trv-parameter-editor-available-values-multiselect .list {
+        overflow-y: auto
+    }
+
+    .trv-parameter-editor-available-values-multiselect .footer {
+        font-size: 8pt
+    }
+
+    .trv-parameter-editor-available-values-multiselect .select-all {
+    }
+
+    .trv-parameter-editor-available-values-multiselect .select-none {
+    }
+
+.trv-parameter-editor-available-values {
+}
+
+    .trv-parameter-editor-available-values .footer {
+        font-size: 8pt
+    }
+
+.trv-parameter-editor-datetime {
+    width: 100%
+}
+
+.trv-parameter-editor-text {
+    width: 100%
+}
+
+.trv-parameter-editor-number {
+    width: 100%
+}
+
+.trv-parameter-editor-multivalue textarea {
+    width: 100%;
+    resize: none
+}
+
+.trv-report-viewer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+
+.trv-side-menu {
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: none
+}
+
+    .trv-side-menu > ul {
+        border-right: 0 none transparent
+    }
+
+    .trv-side-menu li > a {
+        border-bottom: 0 none transparent !important
+    }
+
+    .trv-side-menu span {
+        margin-left: 1em
+    }
+
+    .trv-side-menu a {
+        background-image: none !important
+    }
+
+.trv-report-viewer div.trv-content-wrapper {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: 100ms
+}
+
+.trv-nav {
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    background-color: #f9dd16;
+}
+
+    .trv-nav .k-menu .k-item > .k-link {
+        color: #545454;
+    }
+
+    .trv-nav .k-menu .k-state-selected {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+        .trv-nav .k-menu .k-state-selected > .k-link {
+            color: #000 !important;
+        }
+
+    .trv-nav > ul {
+        position: relative
+    }
+
+    .trv-nav li {
+        border-width: 0 !important;
+        border-style: none !important
+    }
+
+    .trv-nav input {
+        width: 2em;
+        height: 99%
+    }
+
+.trv-content {
+    position: relative;
+    -ms-flex: 1 1;
+    flex: 1 1 0;
+    height: 100%;
+    margin-top: -1px
+}
+
+.k-ie9 .trv-content {
+    position: absolute;
+    margin-top: 1px;
+    top: 2.5em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto
+}
+
+.trv-menu-large {
+    display: block;
+    border-style: none
+}
+
+    .trv-menu-large .k-item > .k-link > .k-icon {
+        margin: -8px 0 0
+    }
+
+.trv-menu-small {
+    display: none;
+    border-style: none
+}
+
+.k-ie9 .trv-menu-small .k-link, .k-ie9 .trv-menu-large .k-link {
+    white-space: nowrap
+}
+
+.trv-document-map {
+    position: absolute;
+    width: 21em;
+    height: auto;
+    top: 16em;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    font-size: 10pt;
+}
+
+    .trv-document-map .k-treeview-lines .k-item {
+        color: #fff
+    }
+
+    .trv-document-map .k-state-hover:hover {
+        color: #000 !important;
+        background-color: #f9dd16 !important
+    }
+
+    .trv-document-map .k-state-selected {
+        background-color: #f9dd16 !important
+    }
+
+        .trv-document-map .k-state-selected .k-state-focused {
+            background-color: #f9dd16 !important
+        }
+
+    .trv-document-map > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #3d464b;
+    }
+
+    .trv-document-map .trv-document-map-overlay {
+        display: none;
+        background: #fff;
+        opacity: .6;
+        z-index: 100000
+    }
+
+    .trv-document-map.loading .trv-document-map-overlay {
+        display: block
+    }
+
+    .trv-document-map.hidden {
+        display: none
+    }
+
+.trv-parameters-area {
+    position: absolute;
+    width: auto;
+    height: 15em;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    color: aquamarine;
+    background-color: #f9dd16;
+}
+
+    .trv-parameters-area.hidden {
+        display: none
+    }
+
+.trv-pages-area {
+    position: absolute;
+    height: auto;
+    width: auto;
+    top: 15em;
+    bottom: 0;
+    left: 21em;
+    right: 0
+}
+
+.trv-parameters-area.hidden ~ .trv-pages-area {
+    top: 1em
+}
+
+.trv-parameters-area.hidden ~ .trv-document-map {
+    top: 0
+}
+
+.trv-parameters-area.trv-parameters-area-min ~ .trv-pages-area {
+    top: 9em;
+}
+
+.trv-parameters-area.trv-parameters-area-min ~ .trv-document-map {
+    top: 8.5em;
+}
+
+.trv-document-map.hidden ~ .trv-pages-area {
+    left: 0
+}
+
+.trv-error-pane {
+    padding: 1em;
+    font-size: .7em
+}
+
+.trv-report-viewer input[type=number]::-webkit-inner-spin-button, .trv-report-viewer input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.trv-report-viewer input[type=number] {
+    -moz-appearance: textfield
+}
+
+@media screen and (max-width: 28.75em) {
+}
+
+@media screen and (min-width: 1px) and (max-width: 40.5em) {
+    .trv-side-menu {
+        display: block;
+        padding-top: .1em;
+        left: -3em;
+        transition: 100ms
+    }
+
+    .trv-side-menu-visible .trv-side-menu {
+        left: 0;
+        width: 15em;
+        padding-left: 0;
+        transition: 500ms
+    }
+
+    .trv-side-menu-visible .trv-report-viewer div.trv-content-wrapper {
+        left: 15em;
+        right: -15em;
+        transition: 500ms
+    }
+
+    .trv-menu-large {
+        display: none
+    }
+
+    .trv-menu-small {
+        display: block
+    }
+
+    .trv-document-map {
+        position: absolute;
+        width: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0
+    }
+
+    .trv-parameters-area {
+        position: absolute;
+        width: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0
+    }
+
+    .trv-pages-area {
+        position: absolute;
+        width: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0
+    }
+
+    .trv-nav {
+        left: 0;
+        right: 0
+    }
+
+    .trv-parameters-area.hidden ~ .trv-pages-area {
+        right: 0
+    }
+
+    .trv-document-map.hidden ~ .trv-pages-area {
+        left: 0
+    }
+}
+
+.trv-error-message {
+    font-size: 12pt
+}
+
+.k-popup .k-list .k-item {
+    white-space: nowrap;
+    line-height: 2.1rem;
+    min-height: 1.5em;
+}
+
+.trv-parameter-container .k-multiselect-wrap > ul > li > span {
+    font-size: 11px;
+    padding-left: 5px;
+    text-transform: initial;
+}
+
+.k-list-container .k-list-scroller ul {
+    display: flex;
+    flex-direction: column;
+}
+
+    .k-list-container .k-list-scroller ul .k-state-selected {
+        order: -1;
+    }
+
+        .k-list-container .k-list-scroller ul .k-state-selected::after {
+            content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAALCAYAAABGbhwYAAAACXBIWXMAAAhOAAAITgGMMQDsAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACiSURBVHgBlY/BDcMgDEWxWaAjZJT2zoENqm6QDUpH6ATtCAhxT0fJCN2A+iOQqJUcYsmy9XnY38Z7PyHNTjjnzqhcSnlJLluwaHdr7QKYiegGUcOARAuSj5zzh5o4AUQvHy9Srh1KKYWqDxM6fEKOUPXYmxjjKo+xgV9mfo9+efQka2eBnwC1Z9bGZd3cfP4dSAoKG57rgZhIGuqe2+TVHIkfETZ3NdBQTdgAAAAASUVORK5CYII=');
+            font-weight: bold;
+            font-family: monospace;
+            color: #2B2F36;
+            position: absolute;
+            right: 4px;
+            margin-top: 2px;
+        }
+
+.trv-parameter-container .k-multiselect-wrap > ul > li {
+    margin: 2px 5px;
+}
+/*.popup-tooltip .tooltipster-box,
+.popup-dropdown .tooltipster-box {
+	font-size:12px;
+	line-height:1px;
+}*/
+.tooltipster-content {
+    font-size: 12px;
+    line-height: 15px !important;
+    white-space: pre !important;
+    overflow: hidden;
+}
+
+.trv-parameter-container .k-multiselect-wrap {
+    height: 33px;
+}
+
+.trv-parameter-container .trv-parameter-value > input {
+    height: 39px;
+}
+
+.trv-parameter-container .trv-parameter-value .k-numerictextbox {
+    padding: 0;
+}
+
+/* DO NOT MODIFY OR DELETE THIS LINE! UPGRADE WIZARD CHECKSUM 99ADB83FE42C7832CC549CD712146A9E */

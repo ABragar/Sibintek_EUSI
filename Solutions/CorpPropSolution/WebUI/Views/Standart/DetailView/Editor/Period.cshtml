@@ -1,0 +1,25 @@
+﻿@model EditorViewModel
+
+@{
+    string property_name = Model.PropertyName != null ? Model.PropertyName + "." : "";
+    string property_start = "Start";
+    string property_end = "End";
+
+    if (Model.EditorTemplateParams != null)
+    {
+        if (Model.EditorTemplateParams.ContainsKey("start"))
+        {
+            property_start = Model.EditorTemplateParams["start"];
+        }
+        if (Model.EditorTemplateParams.ContainsKey("end"))
+        {
+            property_end = Model.EditorTemplateParams["end"];
+        }
+    }
+}
+
+<div id="@Model.UID" style="width: 100%; max-width: 500px;">
+    <input id="start" data-role="datepicker" data-format="@JsonNetResult.DATE_FORMATE" data-bind="value: @(property_name + property_start)" style="width: 44%">
+    <input id="days" data-role="numerictextbox" data-spinners="false" data-format="n0" style="width: 10%"/>
+    <input id="end" data-role="datepicker" data-format="@JsonNetResult.DATE_FORMATE" data-bind="value: @(property_name + property_end)" style="width: 44%">
+</div>

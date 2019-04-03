@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+  <AccountingSystems>
+    <AccountingSystem>
+      <ID>0</ID>
+      <ExternalID>1</ExternalID>
+      <ExternalParentID/>
+      <Code>KISSAPRN</Code>
+      <PublishCode>KISSAPRN</PublishCode>
+      <Name>КИС SAP РН (FI-AA)</Name>      
+    </AccountingSystem>
+    <AccountingSystem>
+      <ID>0</ID>
+      <ExternalID>2</ExternalID>
+      <ExternalParentID/>
+      <Code>ISUPRN</Code>
+      <PublishCode>ISUPRN</PublishCode>
+      <Name>ИСУП РН</Name>
+    </AccountingSystem>
+    <AccountingSystem>
+      <ID>0</ID>
+      <ExternalID>3</ExternalID>
+      <ExternalParentID/>
+      <Code>TISSP</Code>
+      <PublishCode>TISSP</PublishCode>
+      <Name>ТИС СП</Name>
+    </AccountingSystem>
+    <AccountingSystem>
+      <ID>0</ID>
+      <ExternalID>4</ExternalID>
+      <ExternalParentID/>
+      <Code>TISNPO</Code>
+      <PublishCode>TISNPO</PublishCode>
+      <Name>ТИС НПО</Name>
+    </AccountingSystem>
+  </AccountingSystems>
+</DefaultDataHolder>

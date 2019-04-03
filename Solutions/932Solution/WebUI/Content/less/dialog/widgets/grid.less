@@ -1,0 +1,12 @@
+﻿.kwidget {
+	&--grid {
+		height: 100%;
+		}
+
+	&--toolbar ~ .kwidget--grid {
+		height: calc(~"100% - "@modular-scale *2.5rem);
+
+		border-top: 1px solid fade( @color--dark, 25% );
+		}
+	}
+

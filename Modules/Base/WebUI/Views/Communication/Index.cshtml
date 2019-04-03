@@ -1,0 +1,16 @@
+﻿<div class="chat-wrapper">
+    <div class="chat" ng-class="{
+     'chat--visible': mainCtrl.isVisible(),
+     'chat--hidden': mainCtrl.isHidden(),
+     'chat--minimized': mainCtrl.isMinimized(),
+     'chat--maximized': mainCtrl.isMaximized()
+}" ng-app="ChatApp" ng-controller="MainController as mainCtrl">
+        <!--SYSTEM CONTROLLER-->
+        <div ng-controller="DialogActionsController" style="display: none;"></div>
+        <!--/SYSTEM CONTROLLER-->
+        @Html.Partial("~/Views/Communication/Templates/_Loading.cshtml")
+        @Html.Partial("~/Views/Communication/Templates/_Error.cshtml")
+        @Html.Partial("~/Views/Communication/Templates/_Dialogs.cshtml")
+        @Html.Partial("~/Views/Communication/Templates/_Messages.cshtml")
+    </div>
+</div>

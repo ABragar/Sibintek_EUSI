@@ -1,0 +1,51 @@
+﻿@model StandartTreeView
+
+<script id="template_@Model.WidgetID" type="text/x-kendo-template">
+    # var icon; #
+    # if (item.Image) { #
+    # icon = '<img src="' + pbaAPI.imageHelpers.getsrc(item.Image.FileID, 24, 24) + '" />&nbsp;'; #
+    # } else if (item.Icon && item.Icon.Value) { #
+    # var color = item.Icon.Color ? item.Icon.Color : '\\#333';  #
+    # icon = '<span style="color: ' + color + '" class="' + item.Icon.Value + '"></span>'; #
+    # } else { #
+    # icon = '<span class="fa fa-fw fa-folder"></span>'; #
+    # } #
+    <div class='tree-node' id='#= item.id #'>
+        #= icon #
+        #= pbaAPI.htmlEncode(item.Title) #
+    </div>
+</script>
+
+<div id="@Model.WidgetID"></div>
+
+<script>
+    (function () {
+        var treeview = @Model.WidgetID;
+        
+        $('#@Model.WidgetID').kendoTreeView({
+            autoBind: false,
+            dataSource: new kendo.data.HierarchicalDataSource({
+                transport: {
+                    read: {
+                        url: treeview.transport.read.url,
+                        dataType: "json"
+                    }
+                },
+                schema: {
+                    model: {
+                        id: 'id',
+                        hasChildren: 'hasChildren'
+                    }
+                },
+                error: @(Model.WidgetID).onErrorHandler,
+                serverFiltering: true
+            }),
+            dragAndDrop: @Html.RenderBool(!Model.IsReadOnly && Model.IsPermission(TypePermission.Write | TypePermission.Delete | TypePermission.Create)),
+            template: kendo.template($('#template_@Model.WidgetID').html()),
+            dataBound: @(Model.WidgetID).onDataBound,
+            select: @(Model.WidgetID).onSelect,
+            drop: @(Model.WidgetID).onBeforeDrop,
+            dragend: @(Model.WidgetID).onAfterDrop
+        });
+    })();
+</script>

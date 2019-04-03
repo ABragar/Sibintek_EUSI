@@ -1,0 +1,86 @@
+﻿@using CorpProp.Entities.Access
+@using CorpProp.Entities.Subject
+@model SibPermission
+
+@{
+    var allowSociety = Html.CreateSystemName("allowSociety");
+    var denySociety = Html.CreateSystemName("denySociety");
+    var setPermission = Url.Action("SetPermission", "SibPermission");
+}
+
+<button id="@(allowSociety)" type="button" class="k-button">Дать доступ</button>
+<button id="@(denySociety)" type="button" class="k-button">Запретить доступ</button>
+
+<script>
+
+    $(function () {
+
+        function setAccess(accessType) {
+            var lv = $("#@allowSociety").closest('.dialog-listview').data('dialogListView');
+            var selectedItems = lv.getSelectItems();
+            if (!selectedItems || selectedItems.length < 1) {
+                pbaAPI.errorMsg('Ничего не выбрано');
+                return false;
+            };
+
+            function objectPost(url, saveObject, onSuccess) {
+                pbaAPI.ajax.post(url, saveObject)
+              .then(function (response) {
+                  pbaAPI.msg('Данные успешно сохранены', 'upload-success');
+                  onSuccess(response);
+              },
+                  function (err) {
+                      pbaAPI.errorMsg('Во время операции произошла ошибка');
+                  });
+            };
+
+            pbaAPI.openModalDialog("@nameof(Society)",
+                function (selectedItems) {
+                    debugger;
+                    function getIdsFromObject(items) {
+                        var ids = [];
+                        items.forEach(function (item) {
+                            ids.push(item.ID);
+                        });
+                        return ids;
+                    };
+                    var lv = $("#@allowSociety").closest('.dialog-listview').data('dialogListView');
+                    var selectedObjectsIds = getIdsFromObject(lv.getSelectItems());
+                    var selectedObjectsMnemonic = lv.listView().mnemonic;
+                    var societyIds = getIdsFromObject(selectedItems);
+
+                    var params = {
+                        ObjectIds: selectedObjectsIds,
+                        SocietyIds: societyIds,
+                        Mnemonic: selectedObjectsMnemonic,
+                        Access: accessType
+                    }
+
+                    objectPost("@setPermission",
+                        params,
+                        function () {
+                            debugger;
+                        });
+                },
+                {
+                    title: 'Предоставление доступа ОГ на экземпляры объектов',
+                });
+
+            debugger;
+
+            return true;
+        }
+
+        $("#@allowSociety").click(function() {
+            setAccess(0);
+            return true;
+        });
+
+        $("#@denySociety").click(function () {
+            setAccess(1);
+            return true;
+        });
+
+        return false;
+    })
+</script>

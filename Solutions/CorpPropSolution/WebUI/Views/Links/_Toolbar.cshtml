@@ -1,0 +1,189 @@
+﻿@using Newtonsoft.Json
+@model WebUI.Models.Links.LinksToolbarVm
+
+@{
+    string wrapID = "tlbr_" + Guid.NewGuid().ToString("N");
+    string addBtnID = "addBtn_" + Guid.NewGuid().ToString("N");
+    string mapButton = "mapBtn_" + Guid.NewGuid().ToString("N");
+    string wndmapID = "wndmap_" + Guid.NewGuid().ToString("N");
+    string btnPanID = "btnPan_" + Guid.NewGuid().ToString("N");
+    string mapID = "map_" + Guid.NewGuid().ToString("N");
+    string badgeID = "bdg_" + Guid.NewGuid().ToString("N");
+    string loaderID = "ldr_" + Guid.NewGuid().ToString("N");
+
+
+
+    string diagrID = "diagr_" + Guid.NewGuid().ToString("N");
+}
+
+<style>
+    #@wrapID #@wndmapID,
+    #@wrapID #@wndmapID * {
+        visibility: hidden !important;
+    }
+    #@btnPanID {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        opacity: 0.85;
+        z-index: 1;
+    }
+    #@(btnPanID):focus {
+        box-shadow: none;
+        text-decoration: none;
+    }
+    #@(btnPanID)[data-active="true"] {
+        background: #428dcb;
+        color: #FFF;
+        opacity: 1;
+    }
+    #@mapID {
+        width:100%;
+        height: 99%;
+        background: #32437b; /* Old browsers */
+        background: -moz-linear-gradient(left, #32437b 0%, #3f569a 25%, #4d66b7 50%, #4e69ba 75%, #40579b 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, #32437b 0%,#3f569a 25%,#4d66b7 50%,#4e69ba 75%,#40579b 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, #32437b 0%,#3f569a 25%,#4d66b7 50%,#4e69ba 75%,#40579b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#32437b', endColorstr='#40579b',GradientType=1 ); /* IE6-9 */
+    }
+    #@(btnPanID) > .fa {
+        display: none;
+    }
+    .k-webkit #@btnPanID > .fa {
+        display: inline;
+    }
+    .k-webkit #@btnPanID > .glyphicon {
+        display: none;
+    }
+    #@(btnPanID)[data-active="true"] + #@mapID {
+        cursor: move !important;
+        cursor: -webkit-grab !important;
+    }
+    #@(btnPanID)[data-active="true"] + #@(mapID):active {
+        cursor: -webkit-grabbing !important;
+    }
+    #@(loaderID) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url(/Content/loaders/puff.svg) center center no-repeat;
+        background-color: rgba(255, 255, 255, 0.45);
+        background-size: 125px 125px;
+        -webkit-transition: background-color 0.2s linear;
+        transition: background-color 0.2s linear;
+        z-index: 1;
+        visibility: hidden;
+    }
+    #@(wndmapID)[data-loading="true"] #@(loaderID) {
+        background-color: rgba(255, 255, 255, 0.55);
+        visibility: visible;
+    }
+</style>
+
+<div id="@wrapID">
+    <a href="#" id="@mapButton" class="k-button k-button-icon" title="Связи" data-popup="bottom">
+        <i class="mdi mdi-lan">
+            <i id="@badgeID" class="badge">0</i>
+        </i>
+    </a>
+    <a href="#" id="@addBtnID" class="k-button k-button-icon" title="Создать на основании" data-popup="bottom">
+        <i class="mdi mdi-shape-square-plus"></i>
+    </a>
+</div>
+
+<script>
+    $(function() {
+
+        var configs = @Html.Raw(JsonConvert.SerializeObject(Model.CanCreate, new JsonSerializerSettings() {ReferenceLoopHandling = ReferenceLoopHandling.Ignore}));
+        var dialog = $('#@wrapID').closest('.dialog-vm').data("dialogVM");
+        var model = dialog.getCurrentModel();
+        var diagram = null;        
+
+        if (configs.length === 0) {
+            $('#@addBtnID').hide();
+        }
+
+        var getLinksCount = function() {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetLinksCount", "Links")",
+                data: { mnemonic: dialog.mnemonic, objectID: model.ID },
+                contentType: "application/json; charset=utf-8",
+                success: function(result) {
+                    $('#@badgeID').text(result);
+                }
+            });
+        };
+
+        getLinksCount();
+
+        var refreshData  = function() {
+            getLinksCount();
+            if (diagram) {
+                diagram.dataSource.read();
+                diagram.connectionsDataSource.read();
+                diagram.refresh();
+            }
+        };
+
+        var openLinkedObject = function(mnemonic, res) {
+            pbaAPI.openDetailView(mnemonic, {
+                entity: res.Model,
+                toSave: true,
+                link : {LinkSourceID: model.ID, Mnemonic : dialog.mnemonic} ,
+                callback: function() {
+                    refreshData();
+                }
+            });
+        };
+
+        var createLink = function(res) {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("CreateLinkObject", "Links")",
+                data: { destMnemonic: res.Mnemonic, sourceMnemonic: dialog.mnemonic, sourceID: model.ID },
+                contentType: "application/json; charset=utf-8",
+                success: function(result) {
+                    if (res.error) {
+                        pbaAPI.errorMsg(result.error);
+                    } else {
+                        openLinkedObject(res.Mnemonic, result);
+                    }
+                }
+            });
+        }
+
+        var canCreate = function() {
+            return model.ID > 0;
+        };
+
+        $('#@addBtnID').on('click', function() {
+            if (!canCreate()) {
+                pbaAPI.infoMsg('Объект не сохранен, сохраните');
+                return;
+            }
+
+            pbaAPI.selectSimple(configs, {
+                wid: "links_@wrapID",
+                template: "<li href='\\\\#' class=\"links-mnemonic-template \" style=\"text-align: center;\" data-id=\"#: Mnemonic #\">#: Title #</li>",
+                callback: function(res) {
+                    createLink(res);
+                }
+            });
+        });
+
+        
+   
+
+        $("#@mapButton").on("click", function() {
+            @*if (parseInt($("#@badgeID").text()) === 0) {
+                pbaAPI.infoMsg("У объекта нет связей");
+                return;
+            }*@
+
+            pbaLinks.openLinksWindow({ mnemonic: dialog.mnemonic, id: model.ID });
+        });
+    });
+</script>

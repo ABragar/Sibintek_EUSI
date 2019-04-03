@@ -1,0 +1,44 @@
+﻿@model EditorViewModel
+
+@{
+    string name = "n_" + Guid.NewGuid().ToString("N");
+    string year = DateTime.Now.Year.ToString();  
+    string validateMsg = "Укажите год";
+}
+
+@(Html.Kendo().MaskedTextBox()
+                  .Name(name)
+                  .Mask("2###")
+                  .Rules(rules =>
+                      rules.Add('2', "/[12]/")
+                           .Add('#', "/[0-9]/")
+                  )
+                  .Value(year)
+                  .HtmlAttributes(Html.CreateHtmlAttributes(Model,
+                new {
+                      data_validmask_msg = validateMsg,
+                      //required = "True",
+                      validationmessage = "Обязательное поле"
+                  }))
+
+)
+<script type="text/javascript">
+    $(function () {
+        var container = $("#@name");
+        kendo.init(container);
+        container.kendoValidator({
+            rules: {
+                validmask: function (input) {
+                    if (input.is("[data-validmask-msg]") && input.val() != "") {
+                        var maskedtextbox = input.data("kendoMaskedTextBox");
+                        return maskedtextbox.value().indexOf(maskedtextbox.options.promptChar) === -1;
+                    }
+
+                    return true;
+                }
+            }
+        });
+    });
+    
+
+</script>

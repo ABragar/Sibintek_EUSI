@@ -1,0 +1,9 @@
+﻿@model EditorViewModel
+
+<div id="@Model.UID" data-parent_mnemonic="@Model.ParentViewModelConfig.Mnemonic" data-mnemonic="@(Model.Mnemonic ?? Model.ViewModelConfig.Mnemonic)" data-sysname="@Model.SysName">
+    <a class="open-dialog k-button" href="#">
+        <span class="@Model.ViewModelConfig.Icon"></span>
+        <span>Кол-во: </span>
+        <span class="count animated bounce">0</span>
+    </a>
+</div>

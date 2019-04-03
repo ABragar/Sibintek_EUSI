@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B78A3750-FA57-41F2-927A-DFB795552548}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Base</RootNamespace>
+    <AssemblyName>Base</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>6</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Ambient\AppContext.cs" />
+    <Compile Include="Ambient\AppContextBootstrapper.cs" />
+    <Compile Include="Ambient\DefaultDateTimeProvider.cs" />
+    <Compile Include="Ambient\IAppContextBootstrapper.cs" />
+    <Compile Include="Ambient\IDateTimeProvider.cs" />
+    <Compile Include="Attributes\DecimalPrecisionAttribute.cs" />
+    <Compile Include="Attributes\ImageAttribute.cs" />
+    <Compile Include="Attributes\MemberTypeAttribute.cs" />
+    <Compile Include="Attributes\UniqueIndexAttribute.cs" />
+    <Compile Include="Attributes\IndexAttribute.cs" />
+    <Compile Include="Attributes\ListViewAttribute.cs" />
+    <Compile Include="Attributes\DetailViewAttribute.cs" />
+    <Compile Include="Attributes\LocalizedEnumAttribute .cs" />
+    <Compile Include="Attributes\PropertyDataTypeAttribute.cs" />
+    <Compile Include="Attributes\SystemPropertyAttribute.cs" />
+    <Compile Include="Attributes\UiEnumAttribute.cs" />
+    <Compile Include="Attributes\ViewModelConfigAttribute.cs" />
+    <Compile Include="BaseObject.cs" />
+    <Compile Include="BaseObjectExtensions.cs" />
+    <Compile Include="BaseObjectType.cs" />
+    <Compile Include="ComplexKeyObjects\IEntityTypeResolver.cs" />
+    <Compile Include="DAL\EntityConfiguration.cs" />
+    <Compile Include="DAL\EntityСonfigurationItem.cs" />
+    <Compile Include="DAL\ExtendedQueryable.cs" />
+    <Compile Include="DAL\FilterParams.cs" />
+    <Compile Include="DAL\IAsyncQueryable.cs" />
+    <Compile Include="DAL\IBulkRepository.cs" />
+    <Compile Include="DAL\IEntityConfiguration.cs" />
+    <Compile Include="DAL\IExtendedQueryable.cs" />
+    <Compile Include="DAL\IObjectSaver.cs" />
+    <Compile Include="DAL\IRepositoryFactory.cs" />
+    <Compile Include="DAL\IRepositoryManager.cs" />
+    <Compile Include="DAL\ITransactionUnitOfWork.cs" />
+    <Compile Include="DAL\IUnitOfWorkFactory.cs" />
+    <Compile Include="DAL\RepositoryManager.cs" />
+    <Compile Include="DAL\Internal\SystemTransactionUnitOfWork.cs" />
+    <Compile Include="DAL\Internal\SystemUnitOfWork.cs" />
+    <Compile Include="DAL\Internal\TransactionUnitOfWork.cs" />
+    <Compile Include="DAL\Internal\UnitOfWork.cs" />
+    <Compile Include="DAL\IBaseContext.cs" />
+    <Compile Include="DAL\IRepository.cs" />
+    <Compile Include="DAL\IUnitOfWork.cs" />
+    <Compile Include="DAL\UnitOfWorkFactory.cs" />
+    <Compile Include="DAL\Internal\WrapperUnitOfWork.cs" />
+    <Compile Include="Entities\Complex\BaseEmail.cs" />
+    <Compile Include="Entities\Complex\MapPosition.cs" />
+    <Compile Include="Entities\Complex\Phone.cs" />
+    <Compile Include="Entities\Complex\Color.cs" />
+    <Compile Include="Entities\Complex\Icon.cs" />
+    <Compile Include="Entities\Complex\KadastrObject.cs" />
+    <Compile Include="Entities\Complex\KLADR\Address.cs" />
+    <Compile Include="Entities\Complex\KLADR\AddressObject.cs" />
+    <Compile Include="Entities\Complex\LinkBaseObject.cs" />
+    <Compile Include="Entities\Complex\MultiEnum.cs" />
+    <Compile Include="Entities\Complex\Period.cs" />
+    <Compile Include="Entities\Complex\Statistic.cs" />
+    <Compile Include="Entities\DescriptionLookupVm.cs" />
+    <Compile Include="Enums\AuthStatus.cs" />
+    <Compile Include="Enums\DatePeriod.cs" />
+    <Compile Include="Enums\DefaultImage.cs" />
+    <Compile Include="Enums\EmailType.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Enums\PhoneType.cs" />
+    <Compile Include="Enums\RegisterStatus.cs" />
+    <Compile Include="Enums\SystemRole.cs" />
+    <Compile Include="Enums\TypePermission.cs" />
+    <Compile Include="Events\Auth\AuthEvent.cs" />
+    <Compile Include="Events\Registration\IOnAccountRegistered.cs" />
+    <Compile Include="Events\Auth\IAuthEvent.cs" />
+    <Compile Include="Events\Auth\IAuthResult.cs" />
+    <Compile Include="Events\Auth\IOnLogOff.cs" />
+    <Compile Include="Events\Auth\IOnLogOn.cs" />
+    <Compile Include="Events\Auth\IOnLogOnError.cs" />
+    <Compile Include="Events\Registration\IRegisterEvent.cs" />
+    <Compile Include="Events\Registration\IRegisterResult.cs" />
+    <Compile Include="Events\Registration\OnAccountRegistered.cs" />
+    <Compile Include="Events\Auth\OnLogOff.cs" />
+    <Compile Include="Events\Auth\OnLogOn.cs" />
+    <Compile Include="Events\Auth\OnLogOnError.cs" />
+    <Compile Include="Events\Registration\RegisterEvent.cs" />
+    <Compile Include="Exceptions\ActivationException.cs" />
+    <Compile Include="Extensions\CopyExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\TreeObjectExtensions.cs" />
+    <Compile Include="Helpers\AsyncHelper.cs" />
+    <Compile Include="IAccess.cs" />
+    <Compile Include="IAutoMapperCloner.cs" />
+    <Compile Include="ApplicationInitializer.cs" />
+    <Compile Include="IBaseObject.cs" />
+    <Compile Include="ICalculateService.cs" />
+    <Compile Include="IGantt.cs" />
+    <Compile Include="IModuleInitializer.cs" />
+    <Compile Include="Entities\IRuntimeBindingType.cs" />
+    <Compile Include="Entities\Complex\Url.cs" />
+    <Compile Include="Events\BaseEvent.cs" />
+    <Compile Include="Events\ChangeObjectEvent.cs" />
+    <Compile Include="Events\BaseEventBus.cs" />
+    <Compile Include="Events\IChangeObjectEvent.cs" />
+    <Compile Include="Events\IEventTrigger.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\IEventBus.cs" />
+    <Compile Include="Events\IEventBusHandler.cs" />
+    <Compile Include="Events\IEventSource.cs" />
+    <Compile Include="Events\IObjectEvent.cs" />
+    <Compile Include="Events\IOnChangeSortOrder.cs" />
+    <Compile Include="Events\IOnCreate.cs" />
+    <Compile Include="Events\IOnDelete.cs" />
+    <Compile Include="Events\IOnGet.cs" />
+    <Compile Include="Events\IOnGetAll.cs" />
+    <Compile Include="Events\IOnUpdate.cs" />
+    <Compile Include="Events\ObjectEvent.cs" />
+    <Compile Include="Events\OnChangeSortOrder.cs" />
+    <Compile Include="Events\OnCreate.cs" />
+    <Compile Include="Events\OnDelete.cs" />
+    <Compile Include="Events\OnGet.cs" />
+    <Compile Include="Events\OnGetAll.cs" />
+    <Compile Include="Events\OnUpdate.cs" />
+    <Compile Include="Exceptions\UpdateConcurrencyException.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\QueryableExtensions.cs" />
+    <Compile Include="IBroadcaster.cs" />
+    <Compile Include="ICreateObject.cs" />
+    <Compile Include="Entities\Complex\RemindPeriod.cs" />
+    <Compile Include="ManyToManyAssociation.cs" />
+    <Compile Include="Service\IRuntimeTypeResolver.cs" />
+    <Compile Include="Service\ITypeNameResolver.cs" />
+    <Compile Include="ComplexKeyObjects\Superb\BaseSuperObject.cs" />
+    <Compile Include="ComplexKeyObjects\Common\TypeRelationService.cs" />
+    <Compile Include="ComplexKeyObjects\Superb\ISuperObject.cs" />
+    <Compile Include="ITransform.cs" />
+    <Compile Include="ITreeItem.cs" />
+    <Compile Include="ITreeNodeIcon.cs" />
+    <Compile Include="ITreeObject.cs" />
+    <Compile Include="IUser.cs" />
+    <Compile Include="IUserCategory.cs" />
+    <Compile Include="Service\Access\IAccessService.cs" />
+    <Compile Include="Service\BaseObject\BaseCategorizedItemService.cs" />
+    <Compile Include="Service\BaseObject\BaseCategoryService.cs" />
+    <Compile Include="Service\BaseObject\BaseObjectService.cs" />
+    <Compile Include="Service\BaseObject\BaseObjectServiceFacade.cs" />
+    <Compile Include="Service\BaseObject\IBaseCategorizedItemService.cs" />
+    <Compile Include="Service\BaseObject\IBaseCategoryService.cs" />
+    <Compile Include="Service\BaseObject\IBaseObjectService.cs" />
+    <Compile Include="Service\BaseObject\IBaseObjectServiceFacade.cs" />
+    <Compile Include="Service\Crud\BaseObjectCrudServiceExtensions.cs" />
+    <Compile Include="Service\Crud\CategorizedItemCrudServiceExtensions.cs" />
+    <Compile Include="Service\Crud\CategoryCrudServiceExtensions.cs" />
+    <Compile Include="Service\Crud\Internal\ICategoryCrudServiceImplementation.cs" />
+    <Compile Include="Service\Crud\Internal\CategoryCrudServiceImplementation.cs" />
+    <Compile Include="Service\Crud\Internal\CategorizedItemCrudServiceImplementation.cs" />
+    <Compile Include="Service\Crud\Internal\ICategorizedItemCrudServiceImplementation.cs" />
+    <Compile Include="Service\Crud\Internal\BaseObjectCrudServiceImplementation.cs" />
+    <Compile Include="Service\Crud\IBaseObjectCrudService.cs" />
+    <Compile Include="Service\Crud\Internal\IBaseObjectCrudServiceImplementation.cs" />
+    <Compile Include="Service\Crud\ICategoryCrudService.cs" />
+    <Compile Include="Service\Crud\ICategorizedItemCrudService.cs" />
+    <Compile Include="Service\File\FileSystemService.cs" />
+    <Compile Include="Service\File\IFileSystemService.cs" />
+    <Compile Include="Service\IExecutionContextScope.cs" />
+    <Compile Include="Service\ICreateNotification.cs" />
+    <Compile Include="Service\IEmailService.cs" />
+    <Compile Include="Service\IMailQueueService.cs" />
+    <Compile Include="Service\IServiceFactory.cs" />
+    <Compile Include="Service\IServiceLocator.cs" />
+    <Compile Include="IExportableObject.cs" />
+    <Compile Include="Politics\ObjectPolitic.cs" />
+    <Compile Include="Politics\PropertyPolitic.cs" />
+    <Compile Include="Entities\Country.cs" />
+    <Compile Include="FIleData.cs" />
+    <Compile Include="HCategory.cs" />
+    <Compile Include="ICategorizedItem.cs" />
+    <Compile Include="IReadOnly.cs" />
+    <Compile Include="IScheduler.cs" />
+    <Compile Include="ITreeNodeImage.cs" />
+    <Compile Include="Service\IObjectValidationResult.cs" />
+    <Compile Include="Service\IUserService.cs" />
+    <Compile Include="Service\IValidatorService.cs" />
+    <Compile Include="Service\Log\ILogService.cs" />
+    <Compile Include="Helpers\ReflectionHelper.cs" />
+    <Compile Include="EasyCollectionEntry.cs" />
+    <Compile Include="Service\Log\LogServiceExtensions.cs" />
+    <Compile Include="ComplexKeyObjects\Common\ITypeRelationService.cs" />
+    <Compile Include="ComplexKeyObjects\Superb\SuperObjectTranslator.cs" />
+    <Compile Include="SysRegistry\ISystemRegistryService.cs" />
+    <Compile Include="SysRegistry\SystemRegistryItem.cs" />
+    <Compile Include="SysRegistry\SystemRegistryService.cs" />
+    <Compile Include="Translations\CompiledExpression.cs" />
+    <Compile Include="Translations\DefaultTranslationOf.cs" />
+    <Compile Include="Translations\ExpressiveExtensions.cs" />
+    <Compile Include="Translations\TranslationMap.cs" />
+    <Compile Include="Service\IPathHelper.cs" />
+    <Compile Include="Service\IService.cs" />
+    <Compile Include="Settings\Service\SettingService.cs" />
+    <Compile Include="Settings\SettingItem.cs" />
+    <Compile Include="Settings\Service\ISettingService.cs" />
+    <Compile Include="Helpers\IHelperJsonConverter.cs" />
+    <Compile Include="ITreeNode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ISecurityUser.cs" />
+    <Compile Include="IConfigurator.cs" />
+    <Compile Include="ComplexKeyObjects\IComplexKeyObject.cs" />
+    <Compile Include="Service\IQueryService.cs" />
+    <Compile Include="ComplexKeyObjects\Unions\BaseUnionEntry.cs" />
+    <Compile Include="ComplexKeyObjects\Common\IQuerySource.cs" />
+    <Compile Include="ComplexKeyObjects\Common\RepositoryQuerySource.cs" />
+    <Compile Include="ComplexKeyObjects\Unions\IUnionEntry.cs" />
+    <Compile Include="ComplexKeyObjects\Unions\IUnionService.cs" />
+    <Compile Include="ComplexKeyObjects\Common\QueryableExtensions.cs" />
+    <Compile Include="ComplexKeyObjects\Common\RemoveConvertVisitor.cs" />
+    <Compile Include="ComplexKeyObjects\Common\SelectorOverride.cs" />
+    <Compile Include="ComplexKeyObjects\Unions\Implementation\UnionConfig.cs" />
+    <Compile Include="ComplexKeyObjects\Unions\UnionService.cs" />
+    <Compile Include="ComplexKeyObjects\Unions\Implementation\UnionVisitor.cs" />
+    <Compile Include="Validation\IValidationConfigManager.cs" />
+    <Compile Include="Validation\IValidationContext.cs" />
+    <Compile Include="Validation\IValidationRule.cs" />
+    <Compile Include="Validation\IValidationService.cs" />
+    <Compile Include="Validation\ValidationBinding.cs" />
+    <Compile Include="Validation\ValidationConfig.cs" />
+    <Compile Include="Validation\ValidationConfigBuilder.cs" />
+    <Compile Include="Validation\ValidationResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base.Utils.Common\Base.Utils.Common.csproj">
+      <Project>{ad97ef5c-e096-465d-9729-2d0524af2476}</Project>
+      <Name>Base.Utils.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Linq.Dynamic\System.Linq.Dynamic.csproj">
+      <Project>{b6edf157-6153-4684-a577-de33896dbaa8}</Project>
+      <Name>System.Linq.Dynamic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

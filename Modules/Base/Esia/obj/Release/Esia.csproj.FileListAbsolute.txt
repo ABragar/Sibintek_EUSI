@@ -1,0 +1,5 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\bin\Release\Esia.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\bin\Release\Esia.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\obj\Release\Esia.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\obj\Release\Esia.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\Esia\obj\Release\Esia.pdb

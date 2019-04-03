@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7020D864-7384-4C6E-80D0-CB72513D0F30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EUSI</RootNamespace>
+    <AssemblyName>EUSI</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EPPlus.4.1.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.1.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\ExcelDataReader.3.1.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.1.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\ExcelDataReader.DataSet.3.1.0\lib\net45\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.6.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\DotNetZip.1.9.6\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ConfirmImportMessageFormatter.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="DefaultData\DefaultDataHelperEx.cs" />
+    <Compile Include="DefaultData\DefaultDataHolder.cs" />
+    <Compile Include="DefaultData\FillDataStrategy.cs" />
+    <Compile Include="Entities\Accounting\AccountingCalculatedField.cs" />
+    <Compile Include="Entities\Accounting\AccountingMoving.cs" />
+    <Compile Include="Entities\Accounting\AccountingMovingMSFO.cs" />
+    <Compile Include="Entities\Accounting\AccountingObjectExtView.cs" />
+    <Compile Include="Entities\Accounting\BalanceReconciliationReport.cs" />
+    <Compile Include="Entities\Accounting\CalculatingError.cs" />
+    <Compile Include="Entities\Accounting\CalculatingList.cs" />
+    <Compile Include="Entities\Accounting\CalculatingRecord.cs" />
+    <Compile Include="Entities\Accounting\DraftOS.cs" />
+    <Compile Include="Entities\Accounting\ExportMoving.cs" />
+    <Compile Include="Entities\Accounting\ExportZip.cs" />
+    <Compile Include="Entities\Accounting\MigrateOS.cs" />
+    <Compile Include="Entities\Accounting\RentalOS.cs" />
+    <Compile Include="Entities\Accounting\RentalOSMoving.cs" />
+    <Compile Include="Entities\Accounting\RentalOSState.cs" />
+    <Compile Include="Entities\Audit\CustomDiffItem.cs" />
+    <Compile Include="Entities\BCS\BSCData.cs" />
+    <Compile Include="Entities\Estate\ERControlDateAttributes.cs" />
+    <Compile Include="Entities\Estate\ERImportWizard.cs" />
+    <Compile Include="Entities\Estate\EstateRegistrationRow.cs" />
+    <Compile Include="Entities\Import\ExternalImportLog.cs" />
+    <Compile Include="Entities\ManyToMany\ConsolidationAndReportMonitoringEventType.cs" />
+    <Compile Include="Entities\ManyToMany\MonitorEventPreceding.cs" />
+    <Compile Include="Entities\ManyToMany\MonitorEventTypeAndResult.cs" />
+    <Compile Include="Entities\Mapping\ERTypeERReceiptReason.cs" />
+    <Compile Include="Entities\Mapping\EstateTypesMapping.cs" />
+    <Compile Include="Entities\Models\SetCommentModel.cs" />
+    <Compile Include="Entities\NonPersistent\BEAndMonthPeriod.cs" />
+    <Compile Include="Entities\NSI\ERReceiptReason.cs" />
+    <Compile Include="Entities\NSI\EstateRegistartionOriginator.cs" />
+    <Compile Include="Entities\NSI\HolidayWorkDay.cs" />
+    <Compile Include="Entities\NSI\MITDictionary.cs" />
+    <Compile Include="Entities\NSI\Periodicity.cs" />
+    <Compile Include="Entities\NSI\PropertyListTaxBaseCadastral.cs" />
+    <Compile Include="Entities\NSI\ReportMonitoringEventType.cs" />
+    <Compile Include="Entities\NSI\ReportMonitoringResult.cs" />
+    <Compile Include="Entities\NSI\Responsible.cs" />
+    <Compile Include="Entities\NSI\TransactionKind.cs" />
+    <Compile Include="Entities\NSI\ZoneResponsibility.cs" />
+    <Compile Include="Entities\NU\Declaration.cs" />
+    <Compile Include="Entities\NU\DeclarationCalcEstate.cs" />
+    <Compile Include="Entities\NU\DeclarationEstate.cs" />
+    <Compile Include="Entities\NU\DeclarationLand.cs" />
+    <Compile Include="Entities\NU\DeclarationRow.cs" />
+    <Compile Include="Entities\NU\DeclarationVehicle.cs" />
+    <Compile Include="Entities\Report\ReportMonitoring.cs" />
+    <Compile Include="Entities\ManyToMany\AccountingObjectAndEstateRegistrationObject.cs" />
+    <Compile Include="Common\IEC9834_8_2011\DateTimePrecise.cs" />
+    <Compile Include="Common\IEC9834_8_2011\GuidGeneration.cs" />
+    <Compile Include="Common\IEC9834_8_2011\GuidGenerator.cs" />
+    <Compile Include="Common\IEC9834_8_2011\TimestampHelper.cs" />
+    <Compile Include="DefaultData\MenuDefaultData.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndAccountingMoving.cs" />
+    <Compile Include="Entities\NSI\Angle.cs" />
+    <Compile Include="Entities\NSI\EstateRegistrationTypeNSI.cs" />
+    <Compile Include="Entities\NSI\EstateRegistrationStateNSI.cs" />
+    <Compile Include="Entities\NSI\LoadType.cs" />
+    <Compile Include="Entities\NSI\MovingType.cs" />
+    <Compile Include="Entities\NSI\OKOFClassNSI.cs" />
+    <Compile Include="Entities\Estate\EstateRegistration.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndEstateRegistrationObject.cs" />
+    <Compile Include="Entities\ManyToMany\EstateAndEstateRegistrationObject.cs" />
+    <Compile Include="Export\AccMovingsExport.cs" />
+    <Compile Include="Export\AccObjectExport.cs" />
+    <Compile Include="Extentions\Extentions.cs" />
+    <Compile Include="Helpers\AccountingCalculationHelper.cs" />
+    <Compile Include="Helpers\AccountingMovingHelper.cs" />
+    <Compile Include="Helpers\EUSIImportHelper.cs" />
+    <Compile Include="Helpers\Tabs.cs" />
+    <Compile Include="Import\BulkMerge\OSMigrateQueryBuilder.cs" />
+    <Compile Include="Import\BulkMerge\OSQueryBuilder.cs" />
+    <Compile Include="Import\ERImportHolder.cs" />
+    <Compile Include="Import\TaxImportHolder.cs" />
+    <Compile Include="Initializer.NotificationTemplate.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Initializer.UsersAndRoles.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Initializer.Workflow.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.AccountingMoving.cs" />
+    <Compile Include="Model\Model.AccountingObjectExt.cs" />
+    <Compile Include="Model\Model.ConsolidationAndReportMonitoringEventType.cs" />
+    <Compile Include="Model\Model.Estate.cs" />
+    <Compile Include="Model\Model.EstateRegistration.cs" />
+    <Compile Include="Model\Model.Import.ErrorLog.cs" />
+    <Compile Include="Model\Model.Import.History.cs" />
+    <Compile Include="Model\Model.NSI.cs" />
+    <Compile Include="Model\Model.NU.cs" />
+    <Compile Include="Entities\Models\UpdateTaxBaseCadastralObjects.cs" />
+    <Compile Include="Services\Accounting\AccountingCalculatedFieldService.cs" />
+    <Compile Include="Services\Accounting\AccountingMovingMSFOService.cs" />
+    <Compile Include="Services\Accounting\AccountingMovingService.cs" />
+    <Compile Include="Services\Accounting\AccountingMovingVersionControl.cs" />
+    <Compile Include="Services\Accounting\AccountingObjectExtService.cs" />
+    <Compile Include="Services\Accounting\AccountingObjectMigrate.cs" />
+    <Compile Include="Services\Accounting\ArchivedObuExtService.cs" />
+    <Compile Include="Services\Accounting\BalanceReconciliationReportService.cs" />
+    <Compile Include="Services\Accounting\CalculatingErrorService.cs" />
+    <Compile Include="Services\Accounting\CalculatingRecordService.cs" />
+    <Compile Include="Services\Accounting\DraftOSPassBusService.cs" />
+    <Compile Include="Services\Accounting\DraftOSService.cs" />
+    <Compile Include="Services\Accounting\ExportMovingService.cs" />
+    <Compile Include="Services\Accounting\IAccountingMovingHistoryService.cs" />
+    <Compile Include="Services\Accounting\MigrateOSService.cs" />
+    <Compile Include="Services\Accounting\NoImportDataOS.cs" />
+    <Compile Include="Services\Accounting\RentalOSDiscrepancyCheckItem.cs" />
+    <Compile Include="Services\Accounting\RentalOSExportQueryBuilder.cs" />
+    <Compile Include="Services\Accounting\RentalOSMovingService.cs" />
+    <Compile Include="Services\Accounting\RentalOSService.cs" />
+    <Compile Include="Services\Accounting\RentalOSStateService.cs" />
+    <Compile Include="Services\Audit\CustomDiffItemService.cs" />
+    <Compile Include="Services\BSC\BSCDataService.cs" />
+    <Compile Include="Services\Estate\ArchivedEstateService.cs" />
+    <Compile Include="Services\Estate\ERRowService.cs" />
+    <Compile Include="Services\Estate\EstateRegistrationBpService.cs" />
+    <Compile Include="Services\Estate\EstateRegistrationImport.cs" />
+    <Compile Include="Services\Estate\EstateRegistrationSecurityService.cs" />
+    <Compile Include="Services\Estate\EstateRegistrationService.cs" />
+    <Compile Include="Services\Estate\EstateStatesHelper.cs" />
+    <Compile Include="Services\Estate\EstateTypeCustomService.cs" />
+    <Compile Include="Services\Estate\FiasHandlers\CityHandler.cs" />
+    <Compile Include="Services\Estate\FiasHandlers\FederalDistrictHandler.cs" />
+    <Compile Include="Services\Estate\FiasHandlers\FiasChainHandler.cs" />
+    <Compile Include="Services\Estate\FiasHandlers\RegionHandler.cs" />
+    <Compile Include="Services\Estate\IEstateRegistrationService.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="Initializer.Model.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Estate\Nodes.cs" />
+    <Compile Include="Services\Estate\RuleEstateVsNMA.cs" />
+    <Compile Include="Services\Estate\UpdateTaxBaseCadastralObjectsServise.cs" />
+    <Compile Include="Services\EUSIPresetService.cs" />
+    <Compile Include="Services\Import\EUSIImportChecker.cs" />
+    <Compile Include="Services\Import\ExternalImportLogService.cs" />
+    <Compile Include="Services\Import\ImportHistoryServiceEx.cs" />
+    <Compile Include="Services\Mapping\ERTypeERReceiptReasonService.cs" />
+    <Compile Include="Services\Mapping\EstateTypesMappingService.cs" />
+    <Compile Include="Services\Monitor\MonitorEventTypeAndResultService.cs" />
+    <Compile Include="Services\Monitor\MonitorReportingService.cs" />
+    <Compile Include="Services\Monitor\MonitorReportingImportService.cs" />
+    <Compile Include="Services\Monitor\MonitorResultCustomService.cs" />
+    <Compile Include="Services\NU\DeclarationService.cs" />
+    <Compile Include="Validators\AccMovMSFOCredit01Validator.cs" />
+    <Compile Include="Validators\AccMovMSFOCredit07Validator.cs" />
+    <Compile Include="Validators\AccMovMSFOCredit08Validator.cs" />
+    <Compile Include="Validators\AccMovMSFOCreditBaseValidator.cs" />
+    <Compile Include="Validators\AccMovMSFODebit01Validator.cs" />
+    <Compile Include="Validators\AccMovMSFODebit07Validator.cs" />
+    <Compile Include="Validators\AccMovMSFODebit08Validator.cs" />
+    <Compile Include="Validators\AccMovMSFODepreciation01Validator.cs" />
+    <Compile Include="Validators\AccountingMovingMSFODataValidator.cs" />
+    <Compile Include="Validators\AccountingObjectDuplicatesValidator.cs" />
+    <Compile Include="Validators\EstateRegistrationDataValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Base\Base.EntityFrameworkTypes\Base.EntityFrameworkTypes.csproj">
+      <Project>{700D464B-0BD3-4188-A619-53E888218CE7}</Project>
+      <Name>Base.EntityFrameworkTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Links\Base.Links.csproj">
+      <Project>{B6CDCD8A-D778-49C3-AD28-049CBA1F73DD}</Project>
+      <Name>Base.Links</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Macros\Base.Macros.csproj">
+      <Project>{F4635398-AF24-4259-81BB-E3D10D460BEC}</Project>
+      <Name>Base.Macros</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Mail\Base.Mail.csproj">
+      <Project>{3DBBBCCC-F75E-4E45-9EE2-106C97E96A6C}</Project>
+      <Name>Base.Mail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Notification\Base.Notification.csproj">
+      <Project>{C26A8CC1-6822-481D-A2D5-52DC8295D402}</Project>
+      <Name>Base.Notification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Reporting\Base.Reporting.csproj">
+      <Project>{82657716-B682-4F44-9426-5CCC37367584}</Project>
+      <Name>Base.Reporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Task\Base.Task.csproj">
+      <Project>{3082A9DE-189D-42FA-843E-517C8178FD55}</Project>
+      <Name>Base.Task</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CorpProp\CorpProp\CorpProp.csproj">
+      <Project>{2e747cf0-6c14-4d66-bd1b-b6841a761519}</Project>
+      <Name>CorpProp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.App\Base.App.csproj">
+      <Project>{56089611-82C6-4F69-B535-B7B80901842A}</Project>
+      <Name>Base.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Audit\Base.Audit.csproj">
+      <Project>{94D34384-E253-4771-8105-79903F0D4725}</Project>
+      <Name>Base.Audit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.BusinessProcesses\Base.BusinessProcesses.csproj">
+      <Project>{C4D72D04-2B9F-4B99-A01F-FF260C27B0BF}</Project>
+      <Name>Base.BusinessProcesses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.DAL.EF\Base.DAL.EF.csproj">
+      <Project>{3efb8cc9-6a65-4a10-925f-0df1624ee13b}</Project>
+      <Name>Base.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Security\Base.Security.csproj">
+      <Project>{93a4c5a8-701d-4212-b338-dacb6ec8c670}</Project>
+      <Name>Base.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.UI\Base.UI.csproj">
+      <Project>{3ae7843f-06ce-4989-a978-210f7dfcf1a9}</Project>
+      <Name>Base.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Utils.Common\Base.Utils.Common.csproj">
+      <Project>{AD97EF5C-E096-465D-9729-2D0524AF2476}</Project>
+      <Name>Base.Utils.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base\Base.csproj">
+      <Project>{b78a3750-fa57-41f2-927a-dfb795552548}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CorpProp\Sib.Taxes\Sib.Taxes.csproj">
+      <Project>{58974559-06da-4983-b87d-0e0c6cdbf083}</Project>
+      <Name>Sib.Taxes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DefaultData\XML\DefaultDataHolder.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Resources\MovingTemplates\Depreciation01.xlsx" />
+    <EmbeddedResource Include="Resources\MovingTemplates\Debit01.xlsx" />
+    <EmbeddedResource Include="Resources\MovingTemplates\Debit07.xlsx" />
+    <EmbeddedResource Include="Resources\MovingTemplates\Debit08.xlsx" />
+    <EmbeddedResource Include="Resources\MovingTemplates\Credit01.xlsx" />
+    <EmbeddedResource Include="Resources\MovingTemplates\Credit07.xlsx" />
+    <EmbeddedResource Include="Resources\MovingTemplates\Credit08.xlsx" />
+    <EmbeddedResource Include="Resources\MovingTemplates\BUH_4.xlsx" />
+    <EmbeddedResource Include="Resources\MovingTemplates\ExportOS.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_Completed.html" />
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_Rejected.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_Redirected.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Subject\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_Created.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_на_уточнении.html" />
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_объединение_разукрупнение.html" />
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_отклонение_заявки %28на этапе импорта%29.html" />
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_отклонение_заявки %28на этапе проверки%29.html" />
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_первичные документы.html" />
+    <EmbeddedResource Include="Resources\Templates\EstateRegistration_уведомление о регистрации.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Templates\OS_DraftOSPassBuss.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DefaultData\XML\MonitorEventPreceding.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

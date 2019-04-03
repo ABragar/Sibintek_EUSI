@@ -1,0 +1,51 @@
+﻿@model EditorViewModel
+@{
+    var profilesDdl = Html.CreateSystemName("ddl");
+}
+
+<div id="@Model.UID">
+    <input id="@profilesDdl" required="True" style="width: 100%;"/>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        var $editor = $("#@Model.UID");
+        var $form = $editor.closest("form");
+
+        $form.on("onAfterBind", function (e, form) {
+            var profileMnemonicPr = form.getPr('ProfileMnemonic');
+
+            pbaAPI.proxyclient.viewConfig.getRelations({
+                mnemonic: "BaseProfile"
+            }).done(function(result) {
+                var ddl = $('#@profilesDdl');
+
+                if (ddl.data('kendoDropDownList')) {
+                    ddl.data('kendoDropDownList').destroy();
+                    ddl.html('');
+                }
+                if (profileMnemonicPr == null)
+                    profileMnemonicPr = '';
+
+                var index = result.indexOf(profileMnemonicPr);
+                if (index !== -1)
+                    result.splice(index, 1);
+
+                result.unshift(profileMnemonicPr);
+
+                ddl.kendoDropDownList({
+                    dataSource: {
+                        data: result
+                    }
+                });
+
+                $('#@profilesDdl').data("kendoDropDownList").select(0);
+            });
+        });
+
+        $form.on("onSave", function (e, form) {
+            var ddl = $('#@profilesDdl').data("kendoDropDownList");
+            form.setPr('ProfileMnemonic', ddl.value());
+        });
+    });
+</script>

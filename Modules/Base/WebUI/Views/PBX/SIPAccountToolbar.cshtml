@@ -1,0 +1,46 @@
+﻿@model int?
+
+@{
+    var serverId = Model.GetValueOrDefault();
+    string SIPnumber = ViewBag.number;
+    var btnId = Guid.NewGuid().ToString("N");
+    var getUserUrl = Url.Action("GetUser", "PBX");
+    var saveUserUrl = Url.Action("SaveUser", "PBX");
+
+}
+
+<button id="@(btnId)" class="btn btn-success">SIP Аккаунт</button>
+@*PBXUser*@
+
+
+<script>
+    (function(serverId, SIPnumber, btnId, getUserUrl, saveUserUrl) {
+        var $button = $(btnId), $listWnd;
+
+        if (!serverId) {
+            $button.remove();
+            return;
+        }
+
+        $button.on('click', function() {
+            pbaAPI.ajax.get(getUserUrl, { serverId: serverId, number: SIPnumber}).then(function(res) {
+                if (res && !res.error) {
+                    pbaAPI.openDetailView("PBXUser", {
+                        toSave: false,
+                        entity: res,
+                        callback: function(e) {
+                            if (e.type === "save") {
+                                pbaAPI.ajax.post(saveUserUrl, { serverId: serverId, user: e.model.toJSON() }).then(function(response) {
+                                    pbaAPI.msg('Данные успешно сохранены, необходимо применить настройки сервера', 'upload-success');
+                                }, function(err) {
+                                    pbaAPI.errorMsg('Во время операции произошла ошибка');
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+        });
+    })(@serverId, @SIPnumber, "#@btnId", "@getUserUrl", "@saveUserUrl");
+</script>

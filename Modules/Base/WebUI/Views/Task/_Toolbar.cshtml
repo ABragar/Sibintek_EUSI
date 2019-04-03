@@ -1,0 +1,114 @@
+﻿@model WebUI.Models.Task.TaskToolbarVm
+
+@{
+    string wrapid = Html.CreateSystemName("w");
+    string templateid = Html.CreateSystemName("t");
+
+    Type enumType = typeof(Base.Task.Entities.TaskStatus);
+}
+<script>
+    window["@wrapid"] = {
+        _exeAction: function (actionID, comment, callback) {
+            return $.ajax({
+                type: "POST",
+                url: "@Url.Action("ExecuteAction", "Task")",
+                data: {
+                    taskID: '@Model.TaskID',
+                    actionID: actionID,
+                    comment: comment
+                },
+                success: function (data) {
+                    if (data.error) {
+                        pbaAPI.errorMsg(data.message);
+                    } else {
+                        if (callback)
+                            callback();
+                    }
+                }
+            });
+        },
+        executeAction: function (actionID, commentIsRequired) {
+            if (commentIsRequired == "true") {
+                var $wnd = $("<div />").kendoWindow({
+                    title: "Комментарий",
+                    resizable: true,
+                    width: 500,
+                    height: 300,
+                    modal: true,
+                    deactivate: function () {
+                        this.destroy();
+                    }
+                });
+
+                var wnd = $wnd.data("kendoWindow");
+
+                wnd.content($("#@templateid").html()).center().open();
+
+                $wnd.find('textarea.action-comment').on("keyup", function (e) {
+                    var invokeButton = $wnd.find("[data-action=invoke]");
+                    if (e.target.value) {
+                        invokeButton.removeClass('k-state-disabled');
+                    } else if (!invokeButton.hasClass('k-state-disabled')) {
+                        invokeButton.addClass('k-state-disabled');
+                    }
+                }).on("copy cut paste", function (e) {
+                    setTimeout(function () {
+                        var invokeButton = $wnd.find("[data-action=invoke]");
+                        if (e.target.value) {
+                            invokeButton.removeClass('k-state-disabled');
+                        } else if (!invokeButton.hasClass('k-state-disabled')) {
+                            invokeButton.addClass('k-state-disabled');
+                        };
+                    }, 0);
+                });
+
+                $wnd.find("[data-action=cancel]").click(function () {
+                    wnd.close();
+                });
+
+                $wnd.find("[data-action=invoke]").click(function () {
+                    $('#@wrapid').closest('[data-role=toolbar]').trigger('onActionInvoke', {
+                        save: function () {
+                            return window["@wrapid"]._exeAction(actionID, $wnd.find('textarea.action-comment').val(), function () {
+                                wnd.close();
+                            });
+                        }
+                    });
+                });
+            } else {
+                $('#@wrapid').closest('[data-role=toolbar]').trigger('onActionInvoke', {
+                    save: function () {
+                        return window["@wrapid"]._exeAction(actionID, "");
+                    }
+                });
+            }
+        }
+
+    };
+</script>
+
+<script id="@templateid" type="text/x-kendo-template">
+    <div style="display:none" class="panel panel-default data-user-wrap">
+        <div data-user class="panel-body">
+        </div>
+    </div>
+    <textarea class="action-comment k-textbox k-valid" rows="12" placeholder="Введите комментарий" style="width:100%"></textarea>
+    <div style="position:absolute; bottom: 10px; right:10px;">
+        <button data-action="cancel" type="button" class="k-button">Отменить</button>
+        <button data-action="invoke" type="button" class="k-button k-state-disabled">Выполнить</button>
+    </div>
+</script>
+
+<div id="@wrapid">
+    <a href="#" class="k-button primary" data-dropdown="#popup2" data-popup="right">Действия</a>
+    <ul class="popup-content popup-actions" id="popup2">
+        @foreach (var action in Model.Actions)
+        {
+            <li>
+                <a href="#" title="@action.Text" onclick="window['@wrapid'].executeAction('@action.Value', '@action.СommentIsRequired.ToString().ToLower()');">
+                    <span class='enum-@enumType.GetTypeName()' data-val='@action.Value'></span> @action.Title
+                </a>
+            </li>
+        }
+    </ul>
+</div>

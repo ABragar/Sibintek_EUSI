@@ -1,0 +1,153 @@
+.map-menu {
+	top: @header-height !important;
+	bottom: @header-height *.75 !important;
+
+	background: fade( @color--dark, 70% );
+
+	@media ( min-width: @screen-width-md ) {
+		bottom: 0 !important;
+		}
+
+	&-layers {
+		display: block;
+
+		margin: 10px;
+		padding: 0; 
+
+		list-style: none;
+		}
+
+	&-layers &-layer {
+		position: relative;
+
+		display: block;
+
+		margin: 0 0 20px 0;
+		padding: 0;
+
+		list-style: none;
+
+		background: desaturate( darken( @color--primary, 18% ), 3% );
+
+		[class^='icheckbox_'] {
+			position: absolute;
+			top: 10px;
+			left: 5px;
+			}
+
+		.map-menu-layers .map-menu-layer [class^='icheckbox_'] {
+			position: absolute;
+			top: 4px;
+			left: 5px;
+			}
+
+		.map-layer-title {
+			font-size: 16px;
+			line-height: 23px;
+
+			display: block;
+
+			margin: 0;
+			padding: 10px 30px 10px 65px;
+
+			color: @color--light-mild;
+			background: saturate( darken( @color--primary, 18% ), 4% );
+			}
+
+		.map-menu-layer-icon {
+			font-size: 14px;
+
+			position: absolute;
+			top: 5px;
+			left: 30px;
+
+			display: block;
+
+			width: 30px;
+			height: 30px;
+			padding: 5px;
+
+			text-align: center;
+
+			color: @color--light;
+			border-radius: 15px;
+			background-color: @color--dark;
+			}
+
+		.map-menu-layers .map-menu-layer {
+			.map-menu-layer-icon {
+				top: 3px;
+				left: 33px;
+
+				width: 25px;
+				height: 25px;
+				padding: 3px;
+
+				color: @color--light;
+				}
+
+			.map-layer-count {
+				top: 4px;
+
+				background: saturate( darken( @color--primary, 18% ), 4% );
+				}
+
+			.map-menu-layers .map-menu-layer .map-layer-count {
+				top: 4px;
+
+				background-color: darken( @color--light, 46% );
+				}
+			}
+
+		.map-layer-count {
+			font-size: 12px;
+			line-height: 12px;
+
+			position: absolute;
+			top: 8px;
+			right: 4px;
+
+			display: block;
+
+			min-width: 25px;
+			height: 25px;
+			padding: 7px;
+
+			text-align: center;
+
+			color: @color--light-mild;
+			border-radius: 13px;
+			background: saturate( darken( @color--primary, 40% ), 16% );
+			}
+		}
+
+	&-layer &-layers {
+		margin: 0;
+
+		background: transparent;
+
+		.map-menu-layer {
+			margin: 0;
+
+			background: saturate( darken( @color--primary, 5% ), 3% );
+
+			.map-layer-title {
+				font-size: 14px; 
+
+				padding: 5px 30px 5px 65px;
+
+				background: transparent;
+				}
+
+			.map-menu-layers .map-menu-layer {
+				margin: 0;
+
+				background: desaturate( darken( @color--primary, 12% ), 69% );
+
+				.map-layer-title {
+					color: @charcoal;
+					}
+				}
+			}
+		}
+	}

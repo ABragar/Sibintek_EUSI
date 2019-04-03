@@ -1,0 +1,292 @@
+﻿@using Base.UI.ViewModal
+@using Newtonsoft.Json
+@model StandartScheduler
+
+@{
+    var typeEntity = Model.ViewModelConfig.TypeEntity;
+
+    bool isCategorizedItem = typeEntity.GetInterfaces().Contains(typeof(ICategorizedItem));
+
+    bool actionCreate = !Model.IsReadOnly && Model.IsPermission(TypePermission.Create) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Create);
+
+}
+
+<script>
+    (function () {
+        var composite = window["@Model.DialogID"];
+
+        var scheduler = window["@Model.WidgetID"] = new WrapScheduler({
+            id: "@Model.WidgetID",
+            mnemonic: "@Model.ViewModelConfig.Mnemonic",
+            isCategorizedItem: @Html.Raw(JsonConvert.SerializeObject(isCategorizedItem)),
+            desc: "Scheduler"
+        });
+
+        @*//--------scheduler--------//*@
+
+        composite.registerWidget(scheduler);
+
+        scheduler.__overrideOnNeighbourWidgetChanged = scheduler.onNeighbourWidgetChanged;
+
+        scheduler.onNeighbourWidgetChanged = function (e) {
+            scheduler.__overrideOnNeighbourWidgetChanged(e);
+
+            if (e.sender.desc === "TreeView") {
+                if (e.event === "select") {
+                    var id = null;
+
+                    if (e.params.dataItem) {
+                        id = e.params.dataItem.id;
+                    }
+
+                    scheduler["nodeID"] = id;
+                    scheduler.setUrlParametr("categoryID", id || 0);
+                    scheduler.bind();
+                }
+            } else if (e.sender.desc == "ToolbarListView" || e.sender.desc == "ContextMenuListView") {
+                if (e.event == "click") {
+                    switch (e.params.action) {
+                    case "add":
+                        scheduler.add();
+                        break;
+                    case "edit":
+                        scheduler.edit();
+                        break;
+                    case "detail":
+                        scheduler.detail();
+                        break;
+                    case "delete":
+                        scheduler.widget().removeEvent(scheduler.selectEvent);
+                        break;
+                    }
+                }
+            }
+        };
+
+        //BEGIN - EVENTS
+
+        scheduler.onEdit = function (e) {
+            e.preventDefault();
+            scheduler.dblClick({ sender: e.event });
+        }
+
+        scheduler.onDataBound = function (e) {
+            if (!scheduler.widget()) return;
+
+            var view = scheduler.view();
+
+            // event is triggered on every resize
+            if (view.table.data("mark_ondatabound"))
+                return;
+
+            view.table.attr("data-mark_ondatabound", true);
+
+            composite.onWidgetChanged(
+                {
+                    sender: scheduler,
+                    event: "onDataBound"
+                });
+
+            scheduler.composite.onWidgetChanged(
+                {
+                    sender: scheduler,
+                    event: "select",
+                    params: { dataItem: scheduler.selectEvent }
+                });
+
+            var dataSourceData = scheduler.getDataSource().data();
+
+            // For every element that has the more events ellipses '...'
+            view.table.find(".k-more-events").each(function () {
+                if ($(this) != null) {
+                    var element = $(this);
+
+                    if (element != null) {
+                        var slot = scheduler.slotByElement(element);
+                        if (slot != null) {
+                            var slotStart = slot.startDate;
+                            var slotEnd = slot.endDate;
+
+                            var totalAppts = 0;
+                            var visibleAppts = 0;
+
+                            for (var i = 0; i < dataSourceData.length; i++) {
+                                var appt = dataSourceData[i];
+                                var apptStartDt = appt.start;
+                                var apptEndDt = appt.end;
+
+                                // Include only appointments that are in or overlap the entire day
+                                if (slotStart < apptEndDt && slotEnd > apptStartDt) {
+                                    totalAppts += 1;
+
+                                    var selector = 'div[data-uid="' + appt.uid + '"]';
+                                    if ($(selector).length > 0) {
+                                        visibleAppts += $(selector).length;
+                                    }
+                                }
+                            }
+
+                            var totalHidden = totalAppts - visibleAppts;
+
+                            if (totalHidden > 0) {
+                                element.text('Ещё ' + totalHidden + ' …');
+                            }
+                        }
+                    }
+                }
+            });
+        };
+
+        scheduler.onChange = function (e) {
+            var start = e.start; //selection start date
+            var end = e.end; //selection end date
+            var events = e.events; //list of selected Scheduler events
+
+            scheduler.selectStart = start;
+            scheduler.selectEnd = end;
+
+            scheduler.selectEvent = null;
+
+            if (events.length) {
+                scheduler.selectEvent = events[0];
+            }
+
+            scheduler.composite.onWidgetChanged(
+                {
+                    sender: scheduler,
+                    event: "select",
+                    params: { dataItem: scheduler.selectEvent }
+                });
+        };
+
+        scheduler.dblClick = function (e) {
+            var event = e.sender;
+
+            if (event) {
+                event.Title = event.title; @*чтобы не запршивать модель с сервера *@
+                scheduler.selectEvent = event;
+
+                composite.onWidgetChanged(
+                    {
+                        sender: scheduler,
+                        event: "dblclick"
+                    });
+                //scheduler.edit();
+            } else {
+                scheduler.selectEvent = null;
+
+                @if(actionCreate)
+                {
+                    @: scheduler.add();
+                }
+            }
+        };
+        //END - EVENTS
+
+        scheduler.bind = function () {
+            scheduler.dataSourceRead();
+        };
+
+        scheduler.add = function () {
+            var initProps = {
+                Start: scheduler.selectStart,
+                End: scheduler.selectEnd
+            };
+
+            scheduler.addEntity({
+                initProps: initProps,
+                callback: function(e) {
+                    scheduler.bind();
+                }
+            });
+        };
+
+        scheduler.edit = function () {
+            var id = scheduler.selectEvent.ID;
+            //NOTE: если периодичное
+            if (scheduler.selectEvent.recurrenceRule || scheduler.selectEvent.recurrenceId) {
+
+                if (scheduler.selectEvent.recurrenceId) {
+                    id = scheduler.selectEvent.recurrenceId;
+                }
+
+                scheduler.openRecurringDialog({
+                    current: function () {
+
+                        pbaAPI.proxyclient.crud.get({
+                            mnemonic: scheduler.mnemonic,
+                            id: id
+                        }).done(function (e) {
+                                var ground = e.model;
+
+                                var entity = $.extend({}, ground);
+
+                                entity.ID = 0;
+                                entity.RecurrenceRule = null;
+                                entity.RecurrenceException = null;
+                                entity.Start = scheduler.selectEvent.start;
+                                entity.End = scheduler.selectEvent.end;
+
+                                ground.RecurrenceException = (ground.RecurrenceException || "") + entity.Start.toISOString() + ";";
+
+                                pbaAPI.openDetailView(scheduler.mnemonic,
+                                    {
+                                        wid: "@Model.WidgetID",
+                                        entity: entity,
+                                        toSave: true,
+                                        callback: function(e) {
+                                            if (e.type == "save" || e.type == "apply") {
+
+                                                pbaAPI.proxyclient.crud.save(
+                                                        { mnemonic: "@Model.Mnemonic" },
+                                                        { model: ground })
+                                                    .done(function(res) {
+                                                        if (res.error != 0) {
+                                                            pbaAPI.errorMsg(res.message);
+                                                        }
+
+                                                        scheduler.bind();
+                                                    });
+                                            }
+                                        }
+                                    });
+                            }
+                        );
+
+
+                    },
+                    series: function () {
+                        scheduler.selectEvent = { ID: id };
+                        scheduler.edit();
+                    }
+                });
+
+                return;
+            }
+
+            pbaAPI.openDetailView(scheduler.mnemonic,
+                {
+                    wid: "@Model.WidgetID",
+                    id: id,
+                    callback: function (e) {
+                        if (e.type == "save" || e.type == "apply") {
+                            scheduler.bind();
+                        }
+                    }
+                });
+        };
+    })();
+</script>
+
+<div id="list-view" style="height: 100%;">
+    <div class="kwidget kwidget--toolbar @(Model.ViewModelConfig.ListView.HideToolbar ? "kwidget--hidden" : "")">
+        @{Html.RenderPartial(Model.GetToolbarListViewUrl(), Model);}
+    </div>
+
+    <div class="kwidget kwidget--scheduler widget-body">
+        @{Html.RenderPartial(Model.GetListViewUrl(), Model);}
+
+        @* из-за привязки к listview, contextmenu необходимо рендерить после него *@
+        @{Html.RenderPartial(Model.GetContextMenuListViewUrl(), Model);}
+    </div>
+</div>

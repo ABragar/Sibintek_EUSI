@@ -1,0 +1,231 @@
+﻿@model WebUI.Controllers.MapViewModel
+
+<div id="@Model.WidgetID" style="height: 100%">
+    
+</div>
+
+<script>
+    (function () {
+        var gMapCacheControl = window['gMapCacheControl'] || (window['gMapCacheControl'] = {
+            init: false,
+            rootNode: null,
+            isRunning: false
+        });
+
+        var map = window["@Model.WidgetID"] = new WrapMap("@Model.WidgetID", "GeoBox");
+
+        map.mnemonic = function () {
+            //debugger;
+            return "@Model.RawMnemonics";
+        };
+
+        map.onNeighbourWidgetChanged = function (e) {
+            //debugger;
+            switch (e.sender.desc) {
+                case "DialogSplitter":
+                    if (e.event === "resize") {
+                        this.resize(this.element().width(), e.params.height - 30);
+                    }
+                    break;
+            }
+        };
+
+        map.handleAdd = function (widget, event) {
+            //debugger;
+            var createfunc = function (mnemonic, layerId) {
+
+                //debugger;
+                pbaAPI.openDetailView(mnemonic,
+                {
+                    wid: "@Model.WidgetID",
+                    initNewEntity: function (model) {
+                        if (model.Location !== undefined &&
+                                model.Location.Disposition !== undefined &&
+                                event.model.get("Geometry")
+                        ) {
+                            model.Location.Disposition = event.model.get("Geometry").toJSON();
+                        }
+                    },
+                    callback: function (e) {
+                        if (e.type === "save" || e.type === "apply") {
+
+                            if (e.model.Location !== undefined && e.model.Location.Disposition !== undefined) {
+                                event.model.set("Geometry", e.model.Location.Disposition);
+
+                                if (e.model.Title !== undefined) {
+                                    event.model.set("Title", e.model.Title);
+                                }
+
+                                if (e.model.Description !== undefined) {
+                                    event.model.set("Description", e.model.Description);
+                                }
+
+                                // Update model id (send update request if set model id)
+                                event.model.id = e.model.ID;
+                                event.model.set("ID", e.model.ID);
+
+                                event.applyCreate(layerId);
+                            }
+                        } else {
+
+                            event.cancelCreate();
+                        }
+                    }
+                });
+            }
+
+            var selectedLayer = event.getSelectedLayer();
+
+            if (selectedLayer && selectedLayer.get["Load"]) {
+                createfunc(selectedLayer.get("Mnemonic"), selectedLayer.get("LayerId"));
+                return;
+            }
+
+            var layers = map.widget().stateManager.getLayers().filter(function (x) {
+                return x.model.Load;
+            });
+
+            var items = layers.map(function (x) {
+                var result = {
+                    Title: x.model.Title,
+                    Model: x.model
+                }
+
+                return result;
+            });
+
+
+            pbaAPI.selectSimple(items, {
+                cancel: function () {
+                    event.cancelCreate();
+                },
+                callback: function (x) {
+                    createfunc(x.Model.Mnemonic, x.Model.LayerId);
+                }
+            });
+        };
+
+        map.handleEditButtonClick = function (widget, event) {
+            event.wait();
+
+            var layerId = event.layerId;
+
+            var layer = map.widget().stateManager.getLayers().find(function (x) {
+                return x.model.LayerId == layerId;
+            });
+            //var mnemonic = layer.model.Mnemonic;
+            pbaAPI.openDetailView(layer.model.Mnemonic,
+            {
+                wid: "@Model.WidgetID",
+                id: event.model.id,
+                toSave: true,
+                callback: function (e) {
+                    if (e.type === "save" || e.type === "apply") {
+                        if (e.model.Location !== undefined && e.model.Location.Disposition !== undefined) {
+                            event.model.set("Geometry", e.model.Location.Disposition);
+                        }
+
+                        if (e.model.Title !== undefined) {
+                            event.model.set("Title", e.model.Title);
+                        }
+
+                        if (e.model.Description !== undefined) {
+                            event.model.set("Description", e.model.Description);
+                        }
+                    }
+
+                    event.destroy();
+                },
+                onOpen: function () {
+                    event.endWait();
+                },
+                onError: function () {
+                    event.endWait();
+                }
+            });
+        };
+
+        map.handleEdited = function (widget, event) {
+            event.syncChanges();
+        };
+
+        map.handleDeleted = function (widget, event) {
+            event.syncChanges();
+        };
+
+        map.handleDeleteButtonClick = function (widget, event) {
+            var mnemonic = event.layer.model.Mnemonic;
+            var entityId = event.model.ID;
+
+            pbaAPI.proxyclient.crud.destroy({ mnemonic: mnemonic, id: entityId }).done(
+                function (res) {                   
+
+                });
+        };
+
+
+        // Set default leaflet settings
+        L.Icon.Default.imagePath = "/Content/vendor/leaflet/Leaflet.core/images";
+
+        // Create map widget
+        //var map = window["@Model.WidgetID"];
+        var mapLayersUrl = "@Url.Action("GetLayers", "Map", new { mnemonics = Model.RawMnemonics })";
+
+        var geoObjectCreateUrl = null;
+        var geoObjectReadUrl = "@Url.Action("GetGeoObjects", "Map")";
+        var geoObjectUpdateUrl = "@Url.Action("UpdateGeoObjects", "Map")";
+        var geoObjectDeleteUrl = "@Url.Action("DeleteGeoObjects", "Map")";
+
+        var CRUD = [geoObjectCreateUrl, geoObjectReadUrl, geoObjectUpdateUrl, geoObjectDeleteUrl];
+
+        var geoObjectCountsUrl = "@Url.Action("GetGeoObjectCounts", "Map")";
+        var centerOrBounds = new L.LatLngBounds(L.latLng(54.850271, 37.5139298), L.latLng(56.5171397, 37.7135246));
+
+        map.createWidget("#@Model.WidgetID", centerOrBounds, null, mapLayersUrl, CRUD, geoObjectCountsUrl);
+
+        var composite = window["@Model.DialogID"] = new CompositeControl("@Model.DialogID");
+        composite.registerWidget(map);
+
+
+        gMapCacheControl.rootNode = map.widget().layout.mapPanelNode;
+
+        // Initial map cache control
+        if (!gMapCacheControl.init) {
+            $(document).keydown(function (e) {
+                if (e.ctrlKey && e.which === 192) {
+                    if (!gMapCacheControl || !gMapCacheControl.rootNode) {
+                        return;
+                    }
+
+                    if (!gMapCacheControl.isRunning) {
+                        MapCache.ConsoleProgram.run(gMapCacheControl.rootNode, "/MapCache");
+                        gMapCacheControl.isRunning = true;
+                    } else {
+                        MapCache.ConsoleProgram.exit();
+                        gMapCacheControl.isRunning = false;
+                    }
+
+                    e.preventDefault();
+                }
+            });
+
+            gMapCacheControl.init = true;
+        }
+
+        // Destroy map and map cache control if widget node removal
+        $("#@Model.WidgetID").on("remove", function () {
+            try {
+                MapCache.ConsoleProgram.destroy();
+                gMapCacheControl.isRunning = false;
+            } catch (e) {
+                console.error(e);
+            }
+
+            try {
+                map.widget().destroy();
+            } catch (e) {
+                console.error(e);
+            }
+        });
+    })();
+</script>

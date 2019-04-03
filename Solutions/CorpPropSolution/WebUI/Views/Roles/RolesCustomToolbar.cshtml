@@ -1,0 +1,67 @@
+﻿@model int?
+
+@{
+    var addPermissionsFrom = Url.Action("SetPermissionAddFrom", "Roles");
+    var permissionAddFromId = Html.CreateSystemName("permissionAddFrom");
+    var rolesMnemonic = "Role";
+}
+
+<button id="@(permissionAddFromId)" type="button" class="k-button tooltipInputHelper" title="Добавление в выбранные роли разрешения других ролей"><span class="k-icon fa fa-clone"></span>Взять разрешения</button>
+<script>
+    $(function () {
+        //debugger;
+        var permissionAddFromTitle = "Выбор ролей из которых будут скопированы разрешения";
+
+        $("#@permissionAddFromId").click(function (object) {
+
+            var lv = $("#@permissionAddFromId").closest('.dialog-listview').data('dialogListView');
+            var selectedItems = lv.getSelectItems();
+            if (!selectedItems || selectedItems.length < 1) {
+                pbaAPI.msg('Ничего не выбрано');
+                return false;
+            };
+
+            function objectPost(url, saveObject, onSuccess) {
+                pbaAPI.ajax.post(url, saveObject)
+              .then(function (response) {
+                  pbaAPI.msg('Данные успешно сохранены', 'upload-success');
+                  onSuccess(response);
+              },
+                  function (err) {
+                      pbaAPI.errorMsg('Во время операции произошла ошибка');
+                  });
+            };
+
+            pbaAPI.openModalDialog("@rolesMnemonic",
+                function (selectedItems) {
+                    //debugger;
+                    function getIdsFromObject(items) {
+                        var ids = [];
+                        items.forEach(function (item) {
+                            ids.push(item.ID);
+                        });
+                        return ids;
+                    };
+                    var lv = $("#@permissionAddFromId").closest('.dialog-listview').data('dialogListView');
+                    var parentObjectIds = getIdsFromObject(lv.getSelectItems());
+                    //var selectedObjectsMnemonic = lv.listView().mnemonic;
+                    var popupObjectIds = getIdsFromObject(selectedItems);
+
+                    var params = {
+                        SrcObjectIds: popupObjectIds,
+                        DestObjectIds: parentObjectIds
+                    }
+
+                    objectPost("@addPermissionsFrom",
+                        params,
+                        function () {
+                            //debugger;
+                        });
+                },
+                {
+                    title: permissionAddFromTitle
+                });
+
+        });
+    })
+</script>

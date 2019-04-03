@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="/Content/images/favicon.ico" type="image/x-icon" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" href="~/Areas/Public/Content/Images/mobile/Icon76.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Areas/Public/Content/Images/mobile/Icon76.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="~/Areas/Public/Content/Images/mobile/Icon120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="~/Areas/Public/Content/Images/mobile/Icon152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Areas/Public/Content/Images/mobile/Icon180.png" />
+
+    <link rel="apple-touch-icon-precomposed" href="~/Areas/Public/Content/Images/mobile/Icon76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="~/Areas/Public/Content/Images/mobile/Icon76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="~/Areas/Public/Content/Images/mobile/Icon120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="~/Areas/Public/Content/Images/mobile/Icon152.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="~/Areas/Public/Content/Images/mobile/Icon180.png" />
+
+    <link href="~/Areas/Public/Content/Images/mobile/320x460.png" media="(device-width: 320px) and (orientation:portrait)" rel="apple-touch-startup-image">
+    <link href="~/Areas/Public/Content/Images/mobile/460x320.png" media="(device-width: 320px) and (orientation:landscape)" rel="apple-touch-startup-image">
+
+    <link href="~/Areas/Public/Content/Images/mobile/640x920.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2) and (orientation:portrait)" rel="apple-touch-startup-image">
+    <link href="~/Areas/Public/Content/Images/mobile/920x640.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2) and (orientation:landscape)" rel="apple-touch-startup-image">
+
+    <link href="~/Areas/Public/Content/Images/mobile/748x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" rel="apple-touch-startup-image">
+    <link href="~/Areas/Public/Content/Images/mobile/1024x748.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" rel="apple-touch-startup-image">
+
+    <link href="~/Areas/Public/Content/Images/mobile/1496x2048.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="~/Areas/Public/Content/Images/mobile/2048x1496.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+
+    @*<link rel="apple-touch-startup-image" href="~/Areas/Public/Content/Images/mobile/640x1136.png" />
+        <link rel="apple-touch-startup-image" href="~/Areas/Public/Content/Images/mobile/750x1334.png" />
+        <link rel="apple-touch-startup-image" href="~/Areas/Public/Content/Images/mobile/1334x750.png" />
+        <link rel="apple-touch-startup-image" href="~/Areas/Public/Content/Images/mobile/1242x2208.png" />
+        <link rel="apple-touch-startup-image" href="~/Areas/Public/Content/Images/mobile/2208x1242.png" />*@
+
+    <link href="~/Areas/Public/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/fonts/roboto/roboto.css" rel="stylesheet" />
+    <link href="~/Content/fonts/pt-sans/pt-sans.css" rel="stylesheet" />
+    <link href="~/Content/fonts/glyphicons/glyphicons-filetypes-regular.css" rel="stylesheet" />
+    <link href="~/Content/fonts/glyphicons/glyphicons-halflings-regular.css" rel="stylesheet" />
+    <link href="~/Content/fonts/glyphicons/glyphicons-regular.css" rel="stylesheet" />
+    <link href="~/Content/fonts/glyphicons/glyphicons-social-regular.css" rel="stylesheet" />
+    <link href="~/Content/fonts/font-awesome/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/fonts/fontello/fontello.css" rel="stylesheet" />
+    <link href="~/Content/fonts/mdi/materialdesignicons.css" rel="stylesheet" />
+    <script src="~/Areas/Public/Scripts/modernizr-2.6.2.js"></script>
+    @RenderSection("css", required: false)
+</head>
+<body>
+    <div class="map-content">
+        @RenderBody()
+    </div>
+
+    <script src="~/Areas/Public/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Areas/Public/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

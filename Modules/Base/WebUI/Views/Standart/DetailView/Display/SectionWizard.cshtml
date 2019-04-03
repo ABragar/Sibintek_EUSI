@@ -1,0 +1,47 @@
+﻿@using Base.Realty.Entities
+@model Base.Realty.Entities.SectionWizard
+
+@{
+    string formId = "form_" + Guid.NewGuid().ToString("N");
+    var maxApartmentsCount = Model.Apartments.GroupBy(x => x.Level).Select(g => g.Count()).OrderByDescending(x => x).First();
+}
+
+<form id="@formId" class="section-wizard-form">
+    <h2>Секция будет создана в таком виде:</h2>
+    <table>
+        <tr>
+            <th class="level">Номер этажа</th>
+            <th colspan="@maxApartmentsCount" style="text-align: center">Квартиры</th>
+        </tr>
+    </table>
+    @foreach (var level in Model.Apartments.Select(x => x.Level).Distinct())
+        {
+    <table>
+        <tr>
+            <td class="level">@level</td>
+            @foreach (var apartment in @Model.Apartments.Where(x => x.Level == level))
+        {
+            <td style="text-align: center; background-color: @(apartment.Status != null ? apartment.Status.Icon.Color : "")">
+                @apartment.Rooms.Count(x => x.Type == RoomType.Livingroom) комн. (@apartment.Rooms.Sum(x => x.ProjectArea) кв.м.)
+            </td>
+        }
+        </tr>
+    </table>
+        }
+
+    @if (Model.RealtyStatuses != null)
+    {
+        <ul>
+            @foreach (var status in Model.RealtyStatuses)
+            {
+                <li>
+                    <span class="icon" style="background-color: @status.Icon.Color;"></span>
+                    &nbsp;
+                    <span class="caption">@status.Title</span>
+                </li>
+            }
+        </ul>
+    }
+    
+
+</form>

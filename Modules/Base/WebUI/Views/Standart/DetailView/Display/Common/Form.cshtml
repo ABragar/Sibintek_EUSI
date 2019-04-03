@@ -1,0 +1,259 @@
+﻿@model StandartFormModel
+
+@{
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+    const string editorName = "~/Views/Standart/DetailView/Display/Common/Display.cshtml";
+    string strLabel = "";
+    bool openRow = true;
+    const int maxColumnInGroup = 3;
+    int maxEditorsInRow = maxColumnInGroup;
+
+
+
+}
+
+@for (int i = 0; i < Model.TabsCount; i++)
+{
+    var tab = Model.Tabs[i];
+    var tabName = tab.TabName;
+    bool isSingleInTab = tab.Editors.Count() == 1;
+
+    <div class="dialog__tab" id="@tab.TabID">
+        @if (!string.IsNullOrWhiteSpace(Model.ViewModelConfig.DetailView.Description))
+        {
+            <div class="d-row alert alert-warning text-center" role="alert">@Model.ViewModelConfig.DetailView.Description</div>
+        }
+
+        @for (int j = 0; j < Model.GroupCount; j++)
+        {
+            string sectionId = Guid.NewGuid().ToString("n");
+            var group = Model.Groups[j];
+            var countEditor = group.Editors.Where(x => x.TabName == tabName && x.Visible).Count();
+            if (countEditor == 0)
+            {
+                continue;
+            }
+            string pattern = @"{\d*}";
+            var grName = group.Editors.FirstOrDefault().Group;
+            if (!String.IsNullOrEmpty(grName))
+            {
+                System.Text.RegularExpressions.Match match =
+                System.Text.RegularExpressions.Regex.Match(grName, pattern);
+                if (match.Success)
+                {
+                    maxEditorsInRow = int.Parse(match.Value.Replace("{", "").Replace("}", ""));
+                    grName = grName.Replace(match.Value, "");
+                }
+                else
+                {
+                    maxEditorsInRow = maxColumnInGroup;
+                }
+            }
+            else
+            {
+                maxEditorsInRow = maxColumnInGroup;
+            }
+
+
+            int col = 12 / maxEditorsInRow;
+            bool isSingleEditor = countEditor > 1 ? false : true;
+
+            //условие горизонтальной группы
+            if (!isSingleEditor)
+            {
+                strLabel = "col-md-" + col + " e-label";
+                int editorsInRow = 0;
+                bool newRow = true;
+                foreach (var editorInGroup in group.Editors.Where(x => x.TabName == tabName && x.Visible))
+                {
+                    string rowClassName = "d" + "-row";
+
+                    if (openRow)
+                    {
+                        @:<fieldset>
+                            <legend><span class="glyphicon glyphicon-chevron-up section-toggle-arrow"></span><a href="#" id="rows-section-@sectionId" class="rows-section">@grName</a></legend>
+                            @:<div id="section-@sectionId">
+                                openRow = false;
+                            }
+                            if (newRow)
+                            {
+                                newRow = false;
+                                @:<div class="@rowClassName ">
+                                }
+                                @RenderEditorRow(editorInGroup, strLabel)
+                                editorsInRow++;
+
+                                if (editorsInRow == maxEditorsInRow || countEditor == 0)
+                                {
+                                    editorsInRow = 0;
+                                    newRow = true;
+                                    @:</div>
+                            }
+                            countEditor--;
+                            if (countEditor == 0)
+                            {
+                                openRow = true;
+                                @: </div> </fieldset>
+                    }
+                }
+            }
+            else
+            {
+                foreach (var editorInGroup in group.Editors.Where(x => x.TabName == tabName && x.Visible))
+                {
+                    string rowClassName = "d" + "-row";
+
+                    if (isSingleInTab)
+                    {
+                        rowClassName += " single-editor";
+                    }
+                    @RenderEditorRow(editorInGroup, rowClassName)
+
+                }
+            }
+
+        }
+    </div>
+}
+
+@helper RenderLabel(EditorViewModel editor)
+    {
+        if ((editor.PropertyType == typeof(bool) || editor.PropertyType == typeof(bool?)))
+        {
+            <label>@editor.Title</label>
+            @RenderHelp(editor)
+
+        }
+        else
+        {
+            <label for="@editor.UID">@editor.Title</label>
+
+            var parentObj = editor.ParentViewModelConfig;
+            string mnemonic = parentObj.Mnemonic;
+            bool isTemplate = (mnemonic.ToLower() == "sibtasktemplate" || mnemonic.ToLower() == "sibprojecttemplate");
+            bool isLookup = parentObj.LookupProperty.Text == editor.PropertyName;
+        
+
+            @RenderHelp(editor)
+        }
+
+        if (!editor.IsReadOnly)
+        {
+            string auditPropertyControl = "~/Views/CorpProp/Audit/_AuditPropertyInfo.cshtml";
+            Html.RenderPartial(@auditPropertyControl, editor);
+        }
+}
+
+@helper RenderHelp(EditorViewModel editor)
+    {
+        if (string.IsNullOrEmpty(editor.Description))
+        {
+            return;
+        }
+
+        <i title="@editor.Description" class="fa fa-question-circle-o"></i>
+}
+
+
+@helper RenderOrdinary(EditorViewModel editor, string editorName, bool isSingleEditor)
+    {
+        if (editor.IsLabelVisible)
+        {
+            if (editor.PropertyDataTypeName == "OneToManyAssociation_InLine" || editor.PropertyDataTypeName == "ManyToManyAssociation_InLine")
+            {
+                string sectionId = Guid.NewGuid().ToString("n");
+                string compactClass = !isSingleEditor ? "sib-compact-widget" : "";
+
+                @:<fieldset>
+                    <legend><span class="glyphicon glyphicon-chevron-up section-toggle-arrow"></span><a href="#" id="rows-section-@sectionId" class="rows-section">@editor.Title</a></legend>
+                    @:<div id="section-@sectionId" class="sib-compact-widget">
+                        Html.RenderPartial(editorName, editor);
+                        @: </div></fieldset>
+            }
+            else if (editor.PropertyType == typeof(bool) || editor.PropertyType == typeof(bool?))
+            {
+
+                <div class="label">
+                </div>
+                <div class="editor">
+                    @{ Html.RenderPartial(editorName, editor); } @RenderLabel(editor)
+                </div>
+            }
+            else
+            {
+                <div class="label">
+                    @RenderLabel(editor)
+                </div>
+                <div class="editor">
+                    @{ Html.RenderPartial(editorName, editor); }
+                </div>
+
+            }
+        }
+        else
+        {
+            Html.RenderPartial(editorName, editor);
+        }
+
+}
+
+@helper RenderEditorRow(EditorViewModel editor, string css)
+    {
+        string editorName = "~/Views/Standart/DetailView/Display/Common/Display.cshtml";
+        string editorAndLabelClass = " label-editor-row ";
+        string emptyItemCss = " sib-editor-emptyItem ";
+
+        var cl = css + " " + editorAndLabelClass;
+        if (String.IsNullOrEmpty(editor.PropertyName) && editor.Title.StartsWith("EmptyItem_"))
+        {
+            cl += emptyItemCss;
+        }
+
+        <div class="@cl" data-field="@editor.PropertyName">
+            @RenderOrdinary(editor, editorName, false)
+        </div>
+}
+
+<script>
+    function ToggleSection(sectionId) {
+        var element = $('div#section-' + sectionId)
+        var visible = element.css('display') == 'none' ? false : true;
+
+        if (visible) {
+            element.slideUp();
+        }
+        else {
+            element.slideDown();
+        }
+    }
+
+    $('a.rows-section').unbind('click').click(function (sender) {
+        var senderId = sender.currentTarget.id;
+        var sectionId = sender.currentTarget.id.split('-')[2];
+        var spanArrow = $('#' + senderId + ' span');
+        if (spanArrow.hasClass('glyphicon-chevron-up')) {
+            spanArrow.removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+        }
+        else {
+            spanArrow.removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+        }
+        ToggleSection(sectionId);
+            });
+
+
+       //sib
+       var $dv = $("div#@Model.Tabs[0].TabID");
+       var $form = $dv.closest("form");
+
+       $form.on('onAfterBind', function (evt, form) {
+           pbaAPI.proxyclient.corpProp.getAuditInfo({
+                mnemonic: "@Model.Mnemonic",
+                id: form.getPr('ID')
+            }).done(function (res) {
+                corpProp.dv.editors.addAuditInfo(form, res);
+
+            })
+
+        });
+       //end sib
+</script>

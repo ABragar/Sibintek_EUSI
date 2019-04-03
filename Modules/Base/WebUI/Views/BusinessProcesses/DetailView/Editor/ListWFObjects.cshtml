@@ -1,0 +1,40 @@
+﻿@model EditorViewModel
+
+@using Base.BusinessProcesses.Entities
+
+@{  
+    string name = "n_" + Guid.NewGuid().ToString("N");
+
+    string htmlFieldName = Model.PropertyName;
+
+    var values = Html.GetViewModelConfigs().Where(x => typeof(IBPObject).IsAssignableFrom(x.TypeEntity))
+        .GroupBy(m => m.TypeEntity)
+        .Select(x => new
+        {
+            Value = x.Key.GetTypeName(),
+            Text = x.Key.Name,
+        })
+        .OrderBy(x => x.Text);
+}
+
+@(Html.Kendo().DropDownList()
+    .Name(name)
+    .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { style = "width: 100%;" }))
+    .DataValueField("Value")
+    .DataTextField("Text")
+    .OptionLabel("Выберите значение...")
+    .BindTo(values)
+)
+
+<script>
+    $(function () {
+        $("#@name").closest('form').on('onAfterBind', function (e, form) {
+            var selObjectType = form.getPr("@(htmlFieldName)");
+            form.addViewData("CreateObjectType", selObjectType);
+        });
+
+        $("#@name").closest("form").on("onSave", function (e, form) {
+            form.setPr("@(htmlFieldName)", $("#@name").data("kendoDropDownList").value());
+        });
+    });
+</script>

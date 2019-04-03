@@ -1,0 +1,21 @@
+﻿@model WebUI.Controllers.MapViewModel
+
+@{
+    if (Model.Title != null)
+    {
+        ViewBag.Title = Model.Title;
+    }
+}
+
+<h1 id="page-title">@ViewBag.Title</h1>
+
+@{Html.RenderPartial("_Dialog", Model);}
+
+
+<script>
+    $(function () {
+        layout.on('resize', function () {
+        
+        });
+    });
+</script>

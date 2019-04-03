@@ -1,0 +1,133 @@
+﻿@using Base.PBX.Models
+@model int?
+
+@{
+    var serverId = Model.GetValueOrDefault();
+    var wrapId = "wrap_" + Guid.NewGuid().ToString("N");
+    var toolBarId = "toolbar_" + Guid.NewGuid().ToString("N");
+    var gridId = "grid_" + Guid.NewGuid().ToString("N");
+
+    var getUserUrl = Url.Action("GetUser", "PBX");
+    var saveUserUrl = Url.Action("SaveUser", "PBX");
+    var deleteUserUrl = Url.Action("DeleteUser", "PBX");
+}
+
+<script>
+    (function(wrapper) {
+        $.extend(wrapper, {
+            add: function() {
+                var grid = $("#@gridId").data("kendoGrid");
+
+                pbaAPI.openDetailView("PBXUser", {
+                    toSave: false,
+                    entity: null,
+                    callback: function (e) {
+                        if (e.type === "save") {
+                            console.log('To Save:', e.model.toJSON());
+                            pbaAPI.ajax.post("@saveUserUrl", { serverId: @serverId, user: e.model.toJSON() }).then(function (response) {
+                                pbaAPI.msg('Данные успешно сохранены, необходимо применить настройки сервера', 'upload-success');
+                                grid.dataSource.read();
+                            }, function (err) {
+                                pbaAPI.errorMsg('Во время операции произошла ошибка');
+                            });
+                        }
+                    }
+                });
+            },
+            edit: function() {
+                var grid = $("#@gridId").data("kendoGrid");
+                var dataItem = grid.dataItem(grid.select());
+
+                pbaAPI.ajax.get("@getUserUrl", { serverId: @serverId, number: dataItem.extension }).then(function (res) {
+                    if (res && !res.error) {
+                        pbaAPI.openDetailView("PBXUser", {
+                            toSave: false,
+                            entity: res,
+                            callback: function (e) {
+                                if (e.type === "save") {
+                                    pbaAPI.ajax.post("@saveUserUrl", { serverId: @serverId, user: e.model.toJSON() }).then(function (response) {
+                                        pbaAPI.msg('Данные успешно сохранены, необходимо применить настройки сервера', 'upload-success');
+                                        grid.dataSource.read();
+                                    }, function (err) {
+                                        pbaAPI.errorMsg('Во время операции произошла ошибка');
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            },
+            remove: function() {
+                var grid = $("#@gridId").data("kendoGrid");
+                var dataItem = grid.dataItem(grid.select());
+
+                if (dataItem) {
+                    pbaAPI.confirm('Удаление', 'Уверены что хотите удалить (' + dataItem.fullname + ')?', function() {
+                        pbaAPI.ajax.post("@deleteUserUrl", { serverId: @serverId, number: dataItem.extension }).then(function(response) {
+                            pbaAPI.msg('Данные успешно удалены, необходимо применить настройки сервера', 'upload-success');
+                            grid.dataSource.read();
+                        }, function(err) {
+                            pbaAPI.errorMsg('Во время операции произошла ошибка');
+                        });
+                    }, function() {
+
+                    });
+                }
+            },
+            switch: function() {
+                var grid = $("#@gridId").data("kendoGrid");
+                var dataItem = grid.dataItem(grid.select());
+
+                pbaAPI.ajax.get("@getUserUrl", { serverId: @serverId, number: dataItem.extension }).then(function (data) {
+                    if (data && !data.error) {
+                        data.out_of_service = !data.out_of_service;
+
+                        pbaAPI.ajax.post("@saveUserUrl", { serverId: @serverId, user: data }).then(function (response) {
+                            pbaAPI.msg('Данные успешно сохранены, необходимо применить настройки сервера', 'upload-success');
+                            grid.dataSource.pushUpdate(data);
+                            //grid.dataSource.read();
+                        }, function (err) {
+                            pbaAPI.errorMsg('Во время операции произошла ошибка');
+                        });
+                    }
+                });
+            },
+            onDataBound: function (e) {
+                e.sender.select("tr:eq(0)");
+            },
+            onEdit: function(e) {
+                console.log(e);
+            }
+        });
+    })(window["@wrapId"] || (window["@wrapId"] = {}));
+</script>
+
+<div id="@wrapId" style="position: relative; height: 100%">
+        @{
+            Html.Kendo().Grid<PBXAccount>().Name(gridId)
+                .AutoBind(true)
+                .Pageable(page => page.PageSizes(false).Refresh(true))
+                .Selectable(select => select.Enabled(true).Mode(GridSelectionMode.Single))
+                .Scrollable(scroll => scroll.Enabled(true))
+                .Events(ev =>
+                {
+                    ev.DataBound(wrapId + ".onDataBound");
+                })
+                .Columns(col =>
+                {
+                    col.Bound(c => c.fullname).ClientTemplate("<span style='color: #= (out_of_service ? '\\#bb2727' : '\\#4abb27')  #' class='halfling halfling-#= (out_of_service ? 'remove' : 'ok') #'></span>&nbsp#= (fullname && fullname.length ? fullname : '(без имени)') #").Title("Ф.И.О.");
+                    col.Bound(c => c.extension).Title("Добавочный номер");
+                    col.Bound(c => c.account_type).Title("Тип аккаунта");
+                })
+                .DataSource(dataSource =>
+                {
+                    dataSource.Ajax().PageSize(16).Model(model =>
+                    {
+                        model.Id(x => x.extension);
+                    }).Read(read =>
+                    {
+                        read.Action("GetUsers", "PBX", new { serverId });
+                    });
+                }).Render();
+        }
+</div>

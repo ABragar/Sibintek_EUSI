@@ -1,0 +1,49 @@
+﻿.kwidget.kwidget--icon {
+	border: none;
+	background-color: transparent;
+	.clearfix();
+
+	 > i {
+		font-size: @modular-scale *2rem;
+		line-height: @modular-scale *3rem;
+
+		display: block;
+		float: left;
+
+		width: @modular-scale *3rem;
+		height: @modular-scale *3rem;
+
+		transition: background-color .15s @easing-curve--main;
+		text-align: center;
+
+		border: 1px solid darken( @color--light, 20% );
+		background-color: transparent;
+		}
+
+	.kwidget--toolbar {
+		float: right;
+
+		margin-left: -.0714em;
+		}
+
+	.k-toolbar {
+		overflow: visible;
+
+		background-color: transparent;
+
+		.k-button-group {
+			border: 1px solid darken( @color--light, 20% );
+			background-color: @color--light;
+
+			.drop-shadow( 1px, @color--dark, 15% );
+
+			.k-button {
+				padding: 0 1em;
+
+				 > span,  > i {
+					font-size: 1em;
+					}
+				}
+			}
+		}
+	}

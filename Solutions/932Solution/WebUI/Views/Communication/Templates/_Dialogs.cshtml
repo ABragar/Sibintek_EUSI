@@ -1,0 +1,52 @@
+﻿<div class="dialog" ng-controller="DialogController as dialCtrl" data-page="dialogs" ng-show="mainCtrl.page === 'dialogs'">
+    <!-- HEADER -->
+    <header class="chat__header dialog__toolbar">
+        <div class="k-toolbar">
+            <div class="k-button-group">
+                <a class="k-button k-button-icon k-group-start k-state-disabled" href="javascript: void 0">
+                    <i class="k-sprite fa fa-arrow-left"></i>
+                </a>
+            </div>
+            <div class="k-button-group" style="float: right;">
+                <a class="k-button k-button-icon k-group-start" href="javascript: void 0" ng-click="dialCtrl.createPrivateChat()" title="Создать приват-чат" data-popup="bottom">
+                    <i class="k-sprite fa fa-user-plus"></i>
+                </a>
+                <a class="k-button k-button-icon k-group-end" href="javascript: void 0" ng-click="dialCtrl.createConference()" title="Создать конференцию" data-popup="bottom">
+                    <i class="k-sprite fa fa-users"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="chat__body chat__body--with-header">
+        <!-- ON LOADING -->
+        <div ng-show="!isLoaded" class="chat__loading"></div>
+        <!-- ON EMPTY -->
+        <div ng-show="isLoaded && isEmpty">
+            <div class="chat__messages">
+                <ul class="chat__message-list">
+                    <li class="chat__message chat__message--system">
+                        <div class="chat__message-text">Нет активных диалогов</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- DIALOGS -->
+        <div ng-show="isLoaded && !isEmpty" class="dialogs">
+            <perfect-scrollbar suppress-scroll-x="true">
+                <ul class="dialogs__list">
+                    <li ng-repeat="dialog in dialogs | orderBy: 'title'"
+                        class="dialogs__list-item chat-dialog" ng-class="{ 'dialogs__list-item--has-unreaded': dialog.unreaded > 0 }">
+                        <!-- ROUTING LINK -->
+                        <a href="javascript: void 0;" ng-click="mainCtrl.goTo('messages', dialog.type, dialog.id)"></a>
+                        <!-- IMAGE -->
+                        <div class="chat-dialog__image" ng-bind-html="dialCtrl.getImageHtml(dialog)"></div>
+                        <!-- TITLE -->
+                        <h4 class="chat-dialog__title">{{dialog.title}}</h4>
+                        <!-- UNREADED COUNT -->
+                        <span ng-show="dialog.unreaded > 0" class="chat-dialog__unreaded">{{dialog.unreaded}}</span>
+                    </li>
+                </ul>
+            </perfect-scrollbar>
+        </div>
+    </div>
+</div>

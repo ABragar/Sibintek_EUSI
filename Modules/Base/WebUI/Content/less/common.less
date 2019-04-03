@@ -1,0 +1,176 @@
+﻿html, body {
+	font-family: @font-stack--sans;
+	font-size: @base-font-size;
+	line-height: @modular-scale;
+
+	position: relative;
+
+	overflow-x: hidden;
+
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+
+	word-spacing: 1px;
+
+	color: @color--text;
+	background-color: @color--layout-bg;
+
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: auto;
+	-webkit-text-size-adjust: 100%;
+	    -ms-text-size-adjust: 100%;
+	}
+
+* {
+	box-sizing: border-box;
+	}
+
+// responsive images helper
+img {
+	max-width: 100%;
+	}
+
+input, textarea, select, button, optgroup {
+	font-family: @font-stack--sans;
+	}
+
+address {
+	font-style: normal;
+	}
+
+b, strong {
+	font-weight: 500;
+	}
+
+a, button, input, textarea {
+	outline: none !important;
+	}
+
+input, textarea {
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 2px;
+	box-shadow: none;
+	}
+
+input[readonly],
+input[readonly]:hover,
+input[readonly]:focus,
+input[readonly]:active {
+	background-color: darken(@color--light, 2%);
+	box-shadow: none;
+	}
+
+a, a:hover, a:focus, a:active {
+	text-decoration: none;
+
+	color: @color--text;
+	}
+
+h4 {
+	font-weight: 300;
+	}
+
+hr {
+	margin: 1em 0;
+	}
+
+.placeholder( {
+	font-weight: 300;
+	} );
+
+input {
+	font-weight: 300;
+	}
+
+.link, .link:focus {
+	color: @color--primary;
+	}
+
+.link:hover, .link:active {
+	color: darken(@color--primary, 15%);
+	}
+
+.glyphicon, .halfling, .fa, .mdi {
+	position: relative;
+
+	box-sizing: border-box;
+
+	 > .badge {
+		font: 75% Roboto;
+		font-weight: 300;
+		font-style: normal;
+
+		position: absolute;
+		top: -50%;
+		right: -50%;
+
+		box-sizing: border-box;
+		}
+	}
+
+.k-button-icon .fa {
+	font-size: 1.333em;
+
+	overflow: visible;
+
+	width: 1.25em;
+
+	text-align: center;
+	vertical-align: text-bottom;
+	}
+
+.ps-container {
+	 > .ps-scrollbar-y-rail,
+	 > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+		width: .357rem;
+		}
+
+	 > .ps-scrollbar-y-rail {
+		margin: .357rem 0;
+
+		opacity: .8;
+		}
+	}
+
+.button-block {
+	display: block;
+
+	margin: @modular-scale *.5em auto;
+
+	&:last-child {
+		margin-bottom: 0;
+		}
+	}
+
+dl {
+	line-height: @modular-scale;
+
+	dt {
+		font-weight: 600;
+		}
+
+	dd {
+		margin-bottom: @modular-scale *1em;
+		margin-left: 0;
+		}
+
+	&.dl-horizontal {
+		dt {
+			float: left;
+
+			width: @modular-scale * 6em;
+
+			text-align: right;
+
+.nowrapHiddenText();
+			}
+
+		dd {
+			margin-bottom: @modular-scale * .5em;
+			margin-left: @modular-scale * 7em;
+			}
+		}
+	}

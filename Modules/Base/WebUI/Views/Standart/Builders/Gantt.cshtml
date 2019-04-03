@@ -1,0 +1,205 @@
+﻿@using Base.UI.ViewModal
+@using Newtonsoft.Json
+@model StandartGantt
+
+@{
+    var typeEntity = Model.ViewModelConfig.TypeEntity;
+
+    bool isCategorizedItem = typeEntity.GetInterfaces().Contains(typeof(ICategorizedItem));
+
+    bool actionCreate = !Model.IsReadOnly && Model.IsPermission(TypePermission.Create) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Create);
+}
+
+<script>
+    (function() {
+        var composite = window["@Model.DialogID"];
+        var date = new Date();
+        var firstDay = new Date(date.getFullYear(), 0, 1);
+        var lastDay = new Date(date.getFullYear(), 11, 31);
+
+        var gantt = window["@Model.WidgetID"] = new WrapGantt({
+            start: firstDay,
+            end: lastDay,
+            id: "@Model.WidgetID",
+            mnemonic: "@Model.ViewModelConfig.Mnemonic",
+            isCategorizedItem: @Html.Raw(JsonConvert.SerializeObject(isCategorizedItem)),
+            desc: "Gantt"
+        });
+
+        @*//--------gantt--------//*@
+        composite.registerWidget(gantt);
+
+
+        gantt.__overrideOnNeighbourWidgetChanged = gantt.onNeighbourWidgetChanged;
+
+        gantt.onNeighbourWidgetChanged = function (e) {
+            gantt.__overrideOnNeighbourWidgetChanged(e);
+
+           if (e.sender.desc == "ToolbarListView" || e.sender.desc == "ContextMenuListView") {
+                if (e.event == "click") {
+                    switch (e.params.action) {
+                        case "add":
+                            gantt.add();
+                            break;
+                        case "edit":
+                            gantt.edit();
+                            break;
+                        case "detail":
+                            gantt.detail();
+                            break;
+                        case "delete":                            
+                            gantt.widget().removeTask(gantt.selectedTask);
+                            break;
+                        case "exportPfd":
+                            gantt.exportPfd();
+                            break;
+                    }
+                } else if (e.event == "startDateRangeChange") {
+                    var dateVal = e.params.dateValue;
+                    gantt.selectStart = dateVal;
+                    gantt.bind();
+                } else if (e.event == "endDateRangeChange") {
+                    var dateVal = e.params.dateValue;
+                    gantt.selectEnd = dateVal;
+                    gantt.bind();
+                } else if (e.event == "searchBoxChange") {
+                    gantt.search(e.params.searchText);
+                }
+            }
+        };
+        //for one time resize
+        gantt.isInit = false;
+        //BEGIN - EVENTS
+        gantt.onDataBound = function(e) {
+            if (!gantt.widget()) return;
+            if (!gantt.isInit) {
+                gantt.element().find(".k-gantt-layout.k-gantt-treelist").css("width", "30%");               
+                gantt.element().css("height", "93%");
+                gantt.widget().resize();
+                gantt.isInit = true;
+            }
+            gantt.element().find("[data-role=gantttimeline]").each(function (e, s) {
+                var el = $(s);
+                var today = new Date().getUTCDate() + '.' + (new Date().getUTCMonth() + 1);
+
+                if (el.length > 0) {
+                    var headers = el.find('th.k-header');
+
+                    if (headers.length > 0) {
+                        for (var i = 0; i < headers.length; i++) {
+                            if (headers[i].textContent == today)
+                                $(headers[i]).addClass('sib-today');
+                        }
+                    }
+                }
+            })
+            gantt.element().find(".k-task").each(function (e) {
+                var dataItem = gantt.widget().dataSource.getByUid($(this).attr("data-uid"));
+
+                if (dataItem.Status && dataItem.Status.Name === "Выполнена") {
+                    this.classList.add('sib-task-complete');
+                }
+                else if (dataItem.end.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0)) {
+                    this.classList.add('sib-task-dead');
+                }
+            })
+            
+            composite.onWidgetChanged(
+            {
+                sender: gantt,
+                event: "onDataBound"
+            });
+
+            gantt.element().find("[role='gridcell']").unbind("dblclick");
+            gantt.element().find("[role='gridcell']").on("dblclick", function () {
+                gantt.dblClick({ sender: $(this) });
+            });            
+            gantt.composite.onWidgetChanged(
+            {
+                sender: gantt,
+                event: "select",
+                params: { dataItem: gantt.selectedTask }
+            });
+        };
+
+        gantt.exportPfd = function () {
+            var widget = this.widget();
+            widget.saveAsPDF();
+        }
+
+        gantt.onChange = function(e) {
+            var ganntWidget = gantt.widget();
+            var selectedUid = $(ganntWidget.select()).attr("data-uid");
+            gantt.selectedTask = ganntWidget.dataSource.getByUid(selectedUid);
+            gantt.composite.onWidgetChanged(
+            {
+                sender: gantt,
+                event: "select",
+                params: { dataItem: gantt.selectedTask }
+            });
+        };
+
+        gantt.dblClick = function(e) {                        
+            var selectedUid = $(gantt.widget().select()).attr("data-uid");
+            var ganttTask = gantt.widget().dataSource.getByUid(selectedUid);            
+            if (ganttTask) {
+                gantt.Title = ganttTask.title; @*чтобы не запршивать модель с сервера *@
+                gantt.selectedTask = ganttTask;
+
+                composite.onWidgetChanged(
+                {
+                    sender: gantt,
+                    event: "dblclick"
+                });
+            }
+        };
+   
+        gantt.bind = function() {
+            gantt.dataSourceRead();
+        };
+
+        gantt.add = function() {
+            var initProps = {
+                Start: gantt.selectStart,
+                End: gantt.selectEnd
+            };
+
+            gantt.addEntity({
+                initProps: initProps,
+                callback: function(e) {
+                    gantt.bind();
+                }
+            });
+        };
+
+        gantt.edit = function() {
+            var id = gantt.selectedTask.ID;
+            pbaAPI.openDetailView(gantt.mnemonic,
+            {
+                wid: "@Model.WidgetID",
+                id: id,
+                toSave: true,
+                callback: function(e) {
+                    if (e.type == "save") {
+                        gantt.bind();
+                    }
+                }
+            });
+        };
+    })();
+</script>
+
+
+<div id="list-view" style="height: 100%;">
+    <div class="kwidget kwidget--toolbar @(Model.ViewModelConfig.ListView.HideToolbar ? "kwidget--hidden" : "")">
+        @{Html.RenderPartial(Model.GetToolbarListViewUrl(), Model);}
+    </div>
+
+    <div class="kwidget kwidget--gantt widget-body">
+        @{Html.RenderPartial(Model.GetListViewUrl(), Model);}
+
+        @* из-за привязки к listview, contextmenu необходимо рендерить после него *@
+        @{Html.RenderPartial(Model.GetContextMenuListViewUrl(), Model);}
+    </div>
+</div>
+

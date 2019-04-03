@@ -1,0 +1,109 @@
+﻿@using Base.UI.ViewModal
+@using Newtonsoft.Json
+@model StandartPivot
+    @{ 
+        var typeEntity = Model.ViewModelConfig.TypeEntity;
+
+        bool isCategorizedItem = typeEntity.GetInterfaces().Contains(typeof(ICategorizedItem));
+
+        bool actionCreate = !Model.IsReadOnly && Model.IsPermission(TypePermission.Create) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Create);
+    }
+
+<div id="list-view" style="height: 100%;">
+    <div class="kwidget kwidget--toolbar @(Model.ViewModelConfig.ListView.HideToolbar ? "kwidget--hidden" : "")">
+        @{Html.RenderPartial(Model.GetToolbarListViewUrl(), Model);}
+    </div>
+
+    <div class="kwidget kwidget--gantt widget-body">
+        @{Html.RenderPartial(Model.GetListViewUrl(), Model);}
+
+        @* из-за привязки к listview, contextmenu необходимо рендерить после него *@
+        @{Html.RenderPartial(Model.GetContextMenuListViewUrl(), Model);}
+    </div>
+</div>
+
+<script>
+    (function () {
+        var grid = window["@Model.WidgetID"] = new WrapGrid({
+            id: "@Model.WidgetID",
+            mnemonic: "@Model.Mnemonic",
+            isCategorizedItem: @Html.Raw(JsonConvert.SerializeObject(isCategorizedItem)),
+            desc: "PivotGridView"
+        });
+        var composite = window["@Model.DialogID"];
+
+        composite.registerWidget(grid);
+
+
+        grid.onExcelExport = function(e) {
+
+            var columns = e.sender.columns;
+            //var items = e.sender.dataItems();
+            var config = application.viewModelConfigs.getConfig(grid.mnemonic);
+            var vmprops = {};
+
+            for (var key in config.ListView.Columns) {
+                if (config.ListView.Columns.hasOwnProperty(key)) {
+                    var pr = config.ListView.Columns[key];
+                    vmprops[pr.PropertyName] = pr;
+                }
+            }
+            var sheets = e.workbook.sheets;
+
+            for (var i = 0; i < sheets.length; i++) {
+                var sheet = sheets[i];
+
+                if (!sheet) continue;
+
+                for (var j = 1; j < sheet.rows.length; j++) {
+                    var row = sheet.rows[j];
+
+                    var groupCount = 0;
+
+                    if (!row) continue;
+
+                    /* при группировке поля(по которым групируются) добовляются в начало массива cells. Считаем кол-во полей добавленных в группировку */
+                    if (row.type === "data") {
+                        groupCount = row.cells.filter(function(selector) {
+                            return !selector.hasOwnProperty("value");
+                        }).length;
+                    }
+
+                    //var object = items[j - 1];
+                    //if (!object) continue;
+
+                    for (var k = 0; k < row.cells.length; k++) {
+                        var cell = row.cells[k];
+
+                        if (cell.value) {
+
+                            var field = columns[k - groupCount].field;
+                            var propertyVm = vmprops[field];
+
+                            if (propertyVm) {
+                                switch (propertyVm.DataType) {
+                                    case "Date":
+                                        cell.value = kendo.toString(cell.value, "@JsonNetResult.DATE_FORMATE");
+                                        break;
+                                    case "DateTime":
+                                        cell.value = kendo.toString(cell.value, "@JsonNetResult.DATE_TIME_FORMATE");
+                                        break;
+                                    case "Enum":
+                                        cell.value = application.UiEnums.getValue(propertyVm.Type, cell.value).Title;
+                                        break;
+                                    case "File":
+                                    case "Image":
+                                        cell.formula = 'HYPERLINK("http://' + window.location.href.split('/')[2]
+                                                + "/Files/GetFile?fileid="
+                                                + cell.value.FileID
+                                                +'"; "'+ cell.value.FileName +'")';
+                                        break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+    })
+</script>

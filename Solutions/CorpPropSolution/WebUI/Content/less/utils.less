@@ -1,0 +1,170 @@
+﻿.glyphicons() {
+	font-family: 'Glyphicons Regular';
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1;
+
+	position: relative;
+	top: -.0714rem;
+
+	display: inline-block;
+
+	vertical-align: middle;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	}
+
+.fontAwesome() {
+	font: normal normal normal 1rem/1 FontAwesome;
+	font-size: inherit;
+
+	display: inline-block;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: auto;
+	}
+
+.materialIcon() {
+	font: normal normal normal 1.7143rem/1 'Material Design Icons';
+	font-size: inherit;
+
+	display: inline-block;
+
+	transform: translate(0, 0);
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: auto;
+	}
+
+.clearfix() {
+	&:before, &:after {
+		display: table;
+
+		content: ' ';
+		}
+	&:after {
+		clear: both;
+		}
+	}
+
+.clearfix {
+	.clearfix();
+	}
+
+.resetList() {
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+	}
+
+.materialPanel() {
+	border-radius: 2px;
+	background-color: @color--light;
+
+	.drop-shadow(2px, @color--dark, 12%);
+	}
+
+.abs-stretch() {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0; 
+	left: 0;
+	}
+
+.nowrapHiddenText() {
+	overflow: hidden;
+
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	}
+
+.nowrapHiddenTextMultiline( @lines-to-show, @line-height, @width ) {
+	line-height: @line-height;
+
+	display: block;
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+
+	max-width: @width;
+	max-height: @lines-to-show * @line-height;
+
+	text-overflow: ellipsis;
+
+	-webkit-line-clamp: @lines-to-show;
+	}
+
+.invisible {
+	visibility: hidden;
+	}
+
+.hidden {
+	display: none !important;
+	}
+
+.pull-right {
+	float: right !important;
+	}
+
+.pull-left {
+	float: left !important;
+	}
+
+.drop-shadow(@size, @color, @opacity) {
+	box-shadow: 0 @size @size*3 fade(@color, @opacity), 0 0 @size*9 fade(@color, @opacity*.6);
+	}
+
+.placeholder( @rules ) {
+	&::-webkit-input-placeholder {
+		@rules();
+		}
+	&:-moz-placeholder {
+		@rules();
+		}
+	&::-moz-placeholder {
+		@rules();
+		}
+	&:-ms-input-placeholder {
+		@rules();
+		}
+	&:placeholder {
+		@rules();
+		}
+	}
+
+.disabled {
+	cursor: not-allowed  !important;
+	pointer-events: none !important;
+
+	opacity: .65 !important;
+	}
+
+.makeButton(@btnName, @bgColor, @color: @color--light) {
+	&.@{btnName} {
+		font-weight: 300;
+
+		color: @color !important;
+		border-color: @bgColor !important;
+		background-color: @bgColor !important;
+
+		&.k-state-disabled {
+			color: @color !important;
+			background-color: @bgColor !important;
+			}
+		}
+
+	&.@{btnName}:hover, &.@{btnName}:focus {
+		border-color: lighten(@bgColor, 7%) !important;
+		background-color: lighten(@bgColor, 7%) !important;
+		}
+
+	&.@{btnName}:active {
+		border-color: darken(@bgColor, 7%) !important;
+		background-color: darken(@bgColor, 7%) !important;
+		}
+	}

@@ -1,0 +1,285 @@
+﻿@model StandartTreeView
+
+@{
+    var getChildrenCountUrl = Url.Action("GetFileCardsInFolderCount", "CardFolder");
+}
+
+<script>
+    (function () {
+        var composite = window["@Model.DialogID"];
+
+        var treeview = window["@Model.WidgetID"] = new WrapTreeView({
+            id: "@Model.WidgetID",
+            mnemonic: "@Model.Mnemonic",
+            desc: "TreeView"
+        });
+
+        var lastDragSuccess = false;
+
+        @*//--------TreeView--------//*@
+        composite.registerWidget(treeview);
+
+        treeview.selectId = null;
+        treeview.onSelect = function (e) {
+            treeview.onselect(e.node);
+
+            var $node = $(e.node);
+            var $parents = $node.parentsUntil("#@Model.WidgetID").filter("[role=treeitem]");
+
+            if ($parents.length > 0)
+                $node = $($parents[0]);
+
+            treeview.setCookie(treeview.mnemonic, "selectID", $node.find(".tree-node").attr('id'));
+            //treeview.setCookie(treeview.mnemonic, "selectID", treeview.getId(e.node));
+
+        };
+
+
+        treeview.onBeforeDrop = function (e) {
+            e.preventDefault();
+
+            pbaAPI.confirm('Перемещение элемента', 'Вы действительно хотите переместить элемент?',
+                function () {
+                    var id = treeview.getId(e.sourceNode);
+                    var posChangeId = treeview.getId(e.destinationNode);
+                    var typePosChange = e.dropPosition;
+
+                    $.post('/api/hierarchy/' + treeview.mnemonic + '/changePosition/' + id + '?' + $.param({ posChangeId: posChangeId, typePosChange: typePosChange }))
+                        .done(function () {
+                            treeview.selectId = id;
+                            treeview.bind();
+                        }).fail(function (xhr) {
+                            pbaAPI.errorMsg(xhr);
+                        });
+                });
+        };
+
+        treeview.onAfterDrop = function (e) { lastDragSuccess && treeview.select($(e.sourceNode), true) };
+
+        treeview.onDataBound = function (e) {
+            var selectId = treeview.selectId;
+            treeview.selectId = null;
+
+            if (selectId) {
+                $.get('/api/hierarchy/' + treeview.mnemonic + '/parents/' + selectId).done(function (res) {
+                    if (res.ids && res.ids.length > 0) {
+                        treeview.___selectId = selectId;
+                        treeview.expandPath(res.ids);
+                    } else {
+                        treeview.select(selectId);
+                    }
+                }).fail(function (xhr) {
+                    pbaAPI.errorMsg(xhr);
+                });
+            } else if (treeview.___selectId) {
+                if (treeview.getNodeById(treeview.___selectId)) {
+                    treeview.select(treeview.___selectId);
+                    treeview.___selectId = null;
+                }
+            } else if (!treeview.getSelectID()) {
+                treeview.select('first');
+            }
+
+            composite.onWidgetChanged({
+                sender: treeview,
+                event: "onDataBound",
+                params: {}
+            });
+        };
+
+        treeview.addItem = function (isRoot) {
+            //debugger;
+            var initProps = {};
+
+            var $selectNode = treeview.select();
+
+            initProps.ParentID = !isRoot ? (treeview.getSelectID() || 0) : null;
+
+            treeview.addEntity({
+                initProps: initProps,
+                callback: function (e) {
+                    treeview.selectId = e.model.ID;
+                    treeview.bind();
+                    //$.get(application.url.GetHCategory("Get"), { mnemonic: treeview.mnemonic, id: e.model.ID }, function (res) {
+                    //    if (res.error) {
+                    //        pbaAPI.errorMsg(res.error);
+                    //    }
+                    //    else {
+                    //        if ($selectNode.length && !isRoot) {
+                    //            var node = treeview.getByUid($selectNode.attr("data-uid"));
+
+                    //            if (node._loaded || !node.hasChildren) {
+                    //                treeview.append(res, $selectNode);
+                    //            } else {
+                    //                treeview.expand($selectNode);
+                    //            }
+
+                    //            setTimeout(function () {
+                    //                treeview.select($selectNode.find(".tree-node[id=" + res.id + "]").closest("li"));
+                    //            }, 200);
+                    //        } else {
+                    //            treeview.append(res);
+                    //        }
+                    //    }
+                    //});
+
+                }
+            });
+        };
+
+        treeview.editItem = function () {
+            var $selectNode = treeview.select();
+
+            var id = treeview.getSelectID();
+
+            pbaAPI.openDetailView(treeview.mnemonic, {
+                wid: "@Model.WidgetID",
+                id: id,
+                callback: function (e) {
+                    if (e.type === "save" || e.type === "apply") {
+                        $.get(application.url.GetHCategory("Get"), { mnemonic: treeview.mnemonic, id: e.model.ID }, function (res) {
+                            if (res.error) {
+                                pbaAPI.errorMsg(res.error);
+                            }
+                            else {
+                                var templateContent = $("#treeViewTemplate").html();
+                                var template = kendo.template(templateContent);
+
+                                var dataItem = treeview.getByUid($selectNode.attr("data-uid"));
+
+                                for (var pr in res) {
+                                    if (res.hasOwnProperty(pr)) {
+                                        dataItem.set(pr, res[pr]);
+                                    }
+                                }
+
+                                $selectNode.find(".tree-node[id=" + res.id + "]").html(kendo.render(template, [{ item: res }]));
+                                treeview.onselect();
+                            }
+                        });
+                    }
+                }
+            });
+        };
+
+        treeview.deleteItem = function () {
+            pbaAPI.confirm("@Model.ViewModelConfig.ListView.Title",
+                "Удалить запись?",
+                function() {
+                    var $select = treeview.select();
+
+                    pbaAPI.proxyclient.crud.destroy({ mnemonic: treeview.mnemonic, id: treeview.getSelectID() })
+                        .done(function(res) {
+                            if (res.error == 0) {
+                                treeview.remove($select);
+                                pbaAPI.uploadMsg(res.message);
+                            } else {
+                                pbaAPI.errorMsg(res.message);
+                            }
+                        });
+                });
+        };
+
+        treeview.__overrideOnNeighbourWidgetChanged = treeview.onNeighbourWidgetChanged;
+
+        treeview.onNeighbourWidgetChanged = function(e) {
+            treeview.__overrideOnNeighbourWidgetChanged(e);
+
+            switch (e.sender.desc) {
+            case 'Composite':
+                if (e.event === "init") {
+
+                    if (composite.dialogData && 'selectCategoryId' in composite.dialogData) {
+                        treeview.selectId = composite.dialogData['selectCategoryId'];
+                    } else {
+                        treeview.selectId = treeview.getCookie(treeview.mnemonic, 'selectID');
+                    }
+                }
+                break;
+
+            case "DialogSplitter":
+                if (e.event === "resize")
+                    treeview.resize(e.params.height - 64);
+
+                break;
+
+            case "ToolbarTreeView":
+            case "ContextMenuTreeView":
+                if (e.event === "click") {
+                    switch (e.params.action) {
+                    case "add-root":
+                        treeview.addItem(true);
+                        break;
+                    case "add":
+                        treeview.addItem(false);
+                        break;
+                    case "edit":
+                        treeview.editItem();
+                        break;
+                    case "delete":
+                        treeview.deleteItem();
+                        break;
+                    }
+                } else if (e.event === "select") {
+                    e.params.el.click();
+                } else if (e.event === "search") {
+                    treeview.search(e.params.str);
+                }
+                break;
+            case "GridView":
+                @if (Model.Mnemonic != "CardFolder")
+                {
+                    @: if (false)
+                }
+                var selectedId = treeview.getSelectID();
+                if (selectedId) {
+                    $.ajax({
+                        method: "GET",
+                        url: "@getChildrenCountUrl",
+                        data: {
+                            id: selectedId,
+                            mnemonic: "@Model.Mnemonic"
+                            },
+                            success: function (data) {
+                            if (data && data.FileCardsInFolderCount) {
+                                    var $nodeFileCardsCount = $("[id='" + treeview.getSelectID() + "'].tree-node > .innerCount");
+                                    $nodeFileCardsCount.text(data.FileCardsInFolderCount);
+                                }
+                            }
+                    });
+                }
+                break;
+            }
+        };
+    })();
+</script>
+
+<div class="kwidget kwidget--toolbar">
+    @{Html.RenderPartial(Model.GetToolbarListViewUrl(), Model);}
+</div>
+
+<div class="kwidget kwidget--tree-view">
+    @Html.Hidden("TreeViewID", Model.WidgetID)
+
+    @{Html.RenderPartial(Model.GetListViewUrl(), Model);}
+
+    @{Html.RenderPartial(Model.GetContextMenuListViewUrl(), Model);}
+</div>
+
+<script>
+    $(function() {
+        var $treeview = $("#@Model.WidgetID");
+        
+        function treeviewChangeSize() {
+            var width = parseInt($treeview.val());
+            var height = parseInt($treeview.val());
+
+            $treeview.width(width).height(height);
+
+            // update scrollbars
+            $treeview.perfectScrollbar('update');
+        }
+
+        $treeview.perfectScrollbar();
+    });
+</script>

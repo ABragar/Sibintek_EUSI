@@ -1,0 +1,83 @@
+﻿.k-gantt {
+	&.k-widget {
+		border: none;
+		}
+
+	&-header {
+		color: @color--dark;
+		}
+
+	th {
+		font-weight: 600;
+
+		color: @color--dark !important;
+		}
+	td {
+		vertical-align: middle;
+		}
+
+	&-header th {
+		font-weight: 500;
+		}
+
+	& .k-gantt-toolbar {
+		.k-state-selected,
+		ul li.k-state-hover {
+			border-color: transparent;
+			background-color: darken( @color--scheduler-header-bg, 5% ) !important;
+			}
+
+		.k-state-default {
+			transition: background-color .15s @easing-curve--main;
+			}
+
+		ul {
+			li:first-child,
+			li:first-child .k-link,
+			&.k-scheduler-views li:first-child + li,
+			&.k-scheduler-views li:first-child + li .k-link {
+				border-radius: 0;
+				}
+			}
+
+		.k-link {
+			letter-spacing: .035em;
+			}
+		}
+
+	& .k-gantt-toolbar .k-gantt-views li.k-state-selected.k-state-hover,
+	&-toolbar > .k-gantt-views > li.k-state-selected {
+		&, & .k-link {
+			border-bottom-color: darken( @color--scheduler-header-bg, 15% );
+			background-color: darken( @color--scheduler-header-bg, 15% );
+			}
+		}
+
+	& .k-gantt-toolbar	.k-gantt-views li.k-state-hover {
+		&, & .k-link {
+			border-color: transparent; 
+			background-color: darken( @color--scheduler-header-bg, 5% ) !important;
+			}
+		}
+
+	&-toolbar > ul.k-gantt-views > li:first-child + li,
+	&-toolbar > ul > li:first-child {
+		border-left: none;
+		}
+
+	 > .k-header {
+		background-color: @color--scheduler-header-bg;
+
+		.k-button,
+		.k-link,
+		li {
+			color: @color--scheduler-header-text;
+			border-color: @color--scheduler-header-bg; 
+			background-color: @color--scheduler-header-bg;
+			}
+
+		.k-button:hover {
+			background-color: darken(@color--scheduler-header-bg, 5%);
+			}
+		}
+	}

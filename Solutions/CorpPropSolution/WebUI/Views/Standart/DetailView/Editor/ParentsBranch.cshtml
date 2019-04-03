@@ -1,0 +1,87 @@
+﻿@model EditorViewModel
+
+<div class="sib-parentsbranch clearfix" id="@Model.UID">
+    <span data-id="2">Принадлежность ИК 1</span>
+    <span data-id="3">Принадлежность ИК 2</span>
+    <span data-id="4">Принадлежность ИК 3</span>
+    <span data-id="5">1121</span>
+</div>
+
+<script>
+    (function () {
+       
+        var $editor = $("#@Model.UID");
+        var form = $editor.closest("form");
+        
+        $editor.on("click", "span", function () {
+            var ikid = $(this).data("id");
+
+            pbaAPI.openDetailView("InventoryObject",
+            {
+                wid: "@Model.UID",
+                id: ikid,
+                parentForm: form
+            });
+        });
+
+        form.on("onAfterBind", function (e, form) {
+            var prop = form.getPr("Parent");
+
+            $editor.empty();
+            if (prop) {
+                getParentsBranch(prop.ID);
+            }
+        });
+
+        form.on("onChange", function (evt, obj)
+        {           
+            if (obj.field === "Parent")
+            {                
+                var prop = obj.sender.getPr(obj.field);
+
+                $editor.empty();
+
+                if (prop) {
+                    getParentsBranch(prop.ID);
+                }
+            }
+
+        });
+
+        function getParentsBranch(propId) {
+
+            var getJsonCallback = function (data) {
+                var result = [];
+                
+                getParentsForId(propId, data, result);
+
+                $.each(result.reverse(), function (i, item) {
+                    $editor.append($("<span/>")
+                                    .data("id", item.ID)
+                                    .html(item.Number));
+                });
+            };
+
+            var getParentsForId = function (id, data, result) {                
+
+                for (var i = 0; i < data.length; i++) {
+                    var item = data[i];
+
+                    if (item.ID === id) {
+                        result.push(item);
+
+                        if (item.ParentID !== null && !result.some(function (v) { return v.ID === item.ParentID; })) {
+                            getParentsForId(item.ParentID, data, result);
+                        }
+                    }
+                }
+
+                return;
+            };
+
+            $.getJSON("/api/listview/CorpProp.Entities.Estate.InventoryObject,%20CorpProp/filter/boProperty?startswith=", getJsonCallback);
+        }
+
+        //form.trigger("onChange", { field: "Parent", sender: form });
+    })();
+</script>

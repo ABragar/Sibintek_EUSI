@@ -1,0 +1,35 @@
+﻿.k-treeview {
+	height: 100%;
+
+	// ON SELECT TREEVIEW ITEM
+	.k-in {
+		border: 1px solid transparent;
+		}
+
+	.k-state-selected {
+		transition: background-color .15s @easing-curve--main;
+
+		color: @color--dark;
+		border-color: darken( @color--grid-bg__selected, 20% );
+		background-color: darken( @color--grid-bg__selected, 10% );
+
+		& .glyphicon, & .halfling, & .fa, & .mdi {
+			color: @color--dark !important;
+			}
+
+		&.k-state-focused {
+			background-color: fade( darken( @color--grid-bg__selected, 10% ), 85% );
+			}
+
+		.fa-folder::before {
+			content: '\f07c';
+			}
+		}
+
+	.k-state-hover {
+		background-color: fade( @color--dark, 10% );
+		}
+	.k-state-focused {
+		background-color: fade( @color--dark, 15% );
+		}
+	}

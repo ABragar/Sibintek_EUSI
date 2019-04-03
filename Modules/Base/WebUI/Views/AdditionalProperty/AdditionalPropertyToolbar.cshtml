@@ -1,0 +1,84 @@
+﻿@model EditorViewModel
+
+@{
+    var additionalPropertyId = Html.CreateSystemName("additionalProperty");
+    var mnemonicEx = "AdditionalPropertyEditor";
+    var getIdByMnemonic = Url.Action("GetDetailExIdByMnemonic", "AdditionalProperty");
+    var wrapId = "wrap_" + Guid.NewGuid().ToString("N");
+}
+
+<button id="@(additionalPropertyId)" type="button" class="k-button">Дополнительные характеристики</button>
+
+<script>
+    $(function() {
+
+        @*var editor = window["@wrapId"] = {
+            _form: null
+        };
+
+        function getModel() {
+            var dialogId = $("#@wrapId").closest(".dialog-vm").attr('id');
+            var wm = window[dialogId];
+            return wm.getCurrentModel();
+        };
+
+        editor.getForm = function() {
+            if (this._form == null) {
+                this._form = $("#@wrapId").closest("form").data("pbaForm");
+            }
+            return this._form;
+        };
+
+        editor.getID = function() {
+            debugger;
+            var form = editor.getForm();
+
+            var objectType = form.getViewData('ObjectType');
+
+            if (!objectType && form.parentForm) {
+                objectType = form.parentForm.getPr("ID");
+            }
+
+            return objectType;
+        };*@
+
+
+        $("#@additionalPropertyId").click(function() {
+
+            var mnemonic = undefined;
+            var widget = "";
+            debugger;
+            var dialog = $("[Name = DialogID]")[0].defaultValue;
+            var composite = window[dialog];
+
+            for (var id in composite.widgets) {
+                if (id.match("widget*")) {
+                    mnemonic = composite.widgets[id].mnemonic;
+                    widget = id;
+                    break;
+                }
+            }
+
+
+            pbaAPI.ajax.get("@getIdByMnemonic", { "mnemonic" : mnemonic}).then(function(res) {
+                    debugger;
+                    var mexId = res.id;
+                    pbaAPI.openDetailView("@(mnemonicEx)",
+                    {
+                        wid: widget,
+                        id: mexId,
+                        ids: [mexId],
+                        callback: function(e) {
+                            //if (e.type === "save" || e.type === "apply") {
+                            //    grid.currentRow = e.model.ID;
+                            //    grid.bind();
+                            //}
+                        }
+                    });
+                },
+                function(err) {
+                });
+        });
+        return false;
+    });
+</script>

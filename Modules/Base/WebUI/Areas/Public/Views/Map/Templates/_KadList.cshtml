@@ -1,0 +1,149 @@
+﻿@model WebUI.Areas.Public.Models.VmMap
+
+<script type="text/ng-template" id="kadlist.container.html">
+    <p class="kad-result-number" ng-if="dataItem.attrs.id"><span class="glyphicon glyphicon-barcode"></span><span>{{dataItem.attrs.id}}</span></p>
+    <p class="kad-result-number" ng-if="dataItem.attrs.name">{{dataItem.attrs.name}}</p>
+    <p class="kad-result-number" ng-if="dataItem.attrs.address">{{dataItem.attrs.address}}</p>
+</script>
+
+<script type="text/ng-template" id="kadlistname.container.html">
+    {{dataItem.attrs.name ? dataItem.attrs.name : (dataItem.title0 && dataItem.title0 !== dataItem.attrs.address ? dataItem.title0 : '')}}
+</script>
+
+<script type="text/ng-template" id="kaddetail.container.html">
+        <pageslide ps-cloak="true" ps-open="kadinfo.opened" class="ng-pageslide-custom ng-pageslide-custom-left" ng-class="{ 'ng-pageslide-mobile' : kadinfo.isMobile }" ps-side="left" ps-custom-top="75px" ps-custom-height="auto" ps-size="320px" ps-container="@Model.UID">
+            <div class="page-slide-controls">
+                <div class="page-slide-controls-icon" ng-style="{ 'background-color': '#E74C3C' }"><span class="glyphicon glyphicon-vector-path-polygon"></span></div>
+                <a href="#" class="btn btn-close">×</a>
+                <p class="title">{{kadinfo.id}}</p>
+            </div>
+
+            <perfect-scrollbar class="scroller-absolute-with-top">
+                <div class="panel panel-default panel-fixed" ng-if="kadinfo.feature">
+                    <div class="panel-heading">Кадастровые данные <a ng-href="{{kadinfo.dashboardUrl}}" class="btn btn-link btn-panel" target="_blank"><span class="fa fa-link"></span></a></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Кадастровый номер</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.feature.attrs.cn}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Кадастровый квартал</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.feature.attrs.kvartal_cn}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Статус</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.parcel_states[kadinfo.feature.attrs.statecd]}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Категория земель</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.category_types[kadinfo.feature.attrs.category_type]}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Форма собственности</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.feature.attrs.fp ? kadinfo.parcel_ownership[kadinfo.feature.attrs.fp] : '-'}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>{{kadinfo.area_types[kadinfo.feature.attrs.area_type]}}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.feature.attrs.area_value | number}} {{kadinfo.measurement_units[kadinfo.feature.attrs.area_unit]}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Кадастровая стоимость</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.feature.attrs.cad_cost | number}} руб.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Разрешенное использование</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.feature.attrs.util_code ? kadinfo.feature.attrs.util_code + ' ' + kadinfo.utilizations[kadinfo.feature.attrs.util_code] : '-'}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>По документу</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p ng-bind-html="kadinfo.sanitize(kadinfo.feature.attrs.util_by_doc)"></p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Дата постановки на ГКУ</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.feature.attrs.date_create}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Дата изменения сведений в ГКН</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.feature.attrs.cad_record_date}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-8 key">
+                                <p>Дата выгрузки сведений из ГКН</p>
+                            </div>
+                            <div class="col-sm-6 col-md-4 value">
+                                <div class="panel-property">
+                                    <p>{{kadinfo.feature.attrs.adate}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default panel-fixed" ng-if="kadinfo.feature">
+                    <div class="panel-heading">Адрес</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p>{{kadinfo.feature.attrs.address}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </perfect-scrollbar>
+            <div class="content-loading-cloak" ng-if="kadinfo.loading"></div>
+        </pageslide>
+</script>

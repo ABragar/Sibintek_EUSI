@@ -1,0 +1,91 @@
+﻿@model EditorViewModel
+
+@{
+    var additionalPropertyId = Html.CreateSystemName("additionalProperty");
+    var mnemonicEx = "AdditionalPropertyEditor";
+    var getIdByMnemonic = Url.Action("GetDetailExIdByMnemonic", "AdditionalProperty");
+    var wrapId = "wrap_" + Guid.NewGuid().ToString("N");
+}
+
+<button id="@(additionalPropertyId)" type="button" class="k-button">Дополнительные характеристики</button>
+
+<script>
+    $(function() {
+
+        $("#@additionalPropertyId").click(function() {
+
+            var mnemonic = undefined;
+            var widget = "";
+            var dialog = $("[Name = DialogID]")[0].defaultValue;
+            var composite = window[dialog];
+
+            for (var id in composite.widgets) {
+                if (id.match("widget*")) {
+                    mnemonic = composite.widgets[id].mnemonic;
+                    widget = id;
+                    break;
+                }
+            }
+
+            var openDialog = function (m) {
+                debugger;
+                pbaAPI.ajax.get("@getIdByMnemonic", { "mnemonic": m + "_AdditionalFeatures" }).then(function (res) {
+                        var mexId = res.id;
+                        pbaAPI.openDetailView("@(mnemonicEx)",
+                            {
+                                wid: widget,
+                                id: mexId,
+                                ids: [mexId],
+                                callback: function(e) {
+                                    //if (e.type === "save" || e.type === "apply") {
+                                    //    grid.currentRow = e.model.ID;
+                                    //    grid.bind();
+                                    //}
+                                }
+                            });
+                    },
+                    function(err) {
+                    });
+            }
+
+            application.viewModelConfigs.get(mnemonic).done(function (i) {
+                var l = true;
+                if (i.Ext && i.Ext.Relations && Object.keys(i.Ext.Relations).length > 0) {
+                    if (delete i.Ext.Relations.SpaceShip, l) {
+                        e = [];
+                        for (v in i.Ext.Relations){
+                            i.Ext.Relations.hasOwnProperty(v) && (y = i.Ext.Relations[v], y.IsReadOnly || e.push(y));
+                        }
+                        return e.length === 1 ?
+                                    (openDialog(e[0].Mnemonic), !1)
+                                    : e.length > 1 ?
+                                        (pbaAPI.selectSimple(e, {
+                                            wid: "_superclass_" + widget,
+                                            callback: function (n) { openDialog(n.Mnemonic); }
+                                            //, cancel: function() { r.callback({ type: "cancel" })}
+                                        }), !1)
+                                    : (pbaAPI.errorMsg("Relations is empty"), !1)
+                    }
+                    if (!r.isCorrectMnemonic)
+                        return pbaAPI.proxyclient.viewConfig.getExtraId({
+                                mnemonic: n,
+                                id: r.id || r.entity.ID
+                            }).done(function(n) {
+                                if (n.error) {
+                                    pbaAPI.errorMsg(n.error);
+                                    r.onError(n.error)
+                                } else
+                                    r.isCorrectMnemonic = !0, pbaAPI.openDetailView(n.Mnemonic, r)
+                            }), !1 }
+                else {
+                    return (openDialog(mnemonic), !1);
+                }
+            });
+
+            debugger;
+
+
+        });
+        return false;
+    });
+</script>

@@ -1,0 +1,93 @@
+﻿@using WebUI.Models.Social
+@model CommentToolbarModelVm
+
+@{
+    string gridID = Html.CreateSystemName("g");
+    string formID = Html.CreateSystemName("f");
+}
+
+@(Html.Kendo().Grid<CommentsModelVm>()
+      .Name(gridID)
+      .AutoBind(true)
+      .Columns(columns =>
+      {
+          columns.Bound(x => x.UserName).Hidden();
+          columns.Bound(x => x.DateTime).Hidden();
+          columns.Bound(x => x.DateTime).Hidden();
+      })
+      .Sortable()
+      //.Scrollable(scrollable => scrollable.Virtual(true))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .PageSize(20)
+          .Read(x => x.Action("GetCollection", "Social", new { mnemonic = Model.Mnemonic, objectID = Model.ObjectId })))
+      .HtmlAttributes(new { style = "width : 100%;" })
+      .ClientRowTemplate(
+    @<text>
+        <tr data-uid="#: uid #" class="comment">
+			<td>
+				<div class="img-circle userpic-wrap" data-mnemonic="User" data-id="#:UserID#">
+					<img src="#= Image != null ? pbaAPI.imageHelpers.getsrc(Image.FileID, 100, 100, 'NoPhoto') : pbaAPI.imageHelpers.getsrc(null, 100, 100, 'NoPhoto')#" alt="" class="userpic" />
+				</div>
+				<div class="comment__header">
+					<span class="comment__author">#:UserName#</span>
+					<span class="comment__divider">|</span>
+					<span class="comment__date">Дата: #:kendo.toString(DateTime, "g")#</span>
+				</div>
+				<div class="comment__content">#:Message#</div>
+			</td>
+		</tr>
+    </text>.ToHtmlString())
+                      .NoRecords(x => x.Template("<div class='comments-empty'>нет комментариев</div>")))
+
+
+<div class="comment-form-wrap">
+	<form id="@formID" class="comment-form">
+		<textarea class="comment-form__input" rows="5" placeholder="Введите сообщение..."></textarea>
+		<button class="k-button comment-form__submit">Отправить</button>
+	</form>
+</div>
+
+<script>
+    $(function () {
+        var grid = $("#@gridID").getKendoGrid();
+
+        $("#@formID").submit(function (e) {
+            var message = $("#@formID textarea").val();
+            if (message === "") {
+                $("#@formID textarea").focus();
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("SaveComments", "Social")",
+                data: { mnemonic: "@Model.Mnemonic", objectID: "@Model.ObjectId", message: message },
+                success: function (data) {
+                    if (grid) {
+                        grid.dataSource.fetch(function () {
+                            if (grid.virtualScrollable) {
+                                var gridScrollBar = grid.virtualScrollable.verticalScrollbar;
+                                gridScrollBar.scrollTop(gridScrollBar[0].scrollHeight);
+                            }
+
+                            setTimeout(function () {
+                                if (grid.virtualScrollable)
+                                { grid.virtualScrollable.verticalScrollbar.perfectScrollbar("update"); }
+                            }, 400);
+                        });
+                        $("#@formID textarea").val('');
+                    }
+                }
+            });
+            e.preventDefault();
+        });
+
+        $("#@gridID div.k-grid-header").css("border", "none");
+        $("#@gridID table").addClass('comments-table');
+        var heightSection = $(".comment-form-wrap").height();
+        var heightForm = $("#@gridID").closest(".k-widget.k-window").height();
+        //-15 padding .send-comment
+        var heiDifference = heightForm - heightSection - 15;
+        $("#@gridID div.k-grid-content").height(450);
+    });
+</script>

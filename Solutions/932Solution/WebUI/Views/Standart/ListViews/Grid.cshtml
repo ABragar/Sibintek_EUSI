@@ -1,0 +1,110 @@
+﻿@using System.Diagnostics
+@using Base.UI.Presets
+@model StandartGridView
+
+@{
+    var config = Model.ViewModelConfig.ListView;
+    var preset = (GridPreset)Model.Preset;
+
+    if (Model.Type == TypeDialog.Lookup)
+    {
+        Model.Preset = DependencyResolver.Current.GetService<IPresetFactory<GridPreset>>().Create(Model.Mnemonic);
+        preset = preset ?? Model.Preset as GridPreset;
+    }
+
+    Debug.Assert(preset != null, "preset != null");
+    //Model.MultiSelect = preset.IsMultiselect;
+    config.MultiSelect = preset.IsMultiselect;
+
+    var selectionMode = preset.IsMultiselect ? GridSelectionMode.Multiple : GridSelectionMode.Single;
+
+    string categorized = config.Type == Base.UI.ViewModal.ListViewType.GridCategorizedItem ? "/categorized" : "";
+
+    if (Model.IsPermission(TypePermission.Write) && !Model.IsReadOnly && (Model.Type == TypeDialog.Frame || Model.Type == TypeDialog.Lookup) && config.Sortable && !config.MultiSelect)
+    {
+        selectionMode = GridSelectionMode.Single;
+    }
+
+
+    var showFooter = Model.MultiSelect || config.MultiSelect || preset.Groupable || preset.ShowFooter || Model.ViewModelConfig.ListView.DataSource.Groups.Count() > 0;
+}
+
+<style scoped>
+    /* Use the DejaVu Sans font for display and embedding in the PDF file.
+            The standard PDF fonts have no support for Unicode characters. */
+    .k-grid {
+        font-family: "DejaVu Sans", "Arial", sans-serif;
+    }
+</style>
+
+<script>
+    // Import DejaVu Sans font for embedding
+    kendo.pdf.defineFont({
+        "DejaVu Sans": "@Url.Content("~/Content/vendor/kendo/styles/fonts/DejaVu/DejaVuSans.ttf")",
+        "DejaVu Sans|Bold": "@Url.Content("~/Content/vendor/kendo/styles/fonts/DejaVu/DejaVuSans-Bold.ttf")",
+        "DejaVu Sans|Bold|Italic": "@Url.Content("~/Content/vendor/kendo/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf")",
+        "DejaVu Sans|Italic": "@Url.Content("~/Content/vendor/kendo/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf")",
+    });
+</script>
+
+
+@(Html.Kendo().Grid<dynamic>()
+    .Name(Model.WidgetID)
+    .AutoBind(false)
+    .Columns(columns => columns.InitColumns(this))
+    .Sortable(sortable => sortable
+    .AllowUnsort(false)
+    .ShowIndexes(true)
+    .SortMode(GridSortMode.MultipleColumn))
+    .Scrollable(s => s.Enabled(config.Scrollable))
+    .Selectable(sel =>
+    {
+        if (config.MultiSelect || selectionMode == GridSelectionMode.Multiple)
+            sel.Enabled(false);
+        else
+            if (Model.MultiSelect)
+            sel.Mode(GridSelectionMode.Multiple);
+
+    })
+    .PersistSelection()
+    .Filterable()
+    .ColumnMenu(cm=>cm.Columns(false).Messages(m=>m.Columns("Столбцы").ColumnSettings("Настройки столбца")))
+    .Events(e => e
+    .InitEvents(this)
+    .ExcelExport(Model.WidgetID + ".onExcelExport"))
+    .Pdf(pdf => pdf
+    .AllPages()
+    .AvoidLinks()
+    .Landscape()
+    .FileName((Model.ViewModelConfig.ListView.Title ?? Model.ViewModelConfig.Title) + ".pdf")
+    .ProxyURL("/api/kendo/export")
+    )
+    .Excel(e =>
+    {
+        e.ForceProxy(true);
+        e.FileName((Model.ViewModelConfig.ListView.Title ?? Model.ViewModelConfig.Title) + ".xlsx");
+        e.Filterable(true);
+        e.ProxyURL(Url.Action("ExportSave", "ExportImport"));
+        //e.ProxyURL("/api/kendo/export");
+        e.AllPages(true);
+    })
+    .DataSource(dataSource => dataSource
+    .WebApi()
+    .Model(a => a.InitModel(this))
+    .Sort(sort => sort.InitDataSourceSort(this))
+    .Group(group => group.InitDataSourceGroup(this))
+    .PageSize(preset.PageSize)
+    .ServerOperation(Model.ViewModelConfig.ListView.DataSource.ServerOperation && Model.Type != TypeDialog.Lookup)
+    .Events(events => events.Error(Model.WidgetID + ".onErrorHandler"))
+    //.Read(read => read.Data(Model.WidgetID + ".onAdditionalData"))
+    //закомментировано, отваливаются ассоциации OneToMany
+    .Read(read => read.InitRead($"listview/{Model.Mnemonic}/kendoGrid{categorized}", "api", Model.Mnemonic, Model.SearchStr, Model.SysFilter).Data(Model.WidgetID + ".onAdditionalData"))
+    .Aggregates(ag => ag.InitDataSourceAggregate(this))
+    )
+    .Groupable(x => x.Enabled(preset.Groupable).ShowFooter(showFooter))
+    .Pageable(p => p.InitPageable(this))
+    .Reorderable(r => r.Columns(true))
+    .Resizable(r => r.Columns(true))
+    //NOTE: custom navigate
+    .Navigatable(n => n.Enabled(true))
+    )

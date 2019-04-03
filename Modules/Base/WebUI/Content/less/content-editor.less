@@ -1,0 +1,279 @@
+﻿.k-edge, .k-ie {
+	.content-editor-toolbar.fixedsticky {
+		position: fixed;
+		top: 166px;
+		top: calc( ~"53px + "@modular-scale *5em );
+		right: 1em;
+		}
+	}
+
+.content-editor {
+	.clearfix();
+
+	&-box, &-toolbar {
+		float: left;
+		}
+
+	&-box {
+		width: calc(~"100% - 21.4286rem");
+
+		.row [class^='col']:not(:last-child):before {
+			position: absolute;
+			top: 0;
+			right: -.0714rem;
+			bottom: 0;
+
+			width: .0714rem;
+
+			content: '';
+
+			background-color: darken( @color--light, 14% );
+			}
+		}
+
+	&-toolbar {
+		position: -webkit-sticky;
+		position:         sticky;
+		top: 0;
+
+		width: 21.4286rem;
+		}
+
+	&-cm.k-sprite {
+		font-size: .857rem !important;
+
+		padding-right: .357rem;
+		}
+	}
+
+.layout-preview {
+	margin: 0;
+
+	border: 2px solid fade( @color--primary, 70% );
+
+	 > div:not(:last-child) {
+		border-right: 2px solid fade( @color--primary, 70% );
+		}
+	}
+
+.main-layout {
+	width: 100%; 
+	height: 100%;
+	}
+
+.droptarget {
+	border: 2px dotted transparent;
+	}
+
+.no-video {
+	font-size: 1.143rem;
+	line-height: 6.429rem;
+
+	height: 100%;
+
+	text-align: center;
+
+	color: darken( @color--light, 14% );
+	}
+
+[data-widget-name] {
+	position: relative;
+
+	margin: @modular-scale *.5em 1em;
+
+	outline: 1px solid darken( @color--light, 14% );
+
+	 > .row {
+		padding: 0 !important;
+		}
+	}
+
+div[data-widget-name] {
+	border: 5px @color--light;
+	}
+
+[data-widget-name='textarea'] {
+	padding: .357rem;
+	padding-top: 2.143rem;
+	}
+
+[data-widget-name^='internal_image'] p {
+	text-align: center;
+	}
+
+[data-widget-name^='external_video'] {
+	min-height: 3.5714rem;
+	}
+
+[data-widget-name='layout1'] .row [class^='col'] {
+	min-height: 47.143rem;
+	}
+
+[data-widget-name^='layout']:not([data-widget-name='layout1']) .row [class^='col'] {
+	min-height: 7.143rem;
+	}
+
+[data-widget-name='image'] {
+	text-align: center;
+	}
+
+[data-widget-name='internal_file'] {
+	padding: .7143rem;
+	padding-top: 1.786rem;
+
+	a[data-bind]:before {
+		font-family: 'Glyphicons Regular';
+		font-weight: normal;
+		font-style: normal;
+		line-height: 1;
+
+		display: inline-block;
+
+		content: '\E037';
+		vertical-align: middle;
+
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		}
+	}
+
+[data-widget-name='quote'] .quote {
+	font-style: italic;
+
+	margin: 0;
+	padding: @modular-scale *1.5rem;
+
+	.clearfix();
+
+	&-author {
+		font-style: normal;
+
+		float: left;
+
+		width: 33.333%;
+		height: 100%;
+		margin-top: @modular-scale *.5em;
+		padding-right: 1em;
+
+		text-align: center;
+
+		@media ( min-width: @screen-lg-min ) {
+			width: 25%;
+			}
+
+		&__photo {
+			display: block;
+			overflow: hidden;
+
+			width: @modular-scale *5em;
+			margin: 0 auto;
+
+			border-radius: 50%;
+			}
+
+		&__name {
+			font-size: @base-font-size * 1.15;
+			font-weight: 600;
+
+			margin-top: @modular-scale *.5rem;
+
+			color: @color--dark;
+			}
+
+		&__about {
+			color: lighten( @color--dark, 50% );
+			}
+		}
+
+	&-content {
+		line-height: @modular-scale *1rem;
+
+		float: left;
+
+		width: calc( ~"66.666% - "@modular-scale *3rem );
+
+		@media ( min-width: @screen-lg-min ) {
+			width: calc( ~"75% - "@modular-scale *3rem );
+			}
+		}
+	}
+
+
+.placeholder {
+	height: 4.286rem;
+
+	background-color: fade( @color--success, 10% ); 
+	background-image: linear-gradient( 45deg, fade( @color--light, 15% ) 25%, transparent 25%, transparent 50%, fade( @color--light, 15% ) 50%, fade( @color--light, 15% ) 75%, transparent 75%, transparent );
+	background-size: 2.857rem 2.857rem;
+
+	.drop-shadow( 1px, @color--success, 100% );
+	}
+
+.drag-helper {
+	width: @modular-scale * 5rem;
+	height: @modular-scale *1.5rem;
+
+	cursor: -webkit-grabbing;
+	}
+
+.widget {
+	&-selected {
+		&[data-widget-name] {
+			.drop-shadow( 1px, @color--accent, 100% );
+			}
+
+		&:not([data-widget-name='layout1']) > .widget-head {
+			display: block;
+			}
+		}
+
+	&-handle {
+		padding: @modular-scale *.5em;
+
+		&.draggable {
+			cursor: -webkit-grab;
+			transition: background-color .15s @main-curve;
+
+			&:hover, &:focus {
+				background-color: fade( @color--dark, 5% );
+				}
+			}
+		}
+
+	&-head {
+		position: absolute;
+		z-index: 9999999999;
+		top: 0;
+		right: 0;
+		left: 0;
+
+		display: none;
+
+		height: 1.786rem;
+		padding-top: .1429rem;
+
+		background-color: @color--primary;
+
+		a {
+			font-size: .7143rem; 
+
+			margin-right: .357rem;
+
+			color: @color--light;
+			}
+
+		.widget-heandle {
+			position: absolute;
+			top: .0714rem;
+			bottom: .0714rem;
+			left: .0714rem;
+
+			width: 1.429rem;
+			padding: .1429rem;
+
+			cursor: move;
+
+			color: @color--light;
+			}
+		}
+	}

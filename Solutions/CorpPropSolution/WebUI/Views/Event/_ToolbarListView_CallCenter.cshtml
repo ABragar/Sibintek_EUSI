@@ -1,0 +1,152 @@
+﻿@using Base.UI.ViewModal
+@{
+    string toolbarName = Html.CreateSystemName("toolbar");
+    string btnEditId = Html.CreateSystemName("btn-edit");
+    string btnDeleteId = Html.CreateSystemName("btn-delete");
+
+    string hotkeysId = Html.CreateSystemName("hotkeys");
+    string hotkeysInfoId = Html.CreateSystemName("grid_keys_");
+    string hotKeyList = Html.CreateSystemName("grid_hotlst_");
+
+    bool actionEdit = !Model.IsReadOnly && Model.IsPermission(TypePermission.Write);
+    bool actionDelete = !Model.IsReadOnly && Model.IsPermission(TypePermission.Delete) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Delete);
+}
+
+
+<script>
+    window["@toolbarName"] = new WrapToolbar("@toolbarName", "ToolbarListView");
+
+    (function () {
+
+        var toolbar = window["@toolbarName"];
+        var composite = window["@Model.DialogID"];
+        composite.registerWidget(toolbar);
+
+        toolbar.onClick = function (e) {
+
+            var action = e.target[0].getAttribute("data-action");
+            if (action === "call") {
+                toolbar.createCall(true);
+            } else if (action === "inCall") {
+                toolbar.createCall(false);
+            } else {
+                composite.onWidgetChanged({
+                    sender: toolbar,
+                    event: "click",
+                    params: {
+                        event: e,
+                        action: e.target[0].getAttribute("data-action")
+                    }
+                });
+            }
+        };
+
+        toolbar.createCall = function (out) {
+            var window = $('<div>').kendoWindow({
+                width: 400,
+                height: 150,
+                title: "Новый звонок",
+                actions: ["Close"],
+                modal: true,
+                content: {
+                    url: "@Url.Action("NewCall","Event")",
+                    data: { outcall: out }
+                },
+                activate: function () {
+                    window.trigger('onActivate');
+                },
+                deactivate: function () {
+                    this.destroy();
+                },
+                resize: function () {
+                    window.trigger('onResize');
+                },
+                close: function () { }
+            });
+
+            window.data('kendoWindow').center().open();
+        };
+
+        toolbar.onNeighbourWidgetChanged = function (e) {
+            switch (e.sender.desc) {
+            case "GridView":
+            {
+                if (e.event === "dblclick") {
+                    var $btnEdit = $("#@btnEditId");
+
+                    if (!$btnEdit.hasClass("k-state-disabled")) {
+                        composite.onWidgetChanged(
+                        {
+                            sender: toolbar,
+                            event: "click",
+                            params: { action: "edit" }
+                        });
+                    }
+                }
+            }
+            }
+        };
+    })();
+</script>
+
+@(Html.Kendo().ToolBar().Name(toolbarName).Items(items =>
+{
+    items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+    {
+        buttons.Add().Text("Позвонить").HtmlAttributes(new { title = "Позвонить", data_action = "call" }).SpriteCssClass("btntoolbar glyphicon glyphicon-disk-export").ShowText(ShowIn.Overflow).Click(toolbarName + ".onClick");
+        buttons.Add().Text("Принять").HtmlAttributes(new { title = "Принять звонок", data_action = "inCall" }).SpriteCssClass("btntoolbar glyphicon glyphicon-disk-import").ShowText(ShowIn.Overflow).Click(toolbarName + ".onClick");
+
+        if (actionEdit)
+        {
+            buttons.Add().Text("Редактировать").HtmlAttributes(new { title = "Редактировать", data_action = "edit" }).SpriteCssClass("btntoolbar fa fa-pencil").Id(btnEditId).ShowText(ShowIn.Overflow).Click(toolbarName + ".onClick");
+        }
+
+        if (actionDelete)
+        {
+            buttons.Add().Text("Удалить").HtmlAttributes(new { title = "Удалить", data_action = "delete" }).SpriteCssClass("btntoolbar fa fa-trash-o").Enable(actionDelete).Id(btnDeleteId).ShowText(ShowIn.Overflow).Click(toolbarName + ".onClick");
+        }
+    });
+    items.Add().Template(string.Format("<label id=\"{0}\" class=\"hotkeys\"><span class=\"fa fa-keyboard-o\"></span></label>", hotkeysId));
+}))
+
+
+<div id="@hotkeysInfoId" type="text/x-kendo-template" class="hotkeys-info">
+    <ul class="list-group" id="@hotKeyList">
+        <li class="list-group-item list-group-item-info">
+            <strong>Горячие клавиши:</strong>
+        </li>
+        <li class="list-group-item">
+            <span class="key-button">Insert </span> <span class="key-text">- Позвонить</span>
+        </li>
+        <li class="list-group-item">
+            <span class="key-button">Enter </span> <span class="key-text">- Редактировать звонок</span>
+        </li>
+        <li class="list-group-item">
+            <span class="key-button">Delete </span> <span class="key-text">- Удалить звонок</span>
+        </li>
+        <li class="list-group-item">
+            <span class="key-button">&#8593; </span>
+            <span class="key-button">&#8595; </span>
+            <span class="key-button">&#8592; </span>
+            <span class="key-button">&#8594; </span> <span class="key-text">- Навигация по таблице</span>
+        </li>
+        <li class="list-group-item">
+            <span class="key-button"> Space </span> <span class="key-text">- Выделить строку</span>
+        </li>
+
+    </ul>
+</div>
+
+<script>
+
+    $(function() {
+        var toolbar = window["@toolbarName"];
+        var $toolbar = toolbar.element();
+
+        $toolbar.find("#@hotkeysId").kendoTooltip({
+            width: 320,
+            position: "top",
+            content: kendo.template($("#@hotkeysInfoId").html())
+        }).data("kendoTooltip");
+    });
+</script>

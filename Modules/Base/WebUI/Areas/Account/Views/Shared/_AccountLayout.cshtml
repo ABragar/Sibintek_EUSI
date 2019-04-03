@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+    <title>@ViewBag.Title</title>
+
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="apple-touch-icon" href="~/Content/Images/mobile/Icon76.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Content/Images/mobile/Icon76.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="~/Content/Images/mobile/Icon120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="~/Content/Images/mobile/Icon152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/Images/mobile/Icon180.png" />
+
+    <link rel="apple-touch-icon-precomposed" href="~/Content/Images/mobile/Icon76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="~/Content/Images/mobile/Icon76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="~/Content/Images/mobile/Icon120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="~/Content/Images/mobile/Icon152.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="~/Content/Images/mobile/Icon180.png" />
+
+    <link href="~/Content/Images/mobile/320x460.png" media="(device-width: 320px) and (orientation:portrait)" rel="apple-touch-startup-image">
+    <link href="~/Content/Images/mobile/460x320.png" media="(device-width: 320px) and (orientation:landscape)" rel="apple-touch-startup-image">
+
+    <link href="~/Content/Images/mobile/640x920.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2) and (orientation:portrait)" rel="apple-touch-startup-image">
+    <link href="~/Content/Images/mobile/920x640.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2) and (orientation:landscape)" rel="apple-touch-startup-image">
+
+    <link href="~/Content/Images/mobile/748x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" rel="apple-touch-startup-image">
+    <link href="~/Content/Images/mobile/1024x748.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" rel="apple-touch-startup-image">
+
+    <link href="~/Content/Images/mobile/1496x2048.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="~/Content/Images/mobile/2048x1496.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+
+    @{ Html.RenderPartial("~/Views/Shared/_Favicons.cshtml"); }
+
+    @Styles.Render("~/CSS/Account")
+</head>
+<body>
+    <main class="account @RenderSection("card_class", required: false)">
+        <div class="account__logo-wrap" style="position: relative;">
+			@*<img class="account__logo" src="/Content/images/logo.png" alt="Логотип" />*@
+            <span style="text-align:center; font-family:Arial, sans-serif; font-size: xx-large;font-weight: bold;">АИС<br/>"Корпоративная собственность"</span>
+			<div style="position: absolute;bottom: 20px;left: 28px;">
+				<img src="/Content/images/developer-logo.png" style="max-width: 133px; max-height:45px" />
+				@*<div style="text-align: center;">
+					<img src="/Content/images/developer-logo.png" style="max-width: 100px;"/>
+				</div>*@
+            </div>
+
+            <div style="position: absolute;bottom: 23px; right: 28px;">
+                <img src="/Content/images/company-logo_black.png" style="max-width: 133px; max-height:45px" />
+            </div>
+            @*@if ( @Html.GetLogoLogInSrc() != null )
+            {
+                <img class="account__logo" src="@Html.GetLogoLogInSrc()" alt="Логотип" />
+            }
+            else 
+            {
+                <figure class="account__dummy-logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                        <path d="M46.565.92c2.125-1.228 4.745-1.228 6.871 0 8.249 4.763 29.102 16.802 37.352 21.565 2.125 1.228 3.435 3.496 3.435 5.95v43.13c0 2.454-1.31 4.722-3.435 5.95-8.249 4.763-29.102 16.802-37.352 21.565-2.125 1.228-4.745 1.228-6.871 0-8.249-4.763-29.102-16.802-37.352-21.565-2.125-1.228-3.435-3.496-3.435-5.95v-43.13c0-2.454 1.31-4.722 3.435-5.95 8.249-4.763 29.102-16.802 37.352-21.565zm1.145 13.359c1.418-.819 3.163-.819 4.58 0 5.904 3.409 21.595 12.468 27.5 15.877 1.417.818 2.29 2.33 2.29 3.967v31.754c0 1.636-.874 3.149-2.29 3.967-5.905 3.409-21.596 12.468-27.5 15.877-1.418.819-3.163.819-4.58 0-5.904-3.409-21.595-12.468-27.5-15.877-1.417-.818-2.29-2.33-2.29-3.967v-31.754c0-1.636.874-3.149 2.29-3.967 5.905-3.409 21.596-12.468 27.5-15.877zm19.923 43.918c0 1.228-.655 2.361-1.718 2.975l-13.052 7.535c-.354.205-.791.205-1.145 0-.354-.204-.573-.583-.573-.992v-15.071c0-1.226.655-2.361 1.718-2.975l13.052-7.535c.354-.205.79-.205 1.145 0 .354.205.573.583.573.992v15.071zm-20.495-8.528c1.063.614 1.718 1.749 1.718 2.975v15.071c0 .409-.219.788-.573.992-.354.205-.791.205-1.145 0l-13.052-7.535c-1.063-.614-1.718-1.747-1.718-2.975v-15.071c0-.409.219-.787.573-.992.355-.205.791-.205 1.145 0l13.052 7.535zm17.633-11.502c.354.204.573.583.573.992 0 .409-.219.787-.573.992l-13.052 7.535c-1.063.614-2.373.614-3.435 0l-13.052-7.535c-.354-.205-.573-.583-.573-.992 0-.409.219-.788.573-.992 3.166-1.828 9.886-5.707 13.052-7.536 1.063-.613 2.373-.613 3.435 0 3.166 1.829 9.886 5.708 13.052 7.536z"/>
+                    </svg>
+                </figure>
+            }*@
+        </div>
+        <div class="account-card">
+            <div class="account-card__body">@RenderBody()</div>
+            <div class="account-card__footer">@RenderSection("card_footer", required: false)</div>
+            <div class="account-card__loader">
+                <div class="loader z-depth-1"></div>
+            </div>
+        </div>
+    </main>
+
+    @Scripts.Render("~/JS/Account")
+</body>
+</html>

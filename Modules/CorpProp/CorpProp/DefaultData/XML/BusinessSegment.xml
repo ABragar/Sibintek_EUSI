@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<BusinessSegments>
+	<BusinessSegment>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>1.1</Code>
+		<PublishCode>1.1</PublishCode>
+		<Name>Upstream</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessSegment>
+	<BusinessSegment>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>1.2</Code>
+		<PublishCode>1.2</PublishCode>
+		<Name>Downstream</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessSegment>
+	<BusinessSegment>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>1.3</Code>
+		<PublishCode>1.3</PublishCode>
+		<Name>Прочее</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessSegment>
+</BusinessSegments>
+  </DefaultDataHolder>

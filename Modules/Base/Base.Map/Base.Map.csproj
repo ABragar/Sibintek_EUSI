@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{22F3F4FE-AF62-406B-BA95-5012F83F94B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Base.Map</RootNamespace>
+    <AssemblyName>Base.Map</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit, Version=1.1.3.1, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\LinqKit.1.1.3.1\lib\net45\LinqKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\Microsoft.SqlServer.Types.11.0.2\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Clustering\CachedQuadClusterGrid.cs" />
+    <Compile Include="Clustering\CacheInfo.cs" />
+    <Compile Include="Clustering\CacheSettings.cs" />
+    <Compile Include="Clustering\CacheStats.cs" />
+    <Compile Include="Clustering\IClusterCacheManager.cs" />
+    <Compile Include="Clustering\IClusterGridFactory.cs" />
+    <Compile Include="Clustering\IClusterGridGroup.cs" />
+    <Compile Include="Clustering\QuadBoundsProvider.cs" />
+    <Compile Include="Clustering\QuadClusterCacheManager.cs" />
+    <Compile Include="Clustering\QuadClusterGrid.cs" />
+    <Compile Include="Clustering\QuadClusterGridGroup.cs" />
+    <Compile Include="Clustering\QuadClusterProvider.cs" />
+    <Compile Include="Clustering\IClusterGrid.cs" />
+    <Compile Include="Clustering\IClusterProvider.cs" />
+    <Compile Include="Clustering\QuadGridBounds.cs" />
+    <Compile Include="Clustering\QuadGridCell.cs" />
+    <Compile Include="Clustering\CacheGroup.cs" />
+    <Compile Include="Clustering\QuardGridCache.cs" />
+    <Compile Include="Criteria\ICriteriaBuilder.cs" />
+    <Compile Include="Entities\MapSettings.cs" />
+    <Compile Include="Filters\FilterDefinitionBuilder.cs" />
+    <Compile Include="Filters\FilterManager.cs" />
+    <Compile Include="Filters\IFilterManager.cs" />
+    <Compile Include="Helpers\CheckType.cs" />
+    <Compile Include="Helpers\NormalizeCoordinatesHelper.cs" />
+    <Compile Include="Helpers\SpatialUtils.cs" />
+    <Compile Include="IIconGeoObject.cs" />
+    <Compile Include="IMapLayerConfig.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="LazyProperties.cs" />
+    <Compile Include="MapObjects\DetailViewCollectionProperty.cs" />
+    <Compile Include="MapObjects\DetailViewEnumProperty.cs" />
+    <Compile Include="MapObjects\DetailViewExtendedProperty.cs" />
+    <Compile Include="MapObjects\PagingResult.cs" />
+    <Compile Include="Search\SearchByClusterStrategy.cs" />
+    <Compile Include="MapObjects\DetailViewProperty.cs" />
+    <Compile Include="MapObjects\DetailViewTab.cs" />
+    <Compile Include="Filters\Definitions\BoolFilterDefinition.cs" />
+    <Compile Include="Filters\Definitions\DecimalFilterDefinition.cs" />
+    <Compile Include="Filters\Definitions\IntegerEnumFilterDefinition.cs" />
+    <Compile Include="Filters\Definitions\EnumEnumFilterDefinition.cs" />
+    <Compile Include="Filters\FilterDefinitionNotFoundException.cs" />
+    <Compile Include="Filters\FilterDefinitionFactory.cs" />
+    <Compile Include="Filters\FilterHelper.cs" />
+    <Compile Include="Filters\FilterValue.cs" />
+    <Compile Include="Filters\Definitions\DoubleFilterDefinition.cs" />
+    <Compile Include="Filters\Definitions\FloatFilterDefinition.cs" />
+    <Compile Include="Filters\Definitions\IntegerFilterDefinition.cs" />
+    <Compile Include="Filters\Definitions\TextFilterDefinition.cs" />
+    <Compile Include="Filters\FilterValues.cs" />
+    <Compile Include="Filters\OptionDefinition.cs" />
+    <Compile Include="Filters\Definitions\NumericFilterDefinition.cs" />
+    <Compile Include="Filters\Definitions\EnumFilterDefinition.cs" />
+    <Compile Include="Filters\FilterDefinition.cs" />
+    <Compile Include="Filters\FilterType.cs" />
+    <Compile Include="Filters\FilterUIType.cs" />
+    <Compile Include="MapObjects\MapLayerMode.cs" />
+    <Compile Include="Search\SearchByBoundsStrategy.cs" />
+    <Compile Include="Services\IMapCacheService.cs" />
+    <Compile Include="Services\IMapLayerConfigService.cs" />
+    <Compile Include="Services\IMapLayerService.cs" />
+    <Compile Include="Services\IMapObjectCrudService.cs" />
+    <Compile Include="Services\IMapObjectService.cs" />
+    <Compile Include="Services\IMapService.cs" />
+    <Compile Include="Services\MapCacheService.cs" />
+    <Compile Include="Services\MapLayerConfigService.cs" />
+    <Compile Include="Services\MapLayerService.cs" />
+    <Compile Include="Services\MapObjectCrudService.cs" />
+    <Compile Include="Services\MapObjectService.cs" />
+    <Compile Include="Services\MapService.cs" />
+    <Compile Include="Spatial\AffineTransformation.cs" />
+    <Compile Include="Spatial\Bounds.cs" />
+    <Compile Include="Spatial\BoundsMode.cs" />
+    <Compile Include="Spatial\CRS.cs" />
+    <Compile Include="Spatial\GeoBounds.cs" />
+    <Compile Include="MapObjects\GeoCluster.cs" />
+    <Compile Include="MapObjects\GeoObject.cs" />
+    <Compile Include="MapObjects\GeoObjectBase.cs" />
+    <Compile Include="MapObjects\GeoObjectType.cs" />
+    <Compile Include="Spatial\IProjection.cs" />
+    <Compile Include="Spatial\ITransformation.cs" />
+    <Compile Include="Spatial\Point.cs" />
+    <Compile Include="Spatial\GeoPoint.cs" />
+    <Compile Include="MapObjects\IconGeoObject.cs" />
+    <Compile Include="IGeoObject.cs" />
+    <Compile Include="Services\IMapSearchService.cs" />
+    <Compile Include="Services\IMapServiceFacade.cs" />
+    <Compile Include="Entities\MapLayerConfig.cs" />
+    <Compile Include="Helpers\MapExtensions.cs" />
+    <Compile Include="Helpers\MapHelper.cs" />
+    <Compile Include="MapObjects\MapLayer.cs" />
+    <Compile Include="MapObjects\MapLayerStyle.cs" />
+    <Compile Include="Criteria\CriteriaBuilder.cs" />
+    <Compile Include="Services\MapSearchService.cs" />
+    <Compile Include="Helpers\ConfigNotFoundException.cs" />
+    <Compile Include="Services\MapServiceFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\ClusteringSearchStrategy.cs" />
+    <Compile Include="Search\SearchOnClickStrategy.cs" />
+    <Compile Include="Search\DefaultSearchStrategy.cs" />
+    <Compile Include="Search\ISearchStrategyFactory.cs" />
+    <Compile Include="Search\SearchStrategyType.cs" />
+    <Compile Include="Search\SearchStrategyBase.cs" />
+    <Compile Include="Search\SearchStrategyFactory.cs" />
+    <Compile Include="Search\SearchParameters.cs" />
+    <Compile Include="Spatial\MathHelper.cs" />
+    <Compile Include="Spatial\SpatialExtensions.cs" />
+    <Compile Include="Spatial\SpatialHelper.cs" />
+    <Compile Include="Spatial\SphericalMercator.cs" />
+    <Compile Include="Helpers\ViewModelConfigHelper.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Base.EntityFrameworkTypes\Base.EntityFrameworkTypes.csproj">
+      <Project>{700d464b-0bd3-4188-a619-53e888218ce7}</Project>
+      <Name>Base.EntityFrameworkTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Security\Base.Security.csproj">
+      <Project>{93a4c5a8-701d-4212-b338-dacb6ec8c670}</Project>
+      <Name>Base.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.UI\Base.UI.csproj">
+      <Project>{3ae7843f-06ce-4989-a978-210f7dfcf1a9}</Project>
+      <Name>Base.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Utils.Common\Base.Utils.Common.csproj">
+      <Project>{AD97EF5C-E096-465D-9729-2D0524AF2476}</Project>
+      <Name>Base.Utils.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{b78a3750-fa57-41f2-927a-dfb795552548}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Linq.Dynamic\System.Linq.Dynamic.csproj">
+      <Project>{b6edf157-6153-4684-a577-de33896dbaa8}</Project>
+      <Name>System.Linq.Dynamic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\Libs\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\msvcr100.dll">
+      <Link>SqlServerTypes\x64\msvcr100.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\Libs\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x64\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\Libs\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\msvcr100.dll">
+      <Link>SqlServerTypes\x86\msvcr100.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\Libs\packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\SqlServerSpatial110.dll">
+      <Link>SqlServerTypes\x86\SqlServerSpatial110.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

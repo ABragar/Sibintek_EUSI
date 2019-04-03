@@ -1,0 +1,176 @@
+﻿@using Base.Contact.Entities
+@using Base.UI.ViewModal
+@model Dialog_WidgetViewModel
+@{
+    string nameToolbar = Html.CreateSystemName("toolbar_tree_view");
+    string btnAddRootId = Html.CreateSystemName("addbtn");
+    string btnAddChildId = Html.CreateSystemName("addchildbtn");
+    string btnEditId = Html.CreateSystemName("editbtn");
+    string btnDeleteId = Html.CreateSystemName("deletebtn");
+    //string nameCombobox = Html.CreateSystemName("combo");
+
+
+    bool actionCreate = !Model.IsReadOnly && Model.IsPermission(TypePermission.Create) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Create);
+    bool actionEdit = !Model.IsReadOnly && Model.IsPermission(TypePermission.Write);
+    bool actionDelete = !Model.IsReadOnly && Model.IsPermission(TypePermission.Delete) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Delete);
+}
+<script>
+    window["@nameToolbar"] = new WrapToolbar("@nameToolbar", "ToolbarTreeView");
+
+    (function () {
+        var composite = window["@Model.DialogID"];
+        var toolbar = window["@nameToolbar"];
+
+        composite.registerWidget(toolbar);
+
+        toolbar.onNeighbourWidgetChanged = function (e) {
+            if (e.sender.desc === "TreeView") {
+                if (e.event === "select") {
+                    var $select = e.params.select;
+
+                    var isSelected = $select.length > 0;
+
+                    toolbar.enable("#@btnEditId", isSelected);
+
+                    @if (actionDelete) {
+                    @: toolbar.enable("#@btnDeleteId", isSelected);
+                                                                                }
+                }
+            }
+        };
+
+        //events
+        toolbar.onClick = function (e) {
+            composite.onWidgetChanged({
+                sender: toolbar,
+                event: "click",
+                params: { action: e.target[0].getAttribute("data-action") }
+            });
+        };
+
+        //toolbar.onCompanyChange = function (e) {
+        //    var dataItem = this.dataItem(e.item);
+
+        //    composite.onWidgetChanged({
+        //        sender: toolbar,
+        //        event: "companyChange",
+        //        params: { company: dataItem }
+        //    });
+        //};
+
+        @*toolbar.selectCompany = function(company, enable) { // Выбрать в дропдауне
+            var dropDown = $('#@nameCombobox').data('kendoDropDownList');
+
+            dropDown.select(function (dataitem) {
+                return dataitem.ID === company.ID;
+            });
+
+            dropDown.enable(enable);
+
+            composite.onWidgetChanged({
+                sender: toolbar,
+                event: "companyChange",
+                params: { company: company }
+            });
+        }
+
+        toolbar.onCompanyLoad = function () {
+            var dialog = window['@Model.DialogID'];
+
+            var initProps = dialog.dialogData.initProps;
+
+            if (initProps && initProps['@Model.Mnemonic'] && initProps['@Model.Mnemonic'].Company) {
+                var company = initProps['@Model.Mnemonic'].Company;
+                toolbar.selectCompany(company, false);
+            } else {  //Находим компанию юзера
+                toolbar.getUserCompany();
+            }
+        };
+
+        toolbar.getUserCompany = function () {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetUserCompany", "Contact")",
+                contentType: "application/json; charset=utf-8",
+                success: function (res) {
+                    if (!res.error) {
+                        toolbar.selectCompany(res, true);
+                    }
+                }
+            });
+        };*@
+
+    })();
+</script>
+
+@(Html.Kendo().ToolBar()
+              .Name(nameToolbar)
+              .Events(e => e.OverflowOpen(nameToolbar + ".onOverflowOpen"))
+              .Items(items =>
+              {
+                  items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                  {
+                      if (actionCreate)
+                      {
+                          buttons.Add().Text("Создать корневую категорию").HtmlAttributes(new { title = "Создать корневую категорию", data_action = "add-root" }).SpriteCssClass("btntoolbar mdi mdi-folder-plus").Id(btnAddRootId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                      }
+                      if (actionCreate)
+                      {
+                          buttons.Add().Text("Создать дочернюю категорию").HtmlAttributes(new { title = "Создать дочернюю категорию", data_action = "add" }).SpriteCssClass("btntoolbar mdi mdi-plus").Id(btnAddChildId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                      }
+
+                      if (actionEdit)
+                      {
+                          buttons.Add().Text("Редактировать").HtmlAttributes(new { title = "Редактировать", data_action = "edit" }).SpriteCssClass("btntoolbar mdi mdi-pencil").Id(btnEditId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                      }
+                      else
+                      {
+                          buttons.Add().Text("Просмотр").HtmlAttributes(new { title = "Просмотр", data_action = "edit" }).SpriteCssClass("btntoolbar halfling halfling-eye-open").Id(btnEditId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                      }
+
+                      if (actionDelete)
+                      {
+                          buttons.Add().Text("Удалить").HtmlAttributes(new { title = "Удалить", data_action = "delete" }).SpriteCssClass("btntoolbar mdi mdi-close").Id(btnDeleteId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                      }
+
+
+                  })
+
+                  ;
+
+                  items.Add().Type(CommandType.Separator);
+
+                  items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                  {
+                      buttons.Add().Text("Компании").HtmlAttributes(new { title = "Компании", data_action = "company_map" }).SpriteCssClass("btntoolbar mdi mdi-map").Id(btnAddChildId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                  });
+
+                  //items.Add().Template("<div id='" + nameCombobox + "'></div>").Overflow(ShowInOverflowPopup.Never);
+
+              })
+)
+
+@*<script>
+        $(function () {
+            var toolbar = window["@nameToolbar"];
+
+            toolbar.enable("#@btnEditId", false);
+            toolbar.enable("#@btnDeleteId", false);
+
+            @*$('#@nameCombobox').kendoDropDownList({
+                optionLabel: "Компания",
+                dataTextField: "Title",
+                dataValueField: "ID",
+                select: toolbar.onCompanyChange,
+                dataBound: toolbar.onCompanyLoad,
+                dataSource: {
+                    transport: {
+                        read: {
+                            dataType: "json",
+                            url: "@Url.Action("GetBoPropertyForFilter", "Standart")?startswith=&mnemonic=Company",
+                        }
+                    }
+                }
+            });
+        });
+    </script>*@

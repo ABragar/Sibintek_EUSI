@@ -1,0 +1,2381 @@
+﻿@model StandartGridView
+
+@using Base.UI.Presets
+@using Base.UI.ViewModal
+@using CorpProp.Entities.Document
+@using Newtonsoft.Json
+@using CorpProp.Entities.Document
+
+@{
+    var typeEntity = Model.ViewModelConfig.TypeEntity;
+    var lvMultiSelect = Model.ViewModelConfig.ListView.MultiSelect;
+    var preset = (GridPreset)Model.Preset;
+    var isMultiselect = preset.IsMultiselect || Model.MultiSelect;
+
+    ViewModelConfig config = Model.ViewModelConfig;
+    bool isCategorizedItem = typeEntity.GetInterfaces().Contains(typeof(ICategorizedItem));
+    string mnemonicCategory = null;
+    bool? hiddenTree = null;
+    var mergeDocsUrl = Url.Action("SetMergeDocuments", "FileCard");
+
+    if (isCategorizedItem)
+    {
+        var listViewCategorizedItem = Model.ViewModelConfig.ListView as ListViewCategorizedItem;
+
+        if (listViewCategorizedItem != null)
+        {
+            mnemonicCategory = listViewCategorizedItem.MnemonicCategory;
+            hiddenTree = listViewCategorizedItem.HiddenTree;
+        }
+    }
+}
+<script src="~/Scripts/links/one-to-many-association-links.js"></script>
+<script>
+
+
+    (function() {
+        var grid = window["@Model.WidgetID"] = new WrapGrid({
+            id: "@Model.WidgetID",
+            mnemonic: "@Model.Mnemonic",
+            isCategorizedItem:
+                @Html.Raw(JsonConvert.SerializeObject(isCategorizedItem && (hiddenTree == null || !hiddenTree.Value))),
+            desc: "GridView",
+            config: null
+        });
+        application.viewModelConfigs.get(grid.mnemonic).done(function(config) {
+            grid.config = config;
+        });
+
+        var composite = window["@Model.DialogID"];
+
+        @*//--------Grid--------//*@
+        composite.registerWidget(grid);
+
+        grid.multiSelect = @Html.Raw(JsonConvert.SerializeObject(isMultiselect));
+        grid.lock = false;
+
+        if (@Html.Raw(JsonConvert.SerializeObject(Model.ViewModelConfig.TypeEntity.IsAssignableFrom(typeof(FileCard)))))
+            $(document).ready(function() {
+                var currentMousePos = { x: -1, y: -1 };
+                //Создание документов через Drag'n'Drop
+                $("#@Model.WidgetID table").kendoDraggable({
+                    filter: "tr",
+                    hint: function(element) {
+                        var offset = $("#@Model.WidgetID  table").offset();
+                        var relativeX = (currentMousePos.x - offset.left) + 10;
+                        return element.clone().css({
+                            "opacity": 0.6,
+                            "background-color": "rgba(100, 100, 100, 0.3)",
+                            "height": "40px",
+                            "padding": "10px",
+                            "vertical-align": "middle",
+                            "marginLeft": relativeX + "px"
+                        });
+                    },
+                    dragend: function(e) {
+                        var dragableElements =
+                                $("#@(Model.WidgetID) > .k-grid-content > table > tbody > .k-state-selected"),
+                            dragableIds = [],
+                            targetId = $(e.target).parent().attr('data-uid');
+
+                        if (targetId == null) {
+                            return;
+                        }
+
+                        dragableElements.each(function() {
+                            dragableIds.push($(this).attr('data-uid'));
+                        });
+
+                        var kendoData = $("#@Model.WidgetID  table").data("kendoGrid").dataSource,
+                            dragableItems = [],
+                            targetItem = (kendoData.getByUid(targetId) ? kendoData.getByUid(targetId).ID : null);
+
+                        dragableIds.forEach(function(element, index, array) {
+                            dragableItems.push(kendoData.getByUid(element).ID);
+                        });
+                        if (dragableItems.length <= 0)
+                            return;
+                        pbaAPI.confirm('Предупреждение',
+                            'Собрать документы в пакет?',
+                            function() {
+                                var saveObject = {
+                                    ObjectIds: dragableItems,
+                                    dest: targetItem
+                                };
+
+                                mergeObjectPost(pbaAPI.getNewUrl("/FileCard/SetMergeDocumentsTo"),
+                                    saveObject,
+                                    function() {
+                                        $('#@Model.WidgetID  table').data('kendoGrid').dataSource.read();
+                                    });
+                            });
+                    }
+                });
+
+                function mergeObjectPost(url, saveObject, onSuccess) {
+                    pbaAPI.ajax.post(url, saveObject)
+                        .then(function(response) {
+                                pbaAPI.msg('Данные успешно сохранены', 'upload-success');
+                                onSuccess();
+                            },
+                            function(err) {
+                                pbaAPI.errorMsg('Во время операции произошла ошибка');
+                            });
+                };
+
+                $(document).mousemove(function(event) {
+                    currentMousePos.x = event.pageX;
+                    currentMousePos.y = event.pageY;
+                });
+
+                //Drop&Drag from file manager
+                var dropZone = document.getElementById('@Model.WidgetID');
+                dropZone.addEventListener('dragover',
+                    function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        e.dataTransfer.dropEffect = 'copy';
+                    });
+                // Get file data on drop
+                dropZone.addEventListener('drop',
+                    function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        //Включить лоудер
+                        kendo.ui.progress($("#@Model.WidgetID"), true);
+
+                        function makeFiles() {
+                            var countResults = 0,
+                                files = grid.lastDragNDropfiles,
+                                categoryId = grid.getCategoryID(),
+                                countAllRoots = files.length;
+                            if (!categoryId) {
+                                pbaAPI.errorMsg('Хранилище пусто. Добавьте папку.');
+                                return;
+                            }
+
+                            function createMultipleDocuments(onSuccess) {
+                                var ids = [];
+                                var pushItt = 0;
+                                for (var i = 0; i < files.length; i++) {
+                                    sentDataToServer(files[i],
+                                        function(result) {
+                                            countResults++;
+                                            if (countResults >= countAllRoots) {
+                                                kendo.ui.progress($("#@Model.WidgetID"), false);
+                                            }
+                                            if (result) {
+                                                var sentData = {
+                                                    "model": {
+                                                        "@nameof(FileCardOne.CategoryID)": categoryId || -1,
+                                                        "@nameof(FileCardOne.FileData)": result,
+                                                        "@nameof(FileCardOne.Name)": /[^\\]*$/
+                                                            .exec(result.FileName)[0] //result.FileName
+                                                    }
+                                                };
+                                                //TODO pbaAPI.proxyclient.crud.save
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: pbaAPI
+                                                        .getNewUrl("/api/crud/@nameof(FileCardOne)/?returnEntireModel=true"),
+                                                    data: JSON.stringify(sentData),
+                                                    contentType: "application/json",
+                                                    success: function(data) {
+                                                        if (data.error) {
+                                                            pbaAPI.errorMsg(data.message);
+                                                        } else {
+                                                            ids.push(data.model.ID);
+                                                            if (++pushItt >= i) {
+                                                                if (onSuccess)
+                                                                    onSuccess(ids);
+                                                            }
+                                                        }
+                                                        grid.dataSourceRead();
+                                                    }
+                                                });
+                                            }
+                                        });
+                                }
+                                grid.lastDragNDropfiles = null;
+                            }
+
+                            function mergeObjectPost(url, saveObject, onSuccess) {
+                                pbaAPI.ajax.post(url, saveObject).then(
+                                    function(response) {
+                                        //onSuccess(response);
+                                        //if (!response.error)
+                                        onSuccess(response);
+                                        if (!response || !response.error)
+                                            pbaAPI.msg('Пакет успешно собран', 'upload-success');
+                                    },
+                                    function(err) {
+                                        pbaAPI.errorMsg('Во время операции произошла ошибка');
+                                    });
+                            };
+
+                            pbaAPI.confirmEx({
+                                title: "Предупреждение",
+                                text: "Собрать в пакет?",
+                                callbackYes: function(data) {
+                                    createMultipleDocuments(function(ids) {
+                                        var saveObject = { ObjectIds: ids };
+                                        mergeObjectPost("@(mergeDocsUrl)",
+                                            saveObject,
+                                            function() {
+                                                window["@Model.WidgetID"].dataSourceRead();
+                                            });
+                                    });
+
+                                },
+                                callbackNo: function(data) {
+                                    createMultipleDocuments();
+                                }
+                            });
+                        }
+
+                        grid.lastDragNDropfiles = e.dataTransfer.files;
+                        //for (var i = 0; e.dataTransfer.files.length > i; i++) {
+                        //    grid.lastDragNDropfiles[i] = e.dataTransfer.files[i].name;
+                        //}
+
+                        pbaAPI.openModalDialog("@mnemonicCategory",
+                            function(category) {
+                                grid._categoryID = category[0].ID;
+                                makeFiles();
+                            },
+                            {
+                                title: 'Выбор папки документов'
+                            });
+
+                        //var treeId = $("#TreeViewID").val();
+                        //var treeview = $('#' + treeId).data("kendoTreeView");
+                        //if (treeview) {
+                        //    var selectedNode = treeview.select();
+                        //    var item = treeview.dataItem(selectedNode);
+
+                        //    if (!item) {
+                        //        pbaAPI.errorMsg('Хранилище пусто. Добавьте папку.');
+                        //        return;
+                        //    }
+                        //} else {
+                        //    grid.changeCategory();
+                        //    item = grid.getCategoryID();
+                        //}
+
+
+                    });
+
+                function sentDataToServer(file, callback) {
+                    var formData = new FormData();
+                    formData.append("file", file);
+
+                    var newUri = pbaAPI.getNewUrl("/FileData/SaveFile");
+
+                    $.ajax({
+                        url: newUri,
+                        type: "POST",
+                        data: formData,
+                        async: true,
+                        success: function(data) {
+                            callback(data);
+                        },
+                        error: function() {
+                            pbaAPI.errorMsg("Ошибка загрузки файла на сервер");
+                            callback(null);
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+                }
+            });
+
+
+
+        @*BEGIN:CRUD*@
+        grid.addRow = function () {
+            var entityProps = {
+                callback: function(e) {
+                    grid.currentRow = e.model.ID;
+                    grid.bind()
+                },
+                _initProp: grid._initProp
+            };
+            if (this.mnemonic === "SibTaskMenuList") {
+                var parentWidget = this.element().closest('form').closest('.form-widget');
+
+                if (parentWidget.length > 0 && parentWidget[0].id !== this.element()[0].id) {
+                    var win = window[parentWidget[0].id];
+                    var parentMnemonic = win.composite.mnemonic;
+                    var widget = win.widget();
+                    var model = widget.getModel();
+                    if (model) {
+                        entityProps["initProps"] = {
+                            Project: {
+                                ID: model.ID,
+                                Name: model.Name
+                            }
+                        }
+                    }
+                }
+                grid.addEntity(entityProps);
+            }
+
+            if (grid.mnemonic.replace("MenuList", "") === "MovableEstate") {
+                grid.createMovableEstate();
+            }
+            else
+                grid.addEntity(entityProps);
+        };
+
+    var getItems = function(dataArray, arr) {
+        if (!arr) {
+            arr = [];
+        }
+
+        if (dataArray && dataArray.length) {
+            for (var j = 0; j < dataArray.length; j++) {
+                if (dataArray[j].hasOwnProperty("hasSubgroups")) {
+                    if (dataArray[j].hasSubgroups) {
+                        getItems(dataArray[j].items, arr);
+                    } else {
+                        arr.push.apply(arr, dataArray[j].items);
+                    }
+                } else {
+                    arr.push(dataArray[j]);
+                }
+            }
+        }
+        return arr;
+    };
+
+    grid.linkRow = function () { otmLinkRow(grid, "@config.Mnemonic", "@config.ListView.Title") }
+
+    grid.unlinkRow = function () { otmUnlinkRow(grid, "@config.Mnemonic", "@Model.ViewModelConfig.ListView.Title") }
+
+    grid.getSysFilter = function () {
+        return null;
+    }
+
+    grid.editRow = function (id) {
+        if (id == undefined)
+            id = this.selectID();
+
+        var data = getItems(grid.widget().dataSource.data());
+
+        var ids = new Array(data.length);
+
+        for (var i = 0; i < data.length; i++) {
+            ids[i] = data[i].ID;
+        }
+        var mnemonic = grid.mnemonic;
+
+        @if (!String.IsNullOrEmpty(@Model.ViewModelConfig.ListView.OnClientEditRow))
+            {
+                //внедряем текст скрипта при открытии строки таблицы
+                @Html.Raw(Model.ViewModelConfig.ListView.OnClientEditRow);
+            }
+
+        pbaAPI.openDetailView(mnemonic,
+        {
+            wid: "@Model.WidgetID",
+            id: id,
+            ids: ids,
+            byDate: grid.transport.read.data.date,
+            callback: function (e) {
+                if (e.type === "save") {
+                    var wnd = composite.element().closest(".dialog--modal");
+
+                    var parentWnd = window[wnd.attr('id')]
+                    if (parentWnd)
+                        parentWnd.refresh();
+                }
+                if (e.type === "save" || e.type === "apply") {
+                    grid.currentRow = e.model.ID;
+                    grid.bind();
+                }
+
+                corpProp.dv.wnd.delWnd(grid.mnemonic);
+            }
+        });
+    };
+
+    //Создание элементов из шаблона. Вызов из grid.onNeighbourWidgetChanged по соотв. case
+    grid.createFromTemplate = function () {
+        var mnemonic = (this.mnemonic) ? this.mnemonic.replace("MenuList", "") + "Template" : null;
+
+        if (!mnemonic)
+            return pbaAPI.errorMsg("Не удалось определить мнемонику.");
+
+        pbaAPI.openModalDialog(mnemonic, function (item) {
+            if (!item || !item.length) {
+                return pbaAPI.errorMsg("Ошибка при выборе шаблона.");
+            }
+
+            var template = item[0];
+            var baseMnemonic = grid.mnemonic;
+
+            pbaAPI.openDetailView(baseMnemonic, {
+                wid: "@Model.WidgetID",
+                id: template.ID,
+                customQuerySaveParams: { FromTemplate: true, TemplateID: template.ID },
+                beforeSave: function (e) {
+                    @if (isCategorizedItem)
+                        {
+                            @: e.pbaForm.setPr("CategoryID", grid["nodeID"]);
+                                                                                                                                                }
+                },
+                callback: function (e) {
+                    if (e.type === "save" || e.type === "apply") {
+                        grid.currentRow = e.model.ID;
+                        grid.bind();
+                    }
+                }
+            });
+        });
+    };
+
+    //свернуть все группы
+    grid.collapseGroup = function () {
+        $(".k-i-collapse").click()
+    }
+
+    //развернуть все группы
+    grid.expandGroup = function () {
+        $(".k-i-expand").click()
+    }
+
+    //добавить в ИК
+    grid.addInComplex = function () {
+        var objs = grid.getSelectItems();
+        var ids = [];
+        objs.forEach(function (item, i, arr) {
+            ids.push(item.ID);
+        });
+
+        pbaAPI.openModalDialog("PropertyComplex",
+            function(item) {
+                if (!item || !item.length) {
+                    return pbaAPI.errorMsg("Ошибка при выборе ИК.");
+                }
+
+                var complex = item[0];
+                var oids = ids.join(';');
+                pbaAPI.proxyclient.corpProp.addInComplex({
+                    complexID: complex.ID,
+                    objectIds: oids
+                }).done(function(result) {
+                    if (result.error) {
+                        pbaAPI.errorMsg(result.error);
+                    } else {
+                        if (result.message) {
+                            pbaAPI.uploadMsg(result.message);
+                            grid.bind();
+                        }
+                    }
+                });
+            });
+    }
+
+        //добавить в ИК
+        grid.addInComplexIO = function () {
+            var objs = grid.getSelectItems();
+            var ids = [];
+            objs.forEach(function (item, i, arr) {
+                ids.push(item.ID);
+            });
+
+            pbaAPI.openModalDialog("PropertyComplexIO",
+                function(item) {
+                    if (!item || !item.length) {
+                        return pbaAPI.errorMsg("Ошибка при выборе ИК.");
+                    }
+
+                    var complex = item[0];
+                    var oids = ids.join(';');
+                    pbaAPI.proxyclient.corpProp.addInComplexIO({
+                        complexID: complex.ID,
+                        objectIds: oids
+                    }).done(function(result) {
+                        if (result.error) {
+                            pbaAPI.errorMsg(result.error);
+                        } else {
+                            if (result.message) {
+                                pbaAPI.uploadMsg(result.message);
+                                grid.bind();
+                            }
+                        }
+                    });
+                });
+        }
+
+    //обновить права в АИС КС
+    grid.updRightInCorpProp = function () {
+        var oids = grid.widget().selectedKeyNames().join(", ");
+        pbaAPI.infoMsg("Ожидайте...");
+        kendo.ui.progress($('#@Model.WidgetID'), true);
+        pbaAPI.proxyclient.corpProp.checkUpdRightInCorpProp({
+            ids: oids
+        }).done(function (res) {
+            kendo.ui.progress($('#@Model.WidgetID'), false);
+            res.message
+            pbaAPI.confirmEx({
+                title: "Предупреждение",
+                text: res.message +"<b>Вы действительно хотите обновить информацию в реестре прав?<b>",
+                callbackYes: function (data) {
+                    var oids = grid.widget().selectedKeyNames().join(", ");
+                    pbaAPI.infoMsg("Ожидайте...");
+                    kendo.ui.progress($('#@Model.WidgetID'), true);
+                    pbaAPI.proxyclient.corpProp.updRightInCorpProp({
+                        ids: oids
+                    }).done(function (res) {
+                        kendo.ui.progress($('#@Model.WidgetID'), false);
+                        if (res.err && res.err > 0) {
+                            return pbaAPI.errorMsg(res.message);
+                        }
+                        else {
+                            pbaAPI.uploadMsg(res.message);
+                        }
+                        grid.dataSourceRead();
+                    })
+
+                },
+                callbackNo: function (data) {
+
+                }
+            });
+        })
+
+
+        ///////////////
+
+    }
+        
+        //уведомить об импорте
+        grid.notifyOfImport = function () {
+            var oids = grid.widget().selectedKeyNames().join(", ");
+            kendo.ui.progress($('#@Model.WidgetID'), true);
+            pbaAPI.proxyclient.corpProp.notifyOfImport({
+                mnemonic: grid.mnemonic
+            }).done(function (res)
+            {
+                kendo.ui.progress($('#@Model.WidgetID'), false);
+                if (res.err && res.err !== 0)
+                    pbaAPI.errorMsg(res.message);
+                else {
+                    grid.dataSourceRead();
+                    pbaAPI.uploadMsg(res.message);
+                }
+            });
+        }
+
+
+        grid.exportMovings = function () {
+            pbaAPI.openDetailView("ExportMoving",
+                {
+                    wid: "@Model.WidgetID",
+                });
+        }
+
+        grid.calculateAccountingObject = function () {
+            pbaAPI.openDetailView("CalculatingRecord",
+                {
+                    wid: "@Model.WidgetID",
+                });
+        }
+
+
+    grid.deleteRow = function () {
+        //sib
+        if (grid.multiSelect) {
+            var text = "Удалить запись?";
+            var selectItems = this.getSelectItems();
+            if (selectItems) {
+                if (selectItems.length > 1) {
+                    text = "Удалить выбранные записи?";
+
+                    pbaAPI.confirm("@Model.ViewModelConfig.ListView.Title", text, function () {
+                        var ids = selectItems.map(function (a) { return a.ID; }).join(';');
+
+                        pbaAPI.proxyclient.corpProp.removeItems({ mnemonic: grid.mnemonic, ids: ids })
+                            .done(function (res) {
+                                if (res.error && res.error !== 0)
+                                    pbaAPI.errorMsg(res.message);
+                                else {
+                                    grid.dataSourceRead();
+                                    pbaAPI.uploadMsg(res.message);
+                                }
+                            });
+
+                    });
+                    return;
+                }
+            }
+        }
+
+        //end sib
+        var id = this.selectID();
+        if (id) {
+            pbaAPI.confirm("@Model.ViewModelConfig.ListView.Title", "Удалить запись?", function () {
+                grid.deleteItem(id);
+            });
+        }
+
+
+    };
+
+    grid.deleteItem = function (id) {
+        if (grid.mnemonic === "NonCoreAsset") {
+            pbaAPI.proxyclient.corpProp.removeNonCoreAsset({ id: id })
+                .done(function (res) {
+                    if (res.error && res.error !== 0)
+                        pbaAPI.errorMsg(res.message);
+                    else {
+                        grid.dataSourceRead();
+                        pbaAPI.uploadMsg(res.message);
+                    }
+                });
+        }
+        else {
+            pbaAPI.proxyclient.crud.destroy({ mnemonic: grid.mnemonic, id: id })
+                .done(function (res) {
+                    if (res.error === 0) {
+                        grid.removeRow(grid.select());
+                        pbaAPI.uploadMsg(res.message);
+                    } else {
+                        pbaAPI.errorMsg(res.message);
+                    }
+                });
+        }
+    }
+    @*END:CRUD*@
+
+    grid.applyUserPreset = function(toolbar) {
+        grid.getPreset().done(function(preset) {
+            grid.preset = preset;
+
+            var options = grid.getDataSource().options;
+
+            if (preset.Filter) {
+                try {
+                    options.filter = JSON.parse(preset.Filter);
+                } catch (err) {
+                    pbaAPI.debugError("Parse preset filter " + preset.Filter);
+                }
+            }
+
+            if (!options.filter)
+                options.filter = {};
+
+            if (preset.Sorts) {
+                try {
+                    options.sort = JSON.parse(preset.Sorts);
+                } catch (err) {
+                    pbaAPI.debugError("Parse preset sort " + preset.Sorts);
+                }
+            }
+
+            if(!options.sort)
+                options.sort = [];
+
+            var dataSource = new kendo.data.DataSource(options);
+
+            dataSource.__originalFilter = dataSource.filter;
+            dataSource.__originalSort = dataSource.sort;
+
+            dataSource.filter = function () {
+                if (arguments.length > 0) {
+                    grid.preset.Filter = kendo.stringify(arguments[0]);
+                    grid.savePreset(grid.preset);
+                }
+
+                var result = this.__originalFilter.apply(this, arguments);
+                return result;
+            }
+
+            dataSource.sort = function () {
+                if (arguments.length > 0) {
+                    grid.preset.Sorts = kendo.stringify(arguments[0]);
+                    grid.savePreset(grid.preset);
+                }
+
+                var result = this.__originalSort.apply(this, arguments);
+                return result;
+            }
+
+            grid.setDataSource(dataSource);
+            grid.setDataAggregate();
+            grid.setExtendedFilterFromPreset();
+            grid.setFilterable();
+
+            if (toolbar.filtersDropdown) {
+                toolbar.filtersDropdown.dataSource.sort({ field: "Title", dir: "asc" });
+                toolbar.filtersDropdown.dataSource.read({ mnemonic: grid.mnemonic }).then(function (e) {
+                    toolbar.filtersDropdown.value(grid.preset.MnemonicFilterID);
+                });
+            }
+
+
+            var toolbarWidget = toolbar.widget()
+            var historySearchEl = toolbarWidget.element.find('#historyDatePicker');
+            if (historySearchEl) {
+                var value = historySearchEl.val();
+                grid.transport.read.data.date = value;
+            }
+
+            grid.dataSourceRead();
+            grid.isInit = true;
+        });
+    };
+
+    grid.addResetSortButton = function () {
+        var gr = grid.widget();
+        var dataSource = gr.dataSource;
+        var sorts = dataSource._sort;
+        var columns = gr.columns;
+        var columnsSort = Array();
+        if (sorts.length === 0) {
+            columns.forEach(function (column, index, arr) {
+                if (column.field && column.field.length > 0) {
+                    var th = gr.element.find("th[data-field=" + column.field + "]");
+                    if (th && th.find("a.sib-grid-unsort").length !== 0) {
+                        th.find("a.sib-grid-unsort").remove();
+                    }
+                }
+            })
+        }
+        else {
+            sorts.forEach(function (sort, index, arr) {
+                columnsSort = columns.filter(function (col) {
+                    return col.field === sort.field;
+                });
+            })
+            sorts.forEach(function (sort, index, arr) {
+                columns = columns.filter(function (col) {
+                    return col.field !== sort.field;
+                });
+            })
+
+            columnsSort.forEach(function (col, index, arr) {
+                var $th = gr.element.find("th[data-field=" + col.field + "]");
+                if ($th && $th.find("a.sib-grid-unsort").length === 0) {
+                    $th.find("a.k-link").before("<a class='sib-grid-unsort' href='#' data-role='unsort' data-column='" + col.field + "' tabindex='-1'><span class='k-icon k-i-unsort'></span></a>");
+                }
+            })
+
+            columns.forEach(function (col, index, arr) {
+				if (col.field && col.field.length > 0) {
+					var $th = gr.element.find("th[data-field=" + col.field + "]");
+					if ($th && $th.find("a.sib-grid-unsort").length !== 0) {
+						$th.find("a.sib-grid-unsort").remove();
+					}
+				}
+            })
+        }
+    }
+
+    grid.resetSortColumn = function (element) {
+        var $el = $(element);
+        var columnName = $el.attr("data-column");
+        var widget = grid.widget();
+        var columns = widget.columns;
+        var sorts = widget.dataSource._sort;
+        if (sorts.length > 0) {
+            sorts = sorts.filter(function (sort) {
+                return sort.field !== columnName;
+            });
+            $el.remove();
+            grid.widget().dataSource.sort(sorts);
+        }
+    }
+
+    grid.unsortClick = function (btn) {
+        composite.onWidgetChanged(
+            {
+                sender: grid,
+                event: "unsortClick",
+                row: btn
+            });
+    };
+
+    grid.onDataBound = function () {
+        grid.addResetSortButton();
+        if (grid.mnemonic.match("ScheduleStateRegistrationRecord")) {
+            var rows = this.element.find(".k-grid-content").find('tr[data-uid]');
+
+            if (rows.length > 0) {
+                for (var i = 0; i < rows.length; i++) {
+                    var $row = $(rows[i]);
+                    var elUID = $row.attr("data-uid");
+                    var el = (elUID && elUID.length > 0) ? grid.getByUid(elUID) : null;
+
+                    if (el && el.RightAfter && el.RightAfter.RegNumber && el.RightAfter.RegNumber.length > 0 && el.RightAfter.RegNumber != el.NumberEGRP)
+                        $row.addClass("is-diff-regnum");
+                }
+            }
+        }
+
+        this.element.find("a[data-role=unsort]").each(function () {
+            $(this).unbind('click').click(function () {
+                grid.resetSortColumn(this);
+                return false;
+            });
+        });
+
+        this.element.find("th[role=columnheader][data-role=columnmenu]").each(function () {
+            var $el = $(this);
+
+            if ($el.children().length > 1)
+                return;
+
+            var linkText = $el.text();
+            var link = "<a href='#' class='k-link tooltipstered'>{0}</a>".replace("{0}", linkText);
+            $el.append(link);
+
+            var item = this;
+            var newElement = $('<' + item.nodeName + '/>');
+            for (i = 0; i < item.attributes.length; i++) {
+                newElement.attr(item.attributes[i].name, item.attributes[i].value);
+            }
+            $el.children().each(function () {
+                newElement.append(this);
+            });
+            $el.replaceWith(newElement);
+        })
+
+        this.element.find(".k-grid-content-locked").find('span[data-bg]').each(function () {
+            var $cond = $(this);
+            $cond.closest('td').css('background-color', $cond.data('bg'));
+        });
+
+        this.element.find(".k-grid-content").find('span[data-bg]').each(function () {
+            var $cond = $(this);
+            $cond.closest('td').css('background-color', $cond.data('bg'));
+        });
+
+        this.element.find(".k-icon.k-i-collapse").click();
+
+        composite.onWidgetChanged({
+            sender: grid,
+            event: "onDataBound"
+        });
+
+        if (!grid.multiSelect) {
+            //TODO Отключение выбора первой строки при открытии грида
+            //grid.activeRow();
+        }
+
+        this.element.find("tr[data-uid]").dblclick(function () {
+            grid.dblclick(this);
+        });
+
+        if (grid.isSearchRequest) {
+            grid.isSearchRequest = false;
+        }
+
+        $("#@Model.WidgetID").trigger("onDataBound", this);
+
+        if (grid["__idx_select_row"]) {
+            grid.select("tr:eq(" + (grid["__idx_select_row"]) + ")");
+            delete grid["__idx_select_row"];
+        }
+
+        if (grid["__scroll_top"]) {
+            grid.content().scrollTop(grid["__scroll_top"]);
+            delete grid["__scroll_top"];
+        }
+
+        var lastId = sessionStorage.getItem(grid.mnemonic);
+
+        var urlMnemonic = location.pathname.split("/").pop();
+        corpProp.dv.wnd.openWnd(grid.mnemonic);
+        //if (lastId && lastId != 0 && urlMnemonic == grid.mnemonic) {
+        //    grid.editRow(lastId);
+        //}
+
+        grid.select();
+
+        grid.lock = false;
+
+        $("#list-view th .k-link").each(function () {
+            $(this).attr("title", $(this).text());
+        })
+        var lvMultiSelect = @Html.Raw(JsonConvert.SerializeObject(lvMultiSelect));
+        if (grid.multiSelect || lvMultiSelect)
+            grid.changePager();
+    };
+
+    grid.onColumnMenuInit = function (e) {
+        //здесь меняем контекстное меню колонки
+
+        grid.initAggregateMenu.call(this, e);
+    }
+
+
+
+    grid.onChange = function (e) {
+        grid.initCurrentRow();
+        grid.onselect();
+        grid.element().trigger("onChange", this);
+        grid.setSelectedCount();
+    };
+
+    grid.changePager = function (e) {
+
+            var pl = "<div class='sib-grid-selected-count'><span>Выбрано: <span id='@Model.WidgetID-count' class='count'>0</span><span> из </span><span id='@Model.WidgetID-total' >0</span></span></div>";
+            var pager = grid.widget().pager;
+            if (pager) {
+                if (pager.element.has("div.sib-grid-selected-count").length === 0)
+                    pager.element.prepend(pl);
+                grid.setSelectedCount();
+            }
+
+    };
+
+    grid.setSelectedCount = function () {
+
+        var count = 0;
+        var total = grid.widget().dataSource.total();
+
+        if (grid.getSelectItems()) {
+            count = grid.getSelectItems().length;
+        }
+        var spanCount = $("span#@Model.WidgetID-count");
+        if (spanCount) {
+            if (spanCount.html() !== count)
+                spanCount.html(count);
+        }
+        var spanTotal = $("span#@Model.WidgetID-total");
+        if (spanTotal) {
+            if (spanTotal.html() !== total)
+                spanTotal.html(total);
+        }
+    };
+
+        grid.dblclick = function (btn) {
+        composite.onWidgetChanged(
+        {
+            sender: grid,
+            event: "dblclick",
+            row: btn
+        });
+    };
+
+    grid.showAllData = function (params) {
+        var widget = this.widget();
+        if (params.state) {
+            var oldPageSize = widget.dataSource.pageSize();
+            this.setCookie(this.mnemonic, "OldPageSize", oldPageSize);
+            widget.dataSource.pageSize(widget.dataSource.total());
+        }
+        else {
+            var pageSize = this.getCookie(this.mnemonic, "OldPageSize");
+            widget.dataSource.pageSize(pageSize);
+        }
+    }
+
+    grid.__overrideOnNeighbourWidgetChanged = grid.onNeighbourWidgetChanged;
+
+    grid.onNeighbourWidgetChanged = function (e) {
+        grid.__overrideOnNeighbourWidgetChanged(e);
+        if (e.sender.desc === "TreeView") {
+            if (e.event === "select") {
+                var id = 0;
+                if (e.params.dataItem) {
+                    id = e.params.dataItem.id;
+                }
+                grid.setCategoryID(id);
+                grid.bind();
+            }
+        } else if (e.sender.desc === "ToolbarListView" || e.sender.desc === "ContextMenuListView") {
+            if (e.event === "click") {
+                switch (e.params.action) {
+                    case "add":
+                        grid.addRow();
+                        break;
+                    case "edit":
+                        var id = null;
+                        if (e.params.row) {
+                            var uid = e.params.row.dataset.uid;
+                            if (uid.length > 0)
+                                id = grid.getByUid(uid).ID;
+                        }
+
+                        grid.editRow(id);
+                        break;
+                    case "exportExcel":
+                        grid.exportExcel();
+                        break;
+                    case "exportExcelTemplate":
+                        grid.exportExcelTemplate();
+                        break;
+                    case "createFromTemplate":
+                        grid.createFromTemplate();
+                        break;
+                    case "collapseGroup":
+                        grid.collapseGroup();
+                        break;
+                    case "expandGroup":
+                        grid.expandGroup();
+                        break;
+                    case "addInComplex":
+                        grid.addInComplex();
+                        break;
+                    case "addInComplexIO":
+                        grid.addInComplexIO();
+                        break;
+                    case "link":
+                        grid.linkRow();
+                        break;
+                    case "unlink":
+                        grid.unlinkRow();
+                        break;
+                    case "multiedit":
+                        grid.multiEdit();
+                        break;
+                    case "delete":
+                        grid.deleteRow();
+                        break;
+                    case "changeCategory":
+                        grid.changeCategory();
+                        break;
+                    case "settings":
+                        grid.openSettings();
+                        break;
+                    case "exportPfd":
+                        grid.widget().saveAsPDF();
+                        break;
+                    case "exportJson":
+                        grid.exportJson();
+                        break;
+                    case "importJSON":
+                        grid.importJSON();
+                        break;
+                    case "importData":
+                        grid.importData();
+                        break;
+                    case "importXml":
+                        grid.importXml();
+                        break;
+                    case "clearFilters":
+                        grid.clearFilters();
+                        break;
+                    case "clearSort":
+                        grid.clearSort();
+                        break;
+                    case "extendedFilters":
+                        grid.extendedFilters();
+                        break;
+                    case "ExchangeRateFile":
+                        grid.ExchangeRateFile();
+                        break;
+                    case "NonCoreAssetAdd":
+                        grid.NonCoreAssetAdd();
+                        break;
+                    case "createScheduleState":
+                        grid.createScheduleState();
+                        break;
+                    case "createNonCoreAsset":
+                        grid.createNonCoreAsset();
+                        break;
+                    case "changeNCAStatus":
+                        grid.changeNCAStatus();
+                        break;
+                    case "duplicateNCAItem":
+                        grid.duplicateNCAItem();
+                        break;
+                    case "createNonCoreAssetFromPC":
+                        grid.createNonCoreAssetFromPC();
+                        break;
+                    case "exportXML":
+                        grid.exportXML(e);
+                        break;
+                    case "updRightInCorpProp":
+                        grid.updRightInCorpProp();
+                        break;
+                    case "createEstateAppraisal":
+                        grid.createEstateAppraisal();
+                        break;
+                    case "notifyOfImport":
+                        grid.notifyOfImport();
+                        break;
+                    case "exportMovings":
+                        grid.exportMovings();
+                        break;
+                    case "calculateAccountingObject":
+                        grid.calculateAccountingObject();
+                        break;
+                    case "warmUp":
+                        grid.warmUp();
+                        break;
+                }
+            } else if (e.event === "search") {
+                grid.search(e.params.str);
+            } else if (e.event === "refresh") {
+                grid.bind();
+            } else if (e.event === "select") {
+                grid.clearSelection();
+                grid.select(e.params.el);
+            } else if (e.event === "changeExtendedFilter") {
+                grid.preset.MnemonicFilterID = e.params.idValue;
+                if (grid.preset.MnemonicFilterID){
+                    grid.getExtendedFilterPreset(grid.preset.MnemonicFilterID, '@Model.Mnemonic', function(extendedPreset) {
+                        grid.savePreset(extendedPreset, function() {
+                            location.reload();
+                        });
+                    })}
+                else
+                    grid.savePreset(grid.preset,
+                        function() {
+                            grid.setExtendedFilterFromPreset();
+                            grid.dataSourceRead();
+                        });
+            } else if (e.event === "historySearch") {
+                grid.historySearch(e.params);
+            } else if (e.event === "showAllData") {
+                grid.showAllData(e.params);
+            }
+        }
+    };
+
+    grid.warmUp = function() {
+        $.post(pbaAPI.getNewUrl("/api/corpProp/warmUp")).done(
+            function (data) {
+                if (data.error === 1)
+                    pbaAPI.errorMsg(data.message);
+                else if (data.error === 0)
+                    pbaAPI.uploadMsg(data.message);
+                else
+                    pbaAPI.errorMsg("Ошибка соединения.");
+            });
+    }
+
+    grid.historySearch = function (params) {
+        var $params = {
+            type: null,
+            value: null
+        }
+        $.extend($params, params);
+
+        this.transport.read.data.columns.pop();
+        this.transport.read.data.columns.push("DateFrom", "DateTo")
+
+        if ($params.type === "date") {
+            this.transport.read.data.date = $params.value;
+        }
+        else if ($params.type === "checkbox") {
+            var dateObj = new Date();
+            var todayString = dateObj.getDate().toString() + "." + (dateObj.getMonth() + 1).toString() + "." + dateObj.getFullYear().toString();
+            this.transport.read.data.date = $params.value == true ? null : todayString;
+        }
+
+        this.dataSourceRead();
+    };
+
+        grid.bind = function () {
+        grid.lock = true;
+        grid.initSortable();
+
+        if (!grid.isInit) {
+            var toolbar = {};
+            for (var key in composite.widgets) {
+                if (composite.widgets[key].desc==='ToolbarListView') {
+                    toolbar = composite.widgets[key];
+                    break;
+                }
+            }
+            grid.applyUserPreset(toolbar);
+            var arr = [
+                {
+                    keyMask: "enter",
+                    handler: function() {
+                        if (!grid.multiSelect) {
+                            var activerow = grid.element().find(".k-state-focused").closest("tr");
+                            grid.select(activerow);
+                            grid.dblclick(grid.select());
+                        }
+                    }
+                },
+                {
+                    keyMask: "insert",
+                    handler: function() {
+                        grid.addRow();
+                    }
+                },
+                {
+                    keyMask: "delete",
+                    handler: function() {
+                        var activerow = grid.element().find(".k-state-focused").closest("tr");
+                        grid.select(activerow);
+                        grid.deleteRow();
+                    }
+                },
+                //{
+                //    keyMask: "down",
+                //    handler: function () {
+                //        var nextRow = grid.select().next();
+                //        if (nextRow && nextRow.length !== 0) {
+                //            grid.select(nextRow);
+                //        }
+                //    }
+                //},
+                //{
+                //    keyMask: "up",
+                //    handler: function () {
+                //        var prevRow = grid.select().prev();
+                //        if (prevRow && prevRow.length !== 0) {
+                //            grid.select(prevRow);
+                //        }
+                //    }
+                //}
+            ];
+
+            grid.inithotkeys(arr);
+
+        } else {
+            grid.dataSourceRead();
+        }
+    };
+
+    grid.onColumnReorder = function(e) {
+        var preset = grid.preset;
+
+        var tmpcolumns = {};
+        var field;
+        var i;
+
+        var columns = preset.Columns;
+
+        for (i in columns) {
+            if (columns.hasOwnProperty(i)) {
+                tmpcolumns[columns[i].Name] = columns[i];
+            }
+        }
+
+        columns = grid.widget().columns;
+
+        var newColumns = [columns.length - 1];
+        newColumns[e.newIndex] = e.column;
+
+        var j = 0;
+
+        for (i = 0; i < columns.length; i++) {
+            if (j === e.newIndex)
+                j++;
+
+            if (i === e.oldIndex)
+                i++;
+
+            if(i < columns.length)
+                newColumns[j] = columns[i];
+
+            j++;
+        }
+
+        for (i = 0; i < newColumns.length; i++) {
+            if(newColumns[i]){
+                field = newColumns[i].field;
+
+                if (field in tmpcolumns) {
+                    tmpcolumns[field].SortOrder = i;
+                }
+            }
+        }
+
+        grid.savePreset(preset);
+    };
+
+    grid.onColumnResize = function(e) {
+        var preset = grid.preset;
+        var columns = preset.Columns;
+
+        for (var i = 0; i < columns.length; i++) {
+            var col = columns[i];
+
+            if (col.Name === e.column.field) {
+                col.Width = e.newWidth;
+
+                grid.savePreset(preset);
+                return;
+            }
+        }
+    };
+
+    //PRESET
+    grid.getPreset = function() {
+        return pbaAPI.proxyclient.preset.get({ preset: "GridPreset", ownerName: grid.mnemonic });
+    };
+
+    grid.savePreset = function (preset, callback) {
+            pbaAPI.proxyclient.preset.save(
+                { preset: "GridPreset" },preset
+            ).done(function (res) {
+
+                    if (res.error) {
+                        pbaAPI.errorMsg(res.error);
+                    } else {
+                        preset = res;
+
+                        if (preset.ExtendedFilterSettings && preset.MnemonicFilterID) {
+                            grid.savePresetForExtendedFilter(
+                                preset,
+                                '@Model.Mnemonic',
+                                function(e) {
+                                    //alert("Oki doki!");
+                                });
+                        }
+
+                if (callback)
+                    callback();
+            }
+        });
+    };
+
+
+    grid.savePresetForExtendedFilter = function(preset, presetFor, callback, MnemonicFilterID) {
+
+        var extendedFilterPreset = {};
+        Object.assign(extendedFilterPreset, preset);
+        if (extendedFilterPreset.Columns)
+            extendedFilterPreset.Columns.forEach(function(data) {
+                delete data.ID;
+            });
+        var extendedFilterId = MnemonicFilterID || extendedFilterPreset.MnemonicFilterID;
+        extendedFilterPreset.@nameof(GridExtendedFilterPreset.MnemonicFilterID) = extendedFilterId;
+        extendedFilterPreset.@nameof(GridExtendedFilterPreset.For) = presetFor;
+        delete extendedFilterPreset.ID;
+
+        pbaAPI.proxyclient.crud.save(
+                { mnemonic: "@nameof(GridExtendedFilterPreset)" },
+                { model: extendedFilterPreset })
+            .done(function(res) {
+                if (res.error != 0) {
+                    pbaAPI.errorMsg(res.message);
+                } else
+                {
+                    callback();
+                }
+            });
+    };
+
+        grid.getExtendedFilterPreset = function(extendedFilterId, presetFor, callback) {
+            //TODO GetURL
+            $.ajax("/api/listview/@nameof(GridExtendedFilterPreset)/kendoGrid/" + "?" +
+                $.param({
+                    filter: "MnemonicFilterID~eq~'" + extendedFilterId +"'~and~For~eq~'"+ presetFor +"'",
+                    sort: "Filter-asc~ID-desc",
+                    pageSize: "1"
+                }),
+                   {
+                       method: "GET",
+                       contentType: "application/json",
+                       dataType: "json",
+                   }).done(function (res) {
+                       if (res.error) {
+                           pbaAPI.errorMsg(res.error);
+                       } else {
+                           if (callback) {
+                               var extendedFilterPreset = res.Data[0];
+                               if (extendedFilterPreset && extendedFilterPreset.Columns)
+                                   extendedFilterPreset.Columns.forEach(function(data) {
+                                       delete data.ID;
+                                   });
+                                   delete extendedFilterPreset.ID;
+                                   callback(extendedFilterPreset);
+                               }
+                           }
+                       }
+                   ).fail(function () {
+                       //pbaAPI.errorMsg('Не удалось получить настройку грида для фильтра');
+                   });
+        };
+
+    grid.openSettings = function () {
+        grid.getPreset().done(function (res) {
+            if (res.error) {
+                pbaAPI.errorMsg(res.error);
+            } else {
+                pbaAPI.openDetailView("GridPreset",
+                {
+                    wid: "@Model.WidgetID",
+                    entity: res,
+                    toSave: false,
+                    callback: function (e) {
+                        if (e.type === "save") {
+                            var preset = e.model;
+                            if (preset.ExtendedFilterSettings) {
+                                preset.Filter = null;
+                            } else {
+                                preset.MnemonicFilterID = null;
+                            }
+                            grid.savePreset(preset, function () { location.reload(); });
+                        }
+                    }
+                });
+            }
+        });
+    };
+
+    grid.exportJson = function () {
+        var id = grid.getSelectDataItem()[0].ID;
+        window.open('/ExportImport/ExportJSON?mnemonic=@Model.Mnemonic&objectID=' + id, "_blank");
+    };
+
+    grid.importJSON = function() {
+        var mnemonic = '@Model.Mnemonic';
+        var kendoWindow = $('#importWindow').kendoWindow({
+            width: 600,
+            height: 900,
+            maxHeight: 900,
+            content: "@Url.Action("GetImportWindow", "ExportImport")?mnemonic=" + mnemonic,
+            modal: true,
+            resizeble: false,
+            title: 'Import'
+        });
+        var wnd = kendoWindow.data("kendoWindow");
+        wnd.center().open();
+    };
+
+    function onCloseImportWindow() {
+        grid.dataSourceRead();
+    }
+
+
+    grid.getCustomViewSettings = function(mnemonic, mnemonicFor, callback) {
+        $.ajax("/api/listview/@nameof(ViewSettingsByMnemonic)/kendoGrid/" + "?" +
+            $.param({
+                filter: "@nameof(ViewSettingsByMnemonic.Mnemonic)~eq~'" + mnemonic +"'~and~@nameof(ViewSettingsByMnemonic.MnemonicFor)~eq~'"+ mnemonicFor +"'",
+                pageSize: "1",
+                async: false
+            }),
+               {
+                   method: "GET",
+                   contentType: "application/json",
+                   dataType: "json",
+               }).done(function(data) {
+                   callback(data.Data[0]);
+               }).fail(function () {
+                   callback();
+                   //pbaAPI.errorMsg('Не удалось получить настройку');
+               });
+    };
+
+
+
+    grid.importData = function () {
+        var mnemonic = '@Model.Mnemonic';
+        var fileCardMnemonic = "FileCardTree";
+        var cardFolder = "CardFolder";
+        var compositeEl = composite.element();
+
+        function showImportDialog(selectCategoryId) {
+            pbaAPI.openModalDialog(fileCardMnemonic,
+                function(items) {
+                    var listIds = Array();
+
+                    if (!items || items.length === 0)
+                        return pbaAPI.errorMsg("Выберите элемент списка.");
+
+                    for (var i = 0; i < items.length; i++) {
+                        listIds.push(items[i].id);
+                    }
+
+                    pbaAPI.infoMsg("Ожидайте...");
+                    kendo.ui.progress(compositeEl, true);
+                    pbaAPI.proxyclient.corpProp.fileImport({
+                        fileCardIds: listIds.join()
+                    }).done(function(res) {
+                        if (res.error && res.error > 0)
+                            pbaAPI.errorMsg(res.message);
+                        else
+                            pbaAPI.uploadMsg(res.message);
+
+                        kendo.ui.progress(compositeEl, false);
+                        grid.dataSourceRead();
+                    })
+
+                },
+                {
+                    multiSelect: true,
+                    dialogData: {
+                        selectCategoryId: selectCategoryId
+
+                } });
+        }
+
+        grid.getCustomViewSettings(mnemonic, cardFolder, function (customViewSettings) {
+            if (!(customViewSettings && '@nameof(ViewSettingsByMnemonic.DefaultSelectedOid)' in customViewSettings)) {
+                showImportDialog();
+                return;
+            }
+            var oid = customViewSettings.@nameof(ViewSettingsByMnemonic.DefaultSelectedOid);
+            pbaAPI.proxyclient.corpProp.getIdByUid({
+                mnemonic: cardFolder,
+                oid: oid
+            }).done(function(defaultSelectedId) {
+                showImportDialog(defaultSelectedId);
+            }).fail(function() {
+                showImportDialog();
+            });
+    });
+
+
+
+        @*var kendoWindow = $('#importWindow').kendoWindow({
+                width: 500,
+                height: 600,
+                maxHeight: 900,
+                maxWidth: 900,
+                content: "@Url.Action("GetImportView", "ImportExportExcel")?mnemonic=" + mnemonic,
+                modal: true,
+                resizeble: false,
+                title: 'Импорт объектов из файла Excel',
+                close: onCloseImportWindow
+            });
+            var wnd = kendoWindow.data("kendoWindow");
+            wnd.center().open();*@
+    };
+    grid.importXml = function () {
+        var mnemonic = '@Model.Mnemonic';
+        var kendoWindow = $('#importWindow').kendoWindow({
+            width: 500,
+            height: 600,
+            maxHeight: 900,
+            maxWidth: 900,
+            content: "@Url.Action("GetImportXmlView", "ImportExportExcel")?mnemonic=" + mnemonic,
+            modal: true,
+            resizeble: false,
+            title: 'Импорт объектов из файла XML',
+            close: onCloseImportWindow
+        });
+        var wnd = kendoWindow.data("kendoWindow");
+        wnd.center().open();
+    };
+
+    grid.changeCategory = function () {
+        var id = grid.getSelectItems()[0].ID;
+
+        pbaAPI.openModalDialog("@mnemonicCategory",
+            function (res) {
+                pbaAPI.proxyclient.listview.change_category({
+                    mnemonic: '@Model.Mnemonic',
+                    id: id,
+                    categoryId: res[0].ID
+                }).done(function(result) {
+                    if (result.error === 0) {
+                        grid.dataSourceRead();
+                    } else {
+                        pbaAPI.errorMsg(result.message);
+                    }
+                });
+            },
+            {
+                title: 'Выбор категории'
+            });
+    };
+
+    grid.clearFilters = function () {
+        grid.preset.MnemonicFilterID = null;
+        grid.setMnemonicFilterId(null);
+        grid.widget().dataSource.filter({filters:[], logic:'and'});
+    };
+    grid.clearSort = function() {
+        grid.widget().dataSource.sort([]);
+    };
+    grid.extendedFilters = function() {
+        var grid = this;
+        pbaAPI.openModalDialog('MnemonicFilter', function(res) {
+            if (res.length > 0) {
+                var filterId = res[0].ID;
+                grid.preset.MnemonicFilterID = filterId;
+                if (grid.preset.MnemonicFilterID){
+                    grid.getExtendedFilterPreset(grid.preset.MnemonicFilterID, '@Model.Mnemonic', function(extendedPreset) {
+                        grid.savePreset(extendedPreset, function() {
+                            location.reload();
+                        });
+                    })}
+                else
+                    grid.savePreset(grid.preset, function() {
+                        var toolbar = {};
+                        for (var key in composite.widgets) {
+                            if (composite.widgets[key].desc==='ToolbarListView') {
+                                toolbar = composite.widgets[key];
+                                break;
+                            }
+                        }
+                        grid.applyUserPreset(toolbar);
+                        //grid.setExtendedFilterFromPreset();
+                        //grid.dataSourceRead();
+                    });
+            }
+        },
+        {
+            initProps: {
+                Mnemonic: grid.mnemonic,
+                On: function(type, mnemonic, id) {
+                    if (type && (type === 'save' || type === 'apply'))
+                        grid.savePresetForExtendedFilter(
+                                    grid.preset,
+                                    '@Model.Mnemonic',
+                                    function(e) {
+                                        //alert("Oki doki!");
+                                    },
+                                    id);
+                }
+
+            },
+            callbackCancel: function() {
+                //debugger;
+            },
+            filter: 'Mnemonic=\"@Model.Mnemonic\"'
+        });
+    };
+
+
+    grid.setExtendedFilterFromPreset = function(id) {
+
+        if (id) {
+            grid.setMnemonicFilterId(id);
+        }
+        else
+        if (grid.preset.MnemonicFilterID && grid.preset.MnemonicFilterID != null) {
+            if (grid.preset != null && grid.preset.MnemonicFilterID != null) {
+                var mnemonicFilterId = grid.preset.MnemonicFilterID;
+                grid.setMnemonicFilterId(mnemonicFilterId);
+            }
+        } else {
+            grid.setMnemonicFilterId(null);
+        }
+    };
+
+    grid.setFilterable = function() {
+        if (grid.preset.ExtendedFilterSettings) {
+            grid.widget().setOptions({
+                filterable: false
+            });
+        } else {
+            grid.widget().setOptions({
+                filterable: true
+            });
+        }
+    };
+
+    /*** BEGIN CREATE MovableEstate ***/
+    grid.createMovableEstate = function () {
+        //var mnemonic = grid.mnemonic;
+        var targets = [{ Title: "Движимое имущество", Mnemonic: "MovableEstate" }, { Title: "Транспортное средство", Mnemonic: "Vehicle" }];
+
+        pbaAPI.selectSimple(targets, {
+            callback: function (res) {
+                pbaAPI.openDetailView(res.Mnemonic, {
+                    wid: "@Model.WidgetID",
+                    id: 0,
+                    callback: function (e) {
+                        if (e.type === "save" || e.type === "apply") {
+                            grid.currentRow = e.model.ID;
+                            grid.bind();
+                        }
+                    }
+                });
+            }
+        })
+    };
+
+    /*** END CREATE MovableEstate ***/
+
+    /*** BEGIN CREATE NonCoreAsset ***/
+    grid.createNonCoreAsset = function () {
+        var selectedItems = composite.getSelectItems();
+        var mnemonic = grid.mnemonic;
+        var listIds = Array();
+        var targets = [{ Title: "Непрофильный", Mnemonic: "NonCoreAsset", IsNonCore: true }, { Title: "Неэффективный", Mnemonic: "NonCoreAsset", IsNonCore: false }];
+
+        if (!selectedItems || selectedItems.length === 0)
+            return pbaAPI.errorMsg("Выберите элемент списка.");
+
+        for (var i = 0; i < selectedItems.length; i++) {
+            listIds.push(selectedItems[i].id);
+        }
+
+        pbaAPI.selectSimple(targets, {
+            callback: function (res) {
+                pbaAPI.infoMsg("Ожидайте...");
+                kendo.ui.progress($('#list-view'), true);
+
+                var code = 4343;
+
+                if (res.IsNonCore) {
+                    code = 4242;
+                }
+
+                pbaAPI.proxyclient.corpProp.checkEstateInNCA({
+                    Ids: listIds.join(),
+                    typeCode: code
+                }).done(function (res) {
+                    var text = "Найдены дубликаты. Продолжить отнесение к ННА?<br /><br />";
+                    if (res.duplicates && res.error !== 1)
+                        text += res.message;
+                    else if (!res.duplicates && res.error !== 1)
+                        text = "Дубликаты не найдены. Продолжить отнесение к ННА?"
+                    else if (res.error === 1)
+                        return pbaAPI.errorMsg(res.message);
+
+                    pbaAPI.confirm("Продолжить отнесение к ННА?",
+                        text,
+                        function () {
+                            pbaAPI.proxyclient.corpProp.createNonCoreAsset({
+                                Ids: listIds.join(),
+                                typeCode: code
+                            }).done(function (res) {
+                                if (res.error && res.error > 0) {
+                                    kendo.ui.progress($('#list-view'), false);
+                                    return pbaAPI.errorMsg(res.message);
+                                }
+                                else {
+                                    kendo.ui.progress($('#list-view'), false);
+                                    return pbaAPI.alertSuccess(res.message);
+                                }
+                            })
+                        },
+                        function () {
+                            kendo.ui.progress($('#list-view'), false);
+                        })
+                })
+            },
+        });
+    };
+
+    /*** END CREATE NonCoreAsset ***/
+
+    /*** BEGIN CREATE SCHEDULE STATE ***/
+	grid.createScheduleState = function () {
+            var selectedItems = composite.getSelectItems();
+            var listIds = Array();
+            var baseMnemonic = grid.mnemonic;
+
+            if (!selectedItems || selectedItems.length === 0)
+                return pbaAPI.errorMsg("Выберите элемент списка.");
+
+            for (var i = 0; i < selectedItems.length; i++) {
+                listIds.push(selectedItems[i].id);
+            }
+
+        var targets = [{ Title: "График государственной регистрации права", Mnemonic: "ActualSSR" }, { Title: "График прекращения права", Mnemonic: "ActualSST" }];
+	    pbaAPI.selectSimple(targets,
+	        {
+	            callback: function(res) {
+	                var selectedMnemonc = res.Mnemonic;
+	                debugger;
+	                pbaAPI.openModalDialog(selectedMnemonc,
+	                    function(item) {
+	                        if (!item)
+	                            return pbaAPI.errorMsg("Ошибка при выборе элемента.");
+
+	                        var parentEntityName = res.Mnemonic;
+	                        if (baseMnemonic === "PropertyComplex") {
+	                            pbaAPI.proxyclient.corpProp.createScheduleStateRecord({
+	                                complexID: selectedItems[0].ID,
+	                                stateID: item[0].ID
+	                            }).done(function(result) {
+	                                if (result.error && result.error !== 0) {
+	                                    pbaAPI.errorMsg(result.message);
+	                                } else {
+	                                    pbaAPI.uploadMsg(result.message);
+	                                    grid.bind();
+	                                }
+	                            });
+	                        }
+
+	                        if (res.Mnemonic === "ActualSSR") {
+	                            pbaAPI.proxyclient.corpProp.createScheduleStateRegistrationRecords({
+	                                itemsIds: listIds.join(),
+	                                ssrId: item[0].ID
+	                            }).done(function(result) {
+	                                if (result.error && result.error !== 0) {
+	                                    pbaAPI.errorMsg(result.message);
+	                                } else {
+	                                    pbaAPI.uploadMsg(result.message);
+	                                    grid.bind();
+	                                }
+	                            });
+	                        } else {
+	                            pbaAPI.proxyclient.corpProp.createScheduleStateTerminateRecords({
+	                                itemsIds: listIds.join(),
+	                                sstId: item[0].ID
+	                            }).done(function(result) {
+	                                if (result.error && result.error !== 0) {
+	                                    pbaAPI.errorMsg(result.error);
+	                                } else {
+	                                    pbaAPI.uploadMsg(result.message);
+	                                    grid.bind();
+	                                }
+	                            });
+	                        }
+	                    }
+	                );
+	            }
+	        });
+	};
+
+    /*** END CREATE SCHEDULE STATE ***/
+
+    //
+
+        grid.createEstateAppraisal = function () {
+            var $mainForm = grid.element().closest("form");
+            var form = $mainForm.data("pbaForm");
+            var formModel = form.getModel();
+            var appraisalId = formModel.ID;
+
+            pbaAPI.openModalDialog("AccountingObject", function (res) {
+                    var listIds = Array();
+
+                    for (var i = 0; i < res.length; i++) {
+                        listIds.push(res[i].ID);
+                    }
+
+                    pbaAPI.proxyclient.corpProp.createEstateAppraisal({
+                        appraisalId: appraisalId,
+                        ids: listIds
+                    }).done(function (res) {
+                        if (res.error && res.error === 1) {
+                            return pbaAPI.errorMsg(res.message);
+                        }
+
+                        return pbaAPI.alertSuccess(res.message);
+                    });
+                });
+        };
+
+		/*** BEGIN COPY NCA LIST ITEM ***/
+
+        grid.duplicateNCAItem = function () {
+            var selectedItems = grid.getSelectItems();
+            var listIds = Array();
+            var ncaListId = 0;
+            var parentWidget = this.element().closest('form').closest('.form-widget');
+            if (parentWidget.length > 0 && parentWidget[0].id !== this.element()[0].id) {
+                var win = window[parentWidget[0].id];
+                var parentMnemonic = win.composite.mnemonic;
+                var widget = win.widget();
+                var model = widget.getModel();
+                ncaListId = model.ID;
+            }
+
+			if (ncaListId === 0)
+			    return pbaAPI.errorMsg("не удалось получить ИД текущего перечня.");
+
+            if (!selectedItems || selectedItems.length === 0)
+                return pbaAPI.errorMsg("Выберите элемент списка.");
+
+            for (var i = 0; i < selectedItems.length; i++) {
+                listIds.push(selectedItems[i].id);
+            }
+
+            pbaAPI.infoMsg("Ожидайте...");
+
+            kendo.ui.progress($('#list-view'), true);
+
+            pbaAPI.proxyclient.corpProp.duplicateNCAItem({
+                ncaItemIds: listIds,
+                ncaListId: ncaListId
+            }).done(function (res) {
+                if (res.error && res.error > 0) {
+                    kendo.ui.progress($('#list-view'), false);
+                    grid.bind();
+                    return pbaAPI.errorMsg(res.message);
+                } else {
+                    kendo.ui.progress($('#list-view'), false);
+                    grid.bind();
+                    return pbaAPI.uploadMsg(res.message);
+                }
+            });
+
+        };
+
+        /*** END COPY NCA LIST ITEM ***/
+
+    /*** BEGIN CHANGE NCA STATUS ***/
+        grid.changeNCAStatus = function () {
+            pbaAPI.proxyclient.corpProp.getNNARowStates()
+                .done(function (res) {
+                    if (res) {
+                        debugger;
+                        var selectedItems = grid.getSelectItems();
+                        var listIds = Array();
+                        var targets = res;
+
+                        if (!selectedItems || selectedItems.length === 0)
+                            return pbaAPI.errorMsg("Выберите элемент списка.");
+
+                        for (var i = 0; i < selectedItems.length; i++) {
+                            listIds.push(selectedItems[i].id);
+                        }
+                        pbaAPI.selectSimple(targets, {
+                            callback: function (res) {
+                                pbaAPI.infoMsg("Ожидайте...");
+                                kendo.ui.progress($('#list-view'), true);
+
+                                var code = res.Code;
+                                if (code === "109") {
+                                    pbaAPI.openDetailView("NNAComment", {
+                                        title: "Введите примечание",
+                                        entity: {},
+                                        callback: function (e) {
+                                            debugger;
+                                            if (e.type !== "save")
+                                                return;
+                                            pbaAPI.proxyclient.corpProp.changeNCAStatus({
+                                                itemsIds: listIds.join(),
+                                                statusCode: code,
+                                                comment: e.model.Message
+
+                                            }).done(function (res) {
+                                                if (res.error && res.error > 0) {
+                                                    kendo.ui.progress($('#list-view'), false);
+                                                    grid.bind();
+                                                    return pbaAPI.errorMsg(res.message);
+                                                }
+                                                else {
+                                                    kendo.ui.progress($('#list-view'), false);
+                                                    return pbaAPI.uploadMsg(res.message);
+                                                }                                               
+                                            });
+                                        }
+                                    });
+                                    return;
+                                }
+                                pbaAPI.proxyclient.corpProp.changeNCAStatus({
+                                    itemsIds: listIds.join(),
+                                    statusCode: code
+                                }).done(function (res) {
+                                    if (res.error && res.error > 0) {
+                                        kendo.ui.progress($('#list-view'), false);
+                                        return pbaAPI.errorMsg(res.message);
+
+                                    }
+                                    else {
+                                        kendo.ui.progress($('#list-view'), false);
+                                        grid.bind();
+                                        return pbaAPI.uploadMsg(res.message);
+                                    }                                    
+                                    
+                                });
+
+                            },
+                        });
+                    }
+                });
+        }
+
+    /*** END CHANGE NCA STATUS ***/
+
+    grid.ExchangeRateFile = function () {
+        var FileData = null;
+
+        var $modal = $('<div class="text-center">' +
+            '<div>' +
+            '<input name="VkdLoadFromZip" id="ExchangeRateFileID" type="file" aria-label="files" accept=".dbf"/>' +
+            "</div>" +
+            '<div style="position: absolute;right: 20px;bottom: 10px;">' +
+            '<a class="btn k-button btn-primary upload_button" href="#"><span class="halfling halfling-ok"></span>&nbsp;&nbsp;Загрузить</a>' +
+            "</div>" +
+            "</div>").appendTo("body");
+
+        var btnUpload = $modal.find(".upload_button");
+        var btnClose = $modal.find(".close_button");
+
+        var kendoWindow = $modal.kendoWindow({
+            title: "Загрузить файл",
+            modal: true,
+            resizable: false,
+            visible: false,
+            width: 600,
+            height: 200,
+            deactivate: function() {
+                this.destroy();
+            }
+        });
+        kendoWindow.data("kendoWindow")
+            .center().open();
+
+        $("#ExchangeRateFileID").kendoUpload({
+            multiple: false,
+            localization: {
+                select: 'Выбрать файл',
+                clearSelectedFiles: "Выбрать файл"
+            },
+            async: {
+                saveUrl: pbaAPI.getNewUrl("/FileData/SaveFile")
+            },
+            success:function(e) {
+                FileData = e.response;
+            }
+        });
+
+        btnUpload.click(function() {
+            $.ajax({
+                type: "POST",
+                url: pbaAPI.getNewUrl("/ExchangeRate/Load?fileId=" + FileData.FileID),
+                success: function (data) {
+                    if (data.error) {
+                        pbaAPI.errorMsg(data.message);
+                    }
+                },
+                error: function(request, status, error) {
+                    pbaAPI.errorMsg("Ошибка соединения.");
+                }
+            });
+            $("[data-role=window]").each(function(i) {
+                $(this).data("kendoWindow").close();
+            });
+            pbaAPI.uploadMsg('Данные загружаются. Обновите страницу через несколько минут.');
+            setTimeout(grid.dataSourceRead(), 3000);
+        });
+    };
+    grid.NonCoreAssetAdd = function () {
+        var selectedItems = grid.getSelectItems();
+        var elementIds = Array();
+
+        if (selectedItems.length == 0)
+            return pbaAPI.errorMsg("Выберите элемент...");
+
+        for (var i = 0; i < selectedItems.length; i++) {
+            elementIds.push(selectedItems[i].id);
+        }
+
+        pbaAPI.openModalDialog("NonCoreAssetList",
+            function (res) {
+                if (res && res.length > 0) {
+                    pbaAPI.infoMsg("Ожидайте...");
+                    kendo.ui.progress($('#list-view'), true);
+                    var ncaListId = res[0].ID;
+                    pbaAPI.proxyclient.corpProp.addNonCoreAsset({
+                        ncaIds: elementIds.join(),
+                        listId: ncaListId
+                    }).done(function (data) {
+                        if (data && data.error > 0) {
+                            kendo.ui.progress($('#list-view'), false);
+                            return pbaAPI.errorMsg(data.message);
+                        }
+                        else {
+                            kendo.ui.progress($('#list-view'), false);
+                            return pbaAPI.uploadMsg(data.message);
+                        }
+                    });
+                }
+            });
+    };
+
+    //заглушка
+    grid.initSortable = function () {
+    };
+    grid.exportXML = function (e) {
+        exportimport.exportXML(grid, e.params.readUrl);
+    };
+
+
+    //// SIB /////////////////////////////////////////
+
+    grid.initAggregateMenu = function (e) {
+
+        var menu = e.container.find(".k-menu").data("kendoMenu");
+        var field = e.field;
+
+        var childs = [];
+        var type = e.sender.dataSource.options.schema.model.fields[e.field].type;
+        if (type) {
+            if (type == 'number') {
+                childs.push(
+                    grid.createAggItem(field, "Сумма", "sum", grid.checkAggregate(field,"sum")),
+                    grid.createAggItem(field, "Среднее", "average", grid.checkAggregate(field, "average")),
+                    grid.createAggItem(field, "Максимум", "max", grid.checkAggregate(field, "max")),
+                    grid.createAggItem(field, "Минимум", "min", grid.checkAggregate(field, "min"))
+                );
+            }
+        }
+        childs.push(grid.createAggItem(field, "Количество", "count", grid.checkAggregate(field, "count")));
+
+        var aggItem = {
+            text: "Агрегация",
+            spriteCssClass: "k-i-sum",
+            items: childs
+        };
+        menu.append(aggItem);
+        menu.bind("select", grid.onSelectAggregateItem);
+
+    }//end initAggregateMenu
+
+    grid.createAggItem = function (fieldName, itemName, action, cheked) {
+
+        var html = "<span class='k-link'><input id='" + action +
+            "' type='checkbox' data-field='" + fieldName;
+        if (cheked) {
+            html += "' checked ='true'";
+        }
+        html += "' data-index='0' data-locked='false'>" + itemName + "</span>";
+        var item =
+            {
+                text: html,
+                encoded: false
+            };
+        return item;
+    }
+
+    grid.onSelectAggregateItem = function (e) {
+
+        var menuText = $(e.item).text();
+        switch (menuText) {
+            case "Количество":
+            case "Сумма":
+            case "Среднее":
+            case "Максимум":
+            case "Минимум":
+                var t = $(e.item).find("input");
+                var fieldName = t.attr(kendo.attr('field'));
+                var action = t.attr('id');
+                var checked = t[0].checked;
+                grid.setAggregate(fieldName, action, checked);
+                break;
+            default:
+                break;
+        }
+    }//end onSelectAggregateItem
+
+
+    grid.setAggregate = function (fieldName, action, add) {
+        grid.setAggregateItem(fieldName, action, add);
+        var arr = grid.widget().dataSource._aggregate;
+        grid.widget().dataSource.aggregate(arr);
+        grid.preset.Aggregates = kendo.stringify(arr);
+        grid.savePreset(grid.preset);
+        grid.updateFooterTemplate();
+    }
+
+    grid.setAggregateItem = function (fieldName, action, add) {
+        var check = grid.checkAggregate(fieldName, action);
+        if (add) {
+            if (!check) {
+                grid.addColumnAggregate(fieldName, action);
+                if (grid.widget().dataSource._aggregate) {
+                    grid.widget().dataSource._aggregate.push(
+                        { field: fieldName, aggregate: action }
+                    );
+                }
+                else
+                    grid.widget().dataSource._aggregate = [{ field: fieldName, aggregate: action }];
+
+            }
+        }
+        else {
+            if (check) {
+                grid.widget().dataSource._aggregate =
+                    grid.widget().dataSource._aggregate.filter(function (e) {
+                        return (e.field !== fieldName) || (e.field == fieldName && e.aggregate !== action);
+                    });
+            }
+        }
+        var arr = grid.widget().dataSource._aggregate;
+    }
+
+    grid.updateFooterTemplate = function () {
+        grid.widget().footerTemplate =
+            grid.widget()._footerTmpl(grid.widget().columns,
+                grid.widget().dataSource.aggregates(), 'footerTemplate', 'k-footer-template');
+
+        grid.widget().groupFooterTemplate =
+            grid.widget()._footerTmpl(grid.widget().columns,
+                grid.widget().dataSource.aggregates(), 'groupFooterTemplate', 'k-group-footer');
+
+    }
+
+    grid.checkAggregate = function (fieldName, action) {
+        var agg = grid.widget().dataSource._aggregate;
+        if (agg) {
+            var items = agg.filter(
+                function (e) { return e.field === fieldName && e.aggregate === action; });
+
+
+            if (items.length > 0)
+                return true;
+        }
+        return false;
+    }
+
+
+    grid.addColumnAggregate = function (fieldName, action) {
+        var footerTempl = "#= data.fieldName != null && data.fieldName.count != null ? 'Всего - ' + kendo.toString(data.fieldName.count, 'n0') : '' ##= data.fieldName != null && data.fieldName.average != null ? '<br/>Среднее - ' + kendo.toString(data.fieldName.average, 'n') : '' ##= data.fieldName != null && data.fieldName.max != null ? '<br/>Макс. - ' + kendo.toString(data.fieldName.max, 'n') : '' ##= data.fieldName != null && data.fieldName.min != null ? '<br/>Мин. - ' + kendo.toString(data.fieldName.min, 'n') : '' ##= data.fieldName != null && data.fieldName.sum != null ? '<br/>&\\#931; ' + kendo.toString(data.fieldName.sum, 'n') : '' #";
+        footerTempl = footerTempl.split('fieldName').join(fieldName);
+        footerTempl = "<div>" + footerTempl +"</div>";
+        var column = grid.widget().columns.filter(function (f) { return f.field === fieldName; })[0];
+        if (column) {
+            if (!column.footerTemplate) {
+                column.footerTemplate = footerTempl;
+            }
+            if (!column.groupFooterTemplate) {
+                column.groupFooterTemplate = footerTempl;
+            }
+            if (!column.aggregates) {
+                column.aggregates = [action];
+            }
+            else {
+                if (column.aggregates.indexOf(action) < 0)
+                    column.aggregates.push(action);
+            }
+        }
+    }
+
+    grid.setDataAggregate = function () {
+        if (grid.preset.Aggregates) {
+            var agg = jQuery.parseJSON(grid.preset.Aggregates);
+            grid.setAggregates(agg);
+        }
+    }
+
+    grid.setAggregates = function (agg) {
+        if (agg) {
+            for (var i = 0; i < agg.length; i++) {
+                var item = agg[i];
+                grid.setAggregateItem(item.field, item.aggregate, true);
+            }
+            return;
+        }
+        grid._aggregate = [];
+        grid.aggregate([]);
+        grid.updateFooterTemplate();
+    }
+
+    //// END SIB /////////////////////////////////////////
+
+    })();
+</script>
+
+<div id="list-view" style="height: 100%;">
+    <div class="kwidget kwidget--toolbar @(Model.ViewModelConfig.ListView.HideToolbar ? "kwidget--hidden" : "")">
+        @{Html.RenderPartial(Model.GetToolbarListViewUrl(), Model);}
+    </div>
+
+    <div class="kwidget kwidget--grid">
+        @Html.Hidden("GridID", Model.WidgetID)
+
+        @{Html.RenderPartial(Model.GetListViewUrl(), Model);}
+
+        @{Html.RenderPartial(Model.GetContextMenuListViewUrl(), Model);}
+    </div>
+
+    <div id="importWindow">
+    </div>
+    <div id="XMLexportWindow">
+        <div class="active list-group">
+            <div data-template="package-template" data-bind="source: packages"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .GridBigTextTooltip[role="tooltip"] {
+        padding: 10px !important;
+        visibility: hidden;
+    }
+</style>
+<script>
+    $("#list-view").kendoTooltip({
+        filter: "td",
+        width: 400,
+        show: function (e) {
+            this.popup.element.addClass("GridBigTextTooltip");
+            if (this.content.text() != "") {
+                $('.GridBigTextTooltip[role="tooltip"]').css("visibility", "visible");
+            }
+        },
+        hide: function () {
+            $('.GridBigTextTooltip[role="tooltip"]').css("visibility", "hidden");
+        },
+        content: function (e) {
+            var element = e.target[0];
+            if (element.offsetWidth < element.scrollWidth && $(element).hasClass("k-state-focused")) {
+                return e.target.text();
+            } else {
+                return "";
+            }
+        }
+    })
+</script>
+
+<script id="package-template" type="text/x-kendo-template">
+    <a href="javascript:void(0)" data-bind="click: editProperty, text: Title, attr: { class: activeClass }"></a>
+</script>
+
+<script>
+        $(function () {
+            @*TODO: че за хрень!!*@
+            window["@Model.WidgetID"].element().delegate("tbody>tr:not(.k-grouping-row,.k-detail-row):visible", "touchend", function () {
+                $(this).toggleClass("k-state-selected", !$(this).hasClass("k-state-selected"));
+            });
+        });
+</script>
+
+
+@if (Model.IsPermission(TypePermission.Write) && !Model.IsReadOnly && Model.Type == TypeDialog.Lookup && Model.ViewModelConfig.ListView.Sortable)
+{
+    <script>
+            (function () {
+                var grid = window["@Model.WidgetID"];
+                grid.initSortable = function () {
+                    var $table = grid.table();
+
+                    if (!$table.data("kendoSortable")) {
+                        $table.kendoSortable({
+                            filter: ">tbody >tr",
+                            hint: $.noop,
+                            cursor: "move",
+                            placeholder: function (element) {
+                                return element.clone().css("opacity", 0.5).addClass("k-state-selected");
+                            },
+                            container: "#@Model.WidgetID tbody",
+                            start: function (e) {
+                                grid.select(e.item);
+
+                            },
+                            end: function (e) {
+                                if (grid.lock) {
+                                    e.preventDefault();
+                                    return;
+                                }
+
+                                var dataSource = grid.widget().dataSource;
+
+                                var skip = dataSource.skip(),
+                                    oldIndex = e.oldIndex + skip,
+                                    newIndex = e.newIndex + skip;
+
+                                var id = dataSource.data()[oldIndex].ID;
+                                var posId = dataSource.data()[newIndex].ID;
+
+                                grid.lock = true;
+
+                                pbaAPI.proxyclient.listview.grid.change_sortorder({
+                                    mnemonic: '@Model.Mnemonic',
+                                    id: id,
+                                    posId: posId
+                                }).done(function(res) {
+                                    grid["__idx_select_row"] = grid.select().index();
+                                    grid["__scroll_top"] = grid.content().scrollTop();
+                                    grid.bind();
+                                });
+                            }
+                        });
+                    }
+                };
+            })();
+    </script>
+}
+
+@if (Model.ViewModelConfig.ListView.AutoRefreshInterval > 0)
+{
+    <script>
+            $(function () {
+                setInterval(function () { window["@Model.WidgetID"].bind(); }, parseInt('@Model.ViewModelConfig.ListView.AutoRefreshInterval'));
+            });
+    </script>
+}

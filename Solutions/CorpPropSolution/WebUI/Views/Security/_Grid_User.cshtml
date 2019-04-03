@@ -1,0 +1,90 @@
+﻿@using Base.Security
+@model StandartGridView
+
+@{
+    const string actionRead = "KendoUI_CollectionRead";
+    const string controllerRead = "Users";
+
+    var selectionMode = Model.MultiSelect || Model.ViewModelConfig.ListView.MultiSelect ? GridSelectionMode.Multiple : GridSelectionMode.Single;
+}
+
+@(Html.Kendo().Grid<User>()
+  .Name(Model.WidgetID)
+  .AutoBind(true)
+  .Scrollable()
+  .PersistSelection()
+  .Selectable(sel =>
+  {
+      if (Model.MultiSelect)
+          sel.Enabled(false);
+      else
+          sel.Mode(selectionMode);
+  })
+  .Events(e => e.InitEvents(this))
+  .Columns(columns =>
+  {
+      if (Model.MultiSelect)
+      {
+          columns.Select().Width(50);
+      }
+
+      columns.Bound(x => x.FullName).Title("ФИО").Filterable(false).Sortable(false);
+      columns.Bound(x => x.FullName).Title("Статус").Filterable(false).Sortable(false);
+  })
+  .ClientRowTemplate(
+    @<text>
+        <tr data-uid="#: uid #" class="user">
+            @if (Model.MultiSelect)
+            {
+                <td>
+                    <input class="k-checkbox" data-role="checkbox" aria-label="Select row" aria-checked="false" type="checkbox">
+                    <label class="k-checkbox-label k-no-text"> </label>
+                </td>
+            }
+            <td class="user">
+                <span class="img-circle" data-mnemonic="User" data-id="#= data.ID #">
+                    <img class="user-pic" src="#= pbaAPI.imageHelpers.getImageThumbnailSrc(data.Image, 'XXS', 'NoPhoto') #" alt="" />
+                </span>
+                <span class="user-name">#: data.FullName #</span>
+            </td>
+            <td class="status">
+                #= pbaAPI.getUserState(data.ID, { size: 'large', showDesc: true }) #
+            </td>
+        </tr>
+    </text>.ToHtmlString())
+    .DataSource(datasource => datasource
+            .Ajax()
+            .Model(a => a.InitModel(this))
+            .Sort(sort => sort.InitDataSourceSort(this))
+            .Filter(f => f.InitDataSourceFilter(this))
+            .ServerOperation(true)
+            .Read(read => read.Action(actionRead, controllerRead, new { area = "", searchStr = Model.SearchStr, extrafilter = "" }))
+        )
+    .Pageable(p => p.InitPageable(this))
+)
+
+<script>
+    (function () {
+        var grid = window["@Model.WidgetID"];
+
+        var onNeighbourWidgetChanged = grid.onNeighbourWidgetChanged;
+
+        grid.onNeighbourWidgetChanged = function (e) {
+            onNeighbourWidgetChanged(e);
+            switch (e.sender.desc) {
+                case "ToolbarListView_User":
+                    if (e.event === "selectStatus") {
+                        if (!e.params.status || e.params.status === "")
+                            grid.setUrlParametr("extrafilter", "");
+                        else
+                            grid.setUrlParametr("extrafilter", "int32(it.CustomStatus) == {0}".replace("{0}", e.params.status));
+                        grid.bind();
+                    }
+                    else if (e.event === "search") {
+                        grid.search(e.params.str);
+                    }
+                    break;
+            }
+        };
+    }());
+</script>

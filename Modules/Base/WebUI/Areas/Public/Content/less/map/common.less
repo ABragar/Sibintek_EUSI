@@ -1,0 +1,458 @@
+//Basic and resets
+
+html, body {
+	font: @base-font-size/@modular-scale @font-stack--sans;
+
+	color: @color--dark;
+	}
+
+* {
+	box-sizing: border-box; 
+
+	outline: 0 !important;
+	}
+
+::-moz-selection {
+	color: @color--light;
+	background: @color--primary;
+	text-shadow: none;
+	}
+
+::selection {
+	color: @color--light;
+	background: @color--primary;
+	text-shadow: none;
+	}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+	display: block;
+
+	height: 1px;
+	margin: 1em 0;
+	padding: 0;
+
+	border: 0;
+	border-top: 1px solid darken( @color--light, 20% );
+	}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+	vertical-align: middle;
+	}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+	margin: 0;
+	padding: 0; 
+
+	border: 0;
+	}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+	resize: vertical;
+	}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: @font-stack--sans;
+	}
+
+.map {
+	&-content {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		&-template-wrapper {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			}
+		}
+
+	&-app {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		}
+
+	&-point-icon > div {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		}
+
+	&-icon {
+		 > .marker-icon-placeholder {
+			position: absolute;
+			top: -75%;
+
+			width: 100%;
+			height: 100%;
+
+			border-radius: 50%;
+
+			 > i {
+				position: absolute;
+				z-index: 1;
+				top: 50%;
+				left: 43%;
+
+				width: 1.25em;
+
+				text-align: center;
+				}
+			}
+
+		 > .marker-decoration {
+			position: relative;
+			z-index: -1;
+			top: -75%;
+
+			margin-top: -2px;
+			margin-left: -2px;
+
+			background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSI1NCIgdmlld0JveD0iMCAwIDM2IDU0Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iIzI2MkIzMyIgZD0iTTE4IDBjLTkuOTQxIDAtMTggOC4wNTktMTggMTgtLjU4MyAxMC45MTcgMTggMzYgMTggMzZzMTguNTgzLTI1LjA4MyAxOC0zNmMwLTkuOTQxLTguMDU5LTE4LTE4LTE4eiIvPjwvc3ZnPg==');
+			background-repeat: no-repeat;
+			background-size: contain;
+
+			&:after {
+				position: absolute;
+				bottom: -2px;
+				left: 11px;
+
+				display: block;
+
+				width: 40px;
+				height: 28px;
+
+				content: '';
+
+				background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAeCAYAAABe3VzdAAAFOUlEQVR4XsWXfWsc1xnFf+fe2Rdb60RS0rhKjVESEweEW1q3QCiAv4Q/Zb6E/wsUBLTFIQFTDE0TO5JtvXpnd+Y+p6tKZmGm2tjGbQ4cnpnnCvbHuc8dzYi30L1793j8GEajBrsmxhWZQmlRFraLyJmIQnbGNheyJIoCO6EEyULZpMY0TQU849GjR7yS3gTq0aMZ1YdTjabCw0S0JikRhIQwdhIKhAAwlgyAl78oGyQIQAYLFDjhPC80kwEbwO7u7s8D7uzs0LbrmlVzVbQooVSkSBI2oHM7AIEwAoxZqe66bScgcMaqzGg+RyvANJtNiFGblJxU0n8qVgILCTAYAC9NcK5XoNEDEmC6t0aAjUm2RJ6HRX8rtbe3p1meJLVtlpSNK0MWJECdFIwwJvqQy17HLGtPFmDhLFA3taYZJw09CKeBHUOUBsIZSAYEXsIRS4geoFfcd9zZdgHIKiwT3N7eTqPRRo7EGKWFOfMQkzubEl2wDkDp/B1A6QD1x+HCAsdFPVMFcOvWrZTSWhUpX7XimuAqMAIyQDelFZAFqPpr/d5lwAYkwhCYqM5m7vvDwyraao3iDaT3l3AyeAVQz15x3e3x34EV2JIxzuSqul5R+WoKb1r6QOI9YAwMgNw3aUUv9a5Xr/UtANkpRcq4SldiHOF1w68k1jHD5VxQlpVYurP2Fqn201MgF6AYTNgxz64oZU0pfQDexEyABEQfjLJii1dBemVPCuwCLpgChKIUlRQf37jiKrLWsNcF7wNDgEsA+wn204xuvwPUTbtgh5EFDYo2mSaRShrUfvBglypbY5s146vAYPVB6IMsfWm/DygKUGQAteBWaFac6iFqZ82LWLwwGKCCkiEPgOGFDcS79xJepgEK6Mx1KE4D16O2mpNPX8FxAajWADBAGmF71baumK3y83BuQTNwgzQ1Pgn7dNDG1J62325tBQ/+YpaiKqgBF4GwKyCtGurVp7c/c4JiaC/6LXga6Cjh4yql01J71sZJWaQWfPcdXVXJqTbxEiiCypABLknPr72VIjCtwUBr/BLpMJkDh49iMKjHTOfXP96MxWEwl6gqlDo5nSDPbTJJQ2wD7gD5DR43DWYOtKATEQeWXtgchjhtp1GvpZPyt4cPg9WiIre1PDx08TFSg3218yzs1JWADVyASSe2nwPPAg6yOGJOPZ9fax4/fhC8pqqjUpp12mORX4CnRu8BFeeKfpLk/nONFpgBjfEx6Dn2Pmg/kg+l9vRkMGh++OLTwldfAZjXVH558yYfEoTzGHkdtDDjy/6fdvoARVAjjhB7UvrXwt9jngzsF0e5Of1sc7P5+9dfB998Y95QAnT79p9HGk5/XcyOrTuCLaQhtgAv3UtsijjE7ANPbX5y9vM8K8eDQVuPx+Oy+PAJwLylKoDJpG6Pj8shw/xUsAWsY5+n2H/hnBte6hxsD/PE9tOcqmcl18fV7Np0cq1ud3f/2gF7O+lVXbzuDxuG14O0I/Q78A3gCkLYLWgOnIJfIJ2DyU+S837R9Ej12nQ0OmkeLk+meQcSy4+l/M/n8zWV+pNzQL4ANgABJ4KDwD9J/GinH7PKfkt1qDrVC7D5OwbrAwK68eWXg9HRbDMrfW57B+kjiIbgmaUfJD8JsZ9TOVA9mVbVQbsAK12w/xUg3L+fPt39x5V8JX0kfDPwRkJ1oD3Bs9S2h/ByOplM2sXwL8H+j9Ldu3erm3fuTD7b+cPW5zu//+T2b//4m+2dP20sZnR8tgaIX1i6v0hye/vecAE0Oqtn8/lLgf0bGYMDpKysY+wAAAAASUVORK5CYII=');
+				background-repeat: no-repeat;
+				background-size: contain;
+				}
+			}
+
+		 > .cluster {
+			&-total {
+				font-size: 12px;
+				line-height: @modular-scale *1em;
+
+				position: absolute;
+				z-index: 1;
+				top: -@modular-scale *1.25em;
+				left: @modular-scale *1.25em;
+
+				display: block;
+
+				margin: 0;
+				padding: 0 .5em;
+
+				opacity: .8;
+				color: @color--light;
+				border: 1px solid @color--light;
+				border-radius: 12px;
+
+				 + div {
+					text-align: center;
+
+					box-shadow: 0 2px 6px fade( @color--dark, 30% ), 0 0 9px fade( @color--dark, 30% );
+					}
+				}
+
+			&-wrapper {
+				position: fixed;
+				top: -99999999px;
+				left: -999999999px;
+
+				opacity: 0;
+				}
+			}
+		}
+
+	&-tooltip {
+		&-title {
+			font-size: 14px;
+			font-weight: bold;
+			}
+
+		&-description {
+			margin-top: 0;
+			}
+
+		&-distance {
+			font-weight: bold;
+
+			margin-top: 0;
+
+			color: desaturate( darken( @color--accent, 36% ), 18% );
+			}
+		}
+
+	&-leaflet {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0; 
+		left: 0;
+		}
+
+	&-template {
+		&-property {
+			display: flex;
+			flex-direction: row;
+
+			padding: 5px 0;
+
+			&:nth-child(odd) {
+				background-color: darken( @color--light, 4% );
+				}
+			}
+
+		&-item {
+			flex: 1;
+
+			padding: 4px;
+
+			& + & {
+				flex: 0 1 70%;
+				}
+			}
+		}
+
+	&-items-list {
+		padding: 1em;
+
+		list-style: none;
+
+		li {
+			padding: pow( @modular-scale *1em, -1 ) @modular-scale *.5em;
+
+			cursor: pointer;
+			transition: background-color .15s ease;
+
+			color: @color--light;
+			border-bottom: 1px solid fade( @color--light, 20% );
+
+			a {
+				text-decoration: none;
+
+				color: @color--light;
+				}
+
+			&:hover, &:focus, &.selected {
+				border-bottom: 1px solid fade( @color--primary, 90% );
+				background-color: @color--primary;
+				}
+			}
+
+		p {
+			margin: 0;
+			}
+		}
+	}
+
+.nav-tabs {
+	border-bottom: 1px solid @color--navtabs;
+
+	 > .uib-tab {
+		 > div {
+			line-height: 1.42857143;
+
+			margin-right: 2px;
+
+			cursor: pointer;
+
+			color: @color--light-mild;
+			border: 1px solid transparent;
+			border-color: @charcoal @charcoal @color--navtabs @charcoal;
+			border-radius: 0;
+			background-color: @charcoal;
+
+			&:hover {
+				border-color: @tufts-blue @tufts-blue @color--navtabs @tufts-blue;
+				background: @tufts-blue;
+				}
+			}
+
+		&.active > div {
+			&, &:hover, &:focus {
+				cursor: default;
+
+				color: @color--light-mild;
+				border-color: @color--navtabs @color--navtabs transparent @color--navtabs;
+				background-color: @color--navtabs;
+				}
+			}
+		}
+	}
+
+.tab-content {
+	padding: 5px 0;
+	}
+
+.road-template {
+	&-menu {
+		position: absolute;
+		z-index: 10;
+		top: 0;
+		bottom: 0;
+		left: 0;
+
+		width: 350px;
+		}
+
+	&-map {
+		position: absolute;
+		z-index: 9;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		}
+	}
+
+.leaflet-container {
+	font-family: @font-stack--sans;
+
+	a.btn {
+		color: @color--light;
+		}
+	}
+
+.kadastr-area {
+	padding: 1em;
+	}
+
+.btn-primary {
+	color: @color--light;
+	border-color: @color--primary;
+	background-color: @color--primary;
+
+	&:hover, &:focus, &:active, &.active {
+		border-color: darken( @color--primary, 5% );
+		background-color: darken( @color--primary, 5% );
+		}
+	}
+
+.open .dropdown-toggle.btn-primary {
+	border-color: darken( @color--primary, 5% );
+	background-color: darken( @color--primary, 5% );
+	}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+	background-color: @color--primary;
+	}
+
+
+@media print,
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 1.25dppx),
+       (min-resolution: 120dpi) {
+	/* Style adjustments for high resolution devices */
+	}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+	*,
+	*:before,
+	*:after,
+	*:first-letter,
+	*:first-line {
+		color: darken( @color--dark, 100% ) !important; /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+		background: transparent !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+		}
+
+	a, a:visited {
+		text-decoration: underline;
+		}
+
+	a[href]:after {
+		content: ' (' attr(href) ')';
+		}
+
+	abbr[title]:after {
+		content: ' (' attr(title) ')';
+		}
+
+	/*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+
+	a[href^='#']:after,
+	a[href^='javascript:']:after {
+		content: '';
+		}
+
+	pre, blockquote {
+		border: 1px solid darken( @color--dark, 40% );
+
+		page-break-inside: avoid;
+		}
+
+	/*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+
+	thead {
+		display: table-header-group;
+		}
+
+	tr, img {
+		page-break-inside: avoid;
+		}
+
+	img {
+		max-width: 100% !important;
+		}
+
+	p, h2, h3 {
+		orphans: 3;
+		widows: 3;
+		}
+
+	h2, h3 {
+		page-break-after: avoid;
+		}
+	}

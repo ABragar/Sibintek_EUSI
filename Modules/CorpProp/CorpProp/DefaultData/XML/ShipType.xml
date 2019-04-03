@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<ShipTypes>
+	<ShipType>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>104</Code>
+		<PublishCode>104</PublishCode>
+		<Name>Судно технического флота</Name>
+		<DateFrom>2018-05-23</DateFrom>
+		
+	</ShipType>
+	<ShipType>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>103</Code>
+		<PublishCode>103</PublishCode>
+		<Name>Служебно-вспомогательное</Name>
+		<DateFrom>2018-05-23</DateFrom>
+		
+	</ShipType>
+	<ShipType>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>102</Code>
+		<PublishCode>102</PublishCode>
+		<Name>Промысловое</Name>
+		<DateFrom>2018-05-23</DateFrom>
+		
+	</ShipType>
+	<ShipType>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>101</Code>
+		<PublishCode>101</PublishCode>
+		<Name>Транспортное</Name>
+		<DateFrom>2018-05-23</DateFrom>
+		
+	</ShipType>
+</ShipTypes>
+  </DefaultDataHolder>

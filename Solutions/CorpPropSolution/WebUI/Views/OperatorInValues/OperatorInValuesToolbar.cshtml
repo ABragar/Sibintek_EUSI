@@ -1,0 +1,88 @@
+﻿@model int?
+
+@{
+    var addValuesAction = Url.Action("SetValues", "OperatorInValues");
+    var addValuesId = Html.CreateSystemName("valuesAdd");
+}
+
+<button id="@(addValuesId)" type="button" class="k-button" title="Множественное добавление"><span class="k-icon fa fa-clone"></span>Множественное добавление</button>
+<script>
+    $(function () {
+        debugger;
+
+        var $content = $("<div class='query-tree-window view-model-window' >\
+            <div class='dialog dialog--modal'>\
+               <div class='dialog__toolbar' style:'overflow-y:auto'>\
+                  <div class='kwidget kwidget--toolbar k-toolbar'>\
+                        <div style='float: right; visibility: visible;'  class='k-button-group k-toolbar-last-visible'>\
+                            <a class='k-button success'>Добавить</a>\
+                        </div >\
+                  </div>\
+               </div>\
+                <div class='dialog__content'>\
+                    <textarea class=\"form - control\" autocomplete=\"off\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" style=\"width:100%;height:100%\"></textarea>\
+                </div>\
+            </div>\
+          </div>");
+
+        $('body').append($content);
+
+        var $wnd = $content.kendoWindow({
+            width: 600,
+            height: 400,
+            title: 'Множественное добавление',
+            actions: ["Maximize", "Close"],
+            modal: true,
+            visible: false
+        }).data("kendoWindow").center();
+
+        $("#@(addValuesId)").click(function (object) {
+            $wnd.open();
+        });
+
+        $content.find('.success').click(function() {
+            var dialog = $("#@addValuesId").closest('.dialog-listview').data('dialogListView');
+
+            var filterId = dialog.params.initProps.MnemonicFilterOid;
+            var operatorId = dialog.params.initProps.IdForValue;
+            var value = $content.find('textarea').val();
+            value = value.trim();
+
+            value = value.replace(/\t|\r\n/g, "");
+            value = value.replace(/\s*;\s*/g, ";");
+
+            if (/^([A-Za-zА-Яа-яё\w\s]+)(;[A-Za-zА-Яа-яё\w\s]+)*$/.test(value)) {
+
+                var values = value.split(";");
+
+                $content.addClass('wnd-loading-content');
+
+                $.post("@addValuesAction",
+                    {
+                        idForValue: operatorId,
+                        mnemonicFilterOid: filterId,
+                        pavaluesram: values
+                    }).done(function(e) {
+                    $content.removeClass('wnd-loading-content');
+                    dialog.refresh();
+                    $wnd.close();
+                    $content.find('textarea').val('');
+                });
+            }
+        });
+
+        $content.find('textarea').on('paste',
+            function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                var data = event.originalEvent.clipboardData.getData('text/plain');
+
+                var newData = data.replace(/\t|\r\n/g, ";");
+                newData = newData.replace(/\s*;\s*/g, ";");
+                newData = newData.slice(0, -1);
+
+                $(event.target).val(newData);
+            });
+    })
+</script>

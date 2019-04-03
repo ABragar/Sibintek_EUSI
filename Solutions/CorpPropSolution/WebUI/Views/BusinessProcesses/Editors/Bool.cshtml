@@ -1,0 +1,81 @@
+﻿@using Base.Entities
+@using Base.Macros
+@using Base.Macros.Entities
+@using Base.Rule
+@using WebUI.Models.BusinessProcess
+@model WithCustomEditorVm
+
+@{
+    Layout = "EditorLayout.cshtml";
+
+    var wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+}
+
+<div class="editor-wrapper" id="@wrapID">
+    <div class="form-group">
+        <input type="text" data-bind="value: Title" class="k-textbox" readonly="readonly">
+    </div>
+    <div class="list-group">
+        @if (Model.Nullable)
+        {
+            <a href="#" data-type="@((int) MacroType.NotNull)" data-member="null" class="k-button">Не равно null</a>
+            <a href="#" data-type="@((int) MacroType.EqualNull)" data-member="null" class="k-button">Равно null</a>
+        }
+
+        <a href="#" data-type="@((int) MacroType.Boolean)" data-member="true" class="k-button">True</a>
+        <a href="#" data-type="@((int) MacroType.Boolean)" data-member="false" class="k-button">False</a>
+
+        @foreach (var item in Model.Editors)
+        {
+            <a href="#" data-type="@((int) MacroType.Boolean)" data-member="@item.Member" class="k-button">@item.Name</a>
+        }
+    </div>
+    <a href="#" data-clear class="k-button">Очистить</a>
+</div>
+
+<script>
+    $(function () {
+        var wrap = $('#@wrapID');
+
+        var viewModel = kendo.observable({ Title: "", Value: "", MacroType: null });
+        kendo.bind($("#@wrapID"), viewModel);
+
+        $('[data-clear]', wrap).click(function () {
+            viewModel.set('MacroType', null);
+            viewModel.set('Title', null);
+            viewModel.set('Value', null);
+        });
+
+        wrap.closest('[property-editor]').on('onLoad', function (e, args) {
+            var data = args.model;
+
+            if (data && data.Value) {
+                var val = $.parseJSON(data.Value)[0];
+                viewModel.set('MacroType', val.MacroType);
+                viewModel.set('Title', val.Title);
+                viewModel.set('Value', val.Value);
+            }
+
+
+
+            wrap.closest('[data-role=wraplayout]').find('[data-role=apply]').click(function () {
+                if (!viewModel.MacroType) {
+                    data.set('Value', null);
+                } else {
+                    var result = [{ "MacroType": viewModel.MacroType, "Value": viewModel.Value, "Title": viewModel.Title}];
+                    data.set('Value', JSON.stringify(result));
+                }
+
+                $(this).closest('[data-role=window]').data('kendoWindow').close();
+            });
+
+            $("#@wrapID").on("click", "[data-member]", function () {
+                var self = $(this);                
+                viewModel.set("Title", self.html());
+                viewModel.set("Value", self.data('member'));
+                viewModel.set("MacroType", self.data('type'));
+                
+            });
+        });
+    });
+</script>

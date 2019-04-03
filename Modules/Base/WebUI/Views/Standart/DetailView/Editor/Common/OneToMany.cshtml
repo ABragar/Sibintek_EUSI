@@ -1,0 +1,510 @@
+﻿@using Base.UI.ViewModal
+@using WebUI.Controllers
+@model EditorViewModel
+@{
+    ViewModelConfig config = Model.ViewModelConfig;
+
+    string htmlFieldName = Model.PropertyName;
+
+    string editorID = Model.UID;
+
+    var securityUser = Base.Ambient.AppContext.SecurityUser;
+
+    var gridModel = new StandartGridView(ViewContext.Controller as IBaseController, config.Mnemonic, editorID, TypeDialog.Lookup);
+
+    string nameToolbar = "toolbar_" + Guid.NewGuid().ToString("N");
+
+    bool isReadOnly = typeof(IReadOnly).IsAssignableFrom(config.ServiceType);
+
+    bool actionCreate = !isReadOnly && securityUser.IsPermission(config.TypeEntity, TypePermission.Create) && config.ListView.VisibleAction(LvAction.Create);
+    bool actionDelete = !isReadOnly && securityUser.IsPermission(config.TypeEntity, TypePermission.Delete) && config.ListView.VisibleAction(LvAction.Delete);
+    //bool actionLink = !isReadOnly && securityUser.IsPermission(config.TypeEntity, TypePermission.Write) && config.ListView.VisibleAction(LvAction.Link);
+    bool actionSendTaskReport = Model.ViewModelConfig.Mnemonic == "SibTaskReport";
+
+    string DetailViewTitle = "";
+    if (!string.IsNullOrEmpty(Model.ViewModelConfig?.DetailView?.Title))
+    {
+        DetailViewTitle = Model.ViewModelConfig.DetailView.Title;
+    }
+    else
+    {
+        DetailViewTitle = Model.Title;
+    }
+}
+
+<script>
+    (function () {
+        var grid = window["@gridModel.WidgetID"] = new WrapGrid({
+            id: "@gridModel.WidgetID",
+            mnemonic: "@config.Mnemonic",
+            desc: "GridView"
+        });
+
+        var toolbar = window["@nameToolbar"] = {};
+
+        @*--------Grid--------*@
+        grid.property = "@Model.PropertyName";
+
+        grid.getSelectDataItem = function () {
+            var g = this.widget();
+
+            var select = $(g.select());
+
+            if (select.length > 0) {
+                return g.dataItem(select);
+            }
+
+            return null;
+        };
+
+        grid.addRow = function () {
+            var form = $("#@editorID").closest("form").data("pbaForm");
+            form.property = "@(htmlFieldName)";
+
+            pbaAPI.openDetailView("@config.Mnemonic", {
+                wid: "@editorID",
+                toSave: false,
+                title: "@DetailViewTitle",
+                parentForm: form,
+                callback: function (e) {
+                    if (e.type === "save" || e.type === "apply") {
+                        var entity = e.model;
+                        entity.ID = pbaAPI.guid();
+                        var arr = form.getPr("@(htmlFieldName)").slice(0);    // для трекинга изменений
+                        arr.push(e.model);
+                        form.setPr("@(htmlFieldName)", arr);
+                        grid.bind();
+                    }
+                }
+            });
+
+        };
+
+        grid.editRow = function () {
+            var uid = grid.selectUID();
+
+            if (uid) {
+                var entity = grid.getByUid(uid);
+
+                var form = $("#@editorID").closest("form").data("pbaForm");
+                form.property = "@(htmlFieldName)";
+
+                pbaAPI.openDetailView("@config.Mnemonic", {
+                    wid: "@editorID",
+                    title: "@DetailViewTitle",
+                    toSave: false,
+                    entity: entity,
+                    entities: form.getPr('@(htmlFieldName)'),
+                    parentForm: form,
+                    callback: function (e) {
+                        if (e.type === "save") {
+                            
+                        }
+                    }
+                });
+            }
+        };
+
+        grid.getSysFilter = function () {
+            return null;
+        }
+
+        @*grid.linkRow = function() {
+            var uid = grid.selectUID();
+            debugger;
+            if (uid) {
+                var entity = grid.getByUid(uid);
+
+                var form = $("#@editorID").closest("form").data("pbaForm");
+                form.property = "@(htmlFieldName)";
+                 pbaAPI.openModalDialog("@config.Mnemonic",
+                     function (res) {
+                         var dest = pbaAPI.toObj("@config.Mnemonic", res[0]);
+                         grid.widget().dataSource.pushCreate(dest);
+                    }, {
+                        title: "ВЫБОР - @config.ListView.Title",
+                        multiselect: true,
+                        filter: grid.getSysFilter()
+                    }
+                );
+            }
+        }*@
+
+
+        grid.deleteRow = function () {
+            pbaAPI.confirm("@config.ListView.Title", "Удалить запись?", function () {
+                var form = $("#@editorID").closest("form").data("pbaForm");
+                var selectedItem = grid.getSelectDataItem();
+                var arr = form.getPr("@(htmlFieldName)").filter(function (item) {
+                    return item.uid !== selectedItem.uid;
+                });;
+                
+                form.setPr("@(htmlFieldName)", arr);
+
+                grid.bind();
+            });
+        };
+
+        grid.onDataBound = function () {
+            this.tbody.find('span[data-bg]').each(function () {
+                var $cond = $(this);
+                $cond.closest('td').css('background-color', $cond.data('bg'));
+            });
+
+            grid.activeRow();
+
+            toolbar.update(this.select());
+
+            this.tbody.children("tr").dblclick(function () {
+                grid.dblclick(this);
+            });
+        };
+
+        grid.onChange = function (e) {
+            var g = grid.widget();
+
+            grid.initCurrentRow();
+
+            toolbar.update(g.select());
+        };
+
+        grid.dblclick = function (e) {
+            grid.editRow();
+        };
+
+        grid.data = function (callback) {
+            var form = $("#@editorID").closest("form").data("pbaForm");
+
+            if (!form.getPr('@(htmlFieldName)')) {
+                form.setPr('@(htmlFieldName)', []);
+            }
+
+            callback(form.getPr('@(htmlFieldName)'));
+        };
+
+
+        grid.bind = function () {
+            grid.data(function (data) {
+                grid.widget().setDataSource(new kendo.data.DataSource({
+                    data: data,
+                    filter: grid.widget().dataSource.filter(),
+                    sort: grid.widget().dataSource.sort(),
+                    schema: {
+                        model: grid.widget().dataSource.options.schema.model
+                    }
+                }));
+
+                grid.widget().dataSource.read();
+
+                grid.initSortable();
+            });
+        };
+
+        grid.initSortable = function () {
+            var $table = grid.table();
+
+            if (!$table.data("kendoSortable")) {
+                $table.kendoSortable({
+                    filter: ">tbody >tr",
+                    hint: $.noop,
+                    cursor: "move",
+                    placeholder: function (element) {
+                        return element.clone().css("opacity", 0.5).addClass("k-state-selected");
+                    },
+                    container: "#@gridModel.WidgetID tbody",
+                    start: function (e) {
+                        grid.select(e.item);
+                    },
+                    end: function (e) {
+                    }
+                });
+            }
+        };
+    @*---BEGIN: Send task report---*@
+        grid.sendTaskReport = function () {
+            debugger;
+            var form = $("#@editorID").closest("form").data("pbaForm");
+            kendo.ui.progress(form.element, true);
+            var reports = grid.getSelectItems();
+            var taskModel = form.model.model;
+
+            if (!taskModel) {
+                pbaAPI.errorMsg("Не удалось получить задачу", 5000);
+                kendo.ui.progress(form.element, false);
+                return;
+            }
+
+            if (!reports || reports.length === 0) {
+                pbaAPI.errorMsg("Отчет не выбран", 5000);
+                kendo.ui.progress(form.element, false);
+                return;
+            }
+
+            var reportChecks = {
+                IsRequiredLinkReportAppraisal: taskModel.IsRequiredLinkReportAppraisal,
+                IsRequiredLinkReportDeal: taskModel.IsRequiredLinkReportDeal,
+                IsRequiredLinkReportEstate: taskModel.IsRequiredLinkReportEstate,
+                IsRequiredLinkReportFile: taskModel.IsRequiredLinkReportFile,
+                IsRequiredLinkReportRight: taskModel.IsRequiredLinkReportRight,
+                IsRequiredReport: taskModel.IsRequiredReport
+            };
+
+            if (!taskModel.Initiator) {
+                pbaAPI.errorMsg("Не задан инициатор", 5000);
+                kendo.ui.progress(form.element, false);
+                return;
+            }
+
+            pbaAPI.proxyclient.crud.getByCode({ mnemonic: grid.mnemonic + "Status", code: "Sent" }).done(function (result) {
+                if (result.error && result.error != 0) {
+                    pbaAPI.errorMsg(result.error, 5000);
+                    kendo.ui.progress(form.element, false);
+                    return;
+                }
+
+                    var sendedStatus = result.model;
+                    var reportsToChangeStatus = [];
+                    var notifyTitle = "Новый отчет";
+                    var notifyDescr = "";
+                    var arRecipientID = [1]; //TODO:taskModel.Initiator.ID
+                    var recipientEmail = "";//taskModel.Initiator.Email
+
+                    for (var i = 0; i < reports.length; i++) {
+                        var newModel = {};
+                        if (reports[i].Status && reports[i].Status.ID === sendedStatus.ID) {
+                            continue;
+                        }
+
+                        var checkRes = grid.checkReport(reportChecks, reports[i]);
+
+                        if (!checkRes.success) {
+                            pbaAPI.errorMsg(checkRes.msg, 5000);
+                            kendo.ui.progress(form.element, false);
+                            return;
+                        }
+
+                        Object.assign(newModel, reports[i]);
+                        newModel.Status = sendedStatus;
+                        newModel.StatusID = sendedStatus.ID;
+
+                        $.ajax({
+                            type: "GET",
+                            url: "@(Url.Action("CreateNotification", "Notification"))",
+                            data: { stringIds: JSON.stringify(arRecipientID), json: JSON.stringify({ mnemonic: grid.mnemonic, id: newModel.ID }), title: notifyTitle, descr: notifyDescr },
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                //debugger;
+                                if (data.error && data.error != 0) {
+                                    pbaAPI.errorMsg(data.error, 5000);
+                                    kendo.ui.progress(form.element, false);
+                                    return;
+                                }
+
+                                reportsToChangeStatus.push(newModel)
+
+                                var promise = $.when();
+                                $.each(reportsToChangeStatus, function (index, model) {
+                                    promise = promise.then(function () {
+                                        return pbaAPI.proxyclient.crud.save({ mnemonic: grid.mnemonic }, { model: newModel })
+                                    }).done(function (res) {
+                                        //debugger;
+                                        if (res.error && res.error != 0) {
+                                            pbaAPI.errorMsg(res.error, 5000);
+                                            return;
+                                        }
+                                        grid.dataSourceRead();
+                                    });
+                                });
+                                promise.done(function () {
+                                    kendo.ui.progress(form.element, false);
+                                    grid.dataSourceRead();
+                                    pbaAPI.uploadMsg("Отчет отправлен", 5000);
+                                    console.log("OK");
+                                });
+                        }
+                    });
+                }
+            });
+        };
+
+        grid.checkReport = function (checks, reportModel) {
+            var res = {
+                success: false,
+                msg: ""
+            }
+
+            if ((!reportModel.Appraisal || reportModel.Appraisal.length === 0) && (checks.IsRequiredLinkReportAppraisal || checks.IsRequiredLinkReport))
+                res.msg = "В отчет требуется добавить оценки.";
+            else if ((!reportModel.Deals || reportModel.Deals.length === 0) && (checks.IsRequiredLinkReportDeal || checks.IsRequiredLinkReport))
+                res.msg = "В отчет требуется добавить сделки.";
+            else if ((!reportModel.Estates || reportModel.Estates.length === 0) && (checks.IsRequiredLinkReportEstate || checks.IsRequiredLinkReport))
+                res.msg = "В отчет требуется добавить ОИ.";
+            else if ((!reportModel.Files || reportModel.Files.length === 0) && (checks.IsRequiredLinkReportFile || checks.IsRequiredLinkReport))
+                res.msg = "В отчет требуется добавить документы.";
+            else if ((!reportModel.Rights || reportModel.Rights.length === 0) && (checks.IsRequiredLinkReportRight || checks.IsRequiredLinkReport))
+                res.msg = "В отчет требуется добавить права.";
+            else {
+                res.success = true;
+                res.msg = "ok";
+            }
+
+            return res;
+        };
+        @*---END: Send task report---*@
+
+
+
+        grid.taskDelta = function (projectDateStart, taskDateStart) {
+            if (!projectDateStart || !taskDateStart)
+                return null;
+            var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+            var result = Math.round(Math.abs((projectDateStart.getTime() - taskDateStart.getTime()) / (oneDay)));
+            return result < 0 ? 0 : result;
+        }
+
+        grid.taskDuration = function (taskDateStart, taskDateEnd) {
+            if (!taskDateStart || !taskDateEnd)
+                return null;
+            var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+            var result = Math.round(Math.abs((taskDateStart.getTime() - taskDateEnd.getTime()) / (oneDay)))
+            return result < 0 ? 0 : result;
+        }
+
+        grid.addDays = function (date, daysCount) {
+            if (!date || !daysCount)
+                return null;
+            var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+            return new Date(date.getTime() + (daysCount * oneDay));
+        }
+
+
+
+        @*--------Toolbar--------*@
+        toolbar.init = function () {
+            if (!this["_init"]) {
+
+                var tb = $("#@nameToolbar");
+                var $btn;
+
+                $btn = tb.find("[data-action=\"add\"]");
+
+                if ($btn.length > 0)
+                    this.btnAdd = $btn.pbaButton(window['@gridModel.WidgetID'].addRow);
+
+                $btn = tb.find("[data-action=\"edit\"]");
+
+                if ($btn.length > 0)
+                    this.btnEdit = $btn.pbaButton(window['@gridModel.WidgetID'].editRow);
+
+                $btn = tb.find("[data-action=\"remove\"]");
+
+                if ($btn.length > 0)
+                    this.btnDelete = $btn.pbaButton(window['@gridModel.WidgetID'].deleteRow);
+
+                $btn = tb.find("[data-action=\"sendTaskReport\"]");
+                if ($btn.length > 0)
+                    this.btnSendTaskReport = $btn.pbaButton(window['@gridModel.WidgetID'].sendTaskReport);
+
+                @*$btn = tb.find("[data-action=\"link\"]");
+
+                if ($btn.length > 0)
+                    this.btnLink = $btn.pbaButton(window['@gridModel.WidgetID'].linkRow);*@
+
+                this["_init"] = true;
+            }
+        };
+
+        toolbar.update = function (select) {
+            this.init();
+
+            if (this.btnAdd) this.btnAdd.enable(true);
+            if (this.btnEdit) this.btnEdit.enable(select.length > 0);
+            if (this.btnDetail) this.btnDetail.enable(select.length > 0);
+            if (this.btnDelete) this.btnDelete.enable(select.length > 0);
+        };
+    })();
+</script>
+
+<div id="@editorID" class="one-to-many kwidget kwidget--panel">
+    <div class="kwidget kwidget--toolbar">
+        @(Html.Kendo().ToolBar()
+            .Name(nameToolbar)
+            .Items(items =>
+            {
+                items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                {
+                    if (actionCreate)
+                    {
+                        buttons.Add().Text("Создать").HtmlAttributes(new {title = "Создать", data_action = "add"}).SpriteCssClass("fa fa-plus").ShowText(ShowIn.Overflow).Enable(false);
+                    }
+
+                    buttons.Add().Text("Редактировать").HtmlAttributes(new {title = "Редактировать", data_action = "edit"}).SpriteCssClass("fa fa-pencil").ShowText(ShowIn.Overflow).Enable(false);
+
+                    if (actionDelete)
+                    {
+                        buttons.Add().Text("Удалить").HtmlAttributes(new {title = "Удалить", data_action = "remove"}).SpriteCssClass("fa fa-trash-o").ShowText(ShowIn.Overflow).Enable(false);
+                    }
+
+                    if (actionSendTaskReport)
+                    {
+                        buttons.Add().Text("Отправить отчет").HtmlAttributes(new { title = "Отправить отчет", data_action = "sendTaskReport" }).SpriteCssClass("fa fa-envelope").ShowText(ShowIn.Overflow).Enable(true);
+                    }
+                    //if (actionLink)
+                    //{
+                    //    buttons.Add().Text("Связать").HtmlAttributes(new { title = "Связать", data_action = "link" }).SpriteCssClass("fa fa-navicon").ShowText(ShowIn.Overflow).Enable(true);
+                    //}
+                });
+            }))
+    </div>
+
+    <div class="kwidget kwidget--grid">
+        @{ Html.RenderPartial(gridModel.GetListViewUrl(), gridModel); }
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $editor = $("#@editorID");
+        var $form = $editor.closest("form");
+        var grid = window["@gridModel.WidgetID"];
+
+        $editor.data("editor", grid);
+
+        $form.on("onAfterBind", function (e, form) {
+            grid.bind();
+        });
+
+        $form.on("onSave", function (e, form) {
+            //debugger;
+            var ndata = [];
+            grid.widget().items().each(function (i, el) {
+                var item = grid.getByUid($(el).attr("data-uid"));
+                var model = form.getModel();
+
+                if (form.params.isTemplate) {
+                    item.ID = 0;
+                    item.IsTemplate = true;
+
+                    if (form.params.baseMnemonic == "SibProject") {
+                        var model = form.getModel();
+                        var projectDateStart = (model.DateFrom && isNaN(Date.parse(model.DateFrom))) ? new Date(model.DateFrom.split(' ')[0].split('.')[2], model.DateFrom.split(' ')[0].split('.')[1] - 1, model.DateFrom.split(' ')[0].split('.')[0]) : model.DateFrom;
+                        var taskDateStart = (item.DateFrom && isNaN(Date.parse(item.DateFrom))) ? new Date(item.DateFrom.split(' ')[0].split('.')[2], item.DateFrom.split(' ')[0].split('.')[1] - 1, item.DateFrom.split(' ')[0].split('.')[0]) : item.DateFrom;
+                        var taskDateEnd = (item.DateTo && isNaN(Date.parse(item.DateTo))) ? new Date(item.DateTo.split(' ')[0].split('.')[2], item.DateTo.split(' ')[0].split('.')[1] - 1, item.DateTo.split(' ')[0].split('.')[0]) : item.DateTo;
+                        item.Duration = grid.taskDuration(taskDateStart, taskDateEnd);
+                        item.Delta = grid.taskDelta(projectDateStart, taskDateStart);
+                    }
+                    else {
+                        item.TaskID = null;
+                        item.Task = null;
+                    }
+                }
+
+                item.SortOrder = i;
+
+                ndata.push(item);
+            });
+
+            form.setPr('@(htmlFieldName)', ndata);
+        });
+    });
+</script>

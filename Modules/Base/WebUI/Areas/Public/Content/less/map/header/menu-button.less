@@ -1,0 +1,36 @@
+.map-head .menu-button {
+	font-size: @modular-scale *1em;
+
+	float: left;
+
+	width: 16%;
+	height: @header-height;
+	padding: 0;
+
+	transition: .15s ease;
+	transition-property: background-color, color;
+
+	color: @color--light;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+
+	@media ( min-width: @screen-width-sm ) {
+		width: 60px;
+		}
+
+	@media ( min-width: @screen-width-md ) {
+		width: @header-height;
+		}
+
+	&:hover, &:focus {
+		cursor: pointer;
+
+		color: fade( @color--light, 90% );
+		background-color: lighten( @color--dark, 3% );
+		}
+
+	&:active {
+		background-color: lighten( @color--dark, 8% );
+		}
+	}

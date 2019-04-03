@@ -1,0 +1,1425 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<BusinessAreas>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>1000</Code>
+		<PublishCode>1000</PublishCode>
+		<Name>Основное предприятие</Name>
+		<DateFrom>2017-01-01</DateFrom>
+    
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>2000</Code>
+		<PublishCode>2000</PublishCode>
+		<Name>Пред-во на Дальнем Востоке</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>2001</Code>
+		<PublishCode>2001</PublishCode>
+		<Name>Пред-во на Северном Кавказе</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>2002</Code>
+		<PublishCode>2002</PublishCode>
+		<Name>Пред-во в ПриморКрае(ЗАКРЫТО)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>2003</Code>
+		<PublishCode>2003</PublishCode>
+		<Name>Пред-во в ЯмНенецАО(ЗАКРЫТО)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>2004</Code>
+		<PublishCode>2004</PublishCode>
+		<Name>Пред-во в Ставр.кр. (ЗАКРЫТО)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>2005</Code>
+		<PublishCode>2005</PublishCode>
+		<Name>Пред-во в Хабаровском крае</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>2006</Code>
+		<PublishCode>2006</PublishCode>
+		<Name>Пред-во в Чечен. респ(ЗАКРЫТО)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>2007</Code>
+		<PublishCode>2007</PublishCode>
+		<Name>Пред-во в Европе (ЗАКРЫТО)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>2008</Code>
+		<PublishCode>2008</PublishCode>
+		<Name>Пред-во в Афган. (ЗАКРЫТО)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>2009</Code>
+		<PublishCode>2009</PublishCode>
+		<Name>Пред-во в Арханг.обл (ЗАКРЫТО)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>2010</Code>
+		<PublishCode>2010</PublishCode>
+		<Name>Пред. в Китае (г.Пекин)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>2011</Code>
+		<PublishCode>2011</PublishCode>
+		<Name>Пред. в респ.Коми (Усинск)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>2012</Code>
+		<PublishCode>2012</PublishCode>
+		<Name>Пред. в ПримКр(Наход)(ЗАКРЫТО)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>2013</Code>
+		<PublishCode>2013</PublishCode>
+		<Name>Пред. в ЯНАО (Губкинский)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>2014</Code>
+		<PublishCode>2014</PublishCode>
+		<Name>Пред. в Ставр.кр. (Нефтекумск)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>2015</Code>
+		<PublishCode>2015</PublishCode>
+		<Name>Пред. в ХМАО (Нефтеюганск.р-н)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>2016</Code>
+		<PublishCode>2016</PublishCode>
+		<Name>Пред. в Арханг.обл (п.Талаги)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>2017</Code>
+		<PublishCode>2017</PublishCode>
+		<Name>Пред. на БлижВостоке(Абу-Даби)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>2018</Code>
+		<PublishCode>2018</PublishCode>
+		<Name>Пред. в ПриморКр(Владивосток)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>2019</Code>
+		<PublishCode>2019</PublishCode>
+		<Name>Пред. в Республике Ингушетии</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>2020</Code>
+		<PublishCode>2020</PublishCode>
+		<Name>Пред. в Мурман.обл.(Мурманск)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>2050</Code>
+		<PublishCode>2050</PublishCode>
+		<Name>Филиал НК РН в г.Грозном</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>3001</Code>
+		<PublishCode>3001</PublishCode>
+		<Name>ЮганскФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>3002</Code>
+		<PublishCode>3002</PublishCode>
+		<Name>КраснодФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>3003</Code>
+		<PublishCode>3003</PublishCode>
+		<Name>СтрежевФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>3004</Code>
+		<PublishCode>3004</PublishCode>
+		<Name>ГубкинскийФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>3005</Code>
+		<PublishCode>3005</PublishCode>
+		<Name>УсинскийФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>3006</Code>
+		<PublishCode>3006</PublishCode>
+		<Name>СамарскийФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>3007</Code>
+		<PublishCode>3007</PublishCode>
+		<Name>СахалинскийФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>3008</Code>
+		<PublishCode>3008</PublishCode>
+		<Name>СтавропольскийФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>3009</Code>
+		<PublishCode>3009</PublishCode>
+		<Name>КрасноярскийФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>3010</Code>
+		<PublishCode>3010</PublishCode>
+		<Name>ИжевскийФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>3011</Code>
+		<PublishCode>3011</PublishCode>
+		<Name>НижневартовскФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>3012</Code>
+		<PublishCode>3012</PublishCode>
+		<Name>БузулукскийФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>3013</Code>
+		<PublishCode>3013</PublishCode>
+		<Name>НяганьскийФилиал РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>3014</Code>
+		<PublishCode>3014</PublishCode>
+		<Name>Филиал в г. Уфа РН-Сервис</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>3101</Code>
+		<PublishCode>3101</PublishCode>
+		<Name>ИжевскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>3102</Code>
+		<PublishCode>3102</PublishCode>
+		<Name>АрхангельскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>3103</Code>
+		<PublishCode>3103</PublishCode>
+		<Name>ВоронежскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>3104</Code>
+		<PublishCode>3104</PublishCode>
+		<Name>КомсомольскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>3105</Code>
+		<PublishCode>3105</PublishCode>
+		<Name>КраснодарскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>3106</Code>
+		<PublishCode>3106</PublishCode>
+		<Name>КрасноярскФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>3107</Code>
+		<PublishCode>3107</PublishCode>
+		<Name>ЮганскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>3108</Code>
+		<PublishCode>3108</PublishCode>
+		<Name>СамарскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>3109</Code>
+		<PublishCode>3109</PublishCode>
+		<Name>НовокуйбышевФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>3110</Code>
+		<PublishCode>3110</PublishCode>
+		<Name>ТуапсинскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>3111</Code>
+		<PublishCode>3111</PublishCode>
+		<Name>ИркутскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>3112</Code>
+		<PublishCode>3112</PublishCode>
+		<Name>АчинскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>3113</Code>
+		<PublishCode>3113</PublishCode>
+		<Name>ТомскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>3114</Code>
+		<PublishCode>3114</PublishCode>
+		<Name>СтавропольскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>3115</Code>
+		<PublishCode>3115</PublishCode>
+		<Name>СызраньскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>3116</Code>
+		<PublishCode>3116</PublishCode>
+		<Name>СахалинскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>3117</Code>
+		<PublishCode>3117</PublishCode>
+		<Name>ГрозныйФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>3118</Code>
+		<PublishCode>3118</PublishCode>
+		<Name>УсинскийФилиал РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>3201</Code>
+		<PublishCode>3201</PublishCode>
+		<Name>ЮганскийФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>3202</Code>
+		<PublishCode>3202</PublishCode>
+		<Name>КраснодарскийФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>3203</Code>
+		<PublishCode>3203</PublishCode>
+		<Name>НогликскийФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>3204</Code>
+		<PublishCode>3204</PublishCode>
+		<Name>ГубкинскийФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>3205</Code>
+		<PublishCode>3205</PublishCode>
+		<Name>УсинскийФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>3206</Code>
+		<PublishCode>3206</PublishCode>
+		<Name>ВостСибирскФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>62</ExternalID>
+		<ExternalParentID/>
+		<Code>3207</Code>
+		<PublishCode>3207</PublishCode>
+		<Name>ИркутскийФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>63</ExternalID>
+		<ExternalParentID/>
+		<Code>3208</Code>
+		<PublishCode>3208</PublishCode>
+		<Name>ГрозненскийФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>64</ExternalID>
+		<ExternalParentID/>
+		<Code>3209</Code>
+		<PublishCode>3209</PublishCode>
+		<Name>ОренбургскийФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>65</ExternalID>
+		<ExternalParentID/>
+		<Code>3210</Code>
+		<PublishCode>3210</PublishCode>
+		<Name>НижневартовскФилиал РН-Бурение</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>66</ExternalID>
+		<ExternalParentID/>
+		<Code>3301</Code>
+		<PublishCode>3301</PublishCode>
+		<Name>ЮжСахалинскийФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>67</ExternalID>
+		<ExternalParentID/>
+		<Code>3302</Code>
+		<PublishCode>3302</PublishCode>
+		<Name>КомсомольскийФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>68</ExternalID>
+		<ExternalParentID/>
+		<Code>3303</Code>
+		<PublishCode>3303</PublishCode>
+		<Name>КрасноярскФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>69</ExternalID>
+		<ExternalParentID/>
+		<Code>3304</Code>
+		<PublishCode>3304</PublishCode>
+		<Name>ХМАОФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>70</ExternalID>
+		<ExternalParentID/>
+		<Code>3305</Code>
+		<PublishCode>3305</PublishCode>
+		<Name>ГубкинскийФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>71</ExternalID>
+		<ExternalParentID/>
+		<Code>3306</Code>
+		<PublishCode>3306</PublishCode>
+		<Name>ИжевскийФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>72</ExternalID>
+		<ExternalParentID/>
+		<Code>3307</Code>
+		<PublishCode>3307</PublishCode>
+		<Name>СамарскийФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>73</ExternalID>
+		<ExternalParentID/>
+		<Code>3308</Code>
+		<PublishCode>3308</PublishCode>
+		<Name>КраснодарскийФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>74</ExternalID>
+		<ExternalParentID/>
+		<Code>3309</Code>
+		<PublishCode>3309</PublishCode>
+		<Name>ВоронежскийФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>75</ExternalID>
+		<ExternalParentID/>
+		<Code>3310</Code>
+		<PublishCode>3310</PublishCode>
+		<Name>СаратовскийФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>76</ExternalID>
+		<ExternalParentID/>
+		<Code>3311</Code>
+		<PublishCode>3311</PublishCode>
+		<Name>ТюменскийФилиал РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>77</ExternalID>
+		<ExternalParentID/>
+		<Code>3312</Code>
+		<PublishCode>3312</PublishCode>
+		<Name>ТУ в г.Москва РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>78</ExternalID>
+		<ExternalParentID/>
+		<Code>3313</Code>
+		<PublishCode>3313</PublishCode>
+		<Name>ТУЦ в г. Уфа РН-Учет</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>79</ExternalID>
+		<ExternalParentID/>
+		<Code>3401</Code>
+		<PublishCode>3401</PublishCode>
+		<Name>КрасноярскийФилиал РН-Строй</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>80</ExternalID>
+		<ExternalParentID/>
+		<Code>3402</Code>
+		<PublishCode>3402</PublishCode>
+		<Name>НаходкинскийФилиал РН-Строй</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>81</ExternalID>
+		<ExternalParentID/>
+		<Code>3501</Code>
+		<PublishCode>3501</PublishCode>
+		<Name>КрасноярФилиал РН-Сервис-Склад</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>82</ExternalID>
+		<ExternalParentID/>
+		<Code>3502</Code>
+		<PublishCode>3502</PublishCode>
+		<Name>ЮганскийФилиал РН-Сервис-Склад</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>83</ExternalID>
+		<ExternalParentID/>
+		<Code>3503</Code>
+		<PublishCode>3503</PublishCode>
+		<Name>НефтекумФилиал РН-Сервис-Склад</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>84</ExternalID>
+		<ExternalParentID/>
+		<Code>3504</Code>
+		<PublishCode>3504</PublishCode>
+		<Name>ЧерноморФилиал РН-Сервис-Склад</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>85</ExternalID>
+		<ExternalParentID/>
+		<Code>3601</Code>
+		<PublishCode>3601</PublishCode>
+		<Name>КрасноярФилиал РН-Энергонефть</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>86</ExternalID>
+		<ExternalParentID/>
+		<Code>3602</Code>
+		<PublishCode>3602</PublishCode>
+		<Name>Филиал в ЯНАО РН-Энергонефть</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>87</ExternalID>
+		<ExternalParentID/>
+		<Code>3603</Code>
+		<PublishCode>3603</PublishCode>
+		<Name>Ф-л в РесКоми РН-Энергонефть</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>88</ExternalID>
+		<ExternalParentID/>
+		<Code>3604</Code>
+		<PublishCode>3604</PublishCode>
+		<Name>СтаврополФилиал РН-Энергонефть</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>89</ExternalID>
+		<ExternalParentID/>
+		<Code>3605</Code>
+		<PublishCode>3605</PublishCode>
+		<Name>ТуапсинФилиал РН-Энергонефефть</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>90</ExternalID>
+		<ExternalParentID/>
+		<Code>3606</Code>
+		<PublishCode>3606</PublishCode>
+		<Name>СахалинФилиал РН-Энергонефть</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>91</ExternalID>
+		<ExternalParentID/>
+		<Code>3607</Code>
+		<PublishCode>3607</PublishCode>
+		<Name>Ф-л в ХМАО-Югра РН-Энергонефть</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>92</ExternalID>
+		<ExternalParentID/>
+		<Code>3701</Code>
+		<PublishCode>3701</PublishCode>
+		<Name>Пред-во г.Москва РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>93</ExternalID>
+		<ExternalParentID/>
+		<Code>3702</Code>
+		<PublishCode>3702</PublishCode>
+		<Name>Пред-во г.Ростов-Дон РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>94</ExternalID>
+		<ExternalParentID/>
+		<Code>3711</Code>
+		<PublishCode>3711</PublishCode>
+		<Name>Филиал г.Ангарск РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>95</ExternalID>
+		<ExternalParentID/>
+		<Code>3712</Code>
+		<PublishCode>3712</PublishCode>
+		<Name>Филиал г.Ачинск РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>96</ExternalID>
+		<ExternalParentID/>
+		<Code>3713</Code>
+		<PublishCode>3713</PublishCode>
+		<Name>Филиал г.НовыйУренгой РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>97</ExternalID>
+		<ExternalParentID/>
+		<Code>3714</Code>
+		<PublishCode>3714</PublishCode>
+		<Name>Филиал г. Рязань РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>98</ExternalID>
+		<ExternalParentID/>
+		<Code>3715</Code>
+		<PublishCode>3715</PublishCode>
+		<Name>Филиал г. Саратов РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>99</ExternalID>
+		<ExternalParentID/>
+		<Code>3716</Code>
+		<PublishCode>3716</PublishCode>
+		<Name>Филиал г. Бузулук РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>100</ExternalID>
+		<ExternalParentID/>
+		<Code>3717</Code>
+		<PublishCode>3717</PublishCode>
+		<Name>Филиал г. Нягань  РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>101</ExternalID>
+		<ExternalParentID/>
+		<Code>3718</Code>
+		<PublishCode>3718</PublishCode>
+		<Name>Филиал Нижневартовск РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>102</ExternalID>
+		<ExternalParentID/>
+		<Code>3719</Code>
+		<PublishCode>3719</PublishCode>
+		<Name>Филиал Новокуйбышевск РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>103</ExternalID>
+		<ExternalParentID/>
+		<Code>3720</Code>
+		<PublishCode>3720</PublishCode>
+		<Name>Филиал Комс-на-Амуре РН-Транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>104</ExternalID>
+		<ExternalParentID/>
+		<Code>3801</Code>
+		<PublishCode>3801</PublishCode>
+		<Name>Филиал "Ангара"  РН-ПожарБезоп</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>105</ExternalID>
+		<ExternalParentID/>
+		<Code>3802</Code>
+		<PublishCode>3802</PublishCode>
+		<Name>Филиал "Сибирь"РН-ПожарБезоп</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>106</ExternalID>
+		<ExternalParentID/>
+		<Code>3803</Code>
+		<PublishCode>3803</PublishCode>
+		<Name>Ф-л "Красноярск" РН-ПожарБезоп</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>107</ExternalID>
+		<ExternalParentID/>
+		<Code>3951</Code>
+		<PublishCode>3951</PublishCode>
+		<Name>Азовский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>108</ExternalID>
+		<ExternalParentID/>
+		<Code>3952</Code>
+		<PublishCode>3952</PublishCode>
+		<Name>Армавирский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>109</ExternalID>
+		<ExternalParentID/>
+		<Code>3953</Code>
+		<PublishCode>3953</PublishCode>
+		<Name>Ахтарский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>110</ExternalID>
+		<ExternalParentID/>
+		<Code>3954</Code>
+		<PublishCode>3954</PublishCode>
+		<Name>Белореченский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>111</ExternalID>
+		<ExternalParentID/>
+		<Code>3955</Code>
+		<PublishCode>3955</PublishCode>
+		<Name>Калининская ГНС РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>112</ExternalID>
+		<ExternalParentID/>
+		<Code>3956</Code>
+		<PublishCode>3956</PublishCode>
+		<Name>Каневский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>113</ExternalID>
+		<ExternalParentID/>
+		<Code>3957</Code>
+		<PublishCode>3957</PublishCode>
+		<Name>Кореновский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>114</ExternalID>
+		<ExternalParentID/>
+		<Code>3958</Code>
+		<PublishCode>3958</PublishCode>
+		<Name>Краснодарская НБ РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>115</ExternalID>
+		<ExternalParentID/>
+		<Code>3959</Code>
+		<PublishCode>3959</PublishCode>
+		<Name>Кропоткинский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>116</ExternalID>
+		<ExternalParentID/>
+		<Code>3960</Code>
+		<PublishCode>3960</PublishCode>
+		<Name>Крымский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>117</ExternalID>
+		<ExternalParentID/>
+		<Code>3961</Code>
+		<PublishCode>3961</PublishCode>
+		<Name>Курганский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>118</ExternalID>
+		<ExternalParentID/>
+		<Code>3962</Code>
+		<PublishCode>3962</PublishCode>
+		<Name>Майкопский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>119</ExternalID>
+		<ExternalParentID/>
+		<Code>3963</Code>
+		<PublishCode>3963</PublishCode>
+		<Name>Протокский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>120</ExternalID>
+		<ExternalParentID/>
+		<Code>3964</Code>
+		<PublishCode>3964</PublishCode>
+		<Name>Ровненский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>121</ExternalID>
+		<ExternalParentID/>
+		<Code>3965</Code>
+		<PublishCode>3965</PublishCode>
+		<Name>Северный филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>122</ExternalID>
+		<ExternalParentID/>
+		<Code>3966</Code>
+		<PublishCode>3966</PublishCode>
+		<Name>Темрюкский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>123</ExternalID>
+		<ExternalParentID/>
+		<Code>3967</Code>
+		<PublishCode>3967</PublishCode>
+		<Name>Тимашевский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>124</ExternalID>
+		<ExternalParentID/>
+		<Code>3968</Code>
+		<PublishCode>3968</PublishCode>
+		<Name>Сочинский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>125</ExternalID>
+		<ExternalParentID/>
+		<Code>3969</Code>
+		<PublishCode>3969</PublishCode>
+		<Name>Тихорецкий филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>126</ExternalID>
+		<ExternalParentID/>
+		<Code>3970</Code>
+		<PublishCode>3970</PublishCode>
+		<Name>Черноморский филиал РН-КубНП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>127</ExternalID>
+		<ExternalParentID/>
+		<Code>4101</Code>
+		<PublishCode>4101</PublishCode>
+		<Name>Центр ИК Сибинтек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>128</ExternalID>
+		<ExternalParentID/>
+		<Code>4102</Code>
+		<PublishCode>4102</PublishCode>
+		<Name>Западная Сибирь ИК Сибинтек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>129</ExternalID>
+		<ExternalParentID/>
+		<Code>4103</Code>
+		<PublishCode>4103</PublishCode>
+		<Name>Восточная Сибирь ИК Сибинтек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>130</ExternalID>
+		<ExternalParentID/>
+		<Code>4104</Code>
+		<PublishCode>4104</PublishCode>
+		<Name>Дальний Восток ИК Сибинтек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>131</ExternalID>
+		<ExternalParentID/>
+		<Code>4105</Code>
+		<PublishCode>4105</PublishCode>
+		<Name>Юг ИК Сибинтек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>132</ExternalID>
+		<ExternalParentID/>
+		<Code>4106</Code>
+		<PublishCode>4106</PublishCode>
+		<Name>Поволжье ИК Сибинтек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>133</ExternalID>
+		<ExternalParentID/>
+		<Code>4107</Code>
+		<PublishCode>4107</PublishCode>
+		<Name>Урал ИК Сибинтек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>134</ExternalID>
+		<ExternalParentID/>
+		<Code>5000</Code>
+		<PublishCode>5000</PublishCode>
+		<Name>УК РегионПортфельныеИнвестиции</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>135</ExternalID>
+		<ExternalParentID/>
+		<Code>5001</Code>
+		<PublishCode>5001</PublishCode>
+		<Name>УК РегионЭссетМенеджмент</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>136</ExternalID>
+		<ExternalParentID/>
+		<Code>5002</Code>
+		<PublishCode>5002</PublishCode>
+		<Name>УК Открытие</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>137</ExternalID>
+		<ExternalParentID/>
+		<Code>5003</Code>
+		<PublishCode>5003</PublishCode>
+		<Name>УК UCP GP IV LIMITED</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>138</ExternalID>
+		<ExternalParentID/>
+		<Code>5004</Code>
+		<PublishCode>5004</PublishCode>
+		<Name>ДовУправл Регион-Траст</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>139</ExternalID>
+		<ExternalParentID/>
+		<Code>6001</Code>
+		<PublishCode>6001</PublishCode>
+		<Name>Башнефть-Уфанефтехим</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>140</ExternalID>
+		<ExternalParentID/>
+		<Code>6002</Code>
+		<PublishCode>6002</PublishCode>
+		<Name>Башнефть-Уфимский НПЗ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>141</ExternalID>
+		<ExternalParentID/>
+		<Code>6003</Code>
+		<PublishCode>6003</PublishCode>
+		<Name>Башнефть Новойл</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+	<BusinessArea>
+		<ID>0</ID>
+		<ExternalID>142</ExternalID>
+		<ExternalParentID/>
+		<Code>6004</Code>
+		<PublishCode>6004</PublishCode>
+		<Name>Башнефть-Региональные продажи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</BusinessArea>
+</BusinessAreas>
+</DefaultDataHolder>

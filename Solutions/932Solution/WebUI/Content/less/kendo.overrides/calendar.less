@@ -1,0 +1,64 @@
+﻿.k-calendar {
+	.k-header .k-link {
+		transition: .15s @easing-curve--main;
+		transition-property: color, background-color;
+
+		color: darken( @color--primary, 15% ) !important;
+		border-radius: 3px;
+
+		&:hover {
+			color: @color--dark !important;
+			}
+
+		&.k-state-hover {
+			background-color: @color--light-mild;
+			}
+
+		&.k-nav-prev,
+		&.k-nav-next {
+			background-color: transparent;
+			}
+		}
+
+	.k-footer .k-nav-today {
+		color: darken(@color--primary, 15%);
+		}
+
+	td {
+		transition: background-color .15s @easing-curve--main;
+
+		&.k-state-selected {
+			background-color: darken(@color--accent-pale, 10%);
+
+			&.k-state-hover {
+				background-color: darken(@color--accent-pale, 20%);
+				}
+
+			 > .k-link {
+				color: @color--dark;
+				}
+			}
+
+		&.k-state-focused {
+			&, &.k-state-selected {
+				box-shadow: inset 0 0 0 1px fade(@color--dark, 40%);
+				}
+			}
+
+		&.k-today {
+			background-color: @color--success-pale;
+
+			&.k-state-hover {
+				background-color: darken( @color--success-pale, 10% );
+				}
+
+			&:active {
+				box-shadow: inset 0 0 0 1px darken( @color--success-pale, 35% );
+				}
+
+			.k-link {
+				color: @color--dark;
+				}
+			}
+		}
+	}

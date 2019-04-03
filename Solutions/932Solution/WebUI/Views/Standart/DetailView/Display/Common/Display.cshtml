@@ -1,0 +1,43 @@
+﻿@using Base.Attributes
+@using WebUI.Extensions
+
+@model EditorViewModel
+
+@{
+    string template = Model.EditorTemplate;
+
+    string dirname = Model.PropertyDataType == PropertyDataType.Custom && !template.StartsWith("Sib_") ? (Model.ViewModelConfig ?? Model.ParentViewModelConfig).GetDirName() : "Standart";
+
+    string dirTemplates = "";
+
+    if (template == "OneToMany" || template == "ManyToMany" || template == "BaseObjectOne" || template == "EasyCollection" || template.StartsWith("OneToManyAssociation_") || template.StartsWith("ManyToManyAssociation_"))
+    {
+        dirname = "Standart";
+        dirTemplates += "Common/";
+    }
+
+    if (template.StartsWith("Sib_"))
+    {
+        template = template.Split('_')[1];
+        dirTemplates += "SibEditors/";
+    }
+}
+
+<script>
+    $(function() {
+        pbaAPI.wrapDisplay("@template", "@Model.UID", "@(Model.PropertyName ?? Model.UID)");
+    });
+</script>
+
+@{
+    string partialViewName = string.Format("~/Views/{0}/DetailView/Display/{1}{2}.cshtml", dirname, dirTemplates, template);
+
+    try
+    {
+        Html.RenderPartial(partialViewName, Model);
+    }
+    catch
+    {
+        <h6 style="color:red;">@partialViewName</h6>
+    }
+}

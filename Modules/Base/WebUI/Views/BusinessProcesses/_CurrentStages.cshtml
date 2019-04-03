@@ -1,0 +1,50 @@
+﻿@using System.Diagnostics
+@using ImageSize = Base.UI.Enums.ImageSize
+@model WebUI.Models.BusinessProcess.TimeLineVm
+@{
+    string wrapID = "wrap_" + Guid.NewGuid().ToString("N");
+}
+
+<div id="current_stages_@(wrapID)" class="current-stages-wrap">
+    @if (Model.CurrnetStages.Any())
+    {
+        <div class="page-header">
+            <h3>Текущие этапы:</h3>
+        </div>
+        foreach (var item in Model.CurrnetStages)
+        {
+            if(String.IsNullOrEmpty(item.Color))
+             {
+                item.Color = "#999";
+             }
+            <div id="stage_@(item.StageID)" class="timeline-current-stage" style="border-color:  @item.Color">
+                <div class="timeline-current-stage-header">
+                    <h4 class="current-stage-title">@item.Name</h4>
+                </div>
+                @Html.Partial("_Progress", item)                
+                <div class="current-stage-performer">
+                    @if (item.Performer != null)
+                    {
+                        <div class="performer-title">Исполнитель:</div>
+                        <figure class="performer-thumb-wrap">
+                            <img data-id="@item.Performer.ID" data-mnemonic="User" class="performer-thumb" style="width: 60px; height: 60px;" src="@Html.GetImageThumbnailSrc(item.Performer.Image, ImageSize.XS)">
+                        </figure>
+                        <span class="performer-name">@item.Performer.FullName</span>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning" role="alert">Исполнители не назначены</div>
+                    }
+                </div>
+                <div class="current-stage-footer text-primary">
+                    <span class="current-stage-footer-date">
+                        <i class="mdi mdi-calendar"></i>&nbsp;@item.BeginDate.ToShortDateString()
+                    </span>
+                    <span class="current-stage-footer-time">
+                        <i class="fa fa-clock-o"></i>&nbsp;@item.BeginDate.ToShortTimeString()
+                    </span>
+                </div>
+            </div>
+        }
+    }
+</div>

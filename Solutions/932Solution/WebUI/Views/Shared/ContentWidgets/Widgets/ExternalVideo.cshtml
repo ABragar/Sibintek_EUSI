@@ -1,0 +1,17 @@
+﻿@{
+    var wrapID = Html.CreateSystemName("wrap");
+}
+
+@(Html.ContentEditorWidget("external_video")
+    .Title("Видео")
+    .TitleTemplate(
+    @<text>
+        <span><i class="fa fa-fw fa-film"></i> Видео по ссылке</span>
+    </text>)
+        .Wrap(wrapID)
+        .Mnemonic("Content_Video_External")
+          .Template("tpl_" + wrapID))
+
+<script id="tpl_@wrapID" type="text/template">
+    <div data-bind="external_video: model.Url"></div>
+</script>

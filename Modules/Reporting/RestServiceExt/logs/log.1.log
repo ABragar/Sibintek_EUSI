@@ -1,0 +1,144 @@
+2018-10-09 09:03:07.0848 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:6
+2018-10-09 09:03:07.1417 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контрольный отчёт по имуществу, Guid:425fc21d-84ee-468c-bf46-eea342eaea37, Params:[]}
+2018-10-09 09:04:05.4635 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-09 09:04:05.5084 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-09 09:04:05.5842 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-09 09:04:05.5842 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-09 09:04:05.6420 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 55
+2018-10-09 09:04:47.5621 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:32
+2018-10-09 09:04:47.5900 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по налогу на имущество, Guid:3f2b354e-8110-4bd2-990f-e9a8faefd02b, Params:[]}
+2018-10-09 09:04:49.0561 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:18
+2018-10-09 09:04:49.0761 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Аналитический отчёт по изменениям в ОБУ, Guid:22687502-cef4-4edc-bedf-05d5d67603c0, Params:[]}
+2018-10-09 09:04:49.8560 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:32
+2018-10-09 09:04:49.8829 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по налогу на имущество, Guid:3f2b354e-8110-4bd2-990f-e9a8faefd02b, Params:[]}
+2018-10-09 09:07:53.3649 RestService.TicketFormatService RestService.TicketFormatService.GetAesTicketFormat - GetAesTicketFormat
+2018-10-09 09:07:53.3948 RestService.TicketFormatService RestService.TicketFormatService.GetAesDataProtector - GetAesDataProtector
+2018-10-09 09:07:54.6873 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-09 09:08:18.6704 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-09 09:08:18.6824 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-09 09:08:18.7283 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-09 09:08:18.8021 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - System.NullReferenceException: Object reference not set to an instance of an object.
+   at RestService.Identity.IdentityExtension.GetUserInfo(ClaimsPrincipal identity) in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Identity\IdentityExtension.cs:line 19
+   at RestService.Controllers.ReportManagerController.GetAll() in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Controllers\ReportManagerController.cs:line 113
+2018-10-09 09:08:37.7037 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-09 09:08:37.7037 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-09 09:08:37.7277 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-09 09:08:37.7586 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - System.NullReferenceException: Object reference not set to an instance of an object.
+   at RestService.Identity.IdentityExtension.GetUserInfo(ClaimsPrincipal identity) in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Identity\IdentityExtension.cs:line 19
+   at RestService.Controllers.ReportManagerController.GetAll() in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Controllers\ReportManagerController.cs:line 113
+2018-10-09 09:08:52.7192 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-09 09:08:58.2863 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-09 09:09:10.6263 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-09 09:09:56.5781 RestService.TicketFormatService RestService.TicketFormatService.GetAesTicketFormat - GetAesTicketFormat
+2018-10-09 09:09:56.6429 RestService.TicketFormatService RestService.TicketFormatService.GetAesDataProtector - GetAesDataProtector
+2018-10-09 09:09:59.0116 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-09 09:10:03.6542 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-09 09:10:03.6731 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-09 09:10:08.1123 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-09 09:10:20.5271 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-09 09:10:49.2414 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - System.NotSupportedException: Выражению LINQ to Entities не удается распознать метод "System.String ToString(System.String)", поэтому его нельзя преобразовать в выражение хранилища.
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MemberInitTranslator.TypedTranslate(ExpressionConverter parent, MemberInitExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at RestService.Controllers.ReportManagerController.GetAll() in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Controllers\ReportManagerController.cs:line 126
+2018-10-09 10:29:09.2566 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-09 10:29:11.1665 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-09 10:29:11.1755 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-09 10:29:11.2054 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-09 10:29:11.2054 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-09 10:29:11.2812 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - System.NotSupportedException: Выражению LINQ to Entities не удается распознать метод "System.String ToString(System.String)", поэтому его нельзя преобразовать в выражение хранилища.
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.DefaultTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MemberInitTranslator.TypedTranslate(ExpressionConverter parent, MemberInitExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateLambda(LambdaExpression lambda, DbExpression input, DbExpressionBinding& binding)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.OneLambdaTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, DbExpression& source, DbExpressionBinding& sourceBinding, DbExpression& lambda)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SelectTranslator.Translate(ExpressionConverter parent, MethodCallExpression call)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.SequenceMethodTranslator.Translate(ExpressionConverter parent, MethodCallExpression call, SequenceMethod sequenceMethod)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.MethodCallTranslator.TypedTranslate(ExpressionConverter parent, MethodCallExpression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TypedTranslator`1.Translate(ExpressionConverter parent, Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.TranslateExpression(Expression linq)
+   at System.Data.Entity.Core.Objects.ELinq.ExpressionConverter.Convert()
+   at System.Data.Entity.Core.Objects.ELinq.ELinqQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at RestService.Controllers.ReportManagerController.GetAll() in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Controllers\ReportManagerController.cs:line 126
+2018-10-09 10:29:46.4106 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-09 10:29:48.9817 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-09 10:30:11.8603 RestService.TicketFormatService RestService.TicketFormatService.GetAesTicketFormat - GetAesTicketFormat
+2018-10-09 10:30:11.9002 RestService.TicketFormatService RestService.TicketFormatService.GetAesDataProtector - GetAesDataProtector
+2018-10-09 10:30:13.2068 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-09 10:30:31.5632 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-09 10:30:33.9409 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-09 10:31:18.8854 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-09 10:31:18.8984 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-09 10:31:18.9493 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-09 10:31:18.9592 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-09 10:31:18.9832 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 55
+2018-10-09 10:35:52.2331 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-09 10:35:52.2381 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-09 10:35:52.3249 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-09 10:35:52.3298 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-09 10:35:52.4306 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 55
+2018-10-09 10:36:55.3023 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2018-10-09 10:36:55.3234 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2018-10-09 10:36:55.4079 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 55
+2018-10-09 10:36:55.4079 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - UserId: 1; IsAdmin: True; CategoryIds: @1@
+2018-10-09 10:36:55.4808 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of result: 55
+2018-10-09 10:40:21.3829 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2018-10-09 10:41:10.8807 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:29
+2018-10-09 10:41:11.0106 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:8193529d-01db-486b-9d51-2e1c1065c9a8, Params:[]}
+2018-10-09 10:41:13.6123 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:31
+2018-10-09 10:41:13.6826 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:dc2147fe-a56f-4e4e-82fc-7dac522c064f, Params:[]}
+2018-10-09 10:41:20.0337 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:34
+2018-10-09 10:41:20.1086 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:35dae217-0e51-48f3-8006-9aa4021d64a9, Params:[]}
+2018-10-09 10:41:28.5724 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:35
+2018-10-09 10:41:28.6302 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:34149219-5f58-4d05-8a15-2f9dd14958df, Params:[]}
+2018-10-09 10:41:41.3123 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:36
+2018-10-09 10:41:41.3904 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:fc126de4-da69-477b-b24f-d870025c7a44, Params:[]}
+2018-10-09 10:41:45.2020 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:37
+2018-10-09 10:41:45.3227 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:e1005b12-28cd-4245-aab2-ffe179e10b8b, Params:[]}
+2018-10-09 10:41:48.1457 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:38
+2018-10-09 10:41:48.2473 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:923fcbc0-2d79-42a1-8d26-fa2c966aeff8, Params:[]}
+2018-10-09 10:41:50.2389 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:39
+2018-10-09 10:41:50.2933 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:6f2ffdb5-f4cc-43d8-a9ca-56d89e1402a2, Params:[]}
+2018-10-09 10:42:02.5589 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:40
+2018-10-09 10:42:02.6177 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:b0d40999-a863-4074-9102-628e945fc8b2, Params:[]}
+2018-10-09 10:42:17.1695 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:34
+2018-10-09 10:42:17.2438 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:35dae217-0e51-48f3-8006-9aa4021d64a9, Params:[]}
+2018-10-09 10:44:14.1346 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - UserId: 1; IsAdmin: True; CategoryIds: @1@, ReportId:37
+2018-10-09 10:44:14.1885 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.Get - Return report: {Name:Контроль применения ставок и льгот по земельному налогу, Guid:e1005b12-28cd-4245-aab2-ffe179e10b8b, Params:[]}

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<TenureTypes>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>100</Code>
+		<PublishCode>100</PublishCode>
+		<Name>Водное судно</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>201</Code>
+		<PublishCode>201</PublishCode>
+		<Name>Паровоз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>202</Code>
+		<PublishCode>202</PublishCode>
+		<Name>Электровоз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>203</Code>
+		<PublishCode>203</PublishCode>
+		<Name>Электропоезд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>204</Code>
+		<PublishCode>204</PublishCode>
+		<Name>Тепловоз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>205</Code>
+		<PublishCode>205</PublishCode>
+		<Name>Дизель-поезд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>206</Code>
+		<PublishCode>206</PublishCode>
+		<Name>Путевая машина</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>207</Code>
+		<PublishCode>207</PublishCode>
+		<Name>Вагон пассажирский</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>208</Code>
+		<PublishCode>208</PublishCode>
+		<Name>Вагон багажный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>209</Code>
+		<PublishCode>209</PublishCode>
+		<Name>Вагон изотермический</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>210</Code>
+		<PublishCode>210</PublishCode>
+		<Name>Цистерна</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>211</Code>
+		<PublishCode>211</PublishCode>
+		<Name>Полувагон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>212</Code>
+		<PublishCode>212</PublishCode>
+		<Name>Платформа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>298</Code>
+		<PublishCode>298</PublishCode>
+		<Name>Прочий вагон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>301</Code>
+		<PublishCode>301</PublishCode>
+		<Name>Легковой автомобиль общего назначения &lt;1&gt;, &lt;2&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>302</Code>
+		<PublishCode>302</PublishCode>
+		<Name>Специальный легковой автомобиль &lt;1&gt;, &lt;3&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>303</Code>
+		<PublishCode>303</PublishCode>
+		<Name>Грузовой автомобиль общего назначения &lt;4&gt;, &lt;5&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>304</Code>
+		<PublishCode>304</PublishCode>
+		<Name>Специальный грузовой автомобиль &lt;4&gt;, &lt;6&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>305</Code>
+		<PublishCode>305</PublishCode>
+		<Name>Грузопассажирский автомобиль &lt;4&gt;, &lt;7&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>306</Code>
+		<PublishCode>306</PublishCode>
+		<Name>Автомобиль-тягач &lt;8&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>307</Code>
+		<PublishCode>307</PublishCode>
+		<Name>Седельный тягач &lt;9&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>308</Code>
+		<PublishCode>308</PublishCode>
+		<Name>Пассажирский прицеп, технически допустимая максимальная масса которого не более 0,75 т &lt;10&gt;, &lt;11&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>309</Code>
+		<PublishCode>309</PublishCode>
+		<Name>Пассажирский прицеп, технически допустимая максимальная масса которого свыше 0,75 т, но не более 3,5 т &lt;10&gt;, &lt;11&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>310</Code>
+		<PublishCode>310</PublishCode>
+		<Name>Пассажирский прицеп, технически допустимая максимальная масса которого свыше 3,5 т, но не более 10 т &lt;10&gt;, &lt;11&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>311</Code>
+		<PublishCode>311</PublishCode>
+		<Name>Пассажирский прицеп, технически допустимая максимальная масса которого более 10 т &lt;10&gt;, &lt;11&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>312</Code>
+		<PublishCode>312</PublishCode>
+		<Name>Грузовой прицеп общего назначения &lt;10&gt;, &lt;12&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>313</Code>
+		<PublishCode>313</PublishCode>
+		<Name>Специальный прицеп &lt;10&gt;, &lt;13&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>314</Code>
+		<PublishCode>314</PublishCode>
+		<Name>Караван &lt;10&gt;, &lt;14&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>315</Code>
+		<PublishCode>315</PublishCode>
+		<Name>Пассажирский полуприцеп, технически допустимая максимальная масса которого не более 0,75 т &lt;15&gt;, &lt;16&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>316</Code>
+		<PublishCode>316</PublishCode>
+		<Name>Пассажирский полуприцеп, технически допустимая максимальная масса которого свыше 0,75 т, но не более 3,5 т &lt;15&gt;, &lt;16&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>317</Code>
+		<PublishCode>317</PublishCode>
+		<Name>Пассажирский полуприцеп, технически допустимая максимальная масса которого свыше 3,5 т, но не более 10 т &lt;15&gt;, &lt;16&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>318</Code>
+		<PublishCode>318</PublishCode>
+		<Name>Пассажирский полуприцеп, технически допустимая максимальная масса которого более 10 т &lt;15&gt;, &lt;16&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>319</Code>
+		<PublishCode>319</PublishCode>
+		<Name>Грузовой полуприцеп общего назначения &lt;15&gt;, &lt;17&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>320</Code>
+		<PublishCode>320</PublishCode>
+		<Name>Специальный полуприцеп &lt;15&gt;, &lt;18&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>321</Code>
+		<PublishCode>321</PublishCode>
+		<Name>Автобус общего назначения &lt;19&gt;, &lt;20&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>322</Code>
+		<PublishCode>322</PublishCode>
+		<Name>Специальный автобус &lt;19&gt;, &lt;21&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>323</Code>
+		<PublishCode>323</PublishCode>
+		<Name>Сочлененный автобус &lt;19&gt;, &lt;22&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>324</Code>
+		<PublishCode>324</PublishCode>
+		<Name>Микроавтобус &lt;19&gt;, &lt;23&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>400</Code>
+		<PublishCode>400</PublishCode>
+		<Name>Воздушное судно</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>901</Code>
+		<PublishCode>901</PublishCode>
+		<Name>Контейнер</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+	<TenureType>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>999</Code>
+		<PublishCode>999</PublishCode>
+		<Name>Прочее транспортное средство</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TenureType>
+</TenureTypes>
+  </DefaultDataHolder>

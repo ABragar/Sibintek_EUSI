@@ -1,0 +1,21 @@
+﻿@model WebUI.Models.StandartFormModel
+@{
+    string wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+    string propwrapID = "propwrapID_" + Guid.NewGuid().ToString("N");
+    string valrulewrapID = "valwrapID_" + Guid.NewGuid().ToString("N");
+}
+
+
+
+<div id="@wrapID">
+    <div id="@propwrapID" class="properties pull-left">
+    </div>
+    <div id="@valrulewrapID">
+    </div>
+</div>
+
+<script>
+    $(function () {
+        window['@wrapID'].on("onAfterBind", function () {});
+    });
+</script>

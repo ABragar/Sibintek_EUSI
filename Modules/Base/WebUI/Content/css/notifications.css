@@ -1,0 +1,37 @@
+﻿/* NOTIFICATIONS */
+
+.notification-grid {
+    font-family: fira_sansight, "Arial", sans-serif;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
+.notification-grid tr { cursor: default; }
+
+    .notification-grid tr:first-of-type td { border-top: none; }
+
+.notification-grid .k-grid-content { overflow-y: auto; }
+
+.notification-grid .body { position: relative; }
+
+.notification-grid .row-icon { position: absolute; top: 40%; top: calc(50% - .786rem); }
+
+.notification-grid .content { margin-left: 2.286rem; }
+
+.notification-grid .header { margin-bottom: .2143rem; font-size: .857rem; }
+
+    .notification-grid .header .type { color: #ce6d2a; }
+
+    .notification-grid .header .date { margin-left: .572rem; color: #999; }
+
+.notification-grid .title { font-family: fira_sansmedium, "Arial", sans-serif; }
+
+.notification-grid .description { line-height: 1.4286rem; font-size: .9286rem; color: #666; }
+
+.notification-grid .k-state-selected .header .type { color: #FFEDB6; }
+
+.notification-grid .k-state-selected .header .date { color: rgba(255, 255, 255, .9); }
+
+.notification-grid .k-state-selected .description { color: #fff; }
+
+.notification-menu .k-sprite { font-size: 1rem !important; width: 2.143rem !important; }

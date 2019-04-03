@@ -1,0 +1,21 @@
+﻿@using WebUI.Areas.Account
+@model IReadOnlyCollection<WebUI.Areas.Account.Models.ProviderInfo>
+    
+@if (Model.Count > 0)
+{
+    using (Html.BeginForm("ExternalLogin", "Account", Url.FromCurrent()))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="login-socials">
+            @foreach (var provider in Model)
+            {
+                <button name="LoginProvider" value="@Html.ValueFor(x => provider.LoginProvider)" class="">
+                    <i class="@Html.GetSocialIcon(provider.LoginProvider)"></i>
+                </button>
+            }
+        </div>
+    }
+}
+
+

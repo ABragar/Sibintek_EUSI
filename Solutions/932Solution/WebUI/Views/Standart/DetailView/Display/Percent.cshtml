@@ -1,0 +1,25 @@
+﻿@model EditorViewModel
+
+@{
+    string htmlFieldName = Model.PropertyName;
+}
+
+<div id="@Model.UID" class="percent-wrap"></div>
+
+<script>
+    $("#@Model.UID").kendoProgressBar({
+        min: 0,
+        max: 100,
+        type: "value",
+        animation: { duration: 400 }
+    });
+
+    $(function() {
+        var pb = $("#@Model.UID").data("kendoProgressBar");
+
+        $("#@Model.UID").closest("form").on("onAfterBind", function(e, form) {
+            var val = kendo.toString(parseFloat(form.getPr("@htmlFieldName")) * 100, "n0");
+            pb.value(val);
+        });
+    });
+</script>

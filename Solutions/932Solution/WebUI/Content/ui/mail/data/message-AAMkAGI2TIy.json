@@ -1,0 +1,43 @@
+{
+    "Id": "AAMkAGI2THVSAAA=",
+    "CreatedDateTime": "2014-10-20T00:41:57Z",
+    "LastModifiedDateTime": "2014-10-20T00:41:57Z",
+    "ReceivedDateTime": "2014-10-20T00:41:57Z",
+    "SentDateTime": "2014-10-20T00:41:53Z",
+    "HasAttachments": true,
+    "Subject": "Re: Test message",
+    "Body": {
+        "ContentType": "Text",
+        "Content": "\n________________________________________\nFrom: Alex D\nSent: Sunday, October 19, 2014 5:28 PM\nTo: Katie Jordan\nSubject: Meeting Notes\n\nPlease send me the meeting notes ASAP\n"
+    },
+    "BodyPreview": "________________________________________\nFrom: Alex D\nSent: Sunday, October 19, 2014 5:28 PM\nTo: Katie Jordan\nSubject: Meeting Notes\n\nPlease send me the meeting notes ASAP",
+    "Importance": "Normal",
+    "FolderId": "Inbox",
+    "Sender": {
+        "EmailAddress": {
+            "Name": "Katie Jordan",
+            "Address": "katiej@example.com"
+        }
+    },
+    "From": {
+        "EmailAddress": {
+            "Name": "Katie Jordan",
+            "Address": "katiej@example.com"
+        }
+    },
+    "ToRecipients": [
+        {
+            "EmailAddress": {
+                "Name": "Alex D",
+                "Address": "alexd@example.com"
+            }
+        }
+    ],
+    "CcRecipients": [],
+    "BccRecipients": [],
+    "ReplyTo": [],
+    "IsDeliveryReceiptRequested": false,
+    "IsReadReceiptRequested": false,
+    "IsRead": false,
+    "IsDraft": false
+}

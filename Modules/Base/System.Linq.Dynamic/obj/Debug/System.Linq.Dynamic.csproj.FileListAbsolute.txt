@@ -1,0 +1,12 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\bin\Debug\System.Linq.Dynamic.XML
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\bin\Debug\System.Linq.Dynamic.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\bin\Debug\System.Linq.Dynamic.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\bin\Debug\System.Linq.Dynamic.dll.CodeAnalysisLog.xml
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\bin\Debug\System.Linq.Dynamic.dll.lastcodeanalysissucceeded
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\bin\Debug\FluentValidationNA.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\bin\Debug\FluentValidationNA.xml
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\obj\Debug\System.Linq.Dynamic.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\obj\Debug\System.Linq.Dynamic.csproj.CopyComplete
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\obj\Debug\System.Linq.Dynamic.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\obj\Debug\System.Linq.Dynamic.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\System.Linq.Dynamic\obj\Debug\System.Linq.Dynamic.csprojAssemblyReference.cache

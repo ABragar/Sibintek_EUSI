@@ -1,0 +1,50 @@
+﻿body.example-page {
+  background: #d9d9d9;
+}
+.example {
+  overflow: auto;
+  padding: .5rem;
+}
+.example section {
+  padding: 2rem;
+}
+.example section > h2 {
+  margin: 0 0 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #dbdbdb;
+}
+.example section + section {
+  margin-top: 1.6rem;
+}
+.example label {
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.example label:after {
+  content: ':';
+}
+.example label[data-toggle=collapse] {
+  cursor: pointer;
+}
+.example label[data-toggle=collapse]:before {
+  font-size: 1.143rem;
+  font-weight: 900;
+  display: inline-block;
+  margin-right: .5rem;
+  content: 'code';
+  transition: color .25s;
+  text-transform: uppercase;
+  color: rgba(38, 43, 51, 0.2);
+}
+.example label[data-toggle=collapse]:not(.collapsed):before {
+  color: #00bafb;
+}
+.example label + div {
+  margin: 1rem 0;
+}
+.example pre + label {
+  margin-top: 2rem;
+}

@@ -1,0 +1,9 @@
+﻿@model EditorViewModel
+
+@(Html.Kendo().DatePicker()
+    .Name(Model.UID)
+    .Format(JsonNetResult.YEAR_FORMATE)
+    .Start(CalendarView.Decade)
+    .Depth(CalendarView.Decade)
+    .HtmlAttributes(Html.CreateHtmlAttributes(Model))
+)

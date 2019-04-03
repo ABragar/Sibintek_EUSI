@@ -1,0 +1,6 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibRosReestr\bin\Release\SibRosReestr.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibRosReestr\bin\Release\SibRosReestr.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibRosReestr\obj\Release\SibRosReestr.csprojAssemblyReference.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibRosReestr\obj\Release\SibRosReestr.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibRosReestr\obj\Release\SibRosReestr.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\CorpProp\SibRosReestr\obj\Release\SibRosReestr.pdb

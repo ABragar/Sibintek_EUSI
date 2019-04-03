@@ -1,0 +1,3 @@
+﻿@model EditorViewModel
+
+<input id="@Model.UID" data-enum-type="@Model.EditorType.GetEnumType().GetTypeName()" data-enum-isnullable="@Model.EditorType.IsNullable()" data-bind="value: @(Model.PropertyName)" />

@@ -1,0 +1,73 @@
+﻿@import 'themes/visary.less';
+// @import 'themes/gov.less';
+// @import "themes/minkomsvyaz.less";
+@import 'variables.less';
+
+body.example-page {
+	background: darken( @color--light, 15% );
+	}
+
+.example {
+	overflow: auto;
+
+	padding: .5rem;
+
+	section {
+		padding: 2rem;
+
+		 > h2 {
+			margin: 0 0 2rem;
+			padding-bottom: 1.5rem;
+
+			border-bottom: 1px solid @color--border;
+			}
+		}
+
+	section + section {
+		margin-top: 1.6rem;
+		}
+
+	label {
+		display: inline-block;
+
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		    -ms-user-select: none;
+		        user-select: none;
+
+		&:after {
+			content: ':';
+			}
+
+		&[data-toggle=collapse] {
+			cursor: pointer;
+
+			&:before {
+				font-size: 1.143rem;
+				font-weight: 900;
+
+				display: inline-block;
+
+				margin-right: .5rem;
+
+				content: 'code';
+				transition: color .25s;
+				text-transform: uppercase;
+
+				color: fade( @color--dark, 20% );
+				}
+
+			&:not(.collapsed):before {
+				color: @color--primary;
+				}
+			}
+		}
+
+	label + div {
+		margin: 1rem 0;
+		}
+
+	pre + label {
+		margin-top: 2rem;
+		}
+	}

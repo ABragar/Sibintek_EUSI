@@ -1,0 +1,172 @@
+﻿@using Base.Contact.Entities
+@model StandartTreeView
+
+@{
+    int width = 24;
+    int height = 24;
+
+    string tmplID = Html.CreateSystemName("tv-template");
+    string nameCombobox = Html.CreateSystemName("combo");
+}
+
+<script id="@tmplID" type="text/x-kendo-template">
+    # var icon; #
+    # if (item.Image) { #
+    # icon = '<img src="' + pbaAPI.imageHelpers.getsrc(item.Image.FileID, @width, @height) + '" />&nbsp;'; #
+    # } else if (item.Icon && item.Icon.Value) { #
+    # var color = item.Icon.Color ? item.Icon.Color : '\\#333';  #
+    # icon = '<span style="color: ' + color + '" class="' + item.Icon.Value + '"></span>'; #
+    # } else { #
+    # icon = '<span class="fa fa-fw fa-folder"></span>'; }#
+    <div class='tree-node' id='#= item.id #'>
+        #= icon #
+        #= pbaAPI.htmlEncode(item.Title) #
+    </div>
+</script>
+
+
+
+<script>
+    (function () {
+
+        var treeview = window["@Model.WidgetID"];
+
+        var baseWidgetChange = treeview.onNeighbourWidgetChanged;
+
+        treeview.onNeighbourWidgetChanged = function (e) {
+            if (e.sender.desc === "DialogSplitter" && e.event === "resize") {
+                this.resize(e.params.height - 200);
+            } else if (e.sender.desc === "ToolbarTreeView" && e.params.action === "company_map") {
+
+                var dropDown = $('#@nameCombobox').data('kendoDropDownList');
+                var company = dropDown.value();
+
+                var params = {
+                    id: company,
+                    mnemonic: "@nameof(Company)"
+                };
+
+                pbaLinks.openLinksWindow(params);
+
+
+            } else if (e.event === "init") {
+            }
+            else {
+                baseWidgetChange(e);
+            }
+        };
+
+        treeview.onCompanyChange = function (company) {
+            var str = "CompanyID=" + company.ID;
+            treeview.setUrlParametr("filter", str);
+            treeview.refresh();
+
+            var dialogData = window["@Model.DialogID"];
+            dialogData.setInitProp("Company", company);
+        };
+
+        treeview.onCompanyChangeTree = function (e) {
+            var item = this.dataItem();
+            treeview.onCompanyChange(item);
+        };
+
+        treeview.onCompanyLoad = function () {
+            var dialog = window['@Model.DialogID'];
+            var initProps = dialog.dialogData.initProps;
+
+            if (initProps && initProps['@Model.Mnemonic'] && initProps['@Model.Mnemonic'].Company) {
+                var company = initProps['@Model.Mnemonic'].Company;
+                treeview.selectCompany(company, false);
+            } else {
+                treeview.getUserCompany();
+            }
+        };
+
+        treeview.getUserCompany = function () {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetUserCompany", "Contact")",
+                contentType: "application/json; charset=utf-8",
+                success: function (res) {
+                    if (!res.error) {
+                        treeview.selectCompany(res, true);
+                    }
+                }
+            });
+        };
+
+        treeview.selectCompany = function (company, enable) {
+            var dropDown = $('#@nameCombobox').data('kendoDropDownList');
+
+            dropDown.value(company.ID);
+
+            if (!enable)
+                dropDown.wrapper.hide(false);
+            else
+                dropDown.enable(enable);
+
+            treeview.onCompanyChange(company);
+        };
+    })();
+</script>
+
+<div id="@nameCombobox" style="width: 100%; margin-bottom: 10px;"></div>
+
+@(Html.Kendo().TreeView()
+      .Name(Model.WidgetID)
+      .AutoBind(false)
+      .HtmlAttributes(new { style = "overflow-x: hidden;" })
+      .DragAndDrop(!Model.IsReadOnly && Model.IsPermission(TypePermission.Write | TypePermission.Delete | TypePermission.Create))
+      .TemplateId(tmplID)
+      .Events(e => e
+          .DataBound(Model.WidgetID + ".onDataBound")
+          .Select(Model.WidgetID + ".onSelect")
+          .Drop(Model.WidgetID + ".onBeforeDrop")
+          .DragEnd(Model.WidgetID + ".onAfterDrop"))
+      .DataSource(dataSource => dataSource
+          .Events(events => events.Error(Model.WidgetID + ".onErrorHandler"))
+          .Read(read => read
+              .Action("TreeView_Read", "HCategory", new { area = "", mnemonic = Model.Mnemonic, searchStr = Model.SearchStr, filter = Model.SysFilter })
+          )
+      )
+)
+
+<script>
+    $(function () {
+        var treeview = window["@Model.WidgetID"];
+
+        $("#@nameCombobox").kendoDropDownList({
+            optionLabel: "Выберите компанию",
+            change: treeview.onCompanyChangeTree,
+            dataTextField: "Title",
+            dataValueField: "ID",
+            filter: "contains",
+            height: 500,
+            dataSource: {
+                pageSize: 50,
+                serverPaging: true,
+                serverFiltering: true,
+                type: "aspnetmvc-ajax",
+                transport: {
+                    read: {
+                        dataType: "json",
+                        url: "@Url.Action("KendoUI_CollectionRead", "Contact", new { mnemonic = nameof(Company) })"
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total"
+                }
+            }
+        });
+
+        treeview.getUserCompany();
+
+    });
+</script>
+
+<style>
+    .kwidget--toolbar ~ .kwidget--tree-view {
+        height: calc(100% - 88px) !important;
+    }
+</style>

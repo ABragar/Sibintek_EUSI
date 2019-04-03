@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<UnitOfCompanys>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>001</Code>
+		<PublishCode>001</PublishCode>
+		<Name>001 Департамент нефтегазодобычи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>003</Code>
+		<PublishCode>003</PublishCode>
+		<Name>003 Департамент развития нефтепереработки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>004</Code>
+		<PublishCode>004</PublishCode>
+		<Name>004 Департамент геологоразведочных работ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>005</Code>
+		<PublishCode>005</PublishCode>
+		<Name>005 Департамент промышленной безопасности и охраны труда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>006</Code>
+		<PublishCode>006</PublishCode>
+		<Name>006 Департамент трейдинга нефтью и нефтепродуктами</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>008</Code>
+		<PublishCode>008</PublishCode>
+		<Name>008 Финансовый департамент</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>013</Code>
+		<PublishCode>013</PublishCode>
+		<Name>013 Департамент закупки товаров, работ и услуг</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>016</Code>
+		<PublishCode>016</PublishCode>
+		<Name>016 Департамент по взаимодействию с органами государственной власти и управления</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>017</Code>
+		<PublishCode>017</PublishCode>
+		<Name>017 Служба безопасности</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>018</Code>
+		<PublishCode>018</PublishCode>
+		<Name>018 Департамент кадров</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>019</Code>
+		<PublishCode>019</PublishCode>
+		<Name>019 Управление делами ПАО "НК "Роснефть"</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>021</Code>
+		<PublishCode>021</PublishCode>
+		<Name>021 Департамент информации и рекламы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>025</Code>
+		<PublishCode>025</PublishCode>
+		<Name>025 Департамент структурного финансирования и долговых обязательств</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>031</Code>
+		<PublishCode>031</PublishCode>
+		<Name>031 Департамент разработки месторождений</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>035</Code>
+		<PublishCode>035</PublishCode>
+		<Name>035 Департамент энергетики</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>040</Code>
+		<PublishCode>040</PublishCode>
+		<Name>040 Департамент планирования, автоматизации и эффективности</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>041</Code>
+		<PublishCode>041</PublishCode>
+		<Name>041 Департамент управления запасами</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>043</Code>
+		<PublishCode>043</PublishCode>
+		<Name>043 Департамент технического регулирования и развития корпоративного научно-проектного комплекса</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>045</Code>
+		<PublishCode>045</PublishCode>
+		<Name>045 Департамент социального развития и корпоративной культуры</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>052</Code>
+		<PublishCode>052</PublishCode>
+		<Name>052 Департамент региональных продаж</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>053</Code>
+		<PublishCode>053</PublishCode>
+		<Name>053 Департамент сопровождения зарубежных проектов разведки и добычи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>058</Code>
+		<PublishCode>058</PublishCode>
+		<Name>058 Департамент строительства объектов обеспечения бизнеса</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>060</Code>
+		<PublishCode>060</PublishCode>
+		<Name>060 Департамент планирования, управления эффективностью и развития газового бизнеса</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>061</Code>
+		<PublishCode>061</PublishCode>
+		<Name>061 Департамент нефтепереработки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>062</Code>
+		<PublishCode>062</PublishCode>
+		<Name>062 Департамент трубопроводного транспорта и развития инфраструктуры</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>063</Code>
+		<PublishCode>063</PublishCode>
+		<Name>063 Департамент внутреннего сервиса</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>067</Code>
+		<PublishCode>067</PublishCode>
+		<Name>067 Департамент развития, управления проектами и активами на шельфе</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>072</Code>
+		<PublishCode>072</PublishCode>
+		<Name>072 Департамент продаж специальных нефтепродуктов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>073</Code>
+		<PublishCode>073</PublishCode>
+		<Name>073 Департамент производственного планирования, поставок и логистики</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>076</Code>
+		<PublishCode>076</PublishCode>
+		<Name>076 Департамент экологической безопасности и технологий</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>079</Code>
+		<PublishCode>079</PublishCode>
+		<Name>079 Управление планирования, контроллинга и повышения эффективности деятельности</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>081</Code>
+		<PublishCode>081</PublishCode>
+		<Name>081 Департамент капитального строительства объектов нефтегазодобычи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>082</Code>
+		<PublishCode>082</PublishCode>
+		<Name>082 Департамент капитального строительства объектов нефтепереработки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>085</Code>
+		<PublishCode>085</PublishCode>
+		<Name>085 Департамент трейдинга газа и продуктов переработки газа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>089</Code>
+		<PublishCode>089</PublishCode>
+		<Name>089 Департамент собственности</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>095</Code>
+		<PublishCode>095</PublishCode>
+		<Name>095 Департамент информатизации и развития бизнес-процессов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>103</Code>
+		<PublishCode>103</PublishCode>
+		<Name>103 Департамент обеспечения деятельности центрального аппарата</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>105</Code>
+		<PublishCode>105</PublishCode>
+		<Name>105 Департамент ресурсной базы и аудита запасов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>107</Code>
+		<PublishCode>107</PublishCode>
+		<Name>107 Департамент обеспечения эффективности учетных процессов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>109</Code>
+		<PublishCode>109</PublishCode>
+		<Name>109 Департамент локализации техники и технологий</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>117</Code>
+		<PublishCode>117</PublishCode>
+		<Name>117 Департамент управления газовыми активами и проектами</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>030OLD</Code>
+		<PublishCode>030OLD</PublishCode>
+		<Name>030OLD Департамент нефтехимии и переработки газа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>074OLD</Code>
+		<PublishCode>074OLD</PublishCode>
+		<Name>074OLD Департамент бурения и технологий на шельфе</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+	<UnitOfCompany>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>113Z</Code>
+		<PublishCode>113Z</PublishCode>
+		<Name>113Z Департамент разработки и добычи на шельфе</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</UnitOfCompany>
+</UnitOfCompanys>
+  </DefaultDataHolder>

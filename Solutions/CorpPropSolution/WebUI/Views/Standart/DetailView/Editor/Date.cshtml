@@ -1,0 +1,15 @@
+@model EditorViewModel
+@{
+    string viewParam = null;
+    Model.EditorTemplateParams?.TryGetValue("View", out viewParam);
+
+    var view = CalendarView.Month;
+    Enum.TryParse(viewParam, ignoreCase: true, result: out view);
+}
+
+@(Html.Kendo().DatePicker()
+      .ParseFormats(new List<string>()
+      {
+          JsonNetResult.DATE_FORMATE
+      })
+      .Name(Model.UID).Format(JsonNetResult.DATE_FORMATE).Start(view).HtmlAttributes(Html.CreateHtmlAttributes(Model)).DateInput(true))

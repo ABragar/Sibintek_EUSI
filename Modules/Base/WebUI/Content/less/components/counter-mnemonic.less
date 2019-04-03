@@ -1,0 +1,24 @@
+﻿.counter-mnemonic {
+	font-size: .75rem;
+	font-weight: 300;
+	line-height: 1.25rem;
+
+	position: absolute;
+	z-index: 1;
+	top: .05rem;
+	left: 55%;
+
+	padding: 0 .33rem;
+
+	transition: transform .25s;
+	transform: scale(1) translate3d(0, 0, 0);
+	letter-spacing: .025em;
+
+	color: @color--text-light;
+	border-radius: .25rem;
+	background-color: @color--primary;
+
+	&[data-counter-mnemonic-value='0'] {
+		transform: scale(0) translate3d(0, 0, 0);
+		}
+	}

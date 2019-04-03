@@ -1,0 +1,35 @@
+﻿@model WebUI.Areas.Public.Models.VmMap
+
+<script type="text/ng-template" id="list.container.html">
+    <pageslide ps-cloak="true" ps-open="list.opened" class="ng-pageslide-custom ng-pageslide-custom-left" ng-class="{ 'ng-pageslide-mobile' : list.isMobile }" ps-side="left" ps-custom-top="75px" ps-custom-height="auto" ps-size="320px" ps-container="@Model.UID">
+        <div class="page-slide-controls">
+            <div class="page-slide-controls-icon" ng-style="{ 'background-color': list.config.Style && list.config.Style.Color ? list.config.Style.Color : list.defaultColor }"><span class="{{::list.config.Style && list.config.Style.Icon ? list.config.Style.Icon : list.defaultIcon}}"></span></div>
+            <a href="#" class="btn btn-close">×</a>
+            <p class="title">{{list.config.Title}}</p>
+        </div>
+        
+        <form class="panel-block page-slide-search" ng-submit="list.update(1)" ng-if="list.isSearchable()">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-keyup="list.forceupdate()" ng-model="list.search">
+                <div class="input-group-btn dropup">
+                    <button type="submit" class="btn btn-default btn-primary"><span class="fa fa-search"></span></button>
+                </div>
+            </div>
+        </form>
+
+        <perfect-scrollbar class="scroller-absolute-with-top" ng-class="{'scroller-absolute-with-pager': list.pages > 1, 'scroller-absolute-with-search': list.isSearchable() }">
+            <ul class="map-items-list">
+                <li ng-repeat="item in list.data" ng-class="{'selected':$index == list.selected}">
+                    <a ng-disabled="list.isLoad()" ng-click="list.focus(item, $index)" ng-class="{'disabled':list.isLoad()}">
+                        <p>{{item.Title}}</p>
+                        <p>{{item.Description}}</p>
+                    </a>
+                </li>
+            </ul>
+        </perfect-scrollbar>
+        <uib-pagination class="map-items-pager pagination-sm" ng-if="list.data.length && list.pages > 1" previous-text="<" next-text=">" ng-disabled="list.loading" total-items="list.count" items-per-page="list.size" ng-change="list.update()" ng-model="list.page" max-size="3" boundary-link-numbers="true" rotate="false"></uib-pagination>
+        <div class="content-loading-cloak" ng-if="list.loading"></div>
+    </pageslide>
+</script>
+
+

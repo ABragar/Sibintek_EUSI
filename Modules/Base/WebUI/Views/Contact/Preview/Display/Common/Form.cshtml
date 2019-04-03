@@ -1,0 +1,195 @@
+﻿@using Base.Contact.Entities
+@model CommonPreview
+
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<script>
+    (function() {
+        "use strict";
+
+        var api = window["#= uid #"];
+        var id = parseInt("#= model.ID #");
+
+        api.makeIPCall = function() {
+            pbaAPI.infoMsg("Не реализовано");
+        };
+
+        api.createMailMessage = function() {
+            api.preview.deactivate();
+            pbaAPI.openDetailView("Mail", {
+                toSave: true,
+                entity: {
+                    To: [{ ID: id }]
+                },
+                callback: function(e) {
+                    if (e.type === "save") {
+                        pbaAPI.uploadMsg("Письмо отправлено");
+                    }
+                }
+            });
+        };
+
+        # if (model.Mnemonic === "@typeof(EmployeeUser).Name") { #
+
+        $("\##= uid #").find("[data-action]").click(function() {
+            var $action = $(this);
+
+            switch ($action.attr("data-action")) {
+                case "audiocall":
+                    api.preview.deactivate();
+                    globalapp.rtcService.sendCallRequest(id, "PrivateMessage", null, "audio");
+                    break;
+                case "videocall":
+                    api.preview.deactivate();
+                    globalapp.rtcService.sendCallRequest(id, "PrivateMessage", null, "video");
+                    break;
+                case "chat":
+                    api.preview.deactivate();
+                    application.chat.openDialog("PrivateMessage", id);
+                    break;
+                case "task":
+                    api.preview.deactivate();
+                    $.get("/users/getuser?id=" + id, function(user) {
+                        if (!user || !user.model || user.error) {
+                            $action.attr("disabled", true);
+
+                            pbaAPI.errorMsg(user && user.error || "Ошибка при загрузке пользователя");
+
+                            return;
+                        }
+
+                        pbaAPI.openDetailView("OutTask", {
+                            toSave: true,
+                            entity: {
+                                AssignedFrom: {
+                                    ID: application.currentUser.id,
+                                    Image: { FileID: application.currentUser.imageId },
+                                    FullName: application.currentUser.fullName
+                                },
+                                AssignedTo: user.model,
+                                Priority: 1,
+                                Status: 0,
+                                StatusMessage: "Срок окончания не определен"
+                            },
+                            callback: function(e) {
+                                if (e.type === "save") {
+                                    pbaAPI.uploadMsg("Задача поставлена");
+                                }
+                            }
+                        });
+                    });
+                    break;
+                default:
+                    pbaAPI.infoMsg("Действие не поддерживается");
+                    break;
+            }
+        });
+
+        # } #
+    }());
+</script>
+
+# if (model.Mnemonic === "@typeof(Employee).Name") { #
+
+<small class="hovercard__desc" title="#: model.Props.Job #" aria-hidden="#= !model.Props.Job #">#: model.Props.Job #</small>
+<ul class="hovercard__props" aria-hidden="#= !model.Props.Email && !model.Props.Phone #">
+    <li class="hovercard__prop" aria-hidden="#= !model.Props.Email #">
+        <span class="hovercard__prop-icon fa fa-envelope"></span>
+        <div class="hovercard__prop-action"
+             title="#: model.Props.Email #"
+             onclick="window['#= uid #'].createMailMessage()">
+            <span>#: model.Props.Email #</span>
+        </div>
+    </li>
+    <li class="hovercard__prop" aria-hidden="#= !model.Props.Phone #">
+        <span class="hovercard__prop-icon fa fa-phone"></span>
+        <div class="hovercard__prop-action"
+             title="#: model.Props.Phone #"
+             onclick="window['#= uid #'].makeIPCall()">
+            <span>#: model.Props.Phone #</span>
+        </div>
+    </li>
+</ul>
+
+# } else if (model.Mnemonic === "@typeof(EmployeeUser).Name") { #
+
+<small class="hovercard__desc" title="#: model.Props.Job #" aria-hidden="#= !model.Props.Job #">#: model.Props.Job #</small>
+<ul class="hovercard__props" aria-hidden="#= !model.Props.Email && !model.Props.Phone #">
+    <li class="hovercard__prop" aria-hidden="#= !model.Props.Email #">
+        <span class="hovercard__prop-icon fa fa-envelope"></span>
+        <div class="hovercard__prop-action"
+             title="#: model.Props.Email #"
+             onclick="window['#= uid #'].createMailMessage()">
+            <span>#: model.Props.Email #</span>
+        </div>
+    </li>
+    <li class="hovercard__prop" aria-hidden="#= !model.Props.Phone #">
+        <span class="hovercard__prop-icon fa fa-phone"></span>
+        <div class="hovercard__prop-action"
+             title="#: model.Props.Phone #"
+             onclick="window['#= uid #'].makeIPCall()">
+            <span>#: model.Props.Phone #</span>
+        </div>
+    </li>
+</ul>
+<div class="hovercard__status">#= pbaAPI.getUserState(model.ID, { showDesc: true }) #</div>
+<ul class="hovercard__actions">
+    <li class="hovercard__action">
+        <button data-action="videocall" class="btn btn-info" title="Видеозвонок">
+            <span class="fa fa-video-camera"></span>
+        </button>
+    </li>
+    <li class="hovercard__action">
+        <button data-action="audiocall" class="btn btn-info" title="Аудиозвонок">
+            <span class="fa fa-microphone"></span>
+        </button>
+    </li>
+    <li class="hovercard__action">
+        <button data-action="chat" class="btn btn-info" title="Открыть чат">
+            <span class="fa fa-comment-o"></span>
+        </button>
+    </li>
+    <li class="hovercard__action">
+        <button data-action="task" class="btn btn-success" title="Поставить задачу">
+            <span class="mdi mdi-calendar"></span>
+        </button>
+    </li>
+</ul>
+
+# } else if (model.Mnemonic === "@typeof(Company).Name") { #
+
+<small class="hovercard__desc" title="#: model.Props.Job #" aria-hidden="#= !model.Props.Address #">#: model.Props.Address #</small>
+<ul class="hovercard__props" aria-hidden="#= !model.Props.MainContact_ID && !model.Props.Responsible_ID #">
+    <li class="hovercard__prop" aria-hidden="#= !model.Props.MainContact_ID #">
+        <small class="hovercard__prop-caption">Основной контакт:</small>
+        <img class="hovercard__prop-image"
+             src="#= pbaAPI.imageHelpers.getsrc(model.Props.MainContact_ImageID, 24, 24, 'NoPhoto') #"
+             width="24"
+             height="24"
+             alt="#: model.Props.MainContact_Title #" />
+        <div class="hovercard__prop-action"
+             data-mnemonic="#= model.Props.MainContact_Mnemonic #"
+             data-id="#= model.Props.MainContact_ID #"
+             title="#: model.Props.MainContact_Title #">
+            <span>#: model.Props.MainContact_Title #</span>
+        </div>
+    </li>
+    <li class="hovercard__prop" aria-hidden="#= !model.Props.Responsible_ID #">
+        <small class="hovercard__prop-caption">Ответственный:</small>
+        <img class="hovercard__prop-image"
+             src="#= pbaAPI.imageHelpers.getsrc(model.Props.Responsible_ImageID, 24, 24, 'NoPhoto') #"
+             width="24"
+             height="24"
+             alt="#: model.Props.Responsible_Title #" />
+        <div class="hovercard__prop-action"
+             data-mnemonic="User"
+             data-id="#= model.Props.Responsible_ID #"
+             title="#: model.Props.Responsible_Title #">
+            <span>#: model.Props.Responsible_Title #</span>
+        </div>
+    </li>
+</ul>
+
+# } #

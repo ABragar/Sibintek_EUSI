@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<VehicleTypes>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<Code>201</Code>
+		<Name>Паровоз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<Code>202</Code>
+		<Name>Электровоз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<Code>203</Code>
+		<Name>Электропоезд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<Code>204</Code>
+		<Name>Тепловоз</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<Code>205</Code>
+		<Name>Дизель-поезд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<Code>206</Code>
+		<Name>Путевая машина</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<Code>207</Code>
+		<Name>Вагон пассажирский</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<Code>208</Code>
+		<Name>Вагон багажный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<Code>209</Code>
+		<Name>Вагон изотермический</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<Code>210</Code>
+		<Name>Цистерна</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<Code>211</Code>
+		<Name>Полувагон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<Code>212</Code>
+		<Name>Платформа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<Code>298</Code>
+		<Name>Прочий вагон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<Code>301</Code>
+		<Name>Легковой автомобиль общего назначения &lt;1&gt;, &lt;2&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<Code>302</Code>
+		<Name>Специальный легковой автомобиль &lt;1&gt;, &lt;3&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<Code>303</Code>
+		<Name>Грузовой автомобиль общего назначения &lt;4&gt;, &lt;5&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<Code>304</Code>
+		<Name>Специальный грузовой автомобиль &lt;4&gt;, &lt;6&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<Code>305</Code>
+		<Name>Грузопассажирский автомобиль &lt;4&gt;, &lt;7&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<Code>306</Code>
+		<Name>Автомобиль-тягач &lt;8&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<Code>307</Code>
+		<Name>Седельный тягач &lt;9&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<Code>308</Code>
+		<Name>Пассажирский прицеп, технически допустимая максимальная масса которого не более 0,75 т &lt;10&gt;, &lt;11&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<Code>309</Code>
+		<Name>Пассажирский прицеп, технически допустимая максимальная масса которого свыше 0,75 т, но не более 3,5 т &lt;10&gt;, &lt;11&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<Code>310</Code>
+		<Name>Пассажирский прицеп, технически допустимая максимальная масса которого свыше 3,5 т, но не более 10 т &lt;10&gt;, &lt;11&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<Code>311</Code>
+		<Name>Пассажирский прицеп, технически допустимая максимальная масса которого более 10 т &lt;10&gt;, &lt;11&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<Code>312</Code>
+		<Name>Грузовой прицеп общего назначения &lt;10&gt;, &lt;12&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<Code>313</Code>
+		<Name>Специальный прицеп &lt;10&gt;, &lt;13&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<Code>314</Code>
+		<Name>Караван &lt;10&gt;, &lt;14&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<Code>315</Code>
+		<Name>Пассажирский полуприцеп, технически допустимая максимальная масса которого не более 0,75 т &lt;15&gt;, &lt;16&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<Code>316</Code>
+		<Name>Пассажирский полуприцеп, технически допустимая максимальная масса которого свыше 0,75 т, но не более 3,5 т &lt;15&gt;, &lt;16&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<Code>317</Code>
+		<Name>Пассажирский полуприцеп, технически допустимая максимальная масса которого свыше 3,5 т, но не более 10 т &lt;15&gt;, &lt;16&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<Code>318</Code>
+		<Name>Пассажирский полуприцеп, технически допустимая максимальная масса которого более 10 т &lt;15&gt;, &lt;16&gt;, &lt;24&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<Code>319</Code>
+		<Name>Грузовой полуприцеп общего назначения &lt;15&gt;, &lt;17&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<Code>320</Code>
+		<Name>Специальный полуприцеп &lt;15&gt;, &lt;18&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<Code>321</Code>
+		<Name>Автобус общего назначения &lt;19&gt;, &lt;20&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<Code>322</Code>
+		<Name>Специальный автобус &lt;19&gt;, &lt;21&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<Code>323</Code>
+		<Name>Сочлененный автобус &lt;19&gt;, &lt;22&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<Code>324</Code>
+		<Name>Микроавтобус &lt;19&gt;, &lt;23&gt;</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<Code>400</Code>
+		<Name>Воздушное судно</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<Code>901</Code>
+		<Name>Контейнер</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+	<VehicleType>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<Code>999</Code>
+		<Name>Прочее транспортное средство</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</VehicleType>
+</VehicleTypes>
+  </DefaultDataHolder>

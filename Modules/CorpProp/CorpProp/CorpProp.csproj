@@ -1,0 +1,1020 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E747CF0-6C14-4D66-BD1B-B6841A761519}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CorpProp</RootNamespace>
+    <AssemblyName>CorpProp</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\..\..\Libs\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Excel.Helper, Version=1.0.1.0, Culture=neutral, PublicKeyToken=ab40b1b8217243eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\ExcelDataReaderHelper.1.0.3.0\lib\Excel.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.1.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\ExcelDataReader.3.1.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.1.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\ExcelDataReader.DataSet.3.1.0\lib\net45\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.6.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\DotNetZip.1.9.6\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\..\..\Libs\Kendo.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Globalization" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting">
+      <HintPath>..\..\..\Libs\Telerik Reporting R2 2018\Bin\Telerik.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\SibDisplayFormat.cs" />
+    <Compile Include="Common\BaseVersionControl.cs" />
+    <Compile Include="Common\CheckFileVersionResult.cs" />
+    <Compile Include="Common\IAdditionalExcelImportChecker.cs" />
+    <Compile Include="Common\IArchiveObject.cs" />
+    <Compile Include="Common\IArchiveService.cs" />
+    <Compile Include="Common\IConfirmImportChecker.cs" />
+    <Compile Include="Common\ICustomDataSource.cs" />
+    <Compile Include="Common\IDialogObject.cs" />
+    <Compile Include="Common\IExcelDataReaderImport.cs" />
+    <Compile Include="Common\IExcelImportChecker.cs" />
+    <Compile Include="Common\IExportToZip.cs" />
+    <Compile Include="Common\IHistory.cs" />
+    <Compile Include="Common\ISettings.cs" />
+    <Compile Include="Common\ISibUserNotification.cs" />
+    <Compile Include="Common\PartialEditor.cs" />
+    <Compile Include="Common\SecurityHelper.cs" />
+    <Compile Include="Config.CorpProp.cs" />
+    <Compile Include="Config.CorpProp.Estates.cs" />
+    <Compile Include="Config.CorpProp.Request.cs" />
+    <Compile Include="CorpPropModules\CorpProp\CorpPropConfig.cs" />
+    <Compile Include="DefaultData\DataHolderAttribute.cs" />
+    <Compile Include="DefaultData\FillDataStrategy.cs" />
+    <Compile Include="DefaultData\IDefaultDataHelper.cs" />
+    <Compile Include="DefaultData\IFillDataStrategy.cs" />
+    <Compile Include="Entities\Accounting\AccountingEstateRightView.cs" />
+    <Compile Include="Entities\Accounting\AccountingObjectTbl.cs" />
+    <Compile Include="Entities\Asset\NonCoreAsset.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetAndList.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetInventory.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetInventoryState.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetInventoryType.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetList.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetListState.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetOwnerCategory.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetSale.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetSaleAccept.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetSaleOffer.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetSaleStatus.cs" />
+    <Compile Include="Entities\Asset\NonCoreAssetStatus.cs" />
+    <Compile Include="Entities\Asset\NonEntity\NonCoreAssetAndListMapping.cs" />
+    <Compile Include="Entities\Asset\Persist\NonCoreAssetAndListTbl.cs" />
+    <Compile Include="Entities\Asset\Persist\NonCoreAssetTbl.cs" />
+    <Compile Include="Entities\Common\AdditionalFeatures.cs" />
+    <Compile Include="Entities\Common\CheckImportResult.cs" />
+    <Compile Include="Entities\Document\CardFolderDefaultSettings.cs" />
+    <Compile Include="Common\SibAccessErrorDescriber.cs" />
+    <Compile Include="Common\SibExceptions.cs" />
+    <Compile Include="Entities\Base\IImportObject.cs" />
+    <Compile Include="Entities\Document\FileCardType.cs" />
+    <Compile Include="Entities\Document\FileDB.cs" />
+    <Compile Include="Entities\Estate\EstateImage.cs" />
+    <Compile Include="Entities\Estate\EstateTaxes.cs" />
+    <Compile Include="Entities\Estate\LandLocation.cs" />
+    <Compile Include="Entities\Estate\PropertyComplexIO.cs" />
+    <Compile Include="Entities\Estate\EstateCalculatedField.cs" />
+    <Compile Include="Entities\Export\ExportTemplate.cs" />
+    <Compile Include="Entities\Export\ExportTemplateItem.cs" />
+    <Compile Include="Entities\Import\ImportObject.cs" />
+    <Compile Include="Entities\Law\ScheduleStateRegistrationType.cs" />
+    <Compile Include="Entities\ManyToMany\AccountingObjectAndEstate.cs" />
+    <Compile Include="Entities\ManyToMany\EstateAndEstate.cs" />
+    <Compile Include="Entities\ManyToMany\IKAndLand.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndAccountingObject.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndRequest.cs" />
+    <Compile Include="Entities\ManyToMany\SocietyAgents.cs" />
+    <Compile Include="Entities\ManyToMany\SocietySubsidiaries.cs" />
+    <Compile Include="Entities\NSI\AccountingSystem.cs" />
+    <Compile Include="Entities\NSI\BusinessBlock.cs" />
+    <Compile Include="Entities\NSI\BusinessUnit.cs" />
+    <Compile Include="Entities\NSI\EtstateStatus.cs" />
+    <Compile Include="Entities\NSI\EUSI\AssetHolderRSBU.cs" />
+    <Compile Include="Entities\NSI\EUSI\BoostOrReductionFactor.cs" />
+    <Compile Include="Entities\NSI\EUSI\CostKindRentalPayments.cs" />
+    <Compile Include="Entities\NSI\EUSI\DecisionsDetails.cs" />
+    <Compile Include="Entities\NSI\EUSI\DecisionsDetailsLand.cs" />
+    <Compile Include="Entities\NSI\EUSI\DecisionsDetailsTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\Deposit.cs" />
+    <Compile Include="Entities\NSI\EUSI\DepreciationMethodNSI.cs" />
+    <Compile Include="Entities\NSI\EUSI\DivisibleType.cs" />
+    <Compile Include="Entities\NSI\EUSI\EcoKlass.cs" />
+    <Compile Include="Entities\NSI\EUSI\ENAOF.cs" />
+    <Compile Include="Entities\NSI\EUSI\EnergyLabel.cs" />
+    <Compile Include="Entities\NSI\EUSI\EngineType.cs" />
+    <Compile Include="Entities\NSI\EUSI\EstateDefinitionType.cs" />
+    <Compile Include="Entities\NSI\EUSI\EstateMovableNSI.cs" />
+    <Compile Include="Entities\NSI\EUSI\GroupConsolidationMSFO.cs" />
+    <Compile Include="Entities\NSI\EUSI\GroupConsolidationRSBU.cs" />
+    <Compile Include="Entities\NSI\EUSI\HighEnergyEfficientFacility.cs" />
+    <Compile Include="Entities\NSI\EUSI\HighEnergyEfficientFacilityKP.cs" />
+    <Compile Include="Entities\NSI\EUSI\LandPurpose.cs" />
+    <Compile Include="Entities\NSI\EUSI\LicenseArea.cs" />
+    <Compile Include="Entities\NSI\EUSI\ObjectLocationRent.cs" />
+    <Compile Include="Entities\NSI\EUSI\PeriodCalculatedNU.cs" />
+    <Compile Include="Entities\NSI\EUSI\PeriodNU.cs" />
+    <Compile Include="Entities\NSI\EUSI\PermittedUseKind.cs" />
+    <Compile Include="Entities\NSI\EUSI\PositionConsolidation.cs" />
+    <Compile Include="Entities\NSI\EUSI\RentTypeMSFO.cs" />
+    <Compile Include="Entities\NSI\EUSI\RentTypeRSBU.cs" />
+    <Compile Include="Entities\NSI\EUSI\SibCityNSI.cs" />
+    <Compile Include="Entities\NSI\EUSI\StateObjectMSFO.cs" />
+    <Compile Include="Entities\NSI\EUSI\StateObjectRent.cs" />
+    <Compile Include="Entities\NSI\EUSI\StateObjectRSBU.cs" />
+    <Compile Include="Entities\NSI\EUSI\StructurePlan.cs" />
+    <Compile Include="Entities\NSI\EUSI\SubsoilUser.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxDeductionTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxExemptionTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxExemptionLand.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxExemption.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxFederalExemptionTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxFederalExemptionLand.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxFederalExemption.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxFreeLand.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxFreeTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxLower.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxLowerLand.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxLowerTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxName.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxPeriod.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRate.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRateLand.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRateLower.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRateLowerLand.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRateLowerTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRateTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRateType.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRegionExemptionTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRegionExemptionLand.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxRegionExemption.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxReportPeriod.cs" />
+    <Compile Include="Entities\NSI\EUSI\TaxVehicleKindCode.cs" />
+    <Compile Include="Entities\NSI\EUSI\TermOfPymentTaxRate.cs" />
+    <Compile Include="Entities\NSI\EUSI\TermOfPymentTaxRateLand.cs" />
+    <Compile Include="Entities\NSI\EUSI\TermOfPymentTaxRateTS.cs" />
+    <Compile Include="Entities\NSI\EUSI\VehicleClass.cs" />
+    <Compile Include="Entities\NSI\EUSI\VehicleLabel.cs" />
+    <Compile Include="Entities\NSI\EUSI\VehicleModel.cs" />
+    <Compile Include="Entities\NSI\EUSI\YesNo.cs" />
+    <Compile Include="Entities\NSI\ImportHistoryState.cs" />
+    <Compile Include="Entities\NSI\PropertyComplexIOType.cs" />
+    <Compile Include="Entities\NSI\RSBU.cs" />
+    <Compile Include="Entities\NSI\SubPositionConsolidation.cs" />
+    <Compile Include="Entities\NSI\TaxBase.cs" />
+    <Compile Include="Entities\NSI\TenureType.cs" />
+    <Compile Include="Entities\NSI\TypeAccounting.cs" />
+    <Compile Include="Entities\ProjectActivity\SibProjectTemplate.cs" />
+    <Compile Include="Entities\ProjectActivity\SibTaskTemplate.cs" />
+    <Compile Include="Entities\Settings\ExportImportSettings.cs" />
+    <Compile Include="Entities\Settings\NotificationGroup.cs" />
+    <Compile Include="Entities\Settings\UserNotificationTemplate.cs" />
+    <Compile Include="Entities\Settings\UserNotification.cs" />
+    <Compile Include="Entities\Subject\SocietyCalculatedField.cs" />
+    <Compile Include="Exceptions\EmptyLandCollectionExceptioncs.cs" />
+    <Compile Include="Extentions\HashsetExtensions.cs" />
+    <Compile Include="Extentions\SecurityUserHelper.cs" />
+    <Compile Include="Entities\ManyToMany\SibUserTerritory.cs" />
+    <Compile Include="Entities\Security\ObjectPermission.cs" />
+    <Compile Include="Entities\Base\IHistoryObject.cs" />
+    <Compile Include="Common\ISocietal.cs" />
+    <Compile Include="Entities\Document\FileCardPermission.cs" />
+    <Compile Include="Entities\Estate\RealEstateComplex.cs" />
+    <Compile Include="Entities\History\HistoricalSettings.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndExtract.cs" />
+    <Compile Include="Entities\NSI\NSI.cs" />
+    <Compile Include="Entities\NSI\NSIType.cs" />
+    <Compile Include="Entities\Settings\SibNotification.cs" />
+    <Compile Include="Entities\Access\SibPermission.cs" />
+    <Compile Include="Extentions\Extentions.cs" />
+    <Compile Include="Helpers\CriteriaHelper.cs" />
+    <Compile Include="Helpers\ExcelExportHelper.cs" />
+    <Compile Include="Helpers\HistoryHelper.cs" />
+    <Compile Include="Helpers\ImportHistoryHelpers\ImportResultTextGenerator.cs" />
+    <Compile Include="Helpers\MailHelper.cs" />
+    <Compile Include="Helpers\NotificationHelper.cs" />
+    <Compile Include="Helpers\ObjectHelper.cs" />
+    <Compile Include="Common\IPermissionObject.cs" />
+    <Compile Include="Helpers\ProjectActivityHelper.cs" />
+    <Compile Include="Helpers\ReportHelper.cs" />
+    <Compile Include="Helpers\SibTaskHelper.cs" />
+    <Compile Include="Initializer.NotificationTemplate.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Initializer.UsersAndRoles.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IImportResultTextGenerator.cs" />
+    <Compile Include="Model\Model.ExportImportSettings.cs">
+      <DependentUpon>Model.Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.File.cs" />
+    <Compile Include="Model\Model.NSI.cs" />
+    <Compile Include="Model\Model.NSI.DictObject.cs">
+      <DependentUpon>Model.NSI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Project.cs">
+      <DependentUpon>Model.ProjectActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.ProjectActivity.cs" />
+    <Compile Include="Model\Model.PropertyComplexIO.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.RealEstateComplex.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.ScheduleStateRegistrationRecord.cs">
+      <DependentUpon>Model.Law.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\MappingHelper.cs" />
+    <Compile Include="Model\Model.Settings.cs" />
+    <Compile Include="Model\Model.SibNotification.cs">
+      <DependentUpon>Model.Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Task.cs">
+      <DependentUpon>Model.ProjectActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Partial\Common\Projector.cs" />
+    <Compile Include="Model\Partial\Common\ServiceProjectorDecorator.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\IChildrenModel.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLand.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandAccountingDt5.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandAdditionals.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandAddress9.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandCharacteristics2.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandClassifiers6.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandCost7.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandGeneralData.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandLinks14.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandOtherLinks3.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandRight10.cs" />
+    <Compile Include="Model\Partial\Entities\SeparLand\SeparLandState8.cs" />
+    <Compile Include="Model\Partial\Model.SeparLand.cs" />
+    <Compile Include="Services\Accounting\IAccountingVersion.cs" />
+    <Compile Include="Services\Accounting\OBUVersionControl.cs" />
+    <Compile Include="Services\Asset\NNAItemStatesService.cs" />
+    <Compile Include="Services\Base\GetAllService.cs" />
+    <Compile Include="Services\Import\BulkMerge\AccountingObjectQueryBuilder.cs" />
+    <Compile Include="Services\Import\BulkMerge\BankingDetailObjectQueryBuilder.cs" />
+    <Compile Include="Services\Import\BulkMerge\BulkHelper.cs" />
+    <Compile Include="Services\Import\BulkMerge\BulkMergeManager.cs" />
+    <Compile Include="Services\Import\BulkMerge\NsiQueryBuilder.cs" />
+    <Compile Include="Services\Import\BulkMerge\QueryBuilder.cs" />
+    <Compile Include="Services\Import\BulkMerge\ScheduleStateRegistrationQueryBuilder.cs" />
+    <Compile Include="Services\Import\BulkMerge\ShareHolderQueryBuilder.cs" />
+    <Compile Include="Services\Import\BulkMerge\SocietyQueryBuilder.cs" />
+    <Compile Include="Services\Import\BulkMerge\SqlColumnDefinition.cs" />
+    <Compile Include="Services\Import\BulkMerge\SqlQueryHelper.cs" />
+    <Compile Include="Services\Import\BulkMerge\SqlTableProperties.cs" />
+    <Compile Include="Services\Import\BulkMerge\SubjectQueryBuilder.cs" />
+    <Compile Include="Services\NSI\SibCityNSIService.cs" />
+    <Compile Include="Services\NSI\SibFederalDistrictService.cs" />
+    <Compile Include="Services\ScheduleStateRegistrationExport\CellFormatter.cs" />
+    <Compile Include="Services\ScheduleStateRegistrationExport\CellWriter.cs" />
+    <Compile Include="Services\ScheduleStateRegistrationExport\ReportBuilder.cs" />
+    <Compile Include="Services\ScheduleStateRegistrationExport\ScheduleStateRegistrationExportService.cs" />
+    <Compile Include="Services\ScheduleStateRegistrationExport\ScheduleStateRegistrationReportBuilder.cs" />
+    <Compile Include="Services\ScheduleStateRegistrationExport\ScheduleStateTerminateReportBuilder.cs" />
+    <Compile Include="Services\Settings\DefaultNotificationStrategy.cs" />
+    <Compile Include="Services\Settings\EstateRegistrationNotificationStrategy.cs" />
+    <Compile Include="Services\Settings\INotificationStrategy.cs" />
+    <Compile Include="Services\Settings\RentalOsNotificationstrategy.cs" />
+    <Compile Include="Services\Settings\SibEmailService.cs" />
+    <Compile Include="Services\Subject\NCAChangeOGService.cs" />
+    <Compile Include="Services\Asset\NCAListPreviousPeriodService.cs" />
+    <Compile Include="Services\Common\SibAccessableObjectCategorizedItemService.cs" />
+    <Compile Include="Services\Document\CardFolderService.cs" />
+    <Compile Include="Services\Document\FileDBService.cs" />
+    <Compile Include="Services\Estate\EstateCalculatedFieldService.cs" />
+    <Compile Include="Services\Estate\PropertyComplexIOService.cs" />
+    <Compile Include="Services\Preset\SibMenuPresetService.cs" />
+    <Compile Include="Services\Asset\Mapping\NonCoreAssetMapingListService.cs" />
+    <Compile Include="Services\Base\IHistoryService.cs" />
+    <Compile Include="Common\IXmlDataImport.cs" />
+    <Compile Include="DefaultData\DefaultDataHelper.cs" />
+    <Compile Include="DefaultData\DefaultDataHolder.cs" />
+    <Compile Include="DefaultData\MenuDefaultData.cs" />
+    <Compile Include="Entities\Accounting\AccountingObject.cs" />
+    <Compile Include="Entities\Accounting\BIK.cs" />
+    <Compile Include="Entities\Base\IAdditionalEstateCharacteristics.cs" />
+    <Compile Include="Entities\CorporateGovernance\AppraisalOrgData.cs" />
+    <Compile Include="Entities\CorporateGovernance\AppraiserDataFinYear.cs" />
+    <Compile Include="Entities\Estate\CadastralPart.cs" />
+    <Compile Include="Entities\Estate\CarParkingSpace.cs" />
+    <Compile Include="Entities\Estate\Coordinate.cs" />
+    <Compile Include="Entities\Estate\NonCadastral.cs" />
+    <Compile Include="Entities\Estate\Room.cs" />
+    <Compile Include="Entities\Import\ImportErrorLog.cs" />
+    <Compile Include="Entities\Import\ImportHistory.cs" />
+    <Compile Include="Entities\Import\ImportTemplate.cs" />
+    <Compile Include="Entities\Import\ImportTemplateItem.cs" />
+    <Compile Include="Entities\Law\RightCostView.cs" />
+    <Compile Include="Entities\Law\ScheduleStateYear.cs" />
+    <Compile Include="Entities\ManyToMany\CadastralAndExtract.cs" />
+    <Compile Include="Entities\ManyToMany\EstateAndEstateAppraisal.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndAppraisal.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndCertificateRight.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndDoc.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndEstate.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndLegalRight.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndNonCoreAsset.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndRequestContent.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndResponse.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndScheduleStateRegistrationRecord.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndScheduleStateTerminateRecord.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndScheduleStateYear.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardAndSibProject.cs" />
+    <Compile Include="Entities\ManyToMany\FileCardOneAndFileCardMany.cs" />
+    <Compile Include="Entities\ManyToMany\IntangibleAssetAndSibCountry.cs" />
+    <Compile Include="Entities\ManyToMany\RequestAndSociety.cs" />
+    <Compile Include="Entities\ManyToMany\ResponseAndSibUser.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskAndAppraisal.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskAndDeal.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskAndEstate.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskAndFileCard.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskAndRight.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskAndSibUser.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskReportAndAppraisal.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskReportAndDeal.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskReportAndEstate.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskReportAndFileCard.cs" />
+    <Compile Include="Entities\ManyToMany\SibTaskReportAndRight.cs" />
+    <Compile Include="Entities\Mapping\AccountingEstates.cs" />
+    <Compile Include="Entities\Mapping\EstateRulesCteation.cs" />
+    <Compile Include="Entities\Mapping\OKOFEstates.cs" />
+    <Compile Include="Entities\Mapping\RosReestrTypeEstate.cs" />
+    <Compile Include="Entities\NSI\AppType.cs" />
+    <Compile Include="Entities\NSI\DictObjectState.cs" />
+    <Compile Include="Entities\NSI\DictObjectStatus.cs" />
+    <Compile Include="Entities\NSI\HolidaysCalendar.cs" />
+    <Compile Include="Entities\NSI\RealEstatePurpose.cs" />
+    <Compile Include="Entities\NSI\ContourType.cs" />
+    <Compile Include="Entities\NSI\EstateAppraisalType.cs" />
+    <Compile Include="Entities\NSI\IntangibleAssetStatus.cs" />
+    <Compile Include="Entities\NSI\LandType.cs" />
+    <Compile Include="Entities\NSI\NonCoreAssetListItemState.cs" />
+    <Compile Include="Entities\Base\DictObject.cs" />
+    <Compile Include="Entities\Base\HDictObject.cs" />
+    <Compile Include="Entities\Base\TypeObject.cs" />
+    <Compile Include="Entities\CorporateGovernance\Appraisal.cs" />
+    <Compile Include="Entities\CorporateGovernance\AppraisalType.cs" />
+    <Compile Include="Entities\CorporateGovernance\EstateAppraisal.cs" />
+    <Compile Include="Entities\CorporateGovernance\IndicateEstateAppraisalView.cs" />
+    <Compile Include="Entities\CorporateGovernance\Investment.cs" />
+    <Compile Include="Entities\CorporateGovernance\InvestmentType.cs" />
+    <Compile Include="Entities\CorporateGovernance\Predecessor.cs" />
+    <Compile Include="Entities\CorporateGovernance\Shareholder.cs" />
+    <Compile Include="Entities\CorporateGovernance\SuccessionType.cs" />
+    <Compile Include="Entities\DocumentFlow\SibDeal.cs" />
+    <Compile Include="Entities\DocumentFlow\DealCurrencyConversion.cs" />
+    <Compile Include="Entities\DocumentFlow\DealParticipant.cs" />
+    <Compile Include="Entities\DocumentFlow\DealStatus.cs" />
+    <Compile Include="Entities\DocumentFlow\Doc.cs" />
+    <Compile Include="Entities\DocumentFlow\DocKind.cs" />
+    <Compile Include="Entities\DocumentFlow\DocStatus.cs" />
+    <Compile Include="Entities\DocumentFlow\DocTask.cs" />
+    <Compile Include="Entities\DocumentFlow\DocType.cs" />
+    <Compile Include="Entities\DocumentFlow\DocTypeOperation.cs" />
+    <Compile Include="Entities\Document\CardFolder.cs" />
+    <Compile Include="Entities\Document\FileCard.cs" />
+    <Compile Include="Entities\Document\FileCardMany.cs" />
+    <Compile Include="Entities\Document\FileCardOne.cs" />
+    <Compile Include="Entities\Document\FileDataHelper.cs" />
+    <Compile Include="Entities\Estate\Aircraft.cs" />
+    <Compile Include="Entities\Estate\AircraftKind.cs" />
+    <Compile Include="Entities\Estate\AircraftType.cs" />
+    <Compile Include="Entities\Estate\BuildingStructure.cs" />
+    <Compile Include="Entities\Estate\Cadastral.cs" />
+    <Compile Include="Entities\Estate\CadastralValue.cs" />
+    <Compile Include="Entities\Estate\Estate.cs" />
+    <Compile Include="Entities\Estate\EstateDeal.cs" />
+    <Compile Include="Entities\Estate\IntangibleAsset.cs" />
+    <Compile Include="Entities\Estate\InventoryObject.cs" />
+    <Compile Include="Entities\Estate\Land.cs" />
+    <Compile Include="Entities\Estate\MovableEstate.cs" />
+    <Compile Include="Entities\Estate\PropertyComplex.cs" />
+    <Compile Include="Entities\Estate\RealEstate.cs" />
+    <Compile Include="Entities\Estate\Ship.cs" />
+    <Compile Include="Entities\Estate\ShipClass.cs" />
+    <Compile Include="Entities\Estate\ShipKind.cs" />
+    <Compile Include="Entities\Estate\ShipType.cs" />
+    <Compile Include="Entities\Estate\SpaceShip.cs" />
+    <Compile Include="Entities\Estate\UnfinishedConstruction.cs" />
+    <Compile Include="Entities\Estate\Vehicle.cs" />
+    <Compile Include="Entities\Estate\VehicleCategory.cs" />
+    <Compile Include="Entities\Estate\VehicleType.cs" />
+    <Compile Include="Entities\FIAS\SibAddress.cs" />
+    <Compile Include="Entities\FIAS\SibCountry.cs" />
+    <Compile Include="Entities\FIAS\SibRegion.cs" />
+    <Compile Include="Entities\Law\DuplicateRightView.cs" />
+    <Compile Include="Entities\Law\Encumbrance.cs" />
+    <Compile Include="Entities\Law\EncumbranceType.cs" />
+    <Compile Include="Entities\Law\Extract.cs" />
+    <Compile Include="Entities\Law\ExtractFormat.cs" />
+    <Compile Include="Entities\Law\ExtractItem.cs" />
+    <Compile Include="Entities\Law\ExtractType.cs" />
+    <Compile Include="Entities\Law\IntangibleAssetRight.cs" />
+    <Compile Include="Entities\Law\RegistrationBasis.cs" />
+    <Compile Include="Entities\Law\Right.cs" />
+    <Compile Include="Entities\Law\RightKind.cs" />
+    <Compile Include="Entities\Law\RightType.cs" />
+    <Compile Include="Entities\Law\ScheduleStateRegistration.cs" />
+    <Compile Include="Entities\Law\ScheduleStateRegistrationRecord.cs" />
+    <Compile Include="Entities\Law\ScheduleStateRegistrationStatus.cs" />
+    <Compile Include="Entities\Law\ScheduleStateTerminate.cs" />
+    <Compile Include="Entities\Law\ScheduleStateTerminateRecord.cs" />
+    <Compile Include="Entities\Mapping\ExternalMappingSystem.cs" />
+    <Compile Include="Entities\Mapping\Mapping.cs" />
+    <Compile Include="Entities\NSI\AccountingMovingType.cs" />
+    <Compile Include="Entities\NSI\AccountingStatus.cs" />
+    <Compile Include="Entities\NSI\ActualKindActivity.cs" />
+    <Compile Include="Entities\NSI\AddonAttributeGroundCategory.cs" />
+    <Compile Include="Entities\NSI\AppraisalGoal.cs" />
+    <Compile Include="Entities\NSI\AppraisalPurpose.cs" />
+    <Compile Include="Entities\NSI\BaseExclusionFromPerimeter.cs" />
+    <Compile Include="Entities\NSI\BaseInclusionInPerimeter.cs" />
+    <Compile Include="Entities\NSI\BasisForInvestments.cs" />
+    <Compile Include="Entities\NSI\BusinessArea.cs" />
+    <Compile Include="Entities\NSI\BusinessDirection.cs" />
+    <Compile Include="Entities\NSI\BusinessSegment.cs" />
+    <Compile Include="Entities\NSI\ClassFixedAsset.cs" />
+    <Compile Include="Entities\NSI\Consolidation.cs" />
+    <Compile Include="Entities\NSI\ContragentKind.cs" />
+    <Compile Include="Entities\NSI\Currency.cs" />
+    <Compile Include="Entities\NSI\DealType.cs" />
+    <Compile Include="Entities\NSI\DepreciationGroup.cs" />
+    <Compile Include="Entities\NSI\EstateType.cs" />
+    <Compile Include="Entities\NSI\ExchangeRate.cs" />
+    <Compile Include="Entities\NSI\FeatureType.cs" />
+    <Compile Include="Entities\NSI\GroundCategory.cs" />
+    <Compile Include="Entities\NSI\ImplementationWay.cs" />
+    <Compile Include="Entities\NSI\InformationSource.cs" />
+    <Compile Include="Entities\NSI\IntangibleAssetRightType.cs" />
+    <Compile Include="Entities\NSI\IntangibleAssetType.cs" />
+    <Compile Include="Entities\NSI\LayingType.cs" />
+    <Compile Include="Entities\NSI\LeavingReason.cs" />
+    <Compile Include="Entities\NSI\Location.cs" />
+    <Compile Include="Entities\NSI\NonCoreAssetAppraisalType.cs" />
+    <Compile Include="Entities\NSI\NonCoreAssetListKind.cs" />
+    <Compile Include="Entities\NSI\NonCoreAssetListType.cs" />
+    <Compile Include="Entities\NSI\NonCoreAssetSaleAcceptType.cs" />
+    <Compile Include="Entities\NSI\NonCoreAssetType.cs" />
+    <Compile Include="Entities\NSI\OKATO.cs" />
+    <Compile Include="Entities\NSI\OKOF.cs" />
+    <Compile Include="Entities\NSI\OKOFS.cs" />
+    <Compile Include="Entities\NSI\OKOGU.cs" />
+    <Compile Include="Entities\NSI\OKOPF.cs" />
+    <Compile Include="Entities\NSI\OKPO.cs" />
+    <Compile Include="Entities\NSI\OKTMO.cs" />
+    <Compile Include="Entities\NSI\OKVED.cs" />
+    <Compile Include="Entities\NSI\OPF.cs" />
+    <Compile Include="Entities\NSI\OwnershipType.cs" />
+    <Compile Include="Entities\NSI\ProductionBlock.cs" />
+    <Compile Include="Entities\NSI\ResponseRowState.cs" />
+    <Compile Include="Entities\NSI\SibProjectType.cs" />
+    <Compile Include="Entities\NSI\PropertyComplexKind.cs" />
+    <Compile Include="Entities\NSI\RealEstateKind.cs" />
+    <Compile Include="Entities\NSI\ReceiptReason.cs" />
+    <Compile Include="Entities\NSI\RequestStatus.cs" />
+    <Compile Include="Entities\NSI\ResponseStatus.cs" />
+    <Compile Include="Entities\NSI\RightHolderKind.cs" />
+    <Compile Include="Entities\NSI\ShipAssignment.cs" />
+    <Compile Include="Entities\NSI\SibBank.cs" />
+    <Compile Include="Entities\NSI\SibFederalDistrict.cs" />
+    <Compile Include="Entities\NSI\SibKBK.cs" />
+    <Compile Include="Entities\NSI\SibMeasure.cs" />
+    <Compile Include="Entities\NSI\SignType.cs" />
+    <Compile Include="Entities\NSI\SocietyCategory1.cs" />
+    <Compile Include="Entities\NSI\SocietyCategory2.cs" />
+    <Compile Include="Entities\NSI\SocietyDept.cs" />
+    <Compile Include="Entities\NSI\SourceInformation.cs" />
+    <Compile Include="Entities\NSI\SourceInformationType.cs" />
+    <Compile Include="Entities\NSI\StageOfCompletion.cs" />
+    <Compile Include="Entities\NSI\StatusConstruction.cs" />
+    <Compile Include="Entities\NSI\TaxNumberInSheet.cs" />
+    <Compile Include="Entities\NSI\TypeData.cs" />
+    <Compile Include="Entities\NSI\UnitOfCompany.cs" />
+    <Compile Include="Entities\NSI\VehicleKindCode.cs" />
+    <Compile Include="Entities\NSI\WellCategory.cs" />
+    <Compile Include="Entities\ProjectActivity\SibProject.cs" />
+    <Compile Include="Entities\ProjectActivity\SibProjectStatus.cs" />
+    <Compile Include="Entities\ProjectActivity\SibTask.cs" />
+    <Compile Include="Entities\ProjectActivity\SibTaskGanttDependency.cs" />
+    <Compile Include="Entities\ProjectActivity\SibTaskReport.cs" />
+    <Compile Include="Entities\ProjectActivity\SibTaskReportStatus.cs" />
+    <Compile Include="Entities\ProjectActivity\SibTaskStatus.cs" />
+    <Compile Include="Entities\Request\IRequest.cs" />
+    <Compile Include="Entities\Request\IRequestRow.cs" />
+    <Compile Include="Entities\Request\IRequestColumn.cs" />
+    <Compile Include="Entities\Request\IResponseColumn.cs" />
+    <Compile Include="Entities\Request\Request.cs" />
+    <Compile Include="Entities\Request\RequestColumn.cs" />
+    <Compile Include="Entities\Request\RequestColumnItems.cs" />
+    <Compile Include="Entities\Request\RequestContent.cs" />
+    <Compile Include="Entities\Request\RequestDynamicType.cs" />
+    <Compile Include="Entities\Request\RequestRow.cs" />
+    <Compile Include="Entities\Request\RequestTemplate.cs" />
+    <Compile Include="Entities\Request\Response.cs" />
+    <Compile Include="Entities\Request\depricated\ResponseCell.cs" />
+    <Compile Include="Entities\Request\ResponseRow.cs" />
+    <Compile Include="Entities\Request\IResponse.cs" />
+    <Compile Include="Entities\Request\ResponseCells\IResponseCell.cs" />
+    <Compile Include="Entities\Request\ResponseCells\ResponseCellBase.cs" />
+    <Compile Include="Entities\Request\ResponseCells\ResponseCellDateTime.cs" />
+    <Compile Include="Entities\Request\ResponseCells\ResponseCellDict.cs" />
+    <Compile Include="Entities\Request\ResponseCells\ResponseCellDecimal.cs" />
+    <Compile Include="Entities\Request\ResponseCells\ResponseCellBoolean.cs" />
+    <Compile Include="Entities\Request\ResponseCells\ResponseCellString.cs" />
+    <Compile Include="Entities\Request\ResponseCells\ResponseCellFloat.cs" />
+    <Compile Include="Entities\Request\ResponseCells\ResponseCellDouble.cs" />
+    <Compile Include="Entities\Request\ResponseCells\ResponseCellInt.cs" />
+    <Compile Include="Entities\Security\SibRole.cs" />
+    <Compile Include="Entities\Security\SibUser.cs" />
+    <Compile Include="Helpers\Import.AccountingObject.cs">
+      <DependentUpon>Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Import.Checker.cs">
+      <DependentUpon>Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Import.cs" />
+    <Compile Include="Helpers\Import.Exception.cs">
+      <DependentUpon>Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Import.Extention.cs">
+      <DependentUpon>Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Import.Helper.cs">
+      <DependentUpon>Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Import.Loader.cs">
+      <DependentUpon>Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Subject\BankingDetail.cs" />
+    <Compile Include="Helpers\Tabs.cs" />
+    <Compile Include="Initializer.Document.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Initializer.Model.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Initializer.Request.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Aircraft.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Appraisal.cs">
+      <DependentUpon>Model.CorporateGovernance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.BuildingStructure.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Cadastral.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.CarParkingSpace.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.CorporateGovernance.cs" />
+    <Compile Include="Model\Model.DocumentFlow.cs" />
+    <Compile Include="Model\Model.Estate.cs" />
+    <Compile Include="Model\Model.EstateAppraisal.cs">
+      <DependentUpon>Model.CorporateGovernance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Import.cs" />
+    <Compile Include="Model\Model.Import.ErrorLog.cs">
+      <DependentUpon>Model.Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Import.History.cs">
+      <DependentUpon>Model.Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Import.Template.cs">
+      <DependentUpon>Model.Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Import.TemplateItem.cs">
+      <DependentUpon>Model.Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.IntangibleAsset.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.InventoryObject.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Land.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Law.cs" />
+    <Compile Include="Model\Model.MovableEstate.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.NonCadastral.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.PropertyComplex.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.RealEstate.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Right.cs">
+      <DependentUpon>Model.Law.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Room.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Ship.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.SpaceShip.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.UnfinishedConstruction.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model.Vehicle.cs">
+      <DependentUpon>Model.Estate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Asset\NonCoreAssetInventoryService.cs" />
+    <Compile Include="Services\Base\DictHistoryService.cs" />
+    <Compile Include="Services\Base\TypeObjectService.cs" />
+    <Compile Include="Services\CorporateGovernance\AppraisalOrgDataService.cs" />
+    <Compile Include="Services\CorporateGovernance\AppraiserDataFinYearServicecs.cs" />
+    <Compile Include="Services\DocumentFlow\DealService.cs" />
+    <Compile Include="Services\Document\FileCardOneAndFileCardManySevice.cs" />
+    <Compile Include="Services\Document\FileCardService.cs" />
+    <Compile Include="Services\Estate\AdditionalPropertyService.cs" />
+    <Compile Include="Services\Estate\BaseEstateService.cs" />
+    <Compile Include="Services\Estate\CadastralPartService.cs" />
+    <Compile Include="Services\Estate\CarParkingSpaceService.cs" />
+    <Compile Include="Services\Estate\NonCadastralService.cs" />
+    <Compile Include="Services\Estate\RealEstateComplexService.cs" />
+    <Compile Include="Services\Estate\RoomService.cs" />
+    <Compile Include="Services\Import\ImportErrorLogService.cs" />
+    <Compile Include="Services\Import\ImportHistoryService.cs" />
+    <Compile Include="Services\Law\RightCostViewService.cs" />
+    <Compile Include="Services\NSI\SocietyDeptHierarhyService.cs" />
+    <Compile Include="Services\RequestContent\RequestContentService.cs" />
+    <Compile Include="Services\ProjectActivity\SibTaskGanttDependencyService.cs" />
+    <Compile Include="Services\Response\Fasade\DynamicLinqHelper.cs" />
+    <Compile Include="Services\Response\Fasade\ICellsData.cs" />
+    <Compile Include="Services\Response\Fasade\RequestQuery.cs" />
+    <Compile Include="Services\Response\Fasade\RequestSelector.cs" />
+    <Compile Include="Services\Response\Fasade\RequestUpdate.cs" />
+    <Compile Include="Services\Response\Fasade\ResponseCellValueConverter.cs" />
+    <Compile Include="Services\Response\Fasade\TableData.cs" />
+    <Compile Include="Services\Response\Fasade\CellsData.cs" />
+    <Compile Include="Services\Mapping\AccountingEstatesService.cs" />
+    <Compile Include="Services\Mapping\OKOFEstatesService.cs" />
+    <Compile Include="Services\Response\IRequestDynamicQueryService.cs" />
+    <Compile Include="Services\Response\IResponseColumnsService.cs" />
+    <Compile Include="Services\Response\RequestDynamicQueryService.cs" />
+    <Compile Include="Services\Response\ResponseColumnsService.cs" />
+    <Compile Include="Services\Response\ResponseDynamicQueryService.cs" />
+    <Compile Include="Services\Response\IResponseDynamicQueryService.cs" />
+    <Compile Include="Services\Request\RequestColumnService.cs" />
+    <Compile Include="Services\Request\RequestService.cs" />
+    <Compile Include="Entities\Request\ResponseGridEditor.cs" />
+    <Compile Include="Services\Response\ResponseDraftService.cs" />
+    <Compile Include="Services\Response\ResponseDynamicType.cs" />
+    <Compile Include="Services\Estate\BuildingStructureService.cs" />
+    <Compile Include="Services\Estate\LandService.cs" />
+    <Compile Include="Services\Estate\UnfinishedConstructionService.cs" />
+    <Compile Include="Services\Law\ExtractService.cs" />
+    <Compile Include="Services\Law\ScheduleStateRegistrationRecordService.cs" />
+    <Compile Include="Services\Law\ScheduleStateTerminateRecordService.cs" />
+    <Compile Include="Services\Response\ResponseIncomingService.cs" />
+    <Compile Include="Services\Response\ResponseOutgoingService.cs.cs" />
+    <Compile Include="Services\Response\ResponseService.cs" />
+    <Compile Include="Services\Law\ScheduleStateYearService.cs" />
+    <Compile Include="Services\Response\Fasade\ResponseTypeDataFacade.cs" />
+    <Compile Include="Services\Security\ObjectPermissionService.cs" />
+    <Compile Include="Services\Security\SibUserAccessWizardService.cs" />
+    <Compile Include="Entities\Security\SibUserAccessWizard.cs" />
+    <Compile Include="Entities\Subject\Appraiser.cs" />
+    <Compile Include="Entities\Subject\Society.cs" />
+    <Compile Include="Entities\Subject\Subject.cs" />
+    <Compile Include="Entities\Subject\SubjectActivityKind.cs" />
+    <Compile Include="Entities\Subject\SubjectKind.cs" />
+    <Compile Include="Entities\Subject\SubjectType.cs" />
+    <Compile Include="Helpers\CaptionHelper.cs" />
+    <Compile Include="Helpers\DbfReader.cs" />
+    <Compile Include="Helpers\EstateHelper.cs" />
+    <Compile Include="Helpers\TypesHelper.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Accounting\AccountingObjectService.cs" />
+    <Compile Include="Services\Asset\NonCoreAssetListItemService.cs" />
+    <Compile Include="Services\Asset\NonCoreAssetListService.cs" />
+    <Compile Include="Services\Asset\NonCoreAssetSaleAcceptService.cs" />
+    <Compile Include="Services\Asset\NonCoreAssetSaleOfferService.cs" />
+    <Compile Include="Services\Asset\NonCoreAssetSaleService.cs" />
+    <Compile Include="Services\Asset\NonCoreAssetService.cs" />
+    <Compile Include="Services\Base\DictObjectService.cs" />
+    <Compile Include="Services\CorporateGovernance\AppraisalService.cs" />
+    <Compile Include="Services\CorporateGovernance\EstateAppraisalService.cs" />
+    <Compile Include="Services\CorporateGovernance\IndicateEstateAppraisalService.cs" />
+    <Compile Include="Services\CorporateGovernance\InvestmentService.cs" />
+    <Compile Include="Services\CorporateGovernance\PredecessorService.cs" />
+    <Compile Include="Services\CorporateGovernance\ShareholderService.cs" />
+    <Compile Include="Services\DocumentFlow\DealCurrencyConversionService.cs" />
+    <Compile Include="Services\DocumentFlow\IDealCurrencyConversionService.cs" />
+    <Compile Include="Services\Document\FileCardOneService.cs" />
+    <Compile Include="Services\Document\FileCardManyService.cs" />
+    <Compile Include="Services\Document\FileDataVersionsService.cs" />
+    <Compile Include="Services\Document\VersionsServiceDecorator.cs" />
+    <Compile Include="Services\Estate\AircraftService.cs" />
+    <Compile Include="Services\Estate\CadastralService.cs" />
+    <Compile Include="Services\Estate\CadastralValueService.cs" />
+    <Compile Include="Services\Estate\EstateService.cs" />
+    <Compile Include="Services\Estate\IntangibleAssetService.cs" />
+    <Compile Include="Services\Estate\InventoryObjectService.cs" />
+    <Compile Include="Services\Estate\MovableEstateService.cs" />
+    <Compile Include="Services\Estate\PropertyComplexService.cs" />
+    <Compile Include="Services\Estate\RealEstateService.cs" />
+    <Compile Include="Services\Estate\ShipService.cs" />
+    <Compile Include="Services\Estate\SpaceShipService.cs" />
+    <Compile Include="Services\Estate\VehicleService.cs" />
+    <Compile Include="Services\FIAS\SibRegionService.cs" />
+    <Compile Include="Services\Law\DuplicateRightViewService.cs" />
+    <Compile Include="Services\Law\EncumbranceService.cs" />
+    <Compile Include="Services\Law\IntangibleAssetRightService.cs" />
+    <Compile Include="Services\NSI\ExchangeRateService.cs" />
+    <Compile Include="Services\Security\ISibUserService.cs" />
+    <Compile Include="Services\Law\RightService.cs" />
+    <Compile Include="Services\Law\ScheduleStateRegistrationService.cs" />
+    <Compile Include="Services\Law\ScheduleStateTerminateService.cs" />
+    <Compile Include="Services\NSI\SibOKVEDHierarhyService.cs" />
+    <Compile Include="Services\ProjectActivity\SibProjectService.cs" />
+    <Compile Include="Services\ProjectActivity\SibProjectTemplateService.cs" />
+    <Compile Include="Services\ProjectActivity\SibTaskReportService.cs" />
+    <Compile Include="Services\ProjectActivity\SibTaskService.cs" />
+    <Compile Include="Services\ProjectActivity\SibTaskTemplateService.cs" />
+    <Compile Include="Services\Security\SibUserTerritoryService.cs" />
+    <Compile Include="Services\Settings\ExportImportSettingsService.cs" />
+    <Compile Include="Services\Settings\SibNotificationService.cs" />
+    <Compile Include="Services\SibPermission\BaseSibPermissionObjectService.cs" />
+    <Compile Include="Services\Subject\AppraiserService.cs" />
+    <Compile Include="Services\Subject\BankingDetailService.cs" />
+    <Compile Include="Services\Subject\SocietyCalculatedFieldService.cs" />
+    <Compile Include="Services\Subject\SocietyOnRequestService.cs" />
+    <Compile Include="Services\Subject\SocietyService.cs" />
+    <Compile Include="Services\Subject\SocietyVersionControl.cs" />
+    <Compile Include="Services\Subject\SubjectService.cs" />
+    <Compile Include="Validators\IExcelImportFileEntityValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Base\Base.App\Base.App.csproj">
+      <Project>{56089611-82C6-4F69-B535-B7B80901842A}</Project>
+      <Name>Base.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Audit\Base.Audit.csproj">
+      <Project>{94D34384-E253-4771-8105-79903F0D4725}</Project>
+      <Name>Base.Audit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.BusinessProcesses\Base.BusinessProcesses.csproj">
+      <Project>{C4D72D04-2B9F-4B99-A01F-FF260C27B0BF}</Project>
+      <Name>Base.BusinessProcesses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Content\Base.Content.csproj">
+      <Project>{8d53bbe9-4883-4ffd-81d9-9dafe86eab5e}</Project>
+      <Name>Base.Content</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.DAL.EF\Base.DAL.EF.csproj">
+      <Project>{3EFB8CC9-6A65-4A10-925F-0DF1624EE13B}</Project>
+      <Name>Base.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.EntityFrameworkTypes\Base.EntityFrameworkTypes.csproj">
+      <Project>{700D464B-0BD3-4188-A619-53E888218CE7}</Project>
+      <Name>Base.EntityFrameworkTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Help\Base.Help.csproj">
+      <Project>{f641f38f-7515-4da1-822d-9b13557d79aa}</Project>
+      <Name>Base.Help</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Identity\Base.Identity.csproj">
+      <Project>{5488C09B-4F93-419F-A26A-CC13AD88869E}</Project>
+      <Name>Base.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Mail\Base.Mail.csproj">
+      <Project>{3DBBBCCC-F75E-4E45-9EE2-106C97E96A6C}</Project>
+      <Name>Base.Mail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Notification\Base.Notification.csproj">
+      <Project>{c26a8cc1-6822-481d-a2d5-52dc8295d402}</Project>
+      <Name>Base.Notification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.FileStorage\Base.FileStorage.csproj">
+      <Project>{E771559D-36DE-40BE-BDE9-02E4B9CF1A59}</Project>
+      <Name>Base.FileStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Links\Base.Links.csproj">
+      <Project>{b6cdcd8a-d778-49c3-ad28-049cba1f73dd}</Project>
+      <Name>Base.Links</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Reporting\Base.Reporting.csproj">
+      <Project>{82657716-B682-4F44-9426-5CCC37367584}</Project>
+      <Name>Base.Reporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Security\Base.Security.csproj">
+      <Project>{93a4c5a8-701d-4212-b338-dacb6ec8c670}</Project>
+      <Name>Base.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Social\Base.Social.csproj">
+      <Project>{d7a93569-f8d7-48bf-9e1a-d8e0f8c960a7}</Project>
+      <Name>Base.Social</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Support\Base.Support.csproj">
+      <Project>{4d006637-c791-4627-9d2c-c15090770dcf}</Project>
+      <Name>Base.Support</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Task\Base.Task.csproj">
+      <Project>{3082A9DE-189D-42FA-843E-517C8178FD55}</Project>
+      <Name>Base.Task</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.UI\Base.UI.csproj">
+      <Project>{3ae7843f-06ce-4989-a978-210f7dfcf1a9}</Project>
+      <Name>Base.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Utils.Common\Base.Utils.Common.csproj">
+      <Project>{ad97ef5c-e096-465d-9729-2d0524af2476}</Project>
+      <Name>Base.Utils.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base.Word\Base.Word.csproj">
+      <Project>{b4c69694-3928-4b30-a274-bbd3a92d0cdd}</Project>
+      <Name>Base.Word</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\BaseCatalog\Base.Catalog.csproj">
+      <Project>{b136d66f-529c-4611-af27-a0e97fb0bb64}</Project>
+      <Name>Base.Catalog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\Base\Base.csproj">
+      <Project>{b78a3750-fa57-41f2-927a-dfb795552548}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SibAssemblyInfo\SibAssemblyInfo.csproj">
+      <Project>{8cfb2f34-5e45-4c5c-9e7e-7f5d2781bb1f}</Project>
+      <Name>SibAssemblyInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SibRosReestr\SibRosReestr.csproj">
+      <Project>{e94f3295-70f8-4b29-8695-1494092a7d4c}</Project>
+      <Name>SibRosReestr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Base\System.Linq.Dynamic\System.Linq.Dynamic.csproj">
+      <Project>{b6edf157-6153-4684-a577-de33896dbaa8}</Project>
+      <Name>System.Linq.Dynamic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\Request\ResponseValue\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DefaultData\XML\DefaultDataHolder.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DefaultData\XML\BusinessArea.xml" />
+    <EmbeddedResource Include="DefaultData\XML\BusinessDirection.xml" />
+    <EmbeddedResource Include="DefaultData\XML\BusinessSegment.xml" />
+    <EmbeddedResource Include="DefaultData\XML\ClassFixedAsset.xml" />
+    <EmbeddedResource Include="DefaultData\XML\Consolidation.xml" />
+    <EmbeddedResource Include="DefaultData\XML\Currency.xml" />
+    <EmbeddedResource Include="DefaultData\XML\DocKind.xml" />
+    <EmbeddedResource Include="DefaultData\XML\DocStatus.xml" />
+    <EmbeddedResource Include="DefaultData\XML\GroundCategory.xml" />
+    <EmbeddedResource Include="DefaultData\XML\OKATO.xml" />
+    <EmbeddedResource Include="DefaultData\XML\OKOF2014.xml" />
+    <EmbeddedResource Include="DefaultData\XML\OKOF94.xml" />
+    <EmbeddedResource Include="DefaultData\XML\OKTMO.xml" />
+    <EmbeddedResource Include="DefaultData\XML\OPF.xml" />
+    <EmbeddedResource Include="DefaultData\XML\PeriodNU.xml" />
+    <EmbeddedResource Include="DefaultData\XML\ProductionBlock.xml" />
+    <EmbeddedResource Include="DefaultData\XML\ShipType.xml" />
+    <EmbeddedResource Include="DefaultData\XML\SibCityNSI.xml" />
+    <EmbeddedResource Include="DefaultData\XML\SibCountry.xml" />
+    <EmbeddedResource Include="DefaultData\XML\SibDealStatus.xml" />
+    <EmbeddedResource Include="DefaultData\XML\SibFederalDistrict.xml" />
+    <EmbeddedResource Include="DefaultData\XML\SibMeasure.xml" />
+    <EmbeddedResource Include="DefaultData\XML\SibRegion.xml" />
+    <EmbeddedResource Include="DefaultData\XML\SubjectType.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxBase.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxRateType.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxReportPeriod.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxVehicleKindCode.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TenureType.xml" />
+    <EmbeddedResource Include="DefaultData\XML\UnitOfCompany.xml" />
+    <EmbeddedResource Include="DefaultData\XML\VehicleLabel.xml" />
+    <EmbeddedResource Include="DefaultData\XML\VehicleType.xml" />
+    <EmbeddedResource Include="DefaultData\XML\AccountingSystem.xml" />
+    <EmbeddedResource Include="DefaultData\XML\BusinessUnit.xml" />
+    <EmbeddedResource Include="DefaultData\XML\DecisionsDetails.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxRate.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxExemption.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxFederalExemption.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxRegionExemption.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxRateLand.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxRateTS.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxExemptionLand.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxFederalExemptionLand.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxRegionExemptionLand.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxExemptionTS.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxFederalExemptionTS.xml" />
+    <EmbeddedResource Include="DefaultData\XML\TaxRegionExemptionTS.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DefaultData\XML\NSI.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ImportHistory_Fail.html" />
+    <EmbeddedResource Include="Resources\ImportHistory_Success.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DefaultData\XML\AssetHolderRSBU.xml" />
+    <Content Include="DefaultData\XML\CostKindRentalPayments.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

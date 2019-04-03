@@ -1,0 +1,97 @@
+﻿@model EditorViewModel
+
+@{
+    string filter = null;
+
+    if (Model.EditorTemplateParams.ContainsKey("filter"))
+    {
+        filter = Model.EditorTemplateParams["filter"];
+    }
+}
+
+<script>
+    window["@Model.UID"] = {
+        onDataBound: function () {
+            var form = $("#@Model.UID").closest("form").data("pbaForm");
+            var $formEl = $(form.element);
+            var $sendToResponsiblesEditor = $formEl.find("[data-field=SendToResponsibles]").hide();
+            var $sendToAllSocietiesEditor = $formEl.find("[data-field=SendToAllSocieties]").hide();
+            debugger;
+            //var $sendToResponsiblesEditor = $fromEl.find("[data-field=SendToResponsibles]").hide();
+            //var $sendToResponsiblesEditor = $fromEl.find("[data-field=SendToResponsibles]").hide();
+            //debugger;
+        },
+        onAdditionalData: function () {
+            return {
+                search: $("#@Model.UID").data("kendoDropDownList").filterInput.val()
+            };
+        },
+        onChange: function () {
+            var form = $("#@Model.UID").closest("form").data("pbaForm");
+            var $formEl = $(form.element);
+            form.setPr("@Model.PropertyName", this.value());
+            var targetMnemonic = this.value();
+            var propertyControl = $("[datatype=notification-property]").data("kendoDropDownList");
+            debugger;
+
+            switch (targetMnemonic) {
+                case "SibTaskMenuList":
+                    $formEl.find("[data-field=SendToResponsibles]").slideDown();
+                    $formEl.find("[data-field=SendToAllSocieties]").slideUp();
+                    break;
+                case "NonCoreAssetList":
+                case "ScheduleStateRegistrationRecord":
+                    $formEl.find("[data-field=SendToAllSocieties]").slideDown();
+                    $formEl.find("[data-field=SendToResponsibles]").slideUp();
+                    break;
+                case "":
+                    $formEl.find("[data-field=SendToAllSocieties]").slideUp();
+                    $formEl.find("[data-field=SendToResponsibles]").slideUp();
+                    break;
+            }
+
+            if (targetMnemonic.length > 0) {
+                propertyControl.enable(true)
+                var targetDataSource = { transport: { read: { url: "/api/corpProp/getNotificationEditors/" + targetMnemonic } } }
+                if (propertyControl) {
+                    propertyControl.setDataSource(targetDataSource);
+                    propertyControl.dataSource.read();
+                }
+            }
+            else {
+                propertyControl.enable(false)
+            }
+        },
+
+        defaultState: function () {
+            var form = $("#@Model.UID").closest("form").data("pbaForm");
+            var $formEl = $(form.element);
+            var propertyControl = $("[datatype=notification-property]").data("kendoDropDownList");
+
+            propertyControl.enable(false);
+            $formEl.find("[data-field=SendToResponsibles]").slideUp();
+        }
+    };
+</script>
+
+
+@(Html.Kendo().DropDownList()
+    .Name(Model.UID)
+    .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { style = "width: 100%;", datatype = "notification-mnemonic" }))
+    .DataTextField("Text")
+    .DataValueField("ID")
+    .OptionLabel("Выберите значение...")
+    .Filter(FilterType.Contains)
+    .Height(500)
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+            read.Url("/api/corpProp/getNotificationMnemonics").Data(Model.UID + ".onAdditionalData");
+        }).ServerFiltering(false);
+    })
+    .Events(x => x
+        .Change(Model.UID + ".onChange")
+        .DataBound(Model.UID + ".onDataBound")
+    )
+)

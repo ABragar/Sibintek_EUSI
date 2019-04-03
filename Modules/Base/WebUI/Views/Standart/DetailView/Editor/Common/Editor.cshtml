@@ -1,0 +1,47 @@
+﻿@model EditorViewModel
+
+@if (Model.IsReadOnly)
+{
+	<text>
+		@*<div style="width:100%;">
+
+		</div>*@
+		@*<input class="k-textbox k-valid" style="width: 100%;">
+		test test*@
+	</text>
+    <script>
+        $(function () {
+            pbaAPI.wrapDisplay("@Model.EditorTemplate", "@Model.UID", "@(Model.PropertyName ?? Model.UID)");
+        });
+    </script>
+}
+else
+{
+    <script>
+        $(function () {
+            pbaAPI.wrapEditor("@Model.EditorTemplate", "@Model.UID", "@(Model.PropertyName ?? Model.UID)");
+        });
+    </script>
+}
+
+@if (Model.IsReadOnly)
+{
+	if (Model.EditorTemplate == "Text" || 
+		Model.EditorTemplate == "Date" || 
+		Model.EditorTemplate == "BaseObjectOne" || 
+		Model.EditorTemplate == "MultilineText" ||
+		Model.EditorTemplate == "Decimal" ||
+		Model.EditorTemplate == "Integer")
+	{
+		<text><div class="FakeInputField" style="border: 1px solid #cccccc;background-color: #ececec;min-height: 36px;padding:0 10px;">@Html.PartialEditor(Model)</div></text>
+	}
+	else
+	{
+		@Html.PartialEditor(Model)
+	}
+	@*<text><div style="border: 1px solid #cccccc;background-color: #fafafa;min-height: 36px;">@Html.PartialEditor(Model)</div></text>*@
+}
+else
+{
+	@Html.PartialEditor(Model)
+}

@@ -1,0 +1,272 @@
+﻿@model EditorViewModel
+
+@{
+    const string field = "Object";
+    const string placeholder = "Выберите значение...";
+
+    string multiSelect = "ms_" + Guid.NewGuid().ToString("N");
+    string validationmsg = "v_" + Guid.NewGuid().ToString("N");
+
+    string itemTpl = null;
+    string tagTpl = null;
+    
+    var lookup = Model.ViewModelConfig.LookupProperty;
+
+    if (lookup.Image != null)
+    {
+        itemTpl = string.Format("<span class='data-item' id='#= data.ID #' data-uid='#= uid #'><img class='img-circle data-item__img' src=\"#= pbaAPI.imageHelpers.getImageThumbnailSrc(data.{0}, 'XXS') #\" alt=\"\" /><span class='data-item__text'>#= pbaAPI.htmlEncode(data.{1}) #</span></span>", lookup.Image, lookup.Text);
+        tagTpl = string.Format("<span class='data-item' id='#= data.ID #' data-uid='#= uid #'><img class='img-circle data-item__img' src=\"#= pbaAPI.imageHelpers.getImageThumbnailSrc(data.{0}, 'XXS') #\" alt=\"\" /><span class='data-item__text'>#= pbaAPI.htmlEncode(data.{1}) #</span></span>", lookup.Image, lookup.Text);
+    }
+    //if (typeof (Base.Security.User).IsAssignableFrom(Model.EditorType))
+    //{
+    //    itemTpl = "<span class='data-item' id='#= data.ID #' data-uid='#= uid #'>#= pbaAPI.getUserStr(data, false) #</span>";
+    //    tagTpl = "<span class='data-item' id='#= data.ID #' data-uid='#= uid #'>#= pbaAPI.getUserStr(data, false, 24, 24) #</span>";
+    //}
+    //else if (typeof (Base.Contact.Entities.BaseContact).IsAssignableFrom(Model.EditorType))
+    //{
+    //    itemTpl = "<span class='data-item' id='#= data.ID #' data-uid='#= uid #'>#= pbaAPI.getContactStr(data, false) #</span>";
+    //    tagTpl = "<span class='data-item' id='#= data.ID #' data-uid='#= uid #'>#= pbaAPI.getContactStr(data, false, 24, 24) #</span>";
+    //}
+    else
+    {
+        itemTpl = string.Format("<span class='data-item' id='#= data.ID #' data-uid='#= uid #'>#= pbaAPI.htmlEncode(data.{0}) #</span>", lookup.Text);
+        tagTpl = string.Format("<span class='data-item' id='#= data.ID #' data-uid='#= uid #'>#= pbaAPI.htmlEncode(data.{0}) #</span>", lookup.Text);
+    }
+}
+
+<script>
+    $(function () {
+        var editor = window['@Model.UID'] = {
+            value: [],
+            _form: null,
+            _multiSelect: null,
+            getForm: function() {
+                if (!editor._form)
+                    editor._form = $("#@Model.UID").closest("form").data("pbaForm");
+
+                return editor._form;
+            },
+            getMultiselect: function () {
+                if (!editor._multiSelect)
+                    editor._multiSelect = $("#@Model.UID").find("#@multiSelect").data("kendoMultiSelect");
+
+                return editor._multiSelect;
+            },
+            onAdditionalData: function () {
+                var multiSelect = editor.getMultiselect();
+
+                var val = multiSelect.input.val();
+
+                if (val === "@placeholder") val = "";
+
+                var value = editor.value;
+
+                var ids;
+
+                if (value) {
+                    ids = pbaAPI.extract(value, "ID").join(";");
+                }
+
+                return {
+                    startswith: val,
+                    extrafilter: editor.getSysFilter(),
+                    ids: ids
+                };
+            },
+            openDialog: function () {
+                pbaAPI.openModalDialog("@Model.ViewModelConfig.Mnemonic",
+                    function (res) {
+                        application.viewModelConfigs.get("@Model.ViewModelConfig.Mnemonic").done(
+                            function(config) {
+                                var prdata = editor.value;
+
+                                var multiselect = editor.getMultiselect();
+
+                                var ids = pbaAPI.extract(prdata, "ID");
+
+                                for (var i = 0; i < res.length; i++) {
+                                    if ($.inArray(res[i].ID, ids) === -1) {
+                                        var dest = pbaAPI.toObj(config, res[i]);
+                                        prdata.push(dest);
+                                        multiselect.dataSource.pushCreate(dest);
+                                    }
+                                }
+
+                                editor.setProperty();
+
+                                editor.syncValue(false);
+                            });
+
+                    }, {
+                        title: "ВЫБОР - @Model.ViewModelConfig.ListView.Title",
+                        multiselect: true,
+                        filter: editor.getSysFilter()
+                    });
+            },
+            getSysFilter: function () {
+                return null;
+            },
+            syncValue: function (load) {
+                var multiselect = editor.getMultiselect();
+                multiselect.dataSource.filter({});
+            },
+            clear: function () {
+                editor.getMultiselect().value([]);
+                editor.value = [];
+                editor.setProperty();
+            },
+            onSelect: function (e) {
+                var multiselect = editor.getMultiselect();
+
+                var prdata = editor.value;
+
+                var uid = e.item.find(".data-item").attr("data-uid");
+
+                var obj = multiselect.dataSource.getByUid(uid);
+
+                prdata.push(obj);
+            },
+            onChange: function (e) {
+                var prdata = editor.value;
+                var rPrdata = [];
+
+                var multiselect = editor.getMultiselect();
+
+                multiselect.tagList.find("span.data-item").each(function () {
+                    rPrdata.push(parseInt($(this).attr("id")));
+                });
+
+                var deleteids = [];
+                var i;
+
+                for (i = 0; i < prdata.length; i++) {
+                    if (rPrdata.indexOf(prdata[i].ID) < 0) {
+                        deleteids.push(prdata[i].ID);
+                    }
+                }
+
+                for (i = 0; i < deleteids.length; i++) {
+                    for (var j = 0; j < prdata.length; j++) {
+                        if (prdata[j].ID === deleteids[i]) {
+                            prdata.splice(j, 1);
+                        }
+                    }
+                }
+
+                editor.setProperty();
+            },
+            onDataBound: function () {
+                editor.getMultiselect().value(pbaAPI.extract(editor.value, "ID"));
+            },
+            setProperty: function () {
+                var value = editor.value;
+                var form = editor.getForm();
+
+                var dicValue = {};
+                var i;
+                var obj;
+
+                for (i = 0; i < value.length; i++) {
+                    obj = value[i];
+                    if (obj)
+                        dicValue[obj.ID] = obj;
+                }
+
+                var prvalue = form.getPr("@Model.PropertyName") || [];
+                var resvalue = [];
+
+                for (i = 0; i < prvalue.length; i++) {
+                    obj = prvalue[i]["@field"];
+
+                    if (obj && obj.ID in dicValue) {
+                        resvalue.push(prvalue[i]);
+
+                        delete dicValue[obj.ID];
+                    }
+                }
+
+                for (var key in dicValue) {
+                    if (dicValue.hasOwnProperty(key)) {
+                        resvalue.push({
+                            ID: 0,
+                            "@field": dicValue[key]
+                        });
+                    }
+                }
+
+                form.setPr("@Model.PropertyName", resvalue);
+            }
+        };
+    });
+</script>
+
+<div id="@Model.UID" class="input-group">
+    <div class="form-control" style="height: auto; min-height: 32px; padding: 0">
+        @(Html.Kendo().MultiSelect()
+              .Name(multiSelect)
+              .DataValueField("ID")
+              .DataTextField(Model.ViewModelConfig.LookupPropertyForUI)
+              .Filter("startswith")
+              .Placeholder(placeholder)
+              .AutoBind(false)
+              .Events(e => e.Select(Model.UID + ".onSelect").Change(Model.UID + ".onChange").DataBound(Model.UID + ".onDataBound"))
+              .ItemTemplate(itemTpl)
+              .TagTemplate(tagTpl)
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Url($"/api/listview/{Model.ViewModelConfig.Mnemonic}/filter/boProperty").Data(Model.UID + ".onAdditionalData");
+                  })
+                  .ServerFiltering(true);
+              })
+        )
+    </div>
+
+    <span class="input-group-btn">
+        <a href="#" onclick="window['@Model.UID'].openDialog(); return false;" title="Выбрать"><i class="fa fa-navicon"></i></a>
+        <a href="#" onclick="window['@Model.UID'].clear(); return false;" title="Очистить"><i class="fa fa-close"></i></a>
+    </span>
+</div>
+
+<input id="@validationmsg" name="@validationmsg" type="hidden" @(Model.IsRequired ? "required" : "") validationmessage="Выберите значение" value="" />
+<span class="k-invalid-msg" data-for="@validationmsg"></span>
+
+<script>
+    $(function () {
+        var $form = $("#@Model.UID").closest("form");
+        var editor = window["@Model.UID"];
+        
+        $form.on("onAfterBind", function (e, form) {
+            var value = form.getPr("@Model.PropertyName");
+            
+            editor.value = [];
+
+            if (value) {
+                for (var i = 0; i < value.length; i++) {
+                    var obj = value[i]["@field"];
+                    
+                    if (obj) {
+                        editor.value.push(obj);
+                    }
+                }
+            }
+
+            editor.syncValue(true);
+
+            if (value && value.length > 0)
+                $("#@validationmsg").val("val");
+            else
+                $("#@validationmsg").val("");
+        });
+
+        $form.on("onSave", function (e, form) {
+            var val = form.getPr("@Model.PropertyName");
+
+            if (val && val.length > 0)
+                $("#@validationmsg").val("val");
+            else
+                $("#@validationmsg").val("");
+        });
+    });
+</script>

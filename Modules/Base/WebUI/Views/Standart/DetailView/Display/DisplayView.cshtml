@@ -1,0 +1,28 @@
+﻿@model EditorViewModel
+
+@{
+    string formID = Html.CreateSystemName("form");
+    string editorName = "~/Views/Standart/DetailView/Display/Common/Display.cshtml";
+}
+
+
+<div class="common-form">
+    <form id="@formID" class="common-form">
+        @Html.Partial(editorName, Model)
+    </form>
+</div>
+
+<script>
+    (function () {
+        var $form = $('#@formID');
+
+        if (!$form.data("pbaForm")) {
+            $form.pbaForm({
+                nameModel: "model",
+                attrBind: true,
+                validate: true
+            });
+        }
+
+    })();
+</script>

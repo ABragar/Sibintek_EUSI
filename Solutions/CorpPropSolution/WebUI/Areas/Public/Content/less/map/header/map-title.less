@@ -1,0 +1,22 @@
+.map-head .map-title {
+	font-size: 1.25em;
+	font-weight: 200;
+	line-height: @header-height;
+
+	display: inline-block;
+	float: left;
+	overflow: hidden;
+
+	width: calc(~"100% - "@header-height);
+	padding-right: @modular-scale *.25em;
+
+	white-space: nowrap;
+	letter-spacing: .025em;
+	text-overflow: ellipsis;
+
+	color: @color--light;
+
+	@media ( min-width: @screen-width-md ) {
+		font-size: @modular-scale *1em;
+		}
+	}

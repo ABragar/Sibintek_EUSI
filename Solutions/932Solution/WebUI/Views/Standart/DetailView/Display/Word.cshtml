@@ -1,0 +1,53 @@
+﻿@{
+    string wrapId = "w_" + Guid.NewGuid().ToString("N");
+}
+
+<div id="@wrapId" class="word-viewer">
+    <iframe frameborder="0"></iframe>
+    <div class="print">
+        <button type="button" class="btn btn-default btn-print" aria-label="Print">
+            <span class="fa fa-print"></span> Печать
+        </button>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $form = $("#@wrapId").closest("form");
+        $form.find("iframe").height($form.find(".tab-content").height() - 5);
+        $form.off("onEditDocument").on("onEditDocument", function (e) {
+            var form = $(e.target).data("pbaForm");
+
+            var $frame = $("#@wrapId iframe");
+            var doc = $frame[0].contentWindow.document;
+            var $body = $("body", doc);
+
+            var cssLink = document.createElement("link");
+            cssLink.href = "/Content/css/word-iframe.css";
+            cssLink.rel = "stylesheet";
+            cssLink.type = "text/css";
+
+            $body.html(form.getPr("Value"));
+            $body.prepend(cssLink);
+
+            var $viewer = $form.find("iframe").contents();
+
+            $viewer.find("a").off("click").on("click", function(e) {
+                e.preventDefault();
+
+                var href = e.currentTarget.getAttribute("href");
+                if (href.indexOf("://") === -1) {
+                    var targetId = href.substring(1).replace(/[!"#$%&'()*+,.\/:;<=>?@@[\\\]^`{|}~]/g, "\\$&");
+                    var target = $viewer.find("#" + targetId).parent()[0];
+                    $viewer.scrollTo(target);
+                } else {
+                    var win = window.open(href, "_blank");
+                    win.focus();
+                }
+            });
+        });
+        $form.find(".btn-print").off("click").on("click", function (e) {
+            $form.find("iframe").get(0).contentWindow.print();
+        });
+    });
+</script>

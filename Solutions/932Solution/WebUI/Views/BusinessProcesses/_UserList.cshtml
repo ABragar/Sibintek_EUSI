@@ -1,0 +1,132 @@
+﻿@using Base.Security
+@using Newtonsoft.Json
+@model WebUI.Models.BusinessProcess.InvokeStageVm
+
+@{
+    string gridID = Html.CreateSystemName("grd");
+    string search = Html.CreateSystemName("search");
+    string wrap = Html.CreateSystemName("wrp");
+    string toolbar = Html.CreateSystemName("t");
+}
+
+
+<script>
+    (function() {
+        window["@gridID"] = {
+            search: function(e) {
+                e.sender.find('.search-info').addClass('k-loading').removeClass('k-i-close');
+                var grid = $("#@gridID").data("kendoGrid");
+
+                if (grid) {
+                    var url = grid.dataSource.transport.options.read.url;
+
+                    grid.dataSource.transport.options.read.url = pbaAPI.replaceUrlParametr(url, "searchStr", e.str || "");
+                    grid.options.dataSource.transport.read.url = pbaAPI.replaceUrlParametr(url, "searchStr", e.str || "");
+                    grid.dataSource.read();
+                } else {
+                    console.error("Ошибка инициализации, обратиться к разработчику");
+                }
+            },
+            additional: function() {
+                var data = { objectID: @Model.ObjectID, objectType: "@Model.ObjectType", stageID: @Model.StageID };
+                return data;
+            },
+            onDataBound: function(e) {
+                $('#@search').find('.search-info').removeClass('k-loading').addClass('k-i-close');
+                e.sender.element.find("tr[data-uid]").dblclick(function() {
+                    var user = e.sender.dataItem(this);
+                    if (user) {
+                        $('#@wrap').find(".k-button.success").click();
+                    }
+                });
+            }
+        }
+
+    })();
+</script>
+
+<div class="dialog user-list" id="@wrap">
+    <div class="dialog__toolbar">
+        <div class="kwidget kwidget--toolbar">
+            <div id="@toolbar"></div>
+        </div>
+    </div>
+    @(Html.Kendo().Grid<User>()
+          .Name(gridID)
+          .Sortable()
+          .Scrollable()
+          .Events(e => e.DataBound("window['" + gridID + "'].onDataBound"))
+          .Columns(columns =>
+          {
+              columns.Bound(x => x.FullName).Title("ФИО");
+          })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Read(z => z.Action("GetPermittedUsers", "BusinessProcesses").Data("window['" + gridID + "'].additional"))
+              .PageSize(50))
+          .Pageable(p => p.Enabled(true).ButtonCount(5))
+          .Selectable(s => s.Enabled(true).Mode(GridSelectionMode.Single).Type(GridSelectionType.Row))
+          .ClientRowTemplate(
+    @<text>
+        <tr data-uid="#: uid #" class="user">
+            <td class="user">
+                <span class="img-circle" data-mnemonic="User" data-id="#= data.ID #">
+                    <img class="user-pic" src="#=pbaAPI.imageHelpers.getImageThumbnailSrc(data.Image, 'XXS', 'NoPhoto')#" alt="" />
+                </span>
+                <span class="user-name">#: data.FullName #</span>
+            </td>
+        </tr>
+    </text>.ToHtmlString())
+    )
+</div>
+
+<script>
+    (function() {
+        $("#@toolbar").kendoToolBar({
+            items: [
+                {
+                    type: "buttonGroup",
+                    buttons: [
+                        {
+                            type: "button",
+                            text: "Применить",
+                            showText: "toolbar",
+                            attributes: { "class": "k-button success" }
+                        }
+                    ],
+                    attributes: { "style": "float: right" }
+                },
+                {
+                    template:
+                        "<div id='@search' class='k-button-group'>" +
+                            "<div class='search-tools'>" +
+                                "<input class='k-textbox' placeholder='Поиск' value='@Model.SearchStr'>" +
+                                "<span class='k-icon k-i-close cancel-search'></span>" +
+                            "</div>" +
+                        "</div>",
+                    overflowTemplate:
+                        "<div id='@search' class='k-button-group'>" +
+                            "<div class='search-tools'>" +
+                                "<input class='k-textbox' placeholder='Поиск' value='@Model.SearchStr'>" +
+                                "<span class='k-icon k-i-close cancel-search'></span>" +
+                            "</div>" +
+                        "</div>"
+                }
+            ]
+        });
+    })();
+</script>
+
+<script>
+    $(function() {
+        var parent = $('#@wrap').closest("[data-role=window]");
+        var grid = $("#@gridID").data("kendoGrid");
+
+        $('#@search').pbaSearchBox(window["@gridID"].search);
+
+        $('#@wrap').find(".k-button.success").on('click', function() {
+            parent.data('kendoWindow').user = grid.dataItem(grid.select());
+            parent.data('kendoWindow').close();
+        });
+    });
+</script>

@@ -1,0 +1,519 @@
+﻿@model StandartGantt
+
+@{
+    var gantt = Model.WidgetID;
+    var isMove = !Model.IsReadOnly && Model.IsPermission(TypePermission.Write);
+}
+
+<div id="@gantt">
+
+</div>
+
+<style>
+    /* Hide toolbars during export */
+    .k-pdf-export .k-gantt-toolbar {
+        display: none;
+    }
+</style>
+
+<script>
+    $(function() {
+        function mapTaskToGanttTask(e) {
+            return new kendo.data.GanttTask({
+                id: e.ID,
+                orderId: e.OrderId,
+                parentId: e.ParentId,
+                start: kendo.parseDate(e.Start, "@JsonNetResult.DATE_TIME_FORMATE"),
+                end: kendo.parseDate(e.End, "@JsonNetResult.DATE_TIME_FORMATE"),
+                title: e.Title,
+                summary: e.Summary,
+                expanded: e.Expanded,
+                priority: e.Priority,
+                percentComplete: e.PercentComplete,
+                color: e.Color,
+                sibStatus: e.Status
+            });
+        };
+
+        function mapDependencyToGanttDependency(e) {
+            return new kendo.data.GanttDependency({
+                id: e.ID,
+                predecessorId: e.PredecessorID,
+                successorId: e.SuccessorID,
+                type: e.Type
+            });
+        }
+
+        var today = new Date();
+
+        var ganttWidget = window["@gantt"];
+
+        ganttWidget.colorize = function(val) {
+            var gantt = this.widget();
+            ganttWidget.isColor = val;
+            if (gantt.dataSource.data()) {
+                $("[data-role='ganttlist'] table[role='treegrid'] tbody tr").each(function () {
+                    var $row = $(this);
+                    if (val === true) {
+                        var gtask = gantt.dataSource.getByUid($row.attr("data-uid"));
+                        var color = "";
+                        if (gtask && gtask.color) {
+                            color = gtask.color;
+                            $row.css("background-color", color);
+                        }
+                    } else {
+                        $row.css("background-color", "");
+                    }
+
+                });
+            }
+        }
+
+        ganttWidget.add = function () {
+            var initProps = {};
+
+            var kendoGantt = ganttWidget.widget();
+            var selectedUid = $(kendoGantt.select()).attr("data-uid");
+            var selected = kendoGantt.dataSource.getByUid(selectedUid);
+
+            if (selected) {
+                var level = kendoGantt.dataSource.taskLevel(selected);
+
+                if (level === 0) {
+                    initProps.BaseTaskCategory = {
+                        ID: parseInt(selected.id.split('-')[1]),
+                        Title: selected.title
+                    };
+                } else {
+                    initProps.Parent_ = {
+                        ID: parseInt(selected.id.split('-')[1]),
+                        Title: selected.title
+                    };
+                }
+            }
+
+            ganttWidget.addEntity({
+                initProps: initProps,
+                callback: function (e) {
+                    kendoGantt.bind();
+                    if (selected) {
+                        ganttWidget.getChildTasks(selected.id, function() {
+                            kendoGantt.dataSource.update(selected, { expanded: true });
+                        });
+                    }
+                }
+            });
+        };
+
+        ganttWidget.getChildTasks = function (id, callback) {
+            if (id) {
+                var gantt = this.widget();
+                var splittedId = id.split('-');
+                $.get("/api/listview/" + splittedId[0] + "/kendoGantt/parent/" + splittedId[1],
+                    function (result) {
+                        if (result.error) {
+                            pbaAPI.errorMsg(result.error);
+                        } else {
+                            result.tasks.forEach(function (item) {
+                                var task = mapTaskToGanttTask(item);
+                                if (gantt.dataSource.data().filter(function (e) { return e.id === task.id }).length === 0)
+                                    gantt.dataSource.add(task);
+                            });
+                            result.dependencies.forEach(function (item) {
+                                gantt.dependencies.add(mapDependencyToGanttDependency(item));
+                            });
+
+                            if (callback)
+                                callback();
+                        }
+                    });
+            }
+        }
+
+        ganttWidget.edit = function () {
+            var id = ganttWidget.selectedTask.id;
+            pbaAPI.openDetailView(id.split('-')[0],
+                {
+                    wid: "@gantt",
+                    id: id.split('-')[1],
+                    toSave: true,
+                    callback: function(e) {
+                        if (e.type == "save") {
+                            ganttWidget.bind();
+                        }
+                    }
+                });
+        }
+
+        ganttWidget._overrideOnNeighbourWidgetChanged = ganttWidget.onNeighbourWidgetChanged;
+        ganttWidget.onNeighbourWidgetChanged = function (e) {
+            ganttWidget._overrideOnNeighbourWidgetChanged(e);
+            if (e.sender.desc === "ToolbarListView") {
+                if (e.event === "click") {
+                    switch (e.params.action) {
+                        case "colorize":
+                            if (e.params.event.target.hasClass("colorized")) {
+                                ganttWidget.colorize(false);
+                                e.params.event.target.removeClass("colorized");
+                            } else {
+                                ganttWidget.colorize(true);
+                                e.params.event.target.addClass("colorized");
+                            }
+                            break;
+                    }
+                }
+            }
+        };
+
+        ganttWidget.onDataBoundOverride = function (e) {
+            ganttWidget.onDataBound(e);
+            var gantt = this;
+
+            if (!$("[data-role='ganttlist'] table[role='grid'] thead tr th[role='gridpriority']").length) {
+                $("[data-role='ganttlist'] table colgroup").append("<col width='10px'>");
+                $("[data-role='ganttlist'] table thead tr").append("<th class='k-header' role='gridpriority'></th>");
+                $("[data-role='ganttlist'] table tbody tr").append("<td role='gridpriority'></td>");
+            }
+            else {
+                $("[data-role='ganttlist'] table[role='treegrid'] tbody tr").each(function () {
+                    var $row = $(this);
+                    !$row.find("td[role='gridpriority']").length && $row.append("<td role='gridpriority'></td>");
+                });
+            }
+
+            var dayStart = ganttWidget.selectStart.getDate().toString().length === 1 ? "0" + ganttWidget.selectStart.getDate() : ganttWidget.selectStart.getDate();
+            var monthStart = ganttWidget.selectStart.getMonth().toString().length === 1 ? "0" + (ganttWidget.selectStart.getMonth() + 1) : ganttWidget.selectStart.getMonth() + 1;
+            var yearStart = ganttWidget.selectStart.getFullYear();
+            var dateStart = dayStart + "." + monthStart + "." + yearStart;
+
+            var dayEnd = ganttWidget.selectEnd.getDate().toString().length === 1 ? "0" + ganttWidget.selectEnd.getDate() : ganttWidget.selectEnd.getDate();
+            var monthEnd = ganttWidget.selectEnd.getMonth().toString().length === 1 ? "0" + (ganttWidget.selectEnd.getMonth() + 1) : ganttWidget.selectEnd.getMonth() + 1;
+            var yearEnd = ganttWidget.selectEnd.getFullYear();
+            var dateEnd = dayEnd + "." + monthEnd + "." + yearEnd;
+            
+            pbaAPI.proxyclient.corpProp.getHolidays({ startDate: dateStart, endDate: dateEnd }).done(function (res) {
+                if (res.error && res.error > 0) {
+                    console.log(res.message);
+                    return;
+                }
+
+                if (res.holidays.length > 0) {
+                    var holidays = Array();
+
+                    for (var i = 0; i < res.holidays.length; i++) {
+                        var arDate = res.holidays[i].split(" ")[0].split(".");
+                        var date = new Date(arDate[2], arDate[1] - 1, arDate[0]);
+                        var day = date.getDate().toString().length === 1 ? "0" + date.getDate() : date.getDate();
+                        var month = date.getMonth().toString().length === 1 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                        var year = date.getFullYear();
+                        var completeDate = day + "." + month;
+                        holidays.push(completeDate);
+                    }
+
+                    $("[data-role=gantttimeline]").each(function (e, s) {
+                        var el = $(s);
+
+                        if (el.length > 0) {
+                            var headers = el.find('th.k-header');
+
+                            if (headers.length > 0) {
+                                for (var i = 0; i < headers.length; i++) {
+                                    if (holidays.includes(headers[i].textContent))
+                                        $(headers[i]).addClass('sib-holiday');
+                                }
+                            }
+                        }
+                    })
+                }
+            })
+
+            $("[data-role=gantttimeline]").each(function (e, s) {
+                var el = $(s);
+                var day = new Date().getUTCDate().length === 1 ? "0" + new Date().getUTCDate() : new Date().getUTCDate();
+                var today = day + '.' + (new Date().getUTCMonth() + 1);
+
+                if (el.length > 0) {
+                    var headers = el.find('th.k-header');
+
+                    if (headers.length > 0) {
+                        for (var i = 0; i < headers.length; i++) {
+                            if (headers[i].textContent == today)
+                                $(headers[i]).addClass('sib-today');
+                        }
+                    }
+                }
+            })
+
+            $("[data-role=gantttimeline]").find(".k-task").each(function (e) {
+                var dataItem = gantt.dataSource.getByUid($(this).attr("data-uid"));
+                if (dataItem.sibStatus === "Выполнена") {
+                    this.classList.add('sib-task-complete');
+                }
+                else if (dataItem.end.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0)) {
+                    this.classList.add('sib-task-dead');
+                }
+            })
+
+            //if (gantt.dataSource.data()) {
+            //    $("[data-role='ganttlist'] table[role='treegrid'] tbody tr").each(function () {
+            //        debugger;
+            //        var $row = $(this);
+            //        var gtask = gantt.dataSource.getByUid($row.attr("data-uid"));
+
+            //        var priority = "";
+            //        if (gtask) {
+            //            var splittedId = gtask.id.split('-');
+
+            //            switch (gtask.priority) {
+            //            case 2:
+            //                priority = "priority-low";
+            //                break;
+            //            case 1:
+            //                priority = "priority-mid";
+            //                break;
+            //            case 0:
+            //                priority = "priority-high";
+            //                break;
+            //            case -1:
+            //                priority = "priority-no";
+            //                break;
+            //            default:
+            //            }
+
+            //            if(gtask.percentComplete >= 1)
+            //                priority = "task-complete";
+
+            //            if (ganttWidget.isColor && gtask.color) {
+            //                $row.css("background-color", gtask.color);
+            //            } else {
+            //                $row.css("background-color", "");
+            //            }
+
+            //            $row.find("span[aria-label]").attr("data-id", splittedId[1])
+            //                .attr("data-mnemonic", splittedId[0]).addClass("gantt-task-preview");
+            //        }
+
+            //        $row.find("td[role='gridpriority']").attr("class", priority);
+            //    });
+            //}
+
+            $('.k-icon.k-i-expand').unbind("click");
+            $('.k-icon.k-i-expand').on('click',
+                function() {
+                    var tr = $(this).parent().parent();
+                    var dataItem = gantt.dataItem(tr);
+
+                    if (gantt.dataSource.taskChildren(dataItem).length > 0)
+                        return;
+
+                    ganttWidget.getChildTasks(dataItem.id);
+                });
+        };
+
+         $("#@gantt").kendoGantt({
+            snap: false,
+            dataBound: ganttWidget.onDataBoundOverride,
+            change: ganttWidget.onChange,
+            add: function () { },
+            error: ganttWidget.onErrorHandler,
+            autoBind: false,
+            date: today,
+            showWorkHours: false,
+            showWorkDays: true,
+            columns: [
+                {
+                    field: "title",
+                    title: "Наименование",
+                    width: 200,
+                    sortable: true
+                },
+                {
+                    field: "start",
+                    title: "Начало",
+                    width: 70,
+                    format: "{0:dd.MM.yyyy}",
+                    sortable: true
+                },
+                {
+                    field: "end",
+                    title: "Конец",
+                    width: 70,
+                    format: "{0:dd.MM.yyyy}",
+                    sortable: true
+                }
+            ],
+            pdf: {
+                fileName: "Задачи (Гант).pdf",
+                proxyURL: "/ExportImport/ExportSave",
+                forceProxy: true
+            },
+            tooltip: {
+                visible: true,
+                template: "<span><b> #= data.task.title # </b></span><p>" +
+                    "<span>Начало: #=data.task.start!= null ? kendo.toString(data.task.start, 'dd.MM.yyyy HH:mm') : '' #</span><p>" +
+                    "<span>Конец: #= data.task.end != null ? kendo.toString(data.task.end, 'dd.MM.yyyy HH:mm') : '' #</span>"
+            },
+            views: [
+                {
+                    type: "day",
+                    date: today,
+                    dayHeaderTemplate: "#=kendo.toString(start, 'ddd dd.MM')#"
+                },
+                {
+                    type: "week",
+                    date: today,
+                    selected: true,
+                    dayHeaderTemplate: "#=kendo.toString(start, 'dd.MM')#",
+                    weekHeaderTemplate: "#=kendo.toString(start, 'dd.MM')# - #=kendo.toString(end, 'dd.MM')#"
+                },
+                {
+                    type: "month",
+                    date: today,
+                    dayHeaderTemplate: "#=kendo.toString(start, 'ddd dd.MM')#",
+                    weekHeaderTemplate: "#=kendo.toString(start, 'dd.MM')# - #=kendo.toString(end, 'dd.MM')#"
+                }
+            ],
+            editable: {
+                create: false,
+                update: false,
+                confirmation: true,
+                move: "@isMove.ToString()"
+            },
+            messages: {
+                views: {
+                    day: "День",
+                    week: "Неделя",
+                    month: "Месяц"
+                },
+                deleteTaskWindowTitle: "Удаление",
+                deleteDependencyWindowTitle: "Удаление",
+                deleteTaskConfirmation: "Удалить запись?",
+                deleteDependencyConfirmation: "Удалить связь?"
+            },
+            dataSource: {
+                transport: {
+                    read: {
+                        url: "/api/listview/@Model.Mnemonic/kendoGantt",
+                        dataType: "json",
+                        type: "GET"
+                    },
+                    destroy: {
+                        url: function (params) {
+                            var splittedId = params.ID.split('-');
+                            return "/api/task/gantt/tasks/" + splittedId[0] + "/" + splittedId[1];
+                        },
+                        dataType: "json",
+                        type: "DELETE"
+                    },
+                    update: {
+                        url: function (params) {
+                            var splittedId = params.ID.split('-');
+                            return "/api/task/gantt/tasks/" + splittedId[0] + "/" + splittedId[1];
+                        },
+                        dataType: "json",
+                        type: "POST"
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { from: "ID", type: "string" },
+                            orderId: { from: "OrderId", type: "number", validation: { required: true } },
+                            parentId: { from: "ParentId", type: "number", validation: { required: true } },
+                            start: { from: "Start", type: "date" },
+                            end: { from: "End", type: "date" },
+                            title: { from: "Title", defaultValue: "", type: "string" },
+                            summary: { from: "Summary" },
+                            expanded: { from: "Expanded" },
+                            priority: { from:"Priority", type: "number"},
+                            percentComplete: { from: "PercentComplete", type: "number" },
+                            color: { from: "Color" },
+                            sibStatus: { from: "Status" }
+                        }
+                    }
+                }
+            },
+            dependencies: {
+                error: function(obj) {
+                    pbaAPI.errorMsg(obj.xhr.error);
+                    console.error(obj);
+                },
+                transport: {
+                    read: function (options) {
+                        $.ajax({
+                            type: 'GET',
+                            url: "/api/listview/@Model.Mnemonic/kendoGantt/dependencies",
+                            data: {
+                                start: ganttWidget.selectStart.toJSON(),
+                                end: ganttWidget.selectEnd.toJSON(),
+                                searchStr: ganttWidget.transport.read.data.searchStr
+                            },
+                            dataType: "json",
+                            success: function (result) {
+                                if (result.error) {
+                                    options.error(result);
+                                } else {
+                                    options.success(result);
+                                }
+                            },
+                            error: function (result) {
+                                options.error(result);
+                            }
+                        });
+                    },
+                    create: function (options) {
+                        $.ajax({
+                            type: 'POST',
+                            url: "/api/listview/@Model.Mnemonic/kendoGantt/dependencies",
+                            dataType: "json",
+                            data: JSON.stringify(options.data),
+                            contentType: "application/json",
+                            success: function (result) {
+                                if (result.error) {
+                                    options.error(result);
+                                } else {
+                                    options.success(result);
+                                }
+                                ganttWidget.bind();
+                            },
+                            error: function(result) {
+                                options.error(result);
+                            }
+                        });
+                    },
+                    destroy: function (options) {
+                        $.ajax({
+                            type: 'DELETE',
+                            url: "/api/listview/@Model.Mnemonic/kendoGantt/dependencies",
+                            dataType: "json",
+                            data: JSON.stringify(options.data),
+                            contentType: "application/json",
+                            success: function (result) {
+                                if (result && result.error) {
+                                    options.error(result);
+                                } else {
+                                    options.success(result);
+                                }
+                            },
+                            error: function (result) {
+                                options.error(result);
+                            }
+                        });
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { from: "ID", type: "number" },
+                            predecessorId: { from: "PredecessorID", type: "string" },
+                            successorId: { from: "SuccessorID", type: "string" },
+                            type: { from: "Type", type: "number" }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>

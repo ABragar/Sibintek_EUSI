@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+  <TaxFederalExemptionTSs>
+    <TaxFederalExemptionTS>
+      <ID>0</ID>
+      <ExternalID>1</ExternalID>
+      <TaxNameExternalID>3</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxpayersCategory>Весельные лодки, а также моторные лодки с двигателем мощностью не свыше 5 лошадиных сил</TaxpayersCategory>
+      <NumChapterLawRF>28 "Транспортный налог" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>358</NumArticleLawRF>
+      <NumParagraphLawRF>Подпункт 1 пункта 2</NumParagraphLawRF>
+      <BasisForGranting>информация регистрирующих органов </BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+    </TaxFederalExemptionTS>
+    <TaxFederalExemptionTS>
+      <ID>0</ID>
+      <ExternalID>2</ExternalID>
+      <TaxNameExternalID>3</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxpayersCategory>Промысловые морские и речные суда</TaxpayersCategory>
+      <NumChapterLawRF>28 "Транспортный налог" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>358</NumArticleLawRF>
+      <NumParagraphLawRF>Подпункт 3 пункта 2</NumParagraphLawRF>
+      <BasisForGranting>Документы,подтверждающие использование судов в промысловой деятельности</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+    </TaxFederalExemptionTS>
+    <TaxFederalExemptionTS>
+      <ID>0</ID>
+      <ExternalID>3</ExternalID>
+      <TaxNameExternalID>3</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxpayersCategory>Пассажирские и грузовые морские, речные и воздушные суда, находящиеся в собственности (на праве хозяйственного ведения или оперативного управления) организаций и индивидуальных предпринимателей</TaxpayersCategory>
+      <NumChapterLawRF>28 "Транспортный налог" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>358</NumArticleLawRF>
+      <NumParagraphLawRF>Подпункт 4 пункта 2</NumParagraphLawRF>
+      <BasisForGranting>Положение учредительных документов (учредительный договор, устав, положение и др. документы), определяющие пассажирские и (или) грузовые перевозки в качестве основного вида деятельности, цели создания организации; наличие действующей лицензии на осуществление грузовых перевозок и (или) пассажирских перевозок.;получение выручки от пассажирских и грузовых перевозок; систематическое выполнение пассажирских и (или) грузовых перевозок в течение навигации (для водных транспортных средств); наличие установленной законодательством отчетности (в том числе статистической) по выполненным перевозкам пассажиров и (или) грузов</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+    </TaxFederalExemptionTS>
+    <TaxFederalExemptionTS>
+      <ID>0</ID>
+      <ExternalID>4</ExternalID>
+      <TaxNameExternalID>3</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxpayersCategory>Тракторы, самоходные комбайны всех марок, специальные автомашины (молоковозы, скотовозы, специальные машины для перевозки птицы, машины для перевозки и внесения минеральных удобрений, ветеринарной помощи, технического обслуживания)</TaxpayersCategory>
+      <NumChapterLawRF>28 "Транспортный налог" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>358</NumArticleLawRF>
+      <NumParagraphLawRF>Подпункт 5 пункта 2 </NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие статус сельскохозяйственного товаропроизводителя, и расчет стоимости произведенной продукции с выделением произведенной сельскохозяйственной продукции.</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>Зарегистрированные на сельскохозяйственных товаропроизводителей и используемые при сельскохозяйственных работах для производства сельскохозяйственной продукции</ConditionForGranting>
+    </TaxFederalExemptionTS>
+    <TaxFederalExemptionTS>
+      <ID>0</ID>
+      <ExternalID>5</ExternalID>
+      <TaxNameExternalID>3</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxpayersCategory>Транспортные средства, принадлежащие на праве оперативного управления федеральным органам исполнительной власти</TaxpayersCategory>
+      <NumChapterLawRF>28 "Транспортный налог" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>358</NumArticleLawRF>
+      <NumParagraphLawRF>Подпункт 6 пункта 2 </NumParagraphLawRF>
+      <BasisForGranting>Положения о соотвествующих органах исполнительной власти, где предусмотрена военная или приравненная к ней служба в соответствии с законодвтельством Российской Федерации</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>Где законодательно предусмотрена военная и (или) приравненная к ней служба</ConditionForGranting>
+    </TaxFederalExemptionTS>
+    <TaxFederalExemptionTS>
+      <ID>0</ID>
+      <ExternalID>6</ExternalID>
+      <TaxNameExternalID>3</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxpayersCategory>Самолеты и вертолеты санитарной авиации и медицинской службы</TaxpayersCategory>
+      <NumChapterLawRF>28 "Транспортный налог" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>358</NumArticleLawRF>
+      <NumParagraphLawRF>Подпункт 8 пункта 2</NumParagraphLawRF>
+      <BasisForGranting>На воздушные суда, предназначенные для медико-санитарной службы, должно быть нанесено изображение красного креста или красного полумесяца по ГОСТ 18715-74</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+    </TaxFederalExemptionTS>
+    <TaxFederalExemptionTS>
+      <ID>0</ID>
+      <ExternalID>7</ExternalID>
+      <TaxNameExternalID>3</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxpayersCategory>Суда, зарегистрированные в Российском международном реестре судов</TaxpayersCategory>
+      <NumChapterLawRF>28 "Транспортный налог" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>358</NumArticleLawRF>
+      <NumParagraphLawRF>Подпункт 9 пункта 2 </NumParagraphLawRF>
+      <BasisForGranting>Свидетельство о праве плавания под Государственным флагом Российской Федерации </BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+    </TaxFederalExemptionTS>
+    <TaxFederalExemptionTS>
+      <ID>0</ID>
+      <ExternalID>8</ExternalID>
+      <TaxNameExternalID>3</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxpayersCategory>Морские стационарные и плавучие платформы, морские передвижные буровые установки и буровые суда </TaxpayersCategory>
+      <NumChapterLawRF>28 "Транспортный налог" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>358</NumArticleLawRF>
+      <NumParagraphLawRF>Подпункт 10 пункта 2</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие назначение объектов,иные документы, подтверждающие право на освобождение</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+    </TaxFederalExemptionTS>
+  </TaxFederalExemptionTSs>
+</DefaultDataHolder>

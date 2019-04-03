@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<SibFederalDistricts>
+	<SibFederalDistrict>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>ДВФО</Code>
+		<PublishCode>ДВФО</PublishCode>
+		<Name>Дальневосточный федеральный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibFederalDistrict>
+	<SibFederalDistrict>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>ПФО</Code>
+		<PublishCode>ПФО</PublishCode>
+		<Name>Приволжский федеральный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibFederalDistrict>
+	<SibFederalDistrict>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>СЗФО</Code>
+		<PublishCode>СЗФО</PublishCode>
+		<Name>Северо-западный федеральный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibFederalDistrict>
+	<SibFederalDistrict>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>СКФО</Code>
+		<PublishCode>СКФО</PublishCode>
+		<Name>Северо-Кавказский федеральный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibFederalDistrict>
+	<SibFederalDistrict>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>СФО</Code>
+		<PublishCode>СФО</PublishCode>
+		<Name>Сибирский федеральный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibFederalDistrict>
+	<SibFederalDistrict>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>УФО</Code>
+		<PublishCode>УФО</PublishCode>
+		<Name>Уральский федеральный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibFederalDistrict>
+	<SibFederalDistrict>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>ЦФО</Code>
+		<PublishCode>ЦФО</PublishCode>
+		<Name>Центральный федеральный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibFederalDistrict>
+	<SibFederalDistrict>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>ЮФО</Code>
+		<PublishCode>ЮФО</PublishCode>
+		<Name>Южный федеральный округ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</SibFederalDistrict>
+</SibFederalDistricts>
+  </DefaultDataHolder>

@@ -1,0 +1,44 @@
+﻿.panel-body {
+	padding: 1em;
+	}
+
+.leaflet-marker-pane > * {
+	transition: none;
+	}
+
+
+rzslider span.rz-bubble {
+	color: @color--active;
+
+	&.rz-limit {
+		color: @color--active;
+		}
+	}
+
+
+.leaflet-control {
+	&-easyPrint {
+		display: none;
+
+		@media ( min-width: @screen-width-md ) {
+			display: block;
+			}
+
+		&-button {
+			font-family: 'FontAwesome';
+			font-size: 1.5em;
+
+			&:before {
+				content: '\f02f';
+				}
+			}
+		}
+
+	&-zoom-in,
+	&-zoom-out {
+		font-family: @font-stack--sans;
+		font-size: @modular-scale *1.5em !important;
+		font-weight: 400;
+		}
+	}
+

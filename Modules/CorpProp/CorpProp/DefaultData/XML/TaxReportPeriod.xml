@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<TaxReportPeriods>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>1</Code>
+		<PublishCode>1</PublishCode>
+		<Name>январь</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>2</Code>
+		<PublishCode>2</PublishCode>
+		<Name>февраль</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>3</Code>
+		<PublishCode>3</PublishCode>
+		<Name>март</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>4</Code>
+		<PublishCode>4</PublishCode>
+		<Name>апрель</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>5</Code>
+		<PublishCode>5</PublishCode>
+		<Name>май</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>6</Code>
+		<PublishCode>6</PublishCode>
+		<Name>июнь</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>7</Code>
+		<PublishCode>7</PublishCode>
+		<Name>июль</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>8</Code>
+		<PublishCode>8</PublishCode>
+		<Name>август</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>9</Code>
+		<PublishCode>9</PublishCode>
+		<Name>сентябрь</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>10</Code>
+		<PublishCode>10</PublishCode>
+		<Name>октябрь</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>11</Code>
+		<PublishCode>11</PublishCode>
+		<Name>ноябрь</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>12</Code>
+		<PublishCode>12</PublishCode>
+		<Name>декабрь</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>13</Code>
+		<PublishCode>13</PublishCode>
+		<Name>первый квартал по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>14</Code>
+		<PublishCode>14</PublishCode>
+		<Name>полугодие по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>15</Code>
+		<PublishCode>15</PublishCode>
+		<Name>девять месяцев по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>16</Code>
+		<PublishCode>16</PublishCode>
+		<Name>год по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>17</Code>
+		<PublishCode>17</PublishCode>
+		<Name>полугодие (2 квартал)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>18</Code>
+		<PublishCode>18</PublishCode>
+		<Name>девять месяцев (3 квартал)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>20</Code>
+		<PublishCode>20</PublishCode>
+		<Name>квартал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>21</Code>
+		<PublishCode>21</PublishCode>
+		<Name>1 квартал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>22</Code>
+		<PublishCode>22</PublishCode>
+		<Name>2 квартал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>23</Code>
+		<PublishCode>23</PublishCode>
+		<Name>3 квартал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>24</Code>
+		<PublishCode>24</PublishCode>
+		<Name>4 квартал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>25</Code>
+		<PublishCode>25</PublishCode>
+		<Name>1 квартал в случае представления налоговой декларации управляющим товарищем</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>26</Code>
+		<PublishCode>26</PublishCode>
+		<Name>2 квартал в случае представления налоговой декларации управляющим товарищем</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>27</Code>
+		<PublishCode>27</PublishCode>
+		<Name>3 квартал в случае представления налоговой декларации управляющим товарищем</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>28</Code>
+		<PublishCode>28</PublishCode>
+		<Name>4 квартал в случае представления налоговой декларации управляющим товарищем</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>31</Code>
+		<PublishCode>31</PublishCode>
+		<Name>полугодие</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>33</Code>
+		<PublishCode>33</PublishCode>
+		<Name>девять месяцев</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>34</Code>
+		<PublishCode>34</PublishCode>
+		<Name>год</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>35</Code>
+		<PublishCode>35</PublishCode>
+		<Name>один месяц*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>36</Code>
+		<PublishCode>36</PublishCode>
+		<Name>два месяца*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>37</Code>
+		<PublishCode>37</PublishCode>
+		<Name>три месяца*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>38</Code>
+		<PublishCode>38</PublishCode>
+		<Name>четыре месяца*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>39</Code>
+		<PublishCode>39</PublishCode>
+		<Name>пять месяцев*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>40</Code>
+		<PublishCode>40</PublishCode>
+		<Name>шесть месяцев*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>41</Code>
+		<PublishCode>41</PublishCode>
+		<Name>семь месяцев*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>42</Code>
+		<PublishCode>42</PublishCode>
+		<Name>восемь месяцев*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>43</Code>
+		<PublishCode>43</PublishCode>
+		<Name>девять месяцев*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>44</Code>
+		<PublishCode>44</PublishCode>
+		<Name>десять месяцев*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>45</Code>
+		<PublishCode>45</PublishCode>
+		<Name>одиннадцать месяцев*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>46</Code>
+		<PublishCode>46</PublishCode>
+		<Name>год*</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>47</Code>
+		<PublishCode>47</PublishCode>
+		<Name>полугодие (2 квартал) при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>48</Code>
+		<PublishCode>48</PublishCode>
+		<Name>девять месяцев (3 квартал) при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>50</Code>
+		<PublishCode>50</PublishCode>
+		<Name>последний налоговый период при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>51</Code>
+		<PublishCode>51</PublishCode>
+		<Name>1 квартал при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>52</Code>
+		<PublishCode>52</PublishCode>
+		<Name>полугодие при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>53</Code>
+		<PublishCode>53</PublishCode>
+		<Name>9 месяцев при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>54</Code>
+		<PublishCode>54</PublishCode>
+		<Name>2 квартал при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>55</Code>
+		<PublishCode>55</PublishCode>
+		<Name>3 квартал при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>56</Code>
+		<PublishCode>56</PublishCode>
+		<Name>4 квартал при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>57</Code>
+		<PublishCode>57</PublishCode>
+		<Name>один месяц по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>58</Code>
+		<PublishCode>58</PublishCode>
+		<Name>два месяца по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>59</Code>
+		<PublishCode>59</PublishCode>
+		<Name>три месяца по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>60</Code>
+		<PublishCode>60</PublishCode>
+		<Name>четыре месяца по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>61</Code>
+		<PublishCode>61</PublishCode>
+		<Name>пять месяцев по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>62</Code>
+		<PublishCode>62</PublishCode>
+		<Name>шесть месяцев по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>63</Code>
+		<PublishCode>63</PublishCode>
+		<Name>семь месяцев по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>64</Code>
+		<PublishCode>64</PublishCode>
+		<Name>восемь месяцев по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>65</Code>
+		<PublishCode>65</PublishCode>
+		<Name>девять месяцев по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>66</Code>
+		<PublishCode>66</PublishCode>
+		<Name>десять месяцев по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>62</ExternalID>
+		<ExternalParentID/>
+		<Code>67</Code>
+		<PublishCode>67</PublishCode>
+		<Name>одиннадцать месяцев по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>63</ExternalID>
+		<ExternalParentID/>
+		<Code>68</Code>
+		<PublishCode>68</PublishCode>
+		<Name>год по консолидированной группе налогоплательщиков</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>64</ExternalID>
+		<ExternalParentID/>
+		<Code>71</Code>
+		<PublishCode>71</PublishCode>
+		<Name>за январь при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>65</ExternalID>
+		<ExternalParentID/>
+		<Code>72</Code>
+		<PublishCode>72</PublishCode>
+		<Name>за февраль при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>66</ExternalID>
+		<ExternalParentID/>
+		<Code>73</Code>
+		<PublishCode>73</PublishCode>
+		<Name>за март при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>67</ExternalID>
+		<ExternalParentID/>
+		<Code>74</Code>
+		<PublishCode>74</PublishCode>
+		<Name>за апрель при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>68</ExternalID>
+		<ExternalParentID/>
+		<Code>75</Code>
+		<PublishCode>75</PublishCode>
+		<Name>за май при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>69</ExternalID>
+		<ExternalParentID/>
+		<Code>76</Code>
+		<PublishCode>76</PublishCode>
+		<Name>за июнь при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>70</ExternalID>
+		<ExternalParentID/>
+		<Code>77</Code>
+		<PublishCode>77</PublishCode>
+		<Name>за июль при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>71</ExternalID>
+		<ExternalParentID/>
+		<Code>78</Code>
+		<PublishCode>78</PublishCode>
+		<Name>за август при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>72</ExternalID>
+		<ExternalParentID/>
+		<Code>79</Code>
+		<PublishCode>79</PublishCode>
+		<Name>за сентябрь при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>73</ExternalID>
+		<ExternalParentID/>
+		<Code>80</Code>
+		<PublishCode>80</PublishCode>
+		<Name>за октябрь при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>74</ExternalID>
+		<ExternalParentID/>
+		<Code>81</Code>
+		<PublishCode>81</PublishCode>
+		<Name>за ноябрь при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>75</ExternalID>
+		<ExternalParentID/>
+		<Code>82</Code>
+		<PublishCode>82</PublishCode>
+		<Name>за декабрь при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>76</ExternalID>
+		<ExternalParentID/>
+		<Code>83</Code>
+		<PublishCode>83</PublishCode>
+		<Name>1 квартал при снятии с учета, в качестве индивидуального предпринимателя ((главы) крестьянского (фермерского) хозяйства)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>77</ExternalID>
+		<ExternalParentID/>
+		<Code>84</Code>
+		<PublishCode>84</PublishCode>
+		<Name>полугодие при снятии с учета, в качестве индивидуального предпринимателя ((главы) крестьянского (фермерского) хозяйства)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>78</ExternalID>
+		<ExternalParentID/>
+		<Code>85</Code>
+		<PublishCode>85</PublishCode>
+		<Name>9 месяцев при снятии с учета, в качестве индивидуального предпринимателя ((главы) крестьянского (фермерского) хозяйства)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>79</ExternalID>
+		<ExternalParentID/>
+		<Code>86</Code>
+		<PublishCode>86</PublishCode>
+		<Name>год при снятии с учета, в качестве индивидуального предпринимателя ((главы) крестьянского (фермерского) хозяйства)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>80</ExternalID>
+		<ExternalParentID/>
+		<Code>90</Code>
+		<PublishCode>90</PublishCode>
+		<Name>год при реорганизации (ликвидации) организации</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>81</ExternalID>
+		<ExternalParentID/>
+		<Code>91</Code>
+		<PublishCode>91</PublishCode>
+		<Name>I квартал при реорганизации (ликвидации) организации (промежуточная отчетность)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>82</ExternalID>
+		<ExternalParentID/>
+		<Code>92</Code>
+		<PublishCode>92</PublishCode>
+		<Name>полугодие при реорганизации (ликвидации) организации (промежуточная отчетность)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>83</ExternalID>
+		<ExternalParentID/>
+		<Code>93</Code>
+		<PublishCode>93</PublishCode>
+		<Name>9 месяцев при реорганизации (ликвидации) организации (промежуточная отчетность)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>84</ExternalID>
+		<ExternalParentID/>
+		<Code>94</Code>
+		<PublishCode>94</PublishCode>
+		<Name>год при реорганизации (ликвидации) организации (промежуточная отчетность)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>85</ExternalID>
+		<ExternalParentID/>
+		<Code>95</Code>
+		<PublishCode>95</PublishCode>
+		<Name>Последний налоговый период при переходе на иной режим налогообложения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>86</ExternalID>
+		<ExternalParentID/>
+		<Code>96</Code>
+		<PublishCode>96</PublishCode>
+		<Name>Последний налоговый период при прекращении предпринимательской деятельности, в отношении которой налогоплательщиком применялась упрощенная система налогообложения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+	<TaxReportPeriod>
+		<ID>0</ID>
+		<ExternalID>87</ExternalID>
+		<ExternalParentID/>
+		<Code>99</Code>
+		<PublishCode>99</PublishCode>
+		<Name>иное</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</TaxReportPeriod>
+</TaxReportPeriods>
+  </DefaultDataHolder>

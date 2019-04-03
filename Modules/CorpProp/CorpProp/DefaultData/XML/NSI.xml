@@ -1,0 +1,1272 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+  <NSITypes>
+    <NSIType>
+      <ID>0</ID>
+      <Code>Central</Code>
+      <SystemCode>Central</SystemCode>
+      <Name>Централизованный</Name>
+    </NSIType>
+    <NSIType>
+      <ID>0</ID>
+      <Code>Local</Code>
+      <SystemCode>Local</SystemCode>
+      <Name>Локальный</Name>
+    </NSIType>
+  </NSITypes>
+
+  <NSIs>
+    <NSI>
+      <ID>0</ID>
+      <Name>Деловые партнеры</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>Subject</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Балансовая единица (код консолидации)</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>ConsolidationMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Подпозиция консолидации</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>SubPositionConsolidationMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Валюта</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>CurrencyMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид договора</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>DealTypeMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид ТС</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>VehicleTypeMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Единица измерения</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>SibMeasureMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+      <NSI>
+      <ID>0</ID>
+      <Name>Единый классификатор транспортных средств</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>VehicleClassMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Класс (БУ)</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>ClassFixedAssetMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Код категории земель</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>GroundCategoryMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Код ОКАТО</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>OKATOMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Код ОКТМО</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>OKTMOMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Перечень объектов недвижимого имущества, налоговая база в отношении которых определяется как их кадастровая стоимость</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>PropertyListTaxBaseCadastralMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>ОКОФ  + Доп. Код ОКОФ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>OKOF94Menu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>ОКОФ 2  + Доп. Код ОКОФ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>OKOF2014Menu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>ОПФ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>OPFMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Субъекты РФ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>SibRegionMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус документа</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>DocStatusMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип делового партнера</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>SubjectTypeMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид операции</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>DocTypeOperationMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    
+    <NSI>
+      <ID>0</ID>
+      <Name>Федеральный округ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>SibFederalDistrictMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Страна</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>SibCountryMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Города</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>SibCityNSIMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид документа</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>DocKindMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Единицы измерения</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>SibMeasureMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Источник информации</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>InformationSourceMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Категория ТС</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>VehicleCategoryMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Класс КС</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>EstateTypeMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Курсы валют</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ExchangeRate</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Основание для включения объекта в Периметр</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>BaseInclusionInPerimeterMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Основание для исключения объекта из Периметра</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>BaseExclusionFromPerimeterMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус договора</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>SibDealStatusMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип документа</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>DocTypeMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип выписки ЕГРН/ЕГРП</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ExtractTypeMenu</Mnemonic>
+      <Category>Импорт</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Формат выписки  ЕГРН/ЕГРП</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ExtractFormatMenu</Mnemonic>
+      <Category>Импорт</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус ОБУ</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>AccountingStatusMenu</Mnemonic>
+      <Category>ОБУ</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип изменения ОБУ</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>AccountingMovingTypeMenu</Mnemonic>
+      <Category>ОБУ</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус запроса</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>RequestStatusMenu</Mnemonic>
+      <Category>Запросы</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид воздушного судна</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>AircraftKindMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид НМА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>IntangibleAssetTypeMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид объекта недвижимости</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>RealEstateKindMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Класс ИК</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>PropertyComplexKindMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Класс судна</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ShipClassMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Назначение судна</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ShipAssignmentMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Причина выбытия</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>LeavingReasonMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Способ поступления</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ReceiptReasonMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Стадия готовности объекта</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>StageOfCompletionMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус НМА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>IntangibleAssetStatusMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип воздушного судна</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>AircraftTypeMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип ЗУ</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>LandTypeMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип основной характеристики объекта недвижимости</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>FeatureTypeMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип судна</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ShipTypeMenu</Mnemonic>
+      <Category>Имущество</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид ограничения (обременения)</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>EncumbranceTypeMenu</Mnemonic>
+      <Category>Учёт прав</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид основания для правообладания</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>RightHolderKindMenu</Mnemonic>
+      <Category>Учёт прав</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид права</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>RightKindMenu</Mnemonic>
+      <Category>Учёт прав</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Основание регистрации прав</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>RegistrationBasisMenu</Mnemonic>
+      <Category>Учёт прав</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус графика гос. Регистрации</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ScheduleStateRegistrationStatusMenu</Mnemonic>
+      <Category>Учёт прав</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Форма Собственности</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>OwnershipTypeMenu</Mnemonic>
+      <Category>Учёт прав</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид одобрения реализации ННА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>NonCoreAssetSaleAcceptTypeMenu</Mnemonic>
+      <Category>ННА</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид перечня ННА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>NonCoreAssetListKindMenu</Mnemonic>
+      <Category>ННА</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Способ реализации ННА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ImplementationWayMenu</Mnemonic>
+      <Category>ННА</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип ННА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>NonCoreAssetTypeMenu</Mnemonic>
+      <Category>ННА</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус ННА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>NonCoreAssetStatusMenu</Mnemonic>
+      <Category>ННА</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип оценки ННА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>NonCoreAssetAppraisalTypeMenu</Mnemonic>
+      <Category>ННА</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип перечня ННА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>NonCoreAssetListTypeMenu</Mnemonic>
+      <Category>ННА</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус строки перечня ННА</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>NonCoreAssetListItemStateMenu</Mnemonic>
+      <Category>ННА</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус отчета по задаче</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>SibTaskReportStatusMenu</Mnemonic>
+      <Category>Проекты и задачи</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус проекта</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>SibProjectStatusMenu</Mnemonic>
+      <Category>Проекты и задачи</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Статус задачи</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>SibTaskStatusMenu</Mnemonic>
+      <Category>Проекты и задачи</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип проекта</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>SibProjectTypeMenu</Mnemonic>
+      <Category>Проекты и задачи</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Цель оценки</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>AppraisalGoalMenu</Mnemonic>
+      <Category>Оценки</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Назначение оценки</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>AppraisalPurposeMenu</Mnemonic>
+      <Category>Оценки</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип оценки</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>AppraisalTypeMenu</Mnemonic>
+      <Category>Оценки</Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип объекта имущества</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>EstateDefinitionTypeMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип объекта оценки</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>EstateAppraisalTypeMenu</Mnemonic>
+      <Category>Оценки</Category>
+      <URL></URL>
+    </NSI>
+
+    <NSI>
+      <ID>0</ID>
+      <Name>Праздничные дни</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>HolidaysCalendarMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+
+    <NSI>
+      <ID>0</ID>
+      <Name>Состояние объекта РСБУ</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>StateObjectRSBU</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Состояние объекта МСФО</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>StateObjectMSFO</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип аренды РСБУ</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>RentTypeRSBU</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Тип аренды МСФО</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>RentTypeMSFO</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+
+    <NSI>
+      <ID>0</ID>
+      <Name>Метод амортизации (РСБУ)</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>DepreciationMethodRSBU</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Метод амортизации (МСФО)</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>DepreciationMethodMSFO</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Метод амортизации (НУ)</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>DepreciationMethodNU</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+
+    <NSI>
+      <ID>0</ID>
+      <Name>Код вида ТС</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxVehicleKindCodeMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Повышающий/понижающий коэффициент</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>BoostOrReductionFactorMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Наименование налога</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxNameMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Отчетный период по налогу</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxReportPeriodMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Налоговый период</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxPeriodMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Налоговая база</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxBaseMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Реквизиты решений органов МО Имущество</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>DecisionsDetailsMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Реквизиты решений органов МО ЗУ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>DecisionsDetailsLandMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Реквизиты решений органов МО ТС</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>DecisionsDetailsTSMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Налоговая ставка Имущество</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxRateMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Код налоговой льготы Имущество</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxExemptionMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Федеральные льготы Имущество</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxFederalExemptionMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Региональные льготы Имущество</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxRegionExemptionMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Налоговые вычеты (ТС)</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxDeductionTSMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Налоговая ставка ЗУ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxRateLandMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Код налоговой льготы ЗУ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxExemptionLandMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Федеральные льготы ЗУ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxFederalExemptionLandMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Региональные льготы ЗУ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxRegionExemptionLandMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Налоговая ставка ТС</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxRateTSMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Код налоговой льготы ТС</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxExemptionTSMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Федеральные льготы ТС</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxFederalExemptionTSMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Региональные льготы ТС</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TaxRegionExemptionTSMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Марка ТС</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>VehicleModelMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Бизнес-сферы</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>BusinessAreaMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Бизнес-единицы (Аналитика 97 ИКСО)</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>BusinessUnitMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Объекты с признаком высокой энергетической эффективности</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>HighEnergyEfficientFacilityMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Объекты с признаком высокой энергетической эффективности (количественный показатель)</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>HighEnergyEfficientFacilityKPMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+      <NSI>
+      <ID>0</ID>
+      <Name>Класс энергетической эффективности</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>EnergyLabelMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    
+    <NSI>
+      <ID>0</ID>
+      <Name>Амортизационная группа НУ</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>DepreciationGroupMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Месторождение (Номер)</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>DepositMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Категория скважины</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>WellCategoryMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Доп. признак категории земель</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>AddonAttributeGroundCategoryMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Срок уплаты авансовых платежей и налога Имущество</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TermOfPymentTaxRateMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI><NSI>
+      <ID>0</ID>
+      <Name>Срок уплаты авансовых платежей и налога Земля</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TermOfPymentTaxRateLandMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI><NSI>
+      <ID>0</ID>
+      <Name>Срок уплаты авансовых платежей и налога Транспорт</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>TermOfPymentTaxRateTSMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид операции (аренда)</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>TransactionKindMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+
+    <NSI>
+      <ID>0</ID>
+      <Name>Недропользователи</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>SubsoilUserMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Местоположения объекта (аренда)</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>ObjectLocationRentMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>На чьем балансе учитывается ОС в РСБУ</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>AssetHolderRSBUMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Состояние ОС/НМА (аренда)</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>StateObjectRentMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Вид затрат в части арендных платежей</Name>
+      <NSIType>
+        <Code>Local</Code>
+      </NSIType>
+      <Mnemonic>CostKindRentalPaymentsMenu</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    
+    
+    
+    
+
+
+  </NSIs>
+</DefaultDataHolder>

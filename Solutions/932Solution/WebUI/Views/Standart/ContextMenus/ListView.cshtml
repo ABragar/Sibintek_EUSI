@@ -1,0 +1,152 @@
+﻿@using Base.UI.ViewModal
+@model Dialog_WidgetViewModel
+
+@{
+    Type typeEntity = Model.ViewModelConfig.TypeEntity;
+    Type serviceType = Model.ViewModelConfig.ServiceType;
+
+
+    bool isExportImport = (serviceType != null) ? serviceType.GetInterfaces().Contains(typeof(IExportImportObject)) : false;
+
+    bool isCategorizedItem = typeEntity.GetInterfaces().Contains(typeof(ICategorizedItem));
+
+    if (isCategorizedItem)
+    {
+    }
+
+    string nameContextMenu = "contextMenu_" + Guid.NewGuid().ToString("N");
+    string btnAddId = Guid.NewGuid().ToString("N");
+    string btnEditId = Guid.NewGuid().ToString("N");
+    string btnDeleteId = Guid.NewGuid().ToString("N");
+    string btnChangeCatId = Guid.NewGuid().ToString("N");
+    string btnExport = Guid.NewGuid().ToString("N");
+
+
+
+    bool actionCreate = !Model.IsReadOnly && Model.IsPermission(TypePermission.Create) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Create);
+    bool actionEdit = !Model.IsReadOnly && Model.IsPermission(TypePermission.Write);
+    bool actionDelete = !Model.IsReadOnly && Model.IsPermission(TypePermission.Delete) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Delete);
+    bool actionChangeCategory = isCategorizedItem && !Model.IsReadOnly && Model.IsPermission(TypePermission.Write) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.ChangeCategory);
+}
+
+<script>
+    window["@nameContextMenu"] = new WrapContextMenu("@nameContextMenu", "ContextMenuListView");
+
+    (function () {
+        var composite = window["@Model.DialogID"];
+        var contextMenu = window["@nameContextMenu"];
+
+        composite.registerWidget(contextMenu);
+
+        contextMenu.onNeighbourWidgetChanged = function (e) {
+            switch (e.sender.desc) {
+                case "GridView":
+                    if (e.event === "select") {
+                        contextMenu.listViewSelectedObject = e.params.dataItem;
+
+                        var isSelected = contextMenu.listViewSelectedObject != null;
+
+                        var isMnemonic = true;
+                        var isSelectNode = true;
+
+                        @if (isCategorizedItem) {
+                            @: if (!e.sender["nodeID"]) isSelectNode = false;
+                        }
+                        
+
+                        @if (actionCreate) {
+                            @: contextMenu.enable("#@btnAddId", isSelectNode && isMnemonic);
+                        }
+
+                        contextMenu.enable("#@btnEditId", isSelected && isSelectNode && isMnemonic);
+
+                        @if (actionDelete) {
+                            @: contextMenu.enable("#@btnDeleteId", isSelected);
+                        }
+
+                        @if (actionChangeCategory) {
+                            @: contextMenu.enable("#@btnChangeCatId", isSelected);
+                        }
+
+                    } else if (e.event == "onDataBound") {
+
+                        contextMenu.listViewSelectedObject = null;
+
+                    }
+
+                    break;
+            }
+        };
+
+        //events
+        contextMenu.onSelect = function (e) {
+            composite.onWidgetChanged({
+                sender: contextMenu,
+                event: "click",
+                params: {
+                    event: e,
+                    action: e.item.getAttribute("data-action")
+                }
+            });
+        };
+        contextMenu.onOpen = function (e) {
+            composite.onWidgetChanged({
+                sender: contextMenu,
+                event: "select",
+                params: { el: $(e.target) }
+            });
+        };
+    })();
+</script>
+
+@(Html.Kendo().ContextMenu()
+
+    .Name(nameContextMenu)
+
+    .Target("#" + Model.WidgetID)
+    .Filter("table[data-role=selectable] tr[role=row]")
+
+    .Events(e =>
+    {
+        e.Select(nameContextMenu + ".onSelect");
+        e.Open(nameContextMenu + ".onOpen");
+    })
+
+    .Items(items =>
+    {
+        if (actionCreate) { items.Add().Text("Создать").HtmlAttributes(new { id = btnAddId, data_action = "add" }).SpriteCssClasses("btntoolbar fa fa-plus").Enabled(actionCreate); }
+
+        if (actionEdit)
+        {
+            items.Add().Text("Редактировать").HtmlAttributes(new { id = btnEditId, data_action = "edit" }).SpriteCssClasses("btntoolbar fa fa-pencil").Enabled(actionEdit);
+        }
+        else
+        {
+            items.Add().Text("Просмотр").HtmlAttributes(new { id = btnEditId, data_action = "edit" }).SpriteCssClasses("btntoolbar fa fa-eye").Enabled(actionEdit);
+        }
+
+        if (actionDelete) { items.Add().Text("Удалить").HtmlAttributes(new { id = btnDeleteId, data_action = "delete" }).SpriteCssClasses("btntoolbar fa fa-trash-o").Enabled(actionDelete); }
+
+        if (actionChangeCategory)
+        {
+            items.Add().Text("Переместить в...").HtmlAttributes(new { id = btnChangeCatId, data_action = "changeCategory" }).SpriteCssClasses("btntoolbar fa fa-share-square-o").Enabled(actionDelete);
+        }
+
+        if (isExportImport)
+        {
+            items.Add().Text("Экспорт в json").HtmlAttributes(new {id = btnExport, data_action = "exportJson"}).SpriteCssClasses("btntoolbar mdi mdi-code-braces");
+        }
+
+    })
+)
+
+<script>
+    $(function () {
+        var contextMenu = window["@nameContextMenu"];
+        var $contextMenu = contextMenu.element();
+
+        //NOTE: в данной версии возможно использовать иконки только из кендо-спрайтов
+        //TODO: убрать!!!
+        $contextMenu.find(".k-sprite.glyphicon").removeClass("k-sprite");
+    });
+</script>

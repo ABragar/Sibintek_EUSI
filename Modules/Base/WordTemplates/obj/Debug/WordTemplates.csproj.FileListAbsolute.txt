@@ -1,0 +1,13 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\bin\Debug\WordTemplates.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\bin\Debug\WordTemplates.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\bin\Debug\DocumentFormat.OpenXml.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\bin\Debug\Newtonsoft.Json.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\bin\Debug\OpenXmlPowerTools.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\bin\Debug\Newtonsoft.Json.xml
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\obj\Debug\WordTemplates.Properties.Resources.resources
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\obj\Debug\WordTemplates.csproj.GenerateResource.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\obj\Debug\WordTemplates.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\obj\Debug\WordTemplates.csproj.CopyComplete
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\obj\Debug\WordTemplates.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\obj\Debug\WordTemplates.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\WordTemplates\obj\Debug\WordTemplates.csprojAssemblyReference.cache

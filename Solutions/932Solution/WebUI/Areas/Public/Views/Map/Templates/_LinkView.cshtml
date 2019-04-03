@@ -1,0 +1,13 @@
+﻿@model WebUI.Areas.Public.Models.VmMap
+
+<script type="text/ng-template" id="link.container.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="link.close()" aria-label="Close">
+            ×
+        </button>
+        <h4 class="modal-title">{{link.title}}</h4>
+    </div>
+    <div class="modal-body image-view">
+        <input class="form-control" type="text" ng-model="link.url" />
+    </div>
+</script>

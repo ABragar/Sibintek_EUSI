@@ -1,0 +1,15 @@
+﻿@using Base.Entities.Complex
+@model EditorViewModel
+
+@{
+    
+    Type enumType = typeof(RemindValueType);
+    string dropdown = Model.UID + "_drop";
+}
+
+
+<div id="@Model.UID">
+    <label>За</label>
+    <input type="number" class="k-textbox" data-bind="value: RemindPeriod.RemindValue" />
+    <input id="@dropdown" data-enum-type="@enumType.GetTypeName()" data-bind="value: @(Model.PropertyName).RemindValueType" />
+</div>

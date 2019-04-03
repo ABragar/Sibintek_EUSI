@@ -1,0 +1,332 @@
+/* 5. Map icons */
+@font-face {
+  font-family: 'fontello';
+  src: url('fontello.eot?17704045');
+  src: url('fontello.eot?17704045#iefix') format('embedded-opentype'),
+       url('fontello.woff2') format('woff2'),
+       url('fontello.woff?17704045') format('woff'),
+       url('fontello.ttf?17704045') format('truetype'),
+       url('fontello.svg?17704045#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?70128433#fontello') format('svg');
+  }
+}
+*/
+ 
+/*.geoicon {
+   position: relative;
+  display: inline-block;
+  top: 4px;
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}*/
+
+
+.geoicon {
+    position: relative;
+    display: inline-block;
+    top: -1px;
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ /* sizing */
+.geoicon.x05 {
+  font-size: 6px;
+}
+.geoicon.x2 {
+  font-size: 24px;
+}
+.geoicon.x3 {
+  font-size: 36px;
+}
+.geoicon.x4 {
+  font-size: 48px;
+}
+.geoicon.x5 {
+  font-size: 60px;
+}
+.geoicon.x6 {
+  font-size: 72px;
+}
+.geoicon.x7 {
+  font-size: 84px;
+}
+.geoicon.x8 {
+  font-size: 96px;
+}
+
+/* styling */
+.geoicon.flip {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.geoicon.flipv {
+  -moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipV;
+  -ms-filter: "FlipV";
+}
+.geoicon.rotate90 {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.geoicon.rotate180 {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.geoicon.rotate270 {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+ 
+.geoicon-1:before { content: '\e800'; } /* '' */
+.geoicon-2:before { content: '\e801'; } /* '' */
+.geoicon-3:before { content: '\e802'; } /* '' */
+.geoicon-4:before { content: '\e803'; } /* '' */
+.geoicon-5:before { content: '\e804'; } /* '' */
+.geoicon-6:before { content: '\e805'; } /* '' */
+.geoicon-7:before { content: '\e806'; } /* '' */
+.geoicon-8:before { content: '\e807'; } /* '' */
+.geoicon-9:before { content: '\e808'; } /* '' */
+.geoicon-10:before { content: '\e809'; } /* '' */
+.geoicon-11:before { content: '\e80a'; } /* '' */
+.geoicon-12:before { content: '\e80b'; } /* '' */
+.geoicon-13:before { content: '\e80c'; } /* '' */
+.geoicon-14:before { content: '\e80d'; } /* '' */
+.geoicon-15:before { content: '\e80e'; } /* '' */
+.geoicon-16:before { content: '\e80f'; } /* '' */
+.geoicon-17:before { content: '\e810'; } /* '' */
+.geoicon-18:before { content: '\e811'; } /* '' */
+.geoicon-19:before { content: '\e812'; } /* '' */
+.geoicon-20:before { content: '\e813'; } /* '' */
+.geoicon-21:before { content: '\e814'; } /* '' */
+.geoicon-22:before { content: '\e815'; } /* '' */
+.geoicon-23:before { content: '\e816'; } /* '' */
+
+/* animations */
+.geoicon.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.geoicon.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}
+@-webkit-keyframes rotateIn {
+  0% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: rotate(-200deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform-origin: center center;
+    -webkit-transform: rotate(0);
+    opacity: 1;
+  }
+}
+@keyframes rotateIn {
+  0% {
+    transform-origin: center center;
+    transform: rotate(-200deg);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: center center;
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+.geoicon.rotateIn {
+  -webkit-animation-name: rotateIn;
+  animation-name: rotateIn;
+}
+@-webkit-keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -webkit-transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+  }
+}
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+.geoicon.bounce {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+}
+@-webkit-keyframes swing {
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    -webkit-transform-origin: top center;
+  }
+  20% {
+    -webkit-transform: rotate(15deg);
+  }
+  40% {
+    -webkit-transform: rotate(-10deg);
+  }
+  60% {
+    -webkit-transform: rotate(5deg);
+  }
+  80% {
+    -webkit-transform: rotate(-5deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+@keyframes swing {
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.geoicon.swing {
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+  -webkit-animation-name: swing;
+  animation-name: swing;
+}
+@-webkit-keyframes tada {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  10%,
+  20% {
+    -webkit-transform: scale(0.9) rotate(-3deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: scale(1.1) rotate(3deg);
+  }
+  40%,
+  60%,
+  80% {
+    -webkit-transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate(0);
+  }
+}
+@keyframes tada {
+  0% {
+    transform: scale(1);
+  }
+  10%,
+  20% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  40%,
+  60%,
+  80% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+.geoicon.tada {
+  -webkit-animation-name: tada;
+  animation-name: tada;
+}

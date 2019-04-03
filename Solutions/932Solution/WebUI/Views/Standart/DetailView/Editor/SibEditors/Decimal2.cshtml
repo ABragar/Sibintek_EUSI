@@ -1,0 +1,14 @@
+﻿@model EditorViewModel
+
+@{
+    string name = "n_" + Guid.NewGuid().ToString("N");
+}
+
+@(Html.Kendo().NumericTextBox().Name(name)
+        .Format("0.00")
+        .Decimals(2)
+        .Placeholder("0.00")
+        .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { style = "width:100%; max-width: 200px;" }))
+        .Min(0)
+)
+

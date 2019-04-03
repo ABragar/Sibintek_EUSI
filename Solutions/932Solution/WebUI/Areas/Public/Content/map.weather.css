@@ -1,0 +1,38 @@
+﻿.leaflet-control-weather {
+    display: block;
+    width: 150px;
+    height: 85px;
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #2980B9;
+    padding: 10px;
+    position: relative;
+    opacity: 0.7;
+}
+
+.leaflet-control-weather:hover {
+    opacity: 1;
+}
+
+.leaflet-control-weather-temp {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    font-size: 40px;
+    line-height: 41px;
+    padding: 5px;
+    color: #F9F9F9;
+}
+
+.leaflet-control-weather-wind {
+    display: block;
+    padding: 5px;
+    right: 10px;
+    bottom: 3px;
+    color: #F3F3F3;
+    position: absolute;
+    font-size: 12px;
+    line-height: 12px;
+}

@@ -1,0 +1,48 @@
+﻿@using Base.UI.Presets
+@model WebUI.Models.StandartTreeListView
+
+@{
+    string actionRead = "KendoUI_TreeRead";
+    string controllerRead = "Standart";
+
+    var preset = (GridPreset)Model.Preset;
+
+    var config = Model.ViewModelConfig.ListView;
+}
+
+@(Html.Kendo().TreeList<dynamic>()
+            .Name(Model.WidgetID)
+            .AutoBind(false)
+            .Columns(columns => columns.InitColumns(this))
+            .Sortable()
+            .Scrollable(config.Scrollable)
+            .Selectable(true)
+            .Filterable(f => f.InitFilterable(this))
+            .Events(e => e.InitEvents(this))
+            .Pdf(pdf => pdf
+                .FileName(Model.ViewModelConfig.ListView.Title + ".pdf")
+                .ProxyURL("/api/kendo/export")
+            )
+            .Excel(e =>
+            {
+                e.FileName(Model.ViewModelConfig.ListView.Title + ".xlsx");
+                e.Filterable(true);
+                e.ProxyURL("/api/kendo/export");
+            })
+            .DataSource(dataSource => dataSource
+                .Model(a => a.InitModel(this))
+                .Sort(sort => sort.InitDataSourceSort(this))
+                .Filter(filter => filter.InitDataSourceFilter(this))
+                .Group(group => group.InitDataSourceGroup(this))
+                .PageSize(preset.PageSize)
+                .Batch(true)
+                .ServerOperation(true)
+                .Events(events => events.Error(Model.WidgetID + ".onErrorHandler"))
+            .Read(read => read.InitRead($"listview/{Model.Mnemonic}/kendoTreeList", "api", Model.Mnemonic, Model.SearchStr, Model.SysFilter).Data(Model.WidgetID + ".onAdditionalData"))
+            //.Read(read => read.Data(Model.WidgetID + ".onAdditionalData"))
+            //.Read(read => read.InitRead(actionRead, controllerRead, Model.Mnemonic, Model.SearchStr, Model.SysFilter))
+            .Aggregates(ag => ag.InitDataSourceAggregate(this))
+            )
+            .Reorderable(true)
+            .Resizable(true)
+)

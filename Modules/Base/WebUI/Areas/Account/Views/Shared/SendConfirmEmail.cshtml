@@ -1,0 +1,38 @@
+﻿@using WebUI.Areas.Account
+@model WebUI.Areas.Account.Models.Shared.SendConfirmEmailModel
+
+@{
+    var routevalues = Url.FromCurrent(new { code = (string)null });
+
+    ViewBag.Title = "Подтверждение почты";
+}
+
+@using (Html.BeginForm("SendConfirmEmail", "Account", routevalues, FormMethod.Post, new Dictionary<string, object>
+{
+    { "class", "account-card__form" }
+}))
+{
+
+    @Html.ValueFor(x => x.Message)
+
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x => x.Login)
+    @Html.Captcha(Model.CaptchaName, 140, 30)
+
+    <!-- SUBMIT BUTTON -->
+    <button class="btn btn-large btn-block" type="submit">Отправить заного</button>
+   
+    <!-- HIDDEN VALIDATION MESSAGES -->
+    <div class="validations">
+        <div data-validation-summary>@Html.ValidationSummary(true)</div>
+    </div>
+
+
+    <!-- BACK LINK -->
+    <div class="actions">
+        <a href="@Url.Action("Index","Manage", routevalues)" data-route="back">Назад</a>
+    </div>
+}
+
+@section card_class {no-footer}

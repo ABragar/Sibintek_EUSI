@@ -1,0 +1,108 @@
+﻿<section id="buttons" class="k-pane">
+    <h2>Кнопки</h2>
+
+    <label for="buttons1" class="collapsed" data-toggle="collapse" data-target="#buttons1_code">Обычные кнопки</label>
+    <div id="buttons1">
+        <a href="#" class="k-button">Кнопка</a>
+        <a href="#" class="k-button"><i class="fa fa-check"></i>&nbsp;Иконка слева</a>
+        <a href="#" class="k-button">Иконка справа&nbsp;<i class="fa fa-close"></i></a>
+        <a href="#" class="k-button"><i class="fa fa-user"></i></a>
+    </div>
+
+    <pre class="collapse" id="buttons1_code"><code class="html">
+        &lt;a href="#" class="k-button">Кнопка&lt;/a>
+        &lt;a href="#" class="k-button">&lt;i class="fa fa-check">&lt;/i>&amp;nbsp;Иконка слева&lt;/a>
+        &lt;a href="#" class="k-button">Иконка справа&amp;nbsp;&lt;i class="fa fa-close">&lt;/i>&lt;/a>
+        &lt;a href="#" class="k-button">&lt;i class="fa fa-user">&lt;/i>&lt;/a>
+    </code></pre>
+
+    <label for="buttons2" class="collapsed" data-toggle="collapse" data-target="#buttons2_code">Цветные кнопки</label>
+    <div id="buttons2">
+        <a href="#" class="k-button primary">Primary</a>
+        <a href="#" class="k-button secondary">Secondary</a>
+        <a href="#" class="k-button success">Success</a>
+        <a href="#" class="k-button error">Error</a>
+    </div>
+
+    <pre class="collapse" id="buttons2_code"><code class="html">
+        &lt;a href="#" class="k-button primary">Primary&lt;/a>
+        &lt;a href="#" class="k-button secondary">Secondary&lt;/a>
+        &lt;a href="#" class="k-button success">Success&lt;/a>
+        &lt;a href="#" class="k-button error">Error&lt;/a>
+    </code></pre>
+
+    <label for="buttons3" class="collapsed" data-toggle="collapse" data-target="#buttons3_code">Выключенные кнопки</label>
+    <div id="buttons3">
+        <a href="#" class="k-button k-state-disabled">Disabled</a>
+        <a href="#" class="k-button k-state-disabled primary">Disabled</a>
+        <a href="#" class="k-button k-state-disabled secondary">Disabled</a>
+        <a href="#" class="k-button k-state-disabled success">Disabled</a>
+        <a href="#" class="k-button k-state-disabled error">Disabled</a>
+    </div>
+
+    <pre class="collapse" id="buttons3_code"><code class="html">
+        &lt;a href="#" class="k-button k-state-disabled">Disabled&lt;/a>
+        &lt;a href="#" class="k-button k-state-disabled primary">Disabled&lt;/a>
+        &lt;a href="#" class="k-button k-state-disabled secondary">Disabled&lt;/a>
+        &lt;a href="#" class="k-button k-state-disabled success">Disabled&lt;/a>
+        &lt;a href="#" class="k-button k-state-disabled error">Disabled&lt;/a>
+    </code></pre>
+
+    <label for="buttons4" class="collapsed" data-toggle="collapse" data-target="#buttons4_code">Гамбургер (обратить внимание на &lt;span> внутри &lt;i>)</label>
+    <div id="buttons4">
+        <a href="#" class="k-button">
+            <i class="hamburger hamburger--arrow-left"><span></span></i>
+        </a>
+        <a href="#" class="k-button">
+            <i class="hamburger hamburger--arrow-right"><span></span></i>
+        </a>
+        <a href="#" class="k-button">
+            <i class="hamburger hamburger--close"><span></span></i>
+        </a>
+        <a href="#" class="k-button">
+            <i class="hamburger hamburger--rotate"><span></span></i>
+        </a>
+    </div>
+
+    <pre class="collapse" id="buttons4_code"><code class="html javascript">
+        &lt;div id="hamburgers">
+            &lt;a href="#" class="k-button">
+                &lt;i class="hamburger hamburger--arrow-left">&lt;span>&lt;/span>&lt;/i>
+            &lt;/a>
+            &lt;a href="#" class="k-button">
+                &lt;i class="hamburger hamburger--arrow-right">&lt;span>&lt;/span>&lt;/i>
+            &lt;/a>
+            &lt;a href="#" class="k-button">
+                &lt;i class="hamburger hamburger--arrow-close">&lt;span>&lt;/span>&lt;/i>
+            &lt;/a>
+            &lt;a href="#" class="k-button">
+                &lt;i class="hamburger hamburger--arrow-rotate">&lt;span>&lt;/span>&lt;/i>
+            &lt;/a>
+        &lt;/div>
+        &lt;!-- ДЛЯ ПЕРЕКЛЮЧЕНИЕ КЛАССА active -->
+        &lt;script>
+            $(function() {
+                $('#hamburgers a').click(function() {
+                    $(this)
+                        .find('.hamburger')
+                        .toggleClass('hamburger--active');
+                });
+            });
+        &lt;/script>
+    </code></pre>
+
+    <label for="buttons5" class="collapsed" data-toggle="collapse" data-target="#buttons5_code">Вектикальные кнопки</label>
+    <div id="buttons5">
+        <a href="#" class="k-button button-block primary">Primary</a>
+        <a href="#" class="k-button button-block secondary">Secondary</a>
+        <a href="#" class="k-button button-block success">Success</a>
+        <a href="#" class="k-button button-block error">Error</a>
+    </div>
+
+    <pre class="collapse" id="buttons5_code"><code class="html">
+        &lt;a href="#" class="k-button button-block primary">Primary&lt;/a>
+        &lt;a href="#" class="k-button button-block secondary">Secondary&lt;/a>
+        &lt;a href="#" class="k-button button-block success">Success&lt;/a>
+        &lt;a href="#" class="k-button button-block error">Error&lt;/a>
+    </code></pre>
+</section>

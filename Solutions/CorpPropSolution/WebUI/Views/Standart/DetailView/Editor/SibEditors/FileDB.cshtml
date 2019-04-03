@@ -1,0 +1,92 @@
+﻿@using Base.Utils.Common.Maybe
+@model EditorViewModel
+
+@{
+    string mnemonic = Model.Mnemonic;
+    string propertyName = Model.PropertyName;
+    var wrapID = Html.CreateSystemName("wrap_");   
+}
+
+<script>
+    (function () {
+        window['@wrapID'] = {
+             getForm: function () {
+                var e_form = $("#@wrapID").closest("form");
+                return e_form.data("pbaForm");
+            },
+             getFileInfo: function (e) {
+                 return $.map(e.files, function (file) {
+                     var info = file.name;
+
+                     // File size is not available in all browsers
+                     if (file.size > 0) {
+                         info += " (" + Math.ceil(file.size / 1024) + " KB)";
+                     }
+                     return info;
+                 }).join(", ");
+             },
+
+                onUpload: function (e) {
+
+                },
+
+                onError: function (e) {
+                    if (e.XMLHttpRequest && e.XMLHttpRequest.responseText) {
+                        console.log(e.XMLHttpRequest.responseText);
+                        pbaAPI.errorMsg("При загрузке возникла системная ошибка. Обратитесь к администратору.");
+                    }
+                },
+
+                onComplete: function (e) {
+
+                },
+
+                onProgress: function (e) {
+                    //$(".k-upload-button").hide();
+                    //this.disable();
+                },
+                onSuccess: function (e) {
+                    //debugger;
+                    var msg = "";
+                    var response = e.response;
+                    if (response) {
+                        msg = response.text;
+
+                        if (response.err > 0) {
+                            //pbaAPI.errorMsg(response.error);
+                            $(".k-progress").css("background-color", "red");
+                            $(".k-file-name").css("color", "red");
+                            $(".k-icon.k-i-loading").removeClass("k-i-loading").addClass(".k-i-warning");
+                            $(".k-upload-status").hide();
+                        }
+                    }                  
+
+                     var form = window['@wrapID'].getForm();
+                     form.setPr("File", response.file);
+                }
+            }
+
+
+
+        })();
+
+</script>
+
+
+<div id="@wrapID">
+    @(Html.Kendo().Upload()
+                  .Name(wrapID)
+                  .Multiple(false)                  
+                  .Enable(true)
+                  .Async(x => x
+                      .Save("Save", "FileDB")
+                      .AutoUpload(true))                      
+                  .Events(e => e
+                      .Complete(wrapID + ".onComplete")
+                      .Error(wrapID + ".onError")
+                      .Progress(wrapID + ".onProgress")
+                      .Success(wrapID + ".onSuccess"))
+    )
+
+</div>
+

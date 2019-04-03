@@ -1,0 +1,65 @@
+﻿.leaflet-control-focus {
+    display: flex;
+    width: 150px;
+    height: 85px;
+    background-color: #E74C3C;
+    padding: 10px;
+    position: relative;
+    opacity: 0.7;
+    align-items: center;
+    overflow: hidden;
+}
+
+    .leaflet-control-focus:before {
+        content: "";
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        top: 2px;
+        left: 5px;
+        z-index: -1;
+        background: url(Images/moskovskaya_oblast_gerb4.png) center center no-repeat;
+        -webkit-transform: rotate(-30deg);
+        -moz-transform: rotate(-30deg);
+        -ms-transform: rotate(-30deg);
+        -o-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+        background-size: contain;
+    }
+
+.leaflet-control-focus:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.leaflet-control-focus-title {
+    display: flex;
+    text-align: center;
+    font-size: 16px;
+    line-height: 17px;
+    color: #fff;
+}
+
+.leaflet-control-focus-distance {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 3px;
+    height: 17px;
+    text-align: center;
+}
+
+.leaflet-control-focus-distance p {
+    display: inline-block;
+    padding: 2px 5px;
+    margin: 0;
+    height: 15px;
+    font-size: 10px;
+    color: #fff;
+    line-height: 11px;
+    text-align: right;
+}
+
+.leaflet-control-focus-distance p + p {
+    text-align: left;
+}

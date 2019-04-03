@@ -1,0 +1,783 @@
+﻿@model CustomGridModel
+
+<script>
+    (function () {
+        var composite = window["@Model.DialogID"] = new CompositeControl("@Model.DialogID");
+
+        composite.params = {};
+        composite.dialogData = {};
+        composite.__listView = null;
+
+        composite.listView = function () {
+            if (composite.__listView === null) {
+                for (var id in composite.widgets) {
+                    var widget = composite.widgets[id];
+
+                    if (widget.baseType === "ListView") {
+                        if (widget.mnemonic === "@Model.Mnemonic")
+                            composite.__listView = widget;
+                    }
+                }
+            }
+
+            return composite.__listView;
+        };
+
+        composite.__initProps = function () {
+            if (composite.params.initProps) {
+                for (var pr in composite.params.initProps) {
+                    if (composite.params.initProps.hasOwnProperty(pr)) {
+                        composite.listView().setInitProp(pr, composite.params.initProps[pr]);
+                    }
+                }
+            }
+        };
+
+        composite.__urlParameters = function () {
+            if (composite.params.urlParameters) {
+                for (var i = 0; i < composite.params.urlParameters.length; i++) {
+                    var parametr = composite.params.urlParameters[i];
+                    composite.listView().setUrlParametr(parametr.key, parametr.value);
+                }
+            }
+        };
+        composite.init = function (params) {
+            composite.params = $.extend({
+                callbackSelect: null,
+                initProps: null,
+                urlParameters: null,
+                close: function () { }
+            }, params);
+
+            composite.dialogData = params.dialogData;
+
+            composite.select = composite.params.callbackSelect != null;
+
+            if (!composite.select) {
+                $("#@Model.DialogID").find(".dialog__toolbar").hide();
+            }
+
+            composite.__initProps();
+            composite.__urlParameters();
+
+            composite.onWidgetChanged({
+                sender: composite,
+                event: "init"
+            });
+        };
+
+        composite.setInitProp = function (prop, value) {
+            var initprops = composite.params.initProps || {};
+            initprops[prop] = value;
+            composite.params.initProps = initprops;
+            composite.__initProps();
+        }
+
+        composite.resize = function (h) {
+            var r = 5;
+
+            if (composite.select) {
+                r = $("#@Model.DialogID").find(".dialog__toolbar").height() + 5;
+            }
+        };
+
+        composite.getSelectItems = function () {
+            return composite.listView().getSelectItems();
+        };
+
+        composite.onSelect = function () {
+            if (composite.select) {
+                var res = composite.getSelectItems();
+
+                if (!res || res.length === 0) {
+                    pbaAPI.errorMsg('Выберите элемент...');
+                    return;
+                }
+                composite.params.callbackSelect(res);
+                composite.params.close();
+            } else {
+                composite.params.close();
+            }
+        };
+
+        composite.onChildWidgetChanged = function (e) {
+            if (composite.select) {
+                if (e.event === "dblclick") {
+                    composite.onSelect();
+                }
+            }
+        };
+
+        composite.refresh = function () {
+            composite.listView().dataSourceRead();
+        };
+
+        var grid = window["@Model.WidgetID"] = new WrapGrid({
+            id: "@Model.WidgetID",
+            mnemonic: "@Model.Mnemonic",
+            isCategorizedItem: false,
+            desc: "GridView",
+            config: null
+        });
+
+        composite.registerWidget(grid);
+
+        grid.addRow = function () {
+            //Test grid update on-demand
+            debugger;
+            grid.dataSourceRead();
+            //grid.refresh();
+            $("#"+"@Model.WidgetID").data("kendoGrid").dataSource.read();
+            $("#"+"@Model.WidgetID").data("kendoGrid").refresh();
+            return;
+            grid.addEntity({
+                callback: function(e) {
+                    grid.currentRow = e.model.ID;
+                    grid.bind();
+                }
+            });
+        };
+
+        var getItems = function (dataArray, arr) {
+            if (!arr) {
+                arr = [];
+            }
+
+            if (dataArray && dataArray.length) {
+                for (var j = 0; j < dataArray.length; j++) {
+                    if (dataArray[j].hasOwnProperty("hasSubgroups")) {
+                        if (dataArray[j].hasSubgroups) {
+                            getItems(dataArray[j].items, arr);
+                        } else {
+                            arr.push.apply(arr, dataArray[j].items);
+                        }
+                    } else {
+                        arr.push(dataArray[j]);
+                    }
+                }
+            }
+            return arr;
+        };
+
+        grid.editRow = function (id) {
+            if (id == undefined)
+                id = this.selectID();
+
+            var data = getItems(grid.widget().dataSource.data());
+
+            var ids = new Array(data.length);
+
+            for (var i = 0; i < data.length; i++) {
+                ids[i] = data[i].ID;
+            }
+
+            pbaAPI.openDetailView(grid.mnemonic,
+                {
+                    wid: "@Model.WidgetID",
+                    id: id,
+                    ids: ids,
+                    callback: function(e) {
+                        if (e.type === "save" || e.type === "apply") {
+                            grid.currentRow = e.model.ID;
+                            grid.bind();
+                        }
+                    }
+                });
+        };
+
+        grid.ExcelExport = function() {
+
+            var current_data_source = this.widget().dataSource;
+
+            url = current_data_source.transport.options.read.url
+                .replace('Standart/KendoUI_CollectionRead', 'ExportImport/Excel');
+
+
+            data = current_data_source.transport.parameterMap($.extend({
+                    sort: current_data_source.sort(),
+                    filter: current_data_source.filter()
+                },
+                current_data_source.transport.options.read.data()));
+
+            url += '&' + $.param(data);
+
+            window.location = url;
+
+        }
+
+
+        grid.MultiEdit = function() {
+
+            //TODO selected or all
+
+            var current_data_source = this.widget().dataSource;
+
+            var data = current_data_source.transport.options.read.data();
+
+            delete data.columns;
+
+            var objects_func = $.ajax({
+                url: current_data_source.transport.options.read.url
+                    .replace('Standart/KendoUI_CollectionRead', 'MultiEdit/KendoUI_CollectionRead'),
+                type: "POST",
+                data: current_data_source.transport.parameterMap($.extend({
+                    sort: current_data_source.sort(),
+                    filter: current_data_source.filter()
+                },data))
+            }).then(function(e){
+                if (e.Data) {
+
+                    return e.Data.map(function(e) {
+                        return { id: e.id || e.ID }
+                    });
+                } else {
+                    return [];
+                }
+            });
+
+
+            pbaAPI.openMultiEdit({
+                mnemonic: grid.mnemonic,
+                objects_func: objects_func
+            }).done(function() {
+
+                grid.dataSourceRead();
+
+            });
+
+        };
+
+        grid.deleteRow = function() {
+            var id = this.selectID();
+
+            if (id) {
+                pbaAPI.confirm("@Model.ViewModelConfig.ListView.Title", "Удалить запись?", function () {
+                    pbaAPI.proxyclient.crud.destroy({ mnemonic: grid.mnemonic, id: id })
+                        .done(function (res) {
+                            if (res.error === 0) {
+                                grid.removeRow(grid.select());
+                                pbaAPI.uploadMsg(res.message);
+                            } else {
+                                pbaAPI.errorMsg(res.message);
+                            }
+                        });
+                });
+            }
+        };
+        @*END:CRUD*@
+
+        grid.onAdditionalData = function (e) {
+            var columns = $.map(grid.widget().columns, function (n, i) {
+                if (!n.hidden)
+                    return n.field;
+
+                return null;
+            });
+
+
+
+            return { columns: columns};
+        };
+
+        grid.onDataBinding = function () {
+
+        };
+
+        grid.onDataBound = function () {
+            this.element.find(".k-grid-content-locked").find('span[data-bg]').each(function () {
+                var $cond = $(this);
+                $cond.closest('td').css('background-color', $cond.data('bg'));
+            });
+
+            this.element.find(".k-grid-content").find('span[data-bg]').each(function () {
+                var $cond = $(this);
+                $cond.closest('td').css('background-color', $cond.data('bg'));
+            });
+
+            this.element.find(".k-icon.k-i-collapse").click();
+
+            composite.onWidgetChanged({
+                sender: grid,
+                event: "onDataBound"
+            });
+
+            if(!grid.multiSelect)
+                grid.activeRow();
+
+            this.element.find("tr[data-uid]").dblclick(function () {
+                grid.dblclick(this);
+            });
+
+            if (grid.isSearchRequest) {
+                grid.isSearchRequest = false;
+            }
+
+            $("#@Model.WidgetID").trigger("onDataBound", this);
+
+            if (grid["__idx_select_row"]) {
+                grid.select("tr:eq(" + (grid["__idx_select_row"]) + ")");
+                delete grid["__idx_select_row"];
+            }
+
+            if (grid["__scroll_top"]) {
+                grid.content().scrollTop(grid["__scroll_top"]);
+                delete grid["__scroll_top"];
+            }
+
+            grid.select();
+
+            grid.lock = false;
+        };
+
+        grid.onChange = function(e) {
+            grid.initCurrentRow();
+            grid.onselect();
+            grid.element().trigger("onChange", this);
+        };
+
+        grid.dblclick = function(btn) {
+            composite.onWidgetChanged(
+                {
+                    sender: grid,
+                    event: "dblclick"
+                });
+        };
+
+        grid.onNeighbourWidgetChanged = function(e) {
+            if (e.sender.desc === "Composite") {
+                if (e.event === "init") {
+                    if (!grid.isCategorizedItem) {
+                        grid.bind();
+                    }
+                }
+            } else
+            if (e.sender.desc === "TreeView") {
+                if (e.event === "select") {
+                    var id = 0;
+                    if (e.params.dataItem) {
+                        id = e.params.dataItem.id;
+                    }
+                    grid.setCategoryID(id);
+                    grid.bind();
+                }
+            } else if (e.sender.desc === "ToolbarListView" || e.sender.desc === "ContextMenuListView") {
+                if (e.event === "click") {
+                    switch (e.params.action) {
+                    case "add":
+                        grid.addRow();
+                        break;
+                    case "edit":
+                        grid.editRow();
+                        break;
+                    case "excelexport":
+                        grid.ExcelExport();
+                        break;
+                    case "multiedit":
+                        grid.MultiEdit();
+                        break;
+                    case "delete":
+                        grid.deleteRow();
+                        break;
+                    case "changeCategory":
+                        grid.changeCategory();
+                        break;
+                    case "settings":
+                        grid.openSettings();
+                        break;
+                    case "exportExcel":
+                        grid.export("excel");
+                        break;
+                    case "exportPfd":
+                        grid.export("pdf");
+                        break;
+                    case "exportJson":
+                        grid.exportJson();
+                        break;
+                    case "importJSON":
+                        grid.importJSON();
+                        break;
+                    case "clearFilters":
+                        grid.clearFilters();
+                        break;
+                    case "clearSort":
+                        grid.clearSort();
+                        break;
+                    case "extendedFilters":
+                        grid.extendedFilters();
+                        break;
+                    case "exportXML":
+                        grid.exportXML(e);
+                    }
+                } else if (e.event === "search") {
+                    grid.search(e.params.str);
+                } else if (e.event === "refresh") {
+                    grid.bind();
+                } else if (e.event === "select") {
+                    grid.clearSelection();
+                    grid.select(e.params.el);
+                } else if (e.event === "changeExtendedFilter") {
+                    var mnemonicFilterId = e.params.idValue;
+                    grid.preset.MnemonicFilterID = mnemonicFilterId;
+                    grid.savePreset(grid.preset, function() {
+                        grid.setExtendedFilterFromPreset();
+                        grid.dataSourceRead();
+                    });
+                }
+            }
+        };
+
+        grid.bind = function() {
+            grid.lock = true;
+
+            if (grid.isCategorizedItem) {
+                grid.setUrlParametr("allItems", grid.getCookie(grid.mnemonic, "allItems", false));
+            }
+
+            grid.initSortable();
+
+            if (!grid.isInit) {
+                var toolbar = {};
+                for (var key in composite.widgets) {
+                    if (composite.widgets[key].desc==='ToolbarListView') {
+                        toolbar = composite.widgets[key];
+                        break;
+                    }
+                }
+                grid.dataSourceRead();
+
+                var arr = [
+                    {
+                        keyMask: "enter",
+                        handler: function() {
+                            if (!grid.multiSelect) {
+                                var activerow = grid.element().find(".k-state-focused").closest("tr");
+                                grid.select(activerow);
+                                grid.dblclick(grid.select());
+                            }
+                        }
+                    },
+                    {
+                        keyMask: "insert",
+                        handler: function() {
+                            grid.addRow();
+                        }
+                    },
+                    {
+                        keyMask: "delete",
+                        handler: function() {
+                            var activerow = grid.element().find(".k-state-focused").closest("tr");
+                            grid.select(activerow);
+                            grid.deleteRow();
+                        }
+                    },
+                    //{
+                    //    keyMask: "down",
+                    //    handler: function () {
+                    //        var nextRow = grid.select().next();
+                    //        if (nextRow && nextRow.length !== 0) {
+                    //            grid.select(nextRow);
+                    //        }
+                    //    }
+                    //},
+                    //{
+                    //    keyMask: "up",
+                    //    handler: function () {
+                    //        var prevRow = grid.select().prev();
+                    //        if (prevRow && prevRow.length !== 0) {
+                    //            grid.select(prevRow);
+                    //        }
+                    //    }
+                    //}
+                ];
+
+                grid.inithotkeys(arr);
+
+            } else {
+                grid.dataSourceRead();
+            }
+        };
+
+        grid.onColumnReorder = function (e) {
+            var preset = grid.preset;
+
+            var tmpcolumns = {};
+            var field;
+            var i;
+
+            var columns = preset.Columns;
+
+            for (i in columns) {
+                if (columns.hasOwnProperty(i)) {
+                    tmpcolumns[columns[i].Name] = columns[i];
+                }
+            }
+
+            columns = grid.widget().columns;
+
+            var newColumns = [columns.length - 1];
+            newColumns[e.newIndex] = e.column;
+
+            var j = 0;
+
+            for (i = 0; i < columns.length; i++) {
+                if (j === e.newIndex)
+                    j++;
+
+                if (i === e.oldIndex)
+                    i++;
+
+                if(i < columns.length)
+                    newColumns[j] = columns[i];
+
+                j++;
+            }
+
+            for (i = 0; i < newColumns.length; i++) {
+                if(newColumns[i]){
+                    field = newColumns[i].field;
+
+                    if (field in tmpcolumns) {
+                        tmpcolumns[field].SortOrder = i;
+                    }
+                }
+            }
+
+            grid.savePreset(preset);
+        };
+
+        grid.onColumnResize = function (e) {
+            var preset = grid.preset;
+            var columns = preset.Columns;
+
+            for (var i = 0; i < columns.length; i++) {
+                var col = columns[i];
+
+                if (col.Name === e.column.field) {
+                    col.Width = e.newWidth;
+
+                    grid.savePreset(preset);
+                    return;
+                }
+            }
+        };
+
+        grid.onExcelExport = function(e) {
+
+            var columns = e.sender.columns;
+            //var items = e.sender.dataItems();
+
+            if (grid.config === null)
+                pbaAPI.errorMsg('Ошибка инициализации конфигурации');
+
+            var config = grid.config;
+            var vmprops = {};
+
+            for (var key in config.ListView.Columns) {
+                if (config.ListView.Columns.hasOwnProperty(key)) {
+                    var pr = config.ListView.Columns[key];
+                    vmprops[pr.PropertyName] = pr;
+                }
+            }
+
+            var sheets = e.workbook.sheets;
+
+            for (var i = 0; i < sheets.length; i++) {
+                var sheet = sheets[i];
+
+                if (!sheet) continue;
+
+                for (var j = 1; j < sheet.rows.length; j++) {
+                    var row = sheet.rows[j];
+
+                    var groupCount = 0;
+
+                    if (!row) continue;
+
+                    /* при группировке поля(по которым групируются) добовляются в начало массива cells. Считаем кол-во полей добавленных в группировку */
+                    if (row.type === "data") {
+                        groupCount = row.cells.filter(function(selector) {
+                            return !selector.hasOwnProperty("value");
+                        }).length;
+                    }
+
+                    //var object = items[j - 1];
+                    //if (!object) continue;
+
+
+
+                    for (var k = 0; k < row.cells.length; k++) {
+                        var cell = row.cells[k];
+
+                        if (cell.value) {
+
+                            var field = columns[k - groupCount].field;
+                            var propertyVm = vmprops[field];
+
+                            if (propertyVm) {
+                                switch (propertyVm.DataType) {
+                                case "Date":
+                                    cell.value = kendo.toString(cell.value, "@JsonNetResult.DATE_FORMATE");
+                                    break;
+                                case "DateTime":
+                                    cell.value = kendo.toString(cell.value, "@JsonNetResult.DATE_TIME_FORMATE");
+                                    break;
+                                case "Enum":
+                                    /////
+                                    break;
+                                case "File":
+                                case "Image":
+                                    cell.formula = 'HYPERLINK("http://' + window.location.href.split('/')[2]
+                                        + "/Files/GetFile?fileid="
+                                        + cell.value.FileID
+                                        +'"; "'+ cell.value.FileName +'")';
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        grid.onErrorHandler = function (e) {
+            pbaAPI.errorMsg(e.errors);
+        };
+
+        grid.search = function (str) {
+            grid.setUrlParametr("searchStr", str || "");
+            grid.dataSourceRead();
+        };
+
+        grid.filter = function (str) {
+            grid.setUrlParametr("extrafilter", str || "");
+            grid.dataSourceRead();
+        };
+
+
+        grid.exportJson = function () {
+            var id = grid.getSelectDataItem()[0].ID;
+            window.open('/ExportImport/ExportJSON?mnemonic=@Model.Mnemonic&objectID=' + id, "_blank");
+        };
+
+        grid.importJSON = function () {
+            var mnemonic = '@Model.Mnemonic';
+            var kendoWindow = $('#importWindow').kendoWindow({
+                width: 600,
+                height: 900,
+                maxHeight: 900,
+                content: "@Url.Action("GetImportWindow", "ExportImport")?mnemonic=" + mnemonic,
+                modal: true,
+                resizeble: false,
+                title: 'Import'
+            });
+            var wnd = kendoWindow.data("kendoWindow");
+            wnd.center().open();
+        };
+
+        grid.export = function (type) {
+            switch (type) {
+            case "excel":
+                grid.widget().saveAsExcel();
+                break;
+            case "pdf":
+                grid.widget().saveAsPDF();
+                break;
+            }
+        };
+
+        grid.clearFilters = function () {
+            grid.preset.MnemonicFilterID = null;
+            grid.setUrlParametr('mnemonicFilterId', '');
+            grid.widget().dataSource.filter({filters:[], logic:'and'});
+        };
+        grid.clearSort = function() {
+            grid.widget().dataSource.sort([]);
+        };
+        grid.extendedFilters = function() {
+            var grid = this;
+            pbaAPI.openModalDialog('MnemonicFilter', function(res) {
+                if (res.length > 0) {
+                    var filterId = res[0].ID;
+                    grid.preset.MnemonicFilterID = filterId;
+                    grid.savePreset(grid.preset, function() {
+                        var toolbar = {};
+                        for (var key in composite.widgets) {
+                            if (composite.widgets[key].desc==='ToolbarListView') {
+                                toolbar = composite.widgets[key];
+                                break;
+                            }
+                        }
+                        grid.applyUserPreset(toolbar);
+                        //grid.setExtendedFilterFromPreset();
+                        //grid.dataSourceRead();
+                    });
+                }
+            }, {
+                initProps: {
+                    Mnemonic: grid.mnemonic
+                },
+                filter: 'Mnemonic=\"@Model.Mnemonic\"'
+            });
+        };
+
+
+        grid.setExtendedFilterFromPreset = function () {
+            if (grid.preset.MnemonicFilterID && grid.preset.MnemonicFilterID != null) {
+                if (grid.preset != null && grid.preset.MnemonicFilterID != null) {
+                    var mnemonicFilter = 'ID=' + grid.preset.MnemonicFilterID;
+                    grid.setUrlParametr('mnemonicFilterId', mnemonicFilter);
+                }
+            } else {
+                grid.setUrlParametr('mnemonicFilterId', '');
+            }
+        };
+
+        grid.setFilterable = function () {
+            if (grid.preset.ExtendedFilterSettings) {
+                grid.widget().setOptions({
+                    filterable: false
+                });
+            } else {
+                grid.widget().setOptions({
+                    filterable: true
+                });
+            }
+        };
+
+        //заглушка
+        grid.initSortable = function () {
+        };
+        grid.exportXML = function (e) {
+            exportimport.exportXML(grid, e.params.readUrl);
+        };
+    })();
+
+</script>
+
+<div class="kwidget kwidget--toolbar @(Model.ViewModelConfig.ListView.HideToolbar ? "kwidget--hidden" : "")">
+    @{Html.RenderPartial(Model.GetToolbarListViewUrl(), Model);}
+</div>
+  
+@(Html.Kendo().Grid<dynamic>()
+    .Name(Model.WidgetID)
+    .Pageable(p => p.Refresh(true).ButtonCount(5)
+        .PageSizes(false)
+        .Messages(m => m.First("На первую")
+            .Last("На последнию")
+            .Previous("На предыдущую")
+            .Next("На следующую")
+            .Refresh("Обновить")
+            .ItemsPerPage("")))
+    .Sortable()
+    .Scrollable()
+    .Selectable()
+    .AutoBind(false)
+    .Events(e => e.InitEvents(this))
+    .Filterable()
+    .Columns(c => c.CustomInitColumns(this, Model.Config))
+    .HtmlAttributes(new {@style="height: 500px;"})
+    .DataSource(d => d
+        .Ajax()
+        .Model(m => m.CustomInitModel(this, Model.Config))
+        .Read(r => r.Action("GetGridTestData", "Test", new {id = Model.ObjectID})))
+    )

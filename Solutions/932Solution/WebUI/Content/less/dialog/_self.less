@@ -1,0 +1,68 @@
+﻿.dialog {
+	position: relative;
+
+	&, &__tab {
+		height: 100%;
+		}
+
+	&--frame {
+		.materialPanel();
+		}
+
+	.required-mark {
+		font-size: 1.85rem;
+
+		position: relative;
+		top: -.429rem;
+
+		margin-right: pow( -@modular-scale * 1rem, -1 );
+
+		color: saturate( lighten( @color--danger, 15% ), 20% );
+		}
+
+	.e-row, .d-row {
+		.field-is-changed-mark {
+			font-size: 1em;
+			line-height: pow( @modular-scale *1rem, 2 );
+
+			position: absolute;
+			left: .75em;
+
+			cursor: pointer;
+			transition: .15s @easing-curve--main;
+			transition-property: color, box-shadow;
+
+			color: darken( @color--light, 62% );
+
+			&:hover, &:focus {
+				color: darken( @color--light, 87% );
+				}
+			&:active {
+				color: darken( @color--light, 62% );
+				}
+			}
+
+		&.single-editor .field-is-changed-mark {
+			z-index: 10;
+			top: 50%;
+			left: 0;
+
+			width: 3.25rem;
+			margin-top: -2em;
+
+			text-align: center;
+
+			border-radius: 0 3px 3px 0;
+			background-color: @color--light;
+			box-shadow: 0 2px 3px fade( @color--dark, 15% );
+
+			&:hover, &:focus {
+				box-shadow: 0 3px 5px fade( @color--dark, 15% );
+				}
+
+			&:active {
+				box-shadow: 0 2px 3px fade( @color--dark, 15% );
+				}
+			}
+		}
+	}

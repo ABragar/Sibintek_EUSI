@@ -1,0 +1,24 @@
+﻿@import "_";
+
+[data-realty-graph="House"] {
+    @apartment-size: 3.5714rem;
+
+    .realty_graph-section + .realty_graph-section { margin-left: .357rem; }
+
+    .realty_graph-level:before { top: @apartment-size / 2 - .7143rem; }
+
+    .realty_graph-apartment {
+        min-width: @apartment-size;
+        height: @apartment-size;
+
+        &:after { line-height: @apartment-size; }
+
+        &_top, &_bottom {
+            height: @apartment-size / 2;
+            line-height: @apartment-size / 2;
+        }
+
+        &_top > .realty_graph-apartment_rooms { display: none; }
+        &_price { display: none; }
+    }
+}

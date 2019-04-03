@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+  <CostKindRentalPaymentss>
+    <CostKindRentalPayments>
+      <ID>0</ID>
+      <ExternalID>1</ExternalID>
+      <ExternalParentID/>
+      <Code>1</Code>
+      <PublishCode>1</PublishCode>
+      <Name>Производственные</Name>
+      <DateFrom>2017-01-01</DateFrom>
+    </CostKindRentalPayments>
+    <CostKindRentalPayments>
+      <ID>0</ID>
+      <ExternalID>2</ExternalID>
+      <ExternalParentID/>
+      <Code>2</Code>
+      <PublishCode>2</PublishCode>
+      <Name>Управленческие</Name>
+      <DateFrom>2017-01-01</DateFrom>
+    </CostKindRentalPayments>
+    <CostKindRentalPayments>
+      <ID>0</ID>
+      <ExternalID>3</ExternalID>
+      <ExternalParentID/>
+      <Code>3</Code>
+      <PublishCode>3</PublishCode>
+      <Name>Коммерческие</Name>
+      <DateFrom>2017-01-01</DateFrom>
+    </CostKindRentalPayments>
+    <CostKindRentalPayments>
+      <ID>0</ID>
+      <ExternalID>4</ExternalID>
+      <ExternalParentID/>
+      <Code>4</Code>
+      <PublishCode>4</PublishCode>
+      <Name>Прочие</Name>
+      <DateFrom>2017-01-01</DateFrom>
+    </CostKindRentalPayments>
+  </CostKindRentalPaymentss>
+</DefaultDataHolder>

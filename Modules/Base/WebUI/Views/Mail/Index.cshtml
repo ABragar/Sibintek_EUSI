@@ -1,0 +1,21 @@
+﻿@{
+    var iframeId = "mailclient_iframe_" + Guid.NewGuid().ToString("N");
+	var noCache = Guid.NewGuid().ToString("N");
+}
+
+<iframe class="content__html--fit-in"
+        id="@iframeId"
+        sandbox="allow-modals allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation"
+        style="overflow: hidden; width: 100%; height: 100%; border: 0 none; box-shadow: 0 2px 6px rgba(38, 43, 51, .2), 0 0 12px rgba(38, 43, 51, .15)"
+        scrolling="no"
+        marginwidth="0"
+        marginheight="0"
+        frameborder="0"
+        src="@Url.Content("~/Content/ui/mail/index.html?_=" + @noCache)"></iframe>
+
+<script type="text/javascript">
+    kendo.ui.progress($("#@iframeId").parent(), true);
+    $("#@iframeId").load(function() {
+        kendo.ui.progress($("#@iframeId").parent(), false);
+    });
+</script>

@@ -1,0 +1,59 @@
+﻿@model EditorViewModel
+@{
+    string wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+    string htmlFieldName = Model.PropertyName;
+
+}
+
+<div id="@wrapID">
+    <a onclick="window['@wrapID'].openConstructor()" href="#" class="btn btn-primary">Редактировать</a>
+</div>
+
+<script>
+    $(function () {
+        $('#@wrapID').closest("form").on("onAfterBind", function (e, form) {
+
+            window['@wrapID'].openConstructor = function () {
+
+                var form = $('#@wrapID').closest('form').data('pbaForm');
+                
+                var data = form.getPr('@htmlFieldName');
+
+                if (!data) {
+                    data = [];
+                    form.setPr('@htmlFieldName', data);
+                }
+
+                var type = form.getViewData('ObjectType');
+
+                if (type) {
+                    var kendoWindow = $("<div constructor-wnd />").kendoWindow({
+                        content: "@Url.Action("GetValidationRules", "Validation")?objectType=" + type,
+                        width: 500,
+                        height: 700,
+                        title: "Валидация объекта",
+                        actions: ["Close"],
+                        modal: true,
+                        refresh: function () {
+                            kendoWindow.trigger('onLoad', {
+                                model: data,
+                                type: type,
+                                apply: function (newVal) {
+                                    form.setPr('@htmlFieldName', newVal);
+                                }
+                            });
+                        },
+                        deactivate: function () {
+                            this.destroy();
+                        }
+                    });
+                    var wnd = kendoWindow.data("kendoWindow");
+                    wnd.center().open();
+                }
+
+
+            };
+
+        });
+    });
+</script>

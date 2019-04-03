@@ -1,0 +1,2175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<Currencys>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>ADP</Code>
+		<PublishCode>ADP</PublishCode>
+		<Name>Андоррская песета</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2003-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>AED</Code>
+		<PublishCode>AED</PublishCode>
+		<Name>Дирхам (ОАЭ)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>AFA</Code>
+		<PublishCode>AFA</PublishCode>
+		<Name>Афгани</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2003-05-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>AFN</Code>
+		<PublishCode>AFN</PublishCode>
+		<Name>Афгани</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>ALL</Code>
+		<PublishCode>ALL</PublishCode>
+		<Name>Лек</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>AMD</Code>
+		<PublishCode>AMD</PublishCode>
+		<Name>Армянский драм</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>ANG</Code>
+		<PublishCode>ANG</PublishCode>
+		<Name>Нидерландский антильский гульден</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>AOA</Code>
+		<PublishCode>AOA</PublishCode>
+		<Name>Кванза</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>ARS</Code>
+		<PublishCode>ARS</PublishCode>
+		<Name>Аргентинское песо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>ATS</Code>
+		<PublishCode>ATS</PublishCode>
+		<Name>Австрийский шиллинг</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>AUD</Code>
+		<PublishCode>AUD</PublishCode>
+		<Name>Австралийский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>AWG</Code>
+		<PublishCode>AWG</PublishCode>
+		<Name>Арубанский гульден</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>AZM</Code>
+		<PublishCode>AZM</PublishCode>
+		<Name>Азербайджанский манат</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2005-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>AZN</Code>
+		<PublishCode>AZN</PublishCode>
+		<Name>Азербайджанский манат</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>BAM</Code>
+		<PublishCode>BAM</PublishCode>
+		<Name>Конвертируемая марка</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>BBD</Code>
+		<PublishCode>BBD</PublishCode>
+		<Name>Барбадосский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>BDT</Code>
+		<PublishCode>BDT</PublishCode>
+		<Name>Бангладешская така</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>BEF</Code>
+		<PublishCode>BEF</PublishCode>
+		<Name>Бельгийский франк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<ExternalParentID/>
+		<Code>BGN</Code>
+		<PublishCode>BGN</PublishCode>
+		<Name>Болгарский лев</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<ExternalParentID/>
+		<Code>BHD</Code>
+		<PublishCode>BHD</PublishCode>
+		<Name>Бахрейнский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<ExternalParentID/>
+		<Code>BIF</Code>
+		<PublishCode>BIF</PublishCode>
+		<Name>Бурундийский франк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<ExternalParentID/>
+		<Code>BMD</Code>
+		<PublishCode>BMD</PublishCode>
+		<Name>Бермудский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<ExternalParentID/>
+		<Code>BND</Code>
+		<PublishCode>BND</PublishCode>
+		<Name>Брунейский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<ExternalParentID/>
+		<Code>BOB</Code>
+		<PublishCode>BOB</PublishCode>
+		<Name>Боливиано</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<ExternalParentID/>
+		<Code>BRL</Code>
+		<PublishCode>BRL</PublishCode>
+		<Name>Бразильский реал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<ExternalParentID/>
+		<Code>BSD</Code>
+		<PublishCode>BSD</PublishCode>
+		<Name>Багамский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<ExternalParentID/>
+		<Code>BTN</Code>
+		<PublishCode>BTN</PublishCode>
+		<Name>Нгултрум</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<ExternalParentID/>
+		<Code>BWP</Code>
+		<PublishCode>BWP</PublishCode>
+		<Name>Пула</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<ExternalParentID/>
+		<Code>BYB</Code>
+		<PublishCode>BYB</PublishCode>
+		<Name>Белорусский рубль</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2005-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>30</ExternalID>
+		<ExternalParentID/>
+		<Code>BYN</Code>
+		<PublishCode>BYN</PublishCode>
+		<Name>Белорусский рубль</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>31</ExternalID>
+		<ExternalParentID/>
+		<Code>BYR</Code>
+		<PublishCode>BYR</PublishCode>
+		<Name>Белорусский рубль</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2016-06-30</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>32</ExternalID>
+		<ExternalParentID/>
+		<Code>BZD</Code>
+		<PublishCode>BZD</PublishCode>
+		<Name>Белизский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>33</ExternalID>
+		<ExternalParentID/>
+		<Code>CAD</Code>
+		<PublishCode>CAD</PublishCode>
+		<Name>Канадский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>34</ExternalID>
+		<ExternalParentID/>
+		<Code>CDF</Code>
+		<PublishCode>CDF</PublishCode>
+		<Name>Конголезский франк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>35</ExternalID>
+		<ExternalParentID/>
+		<Code>CHF</Code>
+		<PublishCode>CHF</PublishCode>
+		<Name>Швейцарский франк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>36</ExternalID>
+		<ExternalParentID/>
+		<Code>CLP</Code>
+		<PublishCode>CLP</PublishCode>
+		<Name>Чилийское песо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>37</ExternalID>
+		<ExternalParentID/>
+		<Code>CNH</Code>
+		<PublishCode>CNH</PublishCode>
+		<Name>Китайский юань офшорный</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>38</ExternalID>
+		<ExternalParentID/>
+		<Code>CNY</Code>
+		<PublishCode>CNY</PublishCode>
+		<Name>Юань</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>39</ExternalID>
+		<ExternalParentID/>
+		<Code>COP</Code>
+		<PublishCode>COP</PublishCode>
+		<Name>Колумбийское песо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>40</ExternalID>
+		<ExternalParentID/>
+		<Code>CRC</Code>
+		<PublishCode>CRC</PublishCode>
+		<Name>Костариканский колон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>41</ExternalID>
+		<ExternalParentID/>
+		<Code>CSD</Code>
+		<PublishCode>CSD</PublishCode>
+		<Name>Сербский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2007-01-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>42</ExternalID>
+		<ExternalParentID/>
+		<Code>CUP</Code>
+		<PublishCode>CUP</PublishCode>
+		<Name>Кубинское песо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>43</ExternalID>
+		<ExternalParentID/>
+		<Code>CVE</Code>
+		<PublishCode>CVE</PublishCode>
+		<Name>Эскудо Кабо-Верде</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>44</ExternalID>
+		<ExternalParentID/>
+		<Code>CYP</Code>
+		<PublishCode>CYP</PublishCode>
+		<Name>Кипрский фунт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2008-01-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>45</ExternalID>
+		<ExternalParentID/>
+		<Code>CZK</Code>
+		<PublishCode>CZK</PublishCode>
+		<Name>Чешская крона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>46</ExternalID>
+		<ExternalParentID/>
+		<Code>DEM</Code>
+		<PublishCode>DEM</PublishCode>
+		<Name>Немецкая марка</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>47</ExternalID>
+		<ExternalParentID/>
+		<Code>DJF</Code>
+		<PublishCode>DJF</PublishCode>
+		<Name>Франк Джибути</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>48</ExternalID>
+		<ExternalParentID/>
+		<Code>DKK</Code>
+		<PublishCode>DKK</PublishCode>
+		<Name>Датская крона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>49</ExternalID>
+		<ExternalParentID/>
+		<Code>DOP</Code>
+		<PublishCode>DOP</PublishCode>
+		<Name>Доминиканское песо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>50</ExternalID>
+		<ExternalParentID/>
+		<Code>DZD</Code>
+		<PublishCode>DZD</PublishCode>
+		<Name>Алжирский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>51</ExternalID>
+		<ExternalParentID/>
+		<Code>ECS</Code>
+		<PublishCode>ECS</PublishCode>
+		<Name>Сукре Эквадора</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>52</ExternalID>
+		<ExternalParentID/>
+		<Code>EEK</Code>
+		<PublishCode>EEK</PublishCode>
+		<Name>Эстонская крона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2010-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>53</ExternalID>
+		<ExternalParentID/>
+		<Code>EGP</Code>
+		<PublishCode>EGP</PublishCode>
+		<Name>Египетский фунт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>54</ExternalID>
+		<ExternalParentID/>
+		<Code>ERN</Code>
+		<PublishCode>ERN</PublishCode>
+		<Name>Накфа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>55</ExternalID>
+		<ExternalParentID/>
+		<Code>ESP</Code>
+		<PublishCode>ESP</PublishCode>
+		<Name>Испанская песета</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>56</ExternalID>
+		<ExternalParentID/>
+		<Code>ETB</Code>
+		<PublishCode>ETB</PublishCode>
+		<Name>Эфиопский быр</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>57</ExternalID>
+		<ExternalParentID/>
+		<Code>EUR</Code>
+		<PublishCode>EUR</PublishCode>
+		<Name>Евро</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>58</ExternalID>
+		<ExternalParentID/>
+		<Code>FIM</Code>
+		<PublishCode>FIM</PublishCode>
+		<Name>Финская марка</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>59</ExternalID>
+		<ExternalParentID/>
+		<Code>FJD</Code>
+		<PublishCode>FJD</PublishCode>
+		<Name>Доллар Фиджи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>60</ExternalID>
+		<ExternalParentID/>
+		<Code>FKP</Code>
+		<PublishCode>FKP</PublishCode>
+		<Name>Фунт Фолклендских островов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>61</ExternalID>
+		<ExternalParentID/>
+		<Code>FRF</Code>
+		<PublishCode>FRF</PublishCode>
+		<Name>Французский франк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>62</ExternalID>
+		<ExternalParentID/>
+		<Code>GBP</Code>
+		<PublishCode>GBP</PublishCode>
+		<Name>Фунт стерлингов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>63</ExternalID>
+		<ExternalParentID/>
+		<Code>GEL</Code>
+		<PublishCode>GEL</PublishCode>
+		<Name>Лари</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>64</ExternalID>
+		<ExternalParentID/>
+		<Code>GHC</Code>
+		<PublishCode>GHC</PublishCode>
+		<Name>Седи Ганы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2009-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>65</ExternalID>
+		<ExternalParentID/>
+		<Code>GHS</Code>
+		<PublishCode>GHS</PublishCode>
+		<Name>Седи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>66</ExternalID>
+		<ExternalParentID/>
+		<Code>GIP</Code>
+		<PublishCode>GIP</PublishCode>
+		<Name>Гибралтарский фунт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>67</ExternalID>
+		<ExternalParentID/>
+		<Code>GMD</Code>
+		<PublishCode>GMD</PublishCode>
+		<Name>Даласи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>68</ExternalID>
+		<ExternalParentID/>
+		<Code>GNF</Code>
+		<PublishCode>GNF</PublishCode>
+		<Name>Гвинейский франк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>69</ExternalID>
+		<ExternalParentID/>
+		<Code>GRD</Code>
+		<PublishCode>GRD</PublishCode>
+		<Name>Греческая драхма</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>70</ExternalID>
+		<ExternalParentID/>
+		<Code>GTQ</Code>
+		<PublishCode>GTQ</PublishCode>
+		<Name>Кетсаль</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>71</ExternalID>
+		<ExternalParentID/>
+		<Code>GWP</Code>
+		<PublishCode>GWP</PublishCode>
+		<Name>Песо Гвинеи-Бисау</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2010-08-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>72</ExternalID>
+		<ExternalParentID/>
+		<Code>GYD</Code>
+		<PublishCode>GYD</PublishCode>
+		<Name>Гайанский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>73</ExternalID>
+		<ExternalParentID/>
+		<Code>HKD</Code>
+		<PublishCode>HKD</PublishCode>
+		<Name>Гонконгский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>74</ExternalID>
+		<ExternalParentID/>
+		<Code>HNL</Code>
+		<PublishCode>HNL</PublishCode>
+		<Name>Лемпира</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>75</ExternalID>
+		<ExternalParentID/>
+		<Code>HRK</Code>
+		<PublishCode>HRK</PublishCode>
+		<Name>Хорватская куна</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>76</ExternalID>
+		<ExternalParentID/>
+		<Code>HTG</Code>
+		<PublishCode>HTG</PublishCode>
+		<Name>Гурд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>77</ExternalID>
+		<ExternalParentID/>
+		<Code>HUF</Code>
+		<PublishCode>HUF</PublishCode>
+		<Name>Форинт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>78</ExternalID>
+		<ExternalParentID/>
+		<Code>IDR</Code>
+		<PublishCode>IDR</PublishCode>
+		<Name>Рупия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>79</ExternalID>
+		<ExternalParentID/>
+		<Code>IEP</Code>
+		<PublishCode>IEP</PublishCode>
+		<Name>Ирландский фунт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-13</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>80</ExternalID>
+		<ExternalParentID/>
+		<Code>ILS</Code>
+		<PublishCode>ILS</PublishCode>
+		<Name>Новый израильский шекель</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>81</ExternalID>
+		<ExternalParentID/>
+		<Code>INR</Code>
+		<PublishCode>INR</PublishCode>
+		<Name>Индийская рупия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>82</ExternalID>
+		<ExternalParentID/>
+		<Code>IQD</Code>
+		<PublishCode>IQD</PublishCode>
+		<Name>Иракский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>83</ExternalID>
+		<ExternalParentID/>
+		<Code>IRR</Code>
+		<PublishCode>IRR</PublishCode>
+		<Name>Иранский риал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>84</ExternalID>
+		<ExternalParentID/>
+		<Code>ISK</Code>
+		<PublishCode>ISK</PublishCode>
+		<Name>Исландская крона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>85</ExternalID>
+		<ExternalParentID/>
+		<Code>ITL</Code>
+		<PublishCode>ITL</PublishCode>
+		<Name>Итальянская лира</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>86</ExternalID>
+		<ExternalParentID/>
+		<Code>JMD</Code>
+		<PublishCode>JMD</PublishCode>
+		<Name>Ямайский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>87</ExternalID>
+		<ExternalParentID/>
+		<Code>JOD</Code>
+		<PublishCode>JOD</PublishCode>
+		<Name>Иорданский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>88</ExternalID>
+		<ExternalParentID/>
+		<Code>JPY</Code>
+		<PublishCode>JPY</PublishCode>
+		<Name>Иена</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>89</ExternalID>
+		<ExternalParentID/>
+		<Code>KES</Code>
+		<PublishCode>KES</PublishCode>
+		<Name>Кенийский шиллинг</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>90</ExternalID>
+		<ExternalParentID/>
+		<Code>KGS</Code>
+		<PublishCode>KGS</PublishCode>
+		<Name>Сом</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>91</ExternalID>
+		<ExternalParentID/>
+		<Code>KHR</Code>
+		<PublishCode>KHR</PublishCode>
+		<Name>Риель</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>92</ExternalID>
+		<ExternalParentID/>
+		<Code>KMF</Code>
+		<PublishCode>KMF</PublishCode>
+		<Name>Франк Комор</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>93</ExternalID>
+		<ExternalParentID/>
+		<Code>KPW</Code>
+		<PublishCode>KPW</PublishCode>
+		<Name>Северокорейская вона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>94</ExternalID>
+		<ExternalParentID/>
+		<Code>KRW</Code>
+		<PublishCode>KRW</PublishCode>
+		<Name>Вона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>95</ExternalID>
+		<ExternalParentID/>
+		<Code>KWD</Code>
+		<PublishCode>KWD</PublishCode>
+		<Name>Кувейтский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>96</ExternalID>
+		<ExternalParentID/>
+		<Code>KYD</Code>
+		<PublishCode>KYD</PublishCode>
+		<Name>Доллар Островов Кайман</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>97</ExternalID>
+		<ExternalParentID/>
+		<Code>KZT</Code>
+		<PublishCode>KZT</PublishCode>
+		<Name>Тенге</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>98</ExternalID>
+		<ExternalParentID/>
+		<Code>LAK</Code>
+		<PublishCode>LAK</PublishCode>
+		<Name>Кип</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>99</ExternalID>
+		<ExternalParentID/>
+		<Code>LBP</Code>
+		<PublishCode>LBP</PublishCode>
+		<Name>Ливанский фунт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>100</ExternalID>
+		<ExternalParentID/>
+		<Code>LKR</Code>
+		<PublishCode>LKR</PublishCode>
+		<Name>Шри-Ланкийская рупия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>101</ExternalID>
+		<ExternalParentID/>
+		<Code>LRD</Code>
+		<PublishCode>LRD</PublishCode>
+		<Name>Либерийский долар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>102</ExternalID>
+		<ExternalParentID/>
+		<Code>LSL</Code>
+		<PublishCode>LSL</PublishCode>
+		<Name>Лоти</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>103</ExternalID>
+		<ExternalParentID/>
+		<Code>LTL</Code>
+		<PublishCode>LTL</PublishCode>
+		<Name>Литовский лит</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>104</ExternalID>
+		<ExternalParentID/>
+		<Code>LUF</Code>
+		<PublishCode>LUF</PublishCode>
+		<Name>Люксембургский франк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>105</ExternalID>
+		<ExternalParentID/>
+		<Code>LVL</Code>
+		<PublishCode>LVL</PublishCode>
+		<Name>Латвийский лат</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>106</ExternalID>
+		<ExternalParentID/>
+		<Code>LYD</Code>
+		<PublishCode>LYD</PublishCode>
+		<Name>Ливийский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>107</ExternalID>
+		<ExternalParentID/>
+		<Code>MAD</Code>
+		<PublishCode>MAD</PublishCode>
+		<Name>Марокканский дирхам</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>108</ExternalID>
+		<ExternalParentID/>
+		<Code>MDL</Code>
+		<PublishCode>MDL</PublishCode>
+		<Name>Молдавский лей</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>109</ExternalID>
+		<ExternalParentID/>
+		<Code>MGA</Code>
+		<PublishCode>MGA</PublishCode>
+		<Name>Малагасийский ариари</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>110</ExternalID>
+		<ExternalParentID/>
+		<Code>MGF</Code>
+		<PublishCode>MGF</PublishCode>
+		<Name>Мадагаскарский франк</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2007-01-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>111</ExternalID>
+		<ExternalParentID/>
+		<Code>MKD</Code>
+		<PublishCode>MKD</PublishCode>
+		<Name>Денар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>112</ExternalID>
+		<ExternalParentID/>
+		<Code>MMK</Code>
+		<PublishCode>MMK</PublishCode>
+		<Name>Кьят</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>113</ExternalID>
+		<ExternalParentID/>
+		<Code>MNT</Code>
+		<PublishCode>MNT</PublishCode>
+		<Name>Тугрик</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>114</ExternalID>
+		<ExternalParentID/>
+		<Code>MOP</Code>
+		<PublishCode>MOP</PublishCode>
+		<Name>Патака</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>115</ExternalID>
+		<ExternalParentID/>
+		<Code>MRO</Code>
+		<PublishCode>MRO</PublishCode>
+		<Name>Угия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>116</ExternalID>
+		<ExternalParentID/>
+		<Code>MTL</Code>
+		<PublishCode>MTL</PublishCode>
+		<Name>Мальтийская лира</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2007-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>117</ExternalID>
+		<ExternalParentID/>
+		<Code>MUR</Code>
+		<PublishCode>MUR</PublishCode>
+		<Name>Маврикийская рупия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>118</ExternalID>
+		<ExternalParentID/>
+		<Code>MVR</Code>
+		<PublishCode>MVR</PublishCode>
+		<Name>Руфия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>119</ExternalID>
+		<ExternalParentID/>
+		<Code>MWK</Code>
+		<PublishCode>MWK</PublishCode>
+		<Name>Квача</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>120</ExternalID>
+		<ExternalParentID/>
+		<Code>MXN</Code>
+		<PublishCode>MXN</PublishCode>
+		<Name>Мексиканское песо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>121</ExternalID>
+		<ExternalParentID/>
+		<Code>MYR</Code>
+		<PublishCode>MYR</PublishCode>
+		<Name>Малайзийский ринггит</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>122</ExternalID>
+		<ExternalParentID/>
+		<Code>MZM</Code>
+		<PublishCode>MZM</PublishCode>
+		<Name>Метикал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2006-06-30</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>123</ExternalID>
+		<ExternalParentID/>
+		<Code>MZN</Code>
+		<PublishCode>MZN</PublishCode>
+		<Name>Мозамбикский Метикал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>124</ExternalID>
+		<ExternalParentID/>
+		<Code>NAD</Code>
+		<PublishCode>NAD</PublishCode>
+		<Name>Доллар Намибии</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>125</ExternalID>
+		<ExternalParentID/>
+		<Code>NGN</Code>
+		<PublishCode>NGN</PublishCode>
+		<Name>Найра</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>126</ExternalID>
+		<ExternalParentID/>
+		<Code>NIO</Code>
+		<PublishCode>NIO</PublishCode>
+		<Name>Золотая кордоба</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>127</ExternalID>
+		<ExternalParentID/>
+		<Code>NLG</Code>
+		<PublishCode>NLG</PublishCode>
+		<Name>Нидерландский гульден</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>128</ExternalID>
+		<ExternalParentID/>
+		<Code>NOK</Code>
+		<PublishCode>NOK</PublishCode>
+		<Name>Норвежская крона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>129</ExternalID>
+		<ExternalParentID/>
+		<Code>NPR</Code>
+		<PublishCode>NPR</PublishCode>
+		<Name>Непальская рупия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>130</ExternalID>
+		<ExternalParentID/>
+		<Code>NZD</Code>
+		<PublishCode>NZD</PublishCode>
+		<Name>Новозеландский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>131</ExternalID>
+		<ExternalParentID/>
+		<Code>OMR</Code>
+		<PublishCode>OMR</PublishCode>
+		<Name>Оманский риал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>132</ExternalID>
+		<ExternalParentID/>
+		<Code>PAB</Code>
+		<PublishCode>PAB</PublishCode>
+		<Name>Бальбоа</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>133</ExternalID>
+		<ExternalParentID/>
+		<Code>PEN</Code>
+		<PublishCode>PEN</PublishCode>
+		<Name>Новый соль</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>134</ExternalID>
+		<ExternalParentID/>
+		<Code>PGK</Code>
+		<PublishCode>PGK</PublishCode>
+		<Name>Кина</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>135</ExternalID>
+		<ExternalParentID/>
+		<Code>PHP</Code>
+		<PublishCode>PHP</PublishCode>
+		<Name>Филиппинское песо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>136</ExternalID>
+		<ExternalParentID/>
+		<Code>PKR</Code>
+		<PublishCode>PKR</PublishCode>
+		<Name>Пакистанская рупия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>137</ExternalID>
+		<ExternalParentID/>
+		<Code>PLN</Code>
+		<PublishCode>PLN</PublishCode>
+		<Name>Злотый</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>138</ExternalID>
+		<ExternalParentID/>
+		<Code>PTE</Code>
+		<PublishCode>PTE</PublishCode>
+		<Name>Португальское эскудо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>139</ExternalID>
+		<ExternalParentID/>
+		<Code>PYG</Code>
+		<PublishCode>PYG</PublishCode>
+		<Name>Гуарани</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>140</ExternalID>
+		<ExternalParentID/>
+		<Code>QAR</Code>
+		<PublishCode>QAR</PublishCode>
+		<Name>Катарский риал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>141</ExternalID>
+		<ExternalParentID/>
+		<Code>RMB</Code>
+		<PublishCode>RMB</PublishCode>
+		<Name>Китайский ренминьби</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>142</ExternalID>
+		<ExternalParentID/>
+		<Code>ROL</Code>
+		<PublishCode>ROL</PublishCode>
+		<Name>Румынский лей</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2005-06-30</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>143</ExternalID>
+		<ExternalParentID/>
+		<Code>RON</Code>
+		<PublishCode>RON</PublishCode>
+		<Name>Новый лей</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>144</ExternalID>
+		<ExternalParentID/>
+		<Code>RSD</Code>
+		<PublishCode>RSD</PublishCode>
+		<Name>Сербский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>145</ExternalID>
+		<ExternalParentID/>
+		<Code>RUB</Code>
+		<PublishCode>RUB</PublishCode>
+		<Name>Российский рубль</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>146</ExternalID>
+		<ExternalParentID/>
+		<Code>RUB3</Code>
+		<PublishCode>RUB3</PublishCode>
+		<Name>Российский рубль(3 дес.р.)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2012-01-27</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>147</ExternalID>
+		<ExternalParentID/>
+		<Code>RUBT</Code>
+		<PublishCode>RUBT</PublishCode>
+		<Name>Российский тыс. рублей</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>148</ExternalID>
+		<ExternalParentID/>
+		<Code>RUR</Code>
+		<PublishCode>RUR</PublishCode>
+		<Name>Russian Ruble</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>149</ExternalID>
+		<ExternalParentID/>
+		<Code>RWF</Code>
+		<PublishCode>RWF</PublishCode>
+		<Name>Франк Руанды</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>150</ExternalID>
+		<ExternalParentID/>
+		<Code>SAR</Code>
+		<PublishCode>SAR</PublishCode>
+		<Name>Саудовский Риал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>151</ExternalID>
+		<ExternalParentID/>
+		<Code>SBD</Code>
+		<PublishCode>SBD</PublishCode>
+		<Name>Доллар Саломоновых островов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>152</ExternalID>
+		<ExternalParentID/>
+		<Code>SCR</Code>
+		<PublishCode>SCR</PublishCode>
+		<Name>Сейшельская рупия</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>153</ExternalID>
+		<ExternalParentID/>
+		<Code>SDG</Code>
+		<PublishCode>SDG</PublishCode>
+		<Name>Суданский фунт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>154</ExternalID>
+		<ExternalParentID/>
+		<Code>SDP</Code>
+		<PublishCode>SDP</PublishCode>
+		<Name>Суданский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2007-06-30</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>155</ExternalID>
+		<ExternalParentID/>
+		<Code>SEK</Code>
+		<PublishCode>SEK</PublishCode>
+		<Name>Шведская крона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>156</ExternalID>
+		<ExternalParentID/>
+		<Code>SGD</Code>
+		<PublishCode>SGD</PublishCode>
+		<Name>Сингапурский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>157</ExternalID>
+		<ExternalParentID/>
+		<Code>SHP</Code>
+		<PublishCode>SHP</PublishCode>
+		<Name>Фунт Святой Елены</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>158</ExternalID>
+		<ExternalParentID/>
+		<Code>SIT</Code>
+		<PublishCode>SIT</PublishCode>
+		<Name>Словенский толар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2006-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>159</ExternalID>
+		<ExternalParentID/>
+		<Code>SKK</Code>
+		<PublishCode>SKK</PublishCode>
+		<Name>Словацкая крона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2008-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>160</ExternalID>
+		<ExternalParentID/>
+		<Code>SLL</Code>
+		<PublishCode>SLL</PublishCode>
+		<Name>Леоне</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>161</ExternalID>
+		<ExternalParentID/>
+		<Code>SOS</Code>
+		<PublishCode>SOS</PublishCode>
+		<Name>Сомалийский шиллинг</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>162</ExternalID>
+		<ExternalParentID/>
+		<Code>SRG</Code>
+		<PublishCode>SRG</PublishCode>
+		<Name>Суринамский гульден</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2004-03-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>163</ExternalID>
+		<ExternalParentID/>
+		<Code>SRВ</Code>
+		<PublishCode>SRВ</PublishCode>
+		<Name>Суринамский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>164</ExternalID>
+		<ExternalParentID/>
+		<Code>STD</Code>
+		<PublishCode>STD</PublishCode>
+		<Name>Добра</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>165</ExternalID>
+		<ExternalParentID/>
+		<Code>SVC</Code>
+		<PublishCode>SVC</PublishCode>
+		<Name>Сальвадорский колон</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>166</ExternalID>
+		<ExternalParentID/>
+		<Code>SYP</Code>
+		<PublishCode>SYP</PublishCode>
+		<Name>Сирийский фунт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>167</ExternalID>
+		<ExternalParentID/>
+		<Code>SZL</Code>
+		<PublishCode>SZL</PublishCode>
+		<Name>Лилангени</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>168</ExternalID>
+		<ExternalParentID/>
+		<Code>THB</Code>
+		<PublishCode>THB</PublishCode>
+		<Name>Бат</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>169</ExternalID>
+		<ExternalParentID/>
+		<Code>TJS</Code>
+		<PublishCode>TJS</PublishCode>
+		<Name>Сомони</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>170</ExternalID>
+		<ExternalParentID/>
+		<Code>TMM</Code>
+		<PublishCode>TMM</PublishCode>
+		<Name>Туркменский манат</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2008-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>171</ExternalID>
+		<ExternalParentID/>
+		<Code>TMT</Code>
+		<PublishCode>TMT</PublishCode>
+		<Name>Новый манат</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>172</ExternalID>
+		<ExternalParentID/>
+		<Code>TND</Code>
+		<PublishCode>TND</PublishCode>
+		<Name>Тунисский динар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>173</ExternalID>
+		<ExternalParentID/>
+		<Code>TOP</Code>
+		<PublishCode>TOP</PublishCode>
+		<Name>Паанга</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>174</ExternalID>
+		<ExternalParentID/>
+		<Code>TPE</Code>
+		<PublishCode>TPE</PublishCode>
+		<Name>Тиморское эскудо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2002-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>175</ExternalID>
+		<ExternalParentID/>
+		<Code>TRL</Code>
+		<PublishCode>TRL</PublishCode>
+		<Name>Старая турецкая лира</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2005-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>176</ExternalID>
+		<ExternalParentID/>
+		<Code>TRY</Code>
+		<PublishCode>TRY</PublishCode>
+		<Name>Турецкая лира</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>177</ExternalID>
+		<ExternalParentID/>
+		<Code>TTD</Code>
+		<PublishCode>TTD</PublishCode>
+		<Name>Доллар Тринидада и Тобаго</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>178</ExternalID>
+		<ExternalParentID/>
+		<Code>TWD</Code>
+		<PublishCode>TWD</PublishCode>
+		<Name>Новый тайваньский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>179</ExternalID>
+		<ExternalParentID/>
+		<Code>TZS</Code>
+		<PublishCode>TZS</PublishCode>
+		<Name>Танзанийский шиллинг</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>180</ExternalID>
+		<ExternalParentID/>
+		<Code>UAH</Code>
+		<PublishCode>UAH</PublishCode>
+		<Name>Гривна</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>181</ExternalID>
+		<ExternalParentID/>
+		<Code>UGX</Code>
+		<PublishCode>UGX</PublishCode>
+		<Name>Угандийский шиллинг</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>182</ExternalID>
+		<ExternalParentID/>
+		<Code>USD</Code>
+		<PublishCode>USD</PublishCode>
+		<Name>Доллар США</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>183</ExternalID>
+		<ExternalParentID/>
+		<Code>USDN</Code>
+		<PublishCode>USDN</PublishCode>
+		<Name>(Внутр.) Доллар США (5 дес. разрядов)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>184</ExternalID>
+		<ExternalParentID/>
+		<Code>UYI</Code>
+		<PublishCode>UYI</PublishCode>
+		<Name>Уругвайское песо в индексирован.единицах</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>185</ExternalID>
+		<ExternalParentID/>
+		<Code>UYU</Code>
+		<PublishCode>UYU</PublishCode>
+		<Name>Уругвайское песо</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>186</ExternalID>
+		<ExternalParentID/>
+		<Code>UZS</Code>
+		<PublishCode>UZS</PublishCode>
+		<Name>Узбекский сум</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>187</ExternalID>
+		<ExternalParentID/>
+		<Code>VEB</Code>
+		<PublishCode>VEB</PublishCode>
+		<Name>Венесуэльский боливар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2009-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>188</ExternalID>
+		<ExternalParentID/>
+		<Code>VEF</Code>
+		<PublishCode>VEF</PublishCode>
+		<Name>Боливар фуэрте</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>189</ExternalID>
+		<ExternalParentID/>
+		<Code>VND</Code>
+		<PublishCode>VND</PublishCode>
+		<Name>Донг</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>190</ExternalID>
+		<ExternalParentID/>
+		<Code>VUV</Code>
+		<PublishCode>VUV</PublishCode>
+		<Name>Вату</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>191</ExternalID>
+		<ExternalParentID/>
+		<Code>VXL</Code>
+		<PublishCode>VXL</PublishCode>
+		<Name>Валюта номинала рублевого векселя</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>192</ExternalID>
+		<ExternalParentID/>
+		<Code>VXU</Code>
+		<PublishCode>VXU</PublishCode>
+		<Name>Валюта номинала векселя в USD</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>193</ExternalID>
+		<ExternalParentID/>
+		<Code>VXЕ</Code>
+		<PublishCode>VXЕ</PublishCode>
+		<Name>Валюта номинала векселя в EUR</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>194</ExternalID>
+		<ExternalParentID/>
+		<Code>WST</Code>
+		<PublishCode>WST</PublishCode>
+		<Name>Тала</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>195</ExternalID>
+		<ExternalParentID/>
+		<Code>XAF</Code>
+		<PublishCode>XAF</PublishCode>
+		<Name>Франк КФА ВЕАС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>196</ExternalID>
+		<ExternalParentID/>
+		<Code>XCD</Code>
+		<PublishCode>XCD</PublishCode>
+		<Name>Восточно-карибский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>197</ExternalID>
+		<ExternalParentID/>
+		<Code>XDR</Code>
+		<PublishCode>XDR</PublishCode>
+		<Name>СДР (Специальные права заимствования)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>198</ExternalID>
+		<ExternalParentID/>
+		<Code>XOF</Code>
+		<PublishCode>XOF</PublishCode>
+		<Name>Франк КФА ВЕАС</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>199</ExternalID>
+		<ExternalParentID/>
+		<Code>XPF</Code>
+		<PublishCode>XPF</PublishCode>
+		<Name>Франк КФП</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>200</ExternalID>
+		<ExternalParentID/>
+		<Code>YCN</Code>
+		<PublishCode>YCN</PublishCode>
+		<Name>Условная единица  = Юань Китай</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>201</ExternalID>
+		<ExternalParentID/>
+		<Code>YEC</Code>
+		<PublishCode>YEC</PublishCode>
+		<Name>Условная единица = Канадский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>202</ExternalID>
+		<ExternalParentID/>
+		<Code>YEE</Code>
+		<PublishCode>YEE</PublishCode>
+		<Name>Условная единица = Евро</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>203</ExternalID>
+		<ExternalParentID/>
+		<Code>YEP</Code>
+		<PublishCode>YEP</PublishCode>
+		<Name>Условная единица = Английский фунт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>204</ExternalID>
+		<ExternalParentID/>
+		<Code>YER</Code>
+		<PublishCode>YER</PublishCode>
+		<Name>Йеменский риал</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>205</ExternalID>
+		<ExternalParentID/>
+		<Code>YES</Code>
+		<PublishCode>YES</PublishCode>
+		<Name>Условная единица = Шведская крона</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>206</ExternalID>
+		<ExternalParentID/>
+		<Code>YEU</Code>
+		<PublishCode>YEU</PublishCode>
+		<Name>Условная единица  = Доллар США</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>207</ExternalID>
+		<ExternalParentID/>
+		<Code>YPY</Code>
+		<PublishCode>YPY</PublishCode>
+		<Name>Условная единица = Иена</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>208</ExternalID>
+		<ExternalParentID/>
+		<Code>YUM</Code>
+		<PublishCode>YUM</PublishCode>
+		<Name>Новый динар Югославии</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>209</ExternalID>
+		<ExternalParentID/>
+		<Code>ZAR</Code>
+		<PublishCode>ZAR</PublishCode>
+		<Name>Рэнд</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>210</ExternalID>
+		<ExternalParentID/>
+		<Code>ZCNY</Code>
+		<PublishCode>ZCNY</PublishCode>
+		<Name>(для подоходного) Китайский юань</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>211</ExternalID>
+		<ExternalParentID/>
+		<Code>ZMK</Code>
+		<PublishCode>ZMK</PublishCode>
+		<Name>Замбийская квача</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>212</ExternalID>
+		<ExternalParentID/>
+		<Code>ZRB</Code>
+		<PublishCode>ZRB</PublishCode>
+		<Name>КоэфДляЗП (БУРЕНИЕ)</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>213</ExternalID>
+		<ExternalParentID/>
+		<Code>ZRI</Code>
+		<PublishCode>ZRI</PublishCode>
+		<Name>Коэффициент для расчета ЗП_РН-Информ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>214</ExternalID>
+		<ExternalParentID/>
+		<Code>ZRK</Code>
+		<PublishCode>ZRK</PublishCode>
+		<Name>Коэф-тДляРасчетаЗП_РН-ИнформКрасноярск</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>215</ExternalID>
+		<ExternalParentID/>
+		<Code>ZRP</Code>
+		<PublishCode>ZRP</PublishCode>
+		<Name>Коэффициент для расчета зарабатной платы</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>216</ExternalID>
+		<ExternalParentID/>
+		<Code>ZWD</Code>
+		<PublishCode>ZWD</PublishCode>
+		<Name>Зимбабвийский доллар</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		<DateTo>2006-12-31</DateTo>
+	</Currency>
+	<Currency>
+		<ID>0</ID>
+		<ExternalID>217</ExternalID>
+		<ExternalParentID/>
+		<Code>ZWL</Code>
+		<PublishCode>ZWL</PublishCode>
+		<Name>Доллар Зимбабве</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</Currency>
+</Currencys>
+  </DefaultDataHolder>

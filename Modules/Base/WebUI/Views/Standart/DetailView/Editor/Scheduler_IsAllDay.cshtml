@@ -1,0 +1,40 @@
+﻿@model EditorViewModel
+
+<script>
+    $(function() {
+  
+        var lock = false;
+        
+        var check = $("#@Model.UID");
+        var $form = check.closest("form");
+
+        $form.on("onChange", function(e, p) {
+            if ((p.field === "Start" || p.field === "End") && lock === false) {
+            
+                check.prop("checked", false);
+            }
+        });
+
+        check.on("change", function() {
+
+            if ($(this).prop("checked")) {
+              
+                var pbaForm = $form.data("pbaForm");
+
+
+                var start = kendo.parseDate(pbaForm.getPr("Start"), "@JsonNetResult.DATE_TIME_FORMATE");
+
+                if (start) {
+                    lock = true;
+
+                    pbaForm.setPr("Start", new Date(start.getFullYear(), start.getMonth(), start.getDate()));
+                    pbaForm.setPr("End", new Date(start.getFullYear(), start.getMonth(), start.getDate() + 1));
+                    lock = false;
+                }
+            }
+        });
+    });
+</script>
+
+
+@Html.CheckBox(Model)

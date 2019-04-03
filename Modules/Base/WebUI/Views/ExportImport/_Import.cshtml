@@ -1,0 +1,69 @@
+﻿@model WebUI.Models.ExportImport.ImportVm
+@{
+    string mnemonic = Model.Mnemonic;
+    string wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+    string impbtnid = "impbtn_" + Guid.NewGuid().ToString("N");
+}
+
+<div id="@wrapID">
+    @(Html.Kendo().Upload()
+          .Name("import")
+          .Multiple(false)
+          .Enable(true)
+          .Async(x => x              
+              .Save("ImportJSON", "ExportImport" , new { mnemonic  = mnemonic })
+              .AutoUpload(true))
+          .Events(e => e
+              .Complete(wrapID + ".onComplete")
+              .Error(wrapID + ".onError")
+              .Progress(wrapID + ".onProgress"))
+          )
+    <input type="button" class="btn btn-block btn-success" id="@impbtnid" value="Ипорт" title="Импортировать"/>
+</div>
+
+
+<script>
+    (function () {
+        window['@wrapID'].on('onAfterBind', function () {
+
+            $('#@impbtnid').on('click', function () {
+                console.log('imp btn click');
+                $.post("Import");
+            });
+
+        });
+    })
+</script>
+
+
+<script>
+    window['@wrapID'] = {
+        getFileInfo: function (e) {
+            return $.map(e.files, function (file) {
+                var info = file.name;
+
+                // File size is not available in all browsers
+                if (file.size > 0) {
+                    info += " (" + Math.ceil(file.size / 1024) + " KB)";
+                }
+                return info;
+            }).join(", ");
+        },
+
+        onUpload: function (e) {
+            console.log('Upload' + getFileInfo(e));
+        },
+
+        onError: function (e) {
+            console.log('Error upload');
+        },
+
+        onComplete: function (e) {
+            console.log("complete");
+        },
+
+        onProgress: function (e) {
+            console.log("progress" + getFileInfo(e));
+        }
+    }
+</script>

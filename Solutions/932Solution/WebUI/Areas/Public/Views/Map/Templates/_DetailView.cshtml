@@ -1,0 +1,71 @@
+﻿@model WebUI.Areas.Public.Models.VmMap
+
+<script type="text/ng-template" id="detail.container.html">
+    <pageslide ps-cloak="true" ps-open="detail.opened" class="ng-pageslide-custom ng-pageslide-custom-left" ng-class="{ 'ng-pageslide-mobile' : detail.isMobile }" ps-side="left" ps-custom-top="75px" ps-custom-height="auto" ps-size="320px" ps-container="@Model.UID">
+        <div class="page-slide-controls">
+            <div class="page-slide-controls-icon" ng-style="{ 'background-color': detail.config.Style && detail.config.Style.Color ? detail.config.Style.Color : detail.defaultColor }"><span class="{{::detail.config.Style && detail.config.Style.Icon ? detail.config.Style.Icon : detail.defaultIcon}}"></span></div>
+            <a href="#" class="btn btn-close">×</a>
+            <p class="title">{{detail.config.Title}}</p>
+        </div>
+
+        <perfect-scrollbar class="scroller-absolute-with-top">
+            <div class="panel panel-default panel-fixed" ng-repeat="(index, view) in detail.config.DetailView" ng-if="detail.hasValidTypes(view.Properties)">
+                <div class="panel-heading">
+                    {{view.Title}}
+                    <div class="panel-buttons" ng-if="index === 0">
+                        <a ng-href="{{detail.dashboardUrl}}" class="btn btn-link" ng-if="!detail.isSimple" target="_blank"><span class="fa fa-link"></span></a>
+                        <a ng-if="detail.hasWidget" ng-href="#/content/{{detail.config.LayerId}}/{{detail.data.ID}}" class="btn btn-link"><span class="halfling halfling-stats"></span></a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="property" ng-repeat="(key, property) in view.Properties" ng-if="detail.hasValidTypes([property])">
+                        <div class="property-key" ng-if="!detail.isFullColumn(property.Type)">
+                            <p>{{property.Text}}</p>
+                        </div>
+                        <div class="property-value" ng-class="{'fill' : detail.isFullColumn(property.Type)}" ng-switch="property.Type">
+                            <div class="property-fill" ng-switch-when="Image">
+                                <ng-fancybox ng-model="detail.data[key]"></ng-fancybox>
+                            </div>
+                            <div class="property-fill" ng-switch-when="Gallery">
+                                <ng-fancybox ng-model="detail.data[key]"></ng-fancybox>
+                            </div>
+                            <div ng-switch-when="BaseObjectOne">
+                                <ng-baseobject-one ng-model="detail.data[key]"></ng-baseobject-one>
+                            </div>
+                            <div ng-switch-when="Enum">
+                                <ng-base-enum ng-model="detail.getEnumValues(property.UIType).Values[detail.data[key]]"></ng-base-enum>
+                            </div>
+                            <div ng-switch-when="Date">
+                                {{detail.data[key] | amAsWord:'DD.MM.YYYY HH:mm:ss':'DD.MM.YYYY' }}
+                            </div>
+                            <div ng-switch-when="Boolean">
+                                <input type="checkbox" ng-disabled="true" ng-icheck ng-icheck-color="green" ng-icheck-theme="square" ng-model="detail.data[key]" />
+                            </div>
+                            <div class="property-fill" ng-switch-when="OneToMany">
+                                @*<button ng-click="detail.showCollection(property, key)">Просмотр</button>*@
+                            </div>
+                            <div ng-switch-default>
+                                {{detail.data[key]}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </perfect-scrollbar>
+    </pageslide>
+</script>
+
+<script type="text/ng-template" id="image-preview.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="image.Close()" aria-label="Close">
+            ×
+        </button>
+        <h4 class="modal-title">{{image.Title}}</h4>
+    </div>
+    <div class="modal-body image-view">
+        <div class="orginal-image" ng-style="{ 'background-image': 'url(/Files/GetImage?id=' + image.FileID + ')' }"></div>
+   </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="image.Close()">Закрыть</button>
+    </div>
+</script>

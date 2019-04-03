@@ -1,0 +1,61 @@
+﻿.multiedit {
+	.k-window-content.view-model-window {
+		overflow: scroll;
+		overflow-x: hidden;
+		}
+
+	&__command {
+		.total {
+			line-height: 3;
+
+			padding-left: 25px;
+
+			text-align: left;
+
+			color: @color--light;
+			}
+
+		&-widget {
+			padding-top: @dialog-toolbar-height;
+
+			.k-progressbar {
+				height: 1px;
+				}
+			}
+		}
+
+	.dialog__toolbar {
+		position: fixed;
+		z-index: 1;
+
+		width: 100%;
+		}
+
+	.dialog__content {
+		position: relative;
+		}
+
+	&__form {
+		padding-top: @dialog-toolbar-height;
+
+		.dialog__tab {
+			background-color: @color--light;
+			}
+
+		&-editor {
+			display: flex;
+
+			.checkbox {
+				width: 10px;
+				padding: 0 15px;
+
+				.k-checkbox {
+					line-height: 0;
+
+					position: absolute; 
+					z-index: 100;
+					}
+				}
+			}
+		}
+	}

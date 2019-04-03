@@ -1,0 +1,53 @@
+﻿@model EditorViewModel
+
+<script>
+    window["@Model.UID"] = {
+        onAdditionalData: function() {
+            return {
+                search: $("#@Model.UID").data("kendoDropDownList").filterInput.val()
+            };
+        },
+        onSelect: function () {
+            var $editor = $("#@Model.UID");
+
+            var form = $editor.closest("form").data("pbaForm");
+
+            form.addViewData('ObjectType', $editor.data("kendoDropDownList").value());
+        }
+    };
+</script>
+
+
+@(Html.Kendo().DropDownList()
+    .Name(Model.UID)
+    .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { style = "width: 100%;" }))
+    .DataTextField("Text")
+    .DataValueField("ID")
+    .OptionLabel("Выберите значение...")
+    .Filter(FilterType.Contains)
+    .Height(500)
+    .Events(e => e.Select(Model.UID + ".onSelect"))
+    .DataSource(source =>
+    {
+        source.Read(read =>
+        {
+            read.Url("/api/viewConfig/getTypes").Data(Model.UID + ".onAdditionalData");
+        }).ServerFiltering(false);
+    })
+)
+
+<script>
+    $(function () {
+        var $editor = $("#@Model.UID");
+        var $form = $editor.closest("form");
+
+        $form.on("onSave", function (e, form) {
+            form.setPr("@(Model.PropertyName)", $editor.data("kendoDropDownList").value());
+        });
+
+        $form.on("onBeforeBind", function (e, form) {
+            var dropdownlist = $editor.data("kendoDropDownList");
+            dropdownlist.dataSource.filter([]);
+        });
+    });
+</script>

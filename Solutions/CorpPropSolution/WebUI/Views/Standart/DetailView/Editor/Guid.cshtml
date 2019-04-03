@@ -1,0 +1,21 @@
+﻿@model EditorViewModel
+
+@{
+    var name = "n_" + Guid.NewGuid().ToString("N");
+} 
+
+
+<span id="@name"></span>
+
+<script>
+    $(function () {
+        var $form = $("#@name").closest("form");
+        var propertyName = "@Model.PropertyName";
+
+        $form.on("onAfterBind", function (e, form) {
+            var guid = form.getPr(propertyName);
+            $('#@name').html(guid);
+        });
+
+    });
+</script>

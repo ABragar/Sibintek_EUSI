@@ -1,0 +1,37 @@
+﻿@using WebUI.Areas.Account
+@model WebUI.Areas.Account.Models.Account.ExternalRegisterModel
+
+
+@{
+    var routevalues = Url.FromCurrent();
+
+    ViewBag.Title = "Регистрация";
+}
+
+@using (Html.BeginForm("ExternalRegister", "Account", routevalues, FormMethod.Post, new Dictionary<string, object> { { "class", "account-card__form" } }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.LoginProvider)
+    @Html.HiddenFor(x => x.ProviderKey)
+
+    @Html.InputFieldFor(x => x.Email, "text")
+    @Html.InputFieldFor(x => x.FirstName, "text")
+    @Html.InputFieldFor(x => x.LastName, "text")
+
+    <!-- SUBMIT BUTTON -->
+    <button class="btn btn-large btn-block" type="submit">Отправить</button>
+
+    <!-- BACK LINK -->
+    <div class="actions">
+        <a href="@Url.Action("Login", routevalues)" data-route="back">Отмена</a>
+    </div>
+
+    <!-- HIDDEN VALIDATION MESSAGES -->
+    <div class="validations">
+        <div data-validation-summary>@Html.ValidationSummary(true)</div>
+    </div>
+}
+
+
+
+@section card_class {no-footer}

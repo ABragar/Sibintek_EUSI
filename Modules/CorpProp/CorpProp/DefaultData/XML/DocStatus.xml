@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<DocStatuss>
+	<DocStatus>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>ZS</Code>
+		<PublishCode>ZS</PublishCode>
+		<Name>Аннулирован</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocStatus>
+	<DocStatus>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>ZD</Code>
+		<PublishCode>ZD</PublishCode>
+		<Name>Закрыт</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocStatus>
+	<DocStatus>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>ZE</Code>
+		<PublishCode>ZE</PublishCode>
+		<Name>Изменен</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocStatus>
+	<DocStatus>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>ZF</Code>
+		<PublishCode>ZF</PublishCode>
+		<Name>Пролонгирован</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocStatus>
+	<DocStatus>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>ZB</Code>
+		<PublishCode>ZB</PublishCode>
+		<Name>Подписан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocStatus>
+	<DocStatus>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>ZA</Code>
+		<PublishCode>ZA</PublishCode>
+		<Name>Проект</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocStatus>
+	<DocStatus>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>ZC</Code>
+		<PublishCode>ZC</PublishCode>
+		<Name>Санкция</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocStatus>
+	<DocStatus>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>ZH</Code>
+		<PublishCode>ZH</PublishCode>
+		<Name>Усл.подписан</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocStatus>
+</DocStatuss>
+  </DefaultDataHolder>

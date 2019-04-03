@@ -1,0 +1,14 @@
+﻿@model EditorViewModel
+
+<input id="@Model.UID" readonly class="k-textbox" style="width: 100%" />
+
+
+<script>
+    $(function () {
+        var $f = $("#@Model.UID");
+        $f.closest("form").on("onAfterBind", function (e, form) {
+            if (form.getPr("@Model.PropertyName"))
+                $f.val(form.getPr("@Model.PropertyName").Title);
+        });
+    });
+</script>

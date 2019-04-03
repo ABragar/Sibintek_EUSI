@@ -1,0 +1,43 @@
+﻿<div id="example" class="container-fluid example">
+    <div class="row">
+        <div class="col-xs-6">
+            @{ 
+                Html.RenderPartial("Sections/01_Buttons");
+                Html.RenderPartial("Sections/02_Popups");
+                Html.RenderPartial("Sections/03_Panels");
+            }
+        </div>
+        <div class="col-xs-6">
+            @{
+                Html.RenderPartial("Sections/04_Toolbars");
+                Html.RenderPartial("Sections/05_Lists");
+                Html.RenderPartial("Sections/06_Forms");
+            }
+        </div>
+    </div>
+</div>
+
+@section bodyClass {example-page}
+
+@section styles {
+    @Styles.Render("~/CSS/Example")
+}
+
+@section scripts {
+    @Scripts.Render("~/JS/Example")
+    <script>
+        hljs.initHighlightingOnLoad();
+
+        $(function() {
+            $("#example").perfectScrollbar({
+                scrollSpeed: 0.6,
+                suppressScrollX: true
+            });
+            
+            // HAMBURGERS
+            $('#buttons4').children('a').click(function() {
+                $(this).children('.hamburger').toggleClass('hamburger--active');
+            });
+        });
+    </script>
+}

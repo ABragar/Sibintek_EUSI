@@ -1,0 +1,47 @@
+[
+    {
+        "FolderId": "Inbox",
+        "Title": "Входящие",
+        "Icon": "inbox",
+        "ParentId": null,
+        "ChildCount": 0,
+        "UnreadItemCount": 2,
+        "TotalItemCount": 1
+    },
+    {
+        "FolderId": "User",
+        "Title": "Пользв. папка",
+        "Icon": "inbox",
+        "ParentId": "Inbox",
+        "ChildCount": 0,
+        "UnreadItemCount": 2,
+        "TotalItemCount": 1
+    },
+    {
+        "FolderId": "Drafts",
+        "Title": "Черновики",
+        "Icon": "sticky-note-o",
+        "ParentId": null,
+        "ChildCount": 0,
+        "UnreadItemCount": 2,
+        "TotalItemCount": 1
+    },
+    {
+        "FolderId": "Sent",
+        "Title": "Отпрвленные",
+        "Icon": "paper-plane-o",
+        "ParentId": null,
+        "ChildCount": 0,
+        "UnreadItemCount": 2,
+        "TotalItemCount": 1
+    },
+    {
+        "FolderId": "Trash",
+        "Title": "Корзина",
+        "Icon": "trash-o",
+        "ParentId": null,
+        "ChildCount": 0,
+        "UnreadItemCount": 2,
+        "TotalItemCount": 1
+    }
+]

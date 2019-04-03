@@ -1,0 +1,59 @@
+﻿@model EditorViewModel
+@{
+
+}
+
+<style>
+    .sib-audit-property-icon {
+        position: relative;
+        display: inline-block;
+        margin-left: 3px;
+    }
+
+    .sib-audit-property-info-tooltip {
+        width: max-content;
+        visibility: hidden;
+        background-color: #ffffcc;
+        color: black;
+        text-align: center;
+        border-radius: 4px;
+        border: 1px solid #ccc !important;
+        border-color: #ffeb3b !important;
+        padding: 5px 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        padding-right: 10px;
+    }
+
+    .sib-audit-property-info:hover .sib-audit-property-info-tooltip {
+        visibility: visible;
+    }
+
+    .sib-audit-property-info-item {
+        font-size: 12px;
+        text-align: left;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        
+    }
+
+    .sib-audit-property-info-user {
+        font-weight: bold;
+    }
+
+    .sib-audit-property-info-value {
+    }
+
+    .sib-hidden {
+        display: none;
+    }
+
+</style>
+
+@*Вывод информации аудита свойств объекта на DetailView для текущего редактора*@
+<div id="AuditPropertyInfo_@Model.PropertyName" class="sib-audit-property-info sib-hidden" fieldName ="@Model.PropertyName">
+    <span class="k-icon btntoolbar fa fa-clock-o sib-audit-property-icon"></span> 
+    <div class="sib-audit-property-info-tooltip"></div>
+</div>
+

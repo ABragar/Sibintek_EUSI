@@ -1,0 +1,173 @@
+﻿@using Base.UI.Presets
+@using CorpProp.Entities.Law
+@model StandartPivot
+
+    @(Html.Kendo().PivotConfigurator()
+    .Name("pivot-config")
+    //.Filterable(true).Sortable()
+    .Messages(m =>
+    {
+        m.RowsLabel("Строки").Rows("");
+        m.ColumnsLabel("Столбцы").Columns("");
+        m.MeasuresLabel("Измерения").Measures("");
+        m.FieldsLabel("Поля");
+    }))
+@if (Model.Mnemonic == "ScheduleStateRegistrationRecordPivot"
+    || Model.Mnemonic == "GGR"
+    )
+{
+    @(Html.Kendo().PivotGrid<ScheduleStateRegistrationRecord>()
+            .Name("pivot-grid")
+            .Filterable(true)
+            .ColumnHeaderTemplateId("columnTemplate")
+            .Sortable(c => c.Enabled(false))
+            //.RowHeaderTemplateId("rowTemplate")
+            //.Excel(ex =>
+            //{
+            //    ex.FileName("testPivot.xlsx");
+            //    ex.Filterable(true);
+            //    ex.ProxyURL(Url.Action("KendoUI_Export_Save", "Standart", new { area = "" }));
+            //})
+            .Configurator("#pivot-config")
+            .Messages(m =>
+            {
+                m.ColumnFields("Перенесите поле с данными в эту область");
+                m.RowFields("Перенесите поле с данными в эту область");
+                m.MeasureFields("Перенесите поле с данными в эту область");
+            })
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                //.Transport(transport => transport.Read(read => read.Data(Model.WidgetID + ".onAdditionalData")))
+                .Transport(t => t.Read(r => r.Url($"/api/listview/{Model.Mnemonic}/kendoPivot/")))
+                .Schema(schema => schema
+                    //.Model(m => m.Field("Name", typeof(string)).From("Owner.Name"))
+                    .Cube(c => c
+                        .Dimensions(d =>
+                        {
+                            d.Add(a => a.DatePlannedFilingDocumentGroup).Caption("Дата регистрации план");
+                            //d.Add(a => a.DateActualFilingDocument).Caption("Дата регистрации факт");
+                            d.Add(a => a.Owner.ShortName).Caption("Балансодержатель");
+                            d.Add(a => a.GroupName).Caption("Балансодержатель (Sort)");
+                            d.Add(a => a.SocietyName).Caption("ОГ");
+                            d.Add(a => a.Year).Caption("Год");
+                            d.Add(a => a.InitialCost).Caption("Стоимость");
+                            d.Add(a => a.SSRStatusName).Caption("Статус ГР");
+                        })
+                        .Measures(ms =>
+                        {
+                            ms.Add("Количество").Field(f => f.DatePlannedFilingDocumentGroup).AggregateName("count").Caption("Измерения");
+                            ms.Add("Сумма").Field(f => f.InitialCost).AggregateName("sum").Format("{0:c}").Caption("Измерения");
+                        })
+                    )
+                )
+                .Columns(c =>
+                {
+                    //c.Add("DatePlannedFilingDocumentGroup");
+                })
+                .Rows(r =>
+                {
+                    r.Add("SocietyName").Expand(false);
+                    r.Add("Owner.ShortName");
+                })
+                .Measures(ms =>
+                {
+                    ms.Axis(PivotDataSourceMeasureAxis.Rows).Values("Количество");
+                })
+            ))
+}
+else if (Model.Mnemonic == "ScheduleStateTerminateRecordPivot")
+{
+        @(Html.Kendo().PivotGrid<ScheduleStateTerminateRecord>()
+            .Name("pivot-grid")
+            .Filterable(true)
+            .ColumnHeaderTemplateId("columnTemplate")
+            //.RowHeaderTemplateId("rowTemplate")
+            .Sortable()
+            .Excel(ex =>
+            {
+                ex.FileName("testPivot.xlsx");
+                ex.Filterable(true);
+                ex.ProxyURL(Url.Action("KendoUI_Export_Save", "Standart", new { area = "" }));
+            })
+            .Configurator("#pivot-config")
+            .Messages(m =>
+            {
+                m.ColumnFields("Перенесите поле с данными в эту область");
+                m.RowFields("Перенесите поле с данными в эту область");
+                m.MeasureFields("Перенесите поле с данными в эту область");
+            })
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                //.Transport(transport => transport.Read("KendoUI_CollectionRead", "Standart", new { mnemonic = Model.Mnemonic }))
+                .Transport(t => t.Read(r => r.Url("/api/listview/ScheduleStateTerminateRecordPivot/kendoPivot/")))
+                .Schema(schema => schema
+                    //.Model(m => m.Field("Name", typeof(string)).From("Owner.Name"))
+                    .Cube(c => c
+                        .Dimensions(d =>
+                        {
+                            d.Add(a => a.DatePlannedFilingDocumentGroup).Caption("Дата регистрации план");
+                            //d.Add(a => a.DateActualFilingDocument).Caption("Дата регистрации факт");
+                            d.Add(a => a.Owner.ShortName).Caption("Балансодержатель");
+                            d.Add(a => a.GroupName).Caption("Балансодержатель (Sort)");
+                            d.Add(a => a.SocietyName).Caption("ОГ");
+                            d.Add(a => a.Year).Caption("Год");
+                            d.Add(a => a.InitialCost).Caption("Стоимость");
+                            d.Add(a => a.SSTStatusName).Caption("Статус ГР");
+                        })
+                        .Measures(ms =>
+                        {
+                            ms.Add("Количество").Field(f => f.DatePlannedFilingDocumentGroup).AggregateName("count").Caption("Измерения");
+                            ms.Add("Сумма").Field(f => f.InitialCost).AggregateName("sum").Format("{0:c}").Caption("Измерения");
+                        })
+                    )
+                )
+                .Columns(c =>
+                {
+                    //c.Add("DatePlannedFilingDocumentGroup");
+                })
+                .Rows(r =>
+                {
+                    r.Add("SocietyName").Expand(true);
+                    r.Add("Owner.ShortName");
+                })
+                .Measures(ms =>
+                {
+                    ms.Axis(PivotDataSourceMeasureAxis.Rows).Values("Количество");
+                })
+            ))
+}
+
+    <script id="columnTemplate" type="text/x-kendo-template">
+        # if (member.parentName != undefined && member.caption != null  && (member.name !== "DatePlannedFilingDocumentGroup" || member.name !== "DateActualFilingDocument") && (member.parentName === "DatePlannedFilingDocumentGroup" || member.parentName === "DateActualFilingDocument")) { #
+        #: kendo.toString(new Date(member.caption), "MMMM yyyy") #
+        # } else { #
+        #: member.caption #
+        # } #
+    </script>
+
+<script id="rowTemplate" type="text/x-kendo-template">
+    # if (member.caption === "" || member.caption == null) { #
+    #: member.caption = " " #
+    # } #
+</script>
+
+
+
+<style>
+    #pivot-grid {
+        display: inline-block;
+        vertical-align: top;
+        width: 74%;
+    }
+
+    .hidden-on-narrow {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #pivot-config {
+        display: inline-block;
+        vertical-align: top;
+        width: 25%;
+    }
+</style>

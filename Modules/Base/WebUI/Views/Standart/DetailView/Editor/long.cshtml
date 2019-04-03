@@ -1,0 +1,7 @@
+@model EditorViewModel
+
+@(Html.Kendo().NumericTextBox<long>().Name(Model.UID)
+    .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { style = "width:100%; max-width: 200px;" }))
+    .Min(long.MinValue)
+    .Max(long.MaxValue).Spinners(false)
+)

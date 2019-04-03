@@ -1,0 +1,33 @@
+2019-01-29 14:04:15.0308 RestService.TicketFormatService RestService.TicketFormatService.GetAesTicketFormat - GetAesTicketFormat
+2019-01-29 14:04:15.1041 RestService.TicketFormatService RestService.TicketFormatService.GetAesDataProtector - GetAesDataProtector
+2019-01-29 14:04:19.6346 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2019-01-29 14:05:58.4911 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index
+2019-01-29 14:12:54.6943 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2019-01-29 14:12:54.7013 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2019-01-29 14:12:54.7452 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2019-01-29 14:12:54.9786 RestService.Identity.WinAuthIdentityStrategy RestService.Identity.WinAuthIdentityStrategy.GetUserInfo - System.Security.Claims.ClaimsIdentity, value= admin, 
+System.Security.Claims.ClaimsIdentity, value= 1, 
+System.Security.Claims.ClaimsIdentity, value= admin, 
+System.Security.Claims.ClaimsIdentity, value= Пользователь системы  , 
+System.Security.Claims.ClaimsIdentity, value= @2@
+2019-01-29 14:12:55.0225 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Security.User'.
+   at RestService.Identity.WinAuthIdentityStrategy.GetUserInfo(ClaimsPrincipal principal) in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Identity\WinAuthIdentityStrategy.cs:line 37
+   at RestService.Identity.IdentityExtension.GetUserInfo(ClaimsPrincipal identity) in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Identity\IdentityExtension.cs:line 18
+   at RestService.Controllers.ReportManagerController.GetAll() in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Controllers\ReportManagerController.cs:line 130
+ClientConnectionId:254d87e2-7dab-42fa-aada-fbcfc6294f05
+Error Number:208,State:1,Class:16
+2019-01-29 14:13:00.5870 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Begin method
+2019-01-29 14:13:00.5889 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Request: System.Web.HttpInputStream
+2019-01-29 14:13:00.6139 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - Count of reports from storage: 0
+2019-01-29 14:13:00.6927 RestService.Identity.WinAuthIdentityStrategy RestService.Identity.WinAuthIdentityStrategy.GetUserInfo - System.Security.Claims.ClaimsIdentity, value= admin, 
+System.Security.Claims.ClaimsIdentity, value= 1, 
+System.Security.Claims.ClaimsIdentity, value= admin, 
+System.Security.Claims.ClaimsIdentity, value= Пользователь системы  , 
+System.Security.Claims.ClaimsIdentity, value= @2@
+2019-01-29 14:13:00.7555 RestService.Controllers.ReportManagerController RestService.Controllers.ReportManagerController.GetAll - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Security.User'.
+   at RestService.Identity.WinAuthIdentityStrategy.GetUserInfo(ClaimsPrincipal principal) in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Identity\WinAuthIdentityStrategy.cs:line 37
+   at RestService.Identity.IdentityExtension.GetUserInfo(ClaimsPrincipal identity) in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Identity\IdentityExtension.cs:line 18
+   at RestService.Controllers.ReportManagerController.GetAll() in C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Reporting\RestServiceExt\Controllers\ReportManagerController.cs:line 130
+ClientConnectionId:254d87e2-7dab-42fa-aada-fbcfc6294f05
+Error Number:208,State:1,Class:16
+2019-01-29 14:13:12.2156 RestService.Controllers.HomeController RestService.Controllers.HomeController.Index - Begin method: Index

@@ -1,0 +1,42 @@
+﻿@model WebUI.Areas.Public.Models.VmMap
+
+<script type="text/ng-template" id="content.container.html">
+    <pageslide ps-cloak="true" ps-open="content.opened" class="ng-pageslide-custom ng-pageslide-custom-left" ps-side="left" ps-custom-top="75px" ps-custom-height="auto" ps-size="400px" ps-container="@Model.UID">
+        <div class="page-slide-controls">
+            <div class="page-slide-controls-icon" ng-style="{ 'background-color': '#2e81b7' }"><span class="halfling halfling-stats"></span></div>
+            <a href="#" class="btn btn-close">×</a>
+            <p class="title">{{content.widget.options.title}}</p>
+        </div>
+
+        <perfect-scrollbar class="scroller-absolute-with-top">
+            <ng-frame ng-if="content.active && content.frame" ng-width="100%" ng-height="400" ng-frame-url="content.url" ng-load="content.onLoad"></ng-frame>
+            <ng-widget ng-if="content.active && !content.frame" ng-uid="content.id" ng-mnemonic="content.mnemonic" ng-layer-id="content.layerId" ng-widget-template="content.template" ng-load="content.onLoad"></ng-widget>
+        </perfect-scrollbar>
+
+        <div class="content-loading-cloak" ng-if="content.loading"></div>
+    </pageslide>
+</script>
+
+<script type="text/ng-template" id="contentmodal.container.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="contentmodal.Close()" aria-label="Close">
+            ×
+        </button>
+        <h4 class="modal-title">{{contentmodal.title}}</h4>
+    </div>
+    
+    <div class="modal-body">
+        <ng-frame ng-if="contentmodal.frame" ng-width="100%" ng-height="600" ng-frame-url="contentmodal.url" ng-load="contentmodal.onLoad"></ng-frame>
+        <ng-widget ng-if="!contentmodal.frame" ng-uid="contentmodal.id" ng-mnemonic="contentmodal.mnemonic" ng-widget-template="contentmodal.template" ng-load="contentmodal.onLoad"></ng-widget>
+
+        @*<div ng-if="!contentmodal.frame" ng-bind-html="contentmodal.template"></div>*@
+
+        <div class="map-widget-loading" ng-if="contentmodal.loading"></div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="contentmodal.Close()">Закрыть</button>
+    </div>
+    
+</script>
+

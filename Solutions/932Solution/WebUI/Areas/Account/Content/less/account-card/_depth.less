@@ -1,0 +1,44 @@
+﻿.account-card {
+	&__header,
+	&__body,
+	&__footer {
+		position: relative;
+		z-index: 2;
+
+		transition: filter .35s, -webkit-filter .35s, -moz-filter .35s, -ms-filter .35s;
+		}
+
+	&__loader {
+		z-index: 1;
+
+		.loader {
+			transition: opacity .75s .2s, transform .8s;
+			transform: translate(0, -100px);
+
+			opacity: 0;
+			}
+		}
+
+	&--loading {
+		pointer-events: none;
+		}
+
+	&--loading &__header,
+	&--loading &__body,
+	&--loading &__footer {
+		-webkit-filter: blur(.8px) saturate(.4);
+		   -moz-filter: blur(.8px) saturate(.4);
+		    -ms-filter: blur(.8px) saturate(.4);
+		        filter: blur(.8px) saturate(.4);
+		}
+
+	&--loading &__loader {
+		z-index: 2;
+
+		.loader {
+			transform: translate(0, 0);
+
+			opacity: 1;
+			}
+		}
+	}

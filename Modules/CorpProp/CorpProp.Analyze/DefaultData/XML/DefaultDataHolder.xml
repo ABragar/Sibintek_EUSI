@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<DefaultDataHolder>
+  <BudgetLines>
+    <BudgetLine>
+      <ID>0</ID><Code>1</Code><Name>ПОСТУПЛЕНИЕ СРЕДСТВ</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.1</Code><Name>Операционная деятельность</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.1.1</Code><Name>Поступление средств от реализации продукции на внутреннем рынке</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.1.2</Code><Name>Поступление средств от прочих видов деятельности</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.1.3</Code><Name>Поступление средств от реализации продукции на экспорт</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.1.4</Code><Name>Внереализационные поступления</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.1.5</Code><Name>Возврат налоговых платежей</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.1.6</Code><Name>Компенсационые платежи от участников КГН</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.2</Code><Name>ИНВЕСТИЦИОННАЯ ДЕЯТЕЛЬНОСТЬ</Name>
+    </BudgetLine> 
+    <BudgetLine>
+      <ID>0</ID><Code>1.2.1</Code><Name>Поступление от реализации ОС</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.2.2</Code><Name>Поступления от реализации материальных активов</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.2.3</Code><Name>Прочие поступления</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.2.4</Code><Name>Продажа Обществ Группы</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.2.5</Code><Name>Поступления от погашения прав требования</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.2.6</Code><Name>Поступления от реализации финансовых активов</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.2.7</Code><Name>Поступления по взносу в уставной капитал</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.2.8</Code><Name>Поступления по вкладам в имущетсво</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.3</Code><Name>ФИНАНСОВАЯ ДЕЯТЕЛЬНОСТЬ</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.3.1</Code><Name>Поступление заемных средств</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.3.2</Code><Name>Поступление доходов по финансовым вложениям</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.3.3</Code><Name>Прочие поступления от финасовой деятельности</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.3.4</Code><Name>Возврат депозитов</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.3.5</Code><Name>Возврат займов</Name>
+    </BudgetLine>
+    <BudgetLine>
+      <ID>0</ID><Code>1.3.6</Code><Name>Положительная курсовая разница</Name>
+    </BudgetLine>
+  </BudgetLines>
+
+
+  <FinancialIndicators>
+    <FinancialIndicator>
+      <ID>0</ID><Code>1100</Code><Name>Внеоборотные активы</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>1200</Code><Name>Оборотные активы</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>1300</Code><Name>Капитал и резервы</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>1400</Code><Name>Долгосрочные обязательства</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>1500</Code><Name>Краткосрочные обязательства</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>2100</Code><Name>Валовая прибыль (убыток)</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>2200</Code><Name>Прибыль (убыток) от продаж</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>2300</Code><Name>Прибыль (убыток) до налогообложения</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>2400</Code><Name>Чистая прибыль (убыток)</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>2500</Code><Name>Совокупный финансовый результат периода</Name>
+    </FinancialIndicator>
+    <FinancialIndicator>
+      <ID>0</ID><Code>2900</Code><Name>Базовая прибыль (убыток) на акцию</Name>
+    </FinancialIndicator>
+  </FinancialIndicators>
+
+  <NSIs>
+    <NSI>
+      <ID>0</ID>
+      <Name>Строки бюджета</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>BudgetLine</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    <NSI>
+      <ID>0</ID>
+      <Name>Финансовые показатели</Name>
+      <NSIType>
+        <Code>Central</Code>
+      </NSIType>
+      <Mnemonic>FinancialIndicator</Mnemonic>
+      <Category></Category>
+      <URL></URL>
+    </NSI>
+    
+
+  </NSIs>
+</DefaultDataHolder>

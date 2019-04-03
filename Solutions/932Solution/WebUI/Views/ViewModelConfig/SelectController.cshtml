@@ -1,0 +1,218 @@
+﻿@{
+    string wrapID = Guid.NewGuid().ToString("N");
+    string applyId = Guid.NewGuid().ToString("N");
+    string cancelId = Guid.NewGuid().ToString("N");
+    string ctxID = Guid.NewGuid().ToString("N");
+    string controllerDropDownID = Guid.NewGuid().ToString("N");
+    string actopnDropDownID = Guid.NewGuid().ToString("N");
+    string gridID = Guid.NewGuid().ToString("N");
+}
+
+<div id="@wrapID">
+
+    <div class="ajax-param e-row">
+        <div class="label">Контроллер</div>
+        <div class="editor">
+            <input id="@controllerDropDownID" class="drop-down" />
+        </div>
+    </div>
+    <div class="ajax-param e-row">
+        <div class="label">Действие</div>
+        <div class="editor">
+            <input id="@actopnDropDownID" class="drop-down"/>
+        </div>
+    </div>
+    <span name="parameters"></span>
+    <div class="ajax-param">
+        <div id="@gridID"></div>
+    </div>
+    <div id="@ctxID"></div>
+    <div class="footer-buttons">
+        <button id="@applyId" class="btn btn-primary" title="Добавить"><span>Добавить</span></button>
+        <button id="@cancelId" class="btn" title="Отмена"><span>Отмена</span></button>
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="toolbarTemplate">
+    <div class="toolbar">
+        <button class="fa fa-plus" id="addParam"><span>Добавить</span></button>
+    </div>
+</script>
+<script type="text/x-kendo-template" id="actionTemplate">
+    <span parameters="#:parameters">#: Name #</span>
+</script>
+
+
+<script>
+    $(function () {
+        $("#@wrapID").closest('[constructor-wnd]').on('onLoad', function (e, args) {
+            var data = args.model;
+
+            var controllersDropDown = $('#@controllerDropDownID').kendoDropDownList({
+                dataTextField: "Name",
+                dataValueField: "Value",
+                dataSource: {
+                    serverFiltering: true,
+                    transport: { read: "@Url.Action("GetControllerNames", "ViewModelConfig")" }
+                }
+            }).data("kendoDropDownList");
+
+            controllersDropDown.bind('dataBound', function () {
+                if (data.Controller) {
+                    controllersDropDown.select(function (dataItem) {
+                        return dataItem.Name === data.Controller;
+                    });
+                }
+            });
+
+            var actionDropDown = $('#@actopnDropDownID').kendoDropDownList({
+                optionLabel: "Select action...",
+                cascadeFrom: "@controllerDropDownID",
+                cascadeFromField: "Value",
+                dataTextField: "Name",
+                dataValueField: "Name",
+                select: function (e) {
+                    var text = e;
+                    $('#@wrapID').find('[name=parameters]').text(text);
+                },
+                dataSource: {
+                    serverFiltering: true,
+                    transport: {
+                        dataType: "json",
+                        ajax: true,
+                        type: "GET",
+                        read: {
+                            url: "@Url.Action("GetActions", "ViewModelConfig")",
+                            data: function() { return { controllerName: $('#@controllerDropDownID').val() } }
+                        }
+                    }
+                }
+            }).data("kendoDropDownList");
+
+            actionDropDown.bind('dataBound', function () {
+                if (data.Name) {
+                    actionDropDown.select(function (dataItem) {
+                        return dataItem.Name === data.Name;
+                    });
+                }
+            });
+
+            var grid = $('#@gridID').kendoGrid({
+                toolbar: kendo.template($("#toolbarTemplate").html()),
+                dataSource: data.ListParams,
+                selectable: true | "row",
+                height: 250,
+                pageable: {
+                    pageSize: 15
+                },
+                columns: [
+                    {
+                        field: "Key",
+                        title: "Ключ",
+                        width: 20
+                    },
+                    {
+                        field: "Value",
+                        title: "Значение",
+                        width: 40
+                    }
+                ]
+            });
+
+            var viewModel = kendo.observable({
+                addeditparam: function (e) {
+
+                    var val = e;
+
+                    var content = "@Url.Action("EditAjaxActionParam", "ViewModelConfig")?param=" + val;
+
+                    var kendoWindow = $("<div params-editor />").kendoWindow({
+                        width: 650,
+                        content: content,
+                        height: 300,
+                        maxHeight: 300,
+                        title: "Инициализатор свойства",
+                        actions: ["Close"],
+                        modal: true,
+                        deactivate: function () {
+                            this.destroy();
+                        },
+                        refresh: function () {
+                            kendoWindow.trigger('onLoad', {
+                                model: val,
+                                apply: function (newVal) {
+                                    if (val) {
+                                        val = newVal;
+                                        $(grid).data('kendoGrid').refresh();
+                                    }
+                                    else
+                                        data.ListParams.push(newVal);
+                                }
+                            });
+                        }
+                    });
+
+                    var wnd = kendoWindow.data("kendoWindow");
+                    wnd.center().open();
+                }
+            });
+
+            viewModel.bind('change', function () {
+                kendo.unbind($("#@wrapID"));
+                kendo.bind($("#@wrapID"), viewModel);
+            });
+
+            kendo.bind($("#@wrapID"), viewModel);
+
+
+            var contextMenu = $('#@ctxID').kendoContextMenu({
+                target: grid,
+                filter: '.k-grid-content tr',
+                dataSource: [
+                    {
+                        text: "Удалить",
+                        cssClass: "fa fa-trash-o",
+                        spriteCssClass: ""
+                    }
+                ],
+                open: function (e) {
+                    grid.data('kendoGrid').select(e.target);
+                },
+                select: function (e) {
+                    var target = e.target.getAttribute("data-uid");
+                    var $grid = grid.data("kendoGrid");
+                    var ret = $grid.dataSource.getByUid(target);
+                    data.ListParams.remove(ret);
+                }
+            });
+
+
+
+
+            $('#addParam').on('click', function () {
+                viewModel.addeditparam();
+            });
+
+            var generateData = function () {
+                data.Controller = controllersDropDown.dataItem().Name;
+                data.Name = actionDropDown.dataItem().Name;
+                return data;
+            };
+
+            $('.k-grid-content tr').dblclick(function () {
+                var egrid = $(grid).data("kendoGrid");
+                var item = egrid.dataItem(egrid.select());
+                viewModel.addeditparam(item);
+            });
+
+            $('#@applyId').on('click', function () {
+                args.apply(generateData());
+                $("#@wrapID").closest('[data-role=window]').data('kendoWindow').close();
+            });
+
+            $('#@cancelId').on('click', function () {
+                $("#@wrapID").closest('[data-role=window]').data('kendoWindow').close();
+            });
+        });
+    });
+</script>

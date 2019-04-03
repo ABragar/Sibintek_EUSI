@@ -1,0 +1,66 @@
+﻿@model StandartTreeView
+
+@{
+    int width = 24;
+    int height = 24;
+
+}
+
+<script>
+    (function() {
+        var treeview = window["@Model.WidgetID"];
+
+        treeview.objectType = null;
+
+        treeview.onAdditionaData = function(e) {
+            return {
+                objectType: window['@Model.WidgetID'].objectType
+            }
+        };
+
+        treeview.readData = function (e) {
+            var tree = $('#@Model.WidgetID').data('kendoTreeView');
+            tree.dataSource.read();
+        };
+    })();
+</script>
+
+<script id="treeViewTemplate" type="text/x-kendo-template">
+    <div title='#=pbaAPI.htmlEncode(item.Title) #' class='tree-node' id='#= item.id #'>
+        <span class="fa fa-fw fa-folder"></span>
+        #=pbaAPI.htmlEncode(item.Title) #
+    </div>
+</script>
+
+@(Html.Kendo().TreeView()
+    .Name(Model.WidgetID)
+    .HtmlAttributes(new { style = "overflow-x: hidden;" })
+    .DragAndDrop(false)
+    .Events(e => { e.Select(Model.WidgetID + ".onSelect"); })
+    .AutoBind(false)
+    .TemplateId("treeViewTemplate")    
+    .DataSource(dataSource => dataSource
+        .Events(events => events.Error(Model.WidgetID + ".onErrorHandler"))
+        .Read(read => read.Url("/api/standard/dvSettings/tree").Data(Model.WidgetID + ".onAdditionaData"))
+    )
+)
+
+
+<script>
+
+    $(function () {
+
+        var composite = window["@Model.DialogID"];
+
+        window['@Model.WidgetID'].readData();
+
+        var init = composite.init;
+
+        composite.init = function (data) {
+            init(data);
+            window['@Model.WidgetID'].objectType = data.objectType;
+            window['@Model.WidgetID'].readData();
+        }
+    });
+
+</script>

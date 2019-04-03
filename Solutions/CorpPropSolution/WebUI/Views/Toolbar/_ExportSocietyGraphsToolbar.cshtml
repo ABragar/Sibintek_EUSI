@@ -1,0 +1,30 @@
+﻿@using System.Dynamic
+@{
+    string btnID = "btnID_" + Guid.NewGuid().ToString("N");
+}
+
+@* <button id="@btnID" type="button" class="k-button ">Экспорт Архива</button> *@
+<div class="k-button-group">
+    <a id="@btnID" class="k-button k-button-icon tooltipstered">
+        <span class="k-icon btntoolbar custom-font-icon-custom-download-graph" style="height: 2.15rem;"></span>
+    </a>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $("#@btnID").click(function() {
+            var grid = $("#@btnID").closest('.dialog-listview').find('[data-role="grid"]').data('kendoGrid');
+            var selectedItems = grid.selectedKeyNames();
+            if (!selectedItems || selectedItems.length < 1) {
+                pbaAPI.msg('Ничего не выбрано');
+                return false;
+            };
+            var url = '@Html.GetTelerikReportingService()/Graph/GetZip/?ids=' + selectedItems.join('&ids=');
+            console.log(url);
+            var a = document.createElement('A');
+            a.href = url;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    });
+</script>

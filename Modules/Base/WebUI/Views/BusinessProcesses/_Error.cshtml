@@ -1,0 +1,31 @@
+﻿@model WebUI.Models.BusinessProcess.ToolbarErrorModel
+@{
+    var btnId = Html.CreateSystemName("b");
+}
+
+<a id="@btnId" href="#" title="Ошибка: @Model.Error" class="k-button error">Error</a>
+
+<script>
+    $('#@btnId').on('click', function() {
+        var $tooltip = $(this);
+
+        var params = {
+            mnemonic: '@Model.Mnemonic',
+            id : @Model.ObjectID };
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            url: "@Url.Action("ReStartWorkflow", "BusinessProcesses")",
+            data: JSON.stringify(params),
+            success: function(data) {
+                if (data.error) {
+                    pbaAPI.errorMsg(data.message);
+                } else {
+                    $tooltip.closest('.dialog-vm').data("dialogVM").refresh();
+                }
+            }
+        });
+    });
+</script>

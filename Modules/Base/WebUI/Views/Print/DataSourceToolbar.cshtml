@@ -1,0 +1,66 @@
+﻿
+@{
+    var button_id = Guid.NewGuid().ToString();
+    var window_id = Guid.NewGuid().ToString();
+    var tree_view_id = Guid.NewGuid().ToString();
+}
+
+<div>
+    <button id="@button_id" type="button" class="btn btn-default">
+        <span class="fa fa-database"></span> Данные
+    </button>
+    <div id="@window_id">
+        <div id="@tree_view_id"></div>
+
+
+    </div>
+</div>
+
+<script>
+    $(function() {
+
+
+        var window = $("#@window_id").kendoWindow({
+            width: 400,
+            title: "Данные",
+            modal: true,
+            visible: false,
+            height: 800,
+        }).data("kendoWindow");
+
+        var tree_view = $("#@tree_view_id").kendoTreeView({
+            dataTextField: "Name",
+            height: 800,
+        }).data("kendoTreeView");
+
+        $("#@button_id").click(function() {
+
+
+            var $dialog = $(this).closest(".dialog-vm");
+         
+            var model = $dialog.data("dialogVM").getViewModel().widget();
+
+            var mnemonic = model.getPr("Mnemonic");
+
+            tree_view.setDataSource(new kendo.data.HierarchicalDataSource({
+                transport: {
+                    read: {
+                        url: "@Url.Action("DataSource", "Print")" + "?&mnemonic=" + mnemonic
+                    }
+                },
+                schema: {
+                    model: {
+                        children: "Childrens"
+                    }
+                }
+
+            }));
+            
+            window.center();
+            window.open();
+
+        });
+
+    })
+
+</script>

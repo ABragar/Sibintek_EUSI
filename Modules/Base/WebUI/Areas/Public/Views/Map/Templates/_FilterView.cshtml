@@ -1,0 +1,47 @@
+﻿@model WebUI.Areas.Public.Models.VmMap
+
+<script type="text/ng-template" id="filter.container.html">
+    <pageslide ps-cloak="true" ps-open="filter.opened" class="ng-pageslide-custom ng-pageslide-custom-left" ng-class="{ 'ng-pageslide-mobile' : filter.isMobile }" ps-side="left" ps-custom-top="75px" ps-custom-height="auto" ps-size="320px" ps-container="@Model.UID">
+        <div class="page-slide-controls">
+            <div class="page-slide-controls-icon" style="background-color: #428bca;"><span class="glyphicon glyphicon-filter"></span></div>
+            <a href="#" class="btn btn-close">×</a>
+            <p class="title">{{filter.title}}</p>
+        </div>
+
+        <perfect-scrollbar class="scroller-absolute-with-top" ng-if="filter.filters.length">
+            <div class="panel-body">
+                <div class="property" ng-repeat="item in filter.filters" ng-if="filter.checkUIType(item.Type, item.UIType)">
+                    <div class="property-key fill">
+                        {{item.Title}}
+                    </div>
+                    <div class="property-value fill" ng-switch="item.Type">
+                        <input class="form-control" ng-switch-when="Text" ng-model="filter.model[item.Field]" type="text" />
+
+                        <input ng-switch-when="Bool" type="checkbox" ng-icheck ng-icheck-color="green" ng-icheck-theme="square" ng-model="filter.model[item.Field]" />
+
+                        <!--<div class="dropdown-fullwidth"
+                 ng-switch-when="Enum"
+                 ng-dropdown-multiselect=""
+                 translation-texts="filter.selectTranslations"
+                 options="item.Options"
+                 selected-model="filter.model[item.Field]"
+                 extra-settings="filter.multiselectSettings"></div>-->
+                        <div ng-switch-when="Enum">
+                            <dropdown-multiselect dropdown-options="item.Options" dropdown-trackby="Value" dropdown-config="{ options: item.Options, trackBy: 'Value', displayBy: ['Text'], divider: '' }" model="filter.model[item.Field]"></dropdown-multiselect>
+                        </div>
+
+                        <rzslider ng-switch-when="Numeric" rz-slider-model="filter.model[item.Field][0]" rz-slider-high="filter.model[item.Field][1]" rz-slider-options="{floor: item.MinValue, ceil: item.MaxValue, showSelectionBar: true}"></rzslider>
+                    </div>
+                </div>
+                <div class="property property-clear">
+                    <div class="btn-group btn-group-justified">
+                        <a ng-href="#" ng-click="filter.updateFilter()" class="btn btn-default btn-primary">Фильтровать</a>
+                        <a ng-href="#" ng-click="filter.clearFilter()" class="btn btn-default">Очистить</a>
+                    </div>
+                </div>
+            </div>
+        </perfect-scrollbar>
+        <div class="content-loading-cloak" ng-if="!filter.filters.length"></div>
+    </pageslide>
+</script>
+

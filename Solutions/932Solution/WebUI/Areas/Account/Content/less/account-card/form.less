@@ -1,0 +1,147 @@
+﻿.account-card__form {
+	label {
+		color: @color--light;
+		}
+
+	[type=submit] {
+		margin: @modular-scale *1rem 0;
+		}
+
+	.input-field {
+		position: relative;
+
+		margin-bottom: @modular-scale *1.25rem;
+
+		label {
+			font-size: 1rem;
+
+			position: absolute;
+			top: @modular-scale *.5rem;
+			left: 0;
+
+			width: 100%;
+
+			transition: .3s @easing-curve--main;
+			transition-property: transform, opacity;
+			transform-origin: left top;
+			pointer-events: none;
+
+			&.active {
+				transform: translateY(-@modular-scale *1rem) scale(.8);
+
+				opacity: .8;
+				}
+			}
+		}
+
+	input[type=text],
+	input[type=password],
+	input[type=email] {
+		font-size: 1.25rem;
+
+		width: 100%;
+		height: @modular-scale *2rem;
+		margin: 0;
+
+		transition: .3s @easing-curve--main;
+		transition-property: box-shadow, border-color;
+
+		color: @color--light;
+		border-width: 0 0 1px;
+		border-bottom: 1px solid fade( @color--light, 50% );
+		border-radius: 0;
+		outline: none;
+		background-color: transparent;
+
+		&:focus:not([readonly]) {
+			border-bottom-color: @color--form-focus;
+			box-shadow: 0 1px 0 0 @color--form-focus;
+
+			 + label {
+				color: @color--light;
+				}
+			}
+
+		&.valid {
+			border-bottom-color: @color--success;
+			box-shadow: 0 1px 0 0 @color--success;
+			}
+
+		&.invalid {
+			border-bottom-color: @color--danger;
+			box-shadow: 0 1px 0 0 @color--danger;
+			}
+		}
+
+	[type='checkbox'] {
+		display: none;
+
+		 + label:after {
+			background-color: transparent;
+			}
+
+		&:checked + label:before {
+			border-right-color: @color--light;
+			border-bottom-color: @color--light;
+			}
+
+		&.filled-in {
+			&:not(:checked) + label:after {
+				background-color: transparent;
+				}
+
+			&:checked + label {
+				&:after {
+					background-color: @color--light;
+					}
+
+				&:before {
+					z-index: 2;
+					top: -2px;
+					left: -4px;
+
+					width: 8px;
+					height: 15px;
+
+					transform: rotateZ(37deg);
+					transform-origin: 100% 100%;
+
+					border: 4px solid transparent;
+					}
+				}
+
+			 + label {
+				&:before, &:after {
+					position: absolute;
+					z-index: 1;
+					left: 0;
+
+					content: '';
+					transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+					}
+
+				&:after {
+					z-index: 0;
+					top: 0;
+
+					width: 20px;
+					height: 20px;
+
+					border: 2px solid @color--light;
+					border-radius: 2px;
+					}
+				}
+
+			&:checked + label {
+				&:before {
+					border-right-color: @color--primary;
+					border-bottom-color: @color--primary;
+					}
+				&:after {
+					border-color: @color--light;
+					background-color: @color--light;
+					}
+				}
+			}
+		}
+	}

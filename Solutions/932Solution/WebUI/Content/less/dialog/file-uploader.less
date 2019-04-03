@@ -1,0 +1,49 @@
+﻿.list-group {
+	display: flex;
+	flex-direction: column;
+
+	padding: 10px 0;
+
+
+	&-item {
+		position: relative;
+
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+
+		margin: 2px 0;
+		padding: 5px;
+
+		&-new {
+			background-color: fade( @color--success-bright, 20% );
+			}
+		}
+
+	&-image {
+		width: 50px;
+		height: 50px;
+
+		background-position: center center;
+		background-size: cover;
+		}
+
+	&-icon {
+		font-size: 40px;
+		line-height: 40px;
+
+		padding: 5px;
+
+		text-align: center;
+		vertical-align: middle;
+		}
+
+	&-title {
+		padding: 0 0 0 5px;
+		}
+	}
+
+.dialog .editor .k-upload .k-upload-button {
+	border-width: 0 0 0 1px;
+	border-radius: 0;
+	}

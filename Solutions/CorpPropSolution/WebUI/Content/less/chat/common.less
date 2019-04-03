@@ -1,0 +1,206 @@
+.k-window-content.chat-wrapper {
+	overflow: hidden; 
+
+	max-height: none !important;
+	padding: 0;
+	}
+
+.chat {
+	font-weight: 300;
+
+	overflow: hidden;
+
+	width: auto;
+	height: auto;
+
+	background-color: @color--layout-bg;
+
+	ul {
+		.resetList();
+		}
+
+	// @MOD
+	&--maximized {
+		width: 85.714rem;
+		height: 57.143rem;
+		}
+
+	// @MOD
+	&--minimized {
+		width: 100%;
+		height: 34.286rem;
+		}
+
+	// @CTX - in kendo window
+	.k-window .chat {
+		overflow: hidden;
+		}
+
+	.user-state-desc {
+		white-space: nowrap;
+		}
+
+	// dialog - is not about 'chat dialog', is base class for
+	// modal dialog (see ~/Content/less/dialog.less)
+	.dialog {
+		height: 100%;
+		}
+
+	* {
+		box-sizing: border-box !important;
+		}
+
+	&__loading {
+		height: 100%;
+
+		background-image: url(/Content/loaders/oval.svg);
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		}
+
+	&__footer .k-button-group {
+		display: flex;
+		justify-content: space-between;
+
+		width: 100%;
+
+		textarea {
+			font-size: .857rem;
+			font-weight: 300;
+			line-height: 1.143rem;
+
+			width: 100%;
+			margin: .357rem;
+			padding: .143rem .357rem;
+
+			resize: none;
+
+			border-color: @color--border;
+			border-radius: .143rem;
+			}
+		}
+
+	&__header {
+		position: relative;
+
+		// @SUB
+		&-title {
+			position: absolute;
+			top: 0;
+			right: @modular-scale *5rem;
+			left: @modular-scale *2.5rem;
+
+			display: flex;
+			align-items: center;
+
+			height: @dialog-toolbar-height;
+			padding: 0 .714rem;
+
+			color: @color--text-light;
+
+			.user-image {
+				font-weight: 300;
+
+				width: 100%;
+				height: 100%;
+				padding: @dialog-toolbar-height *.1 0;
+
+				img {
+					float: left;
+
+					width: @dialog-toolbar-height *.8;
+					height: @dialog-toolbar-height *.8;
+					}
+
+				 > span {
+					display: block;
+
+					margin-left: @dialog-toolbar-height *.8;
+
+					text-align: left;
+
+					.nowrapHiddenText();
+					}
+
+				.user-state {
+					margin-left: @dialog-toolbar-height *.8 + .4286rem;
+
+					&-desc {
+						font-size: .857rem;
+						}
+					}
+				}
+			}
+		}
+
+	&__body {
+		&--with-header {
+			height: calc(~"100% - "@dialog-toolbar-height);
+			}
+		&--with-footer {
+			height: calc(~"100% - "@modular-scale *2rem);
+			}
+		&--with-header.chat__body--with-footer {
+			height: calc(~"100% -"@dialog-toolbar-height + @modular-scale *2rem);
+			}
+		}
+
+	&__input {
+		width: 100% !important;
+		max-height: 4rem;
+
+		resize: none;
+
+		border-color: #e5e5e5;
+		border-radius: 0;
+
+		&-form--file-over .chat__input {
+			outline: 3px dashed fade( @color--success, 31% ); 
+			}
+
+		&-wrapper {
+			/*hidden input for opening file choose modal*/
+			[type='file'] {
+				display: none;
+				}
+
+			.chat--maximized .chat__input-wrapper {
+				padding: 0 @modular-scale * 2rem;
+				}
+			}
+
+		&-btn--right {
+			right: 0;
+			.chat--maximized .chat__input-btn--right {
+				right: .8571rem;
+				}
+			}
+		}
+	}
+
+.chat__file-upload-progress,
+.chat__input-btn {
+	line-height: 2rem;
+
+	position: absolute;
+	top: calc(~"50% - 1rem");
+
+	width: 2rem;
+	height: 2rem;
+	}
+
+.chat__file-upload-progress {
+	cursor: pointer;
+	}
+
+.chat__input-btn--left,
+.chat__file-upload-progress {
+	left: 0;
+
+	.chat--maximized {
+		.chat__input-btn--left,
+		.chat__file-upload-progress {
+			left: .8571rem;
+			}
+		}
+	}

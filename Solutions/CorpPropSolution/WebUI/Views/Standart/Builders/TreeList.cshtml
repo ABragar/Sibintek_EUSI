@@ -1,0 +1,397 @@
+﻿@using Base.UI.ViewModal
+@using Newtonsoft.Json
+
+@model StandartTreeListView
+
+@{
+    var typeEntity = Model.ViewModelConfig.TypeEntity;
+    bool isCategorizedItem = typeEntity.GetInterfaces().Contains(typeof(ICategorizedItem));
+
+    string mnemonicCategory = null;
+
+    if (isCategorizedItem)
+    {
+        var listViewCategorizedItem = Model.ViewModelConfig.ListView as ListViewCategorizedItem;
+
+        if (listViewCategorizedItem != null)
+        {
+            mnemonicCategory = listViewCategorizedItem.MnemonicCategory;
+        }
+    }
+}
+
+
+<script>
+    (function () {
+        var composite = window["@Model.DialogID"];
+
+       var treeList = window["@Model.WidgetID"] = new WrapTreeList({
+            id: "@Model.WidgetID",
+            mnemonic: "@Model.Mnemonic",
+            desc: "TreeList"
+        });
+
+        composite.registerWidget(treeList);
+
+        treeList.lock = false;
+
+        treeList.wizardMnemonic = function () {
+            return "@Model.ViewModelConfig.DetailView.WizardName";
+        };
+
+        var getItems = function (dataArray, arr) {
+            if (!arr) {
+                arr = [];
+            }
+
+            if (dataArray && dataArray.length) {
+                for (var j = 0; j < dataArray.length; j++) {
+                    if (dataArray[j].hasOwnProperty("hasSubgroups")) {
+                        if (dataArray[j].hasSubgroups) {
+                            getItems(dataArray[j].items, arr);
+                        } else {
+                            arr.push.apply(arr, dataArray[j].items);
+                        }
+                    } else {
+                        arr.push(dataArray[j]);
+                    }
+                }
+            }
+            return arr;
+        };
+
+        treeList.editRow = function (id) {
+            if (id == undefined)
+                id = treeList.selectID();
+
+            var data = getItems(treeList.widget().dataSource.data());
+
+            var ids = new Array(data.length);
+
+            for (var i = 0; i < data.length; i++) {
+                ids[i] = data[i].ID;
+            }
+
+            pbaAPI.openDetailView(treeList.mnemonic,
+                {
+                    wid: "@Model.WidgetID",
+                    id: id,
+                    ids: ids,
+                    callback: function (e) {
+                        if (e.type === "save" || e.type === "apply") {
+                            treeList.currentRow = e.model.ID;
+                            treeList.bind();
+                        }
+                        corpProp.dv.wnd.delWnd(treeList.mnemonic);
+                    }
+                });
+        };
+
+        treeList.deleteRow = function () {
+            var id = this.selectID();
+
+            if (id) {
+                pbaAPI.confirm("@Model.ViewModelConfig.ListView.Title", "Удалить запись?", function () {
+
+                    pbaAPI.proxyclient.crud.destroy({ mnemonic: treeList.mnemonic, id: id })
+                        .done(function (res) {
+                        if (res.error === 0) {
+                            treeList.removeRow(treeList.select());
+                            pbaAPI.uploadMsg(res.message);
+                        } else {
+                            pbaAPI.errorMsg(res.message);
+                        }
+                    });
+                });
+            }
+        };
+
+        treeList.onDataBinding = function () {
+        };
+
+
+        treeList.addRow = function (action) {
+            var parentId = treeList.getSelectID();
+            var initProps = {};
+
+            if (this.mnemonic === "InventoryObjectTree") {
+                this.mnemonic = "PropertyComplexIO";
+            }
+
+            if (action === "add") {
+                initProps["ParentID"] = parentId;
+            }
+
+            treeList.addEntity({
+                initProps: initProps,
+                callback: function (e) {
+                    treeList.currentRow = e.model.ID;
+                    treeList.bind();
+                }
+            });
+        };
+
+        treeList.onDataBound = function () {
+            composite.onWidgetChanged({
+                sender: treeList,
+                event: "onDataBound"
+            });
+
+            this.element.find("tr[data-uid]").unbind("dblclick");
+
+            this.element.find("tr[data-uid]").dblclick(function () {
+                @if (!Model.MultiSelect)
+                {
+                    @: treeList.dblclick(this);
+                                                                                }
+            });
+
+            if (treeList.isSearchRequest) {
+                treeList.isSearchRequest = false;
+            }
+
+            corpProp.dv.wnd.openWnd(treeList.mnemonic);
+
+            $("#@Model.WidgetID").trigger("onDataBound", this);
+
+            treeList.select();
+            treeList.lock = false;
+        };
+
+        treeList.onChange = function (e) {
+            treeList.onselect();
+            treeList.element().trigger("onChange", this);
+        };
+
+        treeList.dblclick = function (btn) {
+            composite.onWidgetChanged(
+             {
+               sender: treeList,
+               event: "dblclick"
+             });
+        };
+
+        treeList.__overrideOnNeighbourWidgetChanged = treeList.onNeighbourWidgetChanged;
+
+        treeList.onNeighbourWidgetChanged = function (e) {
+
+            treeList.__overrideOnNeighbourWidgetChanged(e);
+			 if (e.sender.desc === "Composite") {
+                if (e.event === "init") {
+                    if (!treeList.isCategorizedItem) {
+                        treeList.bind();
+                    }
+                }
+            } else
+            if (e.sender.desc === "TreeView") {
+                if (e.event === "select") {
+                    var id = null;
+
+                    if (e.params.dataItem) {
+                        id = e.params.dataItem.id;
+                    }
+
+                    treeList.setCategoryID(id);
+                    treeList.bind();
+                }
+            } else if (e.sender.desc === "DialogSplitter") {
+                if (e.event === "resize") {
+                    var toolbar = composite.element().find('div[data-role="toolbar"]');
+
+                    this.resize(e.params.height - toolbar.outerHeight(true));
+                }
+            } else if (e.sender.desc === "ToolbarListView" || e.sender.desc === "ContextMenuListView") {
+                if (e.event === "click") {
+                    switch (e.params.action) {
+                        case "add":
+                        case "addRoot":
+                            treeList.addRow(e.params.action);
+                            break;
+                        case "edit":
+                            treeList.editRow();
+                            break;
+                        case "delete":
+                            treeList.deleteRow();
+                            break;
+                        case "changeCategory":
+                            treeList.changeCategory();
+                            break;
+                        case "createNonCoreAssetFromPC":
+                            treeList.createNonCoreAssetFromPC();
+                            break;
+                        case "settings":
+                            treeList.openSettings();
+                            break;
+                    }
+                }
+                else if (e.event === "refresh") {
+                    treeList.bind();
+                }
+            } else if (e.event === "select") {
+                treeList.clearSelection();
+                treeList.select(e.params.el);
+            }
+        };
+
+        treeList.changeCategory = function () {
+            var id = treeList.getSelectDataItem()[0].ID;
+
+            pbaAPI.openModalDialog("@mnemonicCategory",
+                function (res) {
+                    pbaAPI.proxyclient.listview.change_category({
+                        mnemonic: '@Model.Mnemonic',
+                        id: id,
+                        categoryId: res[0].ID
+                    }).done(function(result) {
+                        if (result.error === 0) {
+                            treeList.dataSourceRead();
+                        } else {
+                            pbaAPI.errorMsg(result.message);
+                        }
+                    });
+                },
+                {
+                    title: "Выбор категории"
+                });
+        };
+
+        treeList.createNonCoreAssetFromPC = function () {
+            var selectedItems = composite.getSelectItems();
+            var mnemonic = treeList.mnemonic;
+            var listIds = Array();
+            var targets = [{ Title: "Непрофильный", Mnemonic: "NonCoreAsset", IsNonCore: true }, { Title: "Неэффективный", Mnemonic: "NonCoreAsset", IsNonCore: false }];
+
+            if (!selectedItems || selectedItems.length === 0)
+                return pbaAPI.errorMsg("Выберите элемент списка.");
+
+            for (var i = 0; i < selectedItems.length; i++) {
+                listIds.push(selectedItems[i].ID);
+            }
+
+            pbaAPI.selectSimple(targets, {
+                callback: function (res) {
+                    pbaAPI.infoMsg("Ожидайте...");
+                    kendo.ui.progress($('#list-view'), true);
+
+                    var code = 4343;
+
+                    if (res.IsNonCore) {
+                        code = 4242;
+                    }
+
+                    pbaAPI.proxyclient.corpProp.createNonCoreAssetFromPC({
+                        pcId: listIds.join(),
+                        typeCode: code
+                    }).done(function (res) {
+                        if (res.error && res.error > 0) {
+                            kendo.ui.progress($('#list-view'), false);
+                            return pbaAPI.errorMsg(res.message);
+                        }
+                        else {
+                            kendo.ui.progress($('#list-view'), false);
+                            return pbaAPI.uploadMsg(res.message);
+                        }
+                    });
+
+                },
+            });
+        };
+
+        treeList.openSettings = function () {
+            treeList.getPreset().done(function (res) {
+                if (res.error) {
+                    pbaAPI.errorMsg(res.error);
+                } else {
+                    pbaAPI.openDetailView("GridPreset",
+                        {
+                            wid: "@Model.WidgetID",
+                            entity: res,
+                            toSave: false,
+                            callback: function (e) {
+                                if (e.type === "save") {
+                                    var preset = e.model;
+                                    if (preset.ExtendedFilterSettings) {
+                                        preset.Filter = null;
+                                    } else {
+                                        preset.MnemonicFilterID = null;
+                                    }
+                                    treeList.savePreset(preset, function () { location.reload(); });
+                                }
+                            }
+                        });
+                }
+            });
+        };
+            treeList.getPreset = function () {
+                return pbaAPI.proxyclient.preset.get({ preset: "GridPreset", ownerName: treeList.mnemonic });
+            };
+            treeList.savePreset = function(preset, callback) {
+            pbaAPI.proxyclient.preset.save(
+                { preset: "GridPreset" },preset
+                ).done(function (res) {
+                    if (res.error) {
+                        pbaAPI.errorMsg(res.error);
+                    } else {
+                        preset = res;
+
+                        if (preset.ExtendedFilterSettings && preset.MnemonicFilterID) {
+                            //TODO: savePresetForExtendedFilter
+                        }
+
+                if (callback)
+                    callback();
+            }
+        });
+    };
+
+        treeList.onSelect = function (e) {
+            treeList.onselect(e);
+            var ttreelist = $("#@Model.WidgetID").data("kendoTreeList");
+            var selectedRows = ttreelist.select();
+            if (selectedRows.length > 0) {
+                var dataItem = ttreelist.dataItem(selectedRows[0]);
+                var curID = dataItem.id;
+                treeList.setCookie(TreeList.mnemonic, "selectID", curID);
+            }
+        };
+        treeList.getSelectID = function () {
+            var tlist = $("#@Model.WidgetID").data("kendoTreeList");
+            var selectedRows = tlist.select();
+            if (selectedRows.length > 0) {
+                var dataItem = tlist.dataItem(selectedRows[0]);
+                var curID = dataItem.id;
+                return parseInt(curID);
+            }
+            return null;
+        };
+        treeList.bind = function () {
+            treeList.lock = true;
+            treeList.dataSourceRead();
+        };
+
+    })();
+</script>
+
+<div id="TreeListView">
+    <div class="@(Model.ViewModelConfig.ListView.HideToolbar ? "hidden" : "")">
+        @{Html.RenderPartial(Model.GetToolbarListViewUrl(), Model);}
+    </div>
+
+    <div class="widget-body widget-grid">
+        @Html.Hidden("GridID", Model.WidgetID)
+
+        @{ Html.RenderPartial(Model.GetListViewUrl(), Model);}
+
+        @{Html.RenderPartial(Model.GetContextMenuListViewUrl(), Model);}
+    </div>
+</div>
+
+
+@if (!isCategorizedItem)
+{
+    <script>
+        $(function () {
+            window["@Model.WidgetID"].bind();
+        });
+    </script>
+}

@@ -1,0 +1,95 @@
+﻿@using WebUI.Areas.Account
+@model WebUI.Areas.Account.Models.Admin.AdminViewModel
+
+@{
+    var routevalues = Url.FromCurrent();
+    string returnUrl = Url.GetReturnUrl();
+    string returnCaption = returnUrl != "/" ? "Назад" : "На главную";
+
+    ViewBag.Title = "Управление";
+}
+
+<!-- LOCAL ACCOUNT CARD -->
+<div class="card card--local-account z-depth-0">
+    <div class="card-content">
+        <div>
+            <i class="card-content__icon mdi mdi-account white-text medium @(Model.HasPassword ? "green" : "grey")"></i>
+            <div class="card-content__info">
+                <small>Локальный профиль</small>
+                <strong class="flow-text truncate">@Html.ValueFor(x => x.Login)</strong>
+            </div>
+        </div>
+    </div>
+    <div class="card-action">
+        @if (Model.HasPassword)
+        {
+            <a href="@Url.Action("SetPassword", routevalues)" data-route="forward">Установить пароль</a>
+
+            if (Model.CanDetachPassword)
+            {
+                using (Html.BeginForm("DetachPassword", "Admin", routevalues, FormMethod.Post, new Dictionary<string, object>
+                {
+                    { "class", "inline" },
+                    { "data-confirm", "Подтвердите действие" },
+                    { "data-message", "Вы точно хотите удалить пароль?" }
+                }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.UserId)
+                    <a href="#" onclick="$(this).closest('form').submit()">Удалить пароль</a>
+                }
+            }
+        }
+        else
+        {
+            <a href="@Url.Action("AttachPassword", routevalues)" data-route="forward">Установить пароль</a>
+        }
+    </div>
+</div>
+
+@if (Model.UserProviders.Count > 0)
+{
+
+
+
+    <ul class="collection">
+        @foreach (var provider in Model.UserProviders)
+        {
+            <li class="collection-item avatar avatar--singleline avatar--with-secondary-content">
+                @RenderSocial(provider, true)
+
+                @using (Html.BeginForm("DetachExternalLogin", "Admin", routevalues, FormMethod.Post, new Dictionary<string, object>
+                {
+                    { "data-confirm", "Подтвердите действие" },
+                    { "data-message", "Вы точно хотите удалить метод входа?" },
+                    { "class", "inline" }
+                }))
+                {
+
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.UserId)
+                    @Html.HiddenFor(x => x.FromRoot(provider).LoginProvider)
+                    @Html.HiddenFor(x => x.FromRoot(provider).ProviderKey)
+                    <a class="secondary-content btn-flat btn-icon" href="#" onclick="$(this).closest('form').submit()"><i class="mdi mdi-delete"></i></a>
+                }
+            </li>
+        }
+    </ul>
+}
+
+<div class="account-card__form">
+    <div class="actions">
+        <a href="@returnUrl" data-route="exit">@returnCaption</a>
+    </div>
+</div>
+
+@section card_class {account-card--admin no-footer}
+
+@helper RenderSocial(WebUI.Areas.Account.Models.UserProviderInfo provider, bool isAttached)
+{
+    string colorClass = isAttached ? "green" : "";
+
+    <i class="@string.Format("{0} circle {1}", Html.GetSocialIcon(provider.LoginProvider), colorClass)"></i>
+
+    <span class="title truncate">@provider.Caption</span>
+}

@@ -1,0 +1,40 @@
+﻿@using Base.UI.ViewModal
+@model CommonPreview
+
+@{
+    const string editorName = "~/Views/Standart/Preview/Display/Common/Editor.cshtml";
+    var preview_form_wrapper_id = Html.CreateSystemName("preview_body_wrapper");
+}
+
+<div id="@preview_form_wrapper_id" style="height: 15.714rem">
+    @foreach (var tab in Model.Tabs)
+    {
+        <div class="preview-row preview-tab">
+            <div class="preview-row preview-title">
+                @tab.Name
+            </div>
+            @foreach (var field in tab.Fields)
+            {
+                <div class="preview-row preview-property">
+                    <div class="preview-property-name">
+                        @RenderLabel(field)
+                    </div>
+                    <div class="preview-property-value">
+                        @Html.Partial(editorName, field)
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@helper RenderLabel(PreviewField field)
+{
+    <label>@field.Title</label>
+}
+
+<script>
+    $(function () {
+        $('\\#@preview_form_wrapper_id').perfectScrollbar();
+    });
+</script>

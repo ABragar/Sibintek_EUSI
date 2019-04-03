@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+
+    <title>Kendo Mail Client</title>
+
+
+    <link rel="stylesheet" href="vendor/css/vendor.css?build_ts=1502466675785" type="text/css" />
+    <link rel="stylesheet" href="styles/kendo.mailclient.min.css?build_ts=1502466675785" type="text/css" />
+    <link rel="stylesheet" href="fonts/fonts.css?build_ts=1502466675785" type="text/css" />
+</head>
+
+<body>
+    <div id="mailclient"></div>
+
+    <!-- Templates -->
+    <script type="text/x-kendo-template" id="mail-client-template">
+        <div class="mail-client__error"></div>
+        <div class="mail-client__loader" data-bind="css:{show: inProgress}"></div>
+    
+        <aside id="mail-client-sidebar" class="sidebar">
+            <div class="email-address__wrap">
+                <input class="email-address__selector"
+                        data-role="dropdownlist"
+                        data-auto-bind="false"
+                        data-text-field="displayName"
+                        data-value-field="id"
+                        data-value-primitive="true"
+                        data-bind="value: account.selectedItem, source: account.dataSource, events: { change: account.onChange }"/>
+            </div>
+    
+            <div class="new-letter-wrap">
+                <button data-bind="click: toolbar.compose, disabled: disabled"
+                        title="Написать новое сообщение"
+                        class="btn-new-letter">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>Написать
+                </button>
+            </div>
+    
+            <ul id="mail-client-folder-list"
+                class="folders-list"
+                data-role="mailclientlistview"
+                data-auto-bind="false"
+                data-template="mail-client-folder-list-item"
+                data-selectable="true"
+                data-draggable="true"
+                data-draggable-group="folder"
+                data-draggable-filter=".folders-list__item:not(.system)"
+                data-hint-template="mail-client-folder-hint"
+                data-drop-area="#mail-client-folder-list",
+                data-drop-filter=".folders-list__item"
+                data-drop-group="folder"
+                data-css-drop-target-active="folders-list__item--drop-active"
+                data-bind="source: folderList.dataSource, events: { change: folderList.onChange, draghint: folderList.onDragHint, drop: folderList.onDrop, dragleave: folderList.onDragLeave, dragenter: folderList.onDragEnter, dragstart: folderList.onDragStart }">
+            </ul>
+    
+            <div data-role="mailclientdroptargetarea"
+                 data-target="#mail-client-folder-list"
+                 data-filter=".folders-list__expander"
+                 data-groups="['message', 'folder']"
+                 data-bind="events: { dragenter: folderList.onExpanderEnter }"></div>
+    
+            <div data-role="mailclientdroptargetarea"
+                 data-target="#mail-client-sidebar"
+                 data-groups="['message', 'folder']"
+                 data-bind="events: { dragleave: folderList.onFolderBarLeave, dragenter: folderList.onFolderBarEnter, drop: folderList.onFolderBarDrop }"></div>
+    
+            <ul class="mail-client-context-menu"
+                data-role="mailclientcontextmenu"
+                data-bind="events: {select: folderList.onContextCommand, open: folderList.onOpenContextMenu}"
+                data-target="#mail-client-sidebar"
+                data-filter=".folders-list__item"
+                data-with-target="true"
+                data-ignore=".email-address__wrap, .new-letter-wrap > *, .email-address__wrap > *, .bottom-toolbar, .bottom-toolbar > *"
+                data-css-open-target="mail-client-context-menu-opened"
+                data-animation="false">
+                <li data-command="menuItemCreateFolder">
+                    <i class="fa fa-fw fa-folder-open-o"></i> Новая папка
+                </li>
+                <li data-command="menuItemRenameFolder">
+                    <i class="fa fa-fw fa-edit"></i> Переименовать папку
+                </li>
+                <li data-command="menuItemDeleteFolder">
+                    <i class="fa fa-fw fa-trash-o"></i> Удалить папку
+                </li>
+                <li data-command="menuItemMarkAsReadFolder">
+                    <i class="fa fa-fw fa-circle"></i> Пометить все как прочитанные
+                </li>
+                <li data-command="menuItemClearFolder">
+                    <i class="fa fa-fw fa-trash-o"></i> Удалить все сообщения
+                </li>
+                <li data-command="menuItemClearTrashFolder">
+                    <i class="fa fa-fw fa-trash-o"></i> Очистить корзину
+                </li>
+            </ul>
+    
+            <div class="bottom-toolbar">
+                <button class="bottom-toolbar__settings" data-bind="click: toolbar.settings">
+                    <i class="fa fa-cog"></i> <span class="bottom-toolbar__settings-name">Настройки</span>
+                </button>
+            </div>
+        </aside>
+    
+        <div data-role="mailclientresizehandle"
+             data-left=".sidebar"
+             data-right=".midbar"></div>
+    
+        <div class="midbar">
+            <div class="midbar__toolbar">
+                <div class="search__wrap">
+                    <button class="search__submit" data-bind="click: messageList.search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <button class="search__reset" data-bind="click: messageList.resetSearch, visible: messageList.isSearching">
+                        <i class="fa fa-close"></i>
+                    </button>
+                    <input type="text"
+                        class="search__input"
+                        placeholder="Поиск"
+                        data-bind="value: messageList.searchQuery, events: {keyup: messageList.searchOnEnter}" />
+                </div>
+    
+                <button data-bind="click: toolbar.compose"
+                        title="Написать новое сообщение"
+                        class="hidden btn btn-new-letter">
+                    <i class="fa fa-pencil"></i>
+                </button>
+    
+                <div class="letter-list__toolbar letter-view__toolbar">
+                    <div class="btn btn-move" data-bind="click: messageList.toggleFilter, css: {open: messageList.filterOpened, active: messageList.activeFilter}">
+                        <i title="Фильтр" class="fa fa-filter"></i>
+    
+                        <ul class="mail-client__select-folder toolbar-dropdown-list">
+                            <li class="toolbar-dropdown-list__item" data-bind="click: messageList.resetFilter, visible: messageList.resetFilterVisible">
+                                <i class="fa fa-fw fa-lg fa-minus"></i>
+                                <span>Отменить фильтр</span>
+                            </li>
+                            <li class="toolbar-dropdown-list__item" data-filter-id="flagged" data-bind="click: messageList.selectFilterItem, css: { checked: messageList.flaggedFilterChecked }">
+                                <i class="fa fa-fw fa-lg fa-bookmark"></i>
+                                <span>Помеченные флажком</span>
+                            </li>
+                            <li class="toolbar-dropdown-list__item" data-filter-id="unread" data-bind="click: messageList.selectFilterItem, css: { checked: messageList.unreadFilterChecked }">
+                                <div class="letter-brief__unread-marker"></div>
+                                <span>Не прочитанные</span>
+                            </li>
+                            <li class="toolbar-dropdown-list__item" data-filter-id="hasAttachments" data-bind="click: messageList.selectFilterItem, css: { checked: messageList.hasAttachmentsFilterChecked }">
+                                <i class="fa fa-fw fa-lg fa-paperclip"></i>
+                                <span>С вложением</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn btn-more" data-bind="click: messageList.toggleSort, css: {open: messageList.sortOpened, active: messageList.sortActivated}">
+                        <i title="Сортировка" class="fa fa-sort-amount-desc" aria-hidden="true" data-bind="visible: messageList.sortOrderDesc"></i>
+                        <i title="Сортировка" class="fa fa-sort-amount-asc" aria-hidden="true" data-bind="invisible: messageList.sortOrderDesc"></i>
+    
+                        <ul class="mail-client__select-sort toolbar-dropdown-list"
+                            data-bind="source: messageList.sortItems"
+                            data-template="mail-client-message-sort-item"></ul>
+                    </div>
+                </div>
+    
+                <button data-bind="click: toolbar.refresh, disabled: disabled"
+                        class="letter-list__refresh"
+                        title="Обновить"><i class="fa fa-refresh"></i></button>
+            </div>
+    
+            <ul id="mail-client-letter-list"
+                class="letters-list"
+                data-navigatable="true"
+                data-role="mailclientlistview"
+                data-auto-bind="false"
+                data-template="mail-client-letters-list-item"
+                data-selectable="multiple"
+                data-draggable="true"
+                data-draggable-group="message"
+                data-hint-template="mail-client-letter-hint"
+                data-drop-area="#mail-client-folder-list",
+                data-drop-filter=".folders-list__item"
+                data-drop-group="message"
+                data-css-drop-target-active="folders-list__item--drop-active"
+                data-hover-filter="li.letter-brief"
+                data-css-hover="letter-hover"
+                data-bind="source: messageList.dataSource, events: { change: messageList.onChange, draghint: messageList.onDragHint, drop: messageList.onDrop, dragleave: messageList.onDragLeave, dragenter: messageList.onDragEnter }">
+            </ul>
+    
+            <div class="letters-pager"
+                    data-role="pager"
+                    data-auto-bind="false"
+                    data-button-Count="4"
+                    data-numeric="false"
+                    data-bind="source: messageList.dataSource">
+            </div>
+    
+            <ul class="mail-client-context-menu"
+                data-role="contextmenu"
+                data-bind="events: {select: messageList.onContextCommand, open: messageList.onOpenContextMenu}"
+                data-target="#mail-client-letter-list"
+                data-filter=".letter-brief"
+                data-animation="false">
+                <li data-command="menuItemEdit">
+                    <i class="fa fa-fw fa-pencil-square-o"></i> Редактировать
+                </li>
+                <li data-command="menuItemOpen">
+                    <i class="fa fa-fw fa-envelope-open-o"></i> Открыть
+                </li>
+                <li data-command="menuItemReply">
+                    <i class="fa fa-fw fa-reply"></i> Ответить
+                </li>
+                <li data-command="menuItemReplyAll">
+                    <i class="fa fa-fw fa-reply-all"></i> Ответить всем
+                </li>
+                <li data-command="menuItemForward">
+                    <i class="fa fa-fw icon-mail-forward"></i> Переслать
+                </li>
+                <li data-command="menuItemEditAsNew">
+                    <i class="fa fa-fw fa-pencil-square-o"></i> Изменить как новое
+                </li>
+                <li data-command="menuItemMarkAsRead"
+                    data-many-title="Пометить как прочитанные">
+                    <i class="fa fa-fw fa-circle-thin"></i> Пометить как прочитанное
+                </li>
+                <li data-command="menuItemMarkAsUnread"
+                    data-many-title="Пометить как непрочитанные">
+                    <i class="fa fa-fw fa-circle"></i> Пометить как непрочитанное
+                </li>
+                <li data-command="menuItemAddFlag">
+                    <i class="fa fa-fw fa-bookmark"></i> Флажок
+                </li>
+                <li data-command="menuItemRemoveFlag">
+                    <i class="fa fa-fw fa-bookmark-o"></i> Снять флажок
+                </li>
+                <li data-command="menuItemSpam">
+                    <i class="fa fa-fw fa-exclamation-circle"></i> Спам
+                </li>
+                <li>
+                    <i class="fa fa-fw fa-folder-open-o"></i> Переместить в
+                    <ul data-bind="source: messageList.moveToMenuItems"
+                        data-auto-bind="false"
+                        data-template="mail-client-context-menu-folder-list-item">
+                    </ul>
+                </li>
+                <li data-command="menuItemDelete"
+                    data-many-title="Удалить ({0})">
+                    <i class="fa fa-fw fa-trash-o"></i> Удалить
+                </li>
+            </ul>
+        </div>
+    
+        <div data-role="mailclientresizehandle"
+             data-left=".midbar"
+             data-right=".letter-panel"></div>
+    
+        <div id="mail-client-letter-panel" class="letter-panel">
+            <div class="letter-panel__empty" data-bind="invisible: messageDetails.hasCurrent">
+                <i class="fa fa-envelope-o"></i>
+            </div>
+    
+            <div class="letter-view"
+                 data-template="mail-client-letter-view"
+                 data-bind="source: messageDetails.dataSource"
+                 data-auto-bind="false">
+            </div>
+        </div>
+    
+        <span data-role="mailclientpreview"
+              data-callout="false"
+              data-show-after="1000"
+              data-target="#mail-client-letter-list, #mail-client-letter-panel"
+              data-filter="\[data-preview\]"
+              data-caching="true"
+              data-content="{url: 'config', dataType: 'json'}"
+              data-template="mail-client-contact-preview"
+              data-error-template="mail-client-contact-preview-not-found"
+              data-css-progress="mail-client__contact-preview--progress"
+              data-css-popup="mail-client__contact-preview"
+              data-position="top"
+              data-width="372"
+              data-height="130"
+              data-animation="{open: { effects: 'fade:in', duration: 200 }, close: { effects: 'fade:out', duration: 200 }}"
+              data-bind="events: {beforeContentError: contactPreview.onPreviewNotFound, beforeContentAppend: contactPreview.onBeforePreviewOpen}"></span>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-attachment-item">
+        <a class="letter-attachment" href="\\#" data-bind="events: { click: onDownloadAttachment }">
+            <i class="filetype filetype-${FileExt}"></i>
+            <span class="letter-attachment__name">${FileName}</span>
+            <span class="letter-attachment__size">${HumanFileSize}</span>
+    
+            <div class="letter-attachment__iframe"
+                 data-bind="source: downloadUrl"
+                 data-template="mail-client-attachment-item-iframe"></div>
+    
+            <div class="mail-client__loader" data-bind="css: { show: progress }"></div>
+        </a>
+    </script>
+    
+    <script type="text/x-kendo-template" id="mail-client-attachment-item-iframe">
+        <iframe marginwidth="0" marginheight="0" frameborder="0" src="${url}"></iframe>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-context-menu-folder-list-item">
+        <li data-command="menuItemMoveTo" data-folder-id="${id}">
+            <i class="fa fa-fw fa-lg fa-${icon}"></i>
+            <span data-bind="text: folderName" class="context-menu__subitem__title"></span>
+    
+            # if (children.total() > 0) { #
+                <ul class="k-menu-group"
+                    data-bind="source: children"
+                    data-auto-bind="false"
+                    data-template="mail-client-context-menu-folder-list-item">
+                </ul>
+            # } #
+        </li>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-folder-list-item">
+    	<li class="folders-list__item has-children" data-bind="css: {has-children: hasChildren, closed: notExpanded, opened: expanded, system: isSystem}, click: onFolderItemClick">
+    		<div class="folder">
+    			<button class="folders-list__expander" data-bind="visible: hasChildren, click: toggleExpand">
+    				<i class="fa fa-fw fa-angle-right"></i>
+    			</button>
+    			<i class="fa fa-fw fa-lg fa-${icon}"></i><span data-bind="text: folderName, invisible: edit"></span>
+    			<input type="text"
+    				   data-value-update="keyup"
+    				   data-bind="visible: edit, focusIn: edit, value: displayName, events: {keyup: onEditKeyUp, blur: onEditFocusOut}"/>
+    			<span class="unread-count" data-bind="text: itemCount, visible: itemCount"></span>
+    		</div>
+    
+    		<ul class="folders-list"
+    			data-role="mailclientlistview"
+    			data-auto-bind="false"
+    			data-auto-refresh="true"
+    			data-template="mail-client-folder-list-item"
+    			data-selectable="true"
+    			data-bind="source: children, events: { change: onChange }">
+    		</ul>
+    	</li>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-folder-hint">
+        <div class="mail-client-folder-hint">
+            <i class="fa fa-fw fa-lg fa-folder-o mail-client-folder-hint__icon"></i>
+            <span class="mail-client-folder-hint__title">${title}</span>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-letter-copy-item">
+        # if (Name) { #
+            <span data-preview="${Address}" data-preview-title="${Name}">
+                <span class="letter__copy-name">${Name}</span>
+                <span class="letter__copy-email">${Address}</span>
+            </span>
+        # } else { #
+            <span class="letter__copy-name" data-preview="${Address}">${Address}</span>
+        # } #
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-letter-reciever-item">
+        # if (Name) { #
+            <span class="letter__reciever-wrap" data-preview="${Address}" data-preview-title="${Name}">
+                <span class="letter__reciever-name">${Name}</span>
+                <span class="letter__reciever-email">${Address}</span>
+            </span>
+        # } else { #
+            <span class="letter__reciever-wrap" data-preview="${Address}">
+                <span class="letter__reciever-name">${Address}</span>
+            </span>
+        # } #
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-letter-view">
+        <div class="letter-view__wrapper">
+            <div class="letter-view__toolbar">
+                <button class="btn btn-close" data-bind="click: close">
+                    <span class="icon icon-colse">×</span>
+                </button>
+    
+                <button class="btn btn-mark-read tooltip"
+                        data-bind="click: toggleFlag, attr: {data-tooltip-invert: isFlag}"
+                        data-tooltip-title="Отметить флажком"
+                        data-tooltip-invert-title="Снять флажок"><i class="fa" data-bind="css: {fa-bookmark-o: isNotFlag, fa-bookmark: isFlag}"></i>
+                </button>
+    
+                # if (!isDraft) { #
+                    <button class="btn btn-spam tooltip"
+                            data-bind="click: moveToSpam, invisible: isSpamFolder"
+                            title="Спам"><i class="fa fa-exclamation-circle"></i>
+                    </button>
+                # } #
+    
+                <button class="btn btn-trash tooltip"
+                        data-bind="click: moveToTrash"
+                        title="Удалить"><i class="fa fa-trash-o"></i></span>
+                </button>
+    
+                <div class="btn btn-move" data-bind="click: toggleFolderSelector, css: {open: folderSelectorOpened}">
+                    <i title="Переместить в" class="fa fa-folder-open-o tooltip"></i>
+    
+                    <ul class="mail-client__select-folder toolbar-dropdown-list"
+                        data-bind="source: moveToItems"
+                        data-template="mail-client-select-folder-item">
+                    </ul>
+                </div>
+    
+                # if (!isDraft) { #
+                    <div class="btn-group">
+                        <button class="btn btn-reply tooltip"
+                                data-bind="click: reply"
+                                title="Ответить"><i class="fa fa-reply"></i> Ответить</button>
+    
+                        <button class="btn btn-reply-all tooltip"
+                                data-bind="click: replyAll"
+                                title="Ответить всем"><i class="fa fa-reply-all"></i> Ответить всем</button>
+    
+                        <button class="btn btn-forward tooltip"
+                                data-bind="click: forward"
+                                title="Переслать"><i class="fa icon-mail-forward"></i> Переслать</button>
+                    </div>
+                # } else { #
+                    <div class="btn-group">
+                        <button class="btn btn-edit tooltip"
+                                data-bind="click: edit"
+                                title="Редактировать"><i class="fa fa-pencil-square-o"></i> Редактировать</button>
+                    </div>
+                # } #
+            </div>
+    
+            <div class="letter__subject">${subject}</div>
+    
+            <div class="letter-view__letter letter">
+                <div class="letter__content">
+                    <header class="letter__header" data-bind="css: {show-email-address: infoVisible}">
+                        <div class="letter__sender-reciever-info">
+                            <button class="btn-show-hide-email" data-bind="click: toggleInfo">
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                            <div class="letter__sender">
+                                # if (isDraft) { #
+                                    <span class="letter__draft-title">Черновик</span>
+                                # } else if (fromName && fromAddress) { #
+                                    <span data-preview="${fromAddress}" data-preview-title="${fromName}">
+                                        <figure class="letter__sender-userpic" data-bind="text: initials, style: {backgroundImage: imageUrl}, visible: isAvatar"></figure>
+                                        <span class="letter__sender-name">${fromName}</span>
+                                        <span class="letter__sender-email">${fromAddress}</span>
+                                    </span>
+                                # } else if (fromAddress) { #
+                                    <span data-preview="${fromAddress}">
+                                        <figure class="letter__sender-userpic" data-bind="text: initials, style: {backgroundImage: imageUrl}, visible: isAvatar"></figure>
+                                        <span class="letter__sender-name">${fromAddress}</span>
+                                    </span>
+                                # } else { #
+                                    <figure class="letter__sender-userpic" data-bind="text: initials, style: {backgroundImage: imageUrl}, visible: isAvatar"></figure>
+                                    <span class="letter__sender-name">Неизвестный отправитель</span>
+                                # } #
+    
+                                # if (highPriority) { #
+                                    <span class="letter__high-priority">важное</span>
+                                # } #
+                            </div>
+                            <div class="letter__reciever">
+                                <span class="label-to">Кому:</span>
+    
+                                # if (to && to.length) { #
+                                    <span data-bind="source: to" data-template="mail-client-letter-reciever-item"></span>
+                                # } else { #
+                                    <span class="letter__empty">получатели не указаны</span>
+                                # } #
+                            </div>
+                            # if (cc && cc.length) { #
+                                <div class="letter__copy">
+                                    <span class="label-to">Копия:</span>
+                                    <span data-bind="source: cc" data-template="mail-client-letter-copy-item"></span>
+                                </div>
+                            # } #
+                            # if (bcc && bcc.length) { #
+                                <div class="letter__hidden-copy">
+                                    <span class="label-to">Скрытая:</span>
+                                    <span data-bind="source: bcc" data-template="mail-client-letter-copy-item"></span>
+                                </div>
+                            # } #
+                            # if (sentDate) { #
+                                <div class="letter__copy">
+                                    <span class="label-to">Дата:</span>
+                                    <span class="letter__copy-name">${kendo.toString(sentDate, "dd MMM yyyy г., HH:mm")}</span>
+                                </div>
+                            # } #
+                        </div>
+    
+                        <div class="letter__date-and-controls">
+                            # if (!isDraft) { #
+                                <div class="letter__toolbar">
+                                    <button class="btn btn-reply tooltip" data-bind="click: reply" title="Ответить">
+                                        <i class="fa fa-reply"></i>
+                                    </button>
+                                    <button class="btn btn-reply-all tooltip" data-bind="click: replyAll" title="Ответить всем">
+                                        <i class="fa fa-reply-all"></i>
+                                    </button>
+                                    <button class="btn btn-forward tooltip" data-bind="click: forward" title="Переслать">
+                                        <i class="fa icon-mail-forward"></i>
+                                    </button>
+                                    <button class="btn btn-edit-as-new tooltip" data-bind="click: editAsNew" title="Изменить как новое">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </button>
+                                    <button class="btn btn-more hidden">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </button>
+                                </div>
+                            # } else { #
+                                <div class="letter__toolbar">
+                                    <button class="btn btn-edit tooltip"
+                                            data-bind="click: edit" title="Редактировать">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </button>
+                                </div>
+                            # } #
+    
+                            <div class="letter__sent-date">${sentDateFormatted}</div>
+                        </div>
+                    </header>
+    
+                    # if (isHtml && body) { #
+                        <div class="letter__body">
+                            <iframe
+                                sandbox="allow-same-origin"
+                                data-role="mailclientiframe"
+                                data-bind="html: body"
+                                data-auto-resize="true"
+                                data-scrolling="true"></iframe>
+                        </div>
+                    # } else if (body) { #
+                        <div class="letter__body letter__plain-text">${body}</div>
+                    # } #
+    
+                    <div class="letter__attachments"
+                        data-bind="source: attachments"
+                        data-template="mail-client-attachment-item"></div>
+                </div>
+            </div>
+    
+            <span data-role="mailclienttooltip"
+                  data-callout="false"
+                  data-show-after="300"
+                  data-target=".letter-view__wrapper"
+                  data-filter=".tooltip"
+                  data-animation="{open: { effects: 'fade:in', duration: 200 }}"></span>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-letters-list-item">
+        <li class="letter-brief" data-bind="attr: {data-id: id}, css: { unread: isUnread }, events: { dblclick: onDoubleClick }">
+            <div data-bind="css: { is-read: isRead }, events: { click: toggleRead }" class="letter-brief__unread-marker"></div>
+            <div data-bind="css: { unflagged: isNotFlag }, events: { click: toggleFlag }" class="letter-brief__flagged">
+                <i class="fa fa-bookmark" data-bind="visible: isFlag"></i>
+                <i class="fa fa-bookmark-o" data-bind="invisible: isFlag"></i>
+            </div>
+    
+            <div class="letter-brief__meta">
+                <div class="letter-brief__sent-date">${sentDateFormatted}</div>
+                <div class="letter-brief__has-attachments" data-bind="visible: hasAttachments">
+                    <i class="fa fa-paperclip"></i>
+                </div>
+                <div class="letter-brief__high-priority" data-bind="visible: highPriority">
+                    важное
+                </div>
+            </div>
+    
+            <div class="letter-brief__sender">
+                <!-- <i class="fa fa-user-o"></i> -->
+    
+                # if (isDraft) { #
+                    <div class="letter-brief__sender-name">
+                        <span class="letter-brief__draft-title">Черновик</span>#= to.length ? ", " : "" #
+                        #= recipientsToString(to, "Неизвестный получатель") #
+                    </div>
+                # } else if (isSent) { #
+                    # var toName = to && to[0] ? to[0].Name : ""; #
+                    # var toAddress = to && to[0] ? to[0].Address : ""; #
+    
+                    <figure class="letter-brief__sender-userpic"
+                            data-preview="${toAddress}"
+                            data-preview-title="${toName}"
+                            data-bind="text: itemToInitials, style: {backgroundImage: itemToImageUrl}, visible: isToAvatar"></figure>
+    
+                    <div class="letter-brief__sender-name">
+                        <span data-preview="${toAddress}" data-preview-title="${toName}">${toName || toAddress}</span>
+                    </div>
+                # } else if (!fromName && !fromAddress) { #
+                    <figure class="letter-brief__sender-userpic" data-bind="text: itemInitials, style: {backgroundImage: itemImageUrl}, visible: isAvatar"></figure>
+                    <div class="letter-brief__sender-name">Неизвестный отправитель</div>
+                # } else { #
+                    <figure class="letter-brief__sender-userpic"
+                            data-preview="${fromAddress}"
+                            data-preview-title="${fromName || ''}"
+                            data-bind="text: itemInitials, style: {backgroundImage: itemImageUrl}, visible: isAvatar"></figure>
+    
+                    <div class="letter-brief__sender-name">
+                        <span data-preview="${fromAddress}" data-preview-title="${fromName || ''}">${fromName || fromAddress}</span>
+                    </div>
+                # } #
+    
+                <div class="letter-brief__subject" data-bind="text: itemSubject"></div>
+            </div>
+    
+            <div class="letter-brief__body-preview">#= bodyPreview || " " #</div>
+            <div class="letter-brief__horizontal-divider"></div>
+        </li>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-letter-hint">
+        # if (count > 1) { #
+            <div class="mail-client-letter-hint">
+            	<span class="mail-client-letter-hint__badge">${count}</span>
+            	<i class="fa fa-envelope-o mail-client-letter-hint__icon"></i>
+        	</div>
+        # } else { #
+            <div class="mail-client-letter-hint">
+            	<i class="fa fa-envelope-o mail-client-letter-hint__icon"></i>
+        	</div>
+        # } #
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-new-letter-dialog">
+        <div id="mail-client-new-letter-window-${uid}"
+            class="new-letter__window"
+            data-role="mailclientwindow"
+            data-title="Новое сообщение"
+            data-width="670"
+            data-height="600"
+            data-modal="false"
+            data-actions="['Maximize','Close']"
+            data-scrollable="false"
+            data-resizable="false"
+            data-visible="false"
+            data-snap-to-right-bottom="true"
+            data-maximize-vmargin="50"
+            data-maximize-hmargin="100"
+            data-bind="events: {deactivate: onAfterCloseWnd, close: onBeforeCloseWnd, activate: onAfterOpenWnd, resize: onResizeWnd}">
+    
+            <div class="mail-client__loader mail-client__loader--darken" data-bind="css: {show: hasUnsavedData}"></div>
+    
+            <div class="new-letter__form">
+                <div class="new-letter__form-header">
+                    <div class="input-group new-letter__form-to">
+                        <label>Кому:</label>
+                        <select multiple="multiple"
+                                data-role="mailclientmultitags"
+                                data-value-primitive="false"
+                                data-value-field="Address"
+                                data-text-field="Name"
+                                data-filter="contains"
+                                data-auto-bind="false"
+                                data-enforce-min-length="true"
+                                data-min-length="2"
+                                data-clear-button="false"
+                                data-no-data-template="mail-client-multitags-no-data"
+                                data-progress-data-template="mail-client-multitags-progress-data"
+                                data-bind="value: msg.to, source: toDataSource">
+                        </select>
+                    </div>
+    
+                    <button class="add-input"
+                            data-bind="click: showCopy, invisible: copyVisible"
+                            tabindex="-1">Копия</button>
+    
+                    <button title="Параметры"
+                            class="add-input new-letter__config-button"
+                            data-bind="click: toggleSettings"
+                            tabindex="-1"><i class="fa fa-cog"></i></button>
+    
+                    <ul class="mail-client__dropdown-list mail-client__new-letter-settings-dropdown"
+                        data-bind="css: {open: isSettingsOpened}, source: settingItems"
+                        data-template="mail-client-new-letter-settings-item">
+                    </ul>
+    
+                    <div class="input-group new-letter__form-copy" data-bind="visible: copyVisible">
+                        <label>Копия:</label>
+    
+                        <select multiple="multiple"
+                                data-role="mailclientmultitags"
+                                data-value-primitive="false"
+                                data-value-field="Address"
+                                data-text-field="Name"
+                                data-filter="contains"
+                                data-auto-bind="false"
+                                data-enforce-min-length="true"
+                                data-min-length="2"
+                                data-clear-button="false"
+                                data-no-data-template="mail-client-multitags-no-data"
+                                data-progress-data-template="mail-client-multitags-progress-data"
+                                data-bind="value: msg.cc, source: ссDataSource">
+                        </select>
+                    </div>
+                    <div class="input-group new-letter__form-hidden-copy" data-bind="visible: copyVisible">
+                        <label>Скрытая:</label>
+    
+                        <select multiple="multiple"
+                                data-role="mailclientmultitags"
+                                data-value-primitive="false"
+                                data-value-field="Address"
+                                data-text-field="Name"
+                                data-filter="contains"
+                                data-auto-bind="false"
+                                data-enforce-min-length="true"
+                                data-min-length="2"
+                                data-clear-button="false"
+                                data-no-data-template="mail-client-multitags-no-data"
+                                data-progress-data-template="mail-client-multitags-progress-data"
+                                data-bind="value: msg.bcc, source: bссDataSource">
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="input-group new-letter__form-subject">
+                    <label>Тема:</label>
+                    <input type="text" data-bind="value: msg.subject" data-value-update="keyup"/>
+                </div>
+    
+                <div class="new-letter__form-editor" data-bind="css: {expanded: copyVisible}">
+                    <textarea data-role="editor"
+                                data-resizable="{toolbar: true, content: false}"
+                                data-bind="value: msg.body, events: {keyup: editorChanged}"></textarea>
+    
+                    <div class="new-letter__drop-zone"><i class="fa fa-2x fa-paperclip"></i></div>
+                </div>
+    
+                <div class="new-letter__form-footer">
+                    <div class="new-letter__attachments" data-bind="css: {opened: attachments.fileListOpened}">
+                        <input name="attachments[]"
+                                type="file"
+                                data-role="mailclientupload"
+                                data-drop-zone=".new-letter__drop-zone"
+                                data-cancel-on-destroy="true"
+                                data-async="{
+                                    autoUpload: false,
+                                    saveUrl: 'config',
+                                    removeUrl: 'config',
+                                    removeVerb: 'DELETE',
+                                    batch: false,
+                                    withCredentials: true}"
+                                data-multiple="true"
+                                data-show-file-list="true"
+                                data-bind="events: {
+                                    select: attachments.onFileSelect,
+                                    upload: attachments.onFileUpload,
+                                    complete: attachments.onUploadCompleted,
+                                    remove: attachments.onFileRemove,
+                                    success: attachments.onFileSuccess,
+                                    cancel: attachments.onFileCancel,
+                                    error: attachments.onFileError,
+                                    fileListCreated: attachments.onFileListCreated,
+                                    fileListDestroyed: attachments.onFileListDestroyed
+                                }"
+                                data-localization="{
+                                    'select': 'Выберите файлы...',
+                                    'cancel': 'Отмена',
+                                    'retry': 'Повторить',
+                                    'remove': 'Удалить',
+                                    'clearSelectedFiles': 'Очистить',
+                                    'uploadSelectedFiles': 'Загрузить',
+                                    'dropFilesHere': 'Перетащите файлы сюда для загрузки',
+                                    'statusUploading': 'загружается',
+                                    'statusUploaded': 'загружено',
+                                    'statusWarning': 'предупреждение',
+                                    'statusFailed': 'ошибка',
+                                    'headerStatusUploading': 'Загружается...',
+                                    'headerStatusUploaded': 'Выполнено',
+                                    'invalidMaxFileSize': 'Слишком большой размер файла.',
+                                    'invalidMinFileSize': 'Размер файла слишком маленький.',
+                                    'invalidFileExtension': 'Тип файла не разрешен.'}"
+                                />
+    
+                            <div class="attachments-counter" data-bind="text: attachments.fileCount, click: attachments.toggleFileList"></div>
+                            <div class="attachments-close" data-bind="visible: attachments.fileListOpened, click: attachments.toggleFileList">×</div>
+                            <div class="attachments-arrow" data-bind="visible: attachments.fileListOpened"></div>
+                    </div>
+                    <div class="new-letter__status-notifications">
+                        <span data-bind="visible: sending">Отправляется...</span>
+                        <span data-bind="visible: sendError">Ошибка отправки</span>
+                        <span data-bind="visible: draftSaveError">Ошибка сохранения</span>
+                        <span data-bind="visible: hasUnsavedData">Сохраняется черновик...</span>
+                        <span data-bind="visible: saveStatusVisible">Черновик сохранен <span data-bind="text: dataSavedTsFormatted"></span></span>
+                    </div>
+                    <button class="btn-send" data-bind="click: send, enabled: sendEnabled">
+                        <i class="fa fa-fw fa-lg fa-send"></i> Отправить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="mail-client-multitags-no-data">
+        Нет данных.
+    </script>
+    
+    <script type="text/x-kendo-template" id="mail-client-multitags-progress-data">
+        Загрузка...
+    </script>
+    
+    <script type="text/x-kendo-template" id="mail-client-new-letter-settings-item">
+        <li data-bind="css: {checked: checked}, click: onSelectSettingItem">
+            <i class="fa fa-${icon}" aria-hidden="true"></i>
+            <span>${title}</span>
+        </li>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-select-folder-item">
+        <li class="toolbar-dropdown-list__item sublevel_${deepLevel}" data-bind="click: selectFolder, css: {toolbar-dropdown-list__item--disabled: isMoveToItemDisabled}">
+            <i class="fa fa-fw fa-lg fa-${icon}"></i>
+            <span data-bind="text: folderName"></span>
+        </li>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-contact-preview">
+        <div class="hovercard">
+            # var pbaAPI = pbaAPI || window.top.pbaAPI || null; #
+            # if (!pbaAPI) { pbaAPI = {}; pbaAPI.imageHelpers = {}; pbaAPI.imageHelpers.getsrc = function (src) {return src;}; pbaAPI.getUserState = function () {return '';}; } #
+            # var idParts = (ID || "").split(":"); #
+            # var isUser = (idParts[0] || "").toLowerCase() === "user"; #
+            # var userId = parseInt(idParts[1]); #
+    
+            <img class="hovercard__photo"
+                 src="#= pbaAPI.imageHelpers.getsrc(ImageUid, 120, 120, 'NoPhoto') #"
+                 width="120" height="120" alt=""/>
+    
+            # if (Title) { #
+                <p class="hovercard__title">${Title}</p>
+                <p class="hovercard__email">${Email}</p>
+            # } else { #
+                <p class="hovercard__title">${Email}</p>
+            # } #
+    
+            # if (isUser && userId) { #
+                <div class="hovercard__status">#= pbaAPI.getUserState(userId, { showDesc: true }) #</div>
+    
+                <ul class="hovercard__actions">
+                    <li class="hovercard__action">
+                        <a href="\#" onclick="var globalapp = globalapp || window.top.globalapp; if (globalapp) { globalapp.rtcService.sendCallRequest(#= userId #, 'PrivateMessage', null, 'video'); } return false;" data-action="videocall" title="Видеозвонок" data-popup="bottom"><i class="fa fa-video-camera"></i></a>
+                    </li>
+                    <li class="hovercard__action">
+                        <a href="\#" onclick="var globalapp = globalapp || window.top.globalapp; if (globalapp) { globalapp.rtcService.sendCallRequest(#= userId #, 'PrivateMessage', null, 'audio'); } return false;" data-action="audiocall" title="Аудиозвонок" data-popup="bottom"><i class="fa fa-phone"></i></a>
+                    </li>
+                    <li class="hovercard__action">
+                        <a href="\#" onclick="var application = application || window.top.application; if (application) { application.chat.openDialog('PrivateMessage', #= userId #); } return false;" data-action="chat" title="Открыть чат" data-popup="bottom"><i class="mdi mdi-message-text-outline"></i></a>
+                    </li>
+                    <!--<li class="hovercard__action">
+                        <a href="\#" onclick="return false;" data-action="task" title="Поставить задачу" data-popup="bottom"><i class="mdi mdi-calendar"></i></a>
+                    </li>-->
+                </ul>
+            # } #
+        </div>
+    </script>
+    
+    <script type="text/x-kendo-template" id="mail-client-contact-preview-not-found">
+        <div class="hovercard">
+            # var pbaAPI = pbaAPI || window.top.pbaAPI || null; #
+            # if (!pbaAPI) { pbaAPI = {}; pbaAPI.imageHelpers = {}; pbaAPI.imageHelpers.getsrc = function () {return '';}; } #
+    
+            <img class="hovercard__photo"
+                 src="#= pbaAPI.imageHelpers.getsrc(null, 120, 120, 'NoPhoto') #"
+                 width="120" height="120" alt=""/>
+    
+            # if (Title) { #
+                <p class="hovercard__title">${Title}</p>
+                <p class="hovercard__email">${Email}</p>
+            # } else { #
+                <p class="hovercard__title">${Email}</p>
+            # } #
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-edit-settings-dialog">
+        <div id="mail-client-edit-settings-modal-${uid}"
+            class="mail-client__edit-settings__modal"
+            data-role="mailclientmodal"
+            data-title="Настройки почты"
+            data-width="670"
+            data-visible="false",
+            data-messages="{okText: 'Сохранить', cancel: 'Отмена'}"
+            data-bind="events: { ok: onOK, cancel: onCancel, close: onClose }">
+    
+            <div class="btn-close" data-bind="click: close">×</div>
+    
+            <div style="height: 455px" class="settings-list">
+                <div class="settings-list__item signature-form">
+                    <h4 class="settings-list__item-title">
+                        Подпись <span>(добавляется в конце всех исходящих писем)</span>
+                    </h4>
+    
+                    <div class="signature-form__value"
+                         data-role="editor"
+                         data-resizable="{toolbar: true, content: false}"
+                         data-bind="value: settings.signature, events: { keyup: onEditorKeyup }"></div>
+    
+                    <div class="signature-form__value--empty-state"
+                         data-bind="invisible: settings.signature">Укажите подпись</div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-kendo-template" id="mail-client-message-sort-item">
+        <li class="toolbar-dropdown-list__item" data-bind="click: selectSortItem, css: { selected: selected }, attr: {data-id: id}">
+            <i class="fa fa-sort-amount-desc" data-bind="visible: sortOrderDesc"></i>
+            <i class="fa fa-sort-amount-asc" data-bind="invisible: sortOrderDesc"></i>
+            <span>${title}</span>
+        </li>
+    </script>
+
+
+    <script src="vendor/js/vendor.js?build_ts=1502466675785" type="text/javascript"></script>
+    <script src="js/kendo.mailclient.min.js?build_ts=1502466675785" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var apiEndPoint, createTokenUrl,
+            contactImageUrl, contactListUrl, contactPreviewUrl;
+    </script>
+
+
+    <script type="text/javascript">
+        apiEndPoint = "http://project.pba.su";
+        createTokenUrl = "/authorize/token";
+        contactImageUrl = "/Contact/GetPhotoByEmail?email={1}&width=52&height=52";
+        contactListUrl = "/Contact/GetEmails?email={0}&title={0}";
+        contactPreviewUrl = "/Contact/GetByEmail?email={0}";
+        settingsReadUrl = "/Mail/GetSettings";
+    </script>
+
+    <script type="text/javascript">
+        $("#mailclient").kendoMailClient({
+            templateId: "mail-client-template",
+            account: {
+                readUrl: apiEndPoint + "/account/clients"
+            },
+            folder: {
+                readUrl: apiEndPoint + "/mail/{0}/folders",
+                createUrl: apiEndPoint + "/mail/{0}/folders",
+                updateUrl: apiEndPoint + "/mail/{0}/folders/{1}",
+                deleteUrl: apiEndPoint + "/mail/{0}/folders/{1}"
+            },
+            message: {
+                readUrl: apiEndPoint + "/mail/{0}/list/{1}",
+                readItemUrl: apiEndPoint + "/mail/{0}/detail/{1}/{2}",
+                attachmentUrl: apiEndPoint + "/mail/{0}/file/{1}/{2}/{3}?bearer_token={4}",
+                setReadUrl: apiEndPoint + "/mail/{0}/read/{1}",
+                setFlagUrl: apiEndPoint + "/mail/{0}/flag/{1}",
+                moveToUrl: apiEndPoint + "/mail/{0}/move/{1}",
+                moveAllUrl: apiEndPoint + "/mail/{0}/move_all/{1}",
+                setReadAllUrl: apiEndPoint + "/mail/{0}/read_all/{1}",
+                deleteAllUrl: apiEndPoint + "/mail/{0}/delete_all/{1}",
+                deleteItemsUrl: apiEndPoint + "/mail/{0}/delete/{1}",
+                pageSize: 30,
+                markAsReadTimeout: 600
+            },
+            draft: {
+                createUrl: apiEndPoint + "/draft/{0}",
+                updateUrl: apiEndPoint + "/draft/{0}/{1}/{2}",
+                sendUrl: apiEndPoint + "/draft/{0}/send/{1}/{2}",
+                saveTimeout: 2000,
+                notifyChangedTimeout: 500
+            },
+            dialogs: {
+                newMessage: {
+                    template: "mail-client-new-letter-dialog",
+                    windowId: "mail-client-new-letter-window-{0}"
+                },
+                editSettings: {
+                    template: "mail-client-edit-settings-dialog",
+                    windowId: "mail-client-edit-settings-modal-{0}"
+                }
+            },
+            uploader: {
+                saveUrl: apiEndPoint + "/draft/{0}/file/{1}/{2}?bearer_token={3}",
+                readUrl: apiEndPoint + "/draft/{0}/file/{1}/{2}?bearer_token={3}",
+                removeUrl: apiEndPoint + "/draft/{0}/file/{1}/{2}/{3}?bearer_token={4}"
+            },
+            auth: {
+                token: {
+                    createUrl: createTokenUrl,
+                    field: "Token",
+                    method: "GET",
+                    withCredentials: true
+                },
+                tokenValidation: {
+                    readUrl: apiEndPoint + "/account/clients",
+                    method: "GET",
+                    withCredentials: false
+                }
+            },
+            contact: {
+                imageUrl: contactImageUrl,
+                readListUrl: contactListUrl,
+                previewUrl: contactPreviewUrl,
+                ajaxOptions: {
+                    withCredentials: true
+                }
+            },
+            events: {
+                polling: true,
+                pollingInterval: 20000
+            },
+            settings: {
+                readUrl: settingsReadUrl,
+                ajaxOptions: {
+                    withCredentials: true
+                }
+            },
+            localization: {
+                "unsavedCloseConfirm": "Имеются несохраненные данные. Закрыть окно?",
+                "unsavedDataConfirm": "Внесены изменения",
+                "deleteFolderConfirm": "Вы уверены, что хотите удалить \"{0}\" папку?",
+                "deleteFolderToTrashConfirm": "Вы уверены, что хотите удалить \"{0}\" папку в корзину?",
+                "deleteAllToTrashConfirm": "Удалить все сообщения в папке \"{0}\" в корзину?",
+                "deleteAllMessagesConfirm": "Удалить все сообщения в папке \"{0}\"?",
+                "clearTrashFolderConfirm": "Очистить корзину?",
+                "deleteMessageConfirm": "Вы уверены, что хотите удалить сообщение \"{0}\"?",
+                "deleteMessagesConfirm": "Вы уверены, что хотите удалить \"{0}\" {1}?",
+                "deleteMessagesConfirmNoun": ["сообщение", "сообщения", "сообщений"],
+                "deleteFolderConfirmDescr": "Все сообщения внутри папки будут<br/>удалены навсегда.",
+                "deleteAllMessagesConfirmDescr": "Все сообщения внутри папки будут<br/>удалены навсегда.",
+                "clearTrashFolderConfirmDescr": "Все сообщения и папки внутри корзины<br/>будут удалены навсегда.",
+                "deleteMessageConfirmDescr": "Сообщение будет удалено навсегда.",
+                "deleteMessagesConfirmDescr": "Сообщения будут удалены навсегда.",
+                "noSubject": "Без темы",
+                "draftTitle": "Черновик",
+                "folders": {
+                    "drafts": "Черновики",
+                    "sent": "Отправленные",
+                    "junk": "Спам",
+                    "trash": "Корзина",
+                    "inbox": "Входящие"
+                },
+                "dialogs": {
+                    "okText": "Да",
+                    "cancel": "Отмена"
+                },
+                "usavedDataDialog": {
+                    "okText": "Сохранить черновик",
+                    "cancel": "Удалить черновик"
+                }
+            }
+        });
+
+        $(function () {
+            var ns = kendo.ui.mailclient;
+            if (window.parent && window.parent.kendo &&
+                window.parent.kendo.ui.mailclient &&
+                window.parent.kendo.ui.mailclient.updateUnreadCounter) {
+                var vm = $("#mailclient").data("kendoMailClient").viewModel;
+
+                var updateCounter = function () {
+                    window.parent.kendo.ui.mailclient.updateUnreadCounter(vm.folderList.totalUnreadItemCount());
+                };
+
+                vm.broadcaster.bind(ns.BroadcastEvents.MARK_AS_UNREAD, updateCounter);
+                vm.broadcaster.bind(ns.BroadcastEvents.MARK_AS_READ, updateCounter);
+            }
+        });
+    </script>
+</body>
+
+</html>

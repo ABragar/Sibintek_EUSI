@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<GroundCategorys>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<Code>3001000000</Code>
+		<Name>Земли сельскохозяйственного назначения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<Code>3001000010</Code>
+		<Name>Сельскохозяйственные угодья</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<Code>3001000020</Code>
+		<Name>Земли,    занятые     внутрихозяйственными     дорогами, коммуникациями, древесно-кустарниковой  растительностью,предназначенной для</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<Code>3001000030</Code>
+		<Name>Прочие земли сельскохозяйственного назначения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<Code>3002000000</Code>
+		<Name>Земли населенных пунктов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<Code>3002000010</Code>
+		<Name>Земли в пределах поселений, отнесенные к территориальным</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<Code>3002000020</Code>
+		<Name>Земельные участки, занятые жилищным фондом  и  объектами</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<Code>3002000030</Code>
+		<Name>Земельные   участки,   предоставленные   для   жилищного</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<Code>3002000040</Code>
+		<Name>Земельные   участки,   приобретенные   в   собственность юридическими   и   физическими   лицами   на    условиях осуществления  на</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<Code>3002000050</Code>
+		<Name>Земельные   участки,   приобретенные   в   собственность физическими лицами  на  условиях  осуществления   на них индивидуального жи</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<Code>3002000060</Code>
+		<Name>Земельные участки, предоставленные для  ведения  личного подсобного хозяйства, садоводства и  огородничества  или животноводства</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<Code>3002000070</Code>
+		<Name>Земельные участки, предоставленные юридическим лицам для ведения садоводства и огородничества или животноводства</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<Code>3002000080</Code>
+		<Name>Земельные участки, предоставленные физическим лицам  для  личного    подсобного    хозяйства,        садоводства иогородничества или</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<Code>3002000090</Code>
+		<Name>Земли    в    пределах    поселений,        отнесенные к производственным   территориальным   зонам       и зонам инженерных и транс</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<Code>3002000100</Code>
+		<Name>Прочие земельные участки</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<Code>3003000000</Code>
+		<Name>Земли  промышленности,  энергетики,  транспорта,  связи, радиовещания,  телевидения,   информатики,     земли для обеспечения  косми</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<Code>3003000010</Code>
+		<Name>Земли промышленности</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<Code>3003000020</Code>
+		<Name>Земли энергетики</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>19</ExternalID>
+		<Code>3003000030</Code>
+		<Name>Земли транспорта</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>20</ExternalID>
+		<Code>3003000040</Code>
+		<Name>Земли связи, радиовещания, телевидения, информатики</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>21</ExternalID>
+		<Code>3003000050</Code>
+		<Name>Прочие земли</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>22</ExternalID>
+		<Code>3003000060</Code>
+		<Name>Земли обороны</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>23</ExternalID>
+		<Code>3003000070</Code>
+		<Name>Земли безопасности</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>24</ExternalID>
+		<Code>3003000080</Code>
+		<Name>Земли иного специального назначения</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>25</ExternalID>
+		<Code>3004000000</Code>
+		<Name>Земли особо охраняемых территорий и объектов</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>26</ExternalID>
+		<Code>3005000000</Code>
+		<Name>Земли лесного фонда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>27</ExternalID>
+		<Code>3006000000</Code>
+		<Name>Земли водного фонда</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>28</ExternalID>
+		<Code>3007000000</Code>
+		<Name>Земли запаса</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+	<GroundCategory>
+		<ID>0</ID>
+		<ExternalID>29</ExternalID>
+		<Code>3008000000</Code>
+		<Name>Прочие земли</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</GroundCategory>
+</GroundCategorys>
+  </DefaultDataHolder>

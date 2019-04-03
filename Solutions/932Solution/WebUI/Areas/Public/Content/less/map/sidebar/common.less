@@ -1,0 +1,90 @@
+.ng-pageslide {
+	&-custom {
+		z-index: 2000 !important;
+		bottom: @header-height *.75 !important;
+
+		color: @color--light;
+		background-color: @color--dark;
+
+		@media ( min-width: @screen-width-md ) {
+			bottom: 0 !important;
+
+			background-color: fade( @color--dark, 80% );
+			}
+
+		.scroller-absolute-with-top {
+			&:before, &:after {
+				position: fixed;
+				z-index: 500;
+				left: 0;
+
+				width: 100%;
+				height: @modular-scale *.75em;
+
+				content: '';
+
+				@media ( min-width: @screen-width-sm ) {
+					display: none;
+					}
+				}
+
+			&:before {
+				top: 55px + @header-height;
+
+				background: linear-gradient(to bottom, fade( @color--dark, 100% ) 0%,fade( @color--dark, 0% ) 100%);
+				}
+			&:after {
+				bottom: @header-height *.75;
+
+				background: linear-gradient(to top, fade( @color--dark, 100% ) 0%,fade( @color--dark, 0% ) 100%);
+				}
+			}
+		}
+
+	&-body {
+		&-open {
+			.ng-pageslide-custom-left {
+				transition-property: all !important;
+
+				@media ( min-width: @screen-width-md ) {
+					left: 320px !important;
+					}
+				}
+
+			.map-area .leaflet-left {
+				left: 320px;
+
+				transition: all .15s;
+
+				@media ( min-width: @screen-width-md ) {
+					left: 320px !important;
+					}
+				}
+			}
+
+		&-closed {
+			.ng-pageslide-custom-left {
+				left: 0 !important;
+
+				transition-property: all !important;
+				}
+
+			.map-area .leaflet-left {
+				left: 0;
+
+				transition: all .15s;
+				}
+			}
+		}
+	}
+
+.content-loading-cloak {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	background: transparent ~"url(images/puff-white.svg)" center center no-repeat;
+	background-size: 40%;
+	}

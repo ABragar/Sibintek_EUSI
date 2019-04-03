@@ -1,0 +1,10 @@
+@font-face{
+    font-family: 'SegoeUILight';
+    src:url('latest.eot');
+    src:url('latest.eot?#iefix') format('embedded-opentype'),
+           url('latest.woff') format('woff'),
+           url('latest.ttf') format('truetype'),
+           url('latest.svg#web') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

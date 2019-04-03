@@ -1,0 +1,43 @@
+﻿@using Base.Contact.Entities
+@using Newtonsoft.Json
+@model WebUI.Models.Contact.CompanyToolbarModel
+
+@{
+    string addBtn = Html.CreateSystemName("b");
+}
+
+
+<a class="k-button k-button-icon tooltipstered" href="#" id="@addBtn"><i class="fa fa-building-o tooltipstered"></i></a>
+
+
+<script>
+    $(function() {
+        $('#@addBtn')
+            .on('click',
+                function() {
+                    var company = @Model.CompanyID;
+
+                    if (company) {
+
+                        var mnemonic = "@nameof(Department)";
+                        var params = {
+                            dialogData: {
+                                initProps: {
+                                    "@nameof(Department)": {
+                                        Company: {
+                                            ID : company
+                                        }
+                                    }
+                                }
+                            },
+                            filter: "it.CompanyID = " + company
+                        };
+
+                        pbaAPI.openModalDialog(mnemonic, null, params);
+                    } else {
+                        pbaAPI.errorMsg("Сохраните объект");
+                    }
+                });
+    })
+
+</script>

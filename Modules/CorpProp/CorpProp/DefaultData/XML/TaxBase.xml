@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<TaxBases>
+	<TaxBase>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<Code>101</Code>
+		<Name>Среднегодовая стоимость</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</TaxBase>
+	<TaxBase>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<Code>102</Code>
+		<Name>Кадастровая стоимость</Name>
+		<DateFrom>2017-01-01</DateFrom>
+	</TaxBase>
+</TaxBases>
+  </DefaultDataHolder>

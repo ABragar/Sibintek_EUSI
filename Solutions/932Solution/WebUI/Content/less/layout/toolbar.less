@@ -1,0 +1,227 @@
+﻿.layout__toolbar {
+	&-btn {
+		font-size: 1.2em;
+
+		position: relative;
+
+		display: flex;
+		align-items: center;
+
+		height: 100%;
+		padding: 0 1.25em;
+
+		transition: .15s @easing-curve--main;
+		transition-property: padding, color;
+
+		color: fade( @color--toolbar-text, 80% );
+
+		&:hover, &:focus {
+			color: @color--toolbar-text;
+			}
+
+		&.menu-button {
+			font-size: @modular-scale *1em; 
+
+			padding: 0 1.25rem;
+			}
+
+		&--fullscreen-toggle {
+			font-size: 1.444em;
+
+			padding: 0 @modular-scale *.5em !important;
+
+			i:before {
+				// DO NOT CONCATENATE RULES BY COMMA, THIS WOULD NOT WORK
+				:-webkit-full-screen & {
+					content: '\F294';
+					}
+				:-moz-full-screen & {
+					content: '\F294';
+					}
+				:-ms-fullscreen & {
+					content: '\F294';
+					}
+				:fullscreen & {
+					content: '\F294';
+					}
+				}
+			}
+
+		.glyphicon {
+			top: 0;
+			}
+
+		.fa {
+			font-size: 1.333em;
+
+			&.fa-home {
+				font-size: @modular-scale *1em;
+				}
+			}
+
+		.mdi {
+			&.mdi-checkbox-marked-circle-outline,
+			&.mdi-alarm,
+			&.mdi-alert-circle-outline,
+			&.mdi-power {
+				font-size: 1.5em;
+				}
+
+			&.mdi-fullscreen {
+				font-size: @modular-scale *1em;
+				}
+
+			&.mdi-message-text-outline {
+				top: .0714em;
+				}
+			}
+		}
+
+	&-dropdown-toggle {
+		position: relative;
+
+		&:after {
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+
+			display: block;
+
+			box-sizing: border-box;
+			width: 1em;
+			height: 1em;
+
+			content: '';
+			transition: border-color .15s @easing-curve--main;
+			transform: translate( -50%, 0 );
+
+			border-width: .5em;
+			border-style: solid;
+			border-color: transparent transparent darken( @color--toolbar-bg, 10% );
+			}
+
+		&:focus:after {
+			border-bottom-color: darken( @color--toolbar-bg, 35% );
+			}
+		}
+
+	&-user {
+		img {
+			width: @modular-scale *1.5em;
+			height: @modular-scale *1.5em;
+
+			border-radius: 50%;
+			background-color: lighten( @color--dark, 60% );
+			}
+
+		 > a {
+			margin: 0 @modular-scale *.5em;
+			padding: 0 !important;
+
+			&:after {
+				display: none;
+				}
+			}
+
+		.user {
+			&-name {
+				font-size: 1.1em;
+
+				max-width: 14rem;
+				margin: @modular-scale *.25rem @modular-scale *.5rem 0 0;
+				.nowrapHiddenText();
+				}
+
+			&-state {
+				font-size: @modular-scale *.5em;
+				line-height: @modular-scale *1em;
+
+				letter-spacing: -.025em;
+
+				color: fade( @color--toolbar-text, 75% );
+				}
+			}
+		}
+
+	&-menu-item {
+		position: relative;
+		top: 18%;
+
+		height: 64% !important;
+
+		 > a {
+			font-size: 1em;
+
+			padding: 0 @modular-scale *.5em !important;
+			}
+		}
+
+	.mdi {
+		font-size: 1.333em;
+		}
+
+	&-group {
+		height: 100%;
+
+		list-style: none;
+
+.clearfix();
+		.resetList();
+		&--left {
+			float: left;
+
+			@media ( min-width: @screen-md-min ) {
+				display: none;
+
+				margin-left: @layout-sidebar-width;
+				}
+
+			li > a {
+				font-size: 1em;
+
+				color: lighten( @color--dark, 10% );
+				}
+			}
+
+		&--right {
+			float: right;
+
+			margin-right: @modular-scale *1em;
+			}
+
+		.layout__toolbar-divider {
+			position: relative;
+			top: 15%;
+
+			float: left;
+
+			width: 1px;
+			height: 70%;
+			margin: 0 1em 0 .5em;
+
+			background-color: fade( @color--dark, 10% );
+			}
+
+		li {
+			float: left;
+
+			height: 100%;
+
+			transition: background-color .1s @easing-curve--main;
+
+			background-color: transparent;
+
+			&:hover {
+				background-color: darken( @color--toolbar-bg, 5% );
+
+				.layout__toolbar-btn {
+					color: @color--toolbar-text;
+					}
+				}
+
+			&.layout__toolbar-user:hover {
+				background-color: transparent;
+				}
+			}
+		}
+	}

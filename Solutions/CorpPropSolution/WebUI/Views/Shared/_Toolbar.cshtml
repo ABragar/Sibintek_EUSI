@@ -1,0 +1,263 @@
+﻿@using Base.Security
+@using ImageSize = Base.UI.Enums.ImageSize
+
+@{
+    string statusMenuId = Html.CreateSystemName("status_menu");
+    string accountMenuId = Html.CreateSystemName("account_menu");
+    string settingsMenuId = Html.CreateSystemName("settings_menu");
+    var securityUser = Base.Ambient.AppContext.SecurityUser;
+    var currUserID = Base.Ambient.AppContext.SecurityUser.ID;    
+    string projectName = Html.GetProjectName();
+    string imagePath = Html.GetMenuLogoSrc(anchor: "middleleft");
+    //string imagePath = @"/Content/images/company-logo.png";
+}
+
+@if (!string.IsNullOrEmpty(imagePath))
+{
+    <a href="/" class="layout__project-logo-wrap">
+        <img class="layout__project-logo" src="@imagePath" alt="логотип @projectName" />
+    </a>
+}
+<h2 class="layout__project-name"><a href="/">@projectName</a><a id="NavBarPageTitle" style="font-size: 13px;font-weight: normal;padding-left: 10px;"></a></h2>
+
+<ul class="layout__toolbar-group layout__toolbar-group--left">
+    <li>
+        <a class="layout__toolbar-btn menu-button" href="#" data-action="toggle-sidebar">
+            <i class="fa fa-navicon"></i>
+        </a>
+    </li>
+    @* <li>
+        <a class="layout__toolbar-btn home" href="/Dashboard">
+            <i class="fa fa-home"><span></span></i>
+        </a>
+    </li>
+    <li class="layout__toolbar-route"></li> *@
+</ul>
+<ul class="layout__toolbar-group layout__toolbar-group--right">
+    @if (Html.IsDebug())
+    {
+        string dropdownId = Html.CreateSystemName("frontend");
+
+        <li>
+            <a href="#" class="layout__toolbar-btn layout__toolbar-dropdown-toggle" title="Frontend" data-dropdown="#@dropdownId">
+                <i class="fa fa-code"></i>
+            </a>
+            <ul id="@dropdownId" class="popup-content popup-actions">
+                <li><a href="/Example">Примеры</a></li>
+                <li><a href="/Test">Тесты</a></li>
+            </ul>
+        </li>
+    }
+    <li>
+        <a class="layout__toolbar-btn layout__toolbar-btn--fullscreen-toggle" href="#" data-action="toggle-fullscreen" title="Полноэкранный режим">
+            <i class="mdi mdi-fullscreen"></i>
+        </a>
+    </li>
+    <li class="layout__toolbar-divider"></li>
+    @*<li class="layout__toolbar-menu-item">
+        <a class="layout__toolbar-btn" href="#" data-action="create-support-ticket" title="Обратиться в поддержку">
+            <i class="mdi mdi-headset"></i>
+        </a>
+    </li>*@
+    <li class="layout__toolbar-menu-item">
+        <a class="layout__toolbar-btn" href="/Entities/Notification" title="Оповещения">
+            @Html.MnemonicCounter("Notification")
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </li>
+    @*<li class="layout__toolbar-menu-item">
+        <a class="layout__toolbar-btn" href="#" data-action="open-chats" title="Чаты">
+            @Html.MnemonicCounter("MissedPrivateMessage", "MissedPublicMessage")
+            <i class="mdi mdi-message-text-outline"></i>
+        </a>
+    </li>*@
+    @* <li>
+        <a class="layout__toolbar-btn layout__toolbar-dropdown-toggle" href="#" data-dropdown="#@settingsMenuId" title="Настройки отображения">
+            <i class="fa fa-tv"></i>
+        </a>
+        <ul id="@settingsMenuId" class="popup-content popup-actions">
+            <li><a href="#" data-action="open-dashboard-settings"><i class="mdi fa-fw mdi-view-dashboard"></i>&nbsp;Рабочий стол</a></li>
+            <li><a href="#" data-action="open-sidebar-settings"><i class="fa fa-fw fa-list-ul"></i>&nbsp;Меню</a></li>
+        </ul>
+    </li>
+    <li>
+        <a class="layout__toolbar-btn layout__toolbar-dropdown-toggle" href="#" data-dropdown="#@statusMenuId" title="Изменить статус">
+            @Html.UserState(securityUser.ID)
+        </a>
+        <ul id="@statusMenuId" class="popup-content popup-actions">
+            <li><a href="#">@Html.UserState(customStatus: CustomStatus.Ready, withDescription: true)</a></li>
+            <li><a href="#">@Html.UserState(customStatus: CustomStatus.Away, withDescription: true)</a></li>
+            <li><a href="#">@Html.UserState(customStatus: CustomStatus.DontDisturb, withDescription: true)</a></li>
+            <li><a href="#">@Html.UserState(customStatus: CustomStatus.Disconnected, withDescription: true)</a></li>
+        </ul>
+    </li> *@
+    @*<li class="layout__toolbar-user">
+        <a class="layout__toolbar-btn layout__toolbar-dropdown-toggle" href="#" data-dropdown="#@accountMenuId" title="Текущий пользователь">
+             <i class="fa fa-user-o"></i> 
+            <img src="@Html.GetImageThumbnailSrc(securityUser.ProfileInfo.ImageGuid, ImageSize.XXS, "NoPhoto")" alt="Изображение пользователя" />
+        </a>
+        <ul id="@accountMenuId" class="popup-content popup-actions">
+            <li>
+                <a href="@Url.Action("GetViewModel", "View", new {mnemonic = securityUser.ProfileInfo.Mnemonic, typeDialog = TypeDialog.Frame, id = securityUser.ProfileInfo.ID})">
+                    <i class="fa fa-fw fa-user"></i>&nbsp;Профиль
+                </a>
+            </li>
+            <li>
+                <a href="@(Url.Action("Manage", "Account"))">
+                    <i class="fa fa-fw fa-id-card-o"></i>&nbsp;Управление
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#" data-action="open-sidebar-settings">
+                    <i class="fa fa-fw fa-list-ul"></i>&nbsp;Вид меню
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                @using (Html.BeginForm("Logout", "Account", new {Area = "Account"}))
+                {
+                    @Html.AntiForgeryToken()
+                }
+                <a href="#" onclick="$(this).prev().submit()">
+                    <i class="fa fa-fw fa-sign-out"></i>&nbsp;Выход
+                </a>
+            </li>
+        </ul>
+    </li>*@
+    @*<li class="layout__toolbar-user">
+        <div class="user-name">@securityUser.ProfileInfo.FullName</div>
+        <div class="user-status">
+            <a class="" href="#" data-dropdown="#@statusMenuId" title="Изменить статус">
+                @Html.UserState(securityUser.ID, withDescription: true)
+            </a>
+            <ul id="@statusMenuId" class="popup-content popup-actions">
+                <li><a href="#">@Html.UserState(customStatus: CustomStatus.Ready, withDescription: true)</a></li>
+                <li><a href="#">@Html.UserState(customStatus: CustomStatus.Away, withDescription: true)</a></li>
+                <li><a href="#">@Html.UserState(customStatus: CustomStatus.DontDisturb, withDescription: true)</a></li>
+                <li><a href="#">@Html.UserState(customStatus: CustomStatus.Disconnected, withDescription: true)</a></li>
+            </ul>
+        </div>
+    </li>*@
+
+    @{ var userDataStyle = !Html.IsWindowsAuthentification() ? "margin-right: 105px;" : ""; }
+    <li class="layout__toolbar-userData layout__toolbar-userDataRight" style="@userDataStyle">  
+        <a href="javascript: void(0)" onclick="pbaAPI.openUserInfo(@securityUser.ID)">
+            <div id="sib-profile_fullname">@securityUser.ProfileInfo.FullName</div>
+            <div id="sib-profile-dept">Структурное подразделение</div>
+            <div id="sib-profile-society">Общество группы</div>  
+        </a>
+    </li>
+    @if (!Html.IsWindowsAuthentification())
+    {
+	@*Добавлен абсолют из-за бага с IE и сдвигом кнопки выход. Причина не понятна.*@
+    <li style="position:absolute;top: 0;right:0;">
+        @using (Html.BeginForm("Logout", "Account", new { Area = "Account" }))
+        {
+            @Html.AntiForgeryToken()
+        }
+        <a class="layout__toolbar-btn" href="#" onclick="$(this).prev().submit()">
+            <i class="fa fa-fw fa-sign-out"></i>&nbsp;Выход
+        </a>
+    </li>
+    }
+</ul>
+
+<script>
+    $(function() {
+        // ############
+        // DEPENDENCIES
+        // ############
+
+        var pbaAPI = window.pbaAPI;
+        var globalApp = window.globalapp;
+
+        // #############
+        // EVENT BINDING
+        // #############
+        pbaAPI.setProfileInfo(@currUserID);
+
+        $("#@statusMenuId").find("a").click(function(evt) {
+            evt.preventDefault();
+
+            var status = $(this).find("[data-user-state-status]").attr("data-user-state-status");
+
+            globalApp.userStateService.changeStatus(status);
+        });
+
+        $("#@accountMenuId").find("[data-action]").click(function(evt) {
+            evt.preventDefault();
+
+            var action = $(this).attr("data-action");
+
+            switch (action) {
+                case "open-sidebar-settings":
+                    pbaAPI.editPreset("MenuPreset", "Menu", location.reload.bind(location));
+                    break;
+                default:
+                    pbaAPI.infoMsg("Действие не поддерживается");
+                    break;
+            }
+        });
+
+        // #############
+        // MAIL COUNTER
+        // #############
+
+        var mailApiEndPoint = null;//"http://project.pba.su";
+        if (!mailApiEndPoint)
+            return;
+
+        var mailVm = new kendo.ui.mailclient.MailClientViewModel($.extend(kendo.ui.MailClient.fn.options, {
+            autoLoad: false,
+            account: {
+                readUrl: mailApiEndPoint + "/account/clients"
+            },
+            folder: {
+                readUrl: mailApiEndPoint + "/mail/{0}/folders",
+                createUrl: "",
+                updateUrl: "",
+                deleteUrl: ""
+            },
+            auth: {
+                token: {
+                    createUrl: "/authorize/token",
+                    field: "Token",
+                    method: "GET",
+                    withCredentials: true
+                }
+            },
+            events: {
+                polling: true,
+                pollingInterval: 20000
+            }
+        }));
+
+        var updateMailCounter = function (value) {
+            $("#layout-toolbar-mail-counter").text(value > 0 ? value : "");
+        };
+
+        mailVm.auth.getToken().done(function () {
+            mailVm.account.fetch().done(function () {
+                var account = mailVm.account.getFirst();
+                if (account) {
+                    mailVm.account.selectedItem = account.id;
+                    mailVm.folderList.fetch(account.id).done(function () {
+                        updateMailCounter(mailVm.folderList.totalUnreadItemCount());
+
+                        mailVm.broadcaster.bind(kendo.ui.mailclient.BroadcastEvents.CHANGE_FOLDER, function () {
+                            updateMailCounter(mailVm.folderList.totalUnreadItemCount());
+                        });
+                        mailVm.eventManager.start();
+                    });
+                }
+            });
+        });
+
+        kendo.ui.mailclient.updateUnreadCounter = function (unreadCount) {
+            updateMailCounter(unreadCount);
+        };
+
+
+    });
+</script>

@@ -1,0 +1,134 @@
+﻿@model WebUI.Models.Event.CreateCallModel
+@{
+    string contacts = "cont_" + Guid.NewGuid().ToString("N");
+    string wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+    string rowTemplate = "tmpl_" + Guid.NewGuid().ToString("N");
+    string contactName = "contactName_" + Guid.NewGuid().ToString("N");
+    string createBtn = "crtbtn_" + Guid.NewGuid().ToString("N");
+}
+
+<div id="@wrapID" class="call-contact-wrap">
+    <div class="contact-block k-toolbar k-widget k-toolbar-resizable">
+        <label style="padding-left: 15px;">ФИО</label>
+        <input type="text" class="k-textbox contact-name" id="@contactName" />
+        <button class="btn btn-success create-button" id="@createBtn">Создать</button>
+    </div>
+    <div class="widget-body widget-grid">
+        <div id="@contacts"></div>
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="@rowTemplate">
+    <tr data-uid="#: ID #" style="width:80%;">
+        <td>
+            <span class="img-circle" data-mnemonic="BaseContact" data-id="#= data.ID #" style="display: inline-block;">
+                <img src="#=pbaAPI.imageHelpers.getImageThumbnailSrc(Image, 'XXS', 'NoPhoto')#" />
+            </span>
+            <span>#:Title#</span>
+        </td>
+        <td style="width:20%; padding-right:20px;">
+            <button class="btn btn-primary" data-role="chooseContact">Выбрать</button>
+        </td>
+    </tr>
+</script>
+
+<script>
+    (function () {
+
+        var $contactName = $('#@contactName');
+        var $parent = $('#@wrapID').closest("[data-role=window]");
+        var parent = $parent.data('kendoWindow');
+
+        var grid = $('#@contacts').kendoGrid({
+            autoBind: false,
+            filterable: false,
+            scrolable: false,
+            columns: [{ title: "Контакт" }],
+            sortable: false,
+            pageable: false,
+            selectable: "row",
+            rowTemplate: kendo.template($("#@rowTemplate").html()),
+            dataSource: {
+                type: "aspnetmvc-ajax",
+                page: 1,
+                pageSize: 5,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true,
+                transport: {
+                    read: {
+                        url: "@Url.Action("KendoUI_CollectionRead", "Standart")",
+                        data: { mnemonic: "BaseContact", searchStr: null, extrafilter: null }
+                    },
+                    prefix: ""
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors",
+                    model: {
+                        id: "ID",
+                        fields: {
+                            ID: { nullable: false, editable: false },
+                            Title: {},
+                            Image: { nullable: true }
+                        }
+                    }
+                }
+            }
+        }).data('kendoGrid');
+
+        $contactName.keyup(function (e) {
+            var val = $contactName.val() || "";
+
+            grid.dataSource.transport.options.read.data.searchStr = val;
+
+            grid.dataSource.read();
+        });
+
+        $('#@createBtn').on('click', function () {
+            var name = $contactName.val();
+            var phone = "@Model.Phone";
+            var code = "@Model.Code";
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("CreateContact", "Event")",
+                data: JSON.stringify({ contactName: name, phone: phone, code: code }),
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    if (result.error) {
+                        pbaAPI.errorMsg(result.error);
+                    } else {
+                        parent.contact = result;
+                        parent.close();
+                    }
+                }
+            });
+
+        });
+
+        $("#@wrapID").on("click", "[data-role=chooseContact]", function (e) {
+            var target = $(e.target).closest('tr');
+            grid.select(target);
+            parent.contact = grid.dataItem(target);
+            var phone = "@Model.Phone";
+            var code = "@Model.Code";
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("AddPhoneToContact", "Event")",
+                data: JSON.stringify({ id: parent.contact.ID, phone: phone, code: code }),
+                contentType: "application/json; charset=utf-8",
+                success: function (e) {
+                    if (e) {
+                        parent.contact = e;
+                        parent.close();
+                    }
+                }
+            });
+        });
+
+
+    })();
+</script>

@@ -1,0 +1,228 @@
+﻿@model Dialog_WidgetViewModel
+
+@using Base.UI.ViewModal
+
+@{
+    string nameToolbar = Html.CreateSystemName("toolbar");
+    string btnAddId = Html.CreateSystemName("add");
+    string btnEditId = Html.CreateSystemName("edit");
+    string btnDeleteId = Html.CreateSystemName("delete");
+    string btnColorizeId = Html.CreateSystemName("colorize");
+    string searchboxId = Html.CreateSystemName("searchbox");
+
+    string startDateRangeId = Html.CreateSystemName("startDateRangeId");
+    string endDateRangeId = Html.CreateSystemName("endDateRangeId");
+    bool actionCreate = !Model.IsReadOnly && Model.IsPermission(TypePermission.Create) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Create);
+    bool actionEdit = !Model.IsReadOnly && Model.IsPermission(TypePermission.Write) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Edit);
+    bool actionDelete = !Model.IsReadOnly && Model.IsPermission(TypePermission.Delete) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Delete);
+}
+
+<script>
+    window["@nameToolbar"] = new WrapToolbar("@nameToolbar", "ToolbarListView");
+
+    (function () {
+        var composite = window["@Model.DialogID"];
+
+        var toolbar = window["@nameToolbar"];
+
+        composite.registerWidget(toolbar);
+
+        toolbar.listViewSelectedObject = null;
+
+        toolbar.refreshListView = function () {
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "refresh",
+                    params: {}
+                });
+        };
+
+        toolbar.__overrideOnNeighbourWidgetChanged = toolbar.onNeighbourWidgetChanged;
+
+        toolbar.onNeighbourWidgetChanged = function (e) {
+            toolbar.__overrideOnNeighbourWidgetChanged(e);
+
+            if (e.sender.baseType === 'ListView'){
+                if (e.event === "select" || e.event === "onDataBound") {                        
+                    if (!toolbar.widget()) return;
+
+                    if (e.event === "select")
+                        toolbar.listViewSelectedObject = e.params.dataItem;
+                    else toolbar.listViewSelectedObject = null;
+
+                    var isSelected = toolbar.listViewSelectedObject != null;
+
+                    var isSelectNode = true;
+
+                    @if (actionCreate) {
+                        @: toolbar.enable("#@btnAddId", isSelectNode);
+                    }
+
+                    @if (actionEdit) {
+                        @: toolbar.enable("#@btnEditId", isSelected && isSelectNode);
+
+                    }
+                    else
+                    {
+                        @: toolbar.enable("#@btnEditId", isSelected && isSelectNode);
+                    }
+
+                    @if (actionDelete) {
+                        @: toolbar.enable("#@btnDeleteId", isSelected);
+                    }
+
+                    toolbar.element().find("button[data-onlyForSelected=true]").each(function () { $(this).data("kendoButton").enable(isSelected); });
+
+                    if (e.event === "onDataBound") {
+                        @*toolbar.element().find('#@searchboxId').find('.cancel-search').removeClass('k-loading').addClass('k-i-close');
+                            toolbar.popupEl().find('#@searchboxId').find('.cancel-search').removeClass('k-loading').addClass('k-i-close');*@
+
+                    }
+
+                } else if (e.event === "dblclick") {
+                    //hack
+                    if (composite.select) return;
+
+                    var $btnEdit = $("#@btnEditId");
+
+                    if (!$btnEdit.hasClass("k-state-disabled")) {
+                        composite.onWidgetChanged(
+                            {
+                                sender: toolbar,
+                                event: "click",
+                                params: { action: "edit" }
+                            });
+                    }
+                }
+                    
+            }
+        };
+
+        //events
+        toolbar.onClick = function (e) {
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "click",
+                    params: {
+                        event: e,
+                        action: e.target[0].getAttribute("data-action")
+                    }
+                });
+        };
+
+        toolbar.searchBox_onClick = function (e) {
+            if (e.str) {
+                e.sender.find('.cancel-search').addClass('k-loading').removeClass('k-i-close');
+            }
+
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "search",
+                    params: { str: e.str }
+                });
+        };
+
+    })();
+</script>
+
+
+@(Html.Kendo().ToolBar()
+      .Name(nameToolbar)
+      .Events(e => e.OverflowOpen(nameToolbar + ".onOverflowOpen"))
+      .Items(items =>
+      {
+          items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+          {
+              if (actionCreate)
+              {
+                  buttons.Add().Text("Создать").HtmlAttributes(new { title = "Создать", data_action = "add" }).SpriteCssClass("btntoolbar fa fa-plus").Enable(actionCreate).Id(btnAddId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+              }
+
+              if (actionEdit)
+              {
+                  buttons.Add().Text("Редактировать").HtmlAttributes(new { title = "Редактировать", data_action = "edit" }).SpriteCssClass("btntoolbar fa fa-pencil").Id(btnEditId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+              }
+              else
+              {
+                  buttons.Add().Text("Просмотр").HtmlAttributes(new { title = "Просмотр", data_action = "edit" }).SpriteCssClass("btntoolbar fa fa-eye").Id(btnEditId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+              }
+
+              if (actionDelete)
+              {
+                  buttons.Add().Text("Удалить").HtmlAttributes(new { title = "Удалить", data_action = "delete" }).SpriteCssClass("btntoolbar fa fa-trash-o").Enable(actionDelete).Id(btnDeleteId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+              }
+          });
+
+          items.Add().Type(CommandType.Button).Text("Пользовательская подсветка").HtmlAttributes(new { title = "Пользовательская подсветка", data_action = "colorize" }).SpriteCssClass("btntoolbar fa fa-eye").Enable(true).Id(btnColorizeId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+
+          items.Add().HtmlAttributes(new { @class = "date" })
+              .Template(@"<input id='" + startDateRangeId  + "'/>");
+
+          items.Add().HtmlAttributes(new { @class = "date" })
+              .Template(@"<input id='" + endDateRangeId + "'/>");
+
+
+          items.Add().Type(CommandType.Separator);
+
+          items.Add().Template($@"<input id='{searchboxId}' placeholder='Поиск' />");
+      })
+      )
+
+<script>
+    $(function () {
+        var toolbar = window["@nameToolbar"];
+        var $toolbar = toolbar.element();
+
+        //NOTE: в данной версии toolbar-а возможно использовать иконки только из кендо-спрайтов
+        //TODO: убрать!!!
+        $toolbar.find(".k-sprite.fa").removeClass("k-sprite");
+        toolbar.popupEl().find(".k-sprite.fa").removeClass("k-sprite");
+
+        toolbar.enable("#@btnEditId", false);
+        toolbar.enable("#@btnDeleteId", false);
+
+        var composite = window["@Model.DialogID"];
+        var date = new Date();
+        var firstDay = new Date(date.getFullYear(), 0, 1);
+        var lastDay = new Date(date.getFullYear(), 11, 31);
+        $toolbar.find('#@startDateRangeId').kendoDatePicker({
+            value: firstDay,
+            change: function () {
+                var self = this;
+                composite.onWidgetChanged(
+                    {
+                        sender: toolbar,
+                        event: "startDateRangeChange",
+                        params: { dateValue: self.value() }
+                    });
+            }
+        });
+        $toolbar.find('#@endDateRangeId').kendoDatePicker({
+            value: lastDay,
+            change: function () {
+                var self = this;
+                composite.onWidgetChanged(
+                    {
+                        sender: toolbar,
+                        event: "endDateRangeChange",
+                        params: { dateValue: self.value() }
+                    });
+            }
+        });
+        $toolbar.find("#@searchboxId").kendoAutoComplete({
+            dataSource: [],
+            change: function () {
+                var self = this;
+                composite.onWidgetChanged(
+                    {
+                        sender: toolbar,
+                        event: "searchBoxChange",
+                        params: { searchText: self.value() }
+                    });
+            }
+        });
+    });
+</script>

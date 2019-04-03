@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+<DocKinds>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>1</ExternalID>
+		<ExternalParentID/>
+		<Code>06</Code>
+		<PublishCode>06</PublishCode>
+		<Name>ДОГОВОР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>01</Code>
+		<PublishCode>01</PublishCode>
+		<Name>ДОПОЛНИТ СОГЛАШЕНИЕ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>2</ExternalID>
+		<ExternalParentID/>
+		<Code>02</Code>
+		<PublishCode>02</PublishCode>
+		<Name>ДОПОЛНЕНИЕ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>03</Code>
+		<PublishCode>03</PublishCode>
+		<Name>ПРИЛОЖЕНИЕ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>3</ExternalID>
+		<ExternalParentID/>
+		<Code>04</Code>
+		<PublishCode>04</PublishCode>
+		<Name>ЕДИНИЧНЫЙ ДОГОВОР</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>04</Code>
+		<PublishCode>04</PublishCode>
+		<Name>ЕДИНИЧНЫЙ ДОКУМЕНТ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>4</ExternalID>
+		<ExternalParentID/>
+		<Code>05</Code>
+		<PublishCode>05</PublishCode>
+		<Name>ЕДИНИЧНЫЙ КОНТРАКТ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>05</Code>
+		<PublishCode>05</PublishCode>
+		<Name>ЕДИНИЧНЫЙ КОНТРАКТ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>5</ExternalID>
+		<ExternalParentID/>
+		<Code>A1</Code>
+		<PublishCode>A1</PublishCode>
+		<Name>ДОП.СОГЛ.К ДОГ.АРЕНД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>A1</Code>
+		<PublishCode>A1</PublishCode>
+		<Name>РАМ. ДОГОВОР АРЕНДЫ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>6</ExternalID>
+		<ExternalParentID/>
+		<Code>A2</Code>
+		<PublishCode>A2</PublishCode>
+		<Name>ПЕРЕЧЕНЬ ОСН.СРЕДСТВ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>A2</Code>
+		<PublishCode>A2</PublishCode>
+		<Name>ЕДИН. ДОГОВОР АРЕНДЫ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>7</ExternalID>
+		<ExternalParentID/>
+		<Code>A3</Code>
+		<PublishCode>A3</PublishCode>
+		<Name>ДОП.СОГЛ.К ДОГ.СУБАРЕНД</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>A3</Code>
+		<PublishCode>A3</PublishCode>
+		<Name>РАМ. ДОГОВОР СУБАРЕНДЫ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>8</ExternalID>
+		<ExternalParentID/>
+		<Code>A4</Code>
+		<PublishCode>A4</PublishCode>
+		<Name>ПЕРЕЧЕНЬ ОСН.СРЕДСТВ С/А</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>A4</Code>
+		<PublishCode>A4</PublishCode>
+		<Name>ЕДИН. ДОГОВОР СУБАРЕНДЫ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>9</ExternalID>
+		<ExternalParentID/>
+		<Code>A5</Code>
+		<PublishCode>A5</PublishCode>
+		<Name>ДОП.СОГЛ.К ДОГ.НАЙМ ЖИЛЬЯ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>A5</Code>
+		<PublishCode>A5</PublishCode>
+		<Name>РАМ.ДОГОВОР НАЙМ ЖИЛЬЯ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>10</ExternalID>
+		<ExternalParentID/>
+		<Code>D1</Code>
+		<PublishCode>D1</PublishCode>
+		<Name>КОНТРАКТ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>D2</Code>
+		<PublishCode>D2</PublishCode>
+		<Name>СОГЛАШЕНИЕ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>11</ExternalID>
+		<ExternalParentID/>
+		<Code>PB</Code>
+		<PublishCode>PB</PublishCode>
+		<Name>ДОП.СОГЛАШЕНИЕ ПБУ 2</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>PB</Code>
+		<PublishCode>PB</PublishCode>
+		<Name>ДОГОВОР СТР.ПОДРЯДА ПБУ 2</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>12</ExternalID>
+		<ExternalParentID/>
+		<Code>R1</Code>
+		<PublishCode>R1</PublishCode>
+		<Name>ОС:Д.СОГЛ.К Д.РЕАЛИЗ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>R1</Code>
+		<PublishCode>R1</PublishCode>
+		<Name>ОС:РАМ.ДОГ.РЕАЛИЗАЦ.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>13</ExternalID>
+		<ExternalParentID/>
+		<Code>R2</Code>
+		<PublishCode>R2</PublishCode>
+		<Name>ПЕРЕЧЕНЬ ОСН.СРЕДСТВ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>R2</Code>
+		<PublishCode>R2</PublishCode>
+		<Name>ОС:ЕД.ДОГ.РЕАЛИЗАЦИИ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>14</ExternalID>
+		<ExternalParentID/>
+		<Code>RA</Code>
+		<PublishCode>RA</PublishCode>
+		<Name>Д.СОГЛ.К ДОГ.АРЕНДЫ ЗЕМЛИ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>RA</Code>
+		<PublishCode>RA</PublishCode>
+		<Name>РАМ.ДОГ-Р АРЕНДЫ ЗЕМЛИ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>15</ExternalID>
+		<ExternalParentID/>
+		<Code>TO</Code>
+		<PublishCode>TO</PublishCode>
+		<Name>ПЕРЕЧЕНЬ ОС К ДОГ.ТЕХОБСЛ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>TO</Code>
+		<PublishCode>TO</PublishCode>
+		<Name>ДОГОВОР ТЕХОБСЛУЖИВАНИЯ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>16</ExternalID>
+		<ExternalParentID/>
+		<Code>U1</Code>
+		<PublishCode>U1</PublishCode>
+		<Name>Д.СОГЛ.К ОС В УСТ.КАП-Л.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>U1</Code>
+		<PublishCode>U1</PublishCode>
+		<Name>РАМ.ДОГ-Р ОС В УСТ.КАП-Л.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>17</ExternalID>
+		<ExternalParentID/>
+		<Code>U2</Code>
+		<PublishCode>U2</PublishCode>
+		<Name>ПЕРЕЧЕНЬ ОСН.СРЕДСТВ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>U2</Code>
+		<PublishCode>U2</PublishCode>
+		<Name>ЕД. ДОГ-Р ОС В УСТ.КАП-Л.</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+	<DocKind>
+		<ID>0</ID>
+		<ExternalID>18</ExternalID>
+		<ExternalParentID/>
+		<Code>Z1</Code>
+		<PublishCode>Z1</PublishCode>
+		<Name>ИЗМЕНЕНИЕ</Name>
+		<DateFrom>2017-01-01</DateFrom>
+		
+	</DocKind>
+</DocKinds>
+  </DefaultDataHolder>

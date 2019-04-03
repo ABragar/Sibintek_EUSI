@@ -1,0 +1,55 @@
+﻿@using Base.BusinessProcesses.Services.Abstract
+@using Base.BusinessProcesses.Strategies
+@using WebUI.Controllers
+@model EditorViewModel
+
+
+@{
+    string name = "n_" + Guid.NewGuid().ToString("N");
+}
+
+
+<div>
+    <input id="@name" style="width: 100%" />
+</div>
+
+<script>
+    $(function () {
+        var value = "";
+
+
+        $('#@name').closest('form').on('onAfterBind', function (e, form) {
+
+            var type = form.getViewData('ObjectType');
+
+            value = form.getPr('@Model.PropertyName');
+
+            var url = "@Url.Action("GetStakeHoldersStrategies", "BusinessProcesses")" + '?type=' + (type.Value || type) + '';
+
+            $('#@name').kendoDropDownList({
+                dataTextField: 'Text',
+                dataValueField: 'Value',
+                optionLabel: 'Стратегия по-умолчанию',
+                template: "<span data-val='#=data.Name#'>#=data.Text#</span>",
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: url
+                        }
+                    }
+                },
+                select: function (e) {
+                    value = e.sender.dataItem(e.item).Value;
+                }
+            });
+
+            var dropdownlist = $("#@name").data("kendoDropDownList");
+            dropdownlist.value(value);
+        });
+
+
+        $("#@name").closest("form").on("onSave", function (e, form) {
+            form.setPr("@(Model.PropertyName)", value);
+        });
+    });
+</script>

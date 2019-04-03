@@ -1,0 +1,74 @@
+﻿@model EditorViewModel
+
+@{
+    string name = "t_" + Guid.NewGuid().ToString("N");
+    string type = Model.EditorTemplateParams["Type"].ToLower();
+    string validateMsg = "";
+    string mask = "";
+
+    switch (type.ToLower())
+    {
+        case "ogrn":
+            validateMsg = "Значение должно содержать 13 цифр";
+            mask = "0000000000000";
+            break;
+        case "ogrnip":
+            validateMsg = "Значение должно содержать 15 цифр";
+            mask = "000000000000000";
+            break;
+        case "inn":
+            validateMsg = "Значение должно содержать 10 или 12 цифр";
+            mask = "0000000000~~";
+            break;
+        case "kpp":
+            validateMsg = "Значение должно содержать 9 цифр";
+            mask = "000000000";
+            break;
+        case "okpo":
+            validateMsg = "Значение должно содержать 8 цифр";
+            mask = "00000000";
+            break;
+        default :
+            validateMsg = "";
+            mask = "";
+            break;
+    }
+
+        }
+
+@(Html.Kendo().MaskedTextBox().Name(name)
+        .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { data_validmask_msg = validateMsg, style = "width:100%; max-width: 200px;", field_type = type }))
+        .Mask(mask)
+        .Rules(rules => { rules.Add('~', "/[\\d]/"); })
+        .PromptChar(" ")
+)
+
+<script type="text/javascript">
+    checkFieldLength = function (e) {
+        var container = e;
+        kendo.init(container);
+        container.kendoValidator({
+            rules: {
+                validmask: function (input) {
+                    if (input.is("[data-validmask-msg]") && input.val() != "") {
+                        var textbox = input.data("kendoMaskedTextBox");
+                        if ((input.attr("field-type") === "inn" && textbox.value().indexOf(textbox.options.promptChar) === 10) || textbox.value().indexOf(textbox.options.promptChar) === -1) {
+                            return true;
+                        }
+                        else
+                            return false;
+                    }
+
+                    return true;
+                }
+            }
+        });
+    }
+
+
+
+    $(function () {
+        var e = $("#@name").closest("form");
+        checkFieldLength(e);
+    });    
+</script>

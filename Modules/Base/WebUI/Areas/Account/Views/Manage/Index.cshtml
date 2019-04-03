@@ -1,0 +1,147 @@
+﻿@using WebUI.Areas.Account
+@using WebUI.Areas.Account.Models.Manage
+@model ManageViewModel
+
+@{
+    var routevalues = Url.FromCurrent();
+    string returnUrl = Url.GetReturnUrl();
+    string returnCaption = returnUrl != "/" ? "Назад" : "На главную";
+
+    ViewBag.Title = "Управление";
+}
+
+<!-- LOCAL ACCOUNT CARD -->
+<div class="card card--local-account z-depth-0">
+    <div class="card-content">
+        <div>
+            <i class="card-content__icon mdi mdi-account white-text medium @(Model.HasPassword ? "green" : "grey")"></i>
+            <div class="card-content__info" style="color:white">
+                <big>Локальный профиль</big>
+                <strong class="flow-text truncate">@Html.ValueFor(x => x.Login)</strong>
+            </div>
+        </div>
+    </div>
+    <div class="card-action" style="padding: 1rem;">
+        @if (Model.CanConfirmEmail)
+        {
+            using (Html.BeginForm("SendConfirmEmail", "Account", routevalues, FormMethod.Post, new Dictionary<string, object>
+            {
+                { "class", "inline" }
+            }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.Login)
+                <a href="#" onclick="$(this).closest('form').submit()">Подтвердить адрес</a>
+            }
+        }
+        @if (Model.HasPassword)
+        {
+            <a href="@Url.Action("ChangePassword", routevalues)" data-route="forward">Сменить пароль</a>
+
+            if (Model.CanDetachPassword)
+            {
+                using (Html.BeginForm("DetachPassword", "Manage", routevalues, FormMethod.Post, new Dictionary<string, object>
+                {
+                    { "data-confirm", "Подтвердите действие" },
+                    { "data-message", "Вы точно хотите удалить пароль?" },
+                    { "class", "inline" }
+                }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.UserId)
+                    <a href="#" onclick="$(this).closest('form').submit()">Удалить пароль</a>
+                }
+            }
+        }
+        else
+        {
+            <a href="@Url.Action("AttachPassword", routevalues)" data-route="forward">Установить пароль</a>
+        }
+    </div>
+</div>
+
+@if (Model.UserProviders.Count > 0)
+{
+    <ul class="collection">
+        @foreach (var provider in Model.UserProviders)
+        {
+            <li class="collection-item avatar avatar--singleline avatar--with-secondary-content">
+                @RenderSocial(provider, true)
+
+
+                @using (Html.BeginForm("DetachExternalLogin", "Manage", routevalues, FormMethod.Post, new Dictionary<string, object>
+                {
+                    { "data-confirm", "Подтвердите действие" },
+                    { "data-message", "Вы точно хотите удалить метод входа?" },
+                    { "class", "inline" }
+                }))
+                {
+
+
+
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(x => x.UserId)
+                    @Html.HiddenFor(x => x.FromRoot(provider).LoginProvider)
+                    @Html.HiddenFor(x => x.FromRoot(provider).ProviderKey)
+
+                    if (Model.CanDetachProvider)
+                    {
+                        <a class="secondary-content btn-flat btn-icon" href="#" onclick="$(this).closest('form').submit()"><i class="mdi mdi-delete"></i></a>
+                    }
+                    else
+                    {
+                        <a class="secondary-content btn-flat btn-icon disabled" href="#"><i class="mdi mdi-delete"></i></a>
+                    }
+
+                }
+            </li>
+        }
+    </ul>
+}
+
+@if (Model.CanAttachProviders.Count > 0)
+{
+    using (Html.BeginForm("AttachExternalLogin", "Manage", routevalues))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(x => x.UserId)
+        <ul class="collection">
+            @foreach (var provider in Model.CanAttachProviders)
+            {
+                <li class="collection-item avatar avatar--singleline avatar--with-secondary-content">
+                    @RenderSocial(provider, false)
+
+                    <button type="submit" name="LoginProvider" value="@provider.LoginProvider" style="display: none;"></button>
+                    <a class="secondary-content btn-flat btn-icon" href="#" onclick="$(this).prev().click()"><i class="mdi mdi-plus"></i></a>
+                </li>
+            }
+        </ul>
+    }
+}
+
+@using (Html.BeginForm("Logout", "Account", routevalues, FormMethod.Post, new Dictionary<string, object> { { "class", "account-card__form" } }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="actions">
+        <!-- НАЗАД/НА ГЛАВНУЮ -->
+        <a class="left" href="@returnUrl" data-route="exit" style="padding-right: 10px;font-size: 14px;">@returnCaption</a>
+
+        <!-- РАЗЛОГИНИТЬСЯ -->
+        <a class="right" href="#" onclick="$(this).closest('form').submit()" style="font-size: 14px;">Выход</a>
+
+        <div class="clearfix"></div>
+    </div>
+}
+
+@section card_class {account-card--manage no-footer}
+
+
+@helper RenderSocial(WebUI.Areas.Account.Models.ProviderInfo provider, bool isAttached)
+{
+string colorClass = isAttached ? "green" : "";
+
+    <i class="@string.Format("{0} circle {1}", Html.GetSocialIcon(provider.LoginProvider), colorClass)"></i>
+
+    <span class="title truncate">@provider.Caption</span>
+}

@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DefaultDataHolder>
+  <TaxFederalExemptions>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>1</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>1</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации и учреждения уголовно-исполнительной системы</TaxpayersCategory>
+      <NumChapterLawRF>30 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>1</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие статус организации, использование имущества в соответствующей деятельности, иные документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении имущества, используемого для осуществления возложенных на них функций </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>2</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>2</TaxExemptionExternalID>
+      <TaxpayersCategory>Религиозные организации</TaxpayersCategory>
+      <NumChapterLawRF>31 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>2</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие статус организации, использование имущества в соответствующей деятельности, иные документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении имущества, используемого для осуществления религиозной деятельности </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>3</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>3</TaxExemptionExternalID>
+      <TaxpayersCategory>Общероссийские общественные организации инвалидов (в том числе созданные как союзы общественных организаций инвалидов), среди членов которых инвалиды и их законные представители составляют не менее 80 процентов</TaxpayersCategory>
+      <NumChapterLawRF>32 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>Абзац 1 пункта 3</NumParagraphLawRF>
+      <BasisForGranting>документы, подтверждающие статус организации, использование имущества в соответствующей деятельности, иные документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>в отношении имущества, используемого для осуществления их уставной деятельности </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>4</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>4</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации, уставный капитал которых полностью состоит из вкладов указанных в абзаце 1 пункта 3 статтьи 381 Главы 30 "Налог на имущество организаций" НК РФ общероссийских общественных организаций инвалидов, если среднесписочная численность инвалидов среди их работников составляет не менее 50 процентов, а их доля в фонде оплаты труда - не менее 25 процентов</TaxpayersCategory>
+      <NumChapterLawRF>33 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>Абзац 2 пункта 3</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении имущества, используемого для производства и (или) реализации товаров (за исключением подакцизных товаров, минерального сырья и иных полезных ископаемых, а также иных товаров по перечню, утверждаемому Правительством Российской Федерации по согласованию с общероссийскими общественными организациями инвалидов), работ и услуг (за исключением брокерских и иных посреднических услуг)</ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>5</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>5</TaxExemptionExternalID>
+      <TaxpayersCategory>Учреждения, единственными собственниками имущества которых являются указанные в абзаце 1 пункта 3 статьи 381 "Главы 30 "Налог на имущество организаций" НК РФ общероссийские общественные организации инвалидов</TaxpayersCategory>
+      <NumChapterLawRF>34 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>Абзац 3 пункта 3</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении имущества, используемого для достижения образовательных, культурных, лечебно-оздоровительных, физкультурно-спортивных, научных, информационных и иных целей социальной защиты и реабилитации инвалидов, а также для оказания правовой и иной помощи инвалидам, детям-инвалидам и их родителям </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>6</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>6</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации, основным видом деятельности которых является производство фармацевтической продукции</TaxpayersCategory>
+      <NumChapterLawRF>35 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>4</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении имущества, используемого ими для производства ветеринарных иммунобиологических препаратов, предназначенных для борьбы с эпидемиями и эпизоотиями </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>7</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>7</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации</TaxpayersCategory>
+      <NumChapterLawRF>36 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>11</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении федеральных автомобильных дорог общего пользования и сооружений, являющихся их неотъемлемой технологической частью. Перечень имущества, относящегося к указанным объектам, утверждается Правительством Российской Федерации</ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>8</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+
+      <TaxExemptionExternalID>14</TaxExemptionExternalID>
+      <TaxpayersCategory>Специализированные протезно-ортопедические предприятия</TaxpayersCategory>
+      <NumChapterLawRF>37 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>13</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие статус организации, использование имущества в соответствующей деятельности, иные документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>Имущество специализированных протезно-ортопедических предприятий</ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>9</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>15</TaxExemptionExternalID>
+      <TaxpayersCategory>Коллегии адвокатов, адвокатские бюро и юридические консультации</TaxpayersCategory>
+      <NumChapterLawRF>38 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>14</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие статус организации, иные документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>Имущество коллегий адвокатов, адвокатских бюро и юридических консультаций </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>10</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>16</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации, которым присвоен статус государственных научных центров</TaxpayersCategory>
+      <NumChapterLawRF>39 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>15</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие статус организации</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>Имущество организаций, которым присвоен статус государственных научных центров </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>11</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>8</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации, за исключением организаций, указанных в пункте 22 статьи 381 Главы 30 "Налог на имущество организаций" НК РФ</TaxpayersCategory>
+      <NumChapterLawRF>40 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>17</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие статус организации, иные документы, подтверждающие право на льготу </BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении имущества, учитываемого на балансе организации - резидента особой экономической зоны, созданного или приобретенного в целях ведения деятельности на территории особой экономической зоны, используемого на территории особой экономической зоны в рамках соглашения о создании особой экономической зоны и расположенного на территории данной особой экономической зоны, в течение десяти лет с момента постановки на учет указанного имущества</ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>12</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>17</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации, признаваемые управляющими компаниями в соответствии с Федеральным законом "Об инновационном центре "Сколково"</TaxpayersCategory>
+      <NumChapterLawRF>41 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>19</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>Имущество организаций, признаваемых управляющими компаниями в соответствии с Федеральным законом "Об инновационном центре "Сколково" </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>13</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>18</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации, получившие статус участников проекта по осуществлению исследований, разработок и коммерциализации их результатов в соответствии с Федеральным законом "Об инновационном центре "Сколково"</TaxpayersCategory>
+      <NumChapterLawRF>42 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>20</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие наличие статуса участников проекта и предусмотренные Федеральным законом "Об инновационном центре "Сколково", а также данные учета доходов (расходов)</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>Организации утрачивают право на освобождение от налогообложения в случаях, предусмотренных пунктом 2 статьи 145.1 Налогового кодекса Российской Федерации (для указанных в настоящем пункте организаций, являющихся исследовательскими корпоративными центрами, - пунктом 2.1 статьи 145.1 Налогового кодекса Российской Федерации) </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>14</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>19</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации</TaxpayersCategory>
+      <NumChapterLawRF>43 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>21</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении вновь вводимых объектов, имеющих высокую энергетическую эффективность, в соответствии с перечнем таких объектов, установленным Правительством Российской Федерации- в течение трех лет со дня постановки на учет указанного имущества</ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>15</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>9</TaxExemptionExternalID>
+      <TaxpayersCategory>Судостроительные организации, имеющие статус резидента промышленно-производственной особой экономической зоны</TaxpayersCategory>
+      <NumChapterLawRF>44 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>22</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие статус организации, использование имущества в определенных целях, иные документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении имущества, учитываемого на балансе и используемого в целях строительства и ремонта судов, в течение десяти лет с даты регистрации таких организаций в качестве резидента особой экономической зоны, а также в отношении имущества, созданного или приобретенного в целях строительства и ремонта судов, в течение десяти лет с даты постановки на учет указанного имущества, но не белее чем в течение срока существования промышленно-производственной особой экономической зоны </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>16</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>10</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации, признаваемые управляющими компаниями особых экономических зон и учитывающие на балансе в качестве объектов основных средств недвижимое имущество, созданное в целях реализации соглашений о создании особых экономических зон</TaxpayersCategory>
+      <NumChapterLawRF>45 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>23</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В течение десяти лет с месяца, следующего за месяцем постановки на учет указанного имущества </ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>17</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>21</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации</TaxpayersCategory>
+      <NumChapterLawRF>46 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>24</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие использование имущества в определенных целях, иные документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении имущества (включая имущество, переданное по договорам аренды), удовлетворяющего в течение налогового периода одновременно следующим условиям: - имущество расположено во внутренних морских водах Российской Федерации, в территориальном море Российской Федерации, на континентальном шельфе Российской Федерации, в исключительной экономической зоне Российской Федерации либо в российской части (российском секторе) дна Каспийского моря; - имущество используется при осуществлении деятельности по разработке морских месторождений углеводородного сырья, включая геологическое изучение, разведку, проведение подготовительных работ. Если имущество в течение налогового периода расположено как в границах территорий (акваторий), указанных в абзаце втором настоящего пункта, так и на иных территориях, освобождение от налогообложения действует при условии, что указанное имущество удовлетворяет требованиям абзацев первого - третьего настоящего пункта в течение не менее 90 календарных дней в течение одного календарного года</ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>18</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>11</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации</TaxpayersCategory>
+      <NumChapterLawRF>47 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>25</NumParagraphLawRF>
+      <BasisForGranting>Инвентарные карточки основных средств, иные документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>в отношении движимого имущества, принятого с 1 января 2013 года на учет в качестве основных средств, за исключением объектов движимого имущества, принятых на учет в результате: реорганизации или ликвидации юридических лиц; передачи, включая приобретение, имущества между лицами, признаваемыми в соответствии с положениями пункта 2 статьи 105.1 Налогового Кодекса Российской Федерации взаимозависимыми</ConditionForGranting>
+    </TaxFederalExemption>
+    <TaxFederalExemption>
+      <ID>0</ID>
+      <ExternalID>19</ExternalID>
+      <TaxNameExternalID>1</TaxNameExternalID>
+      <TaxPeriodExternalID>1</TaxPeriodExternalID>
+      <SibRegionExternalID>23</SibRegionExternalID>
+      <TaxExemptionExternalID>12</TaxExemptionExternalID>
+      <TaxpayersCategory>Организации</TaxpayersCategory>
+      <NumChapterLawRF>48 "Налог на имущество организаций" Налогового кодекса Российской Федерации</NumChapterLawRF>
+      <NumArticleLawRF>381</NumArticleLawRF>
+      <NumParagraphLawRF>26</NumParagraphLawRF>
+      <BasisForGranting>Документы, подтверждающие статус организации, иные документы, подтверждающие право на льготу</BasisForGranting>
+      <Value>100</Value>
+      <Unit>%</Unit>
+      <ConditionForGranting>В отношении имущества, учитываемого на балансе организации - участника свободной экономической зоны, созданного или приобретенного в целях ведения деятельности на территории свободной экономической зоны и расположенного на территории данной свободной экономической зоны, в течение десяти лет с месяца, следующего за месяцем принятия на учет указанного имущества</ConditionForGranting>
+    </TaxFederalExemption>
+  </TaxFederalExemptions>
+</DefaultDataHolder>

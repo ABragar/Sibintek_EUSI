@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\CorpProp_ReportingService</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/DAL.dll">
+      <publishTime>01/29/2019 14:46:17</publishTime>
+    </File>
+    <File Include="bin/DAL.dll.config">
+      <publishTime>01/23/2019 11:38:09</publishTime>
+    </File>
+    <File Include="bin/DAL.pdb">
+      <publishTime>01/29/2019 14:46:17</publishTime>
+    </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>01/06/2018 01:25:34</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Msagl.dll">
+      <publishTime>05/06/2017 19:22:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Msagl.Drawing.dll">
+      <publishTime>05/06/2017 19:22:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Msagl.GraphViewerGdi.dll">
+      <publishTime>05/06/2017 19:22:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Cors.dll">
+      <publishTime>04/05/2017 11:53:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>04/05/2017 11:53:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>04/05/2017 11:53:40</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>04/05/2017 11:53:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>02/13/2015 13:16:40</publishTime>
+    </File>
+    <File Include="bin/Microsoft.SqlServer.Types.dll">
+      <publishTime>02/18/2011 23:01:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Win32.Primitives.dll">
+      <publishTime>11/05/2016 04:55:32</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>03/24/2018 17:44:14</publishTime>
+    </File>
+    <File Include="bin/NLog.dll">
+      <publishTime>02/27/2018 23:35:06</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>11/13/2012 12:19:34</publishTime>
+    </File>
+    <File Include="bin/Owin.Security.AesDataProtectorProvider.dll">
+      <publishTime>04/28/2015 21:56:58</publishTime>
+    </File>
+    <File Include="bin/QuickGraph.Data.dll">
+      <publishTime>06/08/2015 19:10:52</publishTime>
+    </File>
+    <File Include="bin/QuickGraph.dll">
+      <publishTime>06/08/2015 19:10:52</publishTime>
+    </File>
+    <File Include="bin/QuickGraph.Graphviz.dll">
+      <publishTime>06/08/2015 19:10:52</publishTime>
+    </File>
+    <File Include="bin/QuickGraph.Serialization.dll">
+      <publishTime>06/08/2015 19:10:52</publishTime>
+    </File>
+    <File Include="bin/ReportStorage.dll">
+      <publishTime>01/29/2019 14:46:18</publishTime>
+    </File>
+    <File Include="bin/ReportStorage.dll.config">
+      <publishTime>01/09/2019 09:10:04</publishTime>
+    </File>
+    <File Include="bin/ReportStorage.pdb">
+      <publishTime>01/29/2019 14:46:18</publishTime>
+    </File>
+    <File Include="bin/RestService.dll">
+      <publishTime>01/29/2019 14:46:19</publishTime>
+    </File>
+    <File Include="bin/RestService.pdb">
+      <publishTime>01/29/2019 14:46:19</publishTime>
+    </File>
+    <File Include="bin/ru/EntityFramework.resources.dll">
+      <publishTime>03/02/2015 09:32:38</publishTime>
+    </File>
+    <File Include="bin/ru/EntityFramework.SqlServer.resources.dll">
+      <publishTime>03/02/2015 09:32:38</publishTime>
+    </File>
+    <File Include="bin/ru/System.Net.Http.Formatting.resources.dll">
+      <publishTime>01/28/2015 04:02:52</publishTime>
+    </File>
+    <File Include="bin/ru/System.Web.Http.resources.dll">
+      <publishTime>01/28/2015 04:03:04</publishTime>
+    </File>
+    <File Include="bin/ru/System.Web.Http.WebHost.resources.dll">
+      <publishTime>01/28/2015 04:03:54</publishTime>
+    </File>
+    <File Include="bin/SimpleInjector.dll">
+      <publishTime>06/04/2017 01:08:32</publishTime>
+    </File>
+    <File Include="bin/SimpleInjector.Extensions.ExecutionContextScoping.dll">
+      <publishTime>03/30/2017 18:55:18</publishTime>
+    </File>
+    <File Include="bin/SimpleInjector.Integration.WebApi.dll">
+      <publishTime>06/04/2017 01:09:04</publishTime>
+    </File>
+    <File Include="bin/System.AppContext.dll">
+      <publishTime>11/05/2016 04:55:34</publishTime>
+    </File>
+    <File Include="bin/System.Console.dll">
+      <publishTime>11/05/2016 04:55:48</publishTime>
+    </File>
+    <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>11/05/2016 04:55:52</publishTime>
+    </File>
+    <File Include="bin/System.Globalization.Calendars.dll">
+      <publishTime>11/05/2016 04:56:02</publishTime>
+    </File>
+    <File Include="bin/System.IO.Compression.dll">
+      <publishTime>11/05/2016 04:56:08</publishTime>
+    </File>
+    <File Include="bin/System.IO.Compression.ZipFile.dll">
+      <publishTime>11/05/2016 04:56:04</publishTime>
+    </File>
+    <File Include="bin/System.IO.FileSystem.dll">
+      <publishTime>11/05/2016 04:56:08</publishTime>
+    </File>
+    <File Include="bin/System.IO.FileSystem.Primitives.dll">
+      <publishTime>11/05/2016 04:56:08</publishTime>
+    </File>
+    <File Include="bin/System.IO.Packaging.dll">
+      <publishTime>07/19/2017 10:01:28</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.dll">
+      <publishTime>11/05/2016 04:56:30</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>01/28/2015 04:02:42</publishTime>
+    </File>
+    <File Include="bin/System.Net.Sockets.dll">
+      <publishTime>11/05/2016 04:56:34</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>11/05/2016 04:57:00</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>11/05/2016 04:57:14</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.Encoding.dll">
+      <publishTime>11/05/2016 04:57:08</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.Primitives.dll">
+      <publishTime>11/05/2016 04:57:18</publishTime>
+    </File>
+    <File Include="bin/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>11/05/2016 04:57:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>01/28/2015 04:01:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>01/28/2015 04:03:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>01/28/2015 04:02:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Owin.dll">
+      <publishTime>01/28/2015 04:03:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>01/28/2015 04:03:46</publishTime>
+    </File>
+    <File Include="bin/System.Xml.ReaderWriter.dll">
+      <publishTime>11/05/2016 04:57:36</publishTime>
+    </File>
+    <File Include="bin/Telerik.Reporting.dll">
+      <publishTime>09/14/2018 16:30:43</publishTime>
+    </File>
+    <File Include="bin/Telerik.Reporting.OpenXmlRendering.2.7.2.dll">
+      <publishTime>09/14/2018 16:30:26</publishTime>
+    </File>
+    <File Include="bin/Telerik.Reporting.OpenXmlRendering.2.7.2.pdb">
+      <publishTime>09/14/2018 16:30:28</publishTime>
+    </File>
+    <File Include="bin/Telerik.Reporting.pdb">
+      <publishTime>09/14/2018 16:30:40</publishTime>
+    </File>
+    <File Include="bin/Telerik.Reporting.Services.WebApi.dll">
+      <publishTime>09/14/2018 16:30:07</publishTime>
+    </File>
+    <File Include="bin/Telerik.Reporting.Services.WebApi.pdb">
+      <publishTime>09/14/2018 16:30:07</publishTime>
+    </File>
+    <File Include="Content/font/font-awesome.css">
+      <publishTime>09/14/2018 16:34:05</publishTime>
+    </File>
+    <File Include="Content/font/font-roboto.css">
+      <publishTime>09/14/2018 16:34:06</publishTime>
+    </File>
+    <File Include="Content/font/fontawesome-webfont.eot">
+      <publishTime>09/14/2018 16:34:06</publishTime>
+    </File>
+    <File Include="Content/font/fontawesome-webfont.svg">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/font/fontawesome-webfont.ttf">
+      <publishTime>09/14/2018 16:34:06</publishTime>
+    </File>
+    <File Include="Content/font/fontawesome-webfont.woff">
+      <publishTime>09/14/2018 16:34:06</publishTime>
+    </File>
+    <File Include="Content/font/fontawesome-webfont.woff2">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/font/FontAwesome.otf">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500.eot">
+      <publishTime>09/14/2018 16:34:06</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500.svg">
+      <publishTime>09/14/2018 16:34:06</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500.ttf">
+      <publishTime>09/14/2018 16:34:06</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500.woff">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500.woff2">
+      <publishTime>09/14/2018 16:34:06</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500italic.eot">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500italic.svg">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500italic.ttf">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500italic.woff">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-500italic.woff2">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-italic.eot">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-italic.svg">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-italic.ttf">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-italic.woff">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-italic.woff2">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-regular.eot">
+      <publishTime>09/14/2018 16:34:07</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-regular.svg">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-regular.ttf">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-regular.woff">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/font/roboto-v18-latin_cyrillic-regular.woff2">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/styles/blueopal/loading.gif">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/styles/blueopal/sprite.png">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/styles/corpPropReportViewer.css">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/styles/kendo.blueopal.min.css">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/styles/kendo.common.min.css">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/styles/telerikReportViewer.css">
+      <publishTime>09/14/2018 16:34:08</publishTime>
+    </File>
+    <File Include="Content/templates/corpPropReportViewerTemplate.html">
+      <publishTime>01/09/2019 09:10:04</publishTime>
+    </File>
+    <File Include="Content/templates/telerikReportViewerTemplate.html">
+      <publishTime>01/09/2019 09:10:04</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/11/2018 10:39:09</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/29/2019 14:47:09</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,257 @@
+﻿@model StandartGridView
+
+@{
+    const string actionRead = "KendoUI_CollectionRead";
+    const string controllerRead = "Standart";
+    string checkAllId = Html.CreateSystemName("checkAll");
+}
+
+<script>
+
+    (function () {
+        var grid = window["@Model.WidgetID"];
+        var composite = window["@Model.DialogID"];
+
+        grid.markAsRead = function (ids) {
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("MarkAsRead", "Notification")",
+                data: JSON.stringify({
+                    ids: ids
+                }),
+                contentType: 'application/json',
+                success: function (data) {
+                    if (data.error) {
+                        pbaAPI.errorMsg(data.error);
+                    } else {
+                        var $grid = grid.element();
+
+                        for (var i = 0; i < ids.length; i++) {
+                            var row = $grid.find("tr[data-id=" + ids[i] + "]");
+
+                            //if (row.length > 0)
+                            //    grid.removeRow(row);
+                        }
+
+                        $("#@checkAllId").prop("checked", false);
+                    }
+                }
+            });
+
+        };
+
+        grid.deleteRow = function (ids) {
+            if (ids) {
+                pbaAPI.confirm("@Model.ViewModelConfig.ListView.Title", "Удалить запись?", function () {
+                    pbaAPI.proxyclient.crud.destroy({ mnemonic: grid.mnemonic, id: ids })
+                        .done(function (res) {
+                            if (res.error === 0) {
+                                grid.removeRow(grid.select());
+                                pbaAPI.uploadMsg(res.message);
+                            } else {
+                                pbaAPI.errorMsg(res.message);
+                            }
+                        });
+                });
+            }
+        };
+
+        grid.onChange = function (arg) {
+            var curID = this.select().data("id");
+
+            composite.onWidgetChanged({
+                sender: grid,
+                event: "change",
+                params: {
+                    selectedElemId: curID
+                }
+            });
+        };
+
+        grid.onDataBound = function () {
+            composite.onWidgetChanged({
+                sender: grid,
+                event: "dataBound"
+            });
+
+            var $grid = grid.element();
+
+            $grid.find("tr[data-uid]").on("dblclick", function () {
+                grid.dblClick({ sender: $(this) });
+            });
+
+            $grid.find("input[id^=checkbox_]").on("click", function (e) {
+                var isChecked = $grid.find("input[id*='checkbox_']").is(':checked');
+                $("#@checkAllId").prop("checked", isChecked);
+
+                //send to toolbar for change checkBbutton state
+                composite.onWidgetChanged({
+                    sender: grid,
+                    event: "changeCheckBoxes",
+                    params: {
+                        isEnabled: isChecked
+                    }
+                });
+            });
+
+
+            $grid.find('#@checkAllId').on('click', function () {
+                var isChecked = $(this).prop('checked');
+                $grid.find("input[id*='checkbox_']").prop("checked", isChecked);
+
+                //send to toolbar for change checkBbutton state
+                composite.onWidgetChanged({
+                    sender: grid,
+                    event: "changeCheckBoxes",
+                    params: {
+                        isEnabled: isChecked
+                    }
+                });
+
+            });
+
+        };
+
+        grid.dblClick = function (e) {
+            grid.editRow(e.sender);
+        };
+
+        grid.editRow = function (elem) {
+            var uid = elem.data("uid");
+            var data = grid.getByUid(uid);
+
+            if (!data)
+                pbaAPI.errorMsg("model not found");
+
+            var mnemonic = data.Entity.Mnemonic || data.Entity.FullName;
+
+            if (data.Entity && mnemonic) {
+                pbaAPI.openDetailView(mnemonic,
+                    {
+                        wid: "@Model.WidgetID",
+                        id: data.Entity.ID,
+                        callback: function (e) {
+                            grid.markAsRead([data.ID]);
+                        }
+                    });
+            } else {
+                pbaAPI.openDetailView("@nameof(Notification)",
+                {
+                    wid: "@Model.WidgetID",
+                    id: data.ID,
+                    callback: function (e) {
+                        grid.markAsRead([data.ID]);
+                    }
+                });
+            }
+        },
+
+        grid.onNeighbourWidgetChanged = function (e) {
+            if (e.sender.desc === "ToolbarListView") {
+                if (e.event === "click") {
+                    switch (e.params.action) {
+                        case "watch":
+                            grid.editRow(grid.select());
+                            break;
+                        case "delete":
+                        case "check":
+                            var $checkboxes = grid.element().find('.notification-check:checked');
+                            if ($checkboxes.length) {
+                                var ids = [];
+
+                                $checkboxes.each(function (indx, element) {
+                                    ids.push($(element).data("id"));
+                                });
+
+                                if (e.params.action === "check")
+                                    grid.markAsRead(ids);
+                                else if (e.params.action === "delete")
+                                    grid.deleteRow(ids);
+                            }
+                            break;
+                    }
+                }
+            } else if (e.sender.desc === "ContextMenuListView") {
+                if (e.event === "click") {
+                    switch (e.params.action) {
+                        case "watch":
+                            grid.editRow($(e.params.event.target));
+                            break;
+                        case "check":
+                            grid.markAsRead([$(e.params.event.target).data("id")]);
+                            break;
+                    }
+                }
+            } else if (e.sender.desc === "DialogSplitter") {
+                if (e.event === "resize") {
+                    var toolbar = composite.element().find('div[data-role="toolbar"]');
+                    this.resize(e.params.height - toolbar.outerHeight(true));
+                }
+            }
+        };
+    })();
+</script>
+
+
+@(Html.Kendo().Grid<Base.Notification.Entities.Notification>()
+   .Name(Model.WidgetID)
+   .HtmlAttributes(new { @class = "notification-grid" })
+   .AutoBind(true)
+   .Columns(columns =>
+   {
+        columns.Template(e => { }).ClientTemplate(" ").Width(120).Title(" ")
+            .HeaderTemplate(@<text>
+                <input id="@checkAllId" type='checkbox' class='k-checkbox'>
+                <label class='k-checkbox-label titleBox' for='@checkAllId' style="margin-bottom: 15%;margin-left: 40%"></label>
+            </text>.ToHtmlString());
+        columns.Bound(x => x.Description).Title("Наименование");
+   })
+
+  .Sortable(sortable => sortable.AllowUnsort(true).SortMode(GridSortMode.MultipleColumn))
+  .Scrollable(s => s.Enabled(true))
+  .Resizable(r => r.Columns(true))
+
+    .Selectable(sel => sel.Mode(GridSelectionMode.Single))
+    .Pageable(p => p.InitPageable(this))
+    .Events(e => e.InitEvents(this))
+
+    .ClientRowTemplate(@<text>
+        <tr data-uid='#: uid #' data-id="#: ID #">
+            # debugger #
+            <td class="td-notification-check">
+                <input data-id="#: ID #" type='checkbox' id='checkbox_#: ID #' class='notification-check k-checkbox'>
+                <label class='k-checkbox-label' for='checkbox_#: ID #'></label>
+            </td>
+
+            <td class='body'>
+                <div class='row-icon'>
+                </div>
+                <div class="content">
+                    <div class="header">
+                        <span class="type"> #= gridTemplates.vmConfig(Entity.Mnemonic || Entity.FullName) # </span>
+                        <span class="date">#: kendo.toString(Date, 'dd.MM.yyyy H:mm') #</span>
+                    </div>
+                    <div class='title'>
+                        #: Title #
+                    </div>
+                    # if(Description) { #
+                    <div class='description'>
+                        #: pbaAPI.truncate(Description, 300) #
+                    </div>
+                    # } #
+                </div>
+            </td>
+        </tr>
+    </text>.ToHtmlString())
+    .DataSource(dataSource => dataSource
+        .WebApi()
+        .Model(a => a.InitModel(this))
+        .Sort(sort => sort.InitDataSourceSort(this))
+        .PageSize(50)
+        //.ServerOperation(Model.ViewModelConfig.ListView.DataSource.ServerOperation && Model.Type != TypeDialog.Lookup)
+        .Events(events => events.Error(Model.WidgetID + ".onErrorHandler"))
+        .ServerOperation(true)
+        .Read(r => r.Url($"/api/listview/Notification/kendoGrid/")))
+    //.Read(read => read.Action(actionRead, controllerRead, new { area = "", mnemonic = Model.Mnemonic, searchStr = Model.SearchStr, extrafilter = Model.SysFilter }))
+    )
+)

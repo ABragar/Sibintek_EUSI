@@ -1,0 +1,27 @@
+﻿@model EditorViewModel
+
+@{
+    string fieldID = "n_" + Guid.NewGuid().ToString("N");
+}
+
+@Html.TextBox(Model, new { style = "width: 100%;", maxlength = Model.MaxLength ?? 524288 })
+
+@*<span class="glyphicon glyphicon-coins">&nbsp;</span><span id="@fieldID"></span>*@
+
+
+@*<script>
+    $(function () {
+        var $f = $("#@fieldID");
+
+        @*$f.closest("form").on("onAfterBind", function(e, form) {
+            if (form.getPr("@Model.PropertyName")) {
+                $f.html(kendo.toString(form.getPr("@Model.PropertyName"), "n2"));
+            } else {
+                $f.html("");
+            }
+        });
+    });
+</script>*@
+
+
+

@@ -1,0 +1,17 @@
+﻿@model EditorViewModel
+
+<div id="@Model.UID" data-parent_mnemonic="@Model.ParentViewModelConfig.Mnemonic" data-mnemonic="@(Model.Mnemonic ?? Model.ViewModelConfig.Mnemonic)" data-sysname="@Model.SysName">
+    <div id="msg-loading-dialog" class="kwidget kwidget--panel hidden">
+        <div class="kwidget kwidget--panel-content">
+            Инициализация...
+        </div>
+    </div>
+    <div id="msg-no-save" class="kwidget kwidget--panel">
+        <div class="kwidget kwidget--panel-content">
+            Доступно после сохранения объекта.
+        </div>
+    </div>
+    <div id="wrap-list-view-dialog" class="kwidget kwidget--panel">
+
+    </div>
+</div>

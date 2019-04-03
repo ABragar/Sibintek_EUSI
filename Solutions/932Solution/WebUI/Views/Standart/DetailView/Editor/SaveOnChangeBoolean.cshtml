@@ -1,0 +1,17 @@
+﻿@model EditorViewModel
+
+<script>
+    $(function () {
+        $("#@Model.UID").closest("form").on("onChange", function (e, edata) {
+            if (edata.field === "@Model.PropertyName") {
+                var dialog = $("#@Model.UID").closest(".dialog-vm").data("dialogVM");
+
+                dialog.save(false).done(function () {
+                    dialog.refresh();
+                });
+            }
+        });
+    });
+</script>
+
+@Html.CheckBox(Model)

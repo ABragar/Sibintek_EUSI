@@ -1,0 +1,27 @@
+﻿@model EditorViewModel
+    
+@{
+    var htmlFieldName = Model.PropertyName;
+
+    string wrapID = Model.UID;
+    string toolbarID = wrapID + "_toolbar";
+}
+
+<div id="@wrapID" class="kwidget kwidget--inline-panel kwidget--icon">
+    <div class="kwidget kwidget--toolbar">
+        @(Html.Kendo().ToolBar()
+              .Name(toolbarID)
+              .Items(items =>
+              {
+                  items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                  {
+                      buttons.Add().Text("Выбрать").HtmlAttributes(new { title = "Выбрать", data_action = "select" }).SpriteCssClass("fa fa-navicon").ShowText(ShowIn.Overflow).Click(toolbarID + ".onClick");
+                      buttons.Add().Text("Очистить").HtmlAttributes(new { title = "Очистить", data_action = "clear" }).SpriteCssClass("fa fa-close").ShowText(ShowIn.Overflow).Click(toolbarID + ".onClick");
+                  });
+              }))
+    </div>
+    <i data-bind="attr: { class: model.@(htmlFieldName).Value }, style: { color: model.@(htmlFieldName).Color }"></i>
+</div>
+
+
+

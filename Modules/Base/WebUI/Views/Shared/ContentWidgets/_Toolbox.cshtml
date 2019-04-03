@@ -1,0 +1,46 @@
+﻿@model EditorViewModel
+
+@{
+    string toolBoxID = Html.CreateSystemName("tb");
+}
+
+
+@(Html.Kendo().PanelBar().Name(toolBoxID).Items(panelBar =>
+{
+    panelBar.Add().Text("Разметка").Expanded(false).Content(
+        @<text>
+            <div style="display: none">
+                @Html.Partial("ContentWidgets/Layouts/Layout1")
+            </div>
+            @Html.Partial("ContentWidgets/Layouts/LayoutSingle")
+            @Html.Partial("ContentWidgets/Layouts/Layout2-10")
+            @Html.Partial("ContentWidgets/Layouts/Layout4-8")
+            @Html.Partial("ContentWidgets/Layouts/Layout2")
+            @Html.Partial("ContentWidgets/Layouts/Layout8-4")
+            @Html.Partial("ContentWidgets/Layouts/Layout10-2")
+            @Html.Partial("ContentWidgets/Layouts/Layout3")
+            @Html.Partial("ContentWidgets/Layouts/Layout4")
+            @Html.Partial("ContentWidgets/Layouts/Layout6")
+        </text>);
+
+    panelBar.Add().Text("Виджеты").Expanded(true).Content(
+        @<text>
+            @Html.Partial("ContentWidgets/Widgets/Navigation")
+            @Html.Partial("ContentWidgets/Widgets/Tabs")
+            @Html.Partial("ContentWidgets/Widgets/TextArea")
+            @Html.Partial("ContentWidgets/Widgets/InternalFile")
+            @*@Html.Partial("ContentWidgets/Widgets/ExternalImage")*@
+            @Html.Partial("ContentWidgets/Widgets/InternalImage")
+            @*@Html.Partial("ContentWidgets/Widgets/InternalVideo")*@
+            @Html.Partial("ContentWidgets/Widgets/ExternalVideo")
+            @Html.Partial("ContentWidgets/Widgets/Quote")
+        </text>);
+
+    @*
+        panelBar.Add().Text("Тестирование").Expanded(false).Content(
+            @<text>
+                @Html.Partial("ContentWidgets/Test_Checkboxes")
+            </text>);
+    *@
+}
+                                                                                                                                                                                                                                                                                                                                                                                        ))

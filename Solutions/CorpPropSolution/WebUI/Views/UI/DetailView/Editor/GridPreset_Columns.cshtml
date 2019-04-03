@@ -1,0 +1,120 @@
+﻿@model EditorViewModel
+
+<ul id="@Model.UID" class="grid-preset-columns list-group kwidget kwidget--list"></ul>
+
+<script>
+    $(function () {
+        var $editor = $("#@Model.UID");
+
+        $editor.sortable();
+
+        var $form = $editor.closest("form");
+        var dicColumns = {};
+
+        $form.on("onAfterBind", function (e, form) {
+            var columns = form.getPr("@Model.PropertyName");
+
+            $editor.empty();
+            dicColumns = {};
+
+            columns.sort(function (item1, item2) {
+                return item1.SortOrder - item2.SortOrder;
+            });
+
+            for (var i = 0; i < columns.length; i++) {
+                var col = columns[i];
+
+                dicColumns[col.Name] = col;
+                $editor.append($("<li " + (col.Visible ? "class='active'" : "") + " ><a id='" + col.Name + "' href='#' class='column list-group-item " + (col.Visible ? "active" : "") + "'><span class='column-setting fa fa-cog'></span><span class='title'>" + col.Title + "<span></a></li>"));
+            }
+
+            $editor.find("li").droppable();
+        });
+
+        $editor.on("click", ".column", function () {
+            var ths = $(this);
+            if (ths.hasClass("active")) {
+                ths.removeClass("active");
+                ths.closest('li').removeClass("active");
+            }
+            else {
+                ths.closest('li').addClass("active");
+                ths.addClass("active");
+            }
+        });
+
+        $editor.on("click", ".column-setting", function () {
+            var $col = $(this).closest(".column");
+            var col = dicColumns[$col.attr("id")];
+
+            pbaAPI.openDetailView("ColumnPreset",
+                       {
+                           wid: "@Model.UID",
+                           entity: col,
+                           width: 600,
+                           height: 400,
+                           toSave: false,
+                           callback: function (e) {
+                               if (e.type == "save") {
+                                   col.Title = e.model.Title;
+                                   col.Width = e.model.Width;
+                                   col.Visible = e.model.Visible;
+
+                                   $col.find(".title").html(col.Title);
+
+                                   if (col.Visible) {
+                                       $col.closest("li").addClass("active");
+                                       $col.addClass("active");
+                                   } else {
+                                       $col.closest("li").removeClass("active");
+                                       $col.removeClass("active");
+                                   }
+                               }
+                           }
+                       });
+
+            return false;
+        });
+
+        $form.on("onSave", function (e, form) {
+            if (!form.getPr("@Model.PropertyName"))
+                form.setPr("@Model.PropertyName", []);
+
+            var resColumns = [];
+
+            $editor.find("a.column").each(function (index) {
+                var $col = $(this);
+
+                var col = dicColumns[$col.attr("id")];
+
+                col.SortOrder = index;
+                col.Visible = $col.hasClass("active");
+
+                resColumns.push(col);
+            });
+
+            form.setPr("@Model.PropertyName", resColumns);
+        });
+
+        var placeholder = function (element) {
+            return element.clone()
+                .addClass("placeholder")
+                .removeClass("active");
+        };
+
+        var hint = function (element) {
+            return element.clone()
+                .addClass("hint")
+                .height(element.height())
+                .width(element.width());
+        };
+
+
+        $editor.kendoSortable({
+            filter: ">a",
+            cursor: "move",
+            placeholder: placeholder,
+            hint: hint,
+        });
+    });
+</script>

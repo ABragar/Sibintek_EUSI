@@ -1,0 +1,8 @@
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheet\bin\Release\FankySheet.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheet\bin\Release\FankySheet.pdb
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheet\bin\Release\DocumentFormat.OpenXml.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheet\obj\Release\FankySheet.csprojAssemblyReference.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheet\obj\Release\FankySheet.csproj.CoreCompileInputs.cache
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheet\obj\Release\FankySheet.csproj.CopyComplete
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheet\obj\Release\FankySheet.dll
+C:\SRC\SIBINTEK\TFS\Main\Source\Modules\Base\FankySheet\obj\Release\FankySheet.pdb

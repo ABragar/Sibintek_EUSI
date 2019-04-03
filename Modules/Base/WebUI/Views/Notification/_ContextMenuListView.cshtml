@@ -1,0 +1,61 @@
+﻿@using Base.UI.ViewModal
+@model Dialog_WidgetViewModel
+@{
+
+    string nameContextMenu = "contextMenu_" + Guid.NewGuid().ToString("N");
+}
+
+<script>
+    window["@nameContextMenu"] = new WrapContextMenu("@nameContextMenu", "ContextMenuListView");
+
+    (function () {
+        var composite = window["@Model.DialogID"];
+        var contextMenu = window["@nameContextMenu"];
+
+        composite.registerWidget(contextMenu);
+
+        contextMenu.onNeighbourWidgetChanged = function (e) {
+        };
+
+        //events
+        //рассылка событий
+        contextMenu.onSelect = function (e) {
+            composite.onWidgetChanged({
+                sender: contextMenu,
+                event: "click",
+                params: {
+                    event: e,
+                    action: e.item.getAttribute("data-action")
+                }
+            });
+        };
+
+    })();
+
+
+</script>
+
+
+@(Html.Kendo().ContextMenu()
+        .Name(nameContextMenu)
+        .Target("#" + Model.WidgetID)
+        .Filter("tr")
+        .HtmlAttributes(new { @class = "notification-menu" })
+        .Orientation(ContextMenuOrientation.Horizontal)
+        .Animation(animation =>
+        {
+            animation.Open(open =>
+            {
+                open.Fade(FadeDirection.In);
+                open.Duration(100);
+            });
+        })
+        .Items(items =>
+        {
+            items.Add().Text("Просмотр").HtmlAttributes(new { id = "open_notification", data_action = "watch" }).SpriteCssClasses("fa fa-eye");
+            items.Add().Text("Отметить как прочитанное").HtmlAttributes(new { id = "check_notification", data_action = "check" }).SpriteCssClasses("fa fa-check");
+        })
+.Events(e =>
+   e.Select(nameContextMenu + ".onSelect")
+ )
+)
