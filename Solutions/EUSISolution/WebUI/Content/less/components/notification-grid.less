@@ -1,0 +1,71 @@
+/* NOTIFICATIONS */
+
+.notification-grid {
+	font-family: @font-stack--sans;
+
+	user-select: none;
+
+	-webkit-touch-callout: none;
+
+	tr {
+		cursor: default;
+
+		&:first-of-type td {
+			border-top: none;
+			}
+		}
+
+	.k-grid-content {
+		overflow-y: auto;
+		}
+
+	.body {
+		position: relative;
+		}
+
+	.row-icon {
+		position: absolute;
+		top: 40%;
+		top: calc(~"50% - .786rem");
+		}
+
+	.content {
+		margin-left: 2.286rem;
+		}
+
+	.header {
+		font-size: .857rem; 
+	
+		margin-bottom: .2143rem;
+
+		.type {
+			color: @color--light;
+			display: inline-block;
+			padding: 0 .5rem;
+			background-color: @color--accent;
+			}
+
+		.date {
+			margin-left: .572rem;
+		
+			color: fade( @color--dark, 90% );
+			}
+		}
+
+	.title {
+		font-family: @font-stack--sans;
+		}
+
+	.description {
+		font-size: .9286rem;
+		line-height: @modular-scale *1rem;
+	
+		color: @color--dark;
+		}
+	}
+
+.notification-menu .k-sprite {
+	font-size: 1rem !important;
+
+	width: 2.143rem !important;
+	}

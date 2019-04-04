@@ -1,0 +1,139 @@
+﻿@model DashboardWidget
+
+@using Base.Task.Entities;
+
+@{
+    var createTask = Html.CreateSystemName("create");
+}
+
+
+@(Html.DashboardWidget()
+    .Content(@<text>
+        <div id="dashboard-widget-tasks">
+          <div class="k-toolbar">
+    @*<div class="k-button-group">
+      <a id="@createTask" class="create-task k-button" title="Создать задачу" href="/Entities/Task">
+        <i class="fa fa-fw fa-plus"></i>
+      </a>
+      <a class="my-tasks-link k-button" href="/Entities/InTask">
+        <i class="fa fa-fw fa-tasks"></i> Мои задачи
+      </a>
+    </div>*@
+          </div>
+            @*<div id="dashboard-widget-tasks-list"></div>*@
+          <ul id="dashboard-widget-tasks-list"></ul>
+          @*<div class="info">
+            <div class="statuses">
+              <span class="color-status" data-status="new"></span><span class="label-status">Новые</span>
+              <span class="color-status" data-status="viewed"></span><span class="label-status">Просмотренные</span>
+              <span class="color-status" data-status="inprocess"></span><span class="label-status">В работе</span>
+              <span class="color-status" data-status="rework"></span><span class="label-status">На доработке</span>
+            </div>
+          </div>*@
+        </div>
+      </text>))
+
+<script>
+  $(function () {
+    var $tasks = $("#dashboard-widget-tasks-list");
+    var $widget = $tasks.closest(".dashboard-widget");
+
+    var getStrStatus = function (task) {
+      var status;
+
+      switch (task.Status.toString()) {
+          case "@TaskStatus.New.GetValue()":
+              status = "new";
+              break;
+          case "@TaskStatus.Viewed.GetValue()":
+              status = "viewed";
+              break;
+          case "@TaskStatus.InProcess.GetValue()":
+              status = "inprocess";
+              break;
+          case "@TaskStatus.Rework.GetValue()":
+              status = "rework";
+              break;
+      }
+
+      return status;
+    };
+
+    var init = function () {
+      $tasks.empty();
+      //debugger;
+      $tasks.addClass("wnd-loading-content");
+
+      $.get("/api/listview/SibTaskListView/mytasks", { maxcount: 10 }, function (res) {
+        if (res.error) {
+          pbaAPI.errorMsg(res.error);
+        } else {
+          $tasks.removeClass("wnd-loading-content");
+
+          for (var i = 0; i < res.length; i++) {
+            var task = res[i];
+
+            $tasks.append(
+              $("<li>", { id: task.ID, class: 'task' })
+                .append($("<a>", { "data-status": getStrStatus(task), class:'task__link' })
+                    .on("click", function (e) {
+                        //return false;
+                    var id = $(e.target).closest("li").attr("id");
+                    pbaAPI.openDetailView("SibTaskMenuList", {
+                      wid: "dashboard-widget-tasks-list",
+                      id: id,
+                      callback: function (e) {
+                        var $li = $tasks.find("li#" + e.model.ID);
+                        var $sticker = $li.find("[data-status]");
+                        var newstatus = getStrStatus(e.model);
+
+                        if (newstatus) {
+                          if ($sticker.attr("data-status") !== newstatus) {
+                              $sticker.attr("data-status", newstatus);
+                          }
+                        } else { $li.remove(); }
+                      }
+                    });
+                  })
+                  .append(
+                    $("<div class='task__performer' data-mnemonic='SibUser' data-id=" + task.AssignedFrom.ID + ">")
+                      .html( "" +
+                        "<figure class='task__performer-img-wrap'>" +
+                          "<img class='img-circle' src=" + 
+                            pbaAPI.imageHelpers.getImageThumbnailSrc(task.AssignedFrom.Image, "XXS", "NoPhoto") +
+                            " alt=\"\" />" +
+                        "</figure>" +
+                        "<div class='task__performer-name'>" + 
+                          task.AssignedFrom.FullName + 
+                        "</div>" +
+                        "<div class='task__period'>" +
+                          "<div class='task__period-start'>" +
+                            "<i class='fa fa-fw fa-clock-o'></i>с " + task.Period.Start + 
+                          "</div>" +
+                          "<div class='task__period-end'>" +
+                            "<i class='fa fa-fw fa-clock-o'></i>до " + task.Period.End + 
+                          "</div>" +
+                        "</div>")
+                  ).append(
+                    $("<h4 class='task__name'>").html(pbaAPI.truncate(task.Title, 100))
+                  )
+                )
+              );
+            }
+          }
+        });
+      };
+
+      $("#@createTask").click(function () {
+          pbaAPI.openDetailView("Task", {
+              callback: function () {
+                  init();
+              }
+          });
+      });
+
+      init();
+
+      $widget.on("onChange", function () { init(); });
+    });
+</script>

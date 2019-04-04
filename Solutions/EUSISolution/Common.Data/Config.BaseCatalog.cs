@@ -1,0 +1,17 @@
+﻿using Base.DAL;
+using Base.DAL.EF;
+using BaseCatalog.Entities;
+using Common.Data.EF;
+
+namespace Common.Data
+{
+    public class BaseCatalogConfig
+    {
+        public static void Init<TContext>(EntityConfigurationBuilder config) where TContext : EFContext
+        {
+            config.Context(EFRepositoryFactory<TContext>.Instance)
+                .Entity<Measure>()
+                .Entity<MeasureCategory>();
+        }
+    }
+}

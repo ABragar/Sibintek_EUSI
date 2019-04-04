@@ -1,0 +1,74 @@
+﻿@{
+    string check = Html.CreateSystemName("b");
+    string resultwindow = Html.CreateSystemName("wnd");
+}
+
+
+<a class="k-button k-button-icon tooltipstered" title="Проверить на ошибки" data-popup="bottom" href="#" id="@check"><span class="fa fa-bug tooltipstered" style="color: red;"></span></a>
+
+<div id="@resultwindow"></div>
+
+<script>
+
+    $('#@check').on('click', function () {
+        var dialog = $(this).closest('.dialog').data('dialogVM');
+        var model = dialog.getCurrentModel();
+
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("CheckDvSetting", "ViewConfig")",
+            data: JSON.stringify(model),
+            contentType: "application/json; charset=utf-8",
+            success: function (res) {
+                var data = new kendo.data.ObservableObject(res);
+
+                var w = $('#@resultwindow').kendoWindow({
+                    title: "Проверка настройки",
+                    width: 600,
+                    height: 600,
+                    resizable: true,
+                    modal: true,
+                    viewable: false
+                }).data('kendoWindow');
+
+                var template = kendo.template($("#resultTemplate").html());
+
+                w.content(template(data));
+
+                w.center().open();
+            }
+        });
+    });
+
+</script>
+
+
+<script id="resultTemplate" type="text/x-kendo-template">
+    <h1>Результат:</h1>
+    <div>
+        #if(data.errors && data.errors.length) {#
+        <ul style="list-style:none">
+            #for(var i = 0; i< data.errors.length; i++) {#
+            <li>
+                #if(data.errors[i].ErrorLevel === 0) {#
+                <span class="fa fa-exclamation-circle" style="color:red;"></span>
+                # } else { #
+                <span class="fa fa-exclamation-triangle" style="color:orange;"></span>
+                #}#
+
+                <span>#=data.errors[i].Field#:</span>
+                <span>#=data.errors[i].Description#</span>
+            </li>
+            #}#
+
+        </ul>
+
+
+        #} else {#
+        <h1>Все в порядке!</h1>
+
+        #}#
+
+    </div>
+
+</script>

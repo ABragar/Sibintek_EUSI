@@ -1,0 +1,243 @@
+﻿@model CustomDialogView
+
+@{
+    string toolbarId = Html.CreateSystemName("toolbar");
+    string treeviewId = Html.CreateSystemName("tree");
+}
+
+<div class="kwidget kwidget--panel">
+    @*<div class="kwidget kwidget--toolbar">
+            @(Html.Kendo().ToolBar()
+                  .Name(toolbarId)
+                  .Items(items =>
+                  {
+                      items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                      {
+                          buttons.Add().Text("Добавить корневой элемент").SpriteCssClass("mdi mdi-folder-plus").HtmlAttributes(new { title = "Добавить корневой элемент", data_action = "add-root" }).ShowText(ShowIn.Overflow).Click(toolbarId + ".onClick");
+                          buttons.Add().Text("Добавить элемент").SpriteCssClass("fa fa-plus").HtmlAttributes(new { title = "Добавить элемент", data_action = "add" }).ShowText(ShowIn.Overflow).Click(toolbarId + ".onClick").Enable(false);
+                          buttons.Add().Text("Редактировать").SpriteCssClass("fa fa-pencil").HtmlAttributes(new { title = "Редактировать", data_action = "edit" }).ShowText(ShowIn.Overflow).Click(toolbarId + ".onClick").Enable(false);
+                          buttons.Add().Text("Удалить").SpriteCssClass("fa fa-trash-o").HtmlAttributes(new { title = "Удалить", data_action = "remove" }).ShowText(ShowIn.Overflow).Click(toolbarId + ".onClick").Enable(false);
+                      });
+                  }))
+        </div>*@
+    <div class="kwidget kwidget--tree-view">
+        <div id="@treeviewId"></div>
+    </div>
+</div>
+
+<script id="@(treeviewId)_template" type="text/x-kendo-template">
+    <span class="#: item.Icon.Value #"> </span>
+    <span data-uid="#: item.uid #">#: item.Name #</span>
+    @*# if (!item.items) { #
+        <a class='treeview_delete-link' href='\#'> </a>
+        # } #*@
+</script>
+
+<script>
+    $(function () {
+        //debugger;
+        var $toolbar = $("#@toolbarId");
+        var $treeview = $("#@treeviewId");
+
+        var initData = function(data, items) {
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+
+                var el = {
+                    ID: item.ID,
+                    Name: item.Name,
+                    Icon: item.Icon,
+                    Mnemonic: item.Mnemonic,
+                    URL: item.URL,
+                    hasChildren: item.Children.length > 0,
+                    Children: [],
+                    expanded: true
+                };
+
+                data.push(el);
+
+                if (el.hasChildren) {
+                    initData(el.Children, item.Children);
+                }
+            }
+        };
+
+        var openMenuItem = function () {
+            var treeview = $treeview.getKendoTreeView();
+            if (treeview) {
+                var item = treeview.dataItem(treeview.select());
+                if (item) {                    
+                    if (item.Mnemonic) {                       
+                        location.href = '/Entities/' + item.Mnemonic;
+                    }
+                    if (item.URL) {
+                        location.href = item.URL;
+                    }
+                    
+                }
+            }
+        };
+
+        var bindMenu =  function() {
+                var menuElems = [];
+                //debugger;
+                pbaAPI.proxyclient.corpProp.getMenuPreset({
+                    presetFor: "NSIMenu"
+                }).done(
+                    function (list) {
+                        if (list) {
+                            //debugger;
+                            initData(menuElems, list);
+                             var resData = new kendo.data.HierarchicalDataSource({
+                                data: menuElems,
+                                schema: {
+                                    model: {
+                                        children: "Children"
+                                    }
+                                }
+                            });
+
+                            var treeview = $treeview.getKendoTreeView();
+                            if (!treeview) {
+                                treeview = $treeview.kendoTreeView({
+                                        template: kendo.template($("#@(treeviewId)_template").html()),
+                                        dataTextField: "Name",
+                                        dragAndDrop: true,
+                                        dataSource: resData,
+                                        change: updateToolbar
+                                    })
+                                    .getKendoTreeView();
+                            } else {
+                                treeview.setDataSource(resData);
+                            }
+
+                            treeview.setDataSource(resData);
+                            $("#@treeviewId").perfectScrollbar();
+
+                            treeview.items().each(function (i, el) {
+                                $(el).on("dblclick", function (event) {
+                                    openMenuItem(event);
+                                });
+                            });
+                        }
+                    });
+
+
+
+            }
+
+
+        $("#@toolbarId")
+            .on("click",
+                "[data-action]",
+                function() {
+                    var $this = $(this);
+                    var $tree = $("#@treeviewId");
+                    var tree = $tree.getKendoTreeView();
+                    var selectedNode = tree ? tree.select() : null;
+                    var action = $this.attr("data-action");
+
+                    if (!tree) {
+                        return;
+                    }
+
+                    switch (action) {
+                    case "add-root":
+                        pbaAPI.openDetailView("MenuElement",
+                        {
+                            wid: "@treeviewId",
+                            toSave: false,
+                            callback: function(e) {
+                                if (e.type !== "save" && e.type !== "apply") {
+                                    return;
+                                }
+
+                                tree.append({
+                                        ID: e.model.ID,
+                                        Name: e.model.Name,
+                                        Icon: e.model.Icon,
+                                        Mnemonic: e.model.Mnemonic,
+                                        URL: e.model.URL,
+                                        hasChildren: false,
+                                        Children: []
+                                    },
+                                    null);
+                            }
+                        });
+                        break;
+                    case "add":
+                        pbaAPI.openDetailView("MenuElement",
+                        {
+                            wid: "@treeviewId",
+                            toSave: false,
+                            callback: function(e) {
+                                if (e.type !== "save" && e.type !== "apply") {
+                                    return;
+                                }
+
+                                if (!selectedNode.length) {
+                                    selectedNode = null;
+                                }
+
+                                tree.append({
+                                        ID: e.model.ID,
+                                        Name: e.model.Name,
+                                        Icon: e.model.Icon,
+                                        Mnemonic: e.model.Mnemonic,
+                                        URL: e.model.URL,
+                                        hasChildren: false,
+                                        Children: []
+                                    },
+                                    selectedNode);
+                            }
+                        });
+                        break;
+                    case "edit":
+                        if (!selectedNode.length) {
+                            return;
+                        }
+
+                        pbaAPI.openDetailView("MenuElement",
+                        {
+                            entity: tree.dataSource.getByUid(selectedNode.attr("data-uid")),
+                            toSave: false,
+                            callback: function(e) {
+                                if (e.type !== "save" && e.type !== "apply") {
+                                    return;
+                                }
+
+                                selectedNode.find(".k-state-selected")
+                                    .children()
+                                    .first()
+                                    .attr("class", e.model.Icon.Value);
+
+                            }
+                        });
+                        break;
+                    case "remove":
+                        if (selectedNode.length) {
+                            tree.remove(selectedNode);
+                            updateToolbar();
+                        }
+                        break;
+                    }
+                });
+
+
+
+
+        function updateToolbar() {
+            var treeview = $treeview.getKendoTreeView();
+
+            if (treeview) {
+                $toolbar.find("[data-action]")
+                    .filter(":not([data-action=\"add-root\"])")
+                    .toggleClass("k-state-disabled", !treeview.select().length);
+            }
+        }
+
+        bindMenu();
+
+    });
+</script>
+

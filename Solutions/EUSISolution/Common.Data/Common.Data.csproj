@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D2EEF52-F86C-4C7E-83AD-CE06DA92BE95}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common.Data</RootNamespace>
+    <AssemblyName>Common.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\LinqToExcel.1.11.0\lib\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLipsum.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=593e1df460e1bda0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\NLipsum.1.1.0\lib\net20\NLipsum.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\LinqToExcel.1.11.0\lib\Remotion.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\LinqToExcel.1.11.0\lib\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Interfaces, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libs\packages\LinqToExcel.1.11.0\lib\Remotion.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AutoMapperConfig.Base.cs">
+      <DependentUpon>AutoMapperConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoMapperConfig.cs" />
+    <Compile Include="AutoMapperConfig.Security.cs">
+      <DependentUpon>AutoMapperConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoMapperConfig.Test.cs">
+      <DependentUpon>AutoMapperConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoMapperConfig.UI.cs">
+      <DependentUpon>AutoMapperConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseImport\Exceptions\FailImportException.cs" />
+    <Compile Include="BaseImport\Projections\MenuElementImportProjection.cs" />
+    <Compile Include="BaseImport\Projections\PermissionImportProjection.cs" />
+    <Compile Include="BaseImport\Projections\RoleImportProjection.cs" />
+    <Compile Include="Config.App.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Audit.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Base.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.BaseCatalog.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.BusinessProcesses.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Censorship.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Conference.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Content.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Contractor.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Crm.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.cs" />
+    <Compile Include="Config.Data.Test.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Document.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Event.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.ExportImport.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Forum.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Help.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Links.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.LoginProvider.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Mail.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Map.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Multimedia.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Nomenclature.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Notification.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Projects.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Registers.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Reporting.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Social.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Support.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Task.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Ui.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.Word.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CompatibleWithModelDatabaseInitializer.cs" />
+    <Compile Include="Entities\Test\TestObject3.cs" />
+    <Compile Include="Entities\Test\TestObject3Category.cs" />
+    <Compile Include="LinksRegister.Contact.cs">
+      <DependentUpon>LinksRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LinksRegister.cs" />
+    <Compile Include="LinksRegister.Test.cs">
+      <DependentUpon>LinksRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Abstract\BaseImportService.cs" />
+    <Compile Include="Services\Abstract\IBaseImportService.cs" />
+    <Compile Include="Services\Abstract\IPresetMenuBaseImportService.cs" />
+    <Compile Include="Services\Abstract\IRolesBaseImportService.cs" />
+    <Compile Include="Services\Concrete\PresetMenuBaseImportService.cs" />
+    <Compile Include="Services\Concrete\RolesBaseImportService.cs" />
+    <Compile Include="Entities\Test\GanttTestObject.cs" />
+    <Compile Include="Entities\Test\Map\TestBaseMapObject.cs" />
+    <Compile Include="Entities\Test\Map\TestCollectionItem.cs" />
+    <Compile Include="Entities\Test\Map\TestMarkerEnum.cs" />
+    <Compile Include="Entities\Test\Map\TestMarkerMapObject.cs" />
+    <Compile Include="Entities\Test\Map\TestMarkerPath.cs" />
+    <Compile Include="Entities\Test\Map\TestPathMapObject.cs" />
+    <Compile Include="Entities\Test\Map\TestSimplemapObject.cs" />
+    <Compile Include="Entities\Test\SchedulerTestObject.cs" />
+    <Compile Include="Entities\Test\TestBaseProfile.cs" />
+    <Compile Include="Entities\Test\TestObject.cs" />
+    <Compile Include="Entities\Test\TestObjectSelectionStrategy.cs" />
+    <Compile Include="Entities\Test\TestUnionEntry.cs" />
+    <Compile Include="Extensions\AutoMapperExtensions.cs" />
+    <Compile Include="Initializer.AppSettings.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Initializer.cs" />
+    <Compile Include="Initializer.Presets.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Initializer.ReportingSettings.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Initializer.UsersAndRoles.cs">
+      <DependentUpon>Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Abstract\IAutoMapperConfiguration.cs" />
+    <Compile Include="Service\Abstract\ITestBaseMapObjectService.cs" />
+    <Compile Include="Service\Abstract\ITestObjectService.cs" />
+    <Compile Include="Service\Concrete\AutoMapperCloner.cs" />
+    <Compile Include="Service\Concrete\AutoMapperConfiguration.cs" />
+    <Compile Include="Service\Concrete\TestBaseMapObjectService.cs" />
+    <Compile Include="Service\Concrete\TestObjectService.cs" />
+    <Compile Include="Service\Concrete\TestObject3Service.cs" />
+    <Compile Include="Service\Concrete\TestService.cs" />
+    <Compile Include="TestInitializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Modules\CorpProp\CorpProp.Analyze\CorpProp.Analyze.csproj">
+      <Project>{c4d0160d-8f7e-4ab5-a149-1d8d95c2831a}</Project>
+      <Name>CorpProp.Analyze</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\CorpProp\CorpProp.RosReestr\CorpProp.RosReestr.csproj">
+      <Project>{380a3dea-4a1b-4b27-ba37-c498143d0fac}</Project>
+      <Name>CorpProp.RosReestr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\CorpProp\CorpProp.WindowsAuth\CorpProp.WindowsAuth.csproj">
+      <Project>{61b0c7ad-ff28-4bb4-9b43-69e4f359e29e}</Project>
+      <Name>CorpProp.WindowsAuth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\CorpProp\CorpProp\CorpProp.csproj">
+      <Project>{2e747cf0-6c14-4d66-bd1b-b6841a761519}</Project>
+      <Name>CorpProp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\CorpProp\SibAssemblyInfo\SibAssemblyInfo.csproj">
+      <Project>{8cfb2f34-5e45-4c5c-9e7e-7f5d2781bb1f}</Project>
+      <Name>SibAssemblyInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.App\Base.App.csproj">
+      <Project>{56089611-82c6-4f69-b535-b7b80901842a}</Project>
+      <Name>Base.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Audit\Base.Audit.csproj">
+      <Project>{94d34384-e253-4771-8105-79903f0d4725}</Project>
+      <Name>Base.Audit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.BusinessProcesses\Base.BusinessProcesses.csproj">
+      <Project>{c4d72d04-2b9f-4b99-a01f-ff260c27b0bf}</Project>
+      <Name>Base.BusinessProcesses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Censorship\Base.Censorship.csproj">
+      <Project>{75d353db-c6df-4fef-85ee-ebab25b49c88}</Project>
+      <Name>Base.Censorship</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Conference\Base.Conference.csproj">
+      <Project>{a212107b-fd1a-4703-ac02-82ef570e75e4}</Project>
+      <Name>Base.Conference</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Content\Base.Content.csproj">
+      <Project>{8d53bbe9-4883-4ffd-81d9-9dafe86eab5e}</Project>
+      <Name>Base.Content</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Contact\Base.Contact.csproj">
+      <Project>{0280ab86-45b0-4e90-9b51-bade4f1d0810}</Project>
+      <Name>Base.Contact</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.CRM\Base.CRM.csproj">
+      <Project>{3ad9211b-6573-48e6-b938-12d6bdb1a23f}</Project>
+      <Name>Base.CRM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.DAL.EF\Base.DAL.EF.csproj">
+      <Project>{3efb8cc9-6a65-4a10-925f-0df1624ee13b}</Project>
+      <Name>Base.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Document\Base.Document.csproj">
+      <Project>{e39c7dec-4007-48ac-aa4c-56d84e534990}</Project>
+      <Name>Base.Document</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.EntityFrameworkTypes\Base.EntityFrameworkTypes.csproj">
+      <Project>{700d464b-0bd3-4188-a619-53e888218ce7}</Project>
+      <Name>Base.EntityFrameworkTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Event\Base.Event.csproj">
+      <Project>{fb4f973c-ff18-4f24-a7cf-104c7444094a}</Project>
+      <Name>Base.Event</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.ExportImport\Base.ExportImport.csproj">
+      <Project>{dba8d468-ea4d-446d-ba94-fbed166cd502}</Project>
+      <Name>Base.ExportImport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.FileStorage\Base.FileStorage.csproj">
+      <Project>{e771559d-36de-40be-bde9-02e4b9cf1a59}</Project>
+      <Name>Base.FileStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Forum\Base.Forum.csproj">
+      <Project>{b9142f93-15f0-4cd6-8715-7184d546cdbc}</Project>
+      <Name>Base.Forum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Help\Base.Help.csproj">
+      <Project>{f641f38f-7515-4da1-822d-9b13557d79aa}</Project>
+      <Name>Base.Help</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Identity\Base.Identity.csproj">
+      <Project>{5488c09b-4f93-419f-a26a-cc13ad88869e}</Project>
+      <Name>Base.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Links\Base.Links.csproj">
+      <Project>{b6cdcd8a-d778-49c3-ad28-049cba1f73dd}</Project>
+      <Name>Base.Links</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Macros\Base.Macros.csproj">
+      <Project>{f4635398-af24-4259-81bb-e3d10d460bec}</Project>
+      <Name>Base.Macros</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Mail\Base.Mail.csproj">
+      <Project>{3dbbbccc-f75e-4e45-9ee2-106c97e96a6c}</Project>
+      <Name>Base.Mail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Map\Base.Map.csproj">
+      <Project>{22f3f4fe-af62-406b-ba95-5012f83f94b8}</Project>
+      <Name>Base.Map</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Multimedia\Base.Multimedia.csproj">
+      <Project>{3b063b17-88f4-47cb-a06f-602acef7ac51}</Project>
+      <Name>Base.Multimedia</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Nomenclature\Base.Nomenclature.csproj">
+      <Project>{d17e8dfc-fd33-49b7-8c54-5b5cd482fe04}</Project>
+      <Name>Base.Nomenclature</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Notification\Base.Notification.csproj">
+      <Project>{c26a8cc1-6822-481d-a2d5-52dc8295d402}</Project>
+      <Name>Base.Notification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Project\Base.Project.csproj">
+      <Project>{549c526c-463f-4257-9b26-7316f066bf0f}</Project>
+      <Name>Base.Project</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Reporting\Base.Reporting.csproj">
+      <Project>{82657716-B682-4F44-9426-5CCC37367584}</Project>
+      <Name>Base.Reporting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Security\Base.Security.csproj">
+      <Project>{93a4c5a8-701d-4212-b338-dacb6ec8c670}</Project>
+      <Name>Base.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Social\Base.Social.csproj">
+      <Project>{d7a93569-f8d7-48bf-9e1a-d8e0f8c960a7}</Project>
+      <Name>Base.Social</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Support\Base.Support.csproj">
+      <Project>{4d006637-c791-4627-9d2c-c15090770dcf}</Project>
+      <Name>Base.Support</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Task\Base.Task.csproj">
+      <Project>{3082a9de-189d-42fa-843e-517c8178fd55}</Project>
+      <Name>Base.Task</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.UI\Base.UI.csproj">
+      <Project>{3ae7843f-06ce-4989-a978-210f7dfcf1a9}</Project>
+      <Name>Base.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Utils.Common\Base.Utils.Common.csproj">
+      <Project>{AD97EF5C-E096-465D-9729-2D0524AF2476}</Project>
+      <Name>Base.Utils.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base.Word\Base.Word.csproj">
+      <Project>{b4c69694-3928-4b30-a274-bbd3a92d0cdd}</Project>
+      <Name>Base.Word</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\BaseCatalog\Base.Catalog.csproj">
+      <Project>{b136d66f-529c-4611-af27-a0e97fb0bb64}</Project>
+      <Name>Base.Catalog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\Base\Base.csproj">
+      <Project>{b78a3750-fa57-41f2-927a-dfb795552548}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\Base\WordTemplates\WordTemplates.csproj">
+      <Project>{e7530a21-c9ba-46ce-9165-80af3a56ddf6}</Project>
+      <Name>WordTemplates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Modules\EUSI\EUSI\EUSI.csproj">
+      <Project>{7020d864-7384-4c6e-80d0-cb72513d0f30}</Project>
+      <Name>EUSI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

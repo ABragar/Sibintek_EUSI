@@ -1,0 +1,539 @@
+﻿@model Dialog_WidgetViewModel
+
+@using Newtonsoft.Json
+@using AppContext = Base.Ambient.AppContext
+
+@{
+    Type typeEntity = Model.ViewModelConfig.TypeEntity;
+    Type typeservice = Model.ViewModelConfig.ServiceType;
+
+    string toolbarsClientObject = JsonConvert.SerializeObject(Model.ViewModelConfig.DetailView.Toolbars.OrderBy(x => x.SortOrder)
+        .Select(x => new
+        {
+            Title = x.Title,
+            Url = Url.Action(x.AjaxAction.Name, x.AjaxAction.Controller),
+            Params = x.AjaxAction.Params,
+            x.ToolbarID
+        }));
+
+    string nameToolbar = Html.CreateSystemName("tlb_");
+    string customToolbar = Html.CreateSystemName("tlb_");
+
+    string hotkeysId = Html.CreateSystemName("hotkeys");
+    string hotkeysInfoId = Html.CreateSystemName("hotkeys");
+    string hotKeyList = Html.CreateSystemName("hotlst");
+
+    string[] arSectionsToCopy = { "SibTask", "SibTaskList", "SibTaskTemplate", "SibProject", "SibProjectTemplate" };
+    string[] arProjectMnemonic = { "SibProject", "SibProjectTemplate" };
+    string[] arTemplateMnemonic = { "SibTaskTreeList", "SibTaskMenuList", "SibProjectMenuList" };
+    string[] arTaskMnemonic = { "SibTask", "SibTaskList" };
+    string[] arExtractMnemonic = { "ExtractObject", "ExtractBuild", "ExtractLand" };
+
+    bool isAccessibleObject = !Model.IsReadOnly && typeof(IAccess).IsAssignableFrom(Model.ViewModelConfig.TypeEntity);
+    bool isAutoMapperClonable = Model.ViewModelConfig.Clonable;
+    bool isTaskReport = Model.Mnemonic == "SibTaskReport";
+    bool isTask = (arTaskMnemonic.Any(x => x == Model.Mnemonic));
+    bool isProject = (arProjectMnemonic.Any(x => x == Model.Mnemonic));
+    bool isTemplating = (arTemplateMnemonic.Any(x => x == Model.Mnemonic));
+    bool isSSR = Type.Equals(typeEntity, typeof(CorpProp.Entities.Law.ScheduleStateRegistrationRecord)) || Type.Equals(typeEntity, typeof(CorpProp.Entities.Law.ScheduleStateTerminateRecord));
+    bool isAccountingObject = Type.Equals(typeEntity, typeof(CorpProp.Entities.Accounting.AccountingObject)) || Type.Equals(typeEntity, typeof(CorpProp.Entities.Estate.PropertyComplex));
+
+    bool isCadastralMenuList = Model.Mnemonic == "CadastralMenuList";
+
+    bool isExtractObject = arExtractMnemonic.Any(x => x == Model.Mnemonic);
+    bool isExportMovingDv = Model.Mnemonic == "ExportMoving";
+    bool isExportZipDv = Model.Mnemonic == "ExportZip";
+    bool isExportZipOSDv = Model.Mnemonic == "ExportZipOS";
+    bool isUpdateTaxBaseCadastralObjects = Model.Mnemonic == "updateTaxBaseCadastralObjects";
+
+    //отмена импорта
+    bool isImportHistory = Type.Equals(typeEntity, typeof(CorpProp.Entities.Import.ImportHistory));
+
+    //скрыть пустые поля
+    bool hideEmptyEditors = !Type.Equals(typeEntity, typeof(Base.BusinessProcesses.Entities.ActionComment)) && Model.Mnemonic != "SetCommentModel";
+    string hideEmptyEditorsID = Html.CreateSystemName("hideEmptyEditors_");
+    bool isNNAList = Type.Equals(typeEntity, typeof(CorpProp.Entities.Asset.NonCoreAssetList));
+    bool addNCAPreviousPeriod = Type.Equals(typeEntity, typeof(CorpProp.Entities.Asset.NonCoreAssetList));
+
+    //карточка на дату
+    bool isHistoryObject = (typeservice != null && typeservice.GetInterfaces()
+        .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(CorpProp.Services.Base.IHistoryService<>))
+        .Any());
+    string historyButtonID = Html.CreateSystemName("historyButtonID_");
+
+}
+}
+
+<script>
+    (function () {
+        var toolbar = window["@nameToolbar"] = new WrapToolbar("@nameToolbar", "ToolbarViewModel");
+        var composite = window["@Model.DialogID"];
+        composite.registerWidget(toolbar);
+
+        toolbar.toolbars = @Html.Raw(toolbarsClientObject);
+
+        toolbar.defparams = {
+            isReadOnly: false,
+            model: null,
+            prevID: null,
+            nextID: null,
+            isModal: null,
+            toSave: null,
+            isBlocked: null,
+            isTemplating: @isTemplating.ToString().ToLower(),
+        };
+
+        toolbar.params = {};
+
+        toolbar.asyncBind = function(params){
+            this.params = $.extend(this.defparams, params);
+            //debugger;
+            var dfd = $.Deferred();
+
+            this.initAjaxToolbars(dfd);
+            this.enableButtons(true);
+            this.visibleButtons(true);
+            this.refresh();
+
+            return dfd.promise();
+        };
+
+        toolbar.onNeighbourWidgetChanged = function(e) {
+            if (e.sender.desc === "ViewModel") {
+                if (e.event === "change") {
+
+                }
+            }
+        };
+
+        toolbar.visibleButtons = function() {
+            //toolbar.visible("#save_and_close", toolbar.params.isModal);
+            toolbar.visible("#save_as_template", toolbar.params.isTemplating);
+            toolbar.visible("#save", toolbar.params.isBlocked ? !toolbar.params.isBlocked : toolbar.params.toSave);
+            toolbar.visible("#save_and_close", toolbar.params.isBlocked ? !toolbar.params.isBlocked : toolbar.params.isModal);
+        };
+
+        toolbar.enableButtons = function(enable){
+            toolbar.enable("#prev", enable && toolbar.params.prevID);
+            toolbar.enable("#next", enable && toolbar.params.nextID);
+        };
+
+        toolbar.refresh = function() {
+        };
+
+        toolbar.initAjaxToolbars = function(dfd) {
+            var $ajaxToolbar = this.element().find("[data-role=toolbar]");
+
+            $ajaxToolbar.html("");
+
+            var dfds = [];
+
+            $.each(toolbar.toolbars, function(i, tbr) {
+                $ajaxToolbar.append($("<div>", {
+                    "class": "pull-left ajax-toolbar",
+                    "id": tbr.ToolbarID
+                }));
+
+                var params = pbaAPI.replaceObjectPlaceholders(toolbar.params.model, tbr.Params);
+
+                params["mnemonic"] = "@Model.Mnemonic";
+
+                dfds.push($.ajax({
+                    url: tbr.Url,
+                    data: params,
+                    cache: false,
+                    success: function (data) {
+                        $ajaxToolbar.find('#' + tbr.ToolbarID).html(data);
+                    }
+                }));
+            });
+
+            $.when.apply($, dfds).done(function() {
+                dfd.resolve();
+                $ajaxToolbar.fadeIn(300);
+            });
+        }
+
+        toolbar.action = function(action, params) {
+            composite.onWidgetChanged(
+            {
+                sender: toolbar,
+                event: action,
+                params: params
+            });
+        };
+
+        //events
+        toolbar.onClick = function (e) {
+            var btnId = e.id.replace("_overflow", "");
+            toolbar.enable(false);
+            toolbar.action(btnId);
+        };
+
+        toolbar.checkBoxChange = function (e) {
+            var btnID = "";
+            if (e.srcElement)
+                btnId = e.srcElement.id;
+            else if (e.target)
+                btnId = e.target.id;
+            toolbar.enable(false);
+            toolbar.action(btnId);
+        };
+
+        toolbar.byDateDVChange = function (e) {
+            var btnID = "";
+            if (e.sender)
+                if (e.sender.element) {
+                    btnId = e.sender.element[0].id;
+                    toolbar.enable(false);
+                    toolbar.action(btnId);
+                }
+        };
+
+    })();
+
+    function onChangeDateDV(e) {
+        eval("@nameToolbar"+".byDateDVChange(e);");
+
+    }
+</script>
+
+@if (isAccessibleObject)
+{
+    <script>
+        (function () {
+            var toolbar = window["@nameToolbar"];
+
+            toolbar.accessSetup = function(){
+                var id = toolbar.params.model.ID;
+
+                $.get(application.url.GetStandart("GetAccessEntry"), { mnemonic: "@Model.Mnemonic", objid: id }, function (data) {
+                    if (data.error) {
+                        pbaAPI.errorMsg(data.error);
+                    } else {
+                        pbaAPI.openDetailView("AccessEntry", {
+                            title: "Доступ к объекту",
+                            isMaximaze: true,
+                            entity: data.model,
+                            toSave: true
+                        });
+                    }
+                });
+            };
+        })();
+    </script>
+}
+
+@(Html.Kendo().ToolBar()
+            .Name(nameToolbar)
+            .Events(e => e.OverflowOpen(nameToolbar + ".onOverflowOpen"))
+            .Items(items =>
+            {
+                items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                {
+                    buttons.Add().Text("Предыдущая запись").HtmlAttributes(new { href = "#", title = "Предыдущая запись", data_popup = "bottom" }).SpriteCssClass("btntoolbar fa fa-arrow-left").Id("prev").ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                    buttons.Add().Text("Следующая запись").HtmlAttributes(new { href = "#", title = "Следующая запись", data_popup = "bottom" }).SpriteCssClass("btntoolbar fa fa-arrow-right").Id("next").ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                    buttons.Add().Text("Обновить").HtmlAttributes(new { href = "#", title = "Обновить", data_popup = "bottom" }).SpriteCssClass("btntoolbar fa fa-refresh").Id("refresh").ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                });
+
+                if (isTaskReport)
+                    if (AppContext.SecurityUser.IsAdmin)
+                    {
+                        items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                        {
+                            buttons.Add().Text("Настройки отображения").HtmlAttributes(new { href = "#", title = "Настройки отображения", data_popup = "bottom" }).SpriteCssClass("btntoolbar fa fa-cog").Id("dvSettings").ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                        });
+                    }
+                if (isTaskReport)
+                {
+                    items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                    buttons.Add().Text("Отправить отчет").HtmlAttributes(new { href = "#", title = "Отправить отчет", data_popup = "bottom" }).SpriteCssClass("btntoolbar fa fa-envelope").Id("sendTaskReport").ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick"));
+                }
+                if (isTask)
+                {
+                    items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                    buttons.Add().Text("Отправить уведомление").HtmlAttributes(new { href = "#", title = "Отправить уведомление", data_popup = "bottom" }).SpriteCssClass("btntoolbar fa fa-bell").Id("sendTaskNotification").ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick"));
+                }
+                if (isAccountingObject)
+                {
+                    items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                    buttons.Add().Text("Добавить в ГГР").HtmlAttributes(new { href = "#", title = "Добавить в ГГР", data_popup = "bottom" }).SpriteCssClass("btntoolbar mdi mdi-archive").Id("createScheduleState").ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick"));
+                }
+
+                items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                {
+                    buttons.Add().Id(hotkeysId).HtmlAttributes(new { @class = "hotkeys" }).SpriteCssClass("btntoolbar fa fa-keyboard-o").Togglable(false);
+                });
+
+                if (Model.ViewModelConfig.DetailView.Toolbars.Count > 0)
+                {
+                    items.Add()
+                        .Template(string.Format(@"<div id='{0}' class='custom-viewmodel-toolbars-container' data-role='toolbars'>
+    <div class='custom-viewmodel-toolbars clearfix' data-role='toolbar'></div>
+    </div>", customToolbar));
+                }
+
+                if (isAccessibleObject)
+                {
+                    items.Add().Type(CommandType.Button).Text("Доступ к объекту").HtmlAttributes(new { href = "#", title = "Доступ к объекту", data_popup = "bottom" }).SpriteCssClass("btntoolbar fa fa-lock").Id("access").Overflow(ShowInOverflowPopup.Always).Click(nameToolbar + ".accessSetup");
+                }
+
+                if (isAutoMapperClonable || isTask || isSSR)
+                {
+                    items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                        buttons.Add().Text("Скопировать").HtmlAttributes(new { href = "#", title = "Скопировать", data_popup = "bottom" }).SpriteCssClass("btntoolbar fa fa-copy").Id("copy").ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick"));
+                }
+
+                if (isExtractObject)
+                {
+                    items.Add().Type(CommandType.ButtonGroup)
+                    .Buttons(buttons =>
+                    buttons.Add()
+                    .Text("Обновить в реестре прав")
+                    .HtmlAttributes(new { href = "#", title = "Обновить в реестре прав", data_popup = "bottom" })
+                    .SpriteCssClass("k-button").Id("updInCorpProp")
+                    .ShowText(ShowIn.Toolbar)
+                    .Click(nameToolbar + ".onClick"));
+                }
+                if (isImportHistory)
+                {
+                    items.Add().Type(CommandType.ButtonGroup)
+                   .Buttons(buttons =>
+                   buttons.Add()
+                   .Text("Отменить импорт")
+                   .HtmlAttributes(new { href = "#", title = "Отменить импорт", data_popup = "bottom" })
+                   .SpriteCssClass("k-button").Id("cancelImport")
+                   .ShowText(ShowIn.Toolbar)
+                   .Click(nameToolbar + ".onClick")
+                   .Hidden(true));
+                }
+                if (isNNAList)
+                {
+                    items.Add().Type(CommandType.ButtonGroup)
+                    .Buttons(buttons =>
+                    buttons.Add()
+                    //.Text("Добавить ННА предыдущих периодов")
+                    .HtmlAttributes(new { href = "#", title = "Добавить ННА предыдущих периодов", data_popup = "bottom" })
+                    .SpriteCssClass("btntoolbar fa fa-plus-circle").Id("addNCAPreviousPeriod")
+                    .ShowText(ShowIn.Toolbar)
+                    .Click(nameToolbar + ".onClick")
+                    );
+
+                    items.Add().Type(CommandType.ButtonGroup)
+                    .Buttons(buttons =>
+                    buttons.Add()
+                    //.Text("Переопределить ОГ")
+                    .HtmlAttributes(new { href = "#", title = "Переопределить ОГ", data_popup = "bottom" })
+                    .SpriteCssClass("btntoolbar fa fa-exchange").Id("ncaChangeOG")
+                    .ShowText(ShowIn.Toolbar)
+                    .Click(nameToolbar + ".onClick")
+                    );
+                }
+                if (hideEmptyEditors)
+                {
+                    items.Add()
+                    .Template($"<div class='search-tools tooltipstered' style='top:20px;padding-top: 12px;' id='hideEmptyEditorsID'>" +
+                            $"{Html.Kendo().CheckBox().Name(hideEmptyEditorsID).Label("Скрыть пустые поля").ToHtmlString()}" +
+                            $"" +
+                            $"</div>" +
+                            "<script>$(function() {$('#" + hideEmptyEditorsID + "').change(function(e) {" + nameToolbar + ".checkBoxChange(e); });});</script>"
+    )
+                    .OverflowTemplate(
+                            $"<div class='search-tools tooltipstered' style='top:20px;padding-top: 12px;' id='hideEmptyEditorsID'>" +
+                            $"{Html.Kendo().CheckBox().Name(hideEmptyEditorsID).Label("Скрыть пустые поля").ToHtmlString()}" +
+                            $"" +
+                            $"</div>" +
+                            "<script>$(function() {$('#" + hideEmptyEditorsID + "').change(function(e) {" + nameToolbar + ".checkBoxChange(e); });});</script>"
+
+                    );
+
+                }
+                if (!Model.IsReadOnly)
+                {
+                    items.Add().Type(CommandType.ButtonGroup).HtmlAttributes(new { style = "float: right" }).Buttons(buttons =>
+                    {
+                        buttons.Add().Text("Сохранить как шаблон").HtmlAttributes(new { @class = "k-button secondary" }).Id("save_as_template").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+            //buttons.Add().Text("Сохранить").HtmlAttributes(new { @class = "k-button success" }).Id("save").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+            //buttons.Add().Text("Сохранить и закрыть").HtmlAttributes(new { @class = "k-button primary" }).Id("save_and_close").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+            if (isCadastralMenuList)
+                        {
+                            buttons.Add().Text("Сохранить").HtmlAttributes(new { @class = "k-button success hidden" }).Id("save").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+                            buttons.Add().Text("Сохранить и закрыть").HtmlAttributes(new { @class = "k-button primary hidden" }).Id("save_and_close").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+                            buttons.Add().Text("Сохранить").HtmlAttributes(new { @class = "k-button success" }).Id("save_custom").ShowText(ShowIn.Toolbar);
+                            buttons.Add().Text("Сохранить и закрыть").HtmlAttributes(new { @class = "k-button primary" }).Id("save_and_close_custom").ShowText(ShowIn.Toolbar);
+                        }
+                        else
+                        if (isExportMovingDv)
+                        {
+                            buttons.Add().Text("Выгрузить").HtmlAttributes(new { @class = "k-button primary" }).Id("export_movings").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+
+                        }
+                        else if (isExportZipDv)
+                        {
+                            buttons.Add().Text("Выгрузить").HtmlAttributes(new { @class = "k-button primary" }).Id("export_zip").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+                        }
+                        else if (isExportZipOSDv)
+                        {
+                            buttons.Add().Text("Выгрузить").HtmlAttributes(new { @class = "k-button primary" }).Id("export_zipOS").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+                        }
+                        else if (isUpdateTaxBaseCadastralObjects)
+                        {
+                            buttons.Add().Text("Обновить").HtmlAttributes(new { @class = "k-button primary" }).Id("btnUpdateTaxBaseCadastralObjects").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+                            buttons.Add().Text("Закрыть").HtmlAttributes(new { @class = "k-button primary" }).Id("close").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+                        }
+                        else if (Model.Mnemonic == "CalculatingRecord" || Model.Mnemonic == "CalculatingRecordLand" || Model.Mnemonic == "CalculatingRecordTransport" || Model.Mnemonic == "CalculatingRecordInventory")
+                        {
+                            buttons.Add().Text("Рассчитать").HtmlAttributes(new { @class = "k-button primary" }).Id("calculate_ao").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+
+                        }
+                        else if (Model.Mnemonic == "ERImportWizard")
+                        {
+                            buttons.Add().Text("Импортировать")
+                            .HtmlAttributes(new { @class = "k-button primary" })
+                            .Id("save_and_close")
+                            .ShowText(ShowIn.Toolbar)
+                            .Click(nameToolbar + ".onClick");
+                        }
+                        else if (typeEntity.GetInterfaces().Contains(typeof(CorpProp.Common.IDialogObject)))
+                        {
+                            buttons.Add().Text("ОК")
+                                .HtmlAttributes(new { @class = "k-button sib-btn-ok" })
+                                .Id("save_and_close")
+                                .ShowText(ShowIn.Toolbar)
+                                .Click(nameToolbar + ".onClick");
+
+                            buttons.Add().Text("Отмена")
+                               .HtmlAttributes(new { @class = "k-button sib-btn-cancel" })
+                               .Id("close")
+                               .ShowText(ShowIn.Toolbar)
+                               .Click(nameToolbar + ".onClick");
+                        }
+                        else
+                        {
+                            buttons.Add().Text("Сохранить").HtmlAttributes(new { @class = "k-button success" }).Id("save").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+                            buttons.Add().Text("Сохранить и закрыть").HtmlAttributes(new { @class = "k-button primary" }).Id("save_and_close").ShowText(ShowIn.Toolbar).Click(nameToolbar + ".onClick");
+                        }
+                    });
+                }
+                if (isHistoryObject)
+                    items.Add()
+                    .Template(
+                    $"<div style='padding-left:10px'>{Html.Kendo().DatePicker().Name(historyButtonID).Events(e => e.Change("onChangeDateDV")).Value(DateTime.Today).Format("dd.MM.yyyy")}</div>");
+
+            })
+)
+
+<div id="@hotkeysInfoId" type="text/x-kendo-template" style="display: none; background-color: #fefefe">
+    <h5 class="hotkeys__header">Горячие клавиши</h5>
+    <ul class="kwidget kwidget--list" id="@hotKeyList">
+        <li class="hotkeys-row">
+            <span class="key-button">Esc </span> <span class="key-text">- Закрыть окно</span>
+        </li>
+        <li class="hotkeys-row">
+            <span class="key-button">Ctrl</span>
+            <span class="key-text">+</span>
+            <span class="key-button">&#8592;</span>
+            <span class="key-text">- Предыдущая вкладка</span>
+        </li>
+        <li class="hotkeys-row">
+            <span class="key-button">Ctrl</span>
+            <span class="key-text">+</span>
+            <span class="key-button">&#8594;</span>
+            <span class="key-text">- Следующая вкладка</span>
+        </li>
+        <li class="hotkeys-row">
+            <span class="key-button">Ctrl</span>
+            <span class="key-text">+</span>
+            <span class="key-button">Enter </span>
+            <span class="key-text">- Сохранить</span>
+        </li>
+        <li class="hotkeys-row">
+            <span class="key-button">Alt</span>
+            <span class="key-text">+</span>
+            <span class="key-button">Enter </span>
+            <span class="key-text">- Сохранить и закрыть</span>
+        </li>
+    </ul>
+</div>
+
+<script>
+    $(function() {
+        var toolbar = window["@nameToolbar"];
+        var $toolbar = toolbar.element();
+
+        //NOTE: в данной версии toolbar-а возможно использовать иконки только из кендо-спрайтов
+        //TODO: убрать!!!
+        $toolbar.find(".k-sprite.fa").removeClass("k-sprite");
+        toolbar.popupEl().find(".k-sprite.fa").removeClass("k-sprite");
+
+        toolbar.enable("#prev", false);
+        toolbar.enable("#next", false);
+
+        var $customToolbar = $toolbar.find("[data-role=toolbar]");
+
+        // param - / function -> Deferred /
+        $customToolbar.on("onActionInvoke", function(e, param) {
+            if (param) {
+                if (param.save) {
+                    toolbar.action("save_", {
+                        callback: param.save
+                    });
+                }
+
+                if (param.loadingAndRefresh) {
+                    toolbar.action("loadingAndRefresh", {
+                        callback: param.loadingAndRefresh
+                    });
+                }
+
+                if (param.loadingAndNext) {
+                    toolbar.action("loadingAndNext", {
+                        callback: param.loadingAndNext
+                    });
+                }
+
+                if (param.addToChangedAndRefresh) {
+                    toolbar.action("addToChangedAndRefresh");
+                }
+            } else {
+                toolbar.action("refresh");
+            }
+        });
+
+        $toolbar.find("#@hotkeysId").kendoTooltip({
+            width: 300,
+            position: "top",
+            content: kendo.template($("#@hotkeysInfoId").html())
+        }).data("kendoTooltip");
+
+        @if (isCadastralMenuList)
+        {
+        <text>
+        $("#save_and_close_custom").unbind("click").click(function (){
+            $("#save_and_close").click();
+
+            var chkBoxUn = $("label:contains('Является непрофильным или неэффективным')").parent().find("input[type=checkbox]").is(':checked');
+            if(chkBoxUn){
+                pbaAPI.openModalDialog("NonCoreAsset",
+                function (res) {},
+                {
+                    title: 'Необходимо создать новую запись: Непрофильный или неэффективный актив'
+                });
+            }
+        });
+        $("#save_custom").unbind("click").click(function (){
+            $("#save").click();
+
+            var chkBoxUn = $("label:contains('Является непрофильным или неэффективным')").parent().find("input[type=checkbox]").is(':checked');
+            if(chkBoxUn){
+                pbaAPI.openModalDialog("NonCoreAsset",
+                function (res) {},
+                {
+                    title: 'Необходимо создать новую запись: Непрофильный или неэффективный актив'
+                });
+            }
+        });
+        </text>
+        }
+    });
+</script>

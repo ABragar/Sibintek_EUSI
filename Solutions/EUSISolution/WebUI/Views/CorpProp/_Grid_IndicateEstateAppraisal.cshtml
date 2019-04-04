@@ -1,0 +1,115 @@
+﻿@using Base.UI.Presets
+@model StandartGridView
+
+@{
+    var selectionMode = Model.MultiSelect || Model.ViewModelConfig.ListView.MultiSelect ? GridSelectionMode.Multiple : GridSelectionMode.Single;
+
+    if (Model.Type == TypeDialog.Lookup)
+    {
+        Model.Preset = DependencyResolver.Current.GetService<IPresetFactory<GridPreset>>().Create(Model.Mnemonic);
+    }
+
+    var preset = (GridPreset)Model.Preset;
+
+    if (Model.IsPermission(TypePermission.Write) && !Model.IsReadOnly && (Model.Type == TypeDialog.Frame || Model.Type == TypeDialog.Lookup) && Model.ViewModelConfig.ListView.Sortable && !Model.ViewModelConfig.ListView.MultiSelect)
+    {
+        selectionMode = GridSelectionMode.Single;
+    }    
+
+    var config = Model.ViewModelConfig.ListView;
+}
+
+<style scoped>
+    /* Use the DejaVu Sans font for display and embedding in the PDF file.
+            The standard PDF fonts have no support for Unicode characters. */
+    .k-grid {
+        font-family: "DejaVu Sans", "Arial", sans-serif;
+    }
+
+        .k-grid tbody tr {
+            height: 20px;
+        }
+
+        .k-grid td {
+            white-space: nowrap;
+        }
+</style>
+
+<script>
+    // Import DejaVu Sans font for embedding
+    kendo.pdf.defineFont({
+        "DejaVu Sans": "@Url.Content("~/Content/vendor/kendo/styles/fonts/DejaVu/DejaVuSans.ttf")",
+        "DejaVu Sans|Bold": "@Url.Content("~/Content/vendor/kendo/styles/fonts/DejaVu/DejaVuSans-Bold.ttf")",
+        "DejaVu Sans|Bold|Italic": "@Url.Content("~/Content/vendor/kendo/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf")",
+        "DejaVu Sans|Italic": "@Url.Content("~/Content/vendor/kendo/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf")",
+    });
+</script>
+
+@(Html.Kendo().Grid<CorpProp.Entities.CorporateGovernance.IndicateEstateAppraisalView>()
+    .Name(Model.WidgetID)
+    .AutoBind(false)
+
+    .Columns(columns =>
+    {
+        columns.Bound(p => p.AppraiserShortName).Title("Оценщик")
+                            .ClientFooterTemplate("Всего: #=count#")
+        .ClientGroupHeaderTemplate("Оценщик: #= value # (Количество: #= count#)");
+        ; columns.Bound(p => p.SibRegionTitle).Title("Регион")
+        .ClientGroupHeaderTemplate("Регион: #= value # (Количество: #= count#, Рыночная стоимость, Сумма:  #=aggregates.MarketPriceWithoutVAT.sum#)");             
+
+       ; columns.Bound(p => p.CustomerShortName).Title("Заказчик")
+        .ClientGroupHeaderTemplate("Заказчик: #= value # (Количество: #= count#, Рыночная стоимость, Сумма:  #=aggregates.MarketPriceWithoutVAT.sum#)");
+        ; columns.Bound(p => p.AppraisalDate).Format("{0:dd.MM.yyyy}").Title("Дата оценки");
+        columns.Bound(p => p.AppraisalTypeName).Title("Тип оценки");
+        columns.Bound(p => p.MarketPriceWithoutVAT).Format("{0:C}").Title("Рыночная стоимость, без НДС")
+            .ClientFooterTemplate("Сумма: #=sum#")
+            .ClientGroupHeaderTemplate("Сумма: #=sum#");       
+        columns.Bound(p => p.ReportNumber).Title("Номер отчета");
+        columns.Bound(p => p.ReportDate).Format("{0:dd.MM.yyyy}").Title("Дата отчета");
+        columns.Bound(p => p.ShortDescriptionObjects).Title("Объекты оценки");
+
+    })
+    .Sortable(sortable => sortable
+                .AllowUnsort(false)
+                .SortMode(GridSortMode.MultipleColumn))
+    .Scrollable(s => s.Enabled(config.Scrollable))
+    .Selectable(sel => sel.Mode(selectionMode))
+    .Filterable()
+    .Events(e => e.InitEvents(this))
+    .Pdf(pdf => pdf
+        .FileName((Model.ViewModelConfig.ListView.Title ?? Model.ViewModelConfig.Title) + ".pdf")
+        .ProxyURL(Url.Action("KendoUI_Export_Save", "Standart", new { area = "" }))
+    )
+    .Excel(e =>
+    {
+        e.FileName((Model.ViewModelConfig.ListView.Title ?? Model.ViewModelConfig.Title) + ".xlsx");
+        e.Filterable(true);
+        e.ProxyURL(Url.Action("KendoUI_Export_Save", "Standart", new { area = "" }));
+        e.AllPages(true);
+    })
+    .DataSource(dataSource => dataSource
+        .WebApi()
+        .Model(a => a.InitModel(this))
+        .Sort(sort => sort.InitDataSourceSort(this))
+        .Group(group => group.InitDataSourceGroup(this))
+        .PageSize(preset.PageSize)
+         .ServerOperation(Model.ViewModelConfig.ListView.DataSource.ServerOperation && Model.Type != TypeDialog.Lookup)
+        .Events(events => events.Error(Model.WidgetID + ".onErrorHandler"))
+        .Read(read => read.Url(Url.HttpRouteUrl("apigrid", new { controller = "ApiGrid", action = "ReadSource", mnemonic = Model.Mnemonic, searchStr = Model.SearchStr, extrafilter = Model.SysFilter })).Data(Model.WidgetID + ".onAdditionalData"))
+        .Aggregates(aggregates =>
+        {
+            aggregates.Add(p => p.MarketPriceWithoutVAT).Sum();
+            aggregates.Add(p => p.CustomerShortName).Count();
+            aggregates.Add(p => p.SibRegionTitle).Count();
+            aggregates.Add(p => p.AppraisalTypeName).Count();
+            aggregates.Add(p => p.AppraiserShortName).Count();
+        })
+
+    )
+    .Groupable(x => x.ShowFooter(true))
+    .Pageable(p => p.InitPageable(this))
+    .Reorderable(r => r.Columns(true))
+    .Resizable(r => r.Columns(true))
+    //NOTE: custom navigate
+    .Navigatable(n => n.Enabled(true))
+)

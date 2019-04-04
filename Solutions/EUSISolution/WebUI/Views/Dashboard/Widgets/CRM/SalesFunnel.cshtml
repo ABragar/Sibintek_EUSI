@@ -1,0 +1,42 @@
+﻿@*@model WebUI.Models.Dashboard.DashboardWidgetVm
+
+@{
+    string chartID = "chart_" + Guid.NewGuid().ToString("N");
+}
+
+
+@Html.DashboardWidget().Content(
+    @<text>
+
+        @(Html.Kendo().Chart().Name(chartID)
+              .AutoBind(true)
+              .SeriesDefaults(dftlsSer => dftlsSer.Funnel()
+                  .DynamicSlope(true)
+                  .DynamicHeight(false)
+                  .Labels(lb => lb
+                      .Template("#= dataItem.Title #")
+                      .Visible(true)))
+             .Series(a => a.Funnel("Percent", "Title", "Color"))
+             .DataSource(ds =>
+              {
+                  ds.Read("GetSalesFunnel", "Crm");
+              })
+              .Tooltip(tt => tt.Visible(true).Template("#= category # - #= value #"))
+        )
+    </text>
+)
+
+
+
+
+<script>
+    $(function () {
+        var chart = $("#@Model.Uid").data("dashboardWidget");
+
+        chart.onRefresh = function () {
+            var $chart = $("#@chartID").data("kendoChart");
+            $chart.dataSource.read();
+            $chart.refresh();
+        }
+    })
+</script>*@

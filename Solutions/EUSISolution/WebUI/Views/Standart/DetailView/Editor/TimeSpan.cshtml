@@ -1,0 +1,8 @@
+﻿@model EditorViewModel
+
+@(Html.Kendo().TimePicker()
+        .ParseFormats(new List<string>()
+        {
+            JsonNetResult.TIME_FORMATE
+        })
+        .Name(Model.UID).HtmlAttributes(Html.CreateHtmlAttributes(Model)))

@@ -1,0 +1,123 @@
+﻿@using Base.UI.ViewModal
+@model Dialog_WidgetViewModel
+    
+@{
+    string nameContextMenu = Html.CreateSystemName("context");
+
+    string btnAddId = Html.CreateSystemName("add");
+    string btnEditId = Html.CreateSystemName("edit");
+    string btnDeleteId = Html.CreateSystemName("delete");
+    string btnPreviewId = Html.CreateSystemName("preview");
+    string btnDownloadId = Html.CreateSystemName("download");
+
+    bool actionCreate = !Model.IsReadOnly && Model.IsPermission(TypePermission.Create) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Create);
+    bool actionEdit = !Model.IsReadOnly && Model.IsPermission(TypePermission.Write);
+    bool actionDelete = !Model.IsReadOnly && Model.IsPermission(TypePermission.Delete) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Delete);
+}
+
+<script>
+    window["@nameContextMenu"] = new WrapContextMenu("@nameContextMenu", "ContextMenuListView");
+
+    (function() {
+        var composite = window["@Model.DialogID"];
+        var contextMenu = window["@nameContextMenu"];
+
+        composite.registerWidget(contextMenu);
+
+        contextMenu.onNeighbourWidgetChanged = function(e) {
+            switch (e.sender.desc) {
+            case "GridView":
+                if (e.event === "select") {
+                    contextMenu.listViewSelectedObject = e.params.dataItem;
+
+                    var isSelected = contextMenu.listViewSelectedObject != null;
+
+                    var isMnemonic = true;
+                    var isSelectNode = true;
+
+                    @if (actionCreate)
+                    {
+                        @: contextMenu.enable("#@btnAddId", isSelectNode && isMnemonic);
+                    }
+
+                    contextMenu.enable("#@btnEditId", isSelected && isSelectNode && isMnemonic);
+
+                    @if (actionDelete)
+                    {
+                        @: contextMenu.enable("#@btnDeleteId", isSelected);
+                    }
+
+                } else if (e.event == "onDataBound") {
+
+                    contextMenu.listViewSelectedObject = null;
+
+                }
+
+                break;
+            }
+        };
+
+        //events
+        contextMenu.onSelect = function(e) {
+            composite.onWidgetChanged({
+                sender: contextMenu,
+                event: "click",
+                params: {
+                    event: e,
+                    action: e.item.getAttribute("data-action")
+                }
+            });
+        };
+        contextMenu.onOpen = function(e) {
+            composite.onWidgetChanged({
+                sender: contextMenu,
+                event: "select",
+                params: { el: $(e.target) }
+            });
+        };
+    })();
+</script>
+
+@(Html.Kendo().ContextMenu()
+
+    .Name(nameContextMenu)
+
+    .Target("#" + Model.WidgetID)
+    .Filter("table[data-role=selectable] tr[role=row]")
+
+    .Events(e =>
+    {
+        e.Select(nameContextMenu + ".onSelect");
+        e.Open(nameContextMenu + ".onOpen");
+    })
+
+    .Items(items =>
+    {
+        if (actionCreate) { items.Add().Text("Создать").HtmlAttributes(new { id = btnAddId, data_action = "add" }).SpriteCssClasses("btntoolbar fa fa-plus").Enabled(actionCreate); }
+
+        if (actionEdit)
+        {
+            items.Add().Text("Редактировать").HtmlAttributes(new { id = btnEditId, data_action = "edit" }).SpriteCssClasses("btntoolbar fa fa-pencil").Enabled(actionEdit);
+        }
+        else
+        {
+            items.Add().Text("Просмотр").HtmlAttributes(new { id = btnEditId, data_action = "edit" }).SpriteCssClasses("btntoolbar fa fa-eye").Enabled(actionEdit);
+        }
+
+        items.Add().Text("Предпросмотр").HtmlAttributes(new {id = btnPreviewId, data_action = "preview"}).SpriteCssClasses("btntoolbar fa fa-eye");
+        items.Add().Text("Скачать").HtmlAttributes(new {id = btnDownloadId, data_action = "download"}).SpriteCssClasses("btntoolbar fa fa-download");
+
+        if (actionDelete) { items.Add().Text("Удалить").HtmlAttributes(new { id = btnDeleteId, data_action = "delete" }).SpriteCssClasses("btntoolbar fa fa-trash-o").Enabled(actionDelete); }
+    })
+)
+
+<script>
+    $(function () {
+        var contextMenu = window["@nameContextMenu"];
+        var $contextMenu = contextMenu.element();
+
+        //NOTE: в данной версии возможно использовать иконки только из кендо-спрайтов
+        //TODO: убрать!!!
+        $contextMenu.find(".k-sprite.glyphicon").removeClass("k-sprite");
+    });
+</script>

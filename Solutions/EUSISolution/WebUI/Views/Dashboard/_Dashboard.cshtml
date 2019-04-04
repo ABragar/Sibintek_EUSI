@@ -1,0 +1,131 @@
+﻿@model DashboardVm
+
+<div id="dashboard" class="dashboard">
+    <div id="main" data-id="@DashboardPanel.Main" class="dashpane dashboard__main">
+        @if (Model.Widgets != null)
+        {
+            foreach (var widget in Model.Widgets.Where(x => x.Panel == DashboardPanel.Main).OrderBy(x => x.SortOrder))
+            {
+                Html.RenderPartial(string.Format("~/Views/Dashboard/Widgets/{0}.cshtml", widget.Name), widget);
+            }
+        }
+    </div>
+    <div id="sidebar" data-id="@DashboardPanel.Sidebar" class="dashpane dashboard__sidebar">
+        @if (Model.Widgets != null)
+        {
+            foreach (var widget in Model.Widgets.Where(x => x.Panel == DashboardPanel.Sidebar).OrderBy(x => x.SortOrder))
+            {
+                Html.RenderPartial(string.Format("~/Views/Dashboard/Widgets/{0}.cshtml", widget.Name), widget);
+            }
+        }
+    </div>
+    <div id="settings" class="dashboard__settings">
+        <a href="#">
+            <i class="fa fa-cog"></i>
+        </a>
+    </div>
+</div>
+
+<script>
+    $(function () {        
+        var $dashboard = $("#dashboard");
+
+        var placeholder = function (element) {
+            return element.clone().addClass("placeholder");
+        };
+
+        var hint = function (element) {
+            return element.find(".header").clone().addClass("dashboard-widget").addClass("hint")
+                        .width(element.width());
+        };
+
+        $("#settings a").click(function () {
+            var module = "";
+            var path = location.pathname.toLowerCase().replace(/\/$/, ''); 
+            if (path === "" || path === "/dashboard") {
+                module = "Global";
+            } else {
+                module = path.substr(path.lastIndexOf('/') + 1);
+            }
+
+            pbaAPI.editPreset("DashboardPreset", module, function () {
+                location.reload();
+            });
+        });
+
+        var getDashboardPreset = function() {
+            var preset = {
+                For: "@Model.Module",
+                Widgets: []
+            }
+
+            var sortOrder = 0;
+
+            $dashboard.find(".dashboard-widget").each(function () {
+                var $widget = $(this);
+
+                var w = {
+                    Name: $widget.attr("id"),
+                    Panel: $widget.closest(".dashpane").attr("data-id"),
+                    SortOrder: sortOrder,
+                    Title: $widget.data("title")
+                };
+
+                preset.Widgets.push(w);
+                sortOrder++;
+            });
+
+            return preset;
+        }
+
+        var onChange = function (e) {
+            if (e.action === "receive" || e.action === "sort") {
+
+                $(e.item).trigger("onChange");
+
+                var preset = getDashboardPreset();
+
+                pbaAPI.savePreset("DashboardPreset", preset);
+            } else if (e.action === "hide") {
+
+                $("#" + e.item.Name).remove();
+
+                var preset = getDashboardPreset();
+
+                pbaAPI.savePreset("DashboardPreset", preset);                
+            }
+        };
+
+        $(".dashboard-widget__action").click(function () {
+            var $widget = $(this).closest(".dashboard-widget");
+            var widget = {
+                Name: $widget.attr("id")
+            };
+
+            onChange({
+                action: $(this).attr("data-widget-action"),
+                item: widget
+            });
+        });
+
+        $dashboard.find("#sidebar").kendoSortable({
+            filter: ">div",
+            cursor: "move",
+            handler: ".header",
+            connectWith: "#dashboard #main",
+            placeholder: placeholder,
+            hint: hint,
+            change: onChange
+        });
+
+        $dashboard.find("#main").kendoSortable({
+            filter: ">div",
+            cursor: "move",
+            handler: ".header",
+            connectWith: "#dashboard #sidebar",
+            placeholder: placeholder,
+            hint: hint,
+            change: onChange
+        });       
+    });
+</script>

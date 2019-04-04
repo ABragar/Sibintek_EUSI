@@ -1,0 +1,145 @@
+.map-tile-layers {
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+
+	&-panel {
+		font-weight: 400;
+
+		position: fixed;
+		z-index: 5;
+		bottom: @header-height *.825;
+		left: .35em;
+
+		padding: @modular-scale *.5em @modular-scale *1em @modular-scale *.5em @modular-scale *.75em;
+
+		letter-spacing: .0125em;
+
+		color: @color--dark;
+		border-bottom: 2px solid lighten( @color--dark, 35% );
+		border-radius: 3px;
+		background-color: @color--light;
+		box-shadow: 0 2px 6px fade( @color--dark, 19% ), 0 0 18px fade( @color--dark, 19% );
+
+		&:before {
+			position: fixed;
+			z-index: 4;
+			bottom: @header-height *.7;
+			left: @modular-scale *2.65em;
+
+			width: 20px;
+			height: 20px;
+
+			content: '';
+			transform: rotate(45deg);
+
+			border: solid lighten( @color--dark, 35% );
+			border-width: 0 2px 2px 0;
+			border-radius: 0 0 3px;
+			background-color: @color--light;
+
+			@media ( min-width: @screen-width-md ) {
+				display: none;
+				}
+			}
+
+		@media ( min-width: @screen-width-md ) {
+			font-weight: 300;
+
+			position: absolute;
+			top: @modular-scale *3.5em;
+			right: pow( @modular-scale *1em, -1 );
+			bottom: auto;
+			left: auto;
+
+			padding: @modular-scale *1em;
+
+			color: @color--light;
+			background-color: fade( @color--dark, 80% );
+			box-shadow: none;
+			}
+		}
+
+	.separator {
+		height: @modular-scale *.5em;
+		}
+
+	.icheckbox_square,
+	.iradio_square {
+		font-size: 1.333em;
+
+		position: relative;
+
+		display: inline-block;
+
+		width: 1em;
+		height: @modular-scale *1em;
+		margin: 0;
+		margin-right: @modular-scale *.125em;
+		padding: 0;
+
+		cursor: pointer;
+		vertical-align: middle;
+
+		border: none;
+		background-image: none;
+
+		 > input,  > ins {
+			z-index: 3;
+
+			cursor: pointer;
+			}
+
+		&:before {
+			font-family: FontAwesome;
+
+			position: relative;
+			z-index: 2;
+
+			transition: color .15s ease;
+			}
+
+		&:after {
+			display: block;
+
+			content: '';
+			transition: background-color .15s ease;
+
+			background-color: transparent;
+			}
+
+		&.checked:after {
+			position: absolute;
+			z-index: 1;
+			top: .5em;
+			left: .125em;
+
+			width: pow( @modular-scale *1em, -1 );
+			height: pow( @modular-scale *1em, -1 );
+
+			border-radius: 50%;
+			background-color: @color--light;
+			}
+
+		&.checked:before {
+			color: @color--primary;
+			}
+		}
+
+	.iradio_square:before {
+		content: '\f1db';
+		}
+
+	//.iradio_square.checked:before { content: "\f192"; } //dot-circle
+	.iradio_square.checked:before {
+		content: '\f058';
+		} //check-circle
+
+	.icheckbox_square:before {
+		content: '\f096';
+		}
+	.icheckbox_square.checked:before {
+		content: '\f14a';
+		}
+	}

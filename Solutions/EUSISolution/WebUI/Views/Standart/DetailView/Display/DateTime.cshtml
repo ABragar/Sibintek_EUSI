@@ -1,0 +1,22 @@
+@model EditorViewModel
+
+<div class="date date-time"><span class="fa fa-fw fa-lg fa-calendar">&nbsp;</span><span id="@Model.UID"></span></div>
+
+<script>
+    $(function () {
+        var $f = $("#@Model.UID");
+
+        $f.closest("form").on("onAfterBind", function (e, form) {
+            if ($("#@Model.UID").closest("form")[0].id != form.element[0].id) {
+                return;
+            }
+            if (form.getPr("@Model.PropertyName")) {
+                var date = kendo.parseDate(form.getPr("@Model.PropertyName"), "@JsonNetResult.DATE_TIME_FORMATE");
+
+                $f.html(kendo.toString(date, "@JsonNetResult.DATE_TIME_FORMATE"));
+            } else {
+                $f.html("");
+            }
+        });
+    });
+</script>

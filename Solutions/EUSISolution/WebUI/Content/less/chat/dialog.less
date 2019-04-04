@@ -1,0 +1,197 @@
+.dialogs {
+	position: relative;
+
+	height: 100%;
+
+	 > .ps-container {
+		.abs-stretch();
+		}
+
+	&__list-item {
+		position: relative;
+
+		padding: 1rem 2rem;
+
+		border-bottom: 1px solid @color--border;
+
+		.clearfix();
+
+		 > a {
+			.abs-stretch();
+			}
+
+		&--has-unreaded {
+			background-color: fade( @color--primary, 5% );
+			}
+
+		.user-image {
+			position: relative;
+
+			.user-state {
+				position: absolute;
+				bottom: .714rem; 
+				left: 5rem;
+				}
+			}
+		}
+	}
+
+.chat-dialog__image {
+	display: inline-block;
+
+	width: pow( @modular-scale *1rem, 3 );
+	height: pow( @modular-scale *1rem, 3 );
+
+	.dialogs__list-item & {
+		float: left;
+
+		margin-right: .714rem;
+		}
+	}
+
+.chat-dialog__title {
+	margin: 1.071rem 2.714rem .2857rem; 
+
+	.nowrapHiddenText();
+	}
+
+.chat-dialog__last-message {
+	font-size: .714rem;
+
+	color: darken( @color--dark, 60% );
+
+	&--empty:after {
+		content: 'Нет сообщений';
+
+		color: darken( @color--dark, 34% );
+		}
+	}
+
+.chat-dialog__unreaded {
+	font-family: monospace;
+	font-size: 1rem;
+	line-height: @modular-scale *1rem;
+
+	position: absolute;
+	top: calc(~"50% - .857rem");
+	right: 1.071rem;
+
+	display: inline-block;
+
+	width: @modular-scale *1rem;
+	height: @modular-scale *1rem;
+
+	text-align: center;
+
+	color: fade( @color--light, 85% );
+	border-radius: 50%;
+	background-color: fade( @color--primary, 51% );
+	}
+
+.chat__member-list {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+
+	width: 7.857rem;
+
+	border-right: 1px solid darken( @color--light, 9% );
+
+	.chat--maximized .chat__member-list {
+		width: 21.429rem;
+		}
+
+	 > .ps-container {
+		.abs-stretch();
+
+		 > ul {
+			width: 100%;
+			}
+		}
+	}
+
+.chat__member {
+	position: relative;
+
+	padding: .5715rem 1.071rem;
+
+	border-bottom: 1px solid darken( @color--light, 9% );
+
+	 > div:first-child {
+		.nowrapHiddenText();
+		}
+
+	&-actions {
+		position: absolute;
+		top: 2.143rem;
+		right: .357rem;
+		}
+
+	.user-image .user-state {
+		font-size: .857rem;
+
+		margin-top: .357rem;
+
+		&-desc {
+			text-transform: lowercase;
+			}
+		}
+
+	.chat--maximized .chat__member {
+		.clearfix();
+
+		.user-image {
+			font-weight: 300;
+
+			padding: .357rem 0;
+
+			img {
+				float: left; 
+
+				width: 2.857rem;
+				height: 2.857rem;
+				}
+
+			 > span {
+				display: block;
+
+				margin-top: .214rem;
+
+				text-align: left;
+				text-transform: lowercase;
+				}
+
+			img + span {
+				max-width: 14.286rem;
+				margin-left: 2.857rem;
+
+				.nowrapHiddenText();
+				}
+
+			.user-state {
+				margin-left: 3.2857rem;
+				}
+			}
+		}
+	}
+
+.chat__active-dialog {
+	position: relative;
+
+	height: 100%;
+	}
+
+.popup-content .fa-custom-record {
+	font-size: pow( @modular-scale *1em, 2 );
+	line-height: 1rem;
+
+	display: inline-block;
+
+	width: 1.25rem;
+
+	text-align: center;
+	vertical-align: top;
+
+	color: @color--accent-alt;
+	}

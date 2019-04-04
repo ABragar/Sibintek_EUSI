@@ -1,0 +1,447 @@
+﻿@model EditorViewModel
+
+@using Base.Security
+@using Base.UI.ViewModal
+@using WebUI.Helpers
+
+@{
+    var config = Model.ViewModelConfig;
+
+    const string placeholder = "Введите значение...";
+
+    string autoCompleteID = "ac_" + Guid.NewGuid().ToString("N");
+    string openButtonID = "btn_" + Guid.NewGuid().ToString("N");
+    string selectButtonID = "btn_" + Guid.NewGuid().ToString("N");
+    string clearButtonID = "btn_" + Guid.NewGuid().ToString("N");
+    string wizardFieldButtonID = "btn_" + Guid.NewGuid().ToString("N");
+
+    string template = "";
+    string className = "base-object-one";
+
+    string cascadeField = "";
+    string cascadeIdField = "";
+    bool lockDependentsIfParentEmpty = true;
+
+    if (Model.CascadeFrom != null)
+    {
+        cascadeField = Model.CascadeFrom.Field;
+        cascadeIdField = Model.CascadeFrom.IdField;
+        lockDependentsIfParentEmpty = Model.CascadeFrom.LockDependentsIfParentEmpty;
+    }
+
+    string icon = ""; //string.Format("<span class='{0}'></span>", config.Icon);
+
+    string htmlFieldName = Model.PropertyName;
+
+    string templateIcon = "";
+
+    bool isUser = false;
+
+    bool enableCreateEdit = false;
+
+    var properties = new List<string>()
+{
+config.LookupProperty.Text
+};
+
+    if (config.LookupProperty.Image != null)
+    {
+        template = string.Format("<span class='data-item'><img class='img-circle data-item__img' src='#= pbaAPI.imageHelpers.getImageThumbnailSrc(data.{0}, 'XXS') #' alt='' style='width:32px;height:32px' />&nbsp;<span class='data-item__text'>#: data.{1} #</span></span>", config.LookupProperty.Image, config.LookupProperty.Text);
+        templateIcon = string.Format("<span class='data-item'><img class='img-circle data-item__img' src='#= pbaAPI.imageHelpers.getImageThumbnailSrc(model.{0}, 'XXS') #' alt='' style='width:32px;height:32px' /></span>", config.LookupProperty.Image);
+
+        className += " img";
+
+        //isUser = true;
+    }
+    else if (config.LookupProperty.Icon != null)
+    {
+        properties.Add(config.LookupProperty.Icon);
+
+        template = string.Format("<span class='#= data.{0}.Value #' style='color: #= data.{0}.Color #'></span>&nbsp;#: data.{1} #", config.LookupProperty.Icon, config.LookupProperty.Text);
+        templateIcon = string.Format("<span class='#= model.{0}.Value #' style='color: #= model.{0}.Color #'></span>", config.LookupProperty.Icon);
+
+        icon = "";
+    }
+}
+
+<script>
+    (function () {
+        var editor = window['@Model.UID'] = {
+            _selectValue: null,
+            _form: null,
+            _autoComplete: null,
+            _cascadeFrom: {
+                field: "@cascadeField",
+                idfield: "@cascadeIdField",
+                lockDependentsIfParentEmpty: "@lockDependentsIfParentEmpty"
+            },
+            _currentItem: null,
+            getForm: function () {
+                if (!editor._form)
+                    editor._form = $("#@Model.UID").closest("form").data("pbaForm");
+
+                return editor._form;
+            },
+            getAutoComplete: function () {
+                if (!editor._autoComplete)
+                    editor._autoComplete = $("#@autoCompleteID").data("kendoAutoComplete");
+
+                return editor._autoComplete;
+            }
+        };
+
+        editor.getSysFilter = function () {
+            if (editor._cascadeFrom.field) {
+                var cascadeFromPr = editor.getForm().getPr(editor._cascadeFrom.field);
+                if (cascadeFromPr == null) {
+                    return null;
+                }
+                var elId = editor._form.getModel().ID;
+                return editor._cascadeFrom.idfield ?
+                    editor._cascadeFrom.idfield + " = " + cascadeFromPr.ID + " and it.ID != " + elId :
+                    editor._cascadeFrom.field + ".ID = " + cascadeFromPr.ID + " and it.ID != " + elId;
+            }
+
+            return null;
+        };
+
+        editor.getInitProps = function () {
+            if (editor._cascadeFrom.field) {
+                var cascadeFromPr = editor.getForm().getPr(editor._cascadeFrom.field);
+
+                var initProps = {};
+
+                initProps[editor._cascadeFrom.field] = cascadeFromPr;
+
+                if (editor._cascadeFrom.idfield)
+                    initProps[editor._cascadeFrom.idfield] = cascadeFromPr.ID;
+
+                return initProps;
+            }
+
+            return null;
+        };
+
+        editor.onAdditionalData = function () {
+            var autoComplete = editor.getAutoComplete();
+
+            var val = autoComplete.value();
+
+            if (val === "@placeholder") val = "";
+
+            var form = editor.getForm();
+
+            var value = form.getPr("@Model.PropertyName");
+
+            var ids;
+
+            if (value) {
+                ids = pbaAPI.extract(value, "ID").join(";");
+            }
+
+            return {
+                startswith: val,
+                ids: ids,
+                extrafilter: editor.getSysFilter(),
+                @if (!String.IsNullOrEmpty(Model.SetCustomParams))
+                {
+                    //внедряем текст скрипта
+                    @Html.Raw(Model.SetCustomParams)
+                }
+            };
+        };
+
+        editor.setBtnTitle = function () {
+            var form = editor.getForm();
+            var state = form.getPr("@htmlFieldName");
+            var btn = $('#@openButtonID');
+            var spn = btn.children();
+
+            if (state == undefined) {
+                btn.attr('title', 'Создать');
+                spn.attr('class', 'fa fa-clone');
+            } else {
+                btn.attr('title', 'Открыть');
+                spn.attr('class', 'fa fa-pencil');
+            }
+        };
+
+        editor.onChange = function (e) {
+            if (editor._selectValue == null) {
+                this.value("");
+            }
+            editor.setBtnTitle();
+        };
+
+        editor.onSelect = function (e) {
+            editor._selectValue = e.item.text();
+            editor.setValue(this.dataItem(e.item.index()));
+            editor._currentItem = e.dataItem;
+        };
+
+        editor.onDataBound = function (e) {
+            editor._selectValue = null;
+            editor.setBtnTitle();
+        };
+
+        editor.openDialog = function () {
+            pbaAPI.openModalDialog("@config.Mnemonic",
+                function (res) {
+                    application.viewModelConfigs.get("@config.Mnemonic").done(
+                        function (config) {
+                            var dest = pbaAPI.toObj(config, res[0]);
+                            editor.setValue(dest);
+                            @* заполняем поле *@
+                            editor.getAutoComplete().value(dest[config.LookupProperty.Text]);
+
+                            editor.setValue(dest);
+                            editor.setBtnTitle();
+                        });
+                },
+                {
+                    title: "ВЫБОР - @Model.Title",
+                    multiselect: false,
+                    filter: editor.getSysFilter(),
+                    dialogData: {
+                        initProps: {
+                            "@config.Mnemonic": editor.getInitProps()
+                        }
+                    },
+                    @if (!String.IsNullOrEmpty(Model.SetCustomParams))
+                    {
+                        //внедряем текст скрипта
+                        @Html.Raw(Model.SetCustomParams)
+                    }
+                });
+        };
+
+        editor.openWizardField = function () {
+            pbaAPI.openWizardViewModelEx("@Model.WizardName",
+            {
+                id: 0,
+                initProps: editor.getInitProps(),
+                callback: function (res) {
+                    var item = res.model;
+                    var form = editor.getForm();
+                    @* заполняем поле *@
+                    editor.getAutoComplete().value(@("item." + config.LookupProperty.Text));
+
+                    editor.setValue(item);
+                    editor.setBtnTitle();
+                }
+            });
+        };
+
+        editor.openObject = function () {
+            var form = editor.getForm();
+
+            var bo = form.getPr("@Model.PropertyName") || { ID: 0 };
+
+            pbaAPI.openDetailView("@Model.Mnemonic",
+            {
+                wid: "@Model.UID",
+                id: bo.ID,
+                parentForm: form,
+                initProps: editor.getInitProps(),
+                callback: function (e) {
+                    if (e.type === "save") {
+                        var model = {
+                            ID: e.model.ID
+                        };
+
+                        @foreach (string value in properties.Distinct())
+                        {
+                            @:model["@value"] = e.model["@value"];
+                                                                                                                                                                        }
+
+                        @*@TODO: Баг, когда BaseObject это FileStorageItem|File не мапится в модель FileID
+                        TODO: по умолчанию мапится только ID и LookupProperty (Title)*@
+
+                        editor.setValue(model);
+                        editor.setBtnTitle();
+                    }
+                }
+            });
+        };
+
+        editor.clear = function () {
+            var form = editor.getForm();
+            editor.getAutoComplete().value("");
+
+            form.setPr("@Model.PropertyName", null);
+
+            editor.setValue(null);
+
+            editor.setBtnTitle();
+            editor._currentItem = null;
+        };
+
+        editor.setValue = function (val) {
+            editor.getForm().setPr("@Model.PropertyName", val);
+        };
+
+        editor.search = function (str) {
+            editor.getAutoComplete().search(str);
+        };
+
+        editor.enable = function (val) {
+            editor.getAutoComplete().enable(val);
+            var inputGroup = $('#@Model.UID');
+            inputGroup.prop('disabled', !val);
+            if (!val) {
+                inputGroup.addClass('k-state-disabled');
+            }
+            else {
+                inputGroup.removeClass('k-state-disabled');
+            }
+        };
+    })();
+</script>
+
+<div data-editortemplate="BaseObjectOne" id="@Model.UID" class="input-group">
+    <div data-mnemonic="@config.Mnemonic" class="form-control">
+        @(Html.Kendo().AutoComplete()
+                                    .Name(autoCompleteID)
+                                    .DataTextField(config.LookupProperty.Text)
+                                    .Placeholder(placeholder)
+                                    .HtmlAttributes(Html.CreateHtmlAttributes(Model, new { @class = className }))
+                                    .Filter("startswith")
+                                    .NoDataTemplate("Данные не найдены")
+                                    .Template(template)
+                                    .MinLength(1)
+                                    .Height(370)
+                                    .Events(e => e.Change(Model.UID + ".onChange").DataBound(Model.UID + ".onDataBound").Select(Model.UID + ".onSelect"))
+                                    .DataSource(source =>
+                                    {
+                                        source.Read(read =>
+                                        {
+                                            read.Url($"/api/listview/{Model.Mnemonic}/filter/boProperty").Data(Model.UID + ".onAdditionalData");
+                                        })
+                                        .ServerFiltering(true);
+                                    })
+        )
+        <span class="@className icon">@Html.Raw(icon)</span>
+    </div>
+    <span class="input-group-btn">
+
+        @if (Model.WizardName != null)
+        {
+            <a href="#" id="@wizardFieldButtonID" onclick="@(Model.UID).openWizardField(); return false;" title="открыть мастер"><i class="fa fa-magic"></i></a>
+        }
+        else
+        {
+            if (Base.Ambient.AppContext.SecurityUser.IsPermission(Model.EditorType, TypePermission.Create) && enableCreateEdit)
+            {
+                <a href="#" id="@openButtonID" onclick="@(Model.UID).openObject(); return false;" title="создать - открыть"><i class="fa fa-clone"></i></a>
+            }
+
+            if (Base.Ambient.AppContext.SecurityUser.IsPermission(Model.EditorType, TypePermission.Read))
+            {
+                <a href="#" id="@selectButtonID" onclick="@(Model.UID).openDialog(); return false;" title="Выбрать"><i class="fa fa-navicon"></i></a>
+            }
+        }
+        <a href="#" id="@clearButtonID" onclick="@(Model.UID).clear(); return false;" title="Очистить"><i class="fa fa-close"></i></a>
+    </span>
+</div>
+
+@if (templateIcon != "")
+{
+    <script>
+        $(function () {
+            var $wrap = $("#@Model.UID");
+            var $icon = $wrap.find(".base-object-one.icon");
+            var $form = $icon.closest("form");
+            var templateIcon = kendo.template("@Html.Raw(templateIcon)");
+
+            var initImg = function (form) {
+                var obj = form.getPr("@Model.PropertyName");
+
+                if (obj) {
+                    $icon.html(templateIcon({ model: obj }));
+                } else {
+                    $icon.html("");
+                }
+            };
+
+            $wrap.on("dblclick", function (event) {
+                edit.openObject();
+            });
+
+            $form.on("onAfterBind", function (e, form) {
+                initImg(form);
+            });
+
+            $form.on("onChange", function (e, params) {
+                if (params.field === "@Model.PropertyName") {
+                    initImg(params.sender);
+                }
+            });
+        });
+    </script>
+}
+
+<script>
+    $(function () {
+        var $wrap = $('#@Model.UID');
+        var $form = $wrap.closest("form");
+        var edit = window['@Model.UID'];
+
+        //$wrap.find("#@autoCompleteID").attr('disabled', true);
+
+        $wrap.find("#@autoCompleteID").on("focus", function () {
+            edit.search("");
+        });
+
+        $form.on('onAfterBind', function (evt, form) {
+            window["@Model.UID"].setBtnTitle();
+
+            var prop = form.getPr("@Model.PropertyName");
+
+            if (prop && prop.ID) {
+                $("#@Model.UID").children("[data-mnemonic]").attr("data-id", prop.ID);
+            }
+            if (edit._cascadeFrom.field && edit._cascadeFrom.lockDependentsIfParentEmpty==true) {
+                edit.enable(form.getPr(edit._cascadeFrom.field) !== null);
+            }
+            var isChange = false;
+
+             @if (!String.IsNullOrEmpty(Model.OnChangeClientScript))
+             {
+
+                        //внедряем текст скрипта
+                        @Html.Raw(Model.OnChangeClientScript);
+             }
+        });
+
+        $wrap.on("dblclick", function (event) {
+            edit.openObject();
+        });
+
+        $form.on("onChange",
+            function (evt, obj) {
+                if (edit._cascadeFrom.field && obj.field === edit._cascadeFrom.field) {
+                    var cascadeFromFieldValue = edit.getForm().getPr(edit._cascadeFrom.field);
+                    if (!cascadeFromFieldValue || edit._currentItem && edit._currentItem[edit._cascadeFrom.idfield] != cascadeFromFieldValue.ID) {
+                        edit.clear();
+                    }
+                    if (cascadeFromFieldValue === null && edit._cascadeFrom.lockDependentsIfParentEmpty == true)
+                        edit.enable(false);
+                    else
+                        edit.enable(true);
+                    //edit.enable(edit.getForm().getPr(edit._cascadeFrom.field) !== null);
+                }
+                if (obj.field === "@Model.PropertyName") {
+                    var form = obj.sender;
+                    var isChange = true;
+
+                 @if (!String.IsNullOrEmpty(Model.OnChangeClientScript))
+                 {
+
+                        //внедряем текст скрипта
+                        @Html.Raw(Model.OnChangeClientScript);
+                 }
+                }
+
+            });
+    });
+</script>

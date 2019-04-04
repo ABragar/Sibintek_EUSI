@@ -1,0 +1,22 @@
+﻿@{
+    var wrapID = "wrap_" + Guid.NewGuid().ToString("N");
+}
+
+@(Html
+.ContentEditorWidget("layoutSingle")
+.Title("Разметка - Полная")
+.TitleTemplate(
+    @<text>
+        <div class="row layout-preview">
+            <div class="col-sm-12">&nbsp;</div>
+        </div>
+    </text>)
+                .Wrap(wrapID)
+                .Mnemonic("Content_Layout")
+                .Template("tpl_" + wrapID))
+
+<script id="tpl_@wrapID" type="text/template">
+    <div class="row" data-bind="attr:{id: model.UID}">
+        <div class="col-sm-12 droptarget"></div>
+    </div>
+</script>

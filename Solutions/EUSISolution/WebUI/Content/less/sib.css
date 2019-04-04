@@ -1,0 +1,584 @@
+﻿.k-checkbox:checked + .k-checkbox-label:before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  color: #fa9d10;
+  border: none;
+  background-color: black;
+  border-radius: 4px;
+}
+.k-checkbox + .k-checkbox-label:before {
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+}
+.search-tools .k-checkbox-label {
+  display: inline;
+  vertical-align: middle;
+}
+.sib-hide-empty-editorRow {
+  display: none;
+}
+.sib-editor-emptyItem {
+  visibility: hidden;
+}
+.sib-grid-selected-count {
+  float: left;
+  padding: .714em 1.333em .643em 1.333em;
+  color: #a8a8a8;
+}
+.k-autocomplete .k-input,
+.k-dropdown-wrap .k-input,
+.k-numeric-wrap .k-input,
+.k-picker-wrap .k-input,
+.k-selectbox .k-input,
+.k-textbox > input {
+  line-height: 1.9416rem;
+  height: 2.2652rem;
+}
+.k-popup.k-list-container {
+  padding: 0;
+  border-color: transparent;
+}
+.k-tabstrip-items .k-item.k-state-active {
+  border-color: transparent;
+  background-color: #ffcc00;
+}
+input.k-state-disabled,
+.search-tools.k-state-disabled,
+.input-group.k-state-disabled {
+  background-color: #ECECEC !important;
+  pointer-events: none !important;
+}
+input.k-state-disabled .k-input,
+.search-tools.k-state-disabled .k-input,
+.input-group.k-state-disabled .k-input,
+input.k-state-disabled .input-group-btn,
+.search-tools.k-state-disabled .input-group-btn,
+.input-group.k-state-disabled .input-group-btn {
+  background-color: #ECECEC !important;
+}
+/*Цвета фона в навигации по меню*/
+.k-toolbar {
+  background-color: #F9DD16 !important;
+}
+.k-toolbar .k-button-icon .btntoolbar {
+  color: black !important;
+}
+.k-toolbar .k-state-disabled:hover {
+  background-color: #aaaaaa;
+}
+.k-toolbar .k-button-icontext {
+  background-color: transparent;
+}
+.k-toolbar .k-split-button-arrow {
+  background-color: transparent;
+}
+.k-toolbar .k-switch {
+  background-color: #F9DD16 !important;
+}
+.dialog__toolbar .k-toolbar .btntoolbar {
+  color: black !important;
+}
+.k-button.k-state-disabled {
+  background-color: transparent !important;
+}
+.k-button.success {
+  background-color: #ffcc00 !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+  font-weight: 500 !important;
+  border-color: #ffcc00 !important;
+}
+.k-button.primary {
+  background-color: #fa9d10 !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+  font-weight: 500 !important;
+  border-color: #fa9d10 !important;
+}
+.sidebar-menu > .sidebar-menu__item {
+  /*> a {*/
+}
+.sidebar-menu > .sidebar-menu__item a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+.sidebar-menu > .sidebar-menu__item a.active:hover {
+  background-color: #F9DD16 !important;
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+.sidebar-menu > .sidebar-menu__item a:after {
+  background-color: #F9DD16;
+}
+.card--local-account .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+@media (min-width: 992px) {
+  body .account__system-name {
+    left: 25%;
+  }
+  body .account__logo-wrap {
+    background-image: none !important;
+    min-height: 660px !important;
+    background-color: white !important;
+    max-width: 680px !important;
+  }
+}
+@media (min-width: 1200px) {
+  body .account__system-name {
+    left: 30% !important;
+  }
+  body .account__logo {
+    max-width: 380px !important;
+  }
+  body .account__logo-wrap {
+    min-height: 660px !important;
+    background-color: white !important;
+  }
+}
+body .account__logo {
+  margin-bottom: 80px;
+}
+body .account__logo-wrap {
+  left: -33px !important;
+  max-width: 400px;
+  min-height: 300px;
+}
+body .account__system-name {
+  left: 15%;
+}
+body .account-card {
+  background-color: #333333 !important;
+  background-image: none !important;
+}
+body .account-card .btn {
+  background-color: #FFDE45 !important;
+  color: #333333 !important;
+}
+body .account-card .actions > a {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.k-grid .sib-grid-unsort {
+  float: right;
+  padding: .714em;
+  margin: -0.786em -0.6em -0.786em 0;
+}
+.k-grid .k-grouping-header {
+  background-color: #f0f0f0;
+  color: black;
+}
+.k-grid .k-grouping-row {
+  background-color: #f2f2f2 !important;
+}
+.k-grid .k-grouping-row > td.k-state-focused {
+  background-color: #b6b6b6 !important;
+}
+.k-grid .k-grouping-row.k-state-selected > td {
+  background-color: #d0d0d0 !important;
+}
+.k-grid .k-grouping-row.k-state-focused > td {
+  background-color: #d0d0d0 !important;
+}
+.k-grid-content {
+  -ms-overflow-style: scrollbar !important;
+}
+.k-grid-content tr.is-diff-regnum {
+  background-color: #e8c0c0;
+}
+.k-grid-content table {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.k-grid-content table [role=row] td {
+  line-height: .7em !important;
+}
+.k-grid-content table [role=row] td[role=gridcell] {
+  line-height: .7em !important;
+}
+.k-grid-content table [role=row] td[role=gridcell] input,
+.k-grid-content table [role=row] td[role=gridcell] label {
+  line-height: .7em !important;
+}
+.k-grid-content table [role=row] td[role=gridcell] .k-icon {
+  height: .7em !important;
+}
+.dashboard-widget ul#dashboard-widget-tasks-list {
+  display: block !important;
+}
+.dashboard-widget li.task {
+  margin: 5px !important;
+  max-width: 300px !important;
+  display: inline-block !important;
+}
+.sidebar-menu__item ul:before,
+.sidebar-menu__item ul:after {
+  height: 0.209em;
+}
+.k-tabstrip .k-tabstrip-items {
+  height: 100%;
+  padding-right: 2px;
+  border-right: 2px solid #efefef;
+}
+.view-model .label {
+  justify-content: flex-start !important;
+  text-align: left !important;
+  width: 30% !important;
+}
+.view-model .editor {
+  width: 70% !important;
+}
+.view-model .editor > .k-tooltip-validation {
+  left: -100px;
+  top: -15px;
+  min-height: 10px;
+}
+.layout__main {
+  min-height: calc(89vh) !important;
+}
+.layout__sidebar {
+  background: #3D464B;
+}
+.layout__sidebar ul {
+  background: #3D464B;
+}
+.layout__sidebar i {
+  color: white;
+}
+.layout__sidebar span {
+  color: white;
+}
+.layout__sidebar a:hover {
+  background: #FFD200 !important;
+}
+.layout__sidebar a:hover i {
+  color: #3D464B;
+}
+.layout__sidebar a:hover span {
+  color: #3D464B;
+}
+.layout__content {
+  float: left;
+  width: 100%;
+  height: calc(85vh);
+}
+.layout__toolbar-userData div {
+  line-height: 7px;
+  padding: 6px 5px;
+}
+.layout__toolbar-userData__main {
+  min-height: calc(90vh) !important;
+}
+.layout__toolbar-userData__toolbar-userData:hover {
+  background-color: transparent !important;
+}
+/*Gantt*/
+.k-gantt .k-header.k-nonwork-hour {
+  background-color: lightpink !important;
+}
+.k-gantt .k-header.sib-today {
+  background-color: lightgreen !important;
+}
+.k-gantt .k-header.sib-holiday {
+  background-color: lightpink;
+}
+.k-gantt .k-grid-content tr {
+  height: 2.1em;
+}
+.k-gantt .k-grid-content td {
+  line-height: .7em !important;
+}
+.k-gantt .k-grid-content .k-task-template {
+  color: black !important;
+  padding: .2em .2em .2em .7em !important;
+}
+.k-gantt .k-task.sib-task-complete {
+  background-color: lightgreen;
+}
+.k-gantt .k-task.sib-task-complete .k-task-complete {
+  background-color: #83caa3 !important;
+}
+.k-gantt .k-task.sib-task-dead {
+  background-color: yellow;
+}
+.k-gantt .k-task.sib-task-dead .k-task-complete {
+  background-color: #fa9d10 !important;
+}
+.k-gantt .k-task-actions {
+  line-height: 1.5em !important;
+}
+.k-gantt .k-task-wrap .k-task-dot {
+  top: -0.2em !important;
+}
+/*Toolbar*/
+/*.k-grid {
+    &-header, 
+    .k-header {
+        background-color: #f0b414 !important;
+    }
+
+    .k-grouping-header {
+        background-color: #3d464b !important;
+    }
+}*/
+/*TODO: Костыль для скрытия всплывающего списка пользователей*/
+div[data-editortemplate="BaseObjectOne"] > div[data-mnemonic="SibUser"] input {
+  pointer-events: none;
+}
+div[data-editortemplate="BaseObjectOne"] input {
+  pointer-events: none;
+}
+/*Сдвиг 3х и 4х пунктов меню*/
+#layout-sidebar-menu > li > ul > li > ul > li > a > i {
+  margin-left: 3rem;
+}
+#layout-sidebar-menu > li > ul > li > ul > li > ul > li > a > i {
+  margin-left: 4rem;
+}
+#layout-sidebar-menu > li > ul > li > ul > li > ul > li > ul > li > a > i {
+  margin-left: 5rem;
+}
+#layout-sidebar-menu > li > ul > li > ul > li > ul > li > ul > li > ul > li > a > i {
+  margin-left: 6rem;
+}
+.main_active {
+  background-color: #F9DD16 !important;
+}
+.main_active > i {
+  color: #3D464B !important;
+}
+.main_active > span {
+  color: #3D464B !important;
+}
+.ps-container > .ps-scrollbar-y-rail {
+  margin: .457rem 0;
+  opacity: .8;
+  width: .457rem;
+}
+.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+  /*width: .457rem;*/
+  width: 14px !important;
+}
+.base-object-one-cell a {
+  color: inherit !important;
+  pointer-events: none !important;
+}
+div.sib-compact-widget .k-widget {
+  height: 300px !important;
+}
+div.sib-compact-widget .k-grid-content,
+div.sib-compact-widget .k-widget-content {
+  height: 150px !important;
+}
+div.sib-compact-widget .k-grid-footer {
+  display: none;
+}
+span.section-toggle-arrow {
+  margin-left: 10px;
+}
+a.rows-section {
+  margin: 0 10px;
+}
+/*TODO: Костыль просто скрывать лишние фильтры в хедере (избыточное логическо и/или)*/
+/*Временное быстрое решение по замечанию. По хорошему нужно писать свою фильтрация в grid.filters.js и править сервер что бы он stringColumn фильтровал новым способом.
+Пока требования полностью не согласованы, по разговору с Леонидом решено оставить так.*/
+.k-animation-container form > div > span:nth-of-type(1n+3) {
+  display: none !important;
+}
+form.ps-container.ps-active-y > .ps-scrollbar-y-rail {
+  top: 0 !important;
+}
+/*Группировки полей*/
+.view-model fieldset {
+  background-color: #F7F7F7;
+  margin: 0 0 20px 0;
+  padding: 8px 0 0 0;
+}
+.view-model fieldset .e-row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.view-model fieldset .d-row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.view-model fieldset .d-row .editor {
+  line-height: 0 !important;
+}
+.view-model fieldset legend {
+  height: 20px;
+  line-height: 20px;
+  background-color: #f7f7f7;
+  position: relative;
+  /*outline: 1px solid #c0c0c0;
+		top: -11px;*/
+  border: 1px solid #c0c0c0;
+  border-bottom: none;
+  top: -11px;
+  left: -1px;
+  font-size: 12px;
+  color: #737373;
+}
+.view-model fieldset .label-editor-row {
+  padding: 0 0.1em;
+}
+.view-model fieldset .label-editor-row .k-checkbox-label {
+  line-height: 0 !important;
+}
+.view-model fieldset .label-editor-row .label {
+  color: #8C8C8C !important;
+  font-weight: normal !important;
+  font-size: 12px !important;
+  padding: 0;
+  height: 21px;
+}
+.view-model fieldset .label-editor-row .label label {
+  align-self: baseline !important;
+}
+.view-model fieldset .label-editor-row .input-group {
+  height: 25px;
+  line-height: 20px;
+}
+.view-model fieldset .label-editor-row .k-picker-wrap {
+  height: 25px;
+  line-height: 20px;
+}
+.view-model fieldset .label-editor-row .k-select {
+  height: 25px;
+  line-height: 20px;
+  min-height: 25px;
+}
+.view-model fieldset .label-editor-row .k-select > .k-link-increase {
+  height: 9px;
+  padding-bottom: 3px;
+}
+.view-model fieldset .label-editor-row .k-select > .k-link-increase > span {
+  font-size: 12px;
+}
+.view-model fieldset .label-editor-row .k-select > .k-link-decrease {
+  height: 9px;
+}
+.view-model fieldset .label-editor-row .k-select > .k-link-decrease > span {
+  font-size: 12px;
+}
+.view-model fieldset .label-editor-row .k-numeric-wrap {
+  height: 25px;
+}
+.view-model fieldset .label-editor-row .k-dropdown-wrap {
+  height: 25px;
+}
+.view-model fieldset .label-editor-row .k-dropdown-wrap > span {
+  height: 25px;
+  line-height: 21px;
+  padding: 0;
+}
+.view-model fieldset .label-editor-row .field-is-changed-mark {
+  height: 25px;
+  left: -1em;
+  line-height: 20px;
+  font-size: 10px;
+}
+.view-model fieldset .label-editor-row .editor .k-checkbox {
+  display: none;
+}
+.view-model fieldset .label-editor-row .editor .k-checkbox-label {
+  color: #8c8c8c !important;
+  font-weight: normal !important;
+  font-size: 12px !important;
+}
+.view-model fieldset .label-editor-row .editor .k-numerictextbox {
+  max-width: none !important;
+}
+.view-model fieldset .label-editor-row .editor .k-numerictextbox input {
+  max-width: none !important;
+}
+.view-model fieldset .label-editor-row .editor .k-datepicker {
+  width: 100%;
+  max-width: none !important;
+}
+.view-model fieldset .label-editor-row .editor .FakeInputField {
+  min-height: 25px !important;
+  line-height: 21px;
+  color: #858585;
+  word-wrap: break-word;
+}
+.view-model fieldset .label-editor-row .editor .k-dropdown {
+  max-width: none !important;
+}
+.view-model fieldset .label-editor-row .editor textarea {
+  height: 55px;
+  padding: 5px;
+}
+.view-model fieldset .label-editor-row .editor input {
+  height: 25px;
+  padding: 0;
+  /*text-align: center;*/
+}
+.view-model fieldset .label-editor-row .editor .input-group-btn {
+  margin-right: 10px;
+}
+.view-model fieldset .label-editor-row .editor input[type="text"] {
+  font-size: 12px;
+}
+.view-model fieldset .label-editor-row > input[data-bind*="Empty"] {
+  height: 21px;
+  visibility: hidden;
+}
+.view-model fieldset > div {
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+.ShowActiveGroup {
+  background-color: #FAF6DE !important;
+}
+.ShowActiveGroup legend {
+  background-color: #FAF6DE !important;
+}
+.ShowActiveGroup input:focus {
+  border: 1px solid #F9DA3F;
+}
+.ShowActiveGroup textarea:focus {
+  border: 1px solid #F9DA3F;
+}
+.k-widget.k-tooltip {
+  padding: 0 .5rem !important;
+}
+/*TODO: Костыль просто скрывать лишние фильтры в хедере (избыточное логическо и/или)*/
+/*Временное быстрое решение по замечанию. По хорошему нужно писать свою фильтрация в grid.filters.js и править сервер что бы он stringColumn фильтровал новым способом.
+Пока требования полностью не согласованы, по разговору с Леонидом решено оставить так.*/
+.k-filter-menu > div > span > span:nth-of-type(1n+3) {
+  display: none !important;
+}
+.k-textbox::-ms-clear {
+  display: none !important;
+}
+.k-scheduler .k-scheduler-toolbar .k-scheduler-navigation {
+  width: 70% !important;
+}
+.sib-parentsbranch {
+  border: 1px solid #cccccc;
+  background-color: #fff;
+  min-height: 16px;
+  padding: 10px;
+}
+.sib-parentsbranch span {
+  cursor: pointer;
+  text-decoration: underline;
+  display: block;
+  white-space: nowrap;
+  float: left;
+}
+.sib-parentsbranch span:after {
+  content: "/";
+  display: inline-block;
+  padding: 0 3px;
+}
+.sib-parentsbranch span:last-child:after {
+  float: none;
+  clear: both;
+  visibility: hidden;
+}
+.k-loading-image {
+  background-image: url("/Content/loaders/puff.gif") !important;
+}
+.view-model-window:after {
+  background-image: url("/Content/loaders/puff.gif") !important;
+}

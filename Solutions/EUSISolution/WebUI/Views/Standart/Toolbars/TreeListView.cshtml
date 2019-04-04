@@ -1,0 +1,438 @@
+﻿@model Dialog_WidgetViewModel
+
+@using Base.UI.ViewModal
+
+@{
+    Type typeEntity = Model.ViewModelConfig.TypeEntity;
+    Type typeservice = Model.ViewModelConfig.ServiceType;
+
+    bool isExportImport = typeservice.GetInterfaces().Contains(typeof(IExportImportObject));
+    bool isCategorizedItem = typeEntity.GetInterfaces().Contains(typeof(ICategorizedItem));
+    bool isTreeObject = typeEntity.GetInterfaces().Contains(typeof(ITreeObject)) || Model.Mnemonic == "InventoryObjectTree";
+
+    string nameToolbar = Html.CreateSystemName("toolbar");
+    string btnToggleTreeId = Html.CreateSystemName("toggle_tree");
+    string btnAddId = Html.CreateSystemName("add");
+    string btnEditId = Html.CreateSystemName("edit");
+    string btnDeleteId = Html.CreateSystemName("delete");
+    string btnChangeCatId = Html.CreateSystemName("change_cat");
+    string btnSettings = Html.CreateSystemName("settings");
+    string btnExportExcel = Html.CreateSystemName("export_excel");
+    string btnExportPdf = Html.CreateSystemName("export_pdf");
+    string btnExportXML = Html.CreateSystemName("export_xml");
+    string cbRecursiveViewId = Html.CreateSystemName("recursive_view");
+    string btnImport = Html.CreateSystemName("import");
+    string btnAddRoot = Html.CreateSystemName("add_root");
+    string btnClearFilters = Html.CreateSystemName("clear_filters");
+    string btnClearSort = Html.CreateSystemName("clear_sort");
+    string searchboxId = Html.CreateSystemName("searchbox");
+    string btnCreateNonCoreAssetFromPC = Html.CreateSystemName("create_noncoreassetFromPC");
+
+    bool actionCreate = !Model.IsReadOnly && Model.IsPermission(TypePermission.Create) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Create);
+    bool actionEdit = !Model.IsReadOnly && Model.IsPermission(TypePermission.Write) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Edit);
+    bool actionDelete = !Model.IsReadOnly && Model.IsPermission(TypePermission.Delete) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Delete);
+    bool actionChangeCategory = isCategorizedItem && !Model.IsReadOnly && Model.IsPermission(TypePermission.Write) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.ChangeCategory);
+    bool actionAllCategorizedItems = isCategorizedItem && Model.ViewModelConfig.ListView.VisibleAction(LvAction.AllCategorizedItems);
+    bool actionSettings = Model.ViewModelConfig.ListView.VisibleAction(LvAction.Settings);
+    bool actionSearch = Model.ViewModelConfig.TypeEntity.IsFullTextSearchEnabled() && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Search);
+    bool actionExport = Model.ViewModelConfig.ListView.VisibleAction(LvAction.Export);
+    bool actionImport = Model.ViewModelConfig.ListView.VisibleAction(LvAction.Import) && isExportImport;
+    bool actionNonCoreAssetFromPC = Model.Mnemonic == "PropertyComplexTree";
+
+    string hotkeysId = Html.CreateSystemName("hotkeys");
+    var hotkeysInfoId = Html.CreateSystemName("grid_keys_");
+    var hotKeyList = Html.CreateSystemName("grid_hotlst_");
+}
+
+<script>
+    window["@nameToolbar"] = new WrapToolbar("@nameToolbar", "ToolbarListView");
+
+    (function () {
+        var composite = window["@Model.DialogID"];
+
+        var toolbar = window["@nameToolbar"];
+
+        composite.registerWidget(toolbar);
+
+    toolbar.listViewSelectedObject = null;
+
+        toolbar.refreshListView = function(){
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "refresh",
+                    params: { }
+                });
+        };
+
+        toolbar.__overrideOnNeighbourWidgetChanged = toolbar.onNeighbourWidgetChanged;
+
+        toolbar.onNeighbourWidgetChanged = function (e) {
+            toolbar.__overrideOnNeighbourWidgetChanged(e);
+
+            if (e.sender.baseType === 'ListView') {
+                    if (e.event === "select" || e.event === "onDataBound") {
+                        if (!toolbar.widget()) return;
+
+                        var isActive = true;
+
+                        if (e.event === "select") {
+                            toolbar.listViewSelectedObject = e.params.dataItem;
+                            if (toolbar.listViewSelectedObject.IsPropertyComplex !== undefined &&
+                                toolbar.listViewSelectedObject.IsPropertyComplex === false)
+                                isActive = false;
+                        }
+                        else toolbar.listViewSelectedObject = null;
+
+                        var isSelected = toolbar.listViewSelectedObject != null;
+
+                        var isSelectNode = true;
+
+                        @if (isCategorizedItem) {
+                            @: if (!e.sender.getCategoryID()) isSelectNode = false;
+                        }
+
+
+                        @if (actionCreate) {
+                            @: toolbar.enable("#@btnAddId", isSelectNode && isActive);
+                        }
+
+                        @if (actionEdit) {
+                            @: toolbar.enable("#@btnEditId", isSelected && isSelectNode);
+
+                        }
+                        else
+                        {
+                            @: toolbar.enable("#@btnEditId", isSelected && isSelectNode);
+                        }
+
+                        @if (actionDelete) {
+                            @: toolbar.enable("#@btnDeleteId", isSelected);
+                        }
+
+                        @if (actionChangeCategory) {
+                            @: toolbar.enable("#@btnChangeCatId", isSelected);
+                        }
+
+                        @if (actionAllCategorizedItems) {
+                            @: toolbar.updateCategoryCheckbox();
+                        }
+
+                        @if (actionImport)
+                        {
+                            @: toolbar.enable("#@btnImport");
+                        }
+
+                        toolbar.element().find("button[data-onlyForSelected=true]").each(function(){ $(this).data("kendoButton").enable(isSelected);});
+
+                        if (e.event === "onDataBound") {
+                            toolbar.element().find('#@searchboxId').find('.cancel-search').removeClass('k-loading').addClass('k-i-close');
+                            toolbar.popupEl().find('#@searchboxId').find('.cancel-search').removeClass('k-loading').addClass('k-i-close');
+
+                            var ds = e.sender.widget().dataSource;
+                            if (!ds.filter() || ds.filter().filters.length === 0) {
+
+
+                                toolbar.enable("#@btnClearFilters", false);
+
+                                toolbar.element()
+                                    .find("[data-action='clearFilters']")
+                                    .find(".btntoolbar").removeClass("animated tada");
+                            } else {
+
+
+                                toolbar.enable("#@btnClearFilters", true);
+
+                                toolbar.element()
+                                    .find("[data-action='clearFilters']")
+                                    .find(".btntoolbar").addClass("animated tada");
+                            }
+
+                            if (!ds.sort() || ds.sort().length === 0) {
+
+                                toolbar.enable("#@btnClearSort", false);
+
+                                toolbar.element()
+                                       .find("[data-action='clearSort']")
+                                       .find(".btntoolbar").removeClass("animated tada");
+
+                            } else {
+                                toolbar.enable("#@btnClearSort", true);
+                                toolbar.element()
+                                        .find("[data-action='clearSort']")
+                                        .find(".btntoolbar").addClass("animated tada");
+                            }
+
+                        }
+
+                    } else if (e.event === "dblclick") {
+                        //hack
+                        if (composite.select) return;
+
+                        var $btnEdit = $("#@btnEditId");
+
+                        if(!$btnEdit.hasClass("k-state-disabled")) {
+                            composite.onWidgetChanged(
+                            {
+                                sender: toolbar,
+                                event: "click",
+                                params: { action: "edit" }
+                            });
+                        }
+                    }
+                    
+            }
+        };
+
+        toolbar.updateCategoryCheckbox = function () {
+            if (toolbar.getCookie("@Model.Mnemonic", "allItems", "false") == "true") {
+                toolbar.element().find("#@cbRecursiveViewId").attr('checked', 'checked');
+            };
+        };
+
+        //events
+        toolbar.onClick = function (e) {
+            //console.log({
+            //    event: e,
+            //    action: e.target[0].dataset.action
+            //});
+
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "click",
+                    params: {
+                        event: e,
+                        action: e.target[0].getAttribute("data-action")
+                    }
+                });
+        };
+
+        toolbar.searchBox_onClick = function (e) {
+            if (e.str) {
+                e.sender.find('.cancel-search').addClass('k-loading').removeClass('k-i-close');
+            }
+
+            composite.onWidgetChanged(
+                {
+                    sender: toolbar,
+                    event: "search",
+                    params: { str: e.str }
+                });
+        };
+    })();
+</script>
+
+
+@(Html.Kendo().ToolBar()
+    .Name(nameToolbar)
+        .Events(e => e.OverflowOpen(nameToolbar + ".onOverflowOpen"))
+    .Items(items =>
+    {
+        if (isCategorizedItem)
+        {
+            items.Add().Type(CommandType.Button).Text("Отобразить / скрыть дерево")
+                .SpriteCssClass("btntoolbar button-tree-collapse mdi mdi-chevron-left").Id(btnToggleTreeId)
+                .HtmlAttributes(new { @class = "button-tree-collapse", data_action = "toggleTree" })
+                .ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+            items.Add().Type(CommandType.Separator);
+        }
+
+        if (Model.Type != TypeDialog.Frame)
+        {
+            items.Add().Id("custom_commands").Hidden(true)
+                .Template(string.Format(@"<a href='#' class='k-button primary' data-dropdown='#{0}' data-popup='right' style='display: none'>Действия...</a><ul class='popup-content popup-actions' id='{0}'></ul>", nameToolbar + "_custom_commands"));
+        }
+
+        items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+        {
+            if (actionCreate)
+            {
+                if (isTreeObject)
+                    buttons.Add().Text("Создать корневой").HtmlAttributes(new { title = "Создать корневой", data_action = "addRoot" }).SpriteCssClass("btntoolbar mdi mdi-folder-plus").Enable(actionCreate).Id(btnAddRoot).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+
+                buttons.Add().Text("Создать дочерний").HtmlAttributes(new { title = "Создать", data_action = "add" }).SpriteCssClass("btntoolbar fa fa-plus").Enable(actionCreate).Id(btnAddId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+            }
+
+            if (Model.Type != TypeDialog.Frame)
+            {
+                buttons.Add().Text("Добавить связь").HtmlAttributes(new { title = "Добавить связь" }).SpriteCssClass("btntoolbar fa fa-chain").Hidden(true).Id("add_link").ShowText(ShowIn.Overflow);
+                buttons.Add().Text("Удалить связь").HtmlAttributes(new { title = "Удалить связь" }).SpriteCssClass("btntoolbar fa fa-unlink").Hidden(true).Id("remove_link").ShowText(ShowIn.Overflow);
+            }
+
+            if (actionEdit)
+            {
+                buttons.Add().Text("Редактировать").HtmlAttributes(new { title = "Редактировать", data_action = "edit" }).SpriteCssClass("btntoolbar fa fa-pencil").Id(btnEditId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+            }
+            else
+            {
+                buttons.Add().Text("Просмотр").HtmlAttributes(new { title = "Просмотр", data_action = "edit" }).SpriteCssClass("btntoolbar fa fa-eye").Id(btnEditId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+            }
+
+            if (actionDelete)
+            {
+                buttons.Add().Text("Удалить").HtmlAttributes(new { title = "Удалить", data_action = "delete" }).SpriteCssClass("btntoolbar fa fa-trash-o").Enable(actionDelete).Id(btnDeleteId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+            }
+
+            if (actionChangeCategory && !isTreeObject)
+            {
+                buttons.Add().Text("Переместить в...").HtmlAttributes(new { title = "Переместить в...", data_action = "changeCategory" }).SpriteCssClass("btntoolbar fa fa-share-square-o").Id(btnChangeCatId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+            }
+
+            if (actionNonCoreAssetFromPC)
+            {
+                buttons.Add().Text("Отнести к ННА").HtmlAttributes(new { title = "Отнести к ННА", data_action = "createNonCoreAssetFromPC" })
+                .SpriteCssClass("btntoolbar mdi mdi-archive")
+                .Id(btnCreateNonCoreAssetFromPC)
+                .ShowText(ShowIn.Overflow)
+                .Click(nameToolbar + ".onClick");
+            }
+
+            if (actionImport)
+            {
+                buttons.Add().Text("Импорт JSON").HtmlAttributes(new { title = "Импорт JSON", data_action = "importJSON" }).SpriteCssClass("btntoolbar mdi mdi-code-braces").Id(btnImport).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+            }
+
+
+            buttons.Add().Text("Сбросить фильтры").HtmlAttributes(new { title = "Сбросить фильтры", data_action = "clearFilters" }).SpriteCssClass("btntoolbar fa fa-filter").Id(btnClearFilters).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+
+            buttons.Add().Text("Сбросить сортировку").HtmlAttributes(new { title = "Сбросить сортировку", data_action = "clearSort" }).SpriteCssClass("btntoolbar fa fa-sort-amount-desc").Id(btnClearSort).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+
+            if (actionSettings)
+            {
+                buttons.Add().Text("Настройка").HtmlAttributes(new { title = "Настройка", data_action = "settings" }).SpriteCssClass("btntoolbar fa fa-cog").Id(btnSettings).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+            }
+
+            buttons.Add().Id(hotkeysId).HtmlAttributes(new { @class = "hotkeys" }).SpriteCssClass("fa fa-keyboard-o").Togglable(false);
+        });
+
+        if (actionAllCategorizedItems && !isTreeObject)
+        {
+            items.Add().Type(CommandType.Separator);
+
+            items.Add().HtmlAttributes(new { @class = "k-button-group" })
+                .Template(@"<div title='Рекурсивный просмотр'>
+                    <input id='" + cbRecursiveViewId + "' type='checkbox' />" +
+                    "</div>");
+        }
+
+        if (actionExport)
+        {
+            items.Add().Type(CommandType.Separator);
+
+            items.Add().Type(CommandType.SplitButton).Text(" Excel").SpriteCssClass("k-icon mdi mdi-file-excel-box").HtmlAttributes(new { data_action = "exportExcel" }).Id(btnExportExcel).Click(nameToolbar + ".onClick").MenuButtons(menuButtons =>
+            {
+                menuButtons.Add().Text(" Excel").SpriteCssClass("mdi mdi-file-excel-box").HtmlAttributes(new { data_action = "exportExcel" }).Id(btnExportExcel);
+                menuButtons.Add().Text(" Pdf").SpriteCssClass("mdi mdi-file-pdf-box").HtmlAttributes(new { data_action = "exportPfd" }).Id(btnExportPdf);
+                menuButtons.Add().Text(" Xml").SpriteCssClass("mdi mdi-xml").HtmlAttributes(new { data_action = "exportXML" }).Id(btnExportXML);
+            });
+
+        }
+
+        if (Model.ViewModelConfig.ListView.Toolbars.Count > 0)
+        {
+            items.Add().Type(CommandType.Separator);
+
+            foreach (var toolbar in Model.ViewModelConfig.ListView.Toolbars)
+            {
+                items.Add().Template(Html.Action(toolbar.AjaxAction.Name, toolbar.AjaxAction.Controller, toolbar.AjaxAction.Params).ToHtmlString());
+            }
+        }
+
+        if (actionSearch)
+        {
+            items.Add().Type(CommandType.Separator);
+
+            items.Add().Template(
+                        string.Format(@"<div id='{0}' class='k-button-group'>
+                            <div class='search-tools'>
+                                <input class='k-textbox' placeholder='Поиск' value='{1}'>
+                                <span class='k-icon k-i-close cancel-search'></span>
+                            </div>
+                        </div>", searchboxId, Model.SearchStr))
+                        .OverflowTemplate(
+                        string.Format(@"<div id='{0}' class='k-button-group'>
+                            <div class='search-tools'>
+                                <input class='k-textbox' placeholder='Поиск' value='{1}'>
+                                <span class='k-icon k-i-close cancel-search'></span>
+                            </div>
+                        </div>", searchboxId, Model.SearchStr));
+        }
+    })
+)
+
+<script>
+    $(function () {
+            var toolbar = window["@nameToolbar"];
+            var $toolbar = toolbar.element();
+
+        $toolbar.find("#@searchboxId").pbaSearchBox(toolbar.searchBox_onClick);
+            toolbar.popupEl().find("#@searchboxId").pbaSearchBox(toolbar.searchBox_onClick);
+
+        //NOTE: в данной версии toolbar-а возможно использовать иконки только из кендо-спрайтов
+        //TODO: убрать!!!
+        $toolbar.find(".k-sprite.fa").removeClass("k-sprite");
+            toolbar.popupEl().find(".k-sprite.fa").removeClass("k-sprite");
+
+            toolbar.enable("#@btnEditId", false);
+            toolbar.enable("#@btnDeleteId", false);
+            toolbar.enable("#@btnChangeCatId", false);
+
+        $toolbar.find("#@hotkeysId").kendoTooltip({
+            width: 320,
+            position: "top",
+            content: kendo.template($("#@hotkeysInfoId").html())
+        }).data("kendoTooltip");
+
+
+        });
+</script>
+
+<div id="@hotkeysInfoId" type="text/x-kendo-template" style="display: none; background-color: #fefefe">
+    <h5 class="hotkeys__header">Горячие клавиши</h5>
+    <ul class="kwidget kwidget--list" id="@hotKeyList">
+        <li class="hotkeys-row">
+            <span class="key-button">Insert </span> <span class="key-text">- Создать объект</span>
+        </li>
+        <li class="hotkeys-row">
+            <span class="key-button">Enter </span> <span class="key-text">- Редактировать объект</span>
+        </li>
+        <li class="hotkeys-row">
+            <span class="key-button">Delete </span> <span class="key-text">- Удалить объект</span>
+        </li>
+        <li class="hotkeys-row">
+            <span class="key-button">&#8593; </span>
+            <span class="key-button">&#8595; </span>
+            <span class="key-button">&#8592; </span>
+            <span class="key-button">&#8594; </span> <span class="key-text">- Навигация по таблице</span>
+        </li>
+        <li class="hotkeys-row">
+            <span class="key-button"> Space </span> <span class="key-text">- Выделить строку</span>
+        </li>
+    </ul>
+</div>
+
+
+@if (actionAllCategorizedItems)
+{
+    <script>
+        $(function() {
+            var toolbar = window["@nameToolbar"];
+            var $tb = toolbar.element();
+
+            if (toolbar.getCookie("@Model.Mnemonic", "allItems", "false") == "true") {
+                $tb.find("#@cbRecursiveViewId").attr('checked', 'checked')
+            };
+
+            $tb.find('#@cbRecursiveViewId').kendoMobileSwitch({
+            onLabel: '<span class="k-icon icon-hierarchy"></span>',
+                offLabel: '<span class="k-icon icon-no-hierarchy"></span>',
+                change: function(evt) {
+                    toolbar.setCookie("@Model.Mnemonic", "allItems", evt.checked);
+                    toolbar.refreshListView();
+                }
+            });
+        });
+
+    </script>
+}

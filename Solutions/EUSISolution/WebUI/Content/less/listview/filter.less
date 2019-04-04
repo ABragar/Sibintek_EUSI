@@ -1,0 +1,91 @@
+﻿form.k-filter-menu {
+	.k-textbox, .k-widget {
+		margin: 0 @modular-scale *.5rem @modular-scale *.25rem 0;
+
+		&.k-header.k-dropdown:nth-of-type(n+2) {
+			margin-top: @modular-scale *.5rem;
+			}
+		}
+	} 
+
+.k-filter-menu {
+	line-height: @modular-scale *1rem;
+
+	width: 30em !important;
+	padding: @modular-scale *.5rem;
+
+	border-radius: 3px;
+
+	.k-filter-help-text {
+		margin-top: 0;
+		margin-bottom: @modular-scale *.5rem;
+		}
+
+	.k-numerictextbox .k-link {
+		height: 1em;
+
+		&:first-child {
+			margin-top: .33em;
+			}
+		}
+
+	.k-dropdown {
+		width: @modular-scale *6.18rem;
+		margin-top: 0;
+		margin-bottom: @modular-scale *.25rem;
+		}
+
+	span.k-filter-and {
+		display: inline-block;
+
+		margin: 0 @modular-scale *.5rem @modular-scale *.25rem 0;
+
+		 + .k-dropdown {
+			display: inline-block;
+			}
+		}
+
+	.k-autocomplete {
+		margin-top: 0;
+		margin-bottom: @modular-scale *1rem;
+		}
+
+	.k-multiselect-wrap {
+		padding-right: @modular-scale *1.25em;
+
+		 > ul > .k-button {
+			font-size: 12px; 
+
+			width: auto;
+			}
+		}
+
+	.input-group {
+		margin-top: 0;
+		margin-bottom: @modular-scale *.5rem;
+		}
+
+	ul.k-multicheck-wrap {
+		padding: @modular-scale *.5rem 0 @modular-scale *1rem;
+
+		li {
+			padding-top: .2rem;
+			}
+		}
+
+	.k-checkbox {
+		padding-left: pow( @modular-scale *1rem, -1 );
+		}
+
+	.k-button {
+		&:hover, &:focus {
+			background-color: lighten( @color--dark, 78% ) !important;
+			}
+		}
+
+	 > div > div:last-child {
+		margin: @modular-scale *.5rem 0 0 0; 
+
+		border: none;
+		}
+	}

@@ -1,0 +1,21 @@
+﻿@model EditorViewModel
+    
+@{
+    var edotor = (OneToManyAssociationEditor)Model;
+}
+
+<div id="@edotor.UID" data-parent_mnemonic="@edotor.ParentViewModelConfig.Mnemonic" data-mnemonic="@(edotor.Mnemonic ?? edotor.ViewModelConfig.Mnemonic)" data-sysname="@edotor.SysName" data-controller="@edotor.Controller" data-link="@Html.RenderBool(edotor.Delete != null)">
+    <div id="msg-loading-dialog" class="kwidget kwidget--panel hidden">
+        <div class="kwidget kwidget--panel-content">
+            Инициализация...
+        </div>
+    </div>
+    <div id="msg-no-save" class="kwidget kwidget--panel">
+        <div class="kwidget kwidget--panel-content">
+            Доступно после сохранения объекта.
+        </div>
+    </div>
+    <div id="wrap-list-view-dialog" class="kwidget kwidget--panel">
+
+    </div>
+</div>

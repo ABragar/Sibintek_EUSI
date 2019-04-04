@@ -1,0 +1,160 @@
+﻿@model StepViewModel
+
+@{
+    Layout = "~/Views/Shared/_WizardFormLayout.cshtml";
+
+    string editorName = Html.GetStandartDetailView("Common/Editor", true);
+
+    string toolbarId = Html.CreateSystemName("wizard_toolbar");
+
+    string dialogId = Model.StepName + "_" + Model.Mnemonic;
+}
+
+<div class="dialog" id="@dialogId">
+    @*
+        Это не стандартный detailview-тулбар,
+        поэтому класс toolbar-vm не добавляем
+    *@
+    <div class="dialog__toolbar">
+        @(Html.Kendo().ToolBar()
+              .Name(toolbarId)
+              .Items(items =>
+              {
+                  items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                  {
+                      bool passed = true;
+
+                      for (int i = 0; i < Model.Wizard.Steps.Count; i++)
+                      {
+                          var step = Model.Wizard.Steps[i];
+                          bool isCurrent = step.Name == Model.StepName;
+
+                          if (isCurrent)
+                          {
+                              passed = false;
+                          }
+
+                          string title = isCurrent ? "Текущий шаг"
+                              : passed ? "Шаг завершен"
+                                  : "Шаг недоступен";
+
+                          string @class = isCurrent ? "primary"
+                              : passed ? "success"
+                                  : "";
+
+                          buttons.Add().Text((i + 1).ToString()).HtmlAttributes(new {title, @class, data_popup = "bottom", style = "cursor: default"}).Enable(isCurrent || passed);
+                      }
+                  });
+
+                  items.Add().Type(CommandType.ButtonGroup).HtmlAttributes(new {style = "float: right"}).Buttons(buttons =>
+                  {
+                      int indexOfStep = Model.Wizard.Steps.FindIndex(x => x.Name == Model.StepName);
+
+                      bool isFirstStep = indexOfStep == 0;
+                      bool isLastStep = indexOfStep == Model.Wizard.Steps.Count - 1;
+
+                      buttons.Add().Text("Назад").HtmlAttributes(new {title = "Предыдущий шаг", data_popup = "bottom", @class = "primary" }).SpriteCssClass("fa fa-fw fa-arrow-left").ShowText(ShowIn.Both).Click(string.Format("window[\"{0}\"].toolbar.prev", Model.WidgetID)).Enable(!isFirstStep);
+                      buttons.Add().Text("Далее").HtmlAttributes(new {title = "Следующий шаг", data_popup = "bottom", @class = "primary" }).SpriteCssClass("fa fa-fw fa-arrow-right").ShowText(ShowIn.Both).Click(string.Format("window[\"{0}\"].toolbar.next", Model.WidgetID)).Enable(!isLastStep);
+                      buttons.Add().Text("Завершить").HtmlAttributes(new {title = "Завершить", data_popup = "bottom", @class = "success complete" }).SpriteCssClass("fa fa-fw fa-check").ShowText(ShowIn.Both).Click(string.Format("window[\"{0}\"].toolbar.save", Model.WidgetID)).Enable(true);
+                  });
+              }))
+    </div>
+    <div class="dialog__content view-model">
+
+        @*@if (!string.IsNullOrEmpty(Model.StepTitle))
+        {
+            <div class="w-header">
+                @if (!string.IsNullOrEmpty(Model.StepTitle))
+                {
+                    <p class="w-title">@Model.StepTitle</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.StepDescription))
+                {
+                    <p class="w-description alert alert-info">@Model.StepDescription</p>
+                }
+            </div>
+        }*@
+
+        <form id="@Model.FormName" class="common-form">
+            @foreach (var editor in Model.Editors)
+            {
+                <div class="e-row">
+                    @if (editor.IsLabelVisible)
+                    {
+                        if (editor.EditorTemplate == "Boolean")
+                        {
+                            <div class="editor">
+                                @{ Html.RenderPartial(editorName, editor); } @RenderLabel(editor)
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="label">
+                                @RenderLabel(editor)
+                            </div>
+                            <div class="editor">
+                                @{ Html.RenderPartial(editorName, editor); }
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        Html.RenderPartial(editorName, editor);
+                    }
+                </div>
+            }
+        </form>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        var $form = $("#@Model.FormName");
+
+        $form.perfectScrollbar({
+            scrollSpeed: 0.6,
+            suppressScrollX: true
+        });
+
+        $form.on("onShow onResize", function() {
+            $form.perfectScrollbar("update");
+        });
+
+        var $widget = $('#@Model.WidgetID');
+        var $dialog = $widget.find("#@dialogId");
+        $dialog.data("toolbar", $("#@toolbarId").data("kendoToolBar"));
+
+    });
+</script>
+
+@helper RenderLabel(EditorViewModel editor)
+{
+    if (editor.EditorTemplate == "Boolean")
+    {
+        <label class="k-checkbox-label" for="@editor.UID">@editor.Title</label>
+
+        @RenderHelp(editor)
+    }
+    else
+    {
+        <label for="@editor.UID">@editor.Title</label>
+
+        if (editor.IsRequired)
+        {
+            <span class="required-mark">•</span>
+        }
+
+        @RenderHelp(editor)
+    }
+}
+
+@helper RenderHelp(EditorViewModel editor)
+{
+    if (string.IsNullOrEmpty(editor.Description))
+    {
+        return;
+    }
+
+    <span title="@editor.Description" class="edt-label fa fa-question-circle-o tooltipstered"></span>
+}

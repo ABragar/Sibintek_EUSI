@@ -1,0 +1,208 @@
+.map-area {
+	position: absolute;
+	top: @header-height;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	.leaflet-google-layer.leaflet-top,
+	.leaflet-google-layer.leaflet-left,
+	.leaflet-yandex-layer.leaflet-top,
+	.leaflet-yandex-layer.leaflet-left {
+		left: 0;
+
+		transition: none;
+		}
+
+	.leaflet-bar {
+		border-radius: 0;
+		box-shadow: none;
+
+		a {
+			&, &:hover {
+				line-height: 36px;
+
+				width: 36px;
+				height: 36px;
+				margin: 1px 0;
+
+				transition: background-color .15s ease;
+
+				color: @color--light;
+				border-bottom: 1px solid transparent;
+				background-color: @color--primary;
+				}
+
+			&:hover {
+				background-color: darken( @color--primary, 10% );
+				}
+
+			&:first-child {
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+				}
+
+			&:last-child {
+				border-bottom: none; 
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 0;
+				}
+
+			&.leaflet-disabled:hover {
+				color: darken( @color--light, 17% );
+				background-color: darken( @color--dark, 4.4% );
+				}
+			}
+		}
+
+	.leaflet-bar a,
+	.leaflet-control-layers-toggle {
+		background-repeat: no-repeat; 
+		background-position: initial;
+		}
+
+	.leaflet-right {
+		display: none;
+
+		// @media ( min-width: @screen-width-sm ) {
+		// 	display: block;
+		// 	}
+		}
+
+	.leaflet-popup {
+		&-close-button {
+			font-size: @modular-scale *1em;
+			line-height: 1;
+
+			z-index: 5;
+			top: .25em;
+			right: .25em;
+
+			display: block;
+
+			width: 1em;
+			height: 1em;
+			padding: 0;
+
+			transition: opacity .15s ease;
+
+			color: @color--dark;
+
+			&:hover {
+				opacity: .8; 
+				color: @color--dark;
+				}
+			}
+
+		&-content-wrapper, &-tip {
+			color: @color--dark;
+			border-radius: 0;
+			background: fade( @color--light, 90% );
+			box-shadow: 0 3px 9px fade( @color--dark, 50% ), 0 0 27px fade( @color--dark, 25% );
+			}
+
+		&-content {
+			position: relative;
+
+			margin: 1em;
+
+			.popup-icon {
+				font-size: 14px;
+				line-height: @modular-scale *1.5em;
+
+				position: absolute;
+				top: -.5em;
+				left: -.5em;
+
+				display: block;
+
+				width: @modular-scale *1.5em;
+				height: @modular-scale *1.5em;
+				padding: 0;
+
+				text-align: center;
+
+				color: @color--light;
+				border-radius: @modular-scale *.75em;
+				background-color: @color--dark;
+
+				span, i {
+					font-size: inherit !important;
+
+					margin-top: 0 !important;
+					margin-left: 0 !important;
+
+					color: inherit !important;
+					}
+				}
+
+			.popup-title {
+				position: absolute;
+				z-index: 1;
+				top: -.5em;
+				right: .5em;
+				left: 2.5em;
+
+				display: flex;
+				overflow: hidden;
+				flex-direction: column;
+				justify-content: center;
+
+				height: 2.7em;
+				margin: 0;
+
+				vertical-align: middle;
+
+				color: @color--dark;
+				}
+
+			.popup-body {
+				position: relative;
+
+				min-width: 20em;
+				min-height: 6em;
+				padding-top: 2.7em;
+
+				text-align: left;
+
+				p {
+					margin: 0 0 .3em 0;
+					}
+				}
+
+			.popup-buttons {
+				position: relative;
+
+				.btn {
+					font-size: 1em;
+					font-weight: 300;
+					line-height: @modular-scale *1.5rem;
+					box-sizing: border-box;
+					border: none;
+
+					padding: 0 @modular-scale *.5rem;
+
+					color: @color--light;
+					border-radius: 0;
+
+					&.btn-default, &.btn-primary {
+						border-color: darken( @color--primary, 5% );
+						background: darken( @color--primary, 5% );
+
+						&:hover, &:focus {
+							color: @color--light;
+							border-color: darken( @color--primary, 15% );
+							background: darken( @color--primary, 15% );
+							background-image: none;
+							}
+
+						&:active {
+							border-color: @color--primary; 
+							background: @color--primary;
+							}
+						}
+					}
+				}
+			}
+		}
+	}

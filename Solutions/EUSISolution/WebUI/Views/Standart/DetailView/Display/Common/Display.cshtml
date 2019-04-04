@@ -1,0 +1,77 @@
+﻿@using Base.Attributes
+@using WebUI.Extensions
+
+@model EditorViewModel
+
+@{
+    string template = Model.EditorTemplate;
+
+    string dirname = Model.PropertyDataType == PropertyDataType.Custom && !template.StartsWith("Sib_") ? (Model.ViewModelConfig ?? Model.ParentViewModelConfig).GetDirName() : "Standart";
+    if (template.StartsWith("ParentsBranch"))
+    {
+        dirname = "Standart";
+    }
+
+    string dirTemplates = "";
+
+    if (template == "OneToMany" || template == "ManyToMany" || template == "BaseObjectOne" || template == "EasyCollection" || template.StartsWith("OneToManyAssociation_") || template.StartsWith("ManyToManyAssociation_"))
+    {
+        dirname = "Standart";
+        dirTemplates += "Common/";
+    }
+
+    if (template.StartsWith("Sib_"))
+    {
+        template = template.Split('_')[1];
+        dirTemplates += "SibEditors/";
+    }
+}
+
+<script>
+    $(function() {
+        pbaAPI.wrapDisplay("@template", "@Model.UID", "@(Model.PropertyName ?? Model.UID)");
+    });
+</script>
+
+@{
+    string partialViewName = string.Format("~/Views/{0}/DetailView/Display/{1}{2}.cshtml", dirname, dirTemplates, template);
+
+    try
+    {
+        if (Model.EditorTemplate == "Text" ||
+        Model.EditorTemplate == "Date" ||
+        Model.EditorTemplate == "BaseObjectOne" ||
+        Model.EditorTemplate == "MultilineText" ||
+        Model.EditorTemplate == "Decimal" ||
+        Model.EditorTemplate == "Integer")
+        {
+            //окраска полей в зависимости от источника данных.
+            if (String.IsNullOrEmpty(Model.BgColor) && Model.Params != null && Model.Params.Count != 0 && Model.Params.Where(p => p.Key == "Source").Any())
+            {
+                if (Model.Params.Where(p => p.Key == "Source").FirstOrDefault().Value == "ER")
+                {
+                    //источник - заявка: светло-зеленая
+                    Model.BgColor = "#dcf9dc";
+                }
+                if (Model.Params.Where(p => p.Key == "Source").FirstOrDefault().Value == "BU")
+                {
+                    //источник - БУС: светло-желтая
+                    Model.BgColor = "#eff2c4";
+                }
+
+            }
+            string bgColor = @String.IsNullOrEmpty(Model.BgColor) ? "#ececec" : @Model.BgColor;
+            <text><div class="FakeInputField" style="border: 1px solid #cccccc;background-color: @bgColor ;min-height: 36px;padding:0 10px;">@Html.PartialEditor(Model)</div></text>
+
+
+        }
+        else
+        {
+            Html.RenderPartial(partialViewName, Model);
+        }
+    }
+    catch
+    {
+        <h6 style="color:red;">@partialViewName</h6>
+    }
+}

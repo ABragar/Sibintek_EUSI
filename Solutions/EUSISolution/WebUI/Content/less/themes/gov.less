@@ -1,0 +1,89 @@
+@base-font-size: 16px;
+@modular-scale: 1.618;
+
+@font-stack--sans: 'PT Sans', Helvetica, sans-serif;
+
+//main palete
+@crystal-white: #fff;
+@your-lightness: #f4f7fb;
+@silver: #dde1e6;
+@platinum: #c7ccd1;
+@pencil: #747e88;
+@ink: #3b4256;
+@gov-blue: #00077b;
+
+@gunmetal: #303239;
+@rich-black: #020a22;
+
+//accents palete
+@apple-green: #76ad0e;
+@spanish-green: #169449;
+@zomp: #389f88;
+@tiffany-blue: #18b4bb;
+@honolulu-blue: #0077b0;
+@sapphire: #0d49cc;
+@ksu-purple: #442a90;
+@paradise-pink: #e93d5e;
+@persimmon: #eb4c0a;
+
+//color-wheel palete
+@coral-red: #ff313f;
+@smashed-pumpkin: #ff6a2b;
+@yellow-crayola: #ffad27;
+@banana-yellow: #ffd924;
+@daffodil: #fff720;
+@yellow-green: #97d23a;
+@wageningen-green: #20ae3b;
+@green-crayola: #18bd7d;
+@sapphire-blue: #0261aa;
+@violet-blue: #3f46a7;
+@purple-heart: #673aa8;
+@purpureus: #9f36ae;
+
+//states
+@color--danger: #e53935;
+@color--danger-alt: @coral-red;
+@color--danger-pale: lighten( saturate( @paradise-pink, 15% ), 32% );
+@color--success: #71bc90;
+@color--success-bright: @wageningen-green;
+@color--success-pale: lighten( saturate( @color--success, 30% ), 20% );
+@color--active: #62b0ff;
+@color--warning: @yellow-crayola;
+
+
+@color--primary: @sapphire;
+@color--accent: @paradise-pink;
+@color--accent-alt: @paradise-pink;
+// @color--accent-dark-alt: darken( @paradise-pink, 25% );
+@color--accent-pale: lighten( @persimmon, 45% );
+
+@color--light: @crystal-white;
+@color--light-mild: @your-lightness;
+@color--dark: @gunmetal;
+
+@color--text: @pencil;
+@color--text-light: @your-lightness;
+
+@color--border: @platinum;
+
+@color--layout-bg: darken( @color--light, 5% );
+
+@color--wdialog-toolbar-bg: @color--dark;
+@color--wdialog-toolbar-text: @color--light;
+
+@color--sidebar-bg: @rich-black;
+@color--sidebar-text: @color--light;
+
+@color--sidebar-heading: @color--active;
+
+@color--toolbar-bg: @color--light;
+@color--toolbar-text: @color--dark;
+
+@color--grid-grouping-header-bg: @color--accent;
+@color--grid-grouping-header-text: @color--light;
+@color--grid-bg__selected: lighten( @color--primary, 55% );
+@color--grid-cell-bg__focused: @color--success-pale;
+
+
+@color--scheduler-header-bg: @color--accent-alt;
+@color--scheduler-header-text: @color--light;

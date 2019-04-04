@@ -1,0 +1,724 @@
+﻿@using System.Web.Mvc.Html
+@using System.Web.UI.HtmlControls
+@using Base.UI.ViewModal
+@using Newtonsoft.Json
+@using WebUI.Controllers
+@using WebUI.Extensions
+@model EditorViewModel
+
+@{
+    Layout = "~/Views/Shared/_CustomFormLayout.cshtml";
+
+    var parentKey = "ID";
+
+    if (@Model.Params != null && @Model.Params.ContainsKey("ParentID"))
+    {
+        parentKey = @Model.Params["ParentID"];
+    }
+    var dialog = Html.CreateSystemName("dialog");
+
+    ViewModelConfig config = Model.ViewModelConfig;
+    var modelUID = Model.UID;
+
+    var customEditorModel = new CustomDialogView(ViewContext.Controller as IBaseController, config?.Mnemonic, modelUID);
+
+    string oldValueWnd = Html.CreateSystemName("wnd");
+
+    var commonEditor = Html.GetCommonEditor(Model.Mnemonic);
+
+    string dvSettingsWnd = Html.CreateSystemName("wnd");
+    var dialogVm = new StandartFormModel(customEditorModel, commonEditor);
+    var widgetId = dialogVm.WidgetID;
+}
+
+<div id="@dialog" style="display: none;" class="dialog dialog--@customEditorModel.Type.ToString().ToLower() dialog-vm">
+    <div id="@widgetId" class="form-widget">
+        <div class="kwidget kwidget--panel" style="border: none">
+        </div>
+        <div id="@oldValueWnd"></div>
+    </div>
+</div>
+
+@*composite*@
+<script>
+        var mnemonic = "@Model.ViewModelConfig.Mnemonic";
+
+        var getKeyIdValue = function (parentKey, value) {
+            if (value == null) {
+                return 0;}
+            var keys = parentKey.split(".");
+            for (var i = 0; i < keys.length; i++) {
+                var key = keys[i];
+                if (key in value)
+                    value = value[key];
+                if (value == null) {
+                    return 0;
+                }
+            }
+            return value;
+        }
+
+        window["@dialog"] = new CompositeControl("@dialog");
+
+        (function() {
+
+            var composite = window["@dialog"];
+
+            composite.mnemonic = mnemonic;
+            composite.type = "@customEditorModel.Type";
+            composite.isModal = composite.type === "Modal";
+            composite.changeObjects = [];
+            composite.count = 0;
+            composite.Idx = {};
+            composite.prevID = null;
+            composite.nextID = null;
+            composite.defparams = {
+                // kendoWindow - окно диалога
+                wnd: null,
+                // ID текущего объекта
+                currentID: 0,
+                // ассоциативный массив - / key = ID; value = { model: entity, access: { Update: bool, Delete: bool }, order: №, loaded: bool } /
+                entities: {},
+                // pbaForm - ссылка на родительскую форму
+                parentForm: null,
+                // флаг - только чтение
+                isReadOnly: false,
+                // флаг - выполнить запрос сохранения объекта
+                toSave: false,
+                // Измененные свойства
+                changeProperties: {},
+                // метод создание нов. объекта
+                createDefault: null,
+                // события
+                events: {
+                    initNewEntity: function(e) {},
+                    beforeSave: function(e) {
+                        console.log("beforeSave");
+                    },
+                    save: function(e, data) {
+                        console.log("save");
+                    }
+                },
+                // параметры для кастомных запросов
+                customQueryParams: {
+                    get: {},
+                    save: {}
+                },
+                byDate: null
+            };
+
+            composite.params = {};
+
+            composite.getCurrentEntity = function() {
+                return composite.params.entities[composite.params.currentID];
+            };
+
+            composite.getCurrentModel = function() {
+                return composite.getCurrentEntity().model;
+            };
+
+            composite.setCurrentModel = function(model) {
+                composite.getCurrentEntity().model = model;
+                // composite.changeObjects.push(composite.getCurrentModel());
+            };;
+
+            composite.getViewModel = function() {
+                return { dirty: false };
+            };
+
+            composite.destroy = function() {
+                this.changeObjects = [];
+            };
+
+            composite.initDialog = function(params) {
+
+                var defparams = $.extend({}, this.defparams);
+
+                this.params = $.extend(defparams, params);
+
+                if (this.defparams.isReadOnly)
+                    this.params.isReadOnly = true;
+
+                this.count = 0;
+                this.changeObjects = [];
+
+                for (var id in this.params.entities) {
+                    var entity = this.params.entities[id];
+                    this.Idx[entity.order] = parseInt(id);
+                    this.count++;
+                }
+
+                this.bind();
+            };
+
+            composite.getAccess = function(obj) {
+                if (this.params.isReadOnly) {
+                    return { Update: false, Delete: false };
+                } else {
+                    return obj.access || { Update: true, Delete: true };
+                }
+            };
+
+
+            composite.setTitle = function(model) {
+                try {
+                    var def = "@Model.ViewModelConfig.Title";
+                    var title;
+                    if (!this.isEmpty(model.Title))
+                        title = def + ": " + model.Title;
+                    if (this.isEmpty(title) && !this.isEmpty(model.Name))
+                        title = def + ": " + model.Name;
+                    else
+                        title = def;
+                    if (this.params)
+                        if (this.params.wnd)
+                            this.params.wnd.title(title);
+                } catch (err) {
+                }
+            };
+
+            composite.bind = function() {
+                this.startLoading();
+
+                this.getModel(function(entity) {
+                    var dfds = [];
+                    composite.setTitle(entity.model);
+
+                    composite.prevID = null;
+                    composite.nextID = null;
+
+                    if (composite.params.currentID !== 0 && composite.count > 1) {
+
+                        if (entity.order > 0) {
+                            composite.prevID = composite.Idx[entity.order - 1];
+                        }
+
+                        if (entity.order < (composite.count - 1)) {
+                            composite.nextID = composite.Idx[entity.order + 1];
+                        }
+                    }
+                    for (var id in composite.widgets) {
+                        if ("asyncBind" in composite.widgets[id]) {
+                            dfds.push(composite.widgets[id].asyncBind({
+                                isReadOnly: !composite.getAccess(entity).Update,
+                                parentForm: composite.params.parentForm,
+                                model: entity.model,
+                                prevID: composite.prevID,
+                                nextID: composite.nextID,
+                                toSave: composite.params.toSave,
+                                isModal: composite.isModal,
+                                changeProperties: composite.params.changeProperties
+                            }));
+                        }
+                    }
+
+                    $.when.apply($, dfds).done(function() {
+                        composite.hideLoading();
+                    });
+                });
+            };
+
+            composite.getViewModel = function() {
+                return this.getWidget("ViewModel");
+            };
+
+            composite.criticalError = function(msg) {
+                this.hideLoading();
+                this.element().html("<h4 style='color: red;'>" + msg + "</h4>");
+            };
+
+            composite.getModel = function(callback) {
+
+                var currentId = this.params.currentID;
+                var entities = this.params.entities;
+
+                var isNew = !this.params.parentId || this.params.parentId == 0;
+
+                if (currentId in entities) {
+                    if (entities[currentId].model) {
+                        if (isNew && composite.params.events.initNewEntity)
+                            composite.params.events.initNewEntity(entities[currentId].model);
+
+                        callback(entities[currentId]);
+                        return;
+                    }
+                }
+
+                var initEntity = function(res) {
+                    if (isNew && composite.params.events.initNewEntity)
+                        composite.params.events.initNewEntity(res.model);
+
+                    if (!isNew && res.model) {
+                        currentId = res.model.ID;
+                        composite.params.currentID = currentId;
+                    }
+
+                    if (!(currentId in entities)) {
+                        entities[currentId] = {};
+                    }
+
+                    var entity = entities[currentId];
+
+                    entity.model = res.model;
+                    entity.access = res.access;
+                    entity.byDate = res.byDate;
+                    entity.loaded = true;
+
+                    return entity;
+                };
+
+                var done = function (res) {
+                    if (res.error && res.error !== 0) {
+
+                        composite.criticalError(res.message);
+
+                        return;
+                    } else if (res.model) {
+                        debugger;
+                        composite.params.byDate = composite.element().find(".toolbar-vm").find('*[id^="historyButtonID"]').prop('value');
+                        callback(initEntity(res));
+                    } else { //load the default model for parts were not saved
+                        if (composite.params.createDefault) {
+                            composite.params.createDefault.done(doneChild);
+                        } else {
+                            pbaAPI.proxyclient.standard.create_default({
+                                mnemonic: composite.mnemonic
+                            }).done(doneChild);
+                        }
+                    }
+                };
+
+                var doneChild = function (res) {
+                    if (res.error && res.error !== 0) {
+                        composite.criticalError(res.message);
+                        return;
+                    } else {
+                        callback(initEntity(res));
+                    }
+                };
+                @*pbaAPI.proxyclient.crud.getCustom({
+                    mnemonic: this.params.parentMnemonic,
+                    id: this.params.parentId,
+                    childid: "@Model.ID",
+                    childsysname: "@Model.SysName"
+                }).done(done);*@
+
+                if (isNew) {
+                    if (composite.params.createDefault) {
+                        composite.params.createDefault.done(done);
+                    } else {
+                        pbaAPI.proxyclient.standard.create_default({
+                            mnemonic: this.mnemonic
+                        }).done(done);
+                    }
+                } else {
+                    pbaAPI.proxyclient.crud.getCustom({
+                        mnemonic: this.params.parentMnemonic,
+                        id: this.params.parentId,
+                        childid: "@Model.ID",
+                        childsysname: "@Model.SysName",
+                        date: composite.params.byDate
+                    }).done(done);
+                }
+            }
+
+            composite.startLoading = function() {
+                var $content;
+
+                if (this.isModal)
+                    $content = this.params.wnd.element;
+                else
+                    $content = this.element().closest("div");
+
+                $content.addClass("wnd-loading-content");
+
+                this.element().hide();
+            };
+
+            composite.hideLoading = function(params) {
+                var $content;
+
+                if (this.isModal)
+                    $content = params.wnd.element;
+                else
+                    $content = this.element().closest("div");
+
+                $content.removeClass("wnd-loading-content");
+
+                this.element().fadeIn(300);
+            };
+
+            //обработка события выделения чекбокса "Скрыть пустые поля"
+            var btnHideEmptyEditors = document.getElementById('hideEmptyEditorsID');
+            if (btnHideEmptyEditors) {
+                btnHideEmptyEditors.addEventListener('click', function () {
+
+                    var checkbox = btnHideEmptyEditors.getElementsByTagName("input");
+                    var hideClass = "sib-hide-empty-editorRow";
+
+                    var checked = checkbox[0].checked;
+                    if (checked) {
+                        var entity = composite.getCurrentEntity();
+                        if (entity && entity.model) {
+                            var view = composite.getViewModel();
+                            var form = view.widget();
+                            $.each(form.getModel(), function (member, value) {
+                                if (!value) {
+                                    var editor = form.getEditorRow(member);
+                                    if (editor && editor.addClass) {
+                                        editor.addClass(hideClass);
+                                    }
+                                }
+                            });
+                        }
+                    }
+                    else {
+                        $("." + hideClass).removeClass(hideClass);
+                    }
+                });
+            }
+        })();
+</script>
+
+<script>
+        window["@widgetId"] = new WrapViewModel("@widgetId", "ViewModel", "@customEditorModel.Type");
+
+        (function() {
+            var composite = window["@dialog"];
+
+            var view = window["@widgetId"];
+            composite.registerWidget(view);
+
+            view.defparams = {
+                model: null,
+                parentForm: null,
+                isReadOnly: false,
+                toSave: false,
+                buttons: null,
+                changeProperties: {}
+            };
+
+            view.params = {};
+            view.dirty = false;
+
+            view.asyncBind = function(params) {
+                view.params = $.extend(this.defparams, params);
+                view.dirty = false;
+
+                if (view._isAjaxForm) {
+                    return view.getAjaxForm(view.params.model);
+                } else {
+                    return view.initViewModel();
+                }
+            };
+
+            view.initViewModel = function () {
+                var viewModel = kendo.observable({
+                    byDate: composite.params.byDate,
+                    model: composite.getCurrentModel(),
+                    apply: function() {
+                        view.save("apply");
+                    },
+                    save: function() {
+                        view.save("save");
+                    },
+                    close: function() {
+                        composite.onWidgetChanged(
+                            {
+                                sender: view,
+                                event: "close",
+                                params: {}
+                            });
+                    }
+                });
+
+                return view.initPbaForm(viewModel);
+            };
+
+            view.save = function(type) {
+                composite.onWidgetChanged(
+                    {
+                        sender: view,
+                        event: type,
+                        params: {}
+                    });
+            };
+
+            view.initPbaForm = function(viewModel) {
+                var dfd = $.Deferred();
+                var oldValues = setChangedProperties(viewModel.model);
+
+                var $form = $("#@widgetId").find("form");
+
+                if (!$form.data("pbaForm")) {
+                    $form.pbaForm({
+                        model: viewModel,
+                        nameModel: "model",
+                        attrBind: true,
+                        validate: true,
+                        oldValues: oldValues,
+                        byDate: viewModel.byDate
+                    });
+
+                    var pbaForm = $form.data("pbaForm");
+
+                    $form.find("[data-bind]").on("input",
+                        function(e) {
+                            view.dirty = true;
+
+                            composite.onWidgetChanged({
+                                sender: view,
+                                event: "change"
+                            });
+                        });
+
+                    $form.on("onChange",
+                        function(e, data) {
+                            view.dirty = true;
+                            addChangedValueLabel(data.field, pbaForm);
+                            composite.onWidgetChanged({
+                                sender: view,
+                                event: "change"
+                            });
+                        });
+                    $form.on("onBeforeSave",
+                        function(e, data) {
+                            view.dirty = true;
+                            addChangedValueLabel(data.field, pbaForm);
+                            composite.onWidgetChanged({
+                                sender: view,
+                                event: "change"
+                            });
+                        });
+                    $form.on("onRefreshData",
+                        function (e, data) {
+                            view.refreshData = true;
+                        });
+
+                    $form.on("onSave",
+                        function (e, data) {
+                            var widget = window[$(e.target).closest(".form-widget").prop('id')];
+                            var composite = widget.composite;
+                            var mnemonic = composite.mnemonic;
+                            var formData = $("#" + widget.id).find("form").data("pbaForm");
+                            var saveModel = formData.getModel();
+                            var childData = {
+                                sysname:"@Model.SysName",
+                                model:saveModel
+                            };
+
+                            if (!data.childs) {
+                                var childs = [];
+                                data.childs = childs;
+                            }
+
+                            if (!data.childs.find(function(e, i, arr) {
+                                if (childData.sysname === e.sysname) {
+                                    e.model = childData.model;
+                                    return true;
+                                }}) && view.dirty == true)
+                            {
+                                data.childs.push(childData);
+                            } else {
+                                return;
+                            }
+
+
+                        });
+
+                    pbaForm.bind();
+                } else {
+
+                    $form.data("pbaForm").unbind();
+                    $form.data("pbaForm").bind(viewModel);
+                }
+
+                markAllChangedProperties(view.params.changeProperties, $form.data("pbaForm"));
+
+                dfd.resolve();
+
+                return dfd.promise();
+            };
+
+            view.getAjaxForm = function(model) {
+                var dfd = $.Deferred();
+                var params = {};
+                
+                params["id"] = model.ID;
+                params["mnemonic"] = "@Model.Mnemonic";
+                params["readOnly"] = view.params.isReadOnly;
+                params["_dialogid"] = "@dialog";
+                params["_widgetid"] = "@widgetId";
+                params["_dialogtype"] = "@customEditorModel.Type";
+                params["_parentid"] = "@customEditorModel.ParentID";
+                params["_currentid"] = "@customEditorModel.CurrentID";
+
+                return $.get("@Url.Action("GetAjaxForm", "View")",
+                    params,
+                    function (res) {
+                        $("#@widgetId").html(res);
+
+                        view.initViewModel().done(function() {
+                            dfd.resolve();
+                        });
+                    });
+            };
+            var setChangedProperties = function(model) {
+
+                var oldValues = {};
+
+                for (var prop in view.params.changeProperties) {
+
+                    oldValues[prop] = model.get(prop);
+
+                    model.set(prop, view.params.changeProperties[prop]);
+                }
+
+                return oldValues;
+            };
+
+            var markAllChangedProperties = function(fields, pbaForm) {
+
+                $('[data-role="changed_field_label"]').remove();
+
+                for (var field in fields) {
+                    addChangedValueLabel(field, pbaForm);
+                }
+            };
+
+            var addChangedValueLabel = function(field, pbaForm) {
+                if (!field) return;
+
+                var editor = $(pbaForm.element).find('[data-field="' + field + '"]');
+
+                if (editor.find('[data-role=changed_field_label]').length !== 0)
+                    return;
+
+                var template = kendo.template($('#changed_field_template').html());
+
+                var html = template(field);
+
+                editor.append(html);
+
+                editor.find('[data-role=changed_field_label]').on('click', function(e) { showOldValue(e) });
+            };
+
+            var showOldValue = function(e) {
+
+                var field = $(e.target).attr('data-value');
+                var $form = $("#@widgetId").find("form");
+                var pbaForm = $form.data('pbaForm');
+                var wnd = $('#@oldValueWnd').data('kendoWindow');
+
+                $.ajax({
+                    url: "@Url.Action("GetDisplayViewModel", "View")",
+                    data: {
+                        mnemonic: "@Model.Mnemonic",
+                        member: field
+                    },
+                    success: function(result) {
+
+                        var viewModel = kendo.observable({
+                            model: pbaForm.oldValues,
+                            apply: function() {
+                            },
+                            save: function() {
+                            },
+                            close: function() {
+                            }
+                        });
+
+                        wnd.content(result);
+
+                        var childForm = $(wnd.element).find('form').data('pbaForm');
+
+                        childForm.bind(viewModel);
+
+                        wnd.center().open();
+                    }
+                });
+            };
+            return view;
+        })();
+</script>
+
+
+<script>
+        (function () {
+        var editor = $("#@Model.UID");
+        var $form = editor.closest("form");
+        var view = window["@widgetId"];
+        view.refreshData = true;
+
+        $form.on("onAfterBind",
+            function (e, form) {
+                debugger;
+                var parentId = form.getModel().ID; 
+                var byDate = form.byDate;
+                var params = {};
+                params["ID"] = 0;
+                params["mnemonic"] = "@Model.ViewModelConfig.Mnemonic";
+                params["readOnly"] = "@Model.IsReadOnly";
+                params["_dialogid"] = "@dialog";
+                params["_widgetid"] = "@widgetId";
+
+                params["byDate"] = byDate;
+               
+
+                params["_dialogtype"] = "@customEditorModel.Type";
+                params["_parentid"] = parentId;
+                params["_currentid"] = 0;
+
+                var getAjaxFormCallback = function (res, status) {
+                    if ($("#@Model.UID form").length === 0) {
+                        $("#@Model.UID").find(".kwidget.kwidget--panel").html(res);
+                    }
+                    
+                    var composite = window["@dialog"];
+                    var entities = {};
+
+                    entities[0] = { model: null, order: 0, byDate: null };
+
+                    composite.initDialog({
+                        currentID: 0,
+                        entities: entities,
+                        toSave: true,
+                        parentId: parentId,
+                        byDate: byDate,
+                        parentMnemonic: "@Model.ParentViewModelConfig.Mnemonic"
+                    });
+                };
+                // reset onAfterBind to avoid circular call
+                $form.on("onAfterBind",
+                    function (e, form) { });
+                
+                var $tab = $(editor.wrap()).closest('[role=tabpanel]');
+                var tabID = $tab.attr('data-tab-content')
+    
+                if (view.refreshData) {
+                    view.refreshData = false;
+                    $.get("@Url.Action("GetAjaxForm", "View")", params, getAjaxFormCallback).fail(function (e) {
+                        if ($("#@Model.UID form").length === 0) {
+                            $("label[for=@Model.UID]").parent().hide().before("<h1>НЕТ ДОСТУПА</h1>").parent().css("border", "1px solid #dbdbdb");
+                        }
+                    });
+                }
+
+            });
+        })();
+</script>
+
+<script>
+        $(function () {
+            var dialog = window["@dialog"];
+
+            $("#@dialog").data("dialogVM", dialog);
+        });
+</script>
+
+
+
+
+
+
+

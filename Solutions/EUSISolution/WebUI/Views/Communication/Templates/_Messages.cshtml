@@ -1,0 +1,135 @@
+﻿<div class="dialog" ng-controller="MessageController as msgCtrl" data-page="messages" ng-show="mainCtrl.page === 'messages'">
+    <header class="chat__header dialog__toolbar">
+        <div class="k-toolbar">
+            <div class="k-button-group">
+                <a class="k-button k-button-icon k-group-start" href="javascript: void 0" ng-click="mainCtrl.goTo('dialogs')" title="К диалогам" data-popup="bottom">
+                    <i class="k-sprite fa fa-arrow-left"></i>
+                </a>
+            </div>
+            <div class="k-button-group" style="float: right;">
+                <!-- IS PRIVATE DIALOG -->
+                <a ng-hide="msgCtrl.isConference()" class="k-button k-button-icon k-group-start" href="javascript: void 0" ng-click="msgCtrl.videoCall()" title="Видеозвонок" data-popup="bottom">
+                    <i class="k-sprite fa fa-video-camera"></i>
+                </a>
+                <a ng-hide="msgCtrl.isConference()" class="k-button k-button-icon k-group-end" href="javascript: void 0" ng-click="msgCtrl.audioCall()" title="Аудиозвонок" data-popup="bottom">
+                    <i class="k-sprite fa fa-phone"></i>
+                </a>
+                <!--/ IS PRIVATE DIALOG -->
+                <!-- IS CONFERENCE DIALOG -->
+                <a ng-show="msgCtrl.isConference()" class="k-button k-button-icon k-group-start" href="javascript: void 0" ng-click="dialCtrl.createConference()" title="Добавить пользователя" data-popup="bottom">
+                    <i class="k-sprite fa fa-user-plus"></i>
+                </a>
+                <a ng-show="msgCtrl.isConference()" class="k-button k-button-icon k-group-end" href="javascript: void 0" ng-click="msgCtrl.leaveConference()" title="Выйти из конференции" data-popup="bottom">
+                    <i class="k-sprite fa fa-sign-out"></i>
+                </a>
+                <!--/ IS CONFERENCE DIALOG -->
+            </div>
+        </div>
+        <!-- HEADER TITLE -->
+        <span class="chat__header-title" ng-bind-html="msgCtrl.getDialogImageHtml(dialog)"></span>
+    </header>
+    <div class="chat__body chat__body--with-header chat__body--with-footer">
+        <div class="chat__active-dialog" ng-class="{
+            'chat__active-dialog--private': dialog.type === 'private',
+            'chat__active-dialog--conference': dialog.type === 'conference',
+        }">
+            <!-- CONFERENCE MEMBERS -->
+            <div ng-if="dialog.type === 'conference'" class="chat__member-list">
+                <div ng-hide="msgCtrl.getMembers().length > 0" class="chat__loading"></div>
+                <perfect-scrollbar suppress-scroll-x="true" scroll-down="true">
+                    <ul>
+                        <li ng-repeat="member in msgCtrl.getMembers()" class="chat__member">
+
+                            <div ng-bind-html="msgCtrl.getMemberImageHtml(member, mainCtrl.isMaximized())"></div>
+
+                            <!-- MEMBER ACTIONS BUTTON -->
+                            <div title="Действия" class="chat__member-actions">
+                                <a href="javascript: void 0" type="button" class="icon-button" data-dropdown="#open_member_actions_{{ ::member.id }}">
+                                    <i class="fa fa-navicon"></i>
+                                </a>
+                                <ul id="open_member_actions_{{ ::member.id }}" class="popup-content popup-actions">
+                                    <li><a href="javascript: void 0" ng-click="mainCtrl.goTo('newDialog', 'private', member.id)">Перейти к приватной беседе</a></li>
+                                    <li><a href="javascript: void 0" ng-click="msgCtrl.excludeConferenceMember(member)">Исключить пользователя</a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </perfect-scrollbar>
+            </div>
+            <!-- MESSAGE LIST -->
+            <div class="chat__messages">
+                <perfect-scrollbar suppress-scroll-x="true" scroll-down="true">
+                    <ul class="chat__message-list">
+                        <li ng-show="messages.length === 0" class="chat__message chat__message--system">
+                            <div class="chat__message-text">Нет сообщений</div>
+                        </li>
+                        <li ng-repeat="msg in messages" class="chat__message" ng-class="{
+                            'chat__message--incoming': msg.isIncoming,
+                            'chat__message--outcoming': msg.isOutcoming,
+                            'chat__message--system': msg.type === 'system',
+                            'chat__message--file': msg.type === 'file',
+                            'chat__message--multimedia': msg.type === 'multimedia',
+                            'chat__message--presentation': msg.type === 'presentation',
+                            'chat__message--video': msg.multimediaType === 'video',
+                            'chat__message--audio': msg.multimediaType === 'audio',
+                            'chat__message--new': msg.isNew,
+                        }">
+                            <div ng-bind-html="msgCtrl.getMessageImageHtml(msg)" class="chat__message-avatar"></div>
+                            <div ng-if="msg.type === 'text' || msg.type === 'system'" class="chat__message-text abs-wrapper" data-username="{{msgCtrl.getUserName(msg)}}">{{::msg.text}}</div>
+                            <div ng-if="msg.type === 'file' || msg.type === 'presentation'" ng-bind-html="::msgCtrl.renderFile(msg)" class="chat__message-file abs-wrapper" data-username="{{msgCtrl.getUserName(msg)}}"></div>
+                            <div ng-if="msg.type === 'multimedia'" ng-bind-html="::msgCtrl.renderMultimedia(msg)" class="chat__message-multimedia abs-wrapper" data-username="{{msgCtrl.getUserName(msg)}}"></div>
+                            <div class="chat__message-time" title="{{::msgCtrl.printDateTime(msg)}}">{{::msgCtrl.printTime(msg)}}</div>
+                        </li>
+                    </ul>
+                </perfect-scrollbar>
+            </div>
+        </div>
+    </div>
+    <div class="chat__footer kwidget kwidget--toolbar">
+        <form nv-file-drop uploader="msgCtrl.uploader" nv-file-over over-class="chat__input-form--file-over" ng-submit="msgCtrl.onSubmit()" class="k-toolbar k-widget" id="newMessageForm">
+            <div class="chat__input-wrapper k-button-group">
+                <input type="file" nv-file-select uploader="msgCtrl.uploader" />
+                <button ng-hide="msgCtrl.uploader.isUploading" class="k-button k-button-icon k-group-start" data-dropdown="#upload_to_dialog_{{ ::dialog.id }}">
+                    <i class="k-sprite fa fa-ellipsis-v"></i>
+                </button>
+                <ul id="upload_to_dialog_{{ ::dialog.id }}" class="popup-content popup-actions">
+                    <li>
+                        <a href="#" ng-click="msgCtrl.uploadFile()">
+                            <i class="fa fa-fw fa-paperclip"></i> Выбрать файл
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" ng-click="msgCtrl.recordVideo()">
+                            <i class="fa fa-custom-record">•</i> Записать видео
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" ng-click="msgCtrl.recordAudio()">
+                            <i class="fa fa-fw fa-microphone"></i> Записать аудио
+                        </a>
+                    </li>
+                </ul>
+                <textarea placeholder="Введите сообщение..." name="newMessageText" on-enter-press="msgCtrl.onEnterPress(event)"></textarea>
+                <button class="k-button k-button-icon k-group-end" type="submit">
+                    <i class="k-sprite fa fa-send"></i>
+                </button>
+                @*<!-- UPLOAD PROGRESS -->
+                <div ng-if="msgCtrl.uploader.isUploading"
+                     ng-click="msgCtrl.cancelUploading()"
+                     class="chat__file-upload-progress">
+                    <div round-progress
+                         max="100"
+                         current="msgCtrl.uploadingProgress()"
+                         color="#428bca"
+                         bgcolor="transparent"
+                         radius="14"
+                         stroke="6"
+                         clockwise="false"
+                         duration="600"
+                         animation="easeOutCubic"></div>
+                </div>*@
+            </div>
+        </form>
+    </div>
+</div>

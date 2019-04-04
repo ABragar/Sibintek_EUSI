@@ -1,0 +1,65 @@
+﻿@using WebUI.Models.BusinessProcess
+@model WebUI.Models.BusinessProcess.StageVM
+
+@{
+    var cssClass = GetClass(Model.Status);
+}
+
+
+<div class="progress-summary">
+    <div class="pull-left">
+        @if (Model.TimeLeft.Seconds > 0)
+        {
+            <div class="progress-summary-name">Осталось:</div>
+            <div class="progress-summary-value">@TimeSpanToString(Model.TimeLeft)</div>
+        }
+        else
+        {
+            <div class="progress-summary-name">Срок исчерпан на:</div>
+            <div class="progress-summary-value"> @TimeSpanToString(Model.TimeLeft.Duration())</div>
+        }
+    </div>
+
+    <div class="pull-right text-right">
+        <div class="progress-summary-name">Ожидает завершения до:</div>
+        <div class="progress-summary-value">@Model.EndDateExpected.ToString("F")</div>
+    </div>
+
+    @*<div class="progress">
+        <div class="progress-bar progress-bar-@GetClass(Model.Status) active progress-bar-striped"  aria-valuenow="@Model.ElapsedString" aria-valuemin="0" aria-valuemax="100" style="max-width: 100%; width: @Model.ElapsedString%">
+            <span class="text-@cssClass progress-indicator">@TimeSpanToString(Model.ElapsedTime)</span>
+        </div>
+    </div>*@
+</div>
+
+
+@functions
+{
+
+    string TimeSpanToString(TimeSpan span)
+    {
+        //var abs = Model.ElapsedTime.Duration();
+
+        return string.Format("{0}{1}{2}",
+            span.Days != 0 ? span.Days + " дн. " : null,
+            span.Hours != 0 ? span.Hours + " час. " : null,
+            span.Minutes != 0 ? span.Minutes + " мин. " : null);
+    }
+
+    string GetClass(ElapsedStatus? status)
+    {
+        switch (status)
+        {
+            case ElapsedStatus.Good:
+                return "success";
+            case ElapsedStatus.Info:
+                return "success";
+            case ElapsedStatus.Warning:
+                return "warning";
+            case ElapsedStatus.Danger:
+                return "danger";
+        }
+
+        return "success";
+    }
+}

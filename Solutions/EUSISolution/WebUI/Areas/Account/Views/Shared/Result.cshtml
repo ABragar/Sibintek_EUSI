@@ -1,0 +1,24 @@
+﻿@model WebUI.Areas.Account.Models.Shared.ActionResultModel
+
+@{
+    string statusMsg = Model.Success ? "Операция выполнена успешно" : "Операция не выполнена:";
+    string goBackCaption = Model.Success ? "Продолжить" : "Назад";
+}
+
+<h5>@statusMsg</h5>
+
+<ul>
+    @foreach (string message in Model.Messages)
+    {
+        <li>@message</li>
+    }
+</ul>
+
+@section card_footer
+{
+    <div class="actions">
+        <a href="@Model.GoBackUrl">@goBackCaption</a>
+    </div>
+}
+
+@section card_class {account-card--result account-card--@(Model.Success ? "success" : "error")}

@@ -1,0 +1,15 @@
+﻿@model EditorViewModel
+
+@Html.Partial("~/Views/Standart/DetailView/Editor/Enum.cshtml", Model)
+
+<script>
+    $(function () {
+        $("#@Model.UID").data("kendoDropDownList").bind("change", function () {
+            var dialog = $("#@Model.UID").closest(".dialog-vm").data("dialogVM");
+
+            dialog.save(false).done(function () {
+                dialog.refresh();
+            });
+        });
+    });
+</script>

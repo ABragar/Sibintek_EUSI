@@ -1,0 +1,43 @@
+﻿.k-tabstrip {
+	&:focus {
+		box-shadow: none;
+		}
+
+	&-items {
+		font-weight: 500;
+
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		    -ms-user-select: none;
+		        user-select: none;
+
+		.k-item {
+			transition: border-color .1s linear;
+
+			background-color: transparent;
+
+			&.k-state-hover {
+				border-color: darken( @color--light, 5% );
+				background-color: darken( @color--light, 5% );
+				}
+
+			&.k-state-active {
+				border-color: @color--primary;
+				}
+
+			.k-loading {
+				border-top: none;
+				}
+
+			.k-link {
+				line-height: @modular-scale *1em;
+
+				padding: @modular-scale *.5em 1em;
+
+				letter-spacing: .025em;
+
+				color: @color--text;
+				}
+			}
+		}
+	}

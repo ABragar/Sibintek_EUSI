@@ -1,0 +1,20 @@
+﻿@model EditorViewModel
+
+<div id="@Model.UID">
+</div>
+
+<script>
+    $(function () {
+        var $editor = $("#@Model.UID");
+        var $form = $editor.closest("form");
+        
+        $form.on("onAfterBind", function (e, form) {
+            if ($("#@Model.UID").closest("form")[0].id != form.element[0].id) {
+                return;
+            }
+            $editor.empty();            
+            var $enum = application.UiEnums.getJqObject("@Model.PropertyType.GetEnumType().GetTypeName()", form.getPr("@Model.PropertyName"));
+            $editor.append($enum);
+        });
+    });
+</script>

@@ -1,0 +1,25 @@
+﻿.kwidget--tree-view {
+	box-sizing: border-box;
+	height: 100%;
+	padding: 0 0 0 @modular-scale *.5em;
+
+	background-color: @color--light;
+	}
+
+.kwidget--toolbar ~ .kwidget--tree-view {
+	height: calc( ~"100% - "@modular-scale *2.5em );
+
+	border-top: 1px solid fade( @color--dark, 25% );
+
+	.k-treeview > .k-treeview-lines {
+		margin-top: @modular-scale *.5em;
+		}
+
+	div.k-treeview {
+		overflow: hidden;
+		}
+	}
+
+.single-editor .kwidget--toolbar ~ .kwidget--tree-view {
+	height: calc( ~"100% - "@modular-scale *2em );
+	}

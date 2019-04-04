@@ -1,0 +1,79 @@
+﻿@model EditorViewModel
+
+@{
+    var editorId = Html.CreateSystemName("ed_");
+    var listId = Html.CreateSystemName("lst_");
+    var validatorId = Html.CreateSystemName("valid_");
+    var templateId = Html.CreateSystemName("tmpl_");
+
+    string list = null;
+    if (Model.EditorTemplateParams != null)
+    {
+        list = Model.EditorTemplateParams["List"];
+    }
+    else
+    {
+        throw new Exception("Bounded list was not found, expected name in 'Params'");
+    }
+}
+<div id="@editorId">
+    <div id="@listId" class="bounded-list-wrap"></div>
+    <input id="@validatorId" type="hidden" required="True" validationmessage="Выберите значение">
+</div>
+
+<script type="text/x-kendo-tmpl" id="@templateId">
+    <div class="boundedlist-row">
+        <div class="boundedlist-title">#: Title != null ? Title : "" #</div>
+        <div class="boundedlist-descr">#: Description != null ? Description : "" #</div>
+    </div>
+</script>
+
+<script>
+    (function () {
+        var $editor = $("#@editorId");
+        var $form = $editor.closest("form");
+
+        $form.closest("form").on("onAfterBind", function(e, form) {
+            $("#@validatorId").val('');
+            var dataArray = form.getPr('@list');
+            var $listView = $("#@listId");
+            $listView.html('');
+            if ($listView.data("kendoListView")) {
+                $listView.data("kendoListView").destroy();
+            }
+
+            if (dataArray && dataArray.length > 0) {
+                $listView.kendoListView({
+                    dataSource: {
+                        data: dataArray
+                    },
+                    selectable: "multiple",
+                    template: kendo.template($("#@templateId").html())
+                });
+            } else {
+                pbaAPI.errorMsg("Не найдено ни одной записи в списке");
+            }
+
+        });
+
+        $form.on("onSave", function (e, form) {
+            var lst = $("#@listId").data("kendoListView");
+            var selectedElems = lst.select();
+            var items = [];
+            if (selectedElems && selectedElems.length > 0 )
+            {
+                for (var i = 0; i < selectedElems.length; i++) {
+                    var uidVal = $(selectedElems[i]).data("uid");
+                    var elem = lst.dataSource.getByUid(uidVal);
+                    items.push(elem);
+                }
+
+            }
+
+            if (items.length > 0) {
+                $("#@validatorId").val(items[0].ID);
+                form.setPr('@Model.PropertyName', items);
+            }
+        });
+    })();
+</script>

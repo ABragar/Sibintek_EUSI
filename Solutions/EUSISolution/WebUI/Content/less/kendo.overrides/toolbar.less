@@ -1,0 +1,137 @@
+﻿.k-toolbar {
+	height: @listview-toolbar-height;
+
+	border: none;
+	background: @color--light;
+
+	.k-datepicker {
+		margin-top: .25em;
+
+		.k-picker-wrap {
+			line-height: @modular-scale *1.5em;
+			}
+		}
+
+	.k-autocomplete {
+		margin-top: @modular-scale *.25em;
+
+		.k-input {
+			border: 1px solid lighten( @color--dark, 70% );
+			}
+		}
+
+	 > * {
+		float: left;
+		}
+
+	 > .k-overflow-anchor {
+		float: right;
+		}
+
+	.k-button {
+		display: inline-flex;
+		align-items: center;
+
+		border-radius: 0;
+		}
+
+	.k-button-group {
+		display: inline-flex;
+		}
+
+	.k-separator {
+		height: @modular-scale *1.5em;
+		margin: ( @listview-toolbar-height - @modular-scale *1em ) / 2 .2em;
+		}
+
+	&, .k-button-group, .k-split-button, .k-button {
+		line-height: @listview-toolbar-height;
+
+		height: @listview-toolbar-height;
+		}
+
+	.k-button-group .k-split-button,
+	.k-split-button,
+	.k-button-group .k-button,
+	.k-button {
+		margin: 0;
+
+		.k-sprite {
+			margin: 0;
+			}
+		}
+
+	.k-button-icontext .fa {
+		margin-right: @modular-scale *.125em !important;
+		}
+
+	.k-split-button .k-button,
+	.k-button-group .k-button,
+	.k-button {
+		padding: 0 1em;
+
+		@media (min-width: @screen-md-min) {
+			padding: 0 1.2em;
+			}
+		}
+
+	.k-split-button,
+	.k-button-group {
+		margin: 0;
+		}
+
+	.k-button-group:last-child {
+		margin-right: 0;
+		}
+
+	.k-split-button > .k-split-button-arrow {
+		padding: 0 .2em;
+		}
+
+	.k-overflow-anchor[style*='visibility: hidden'] {
+		display: none !important;
+		}
+
+	.k-overflow-anchor:hover,
+	.k-overflow-anchor.k-state-border-down {
+		background-color: darken( @color--light, 8% );
+		}
+
+	.k-button-icon {
+		.btntoolbar {
+			font-size: 1.25em;
+			font-weight: 400;
+
+			color: darken( @color--light, 75% );
+
+			&.fa, &.mdi, &.halfling, &.glyphicon {
+				overflow: visible;
+				}
+			}
+
+		.fa-image {
+			width: 1.2em;
+			}
+
+		.fa-keyboard-o {
+			font-size: @modular-scale *1em;
+
+			width: 1.2em;
+
+			color: darken( @color--light, 75% );
+			}
+		}
+	}
+
+.k-editor-toolbar .k-tool.k-state-hover,
+.k-toolbar .k-button-group .k-button:hover {
+	background-color: fade(@color--dark,7%);
+	box-shadow: none;
+	}
+
+.k-editor-toolbar .k-tool.k-state-selected,
+.k-toolbar .k-button-group .k-button.k-state-active,
+.k-editor-toolbar .k-tool:active,
+.k-toolbar .k-button-group .k-button:active {
+	background-color: fade( @color--dark, 3% );
+	}

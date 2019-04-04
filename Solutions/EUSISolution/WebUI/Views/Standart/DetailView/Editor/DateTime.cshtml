@@ -1,0 +1,8 @@
+@model EditorViewModel
+
+@(Html.Kendo().DateTimePicker()
+    .ParseFormats(new List<string>()
+    {
+        JsonNetResult.DATE_TIME_FORMATE
+    })
+    .Name(Model.UID).Format(JsonNetResult.DATE_TIME_FORMATE).HtmlAttributes(Html.CreateHtmlAttributes(Model)).DateInput(true))

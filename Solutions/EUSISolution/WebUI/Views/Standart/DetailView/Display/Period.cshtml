@@ -1,0 +1,63 @@
+﻿@model EditorViewModel
+
+@{
+                /**/
+
+                string htmlFieldName = Model.PropertyName;
+                string wrapID = Html.CreateSystemName("wrap");
+                string start = Html.CreateSystemName("start");
+                string end = Html.CreateSystemName("end");
+                string days = Html.CreateSystemName("days");
+                bool existFormat = (Model.Params != null && Model.Params.Keys.Contains("format"));
+}
+
+@if (existFormat)
+{
+    <div class="date date-month"><span class="fa fa-fw fa-lg fa-calendar">&nbsp;</span><span id="@wrapID"></span></div>
+
+    <script type="text/javascript">
+    $(function () {
+
+        $("#@wrapID").closest("form").on("onAfterBind", function (e, form) {
+            debugger;
+            if (form.getPr("@htmlFieldName")) {
+                 var start = kendo.parseDate(form.getPr("@(htmlFieldName).Start"), "@JsonNetResult.DATE_TIME_FORMATE");
+                 var $wrap = $("#@wrapID");
+                 $wrap.html(kendo.toString(start, "@Model.Params["format"]"));
+            } else {
+                $f.html("");
+            }
+        });
+    });
+    </script>
+
+}
+else
+{
+
+    <div id="@(wrapID)">
+        <span class="fa fa-calendar">&nbsp;</span><span id="@start"></span>&nbsp;~&nbsp;<span id="@end"></span>&nbsp;<span id="@days"></span>
+    </div>
+
+    <script type="text/javascript">
+    $(function () {
+        $("#@wrapID").closest("form").on("onAfterBind", function (e, form) {
+            if (form.getPr("@htmlFieldName")) {
+                var start = kendo.parseDate(form.getPr("@(htmlFieldName).Start"), "@JsonNetResult.DATE_TIME_FORMATE");
+                var end = kendo.parseDate(form.getPr("@(htmlFieldName).End"), "@JsonNetResult.DATE_TIME_FORMATE");
+
+                var timeDiff = Math.abs(end - start);
+                var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+                var $wrap = $("#@wrapID");
+
+                $wrap.find("#@start").html(kendo.toString(start, "@JsonNetResult.DATE_TIME_FORMATE"));
+                $wrap.find("#@end").html(kendo.toString(end, "@JsonNetResult.DATE_TIME_FORMATE"));
+                $wrap.find("#@days").html("(" + diffDays + " д.)");
+            }
+        });
+    });
+    </script>
+
+}
+

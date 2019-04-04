@@ -1,0 +1,19 @@
+﻿.card--local-account .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+	color: rgba(255, 255, 255, 0.85);
+}
+@media (min-width: 992px) {
+	body .account__logo-wrap {
+		background-image: none;
+	}
+}
+.account-card {
+	background-color: #333333;
+	background-image: none;
+}
+.account-card .btn {
+	background-color: #FFDE45;
+	color: #333333;
+}
+.account-card .actions > a {
+	color: rgba(255, 255, 255, 0.7);
+}

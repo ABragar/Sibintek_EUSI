@@ -1,0 +1,43 @@
+﻿@{
+    string tlbr = "tlbr_" + Guid.NewGuid().ToString("N");
+}
+
+<div id="@tlbr">
+    <a href="#" title="Сбросить настройки" class="k-button k-button-icon" data-action="reset">
+        <i class="fa fa-close"></i>
+    </a>
+</div>
+
+<script>
+    $(function () {
+        var $toolbar = $("#@tlbr");
+
+        $toolbar.find("[data-action=\"reset\"]").on("click", function () {
+            //pbaAPI.confirm("Настройки", "Сбросить настройки?", function () {
+
+            var $dialogVm = $toolbar.closest(".dialog-vm");
+            var dialogVm = $dialogVm.data("dialogVM");
+
+            var model = dialogVm.getCurrentModel();
+
+            pbaAPI.proxyclient.preset.destroy({ preset: dialogVm.mnemonic }, model)
+                .done(function (res) {
+                    if (res.error) {
+                        pbaAPI.errorMsg(res.error);
+                    } else {
+                        pbaAPI.proxyclient.preset.get({ preset: dialogVm.mnemonic, ownerName: model.For })
+                            .done(function (res) {
+                                if (res.error) {
+                                    pbaAPI.errorMsg(res.error);
+                                } else {
+                                    dialogVm.setCurrentModel(res);
+                                    dialogVm.refresh();
+                                }
+                            });
+                    }
+
+                });
+            //});
+        });
+    });
+</script>

@@ -1,0 +1,121 @@
+﻿.account-card {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+
+	width: @modular-scale *15rem;
+	padding: @modular-scale *1rem;
+
+	user-select: none;
+
+	background-color: @color--form-bg;
+	background-image: url(@decor--form);
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: @decor-size--form;
+
+	@media ( min-width: 992px ) {
+		width: 38.2%;
+		}
+
+	@media ( min-width: 1200px ) {
+		padding: @modular-scale *3rem;
+		}
+
+	&--manage,
+	&--admin,
+	&--result {
+		width: 30rem;
+		}
+
+	.btn {
+		font-size: @modular-scale *.75rem;
+		font-weight: 400;
+		line-height: @modular-scale *2rem;
+
+		cursor: pointer;
+		transition: background-color .3s @easing-curve--main;
+		letter-spacing: .05em;
+		text-transform: uppercase;
+
+		color: @color--form-button-text;
+		border: none;
+		background-color: @color--form-button-bg;
+		box-shadow: none;
+
+		&:hover, &:focus {
+			background-color: darken( @color--form-button-bg, 10% );
+			}
+
+		&:active {
+			background-color: @color--form-button-bg;
+			}
+		}
+
+	.validations {
+		display: none;
+		}
+
+	.actions {
+		font-size: .9rem;
+
+		 > a {
+			transition: color .15s ease;
+			text-decoration: none;
+			text-transform: uppercase;
+
+			color: fade( @color--dark, 70% );
+
+			&:hover, &:focus, &:active {
+				color: @color--primary;
+				}
+			}
+		}
+
+	&__body .actions {
+		margin-top: 1.5rem;
+		}
+
+	.captcha {
+		display: block;
+
+		margin: 0 auto;
+		}
+
+	&__tab {
+		font-weight: 700;
+		line-height: @modular-scale *2rem;
+
+		cursor: pointer;
+		transition: opacity .3s @easing-curve--main;
+		text-decoration: none;
+
+		opacity: .5;
+		color: @color--light;
+		&s {
+			font-size: @modular-scale *1.25rem;
+
+			display: flex;
+			justify-content: space-between;
+
+			margin-bottom: @modular-scale *1.75rem;
+			}
+
+		&:hover, &:focus {
+			opacity: 1;
+			}
+
+		&:active {
+			opacity: .75;
+			}
+
+		&--active {
+			cursor: default;
+
+			opacity: 1;
+			}
+		}
+	}

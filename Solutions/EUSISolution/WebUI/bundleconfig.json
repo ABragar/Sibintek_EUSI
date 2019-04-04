@@ -1,0 +1,20 @@
+[
+  {
+    "outputFileName": "Content/less/styles.min.css",
+    "inputFiles": [
+      "Content/less/styles.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/api/api.min.js",
+    "inputFiles": [
+      "Scripts/api/api.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/vendor/jquery/jquery-2.2.0.min.js",
+    "inputFiles": [
+      "Content/vendor/jquery/jquery-2.2.0.js"
+    ]
+  }
+]

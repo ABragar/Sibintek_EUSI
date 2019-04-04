@@ -1,0 +1,13 @@
+﻿@model BaseViewModel
+@{
+    ViewBag.Title = "Главная";
+}
+
+@section bodyClass {welcome-page}
+
+<h1 id="page-title">@ViewBag.Title</h1>
+
+@{ Html.RenderPartial("~/Views/Dashboard/_Dashboard.cshtml", (DashboardVm)ViewBag.DashboardVm); }
+<script>
+    $("#NavBarPageTitle").html("@ViewBag.Title");
+</script>

@@ -1,0 +1,143 @@
+﻿@using Microsoft.AspNet.Identity;
+@model DashboardWidget
+
+@{
+    string wrapID = "events_" + Guid.NewGuid().ToString("N");
+
+    string widgetToolbarName = "toolbrar_" + Guid.NewGuid().ToString("N");
+    string btnGoToEvent = "btnGoToEvnt_" + Guid.NewGuid().ToString("N");
+    string btnAddEvent = "btnAddEvent_" + Guid.NewGuid().ToString("N");
+}
+<script>    
+    window["@wrapID"] = {
+        isInit: false,
+        select: null,
+        onChange: function (e) {            
+            var events = e.events; //list of selected Scheduler events
+            window["@wrapID"].select = null;
+
+            if (events.length) {
+                window["@wrapID"].select = events[0];
+            }
+
+        },
+        onBound: function (e) {            
+            var scheduler = $("#@wrapID").data("kendoScheduler");
+            if (!window["@wrapID"].isInit) {
+                window["@wrapID"].isInit = true;
+                var dateStart = scheduler.view().startDate();
+                dateStart.setDate(scheduler.view().startDate()
+                    .getDate() -
+                    scheduler.view().startDate().getDay() +
+                    1);
+                scheduler.date(dateStart);
+            }
+
+            scheduler.element.find("div[data-uid]").closest("tr").on("dblclick",
+                function (e) {
+                    var id = window["@wrapID"].select.ID;
+
+                    pbaAPI.openDetailView("SibTaskScheduler",
+                    {
+                        wid: "@wrapID",
+                        id: id,
+                        isReadOnly: false
+                    });
+                });
+
+
+            scheduler.element.parent().find("#@btnAddEvent").on("click",
+                function (e) {
+                    pbaAPI.openDetailView("SibTaskScheduler",
+                    {
+                        id: 0,
+                        wid: "@btnAddEvent",
+                        toSave: true,
+                        callback: function (res) {
+                            var myScheduler = $("#@wrapID").data("kendoScheduler");
+                            myScheduler.dataSource.read();
+                        }
+                    });
+                });
+        }
+    };
+
+    function getAdditionalData() {
+        var scheduler = $("#@wrapID").data("kendoScheduler");
+        var result = {
+            start: scheduler.view().startDate().toISOString(),
+            end: scheduler.view().endDate().toISOString()
+        }
+        return result;
+    }
+</script>
+
+@Html.DashboardWidget().Content(
+    @<text>
+
+        @(Html.Kendo().ToolBar()
+    .Name(widgetToolbarName)
+    .Items(items =>
+    {
+        items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+        {
+            buttons.Add().Text("Создать").HtmlAttributes(new { title = "Создать задачу" }).SpriteCssClass("btntoolbar fa fa-plus").Id(btnAddEvent).ShowText(ShowIn.Overflow);//.Click(widgetToolbarName + ".Click");
+            buttons.Add().Text("Перейти").HtmlAttributes(new { title = "Перейти в календарь" }).SpriteCssClass("btntoolbar mdi mdi-calendar").Id(btnGoToEvent).ShowText(ShowIn.Overflow).Url("/Entities/SibTaskScheduler");
+        });
+    })
+        )
+
+
+        @(Html.Kendo().Scheduler<SchedulerViewModel>()
+              .Name(wrapID)
+              .Date(DateTime.Today)
+              .StartTime(new DateTime(2000, 1, 1, 7, 0, 0))
+              .Height(400)
+              .Views(views =>
+              {
+                  views.DayView(x => x.Title("День"));
+                  views.WeekView(x => x.Title("Неделя"));
+                  views.MonthView(x => x.Title("Месяц"));
+              })
+              .Selectable(true)
+              .EventTemplate(
+                  "<div style='background-color: #: data.Color #'>" +
+                  "#= data.title # " +
+                  "</div>")
+              .AllDayEventTemplate("<div style='background-color: #: data.Color #'>" +
+                                   "#= data.title # " +
+                                   "</div>")
+                                   .DataSource(d => d
+            .WebApi()
+            .ServerOperation(true)
+            .Model(m =>
+            {
+                m.Id(f => f.ID);
+                m.Field(f => f.Title).DefaultValue("Без названия");
+                m.Field(f => f.RecurrenceID);
+                m.Field(f => "#ff0000");
+            })
+              .Read(r => r.Url($"/api/listview/SibTaskScheduler/kendoScheduler")))
+              //.Read(r => r.Url($"/api/listview/SibTaskScheduler/kendoScheduler?filter=Initiator.ID~eq~{User.Identity.GetUserId()}~or~Responsible.ID~eq~{User.Identity.GetUserId()}")))
+              //.DataSource(d => d
+              //    .Model(m =>
+              //    {
+              //        m.Id(f => f.ID);
+              //        m.Field(f => f.Title).DefaultValue("Без названия");
+              //        m.RecurrenceId(f => f.RecurrenceID);
+              //        m.Field(f => f.Color);
+              //    })
+              //.Read(r => r.Action("KendoUI_SchedulerRead", "Standart", new { mnemonic = "EventScheduler", filter = "it.CreatorID = @CurrentUserID" }).Data("getAdditionalData"))
+              //)
+              .Events(e =>
+              {
+                  e.Change(wrapID + ".onChange");
+                  e.DataBound(wrapID + ".onBound");
+              })
+              .Messages(msg =>
+              {
+                  msg.Today("Сегодня").Event("Задача").AllDay("весь день").Date("Дата").Time("Время");
+              }))
+
+    </text>
+)

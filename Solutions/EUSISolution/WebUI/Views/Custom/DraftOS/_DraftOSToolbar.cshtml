@@ -1,0 +1,67 @@
+﻿@model EditorViewModel
+
+@{
+    var draftOSId = Html.CreateSystemName("draftOSParametrsToolbarId");
+    var wrapId = "wrap_" + Guid.NewGuid().ToString("N");
+    var infoId = Html.CreateSystemName("draftOSInfoToolbarId");
+    var infoBEId = Html.CreateSystemName("draftOSInfoBEToolbarId");
+    var infoPeriodId = Html.CreateSystemName("draftOSInfoPeriodToolbarId");
+
+}
+<div style="display: inline-flex">
+    <button id="@(draftOSId)" type="button" class="k-button">Задать параметры</button>
+
+    <div id="@(infoId)" class="" style="padding-top: 5px;padding-left: 10px;padding-right: 10px;">
+        <div>
+            <div id="@(infoBEId)">БЕ: не задано</div>
+            <div id="@(infoPeriodId)">Период: не задано</div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function() {
+
+        $("#@draftOSId").click(function() {
+             pbaAPI.openDetailView("@(nameof(EUSI.Entities.NonPersistent.BEAndMonthPeriod))",
+                 {
+                     toSave: false,
+                     callback: function (e) {
+                         
+                         if (e.type !== "save")
+                             return;
+                         var dialog = $("[Name = DialogID]")[0].defaultValue;
+                         var composite = window[dialog];
+                         var lv = composite.listView();
+                         var vCustomParams = '';
+                         if (e.model) {
+                             if (e.model.Consolidation) {
+                                 vCustomParams = e.model.Consolidation.Code;
+                                 var be = e.model.Consolidation.Code + ' ' + e.model.Consolidation.Name;
+                                 $("#@infoBEId").html('БЕ: ' + be);
+                             }
+                             if (e.model.MonthPeriod) {                                 
+                                 vCustomParams += ';' + kendo.toString(e.model.MonthPeriod, application.DATE_TIME_FORMATE);
+                                 var period = kendo.toString(e.model.MonthPeriod, "MMMM yyyy");
+                                 $("#@infoPeriodId").html('Период: ' + period);
+                             }
+                         }
+                         lv.customParams(vCustomParams);                         
+                         pbaAPI.proxyclient.EUSI.createMonitor({ mnemonic: "@nameof(EUSI.Entities.NonPersistent.BEAndMonthPeriod)" },
+                             {
+                                 model: e.model,
+                             }
+                         ).done(function (res) {
+                             if (res.error === 1)
+                                 return pbaAPI.errorMsg(res.message);                             
+                         });
+                     }
+                 });               
+
+         
+
+        });
+        return false;
+    });
+</script>

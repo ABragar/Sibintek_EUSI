@@ -1,0 +1,17 @@
+﻿@model EditorViewModel
+
+
+<div id="@Model.UID"></div>
+
+<script>
+    $(function () {
+        var $el = $("#@Model.UID");
+        var $form = $el.closest("form");
+
+        $form.on("onAfterBind", function (e, form) {
+            var val = form.getPr("@Model.PropertyName");
+            $el.html(val);
+            form.addViewData('ObjectType', val);
+        });
+    });
+</script>

@@ -1,0 +1,65 @@
+@base-font-size: 16px;
+@modular-scale: 1.618;
+
+@font-stack--sans: 'PT Sans', Helvetica, sans-serif;
+
+@picton-blue: #47c7ef;
+@cyan-cornflower-blue: #248ac3;
+@sea-blue: #07638c;
+@azureish-white: #dbe4e9;
+
+
+//main palete
+@white: #fff;
+@rich-black: #080f0f;
+
+@paradise-pink: #e93d5e;
+
+//color-wheel palete
+@coral-red: #ff313f;
+@yellow-crayola: #ffad27;
+
+//states
+@color--danger: #e53935;
+@color--danger-alt: @coral-red;
+@color--danger-pale: lighten( saturate( @paradise-pink, 15% ), 32% );
+@color--success: #71bc90;
+@color--success-bright: #6cc551;
+@color--success-pale: lighten( saturate( @color--success, 30% ), 20% );
+@color--active: #62b0ff;
+@color--warning: @yellow-crayola;
+
+
+@color--primary: @cyan-cornflower-blue;
+@color--accent: @picton-blue;
+@color--accent-alt: @picton-blue;
+@color--accent-pale: lighten( @picton-blue, 25% );
+
+@color--light: @white;
+@color--light-mild: @azureish-white;
+@color--dark: @rich-black;
+
+@color--text: @rich-black;
+@color--text-light: @white;
+
+@color--border: lighten( @rich-black, 50% );
+
+@color--layout-bg: darken( @color--light, 5% );
+
+@color--wdialog-toolbar-bg: darken( @sea-blue, 21% );
+@color--wdialog-toolbar-text: @color--light;
+
+@color--sidebar-bg: darken( @sea-blue, 20% );
+@color--sidebar-text: @color--light;
+
+@color--toolbar-bg: @color--light;
+@color--toolbar-text: @color--dark;
+
+@color--grid-grouping-header-bg: @color--accent;
+@color--grid-grouping-header-text: @color--light;
+@color--grid-bg__selected: lighten( @picton-blue, 30% );
+@color--grid-cell-bg__focused: @color--success-pale;
+
+
+@color--scheduler-header-bg: @color--accent-alt;
+@color--scheduler-header-text: @color--light;

@@ -1,0 +1,44 @@
+﻿@model EditorViewModel
+
+@{
+    var propertyName = Model.PropertyName;
+
+    if (Model.PropertyType == typeof(Base.Entities.Complex.Color))
+    {
+        propertyName += ".Value";
+    }
+}
+
+
+@(Html.Kendo().ColorPalette()
+                .Name(Model.UID)
+                .Columns(8)
+                .TileSize(s => s.Width(34).Height(19))
+                .Palette(new string[] {
+                    "#6f5499", "#5cb85c", "#5bc0de", "#f0ad4e", "#d9534f", "#e4e400", "#223af0", "#3800A9"
+                })
+)
+
+<script>
+    $(function () {
+        var $colorPalette = $("#@Model.UID");
+        var $form = $colorPalette.closest("form");
+        var colorPalette = $colorPalette.data("kendoColorPalette");
+        var propertyName = "@propertyName";
+
+        $form.on("onAfterBind", function (e, form) {
+            var color = form.getPr(propertyName);
+
+            if (color) {
+                colorPalette.value(color);
+            } else {
+                colorPalette.value(null);
+            }
+
+        });
+
+        $form.on("onSave", function (e, form) {
+            form.setPr(propertyName, colorPalette.value());
+        });
+    });
+</script>

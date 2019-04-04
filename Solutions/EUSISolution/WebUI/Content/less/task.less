@@ -1,0 +1,36 @@
+﻿td[role="gridpriority"] {
+    &.priority-low {
+        background-color: #F0F00E !important;
+    }
+
+    &.priority-mid {
+        background-color: #5cb85c !important;
+    }
+
+    &.priority-high {
+        background-color: #d9534f !important;
+    }
+}
+
+.colorized {
+    background-color: lighten(@color--primary, 10%);
+    color: @color--light;
+
+    &:hover {
+        background-color: darken(@color--primary, 10%);
+        color: @color--light;
+    }
+
+    &:active {
+        background-color: @color--primary;
+    }
+
+    &:focus {
+        background-color: lighten(@color--primary, 10%);
+        color: @color--light;
+    }
+}
+
+.gantt-task-preview {
+    border-bottom: 1px solid @color--primary;
+}

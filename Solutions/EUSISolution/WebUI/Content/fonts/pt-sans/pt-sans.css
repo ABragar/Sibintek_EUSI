@@ -1,0 +1,13 @@
+﻿@font-face {
+  font-family: "PT Sans";
+  src: url(PTSans-regular.eot);
+  src: url(PTSans-regular.eot?#iefix) format("embedded-opentype"), url(PTSans-regular.woff2) format("woff2"), url(PTSans-regular.woff) format("woff"), url(PTSans-regular.ttf) format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "PT Sans";
+  src: url(PTSans-bold.eot);
+  src: url(PTSans-bold.eot?#iefix) format("embedded-opentype"), url(PTSans-bold.woff2) format("woff2"), url(PTSans-bold.woff) format("woff"), url(PTSans-bold.ttf) format("truetype");
+  font-weight: 700;
+}

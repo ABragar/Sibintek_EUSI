@@ -1,0 +1,55 @@
+﻿@using DocumentFormat.OpenXml.EMMA
+@using Newtonsoft.Json
+@model EditorViewModel
+
+<div id="@Model.UID" class="common-form">
+    @RenderBody()
+
+    <script>
+        $(function() {
+            "use strict";
+
+            var $form = $("#@Model.UID");
+
+            $form.perfectScrollbar({ suppressScrollX: true, wheelSpeed: 0.6 });
+
+            // PERFECTSCROLLBAR PROPAGATES SCROLL TO PARENT ELEMENTS
+            $form.on("ps-scroll-y",
+                function() {
+                    $form.trigger("onScroll");
+                });
+
+            // BIND SCROLLBAR UPDATE ON WINDOW SHOW & RESIZE
+            $form.on("onShown onResize",
+                function() {
+                    $form.perfectScrollbar("update");
+                });
+        });
+    </script>
+
+    <script>
+        $(function() {
+            var $form = $("#@Model.UID");
+
+            $form.on("onShown onResize",
+                function() {
+                    if ($form.width() < 800) {
+                        $form.addClass("form-vertical");
+                    } else {
+                        $form.removeClass("form-vertical");
+                    }
+                });
+
+            $form.on('onShown',
+                function () {
+                    var form = $form.data('pbaForm');
+                    var tabId = $form.find('[role=tabpanel][aria-expanded=true]').data('tab-content');
+                    // CURRENT TAB SHOWN
+                    //form.onTabShown(tabId);
+                    setTimeout(function () {
+                        corpProp.dv.wnd.selectTab(form);
+                    }, 500)
+                });
+        });
+    </script>
+</div>

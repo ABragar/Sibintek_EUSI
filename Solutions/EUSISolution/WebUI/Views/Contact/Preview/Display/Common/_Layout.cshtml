@@ -1,0 +1,11 @@
+﻿@model CommonPreview
+
+@{
+    Layout = "~/Views/Shared/_PreviewLayout.cshtml";
+}
+
+<div class="hovercard">
+    <img class="hovercard__photo" src="#= pbaAPI.imageHelpers.getImageSrc(model.Image, 120, 120, 'NoPhoto') #" width="120" height="120" alt=""/>
+    <p class="hovercard__title" title="#: model.Title #">#: model.Title #</p>
+    @RenderBody()
+</div>

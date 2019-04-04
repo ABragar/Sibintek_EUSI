@@ -1,0 +1,251 @@
+.k-scheduler {
+	&.k-widget {
+		border: none;
+		}
+
+	&-agendaview &-datecolumn,
+	&-header {
+		color: @color--dark;
+		}
+
+	th {
+		font-weight: 600;
+
+		color: @color--dark !important;
+		}
+
+	&-header th {
+		font-weight: 500;
+		}
+
+	& &-toolbar {
+		.k-state-selected,
+		ul li.k-state-hover {
+			border-color: transparent;
+			background-color: darken( @color--scheduler-header-bg, 5% ) !important;
+			}
+
+		.k-state-default {
+			transition: background-color .15s @easing-curve--main;
+			}
+
+		ul {
+			li:first-child,
+			li:first-child .k-link,
+			&.k-scheduler-views li:first-child + li,
+			&.k-scheduler-views li:first-child + li .k-link {
+				border-radius: 0;
+				}
+			}
+
+		.k-link {
+			letter-spacing: .035em;
+			}
+		}
+
+	& &-toolbar &-views li.k-state-selected.k-state-hover,
+	&-toolbar > &-views > li.k-state-selected {
+		&, & .k-link {
+			border-bottom-color: darken( @color--scheduler-header-bg, 10% );
+			background-color: darken( @color--scheduler-header-bg, 10% );
+			}
+		}
+
+	& &-toolbar	&-views li.k-state-hover {
+		&, & .k-link {
+			border-color: transparent;
+			background-color: darken( @color--scheduler-header-bg, 5% ) !important;
+			}
+		}
+
+	&-toolbar > ul.k-scheduler-views > li:first-child + li,
+	&-toolbar > ul > li:first-child {
+		border-left: none;
+		}
+
+	.k-header {
+		padding: 0;
+
+		background-color: @color--scheduler-header-bg;
+
+		.k-button,
+		.k-link,
+		li {
+			color: @color--scheduler-header-text;
+			border-color: @color--scheduler-header-bg;
+			background-color: @color--scheduler-header-bg;
+			}
+
+		.k-button:hover {
+			background-color: darken(@color--scheduler-header-bg, 10%);
+			}
+		}
+
+	.k-more-events {
+		font-size: 1em;
+		font-weight: 500;
+		line-height: @modular-scale;
+
+		margin-top: @modular-scale *.25em;
+
+		text-transform: none;
+
+		background-color: fade( @color--dark, 17% );
+		box-shadow: none;
+
+		&:hover, &:focus {
+			color: @color--dark;
+			background-color: fade( @color--dark, 25% );
+			}
+		}
+
+	.k-event {
+		border: none;
+
+		&-title {
+			height: 100%;
+			padding: .285em 1.3em .285em .618em;
+
+			letter-spacing: .025em;
+
+			color: @color--scheduler-header-text;
+			background-color: @color--scheduler-header-bg;
+
+			.nowrapHiddenText();
+			}
+
+		&-actions {
+			margin: 0;
+			}
+
+		&.k-state-selected .k-event-title {
+			color: @color--light;
+			}
+
+		&:hover .k-resize-handle {
+			visibility: hidden;
+			}
+		}
+
+	.k-scheduler-monthview .k-hidden,
+	.k-scheduler-monthview .k-scheduler-table td {
+		height: 7.35em;
+		}
+
+	& .k-today.k-state-selected,
+	&-layout .k-state-selected {
+		background-color: lighten( @color--success-pale, 10% );
+
+		 > .k-link {
+			font-weight: 700; 
+
+			color: @color--dark;
+			}
+		}
+
+	.k-scheduler-toolbar .k-state-selected,
+	.k-today.k-state-selected,
+	.k-state-selected,
+	.k-state-selected:link,
+	.k-state-selected:visited {
+		color: @color--dark;
+		}
+
+	&-table .k-today,
+	.k-today > &-datecolumn,
+	.k-today > &-groupcolumn {
+		background-color: @color--light-mild;
+		}
+
+	.k-event,
+	.k-task-complete {
+		border-color: transparent;
+		background-color: transparent;
+		}
+
+	&-layout {
+		.k-i-arrow-w,
+		.k-state-hover .k-link .k-i-arrow-w {
+			background-position: 0 -48px;
+			}
+
+		.k-i-arrow-e,
+		.k-state-hover .k-link .k-i-arrow-e {
+			background-position: 0 -16px;
+			}
+		}
+
+	.k-scheduler-refresh {
+		line-height: @modular-scale *1.5rem + 1;
+
+		position: absolute;
+		right: 0;
+
+		float: none;
+
+		height: @modular-scale *1.5rem + 1;
+
+		transition: background-color .15s @easing-curve--main;
+
+		&:hover, &:focus {
+			background-color: darken( @color--scheduler-header-bg, 5% );
+			}
+
+		.k-i-refresh {
+			width: @modular-scale *1rem;
+			height: @modular-scale *1rem;
+
+			&:before {
+				font-size: 1.25rem;
+				}
+			}
+		}
+
+	.k-scheduler-toolbar .k-scheduler-navigation {
+		width: 90%;
+		margin: 0;
+
+		 > li {
+			float: left;
+
+			white-space: nowrap;
+
+			border: none;
+
+			.k-link {
+				line-height: ( @modular-scale * 1.5rem ) + 1;
+
+				height: ( @modular-scale * 1.5rem ) + 1;
+
+				transition: background-color .15s @easing-curve--main;
+
+				&:hover, &:focus {
+					background-color: darken( @color--scheduler-header-bg, 5% );
+					}
+				}
+			}
+
+		 > .k-nav {
+			&-today {
+				width: @modular-scale *4.5em;
+				}
+
+			&-prev, &-next {
+				width: @modular-scale *1.5em;
+				}
+
+			&-current {
+				width: calc(~"100% - "@modular-scale *7.75em);
+				margin: 0;
+
+				 > a {
+					box-sizing: border-box;
+					width: 100%;
+					padding: 0 1.1em;
+
+					.nowrapHiddenText();
+					}
+				}
+			}
+		}
+	}

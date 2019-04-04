@@ -1,0 +1,171 @@
+﻿@model EditorViewModel
+
+<div id="@Model.UID" class="editor-dashboard">
+    <div class="row">
+        <div class="col-sm-4">
+            <div id="widgets-list" class="list-group"></div>
+        </div>
+        <div class="col-sm-4">
+            <div id="main" data-id="@((int) DashboardPanel.Main)" class="list-group list-widget"></div>
+        </div>
+        <div class="col-sm-4">
+            <div id="sidebar" data-id="@((int) DashboardPanel.Sidebar)" class="list-group list-widget"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var $editor = $("#@Model.UID");
+
+        var $form = $editor.closest("form");
+
+        var module = "";
+        var path = location.pathname.toLowerCase().replace(/\/$/, '');
+        if (path === "" || path === "/dashboard") {
+            module = "Global";
+        } else {
+            module = path.substr(path.lastIndexOf('/') + 1);
+        }
+
+
+        function createDomWidget(w) {
+            var $dom = $("<div data-id='" + w.Name + "' class='widget widget-preset list-group-item' data-title='" + w.Title + "'> <span class='dashboardwidget-move-handler fa fa-arrows'></span><span class='dashboardwidget-remove-handler fa fa-remove'></span>"
+                + "<div class='dashboardwidget-textlabel'>" + w.Title + "</div> </div>");
+            $dom.find(".dashboardwidget-remove-handler").on("click", function() {
+                $(this).parent().remove();
+            });
+
+            return $dom;
+        }
+
+        $form.on("onAfterBind", function(e, form) {
+            if (!form.getPr("Widgets"))
+                form.setPr("Widgets", []);
+
+            var widgets = form.getPr("Widgets");
+            var widgetslist = $editor.find("#widgets-list");
+            $.get("/Dashboard/GetWidgets", { module: module }, function(data) {
+                widgetslist.empty();
+                data.forEach(function(item) {
+                    widgetslist.append($("<div data-id='" + item.Name + "'" + "data-title='" + item.Title + "' class='widget list-group-item'><span class='dashboardwidget-move-handler fa fa-arrows'></span>"
+                        + "<div class='dashboardwidget-textlabel'>" + item.Title + "</div> </div>"));
+                });
+            });
+            $editor.find("#sidebar").empty();
+            $editor.find("#main").empty();
+            for (var i = 0; i < widgets.length; i++) {
+                var w = widgets[i];
+                var $pane = $editor.find("[data-id='" + w.Panel + "']");
+                $pane.append(createDomWidget(w));
+            }
+        });
+
+        $form.on("onSave", function(e, form) {
+            if (!form.getPr("Widgets"))
+                form.setPr("Widgets", []);
+
+            var prWidgets = form.getPr("Widgets");
+
+            var dicWidgets = {};
+
+            for (var i = 0; i < prWidgets.length; i++) {
+                var w = prWidgets[i];
+
+                dicWidgets[w.Name] = w;
+            }
+
+            var resWidgets = [];
+
+            $editor.find(".widget-preset").each(function() {
+                var $w = $(this);
+
+                resWidgets.push({
+                    Name: $w.data("id"),
+                    Title: $w.data("title"),
+                    Panel: $w.parent().attr("data-id")
+                });
+            });
+
+            form.setPr("Widgets", resWidgets);
+        });
+
+        var placeholder = function(element) {
+            return element.clone()
+                .addClass("placeholder")
+                .removeClass("active");
+        };
+
+        var hint = function(element) {
+            return element.clone()
+                .addClass("hint")
+                .height(40)
+                .width(400)
+                .css({
+                    "text-transform": "uppercase",
+                    "text-align": "center"
+                });
+        };
+
+        var drop = function (e) {
+            e.sender.element.removeClass("list-widget--select");
+            if (e.draggable.element.attr("id") !== "widgets-list") {
+                e.preventDefault();
+                return;
+            }
+            var w = {
+                Name: $(e.target).parent().data("id"),
+                Title: $(e.target).parent().data("title")
+            };
+
+            if ($("#@Model.UID #sidebar").find("[data-id='" + w.Name + "']").length > 0 || $("#@Model.UID #main").find("[data-id='" + w.Name + "']").length > 0) {
+                e.preventDefault();
+                return;
+            }
+
+            var domWidget = createDomWidget(w);
+            e.dropTarget.append(domWidget);
+        };
+
+        $editor.find("#sidebar").kendoSortable({
+            handler: ".dashboardwidget-move-handler",
+            filter: ".widget",
+            connectWith: "#@Model.UID #main",
+            placeholder: placeholder,
+            hint: hint
+        });
+
+        var dragenter = function(e) {
+            e.dropTarget.addClass("list-widget--select");
+        };
+
+        var dragleave = function(e) {
+            e.dropTarget.removeClass("list-widget--select");
+        };
+
+        $editor.find("#sidebar").kendoDropTarget({
+            drop: drop,
+            dragenter: dragenter,
+            dragleave: dragleave
+        });
+
+        $editor.find("#main").kendoSortable({
+            handler: ".dashboardwidget-move-handler",
+            filter: ".widget",
+            connectWith: "#@Model.UID #sidebar",
+            placeholder: placeholder,
+            hint: hint
+        });
+
+        $editor.find("#main").kendoDropTarget({
+            drop: drop,
+            dragenter: dragenter,
+            dragleave: dragleave
+        });
+
+        $editor.find("#widgets-list").kendoDraggable({
+            filter: ".widget",
+            hint: hint
+        });
+    });
+</script>

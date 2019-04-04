@@ -1,0 +1,176 @@
+﻿.leaflet-control-layers {
+    border-radius: 0;
+    background: #2E81B7;
+    background-image: none !important;
+    color: #fff;
+    font-family: SegoeUILight;
+    font-weight: normal;
+    text-shadow: none;
+    width: 150px;
+}
+
+.leaflet-control-layers.leaflet-weather-loading {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.leaflet-control-layers label {
+    font-family: SegoeUILight;
+    font-weight: normal;
+    text-shadow: none;
+}
+
+.owm-icondiv {
+    width: 50px;
+    opacity: 0.8;
+    text-align: center;
+    background-color: #2EB771;
+    border-radius: 0;
+    border: 1px solid #2EB791;
+}
+
+.owm-icondiv-temp {
+    font-family: SegoeUILight;
+    font-weight: normal;
+    -ms-text-shadow: none;
+    text-shadow: none;
+    color: #fff;
+}
+
+.owm-popup-name, .owm-popup-description, .owm-popup-main, .owm-popup-details, .owm-popup-timestamp {
+    font-family: SegoeUILight;
+    font-weight: normal;
+    -ms-text-shadow: none;
+    text-shadow: none;
+    color: #fff;
+}
+
+.owm-popup-name a, .owm-popup-name a:link {
+    font-family: SegoeUILight;
+    font-weight: normal;
+    -ms-text-shadow: none;
+    text-shadow: none;
+    color: #fff;
+}
+
+.owm-popup-name a:hover, .owm-popup-name a:active, .owm-popup-name a:visited {
+    color: #fff;
+}
+
+.leaflet-container .leaflet-control-attribution {
+    display: none;
+}
+
+.map-content .dropdown-menu {
+    overflow: hidden !important;
+}
+
+.col-margin {
+    margin-bottom: 10px;
+}
+
+.col-margin-top {
+    margin-top: 20px;
+}
+
+.col-control {
+    min-width: 400px;
+}
+
+
+.col-control .btn-block {
+    
+}
+
+.dropdown-fullwidth {
+    
+}
+
+.dropdown-fullwidth .btn-group {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+}
+
+.dropdown-fullwidth .btn-group .btn.btn-default {
+    float: none;
+    display: table-cell;
+    width: 100%;
+}
+
+
+.col-control .btn {
+    border-radius: 0;
+    background: #2E81B7;
+    border-color: #2E81B7;
+    color: #E2EAEE;
+}
+
+.col-control .btn.btn-primary {
+    background: #4CAF50;
+    border-color: #4CAF50;
+    color: #002702;
+}
+
+.col-control .btn span.caret {
+    border-top-color: #E2EAEE;
+}
+
+.col-control .dropdown-menu {
+    border-radius: 0;
+    width: 100%;
+    background: #BDDAEC;
+    border-color: #2E81B7;
+}
+
+.col-control .dropdown-menu li {
+    
+}
+
+.col-control .dropdown-menu li:hover {
+    
+}
+
+.col-control .dropdown-menu li.divider {
+    background-color: #2E81B7;
+}
+
+.col-control .dropdown-menu li a {
+    color: #000;
+}
+
+    .col-control .dropdown-menu li a span {
+        color: #34495E;
+        margin-top: -1px;
+    }
+
+.col-control .dropdown-menu li a:focus,
+.col-control .dropdown-menu li a:hover {
+    background: #2E81B7;
+    color: #BDDAEC;
+    cursor: pointer;
+    outline: 0;
+}
+
+
+.col-control .form-control {
+    border-radius: 0;
+    border-color: #2E81B7;
+    box-shadow: inset 0 1px 1px rgba(46, 129, 183, 0.45);
+    color: #000;
+}
+
+.col-control .form-control:focus {
+    
+}
+
+
+.col-control rzslider .rz-bubble,
+.col-control rzslider .rz-bubble.rz-limit {
+    color: #BDDAEC;
+}
+
+.col-control rzslider .rz-pointer:focus {
+    outline: 0;
+}

@@ -1,0 +1,109 @@
+﻿@model EditorViewModel
+
+<div class="sib-parentsbranch clearfix" id="@Model.UID">
+    <span data-id="2">Принадлежность ИК 1</span>
+    <span data-id="3">Принадлежность ИК 2</span>
+    <span data-id="4">Принадлежность ИК 3</span>
+    <span data-id="5">1121</span>
+</div>
+
+<script>
+    (function () {
+       
+        var $editor = $("#@Model.UID");
+        var form = $editor.closest("form");
+        
+        $editor.on("click", "span", function () {
+            var ikid = $(this).data("id");
+
+            pbaAPI.openDetailView("PropertyComplexIO",
+            {
+                wid: "@Model.UID",
+                id: ikid,
+                parentForm: form
+            });
+        });
+
+        form.on("onAfterBind", function (e, form) {
+            //debugger
+            var prop = form.getPr("Parent");
+
+            $editor.empty();
+            if (prop) {
+                getParentsBranch(prop.ID);
+            }
+        });
+
+        form.on("onChange", function (evt, obj)
+        {
+            //debugger
+            if (obj.field === "Parent")
+            {                
+                var prop = obj.sender.getPr(obj.field);
+
+                $editor.empty();
+
+                if (prop) {
+                    getParentsBranch(prop.ID);
+                }
+            }
+
+        });
+
+        function getParentsBranch(propId) {
+            //debugger
+            var getJsonCallback = function (data) {
+                var result = [];
+                
+                getParentsForId(propId, data, result);
+
+                $.each(result.reverse(), function (i, item) {
+                    $editor.append($("<span/>")
+                                    .data("id", item.ID)
+                        .html(item.NameEUSI));
+                });
+            };
+
+            var getParentsForId = function (id, data, result) {                
+
+                for (var i = 0; i < data.length; i++) {
+                    var item = data[i];
+
+                    if (item.ID === id) {
+                        result.push(item);
+
+                        if (item.ParentID !== null && !result.some(function (v) { return v.ID === item.ParentID; })) {
+                            getParentsForId(item.ParentID, data, result);
+                        }
+                    }
+                }
+
+                return;
+            };
+
+            $.getJSON("/api/listview/CorpProp.Entities.Estate.PropertyComplexIO,%20CorpProp/filter/boProperty?startswith=", getJsonCallback);
+        }
+        //обработка события выделения чекбокса "Скрыть пустые поля"
+        var btnHideEmptyEditors = document.getElementById('hideEmptyEditorsID');
+        if (btnHideEmptyEditors) {
+            btnHideEmptyEditors.addEventListener('click', function () {
+                var checkbox = btnHideEmptyEditors.getElementsByTagName("input");
+                var hideClass = "sib-hide-empty-editorRow";
+
+                var checked = checkbox[0].checked;
+                if (checked) {
+                    var parentsbranch = document.getElementsByClassName('sib-parentsbranch')[0];
+                    var parentsbranchContainer = parentsbranch.parentElement.parentElement;
+                    if (parentsbranch && parentsbranch.innerHTML == "") {
+                        parentsbranchContainer.classList.add(hideClass);
+                    }
+                    else {
+                        parentsbranchContainer.classList.remove(hideClass);
+                    }
+                }
+            });
+        }
+
+        //form.trigger("onChange", { field: "Parent", sender: form });
+    })();
+</script>

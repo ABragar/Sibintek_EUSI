@@ -1,0 +1,64 @@
+﻿@section styles {
+    @Styles.Render("~/CSS/Test")
+    <style>
+        #mocha { margin: 2rem 0 0; }
+        #mocha-stats { top: 85px; right: 30px; }
+    </style>
+}
+
+@section scripts {
+    <!-- MOCHA/CHAI -->
+    @Scripts.Render("~/JS/Test")
+
+    <!-- SETUP MOCHA -->
+    <script>mocha.setup('bdd')</script>
+
+    <!-- SPEC DEPENDENCIES -->
+    <script>
+        var expect = chai.expect;
+        var Test = {
+            notFunctions: ['', null, undefined, {}, [], NaN, 17],
+            falsies: ['', null, undefined, NaN, false],
+
+            each: {
+                notFunction: function(fn) {
+                    Test.notFunctions.forEach(function(notFunction) {
+                        fn(notFunction);
+                    });
+                },
+                falsy: function(fn) {
+                    Test.falsies.forEach(function(falsy) {
+                        fn(falsy);
+                    });
+                }
+            }
+        };
+    </script>
+
+    <!-- SPECS -->
+    <script src="~/Scripts/tests/api/api.ajax.js"></script>
+    <script src="~/Scripts/tests/api/util.decorators.js"></script>
+    <script src="~/Scripts/tests/api/util.is.js"></script>
+    <script src="~/Scripts/tests/api/util.js"></script>
+
+    <!-- START -->
+    <script>mocha.run()</script>
+
+    <!-- SCROLL -->
+    <script>
+        $(function() {
+            var $wrapper = $('#mocha_wrapper');
+
+            $wrapper.perfectScrollbar({
+                scrollSpeed: 0.6,
+                suppressScrollX: true
+            });
+        });
+    </script>
+}
+
+<div id="mocha_wrapper" class="dialog dialog--frame">
+    <div class="container">
+        <div id="mocha"></div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model EditorViewModel
+
+
+
+<script>
+    $(function () {
+        var $form = $("#@Model.UID").closest("form");
+
+        $form.on("onAfterBind", function (e, form) {
+            
+        });
+
+        $form.on("onSave", function (e, form) {
+            
+        });
+    });
+</script>
+
+
+@{ Html.RenderPartial("DetailView/Editor/Common/EasyCollection", Model); }
+
+<script>
+    (function() {
+        var editor = window['@Model.UID'];
+
+        editor.getSysFilter = function() {
+            return "it.ObjectType =\"" + editor.getForm().getViewData('ObjectType') + "\"";
+        };
+    })();
+</script>

@@ -1,0 +1,120 @@
+﻿@model CustomDialogView
+
+@{
+    string splitter = Html.CreateSystemName("spltr");
+    string types = Html.CreateSystemName("types");
+    string objs = Html.CreateSystemName("objs");
+    string toolbar = Html.CreateSystemName("tlbr");
+}
+
+
+<div id="@splitter" style="background-color: rgba(255, 255, 255, 0);">
+    <div class="kwidget kwidget--grid">
+        <div id="@types"></div>
+    </div>
+
+    <div id="@objs">
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        var currentType = "";
+        var vmConfig = null;
+
+        var onChangeType = function (e) {
+            var type = this.dataItem(this.select()).ID;
+
+            currentType = type;
+
+            application.viewModelConfigs.get(currentType).done(function (config) {
+                vmConfig = config;
+
+                var grid = $('#@objs').data('kendoGrid');
+
+                grid.dataSource.read();
+            });
+        };
+
+        var additionalData = function () {
+            
+            var grid = $('#@objs').data('kendoGrid');
+
+            grid.setOptions({ columns: [{ field: vmConfig.LookupProperty.Text, title: 'Наименование' }] });
+
+            var data = {
+                mnemonic: currentType,
+                columns: [vmConfig.LookupProperty.Text]
+            }
+
+            return data;
+        };
+
+
+        $('#@splitter').kendoSplitter({
+            panes: [
+                {
+                    size: "20%",
+                    collapsible: true
+                },
+                {
+                    size: "80%"
+                }]
+        });
+
+
+        $('#@types').kendoGrid({
+            selectable: "single row",
+            dataSource: {
+                type: "aspnetmvc-ajax",
+                transport: {
+                    read: "/api/viewConfig/getTypes"
+                },
+                pageSize: 500
+            },
+            columns: [
+                { field: "ID", hidden: true },
+                { field: "Text", title: "Тип" }
+            ],
+            change: onChangeType
+        });
+
+        $('#@objs')
+            .kendoGrid({
+                autoBind: false,
+                selectable: "single row",
+                dataSource: {
+                    type: "aspnetmvc-ajax",
+                    transport: {
+                        read: {
+                            url: "@Url.Action("KendoUI_CollectionRead", "Standart")",
+                            data: additionalData
+                        }
+                    },
+                    schema: {
+                        data: "Data",
+                        total: "Total"
+                    },
+                    pageSize: 20
+                },
+                columns: [
+                    { field: "ID", hidden: true },
+                    { field: "Title", title: "Наименование" }
+                ]
+            });
+
+        var composite = window['@Model.DialogID'];
+
+        composite.getSelectItems = function () {
+
+            var grid = $('#@objs').data('kendoGrid');
+
+            var dataItem = grid.dataItem(grid.select());
+
+            dataItem.TypeName = currentType;
+
+            return dataItem;
+        }
+    })
+</script>

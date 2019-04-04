@@ -1,0 +1,29 @@
+﻿@model EditorViewModel
+
+@{
+    string profileID = Html.CreateSystemName("profile");
+}
+
+<div id="@Model.UID">
+    <a id="@profileID" href="#" class="k-button"><i class="fa fa-user"></i>&nbsp;Профиль</a>
+</div>
+
+<script>
+    $(function() {
+        var $editor = $("#@Model.UID");
+        $editor.find("#@profileID").click(function () {
+            var form = $editor.closest("form").data("pbaForm");
+            var dialogVm = $editor.closest(".dialog-vm").data("dialogVM");
+            pbaAPI.openDetailView("BaseProfile", {
+                id: form.getPr("ProfileId"),
+                toSave: true,
+                parentForm: form,
+                callback: function (e) {
+                    if (e.type === "save") {
+                        dialogVm.refresh();
+                    }
+                }
+            });
+        });
+    });
+</script>

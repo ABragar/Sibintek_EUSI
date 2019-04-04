@@ -1,0 +1,62 @@
+﻿@model EditorViewModel
+
+@{ 
+
+    var bgColor = "";
+
+    if (String.IsNullOrEmpty(Model.BgColor) && Model.Params != null && Model.Params.Count != 0 && Model.Params.Where(p => p.Key == "Source").Any())
+    {
+        if (Model.Params.Where(p => p.Key == "Source").FirstOrDefault().Value == "ER")
+        {
+            //источник - заявка: светло-зеленая
+            Model.BgColor = "#dcf9dc";
+        }
+        if (Model.Params.Where(p => p.Key == "Source").FirstOrDefault().Value == "BU")
+        {
+            //источник - БУС: светло-желтая 
+            Model.BgColor = "#eff2c4";
+        }
+
+        bgColor = $" background-color: {Model.BgColor};";
+    }
+}
+
+
+@Html.TextBox(Model, new { style = $"width: 100%;"+ bgColor })
+
+
+
+<script>
+    (function () {
+
+        var editors = $("div.label-editor-row[data-field='@Model.PropertyName']");
+        var form = editors.closest("form");
+        var editor = editors.find("input");
+
+
+        form.on('onAfterBind', function (evt, form) {
+
+            @if (!String.IsNullOrEmpty(Model.OnChangeClientScript))
+            {
+
+                //внедряем текст скрипта
+                @Html.Raw(Model.OnChangeClientScript);
+            }
+        });
+
+        form.on("onChange", function (evt, obj)
+        {
+            if (obj.field === "@Model.PropertyName")
+            {
+                var form = obj.sender;
+                @if (!String.IsNullOrEmpty(Model.OnChangeClientScript))
+                {
+                    //внедряем текст скрипта
+                    @Html.Raw(Model.OnChangeClientScript);
+                }
+            }
+
+        });
+
+    })();
+</script>

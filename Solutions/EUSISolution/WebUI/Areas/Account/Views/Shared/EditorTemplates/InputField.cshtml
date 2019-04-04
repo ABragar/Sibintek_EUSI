@@ -1,0 +1,27 @@
+﻿@{
+    
+    var metadata = ViewData.ModelMetadata;
+
+    var required = metadata.IsRequired ? "required" : null;
+
+    string type = ViewBag.type;
+
+    if (type == null && metadata.DataTypeName != null)
+    {
+        type = metadata.DataTypeName.ToLower();
+    }
+    
+    if (string.IsNullOrWhiteSpace(type))
+    {
+        type = "text";
+    }
+}
+
+<div class="input-field">
+    <input class="validate" type="@type" name="@Html.NameForModel()" value="@Html.ValueForModel()" @required/>
+    <label for="@Html.NameForModel()">@Html.DisplayNameForModel()</label>
+</div>
+
+<div class="validations">
+    <div data-validation-for="@Html.NameForModel()">@Html.ValidationMessage(string.Empty)</div>
+</div>

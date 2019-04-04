@@ -1,0 +1,48 @@
+@base-font-size: 16px;
+@modular-scale: 1.618;
+
+@font-stack--sans: 'PT Sans', Helvetica, sans-serif;
+
+@picton-blue: #47c7ef;
+@cyan-cornflower-blue: #248ac3;
+@sea-blue: #07638c;
+@azureish-white: #dbe4e9;
+
+
+//main palete
+@white: #fff;
+@rich-black: #080f0f;
+
+@paradise-pink: #e93d5e;
+
+//color-wheel palete
+@coral-red: #ff313f;
+@yellow-crayola: #ffad27;
+
+//states
+@color--danger: #e53935;
+@color--danger-alt: @coral-red;
+@color--danger-pale: lighten( saturate( @paradise-pink, 15% ), 32% );
+@color--success: #71bc90;
+@color--success-bright: #6cc551;
+@color--success-pale: lighten( saturate( @color--success, 30% ), 20% );
+@color--active: #62b0ff;
+@color--warning: @yellow-crayola;
+
+
+@color--primary: @cyan-cornflower-blue;
+@color--primary-alt: @sea-blue;
+@color--accent: @picton-blue;
+
+@color--light: @white;
+@color--light-mild: @azureish-white;
+@color--dark: darken( @sea-blue, 20% );
+
+
+@steel-blue: saturate( darken( @color--primary, 19% ), 1% );
+@tufts-blue: saturate( darken( @color--primary, 18% ), 4% );
+@charcoal: desaturate( darken( @color--primary, 54% ), 29% );
+@pale-aqua: desaturate( lighten( @color--primary, 2% ), 54% );
+
+
+@color--navtabs: #136f63;

@@ -1,0 +1,59 @@
+﻿@model WebUI.Models.Print.PrintToolbarViewModel
+
+@{
+    var button_id = Guid.NewGuid().ToString();
+}
+
+<div>
+    <a href="#" data-popup="bottom" class="k-button k-button-icon tooltipstered" title="Печать" id="@button_id">
+        <span class="btntoolbar fa fa-print"></span> 
+    </a>
+</div>
+
+
+<script>
+    $(function() {
+        $("#@button_id").click(function () {
+
+            var openpreviw = function (item) {
+                var $modal = $('<div >').appendTo('body');
+
+                $modal.kendoWindow({
+                    modal: true,
+                    resizable: false,
+                    visible: false,
+                    activate: function() {
+                    },
+                    deactivate: function() {
+                        this.destroy();
+                    }
+                });
+
+                var getUrl = '@Url.Action("DocumentPreview","Print", new { id = Model.Id, mnemonic = Model.Mnemonic})';
+
+                getUrl = pbaAPI.addUrlParametrs(getUrl, { templateId: item.Id });
+
+                $.get(getUrl, function(data) {
+                    $modal.html(data);
+                    $modal.getKendoWindow()
+                        .maximize()
+                        .center()
+                        .open();
+                });
+            };
+
+            $.get("@Url.Action("Templates","Print", new { mnemonic = Model.Mnemonic })", function(data) {
+                if (data.length === 1) {
+                    openpreviw(data[0]);
+                } else {
+                    pbaAPI.selectSimple(data, {
+                        title: "Выбрать шаблон",
+                        callback: function (item) {
+                            openpreviw(item);
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

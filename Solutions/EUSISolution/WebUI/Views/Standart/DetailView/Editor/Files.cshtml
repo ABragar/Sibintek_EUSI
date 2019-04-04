@@ -1,0 +1,170 @@
+﻿@model EditorViewModel
+
+@{
+    var htmlFieldName = Model.PropertyName;
+    var wrapID = Html.CreateSystemName("wrap");
+    var uploadWrap = Html.CreateSystemName("upload_wrap");
+    var uploadTemplate = Html.CreateSystemName("upload_template");
+    var uploadID = Html.CreateSystemName("upload");
+    var filesID = Html.CreateSystemName("files");
+    var contextMenuID = Html.CreateSystemName("context_menu");
+}
+
+<style>
+    .link-object.k-sprite {
+        font-size: 12px !important;
+    }
+</style>
+
+<script id="@uploadTemplate" type="text/x-kendo-template">
+    # for(var i = 0; i < data.length; i++) { #
+    @*# console.log(data[i]) #*@
+    # if(pbaAPI.fileType(data[i].Object.FileName) == 'image') { #
+    <a href='javascript:void(0)' onclick='pbaAPI.showImage("#= data[i].Object.FileID #", "#= data[i].Object.FileName #")' data-uid='#= data[i].uid #' class='list-group-item #: data[i].Object.ID > 0 ? "" : "list-group-item-new"  #'>
+        <div class="list-group-image" style='background-image: url(#= pbaAPI.imageHelpers.getsrc(data[i].Object.FileID, 48, 48) #' alt='#= data[i].Object.FileName #)'></div>
+        <span class="list-group-title">#= pbaAPI.truncate(data[i].Object.FileName, 400) #</span>
+        @*# if(data[i].Size) { #
+                <span>#= (data[i].Size / 1000).toFixed(2) #KB</span>
+            # } #*@
+    </a>
+    # } else { #
+    <a href='#= pbaAPI.getHrefFile(data[i].Object.FileID) #' target="_blank" data-uid='#= data[i].uid #' class='list-group-item #: data[i].Object.ID > 0 ? "" : "list-group-item-new"  #'>
+        <span class='list-group-icon #= pbaAPI.extensionClass(data[i].Object.FileName) #'></span>
+        <span class="list-group-title">#= pbaAPI.truncate(data[i].Object.FileName, 400) #</span>
+        @*# if(data[i].Size) { #
+                <span>#= (data[i].Size / 1000).toFixed(2) #KB</span>
+            # } #*@
+    </a>
+    # } #
+    # } #
+</script>
+
+<script>
+    window['@wrapID'] = {
+        property: "@(htmlFieldName)",
+        getForm: function () {
+            return $("#@wrapID").closest("form").data("pbaForm");
+        },
+        deleteFile: function (btn) {
+            var uid = $(btn).attr("data-uid");
+
+            var property = this.property;
+            var form = this.getForm();
+
+            pbaAPI.confirm("Удаление", "Удалить файл?", function () {
+                form.setPr(property, $.grep(form.getPr(property), function (x) {
+                    return !(x.uid === uid);
+                }));
+
+                $(btn).remove();
+                window['@wrapID'].syncValue();
+            });
+        },
+        onError: function (e) {
+            pbaAPI.errorMsg("Ошибка загрузки файлов на сервер");
+        },
+        onSuccess: function (e) {
+            if (e.response) {
+                var form = window['@wrapID'].getForm();
+                var modelFiles = form.getPr("@(htmlFieldName)");
+
+                //console.log('On successs model:', e);
+
+                $.each(e.response, function (i, v) {
+                    modelFiles.push({
+                        Object: v
+                    });
+                });
+
+                window['@wrapID'].syncValue();
+            }
+        },
+        onComplete: function (e) {
+            //console.log('Def complete:', e);
+        },
+        syncValue: function () {
+            var form = window['@wrapID'].getForm();
+            var property = window['@wrapID'].property;
+
+            var $list = $("#@filesID");
+
+            if (!form.getPr(property)) {
+                form.setPr(property, []);
+            }
+
+            var files = form.getPr(property).filter(function(item) {
+                return item.Object !== null;
+            });
+
+            var template = kendo.template($('#@uploadTemplate').html());
+
+            template(files);
+
+            $list.html(template(files));
+        },
+        onSelect: function (e) {
+            var wrap = window["@wrapID"];
+
+            switch ($(e.item).attr("id")) {
+                case "download":
+                    $(e.target)[0].click();
+                    break;
+                case "delete":
+                    wrap.deleteFile(e.target);
+                    break;
+            }
+        },
+    };
+</script>
+
+<div id="@wrapID">
+    <div id="@uploadWrap">
+        <input type="file" name="files" id="@uploadID" />
+    </div>
+
+    <div id="@filesID" class="list-group"></div>
+</div>
+
+@(Html.Kendo().ContextMenu()
+    .Name(contextMenuID)
+    .Filter("#" + filesID + " > .list-group-item")
+    .Events(e => e.Select(wrapID + ".onSelect"))
+        .Items(items =>
+        {
+            items.Add().Text("Скачать").HtmlAttributes(new { id = "download" }).SpriteCssClasses("link-object halfling halfling-cloud_download");
+            items.Add().Text("Удалить").HtmlAttributes(new { id = "delete" }).SpriteCssClasses("link-object halfling halfling-remove");
+        }
+    ))
+
+<script>
+    $(function () {
+        $("#@wrapID").closest("form").on("onAfterBind",
+            function(e, form) {
+                var $uploadWrap = $("#@uploadWrap");
+                var $el = $("#@uploadID");
+
+                if ($el.data("kendoUpload")) {
+                    $el.data("kendoUpload").destroy();
+                    $uploadWrap.html('<input type="file" name="files" id="@uploadID" />');
+                }
+
+                $("#@uploadID").kendoUpload({
+                    async: {
+                        saveUrl: "@Url.Action("SaveFiles", "FileData")",
+                        removeUrl: "@Url.Action("SaveFiles", "FileData")",
+                        autoUpload: true
+                    },
+                    complate: window["@wrapID"].onComplete,
+                    remove: window["@wrapID"].onRemove,
+                    success: window["@wrapID"].onSuccess,
+                    error: window["@wrapID"].onError,
+                    localization: {
+                        select: "Выбрать..."
+                    },
+                    showFileList: false
+                });
+
+                window['@wrapID'].syncValue();
+            });
+    });
+</script>

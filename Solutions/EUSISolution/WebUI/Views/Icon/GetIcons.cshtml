@@ -1,0 +1,119 @@
+﻿@model IList<Base.UI.Service.IconsSet>
+
+@{
+    string toolbarId = Html.CreateSystemName("toolbar");
+    string filterId = Html.CreateSystemName("filter");
+    string tabstripId = Html.CreateSystemName("tabstrip");
+    string colorPaletteId = Html.CreateSystemName("color_palette");
+    string listViewTemplateId = Html.CreateSystemName("listview_tmpl");
+}
+
+<script type="text/x-kendo-template" id="@listViewTemplateId">
+    <a href="\#" data-keywords="#: data.split(/\s+|-/).slice(2) #" style="display:inline-block;width:24px;height:24px;font-size:24px;padding:12px;margin:0 0 12px 12px;line-height:24px;text-align:center;color:inherit;">
+        <i class="#: data #" title="#: data #" data-icon></i>
+    </a>
+</script>
+
+<script>
+    window["@tabstripId"] = {
+        onListViewDataBound: function(evt) {
+            "use strict";
+
+            evt.sender.element.perfectScrollbar({
+                suppressScrollX: true,
+                scrollSpeed: 0.6
+            });
+        }
+    };
+</script>
+<div class="dialog">
+    <div class="dialog__toolbar">
+        <div class="kwidget kwidget--toolbar iconpicker__toolbar">
+            @(Html.Kendo().ToolBar()
+              .Name(toolbarId)
+              .Items(items =>
+              {
+                  items.Add().Template(string.Format("<input class=\"k-textbox\" id=\"{0}\" value=\"\" placeholder=\"Фильтр\" />", filterId));
+                  items.Add().Template(string.Format("<div id=\"{0}\"></div>", colorPaletteId));
+              }))
+        </div>
+    </div>
+    <div class="dialog__content dialog__content--with-tabstrip view-model">
+        <div class="kwidget kwidget--tabstrip">
+            @(Html.Kendo().TabStrip()
+                .Name(tabstripId)
+                .Animation(false)
+                .SelectedIndex(0)
+                .Items(items =>
+                {
+                    foreach (var iconSet in Model)
+                    {
+                        string listViewId = Html.CreateSystemName("listview");
+
+                        items.Add().Text(iconSet.Title).ContentHtmlAttributes(new {style = "color:inherit"}).Content(@<text>
+                        @(Html.Kendo().ListView(iconSet.Icons)
+                                .Name(listViewId)
+                                .Events(events => events.DataBound(string.Format("window[\"{0}\"].onListViewDataBound", tabstripId)))
+                                .TagName("div")
+                                .HtmlAttributes(new {style = "color:inherit"})
+                                .ClientTemplateId(listViewTemplateId)
+                                .DataSource(dataSource => dataSource.ServerOperation(false))
+                        )
+                        </text>);
+                    }
+                }))
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        "use strict";
+
+        var $tabstrip = $("#@tabstripId");
+        var $colorPalette = $("#@colorPaletteId").kendoColorPalette({
+            palette: ["#333", "#428bca", "#5cb85c", "#5bc0de", "#f0ad4e", "#d9534f", "#e4e400", "#223af0", "#3800a9"],
+            tileSize: 30,
+            value: "#333",
+            change: updateColor
+        });
+
+        var colorPalette = $colorPalette.data("kendoColorPalette");
+
+        updateColor();
+
+        $("#@filterId").on("keydown", pbaAPI.debounce(function(evt) {
+            var value = $(evt.target).val();
+            var keywords = value.split(/\s+|-|,|;/).filter(function(keyword) {
+                return !!keyword && !!keyword.trim();
+            });
+
+            var $tabsContent = $("#@tabstripId").find(".k-content");
+
+            var $items = $tabsContent.find(".k-listview > a");
+
+            if (!value.trim()) {
+                $items.css("display", "inline-block");
+                return;
+            }
+
+            $items.css("display", "none");
+
+            keywords.forEach(function(keyword) {
+                $items = $items.filter("[data-keywords*=\"" + keyword + "\"]");
+            });
+
+            $items.css("display", "inline-block");
+
+            $tabsContent.find(".ps-container")
+                .scrollTop(0)
+                .perfectScrollbar("update");
+        }, 1000));
+
+        function updateColor() {
+            if (colorPalette) {
+                $tabstrip.css("color", colorPalette.value());
+            }
+        }
+    });
+</script>

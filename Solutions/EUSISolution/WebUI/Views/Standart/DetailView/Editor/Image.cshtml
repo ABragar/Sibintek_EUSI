@@ -1,0 +1,37 @@
+﻿@model ImageEditorViewModel
+@{
+    string imageShape = Model.Circle ? "circle" : "square";
+}
+<div id="@Model.UID" class="kwidget kwidget--image" data-defaultimage="@Model.DefaultImage" data-needcrop="@Model.Crop">
+    <div class="kwidget kwidget--toolbar">
+        <div class="k-toolbar">
+            <div class="k-button-group">
+                @if (Model.SelectFileStorage)
+                {
+                    <a href="#" id="choose_img_btn" class="k-button" title="Выбрать">
+                        <span class="k-sprite fa fa-navicon"></span>
+                    </a>
+                }
+                @if (Model.Upload)
+                {
+                    <div href="#" class="k-button" title="Загрузить">
+                        <span class="k-sprite fa fa-image"></span>
+                        <input type="file" name="" class="item-img" accept="image/*" />
+                    </div>
+                }
+                <a href="#" class="k-button" title="Удалить" id="delete_img_btn">
+                    <span class="k-sprite fa fa-close"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="image-output">
+        <img src="" alt="" id="item-img-output"/>
+    </div>
+    <div id="cropImagePop" style="display: none">
+        <div style="display: block; height: 500px; width: 500px;">
+            <div id="upload-demo" data-cropheight="@Model.Height" data-cropwidth="@Model.Width" data-shapetype="@imageShape"></div>
+        </div>
+        <a href="#" id="cropImageBtn" class="k-button primary apply-button">Применить</a>
+    </div>
+</div>

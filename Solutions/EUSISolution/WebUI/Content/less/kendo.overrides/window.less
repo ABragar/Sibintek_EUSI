@@ -1,0 +1,90 @@
+.k-window {
+	box-shadow: 0 3px 9px fade( @color--dark, 15% ), 0 0 18px fade( @color--dark, 15% );
+
+	.k-window-titlebar {
+		font-size: 1.3em;
+		font-weight: 500;
+
+		height: 1.2em;
+		padding: .85em 0;
+
+		.k-state-hover {
+			border-color: transparent; 
+			background-color: transparent;
+			}
+
+		.k-button {
+			display: inline-block;
+
+			transition: opacity .1s linear;
+
+			color: @color--text;
+
+			&, .k-icon {
+				font-size: @modular-scale *1rem;
+
+				position: relative;
+
+				width: @modular-scale *1em;
+				height: @modular-scale *1em;
+				padding: 0;
+
+				background-image: none;
+				}
+
+			.k-i-maximize,
+			.k-i-restore,
+			.k-i-close {
+				.materialIcon();
+				}
+
+			.k-i-maximize:before,
+			.k-i-restore:before,
+			.k-i-close:before {
+				font-size: 1.85rem;
+				}
+
+			.k-i-maximize:before {
+				content: '\F293';
+				}
+
+			.k-i-restore:before {
+				content: '\F294';
+				}
+
+			.k-i-close:before {
+				content: '\F156';
+				}
+			}
+
+		 > .k-window-actions,
+		&:active > .k-window-actions {
+			right: 0;
+
+			padding: .5em .5em 0 0;
+
+			cursor: default;
+			}
+		}
+
+	.k-window-title {
+		right: 5em;
+		}
+
+	&[data-role='draggable'] > .k-window-titlebar,
+	&[data-role='draggable'] > .k-window-titlebar > .k-window-title {
+		cursor: move;
+		cursor: -webkit-grab;
+		}
+
+	&[data-role='draggable'] > .k-window-titlebar:active,
+	&[data-role='draggable'] > .k-window-titlebar:active > .k-window-title {
+		cursor: -webkit-grabbing;
+		}
+	}
+
+div.k-window-content {
+	top: .0714rem; 
+
+	height: calc(~"100% - ".0714rem);
+	}

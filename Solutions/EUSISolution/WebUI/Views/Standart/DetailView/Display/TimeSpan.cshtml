@@ -1,0 +1,24 @@
+﻿@model EditorViewModel
+
+@{
+    string fieldID = "f_" + Guid.NewGuid().ToString("N");
+}
+
+<div><span id="@fieldID"></span></div>
+
+<script>
+    $(function () {
+        var $f = $("#@fieldID");
+
+        $f.closest("form").on("onAfterBind", function(e, form) {
+            if (form.getPr("@Model.PropertyName")) {
+                var date = kendo.parseDate(form.getPr("@Model.PropertyName"), "HH:mm:ss");
+
+                $f.html(kendo.toString(date, "@JsonNetResult.TIME_FORMATE"));
+            } else {
+                $f.html("");
+            }
+        });
+    });
+</script>
+

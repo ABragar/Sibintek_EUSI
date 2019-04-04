@@ -1,0 +1,36 @@
+﻿@model EditorViewModel
+
+@{
+    string typeEntity = Model.ViewModelConfig.Entity;
+}
+
+<script>
+    window["@Model.UID"] = {
+        openDialog: function () {
+            var $form = $("#@Model.UID").closest("form");
+            var form = $form.data("pbaForm");
+            var entity = form.getPr("@Model.PropertyName");
+            var objectType = form.getPr("Entity") || form.getPr("Mnemonic") || form.getPr("Type");
+
+            form.addViewData('ObjectType', objectType);
+
+            pbaAPI.openDetailView(objectType,
+                    {
+                        entity: entity,
+                        //TODO: для сохранения нужно показывать toolbar
+                        //hideToolbar: true,
+                        toSave: false,
+                        parentForm: form,
+                        callback: function (e) {
+                            if (e.type === "save") {
+                                form.setPr("@Model.PropertyName", e.model);
+                            }
+                        }
+                    });
+        }
+    };
+</script>
+
+<div id="@Model.UID">
+    <a class='k-button' onclick="window['@Model.UID'].openDialog(); return false;" title="Редактировать">...</a>
+</div>

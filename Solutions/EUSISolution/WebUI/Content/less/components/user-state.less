@@ -1,0 +1,43 @@
+﻿.user-state {
+	display: flex;
+	align-items: center;
+
+	&, & * {
+		box-sizing: border-box;
+		}
+
+	&-icon {
+		font-size: @base-font-size;
+
+		transition: color .25s;
+		text-align: center;
+
+		color: @color--light;
+
+		&--xsmall {
+			font-size: .715rem;
+			}
+		&--small {
+			font-size: .857rem;
+			}
+		&--large {
+			font-size: 1.4286rem;
+			}
+
+		[data-user-state-status=ready] & {
+			color: @color--success-bright;
+			}
+		[data-user-state-status=away] & {
+			color: darken(@color--light, 62%);
+			}
+		[data-user-state-status=dontDisturb] & {
+			color: @color--warning;
+			}
+		[data-user-state-status=inConversation] & {
+			color: saturate( @color--active, 30% );
+			}
+		[data-user-state-status=disconnected] & {
+			color: @color--danger-alt;
+			}
+		}
+	}

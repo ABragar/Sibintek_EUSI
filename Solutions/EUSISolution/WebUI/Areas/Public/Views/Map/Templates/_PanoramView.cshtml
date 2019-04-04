@@ -1,0 +1,19 @@
+﻿@model WebUI.Areas.Public.Models.VmMap
+
+<script type="text/ng-template" id="panoram.container.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="panoram.Close()" aria-label="Close">
+            ×
+        </button>
+        <h4 class="modal-title">{{panoram.title}}</h4>
+    </div>
+    <div class="modal-body image-view">
+        <div ng-pano ng-scenes="panoram.scenes" class="road-pano" style="height: 350px"></div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="panoram.Close()">Закрыть</button>
+    </div>
+</script>
+
+
+

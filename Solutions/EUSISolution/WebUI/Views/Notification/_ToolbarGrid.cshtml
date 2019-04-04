@@ -1,0 +1,89 @@
+﻿@using Base.UI.ViewModal
+
+@{
+    string nameToolbar = "toolbar_" + Guid.NewGuid().ToString("N");
+    string watchNotificationBtnId = "wtch_" + Guid.NewGuid().ToString("N");
+    string checkNotificationBtnId = "chk_" + Guid.NewGuid().ToString("N");
+    string delNotificationBtnId = "del_" + Guid.NewGuid().ToString("N");
+
+    bool actionDelete = Model.IsPermission(TypePermission.Delete) && Model.ViewModelConfig.ListView.VisibleAction(LvAction.Delete);
+}
+
+
+
+
+<script>
+
+    window["@nameToolbar"] = new WrapToolbar("@nameToolbar", "ToolbarListView");
+
+    (function () {
+        var toolbar = window["@nameToolbar"];
+        var composite = window["@Model.DialogID"];
+        composite.registerWidget(toolbar);
+
+
+        toolbar.onNeighbourWidgetChanged = function (e) {
+            if (e.sender.desc === "GridView") {
+                //change
+                if (e.event === "change") {
+                    if (e.params && e.params.selectedElemId && e.params.selectedElemId > 0) {
+                        toolbar.enable("#@watchNotificationBtnId", true);
+                        toolbar.enable("#@checkNotificationBtnId", true);
+                        toolbar.enable("#@delNotificationBtnId", true);
+                    }
+                    else {
+                        toolbar.enable("#@watchNotificationBtnId", false);
+                        toolbar.enable("#@checkNotificationBtnId", false);
+                        toolbar.enable("#@delNotificationBtnId", false);
+                    }
+                } else if (e.event === "changeCheckBoxes") {
+                    if (e.params && e.params.isEnabled === true) {
+                        toolbar.enable("#@checkNotificationBtnId", true);
+                        toolbar.enable("#@delNotificationBtnId", true);
+                    } else {
+                        toolbar.enable("#@checkNotificationBtnId", false);
+                        toolbar.enable("#@delNotificationBtnId", false);
+                    }
+                } else if (e.event === "dataBound") {
+                    toolbar.enable("#@watchNotificationBtnId", false);
+                    toolbar.enable("#@checkNotificationBtnId", false);
+                }
+            }
+        };
+
+        toolbar.onClick = function(e) {
+            composite.onWidgetChanged(
+            {
+                sender: toolbar,
+                event: "click",
+                params: {
+                    event: e,
+                    action: e.target[0].getAttribute("data-action")
+                }
+            });
+        };
+
+    })();
+
+</script>
+
+
+
+@(Html.Kendo().ToolBar()
+                    .Name(nameToolbar)
+                    .Events(e => e.OverflowOpen(nameToolbar + ".onOverflowOpen"))
+                    .Items(items =>
+                    {
+                        items.Add().Type(CommandType.ButtonGroup).Buttons(buttons =>
+                        {
+                            buttons.Add().Text("Просмотр").HtmlAttributes(new { title = "Просмотр", data_action = "watch" }).SpriteCssClass("btntoolbar fa fa-eye").Id(watchNotificationBtnId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick").Enable(false);
+                            buttons.Add().Text("Отметить как прочитанные").HtmlAttributes(new { title = "Отметить как прочитанные", data_action = "check" }).SpriteCssClass("btntoolbar fa fa-check").Id(checkNotificationBtnId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick").Enable(false);
+
+                            if (actionDelete)
+                            {
+                                buttons.Add().Text("Удалить").HtmlAttributes(new { title = "Удалить", data_action = "delete" }).SpriteCssClass("btntoolbar fa fa-trash-o").Enable(false).Id(delNotificationBtnId).ShowText(ShowIn.Overflow).Click(nameToolbar + ".onClick");
+                            }
+                        });
+
+                    })
+)

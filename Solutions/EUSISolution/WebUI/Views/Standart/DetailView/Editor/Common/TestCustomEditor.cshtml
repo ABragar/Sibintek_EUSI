@@ -1,0 +1,44 @@
+﻿@using System.Web.UI.HtmlControls
+@model EditorViewModel
+
+@{
+    var grid = Html.CreateSystemName("grid");
+    var dialog = Html.CreateSystemName("dialog");
+}
+
+<div id="@Model.UID" style="height: 100%">
+    <div class="kwidget kwidget--grid">
+        <div id="@grid" style="height: 100%;"></div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var editor = $("#@Model.UID");
+        var $form = editor.closest("form");
+
+        $form.on("onAfterBind",
+            function (e, form) {
+                var id = form.getModel().ID;
+
+                var dataUrl = "/Test/GetCustomGrid?id=" +
+                    id +
+                    "&_widgetid=" +
+                    "@grid&_dialogid=" +
+                    "@dialog&mnemonic=" +
+                    "@Model.ParentViewModelConfig.Mnemonic";
+                //debugger;
+
+                $.get(dataUrl, function (res) {
+                    $("#@Model.UID").find(".kwidget.kwidget--grid").html(res);
+
+                    var dialog = window["@dialog"];
+
+                    dialog.onWidgetChanged({
+                        sender: dialog,
+                        event: "init"
+                    });
+                });
+            });
+    });
+</script>

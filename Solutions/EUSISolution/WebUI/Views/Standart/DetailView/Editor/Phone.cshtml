@@ -1,0 +1,155 @@
+﻿
+@model EditorViewModel
+
+@{
+    string wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+    string phoneID = "inp_" + Guid.NewGuid().ToString("N");
+    string codeID = "code_" + Guid.NewGuid().ToString("N");
+    string dropDown = "drp_" + Guid.NewGuid().ToString("N");
+
+    var enumType = typeof(PhoneType);
+}
+
+
+
+<div id="@wrapID">
+    @(Html.Kendo().DropDownList()
+    .Name(dropDown)    
+    .DataTextField("Title")
+    .DataValueField("Value")
+    .OptionLabel("Выберите значение...")
+    .ValueTemplate(String.Format("<span style=\"color:#=data.Color#; max-width:500px;\" class='#=data.Icon#'></span><span class='enum-{0}' data-val='#=data.Value#'>&nbsp&nbsp&nbsp#=data.Title#</span>", enumType.Name))
+    .Template(String.Format("<span style=\"color:#=data.Color#; max-width:500px;\" class='#=data.Icon#'></span><span class='enum-{0}' data-val='#=data.Value#'>&nbsp&nbsp&nbsp#=data.Title#</span>", enumType.Name))
+          )
+
+    <input type="text" class="k-textbox" id="@codeID" maxlength="3" style="width: 15%;" placeholder="+7" value="+7">
+    <input type="tel" class="k-textbox k-valid" id="@phoneID" style="width: 40%;" maxlength="14" placeholder="(XXX) XXX XXXX"/>
+
+</div>
+
+
+<script>
+
+    $(function () {
+
+        var $form = $("#@wrapID").closest("form");
+        var dropDown = $('#@dropDown').data('kendoDropDownList');
+
+        application.UiEnums.get("@enumType.GetTypeName()",
+            function(res) {
+                var values = res.Values;
+
+                var arrValues = [];
+
+                for (var key in values) {
+                    if (values.hasOwnProperty(key)) {
+                        arrValues.push(values[key]);
+                    }
+                }
+
+                var dataSource = new kendo.data.DataSource({ data: arrValues });
+
+                dropDown.setDataSource(dataSource);
+
+                $("#@dropDown").data("kendoDropDownList").options.valueTemplate = "<span class='enum-@(enumType.Name)' data-val='#=data.Name#'>#=data.Text#</span>";
+            });
+
+
+        $form.on("onAfterBind",
+            function(e, form) {
+                var val = form.getPr("@Model.PropertyName");
+
+                $('#@codeID').val(val.Code);
+                $('#@phoneID').val(val.Number);
+                $('#@dropDown').data('kendoDropDownList').value(val.Type);
+
+            });
+
+
+        $form.on("onSave",
+            function(e, form) {
+                var val = {
+                    Code: $('#@codeID').val(),
+                    Number: $('#@phoneID').val().replace(/\D/g,''),
+                    Type: $('#@dropDown').data('kendoDropDownList').value()
+                }
+
+                form.setPr("@Model.PropertyName", val);
+                form.setPr("Title", "(" + val.Code + ")" + val.Number);
+        });
+    });
+
+</script>
+
+<script>
+
+    (function () {
+
+        var parent = $('#@wrapID').closest("[data-role=window]");
+        var $phone = $('#@phoneID');
+
+
+     
+
+        parent.on('onActivate', function () {         
+            $phone.focus();
+        });
+
+        $phone.blur(function () {
+            var $phone = $(this);
+
+            if ($phone.val() === '(') {
+                $phone.val('');
+            }
+        });
+
+        $phone.bind('click', function () {
+            var $phone = $(this);
+
+            if ($phone.val().length === 0) {
+                $phone.val('(');
+            } else {
+                var val = $phone.val();
+                $phone.val('').val(val);
+            }
+
+        });
+
+
+        $phone.keydown(function (e) {
+            var key = e.charCode || e.keyCode || 0;
+            var $phone = $(this);
+
+            if (key !== 8 && key !== 9) {
+                if ($phone.val().length === 4) {
+                    $phone.val($phone.val() + ')');
+                }
+                if ($phone.val().length === 5) {
+                    $phone.val($phone.val() + ' ');
+                }
+                if ($phone.val().length === 9) {
+                    $phone.val($phone.val() + '-');
+                }
+                if ($phone.val().length === 0) {
+                    $phone.val($phone.val() + '(');
+                }
+            }
+
+            return (key == 8 ||
+                key == 9 ||
+                key == 46 ||
+                (key >= 48 && key <= 57) ||
+                (key >= 96 && key <= 105));
+        });
+
+
+
+
+    
+
+        $phone.focus();
+    })();
+
+
+
+</script>

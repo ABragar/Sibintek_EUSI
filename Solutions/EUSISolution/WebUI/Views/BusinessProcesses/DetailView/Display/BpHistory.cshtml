@@ -1,0 +1,45 @@
+﻿@model EditorViewModel
+@{
+    var mnemonic = Model.Mnemonic ?? Model.ParentViewModelConfig.Mnemonic;
+}
+
+<script id="supportTemplate" type="text/x-kendo-template">
+    <li>
+        <div class="history_content">
+            <span data-mnemonic="User" data-id="${User.ID}" class="user_history"> ${User.FullName} |</span>
+            <span class="timeline-title" style="color:#=Action.Color#">&nbsp;${Action.Title} </span>
+            <span>| Дата : ${ShortDate}</span>
+        </div>
+        <div class="message_history-wrap">
+            <p class="message_history">${Comment}</p>
+            <span>&nbsp;${ShortTime}</span>
+        </div>
+    </li>
+</script>
+
+
+<div id="@Model.UID">
+    <ul class="kwidget kwidget--list history-list"></ul>
+</div>
+
+<script>
+    ($(function () {
+        var $editor = $("#@Model.UID");
+        var $form = $editor.closest("form");
+
+        $form.on("onAfterBind", function (e, form) {
+            var id = form.getPr("ID");
+            $.ajax({
+                url: "@Url.Action("GetBPHistory", "BusinessProcesses")",
+                data: { objectType: "@mnemonic", objectID: id },
+                success: function (data) {
+                    var contactTemplate = kendo.template($("#supportTemplate").html());
+                    var res = kendo.render(contactTemplate, data);
+
+                    $("#@Model.UID").find("ul").html(res);
+                    $("#@Model.UID").find("ul").perfectScrollbar();
+                }
+            });
+        });
+    }));
+</script>

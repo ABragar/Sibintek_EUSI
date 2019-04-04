@@ -1,0 +1,129 @@
+﻿@using Base.Entities
+@using Base.Macros
+@using Base.Macros.Entities
+@using Base.Rule
+@using WebUI.Models.BusinessProcess
+@model WithCustomEditorVm
+
+@{
+    Layout = "~/Views/BusinessProcesses/Editors/EditorLayout.cshtml";
+
+    var wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+    var pickerID = "dtp_" + Guid.NewGuid().ToString("N");
+}
+
+<div id="@wrapID">
+    <div class="form-group">
+        <input type="text" data-bind="value: Title" class="k-textbox" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <span data-member="==" data-role="operation" class="k-button">==</span>
+        <span data-member="!=" data-role="operation" class="k-button">!=</span>
+        <span data-member=">" data-role="operation" class="k-button">></span>
+        <span data-member="<" data-role="operation" class="k-button"><</span>
+        <span data-member=">=" data-role="operation" class="k-button">>=</span>
+        <span data-member="<=" data-role="operation" class="k-button"><=</span>
+    </div>
+    <div class="duration-editor">
+        @(Html.Kendo().DateTimePicker().Name(pickerID).Format(JsonNetResult.DATE_TIME_FORMATE))
+        <div class="clear"></div>
+        <div class="input-group">
+            <input type="text" class="k-textbox">
+            <div class="input-group-btn">
+                <button data-role="addvalue" title="Добавить" type="button" class="k-button" tabindex="-1"><span class="k-sprite fa fa-plus"></span></button>
+                <button data-role="clear" title="Очистить" type="button" class="k-button" tabindex="-1"><span class="fa fa-trash-o"></span></button>
+            </div>
+        </div>
+    </div>
+
+    <ul class="kwidget kwidget--list">
+        @if (Model.Nullable)
+        {
+            <li data-role="value" data-type="@((int) MacroType.NotNull)" data-member="null" class="list-group-item system-value">Не равно null</li>
+            <li data-role="value" data-type="@((int) MacroType.EqualNull)" data-member="null" class="list-group-item system-value">Равно null</li>
+        }
+
+        <li data-role="value" data-type="@((int) MacroType.DateTime)" data-source="@ConditionItemSource.Value" data-member="DateTime.Now()" class="list-group-item system-value">Текущая дата</li>
+
+        @foreach (var item in Model.Editors)
+        {
+            <li data-role="value" data-type="@((int) MacroType.InitObject)" data-source="@ConditionItemSource.FromObj" data-member="@item.Member" class="list-group-item">@item.Name</li>
+        }
+    </ul>
+</div>
+
+
+
+<script>
+    $(function () {
+        var wrap = $('#@wrapID');
+
+        var viewModel = kendo.observable({ Title: "", Value: "", MacroType: null, Operator: "==", Member: "@Model.Property" });
+        kendo.bind($("#@wrapID"), viewModel);
+
+        $("[data-role=clear]", wrap).click(function () {
+            viewModel.set('MacroType', null);
+            viewModel.set('Title', null);
+            viewModel.set('Value', null);
+            viewModel.set('Operator', '==');
+            viewModel.set("Source", "@((int)ConditionItemSource.FromObj)");
+        });
+
+        $("#@wrapID").on("click", "[data-role=value]", function () {
+            var self = $(this);
+            viewModel.set("Value", self.data('member'));
+            viewModel.set("MacroType", self.data('type'));
+            viewModel.set("Title", self.html());
+            viewModel.set('Source', self.data('source'));
+        });
+
+        $("#@wrapID").on("click", "[data-role=operation]", function () {
+            var self = $(this);
+
+            $("[data-role=operation]").removeClass('active');
+            $("[data-role=operation]").removeClass('k-button success');
+            $("[data-role=operation]").addClass('k-button');
+            self.removeClass('k-button');
+            self.addClass('active');
+            self.addClass('k-button success');
+
+            viewModel.set("Operator", self.data('member'));
+        });
+
+        wrap.on('click', '[data-role=addvalue]', function () {
+            var value = $('#@pickerID').data('kendoDateTimePicker').value();
+
+            viewModel.set("Value",  value);
+            viewModel.set("MacroType", "@((int)MacroType.DateTime)");
+            viewModel.set("Title", value);
+            viewModel.set("Source", "@((int)ConditionItemSource.Value)");
+        });
+
+
+        wrap.closest('[property-editor]').on('onLoad', function (e, args) {
+            var data = args.model;
+
+            if (data && data.Value) {
+                var val = $.parseJSON(data.Value);
+                viewModel.set('MacroType', val.MacroType);
+                viewModel.set('Title', val.Title);
+                viewModel.set('Value', val.Value);
+                viewModel.set('Operator', val.Operator || '==');
+                viewModel.set("Source", val.Source);
+                $.find('[data-member="' + val.Operator + '"]')[0].click();
+            }
+
+            wrap.closest('[data-role=wraplayout]').find('[data-role=apply]').click(function () {
+                if (!viewModel.MacroType) {
+                    data.set('Value', null);
+                } else {
+                    var result = { "MacroType": viewModel.MacroType, "Value": viewModel.Value, "Title": viewModel.Title, "Operator": viewModel.Operator, "Member": viewModel.Member, "Source": viewModel.Source };
+                    data.set('Value', JSON.stringify(result));
+                }
+
+                $(this).closest('[data-role=window]').data('kendoWindow').close();
+            });
+
+        });
+    });
+</script>

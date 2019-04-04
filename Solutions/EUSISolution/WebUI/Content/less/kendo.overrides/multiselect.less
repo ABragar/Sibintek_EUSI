@@ -1,0 +1,49 @@
+.k-multiselect {
+	 > &-wrap > .k-i-close {
+		top: .5rem;
+		}
+
+	&-wrap {
+		padding: .177em 0;
+
+		li {
+			line-height: @modular-scale *1rem;
+
+			margin: @modular-scale *.125rem 0 @modular-scale *.125rem @modular-scale * .5rem;
+			padding: .125rem @modular-scale *1rem .125rem 0;
+
+			border-radius: @modular-scale *1rem;
+
+			span {
+				margin: 0;
+				}
+
+			 > span, span.data-item {
+				display: flex;
+				align-items: center;
+				}
+
+			.data-item {
+				margin-right: 0;
+
+				&__text {
+					font-size: .9rem;
+					font-weight: 400;
+
+					margin-right: 0;
+					margin-left: pow( @modular-scale *1rem, -2 );
+
+					letter-spacing: .025em;
+					}
+				}
+			}
+
+		.k-input {
+			line-height: @modular-scale *1rem;
+
+			height: @modular-scale * 1.5rem;
+			margin: 0; 
+			padding: 0;
+			}
+		}
+	}

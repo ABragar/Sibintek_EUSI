@@ -1,0 +1,102 @@
+.page-slide-controls {
+	z-index: 1;
+
+	width: 100%;
+	height: @modular-scale *2em;
+	padding: @modular-scale *.25em;
+
+	background: transparent;
+
+	&-icon {
+		line-height: @modular-scale *1.5em;
+
+		display: block;
+		float: left;
+
+		width: @modular-scale *1.5em;
+		height: @modular-scale *1.5em;
+
+		text-align: center;
+
+		color: @color--light;
+		border-radius: @modular-scale *.75em;
+
+		 > * {
+			font-size: 1.25em;
+			line-height: 2;
+			}
+		}
+
+	.title {
+		font-size: 1em;
+		font-weight: 300;
+		line-height: 1.25;
+
+		display: block;
+		display: -webkit-box;
+		float: left;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+
+		width: 260px;
+		height: 2.5em;
+		margin: 0;
+		padding-right: pow( @modular-scale *1em, 2 );
+		padding-left: pow( @modular-scale *1em, -1 );
+
+		vertical-align: middle;
+		letter-spacing: .025em;
+		text-overflow: ellipsis;
+
+		color: @color--light-mild;
+
+		-webkit-line-clamp: 2;
+		}
+
+	.btn {
+		font-size: @modular-scale *1em;
+		line-height: @modular-scale;
+
+		position: absolute;
+		right: .25em;
+
+		width: @modular-scale *1em;
+		height: @modular-scale *1em;
+		margin: 0;
+		padding: 0;
+
+		transition: color .15s ease;
+
+		color: @color--light;
+		border: none;
+
+		&:hover {
+			color: fade( @color--light, 70% );
+			}
+
+		&:active {
+			color: fade( @color--light, 90% );
+			box-shadow: none;
+			}
+
+		 + .btn {
+			margin-right: 5px;
+			}
+
+		&.btn-close {
+			font-size: pow( @modular-scale *1em, 2 );
+			font-weight: 300;
+			line-height: @modular-scale *.5;
+
+			width: 1em;
+			height: 1em;
+			}
+		}
+	}
+
+.page-slide-search {
+	display: block; 
+
+	width: auto;
+	padding: 1em;
+	}

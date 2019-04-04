@@ -1,0 +1,24 @@
+﻿// VARIABLES
+@kendo-color: #3f51b5;
+
+.listReset() { padding: 0; margin: 0; list-style: none; }
+
+.clearFix() {
+    &:before, &:after { display: table; content: " "; }
+
+    &:after { clear: both; }
+}
+
+.textWrap() { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.halfling() {
+    position: relative;
+    top: .0714rem;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

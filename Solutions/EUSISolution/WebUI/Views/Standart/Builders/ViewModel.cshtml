@@ -1,0 +1,262 @@
+﻿@using Newtonsoft.Json
+@model StandartFormModel
+
+@{
+    bool isAjaxForm = Model.CommonEditorViewModel.IsAjax;
+    bool isReadOnly = Model.IsReadOnly;
+    string oldValueWnd = Html.CreateSystemName("wnd");
+}
+
+<script>
+    window["@Model.WidgetID"] = new WrapViewModel("@Model.WidgetID", "ViewModel", "@Model.Type");
+
+    (function() {
+        var composite = window["@Model.DialogID"];
+
+        var view = window["@Model.WidgetID"];
+
+        composite.registerWidget(view);
+
+        view._isReadOnly = @Html.Raw(JsonConvert.SerializeObject(isReadOnly));
+        view._isAjaxForm = @Html.Raw(JsonConvert.SerializeObject(isAjaxForm));
+
+        view.defparams = {
+            model: null,
+            parentForm: null,
+            isReadOnly: false,
+            toSave: false,
+            buttons: null,
+            changeProperties: {}
+        };
+
+        view.params = {};
+        view.dirty = false;
+
+        view.asyncBind = function(params) {
+            view.params = $.extend(this.defparams, params);
+            view.dirty = false;
+
+            if (view._isAjaxForm) {
+                return view.getAjaxForm(view.params.model);
+            } else {
+                return view.initViewModel();
+            }
+        };
+
+        view.getAjaxForm = function(model) {
+            var dfd = $.Deferred();
+            var params = {};
+
+            params["id"] = model.ID;
+            params["mnemonic"] = "@Model.Mnemonic";
+            params["readOnly"] = view.params.isReadOnly;
+            params["_dialogid"] = "@Model.DialogID";
+            params["_widgetid"] = "@Model.WidgetID";
+            params["_dialogtype"] = "@Model.Type";
+            params["_parentid"] = "@Model.ParentID";
+            params["_currentid"] = "@Model.CurrentID";
+
+            return $.get("@Url.Action("GetAjaxForm", "View")", params, function(res) {
+                $("#@Model.WidgetID").html(res);
+
+                view.initViewModel().done(function() {
+                    dfd.resolve();
+                });
+            });
+        }; 
+        
+        var setChangedProperties = function(model) {
+
+            var oldValues = {};
+
+            for (var prop in view.params.changeProperties) {
+
+                oldValues[prop] = model.get(prop);
+
+                model.set(prop, view.params.changeProperties[prop]);
+            }
+
+            return oldValues;
+        };
+
+        var markAllChangedProperties = function(fields, pbaForm) {  
+
+            $('[data-role="changed_field_label"]').remove();
+
+            for (var field in fields) {
+                addChangedValueLabel(field, pbaForm);
+            }
+        };
+
+        var addChangedValueLabel = function(field, pbaForm) {
+            if (!field) return;
+
+            var editor = $(pbaForm.element).find('[data-field="' + field + '"]');
+            
+            if (editor.find('[data-role=changed_field_label]').length !== 0)
+                return;
+
+            var template = kendo.template($('#changed_field_template').html());
+
+            var html = template(field);
+
+            editor.append(html);
+
+            editor.find('[data-role=changed_field_label]').on('click', function(e) { showOldValue(e) });
+        };
+
+        var showOldValue = function(e) {
+
+            var field = $(e.target).attr('data-value');
+            var $form = $("#@Model.WidgetID").find("form");
+            var pbaForm = $form.data('pbaForm');
+            var wnd = $('#@oldValueWnd').data('kendoWindow');
+
+            $.ajax({
+                url: "@Url.Action("GetDisplayViewModel", "View")",
+                data: {
+                    mnemonic: "@Model.Mnemonic",
+                    member: field
+                },
+                success: function(result) {
+
+                    var viewModel = kendo.observable({
+                        model: pbaForm.oldValues,
+                        apply: function() {
+                        },
+                        save: function() {
+                        },
+                        close: function() {
+                        }});
+
+                    wnd.content(result);
+
+                    var childForm = $(wnd.element).find('form').data('pbaForm');
+
+                    childForm.bind(viewModel);
+
+                    wnd.center().open();
+                }
+            });
+        };
+
+        view.initViewModel = function() {
+            var viewModel = kendo.observable({
+                byDate: composite.params.byDate,
+                model: composite.getCurrentModel(),
+                apply: function() {
+                    view.save("apply");
+                },
+                save: function() {
+                    view.save("save");
+                },
+                close: function() {
+                    composite.onWidgetChanged(
+                    {
+                        sender: view,
+                        event: "close",
+                        params: {}
+                    });
+                }
+            });
+
+            return view.initPbaForm(viewModel);
+        };
+
+        view.save = function(type) {
+            composite.onWidgetChanged(
+            {
+                sender: view,
+                event: type,
+                params: {}
+            });
+        };
+
+        view.initPbaForm = function(viewModel) {
+            var dfd = $.Deferred();
+
+            var oldValues = setChangedProperties(viewModel.model);
+
+            var $form = $("#@Model.WidgetID").find("form");
+
+            if (!$form.data("pbaForm")) {
+                $form.pbaForm({
+                    model: viewModel,
+                    nameModel: "model",
+                    attrBind: true,
+                    validate: true,
+                    oldValues: oldValues,
+                    byDate: viewModel.byDate
+                });
+
+                var pbaForm = $form.data("pbaForm");
+
+                $form.find("[data-bind]").on("input", function (e) {
+                    view.dirty = true;
+
+                    composite.onWidgetChanged({
+                        sender: view,
+                        event: "change"
+                    });
+                });
+
+                $form.on("onChange", function(e, data) {
+                    view.dirty = true;
+                    addChangedValueLabel(data.field, pbaForm);
+                    composite.onWidgetChanged({
+                        sender: view,
+                        event: "change"
+                    });
+                });
+
+                pbaForm.parentForm = view.params.parentForm;               
+                pbaForm.bind();
+            } else {
+
+                $form.data("pbaForm").unbind();
+                $form.data("pbaForm").bind(viewModel);
+            }
+
+            markAllChangedProperties(view.params.changeProperties, $form.data("pbaForm"));
+
+            dfd.resolve();
+
+            return dfd.promise();
+        };
+    })();
+</script>
+
+<div id="@Model.WidgetID" class="form-widget">
+    
+    <div id="@oldValueWnd">
+        
+    </div>
+
+    @if (!isAjaxForm)
+    {
+        Html.RenderPartial(Model.GetDetailViewUrl(isReadOnly), Model);
+    }
+</div>
+
+
+
+<script>
+
+    $(function() {
+        $('#@oldValueWnd').kendoWindow({
+            width: "700px",
+            title: "Исходное значение",
+            modal: true,
+            visible: false,
+        });
+    });
+
+</script>
+
+<script id="changed_field_template" type="text/x-kendo-template">
+
+    <span data-role="changed_field_label" data-value="#=data#" class="field-is-changed-mark">
+        <i data-value="#=data#" class="fa fa-pencil"></i>
+    </span>
+
+</script>

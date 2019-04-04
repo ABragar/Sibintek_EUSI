@@ -1,0 +1,44 @@
+﻿@{
+    string tlbrName = "tlbr_" + Guid.NewGuid().ToString("N");
+    string btnHistoryID = "btnHistory_" + Guid.NewGuid().ToString("N");
+    string btnCreateID = "btnCreate_" + Guid.NewGuid().ToString("N");
+}
+
+<div id="@tlbrName" class="btn-group">
+    <button id="@btnHistoryID" type="button" class="btn btn-default" onclick="window['@tlbrName'].getEventHistory();"><span class="glyphicon glyphicon-history"></span>История взаимодействия</button>
+    <button id="@btnCreateID" type="button" class="btn btn-default" onclick="window['@tlbrName'].createEvent();"><span class="fa fa-plus"></span>Создать взаимодействие</button>
+</div>
+
+<script>
+    $(function () {
+        function getModel() {
+            var dialogId = $("#@tlbrName").closest(".dialog-vm").attr('id');
+            var wm = window[dialogId];
+            return wm.getCurrentModel();
+        };
+
+        if (getModel().ID === 0) {
+            $("#@btnCreateID").addClass("disabled");
+            $("#@btnHistoryID").addClass("disabled");
+        }
+
+        window["@tlbrName"] = {
+            getEventHistory: function () {
+                pbaAPI.openModalDialog("Event", null, {
+                    title: "История взаимодействия",
+                    filter: "it.DocumentID=" + getModel().ID
+                });
+            },
+            createEvent: function () {
+                pbaAPI.openDetailView("Event", {
+                    toSave: true,
+                    initProps: {
+                        "Document": getModel()
+                    }
+                });
+            var dialog = $("#@tlbrName").closest(".dialog-vm").data("dialogVM");
+            return dialog.getCurrentModel();
+            }
+        };
+    });
+</script>

@@ -1,0 +1,88 @@
+﻿.map-widget {
+	width: 100%;
+	height: 100%;
+
+	li span.k-icon.k-i-close {
+		margin-top: 8px;
+		margin-right: -7px;
+		}
+
+	.k-multiselect-wrap {
+		 > ul > .k-button {
+			margin: 2px;
+			}
+
+		 > .k-input {
+			color: darken( @color--light, 34% );
+			}
+		}
+
+	.k-tabstrip-items {
+		&, .k-item {
+			background-color: desaturate( darken( @color--primary, 39% ), 15% );
+			}
+
+		.k-item {
+			&.k-state-active {
+				border-color: desaturate( lighten( @color--primary, 10% ), 30% );
+				}
+
+			&.k-state-hover {
+				border-color: desaturate( darken( @color--primary, 56% ), 8% );
+				background-color: desaturate( darken( @color--primary, 56% ), 8% );
+				}
+			}
+		}
+
+	.info-wrapper {
+		font-size: 16px;
+		line-height: @modular-scale *1em;
+
+		padding: @modular-scale *.5em @modular-scale *1em 0;
+		}
+
+	.info-block {
+		.clearfix();
+
+		 > * {
+			padding: @modular-scale *.25em 0;
+			}
+
+		.glyphicon-ok-2 {
+			color: @color--success-bright;
+			}
+
+		.glyphicon-remove-2 {
+			color: desaturate( darken( @color--accent, 6% ), 14% );
+			}
+		}
+
+	.k-grid-content td {
+		.glyphicon-ok-2 {
+			color: @color--success-bright;
+			}
+
+		.glyphicon-remove-2 {
+			color: desaturate( darken( @color--accent, 6% ), 14% );
+			}
+		}
+
+	.info-title {
+		float: left;
+
+		width: 38.1%;
+
+		text-align: right;
+
+		color: @color--dark;
+		}
+
+	.info-string-value,
+	.info-double-value,
+	.info-int-value,
+	.info-bool-value {
+		float: left;
+
+		padding-left: @modular-scale *1em;
+		}
+	}

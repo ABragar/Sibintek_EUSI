@@ -1,0 +1,57 @@
+﻿@model int?
+
+@{
+    var getInstructionByResponseId = Url.Action("GetInstructionByResponseId", "Response");
+    var instructionPropertyId = Html.CreateSystemName("instructionProperty");
+    //var mnemonicEx = "AdditionalPropertyEditor";
+    //var getIdByMnemonic = Url.Action("GetDetailExIdByMnemonic", "AdditionalProperty");
+    //var wrapId = "wrap_" + Guid.NewGuid().ToString("N");
+}
+
+<button id="@(instructionPropertyId)" type="button" class="k-button tooltipInputHelper" title="Инструкция по заполнению"><span class="k-icon fa fa-question-circle"></span>Помощь</button>
+<script>
+    $(function () {
+        //debugger;
+        var title = "Инструкция по заполнению строк ответа";
+
+        $("#@instructionPropertyId").click(function (object) {
+
+            function showWindow(src) {
+                var window = $("<div/>");
+                var data = src.Data;
+                for (var item in data) {
+                    if (data.hasOwnProperty(item)) {
+                        var instruction = data[item].Instruction || "Отсутствует инструкция по данному полю";
+                        window.append("<h3> Поле \"" + data[item].Name + "\"</h3>").append("<div>" + instruction + "</div>");
+                    }
+                }
+                window.kendoWindow({
+                    width: "600px",
+                    title: title,
+                    modal: true,
+                    visible: true,
+                    actions: [
+                        "Maximize",
+                        "Close"
+                    ]
+                }).data("kendoWindow").center().open();
+            }
+
+            $.ajax({
+                type: "GET",
+                url: pbaAPI.getNewUrl("@getInstructionByResponseId"),
+                data: {id: "@Model"},
+                contentType: "application/json",
+                success: function (data) {
+                    //callback();
+                    if (data.error) {
+                        pbaAPI.errorMsg("Ошибка открытия окна " + "\"" + title + "\"");
+                    } else {
+                        showWindow(data);
+                    }
+                }
+            });
+
+        });
+    })
+</script>

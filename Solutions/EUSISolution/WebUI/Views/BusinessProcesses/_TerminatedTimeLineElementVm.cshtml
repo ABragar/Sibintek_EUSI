@@ -1,0 +1,23 @@
+﻿@model WebUI.Models.BusinessProcess.EndStepTimeLineElement
+
+<div class="timeline-badge" style="background-color: @Model.Color"><i class="fa fa-star"></i></div>
+<div id="@Model.ID" class="timeline-panel terminated-timeline-element" style="border-color: @Model.Color">
+    @*@Html.Partial("_Progress", Model)*@
+    <div class="timeline-panel-heading">
+        <h4 class="timeline-panel-title">&nbsp;@Model.Title</h4>
+    </div>
+    <div class="timeline-panel-body">
+        <div class="alert alert-success" role="alert">
+            Объект завершил свое движение по бизнес-процессу
+        </div>
+    </div>
+    <div class="timeline-panel-footer">
+        <span class="timeline-panel-date">
+            <i class="mdi mdi-calendar"></i>&nbsp;@Model.Date.ToShortDateString()
+        </span>
+        <span class="timeline-panel-time">
+            <i class="fa fa-clock-o"></i>&nbsp;@Model.Date.ToShortTimeString()
+        </span>
+    </div>
+
+</div>

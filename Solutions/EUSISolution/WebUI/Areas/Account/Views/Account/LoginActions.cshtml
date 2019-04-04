@@ -1,0 +1,22 @@
+﻿@using WebUI.Areas.Account
+@model WebUI.Areas.Account.Models.Account.LoginActionsViewModel
+@{
+    var routevalues = Url.FromCurrent();
+}
+@if (Model.AnyAllowed)
+{
+    if (Model.ResetPasswordAllowed)
+    {
+        <a class="account-card__forgot-pass-link" data-route="forward" href="@Url.Action("SendResetPassword", routevalues)">
+            Забыли пароль?
+        </a>
+    }
+
+    <div class="account-card__tabs">
+        <span class="account-card__tab account-card__tab--active">Вход</span>
+        @if (Model.RegistrationAllowed)
+        {
+            <a class="account-card__tab" data-route="forward" href="@Url.Action("Register", routevalues)">Регистрация</a>
+        }
+    </div>
+}

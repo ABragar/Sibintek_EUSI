@@ -1,0 +1,23 @@
+﻿@model StandartGridView
+
+@{
+    string objTypes = Html.CreateSystemName("types");
+    string wrapID = Html.CreateSystemName("objs");
+    string splitter = Html.CreateSystemName("spltr");
+}
+
+
+<div id="@wrapID">
+ 
+        <div>
+            @{ Html.RenderPartial("~/Views/Standart/ListViews/Grid.cshtml", Model);}
+        </div>
+    
+</div>
+
+
+<script>
+    $(function () {
+
+    })
+</script>

@@ -1,0 +1,173 @@
+﻿@using Base.Entities
+@using Base.Macros
+@using Base.Macros.Entities
+@using Base.Rule
+@using Base.UI.ViewModal
+@using WebUI.Models.BusinessProcess
+@model WithCustomEditorVm
+
+@{
+    Layout = "~/Views/BusinessProcesses/Editors/EditorLayout.cshtml";
+    var config = ViewBag.Config as ViewModelConfig;
+    var wrapID = "wrp_" + Guid.NewGuid().ToString("N");
+
+    string multiSelectID = "mlti_" + Guid.NewGuid().ToString("N");
+    string placeholder = "Выберите значение...";
+    string lookupProperty = config.LookupPropertyForUI;
+}
+
+
+<script>
+    window['@wrapID'] = {
+
+        onAdditionalData: function() {
+            var multiSelect = $("#@multiSelectID").data("kendoMultiSelect");
+
+            var val = multiSelect.input.val();
+
+            if (val == "@placeholder") val = "";
+
+            return {
+                startswith: val
+            };
+        },
+
+        onChange: function() {
+        },
+
+        onSelect: function(e) {
+        }
+    };
+</script>
+
+<div id="@wrapID">
+    <div class="input-group" style="margin-bottom: 10px;">
+        @(Html.Kendo().MultiSelect()
+              .Name(multiSelectID)
+              .DataValueField("ID")
+              .DataTextField(lookupProperty)
+              .Filter("startswith")
+              .Placeholder(placeholder)
+              .ItemTemplate(string.Format("<span class='data-item' id='#= data.ID #' data-uid='#= uid #'>#= pbaAPI.htmlEncode(data.{0}) #</span>", lookupProperty))
+              .AutoBind(false)
+              .Events(e => e.Select(wrapID + ".onSelect").Change(wrapID + ".onChange"))
+              .DataSource(source =>
+              {
+                  source.Read(read =>
+                  {
+                      read.Url($"/api/listview/{config.Mnemonic}/filter/boProperty").Data(wrapID + ".onAdditionalData");
+                  })
+                      .ServerFiltering(true);
+              })
+              .HtmlAttributes(new {style="width:100%"})
+        )
+        <span class="label label-info" data-bind="text: Mnemonic" style="position: absolute; right: 90px; top: 10px;"></span>
+        <div class="input-group-btn">
+            <button data-role="value" title="Выбрать объект" type="button" tabindex="-1" class=""><span class="fa fa-navicon"></span></button>
+            @*<button data-role="clear" title="Очистить" type="button" class="btn btn-default" tabindex="-1"><span class="fa fa-remove"></span></button>*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span data-member="" data-role="operation" class="k-button">Содержит</span>
+        <span data-member="not" data-role="operation" class="k-button">Не содержит</span>
+        <span></span>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(function () {
+        var $wrap = $('#@wrapID');
+        var multiselect = $wrap.find("#@multiSelectID").data("kendoMultiSelect");
+        var operator = "";
+
+        $("#@wrapID").on("click", "[data-role=value]", function () {
+            pbaAPI.openModalDialog("@config.Mnemonic", function(e) {
+                if (e && e.length > 0) {
+                    var rootValues = e.map(function(item) {
+                        var val = {};
+                        val.Value = item.ID;
+                        val.MacroType = @((int) MacroType.CollectionItem);
+                        return val;
+                    });
+
+                    multiselect.value(rootValues.map(function(item) {
+                        return item.Value;
+                    }));
+                }
+            });
+        });
+
+        $("#@wrapID").on("click", "[data-role=operation]", function () {
+            var self = $(this);
+
+            $("[data-role=operation]").removeClass('active');
+            $("[data-role=operation]").removeClass('k-button success');
+            $("[data-role=operation]").addClass('k-button');
+            self.removeClass('k-button');
+            self.addClass('active');
+            self.addClass('k-button success');
+
+            operator = self.data('member');
+        });
+
+        $wrap.closest('[property-editor]').on('onLoad', function(e, args) {
+
+            var data = args.model;
+            var rootValues = null;
+
+            var parse = $.parseJSON(data.Value);
+            if (parse) {
+                rootValues = parse;
+                operator = parse.Operator;
+            }
+
+            if (rootValues) {
+                multiselect.dataSource.filter({});
+                multiselect.value(rootValues.Value.split(';'));
+                if (operator === ""){
+                    $wrap.find("[data-member='']")[0].click();
+                }
+                else {
+                    $wrap.find("[data-member="+ operator + "]")[0].click();
+                }
+            }
+
+            $wrap.closest('[data-role=wraplayout]').find('[data-role=apply]').click(function() {
+                if (multiselect.value() && multiselect.value().length > 0) {
+
+                    var val = {};
+                    val.MacroType = @((int) MacroType.CollectionItem);
+                    val.Operator = operator;
+                    val.Member = "@Model.Property";
+                    val.Value = multiselect.value().map(function(item) {
+                        return item;
+                    }).join(';');
+
+                    data.set("Value", JSON.stringify(val));
+                } else {
+                    data.set('Value', null);
+                }
+                $(this).closest('[data-role=window]').data('kendoWindow').close();
+            });
+
+
+        });
+
+        var methods = {
+            clear: function() {
+                multiselect.value(null);
+                multiselect.refresh();
+            },
+            select: function() {
+               
+            }
+        }
+
+
+
+    });
+</script>

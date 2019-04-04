@@ -1,0 +1,1681 @@
+﻿@using Newtonsoft.Json
+@using WebUI.Extensions
+@using AppContext = Base.Ambient.AppContext
+@model StandartDialogViewModel
+
+@{
+    bool isRead = Model.IsPermission(TypePermission.Read);
+    bool isWrite = Model.IsPermission(TypePermission.Write) && !Model.IsReadOnly;
+    bool isReadOnly = !isWrite;
+
+    var commonEditor = Html.GetCommonEditor(Model.Mnemonic);
+
+    string dvSettingsWnd = Html.CreateSystemName("wnd");
+    string showSettingsBtn = Html.CreateSystemName("btn");
+
+    var toolbarVm = new StandartViewModel(Model);
+    var dialogVm = new StandartFormModel(Model, commonEditor);
+
+    string[] IsInefficientMnemonics = new string[] { "IntangibleAsset", "Vehicle", "Aircraft", "Cadastral", "Ship", "SpaceShip" };
+    var IsInefficientLogic = IsInefficientMnemonics.Contains(Model.Mnemonic);
+
+    string taxRateTypeCode = Model.Mnemonic == "CalculatingRecordInventory" ? "101" : (Model.Mnemonic == "CalculatingRecordLand" ? "102" : (Model.Mnemonic == "CalculatingRecordTransport" ? "103" : "none"));
+}
+
+@if (isRead)
+{
+    <script>
+        window["@Model.DialogID"] = new CompositeControl("@Model.DialogID");
+
+        (function () {
+            var composite = window["@Model.DialogID"];
+            composite.count = 0;
+            composite.Idx = {};
+            composite.prevID = null;
+            composite.nextID = null;
+            composite.mnemonic = "@Model.Mnemonic";
+            composite.type = "@Model.Type";
+            composite.isModal = composite.type === "Modal";
+            composite.changeObjects = [];
+
+            composite.defparams = {
+                // kendoWindow - окно диалога
+                wnd: null,
+                // ID текущего объекта
+                currentID: 0,
+                // ассоциативный массив - / key = ID; value = { model: entity, access: { Update: bool, Delete: bool }, order: №, loaded: bool } /
+                entities: {},
+                // pbaForm - ссылка на родительскую форму
+                parentForm: null,
+                // флаг - только чтение
+                isReadOnly: $.parseJSON("@(isReadOnly.ToString().ToLower())"),
+                // флаг - выполнить запрос сохранения объекта
+                toSave: false,
+                //объект заблокирован
+                isBlocked: false,
+                // флаг - скрыть toolbar
+                hideToolbar: @Html.Raw(JsonConvert.SerializeObject(Model.ViewModelConfig.DetailView.HideToolbar)),
+                // Измененные свойства
+                changeProperties: {},
+                // метод создание нов. объекта
+                createDefault: null,
+                // события
+                events: {
+                    initNewEntity: function (e) { },
+                    beforeSave: function (e) { },
+                    save: function (e) { },
+                },
+                // параметры для кастомных запросов
+                customQueryParams: {
+                    get: {},
+                    save: {}
+                },
+                byDate : null
+            };
+
+            composite.params = {};
+
+            composite.refreshData = function () {
+                var editor = this.getViewModel();
+                var form = editor.widget();
+                form.params = {
+                    baseMnemonic: this.mnemonic,
+                    fromTemplate: (this.params.customQueryParams.save && this.params.customQueryParams.save.FromTemplate) || null,
+                    templateID: (this.params.customQueryParams.save && this.params.customQueryParams.save.TemplateID) || null,
+                };
+                editor.element().trigger("onRefreshData", form);
+            }
+
+            composite.initDialog = function (params) {
+
+                var defparams = $.extend({}, this.defparams);
+
+                this.params = $.extend(defparams, params);
+
+                if (this.defparams.isReadOnly)
+                    this.params.isReadOnly = true;
+
+                this.count = 0;
+                this.changeObjects = [];
+
+                for (var id in this.params.entities) {
+                    var entity = this.params.entities[id];
+                    this.Idx[entity.order] = parseInt(id);
+                    this.count++;
+                }
+
+                if (this.params.hideToolbar || composite.defparams.hideToolbar) {
+                    this.element().find(".toolbar-vm").hide();
+                }
+
+                this.element().find(".view-model .common-editor-tabs").each(function () {
+                    var $tabs = $(this);
+
+                    if ($tabs.children('li').length == 1) {
+                        $tabs.closest('.common-form').addClass('hidden-tabs');
+                    }
+                });
+
+                this.bind(params.initCallback);
+            };
+
+            @*---BEGIN: Save template---*@
+            composite.saveAsTemplate = function () {
+                var successFunc = function (res) {
+                    if (res.error && res.error > 0)
+                        return pbaAPI.errorMsg(res.message);
+                    else
+                        return pbaAPI.uploadMsg(res.message);
+                };
+
+                var vm = composite.getViewModel();
+                var widget = vm.widget();
+                var model = widget.getModel();
+                var isTask = !(composite.mnemonic === "SibProjectMenuList");
+                var isChanged = Object.keys(widget.oldValues).length > 0;
+
+                if (model.ID === 0 || isChanged)
+                    return pbaAPI.errorMsg(isTask ? "Сохраните задачу." : "Сохраните проект.");
+
+                if (!isTask) {
+                    pbaAPI.proxyclient.corpProp.createProjectTemplate({
+                        projectId: model.ID
+                    }).done(function (res) { successFunc(res); })
+                }
+                else {
+                    pbaAPI.proxyclient.corpProp.createTaskTemplate({
+                        taskId: model.ID
+                    }).done(function (res) { successFunc(res); })
+                }
+
+            }
+            @*---END: Save template---*@
+
+            @*---BEGIN: Send task report---*@
+            composite.sendTaskReport = function () {
+                var vm = composite.getViewModel();
+                var widget = vm.widget();
+                var reportModel = widget.model.model;
+                var taskMnemonic = "SibTask";
+                var mnemonic = composite.mnemonic;
+                var notifyTitle = "Новый отчет";
+                var notifyDescr = "";
+
+                if (!reportModel.Task) {
+                    pbaAPI.errorMsg("Не удалось получить связанную задачу.", 5000);
+                    return;
+                }
+                kendo.ui.progress(composite.element(), true);
+                pbaAPI.proxyclient.crud.get({mnemonic: taskMnemonic, id: reportModel.Task.ID}).done(function (res) {
+                    if (res.error && res.error != 0) {
+                        pbaAPI.errorMsg(res.error, 5000);
+                        kendo.ui.progress(composite.element(), false);
+                        return;
+                    }
+
+                    var taskModel = res.model;
+
+                    if (!taskModel) {
+                        pbaAPI.errorMsg("Не удалось получить связанную задачу.", 5000);
+                        kendo.ui.progress(composite.element(), false);
+                        return;
+                    }
+                    var arRecipientID = [1] //TODO Initiator.ID
+                    var reportChecks = {
+                        IsRequiredLinkReportAppraisal: taskModel.IsRequiredLinkReportAppraisal,
+                        IsRequiredLinkReportDeal: taskModel.IsRequiredLinkReportDeal,
+                        IsRequiredLinkReportEstate: taskModel.IsRequiredLinkReportEstate,
+                        IsRequiredLinkReportFile: taskModel.IsRequiredLinkReportFile,
+                        IsRequiredLinkReportRight: taskModel.IsRequiredLinkReportRight,
+                        IsRequiredReport: taskModel.IsRequiredReport
+                    };
+
+                    pbaAPI.proxyclient.crud.getByCode({ mnemonic: mnemonic + "Status", code: "Sent" }).done(function (res) {
+                        if (res.error && res.error != 0) {
+                            pbaAPI.errorMsg(res.error, 5000);
+                            kendo.ui.progress(composite.element(), false);
+                            return;
+                        }
+
+                        var sendedStatus = res.model;
+
+                        if (reportModel.Status.ID === sendedStatus.ID) {
+                            pbaAPI.infoMsg("Отчет уже отправлен.", 5000);
+                            kendo.ui.progress(composite.element(), false);
+                            composite.refresh();
+                            return;
+                        }
+
+                        var checkRes = composite.checkReport(reportChecks, reportModel);
+
+                        if(!checkRes.success) {
+                            pbaAPI.errorMsg(checkRes.msg, 5000);
+                            kendo.ui.progress(composite.element(), false);
+                            return;
+                        }
+
+                        var newReportModel = {};
+                        Object.assign(newReportModel, reportModel);
+                        newReportModel.Status = sendedStatus;
+
+                        //
+                        //TODO: Добавить отправку.
+                        //
+                        $.ajax({
+                            type: "GET",
+                            url: "@(Url.Action("CreateNotification", "Notification"))",
+                            data: { stringIds: JSON.stringify(arRecipientID), json: JSON.stringify({ mnemonic: mnemonic, id: newReportModel.ID }), title: notifyTitle, descr: notifyDescr },
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                if (data.error && data.error != 0) {
+                                    pbaAPI.errorMsg(data.error, 5000);
+                                    kendo.ui.progress(form.element, false);
+                                    return;
+                                }
+
+                                pbaAPI.proxyclient.crud.save({ mnemonic: mnemonic }, { model: newReportModel }).done(function (res) {
+                                    if(res.error && res.error != 0)
+                                        pbaAPI.errorMsg(res.error, 5000);
+                                    else
+                                        pbaAPI.uploadMsg("Отчет отправлен.", 5000);
+
+                                    kendo.ui.progress(composite.element(), false);
+                                    composite.refresh();
+                                });
+                            }
+                        });
+                    });
+                });
+            };
+
+            composite.checkReport = function (checks, reportModel) {
+                var res = {
+                    success: false,
+                    msg: ""
+                };
+
+                if ((!reportModel.Appraisal || reportModel.Appraisal.length === 0) && (checks.IsRequiredLinkReportAppraisal || checks.IsRequiredLinkReport))
+                    res.msg = "В отчет требуется добавить оценки.";
+                else if ((!reportModel.Deals || reportModel.Deals.length === 0) && (checks.IsRequiredLinkReportDeal || checks.IsRequiredLinkReport))
+                    res.msg = "В отчет требуется добавить сделки.";
+                else if ((!reportModel.Estates || reportModel.Estates.length === 0) && (checks.IsRequiredLinkReportEstate || checks.IsRequiredLinkReport))
+                    res.msg = "В отчет требуется добавить ОИ.";
+                else if ((!reportModel.Files || reportModel.Files.length === 0) && (checks.IsRequiredLinkReportFile || checks.IsRequiredLinkReport))
+                    res.msg = "В отчет требуется добавить документы.";
+                else if ((!reportModel.Rights || reportModel.Rights.length === 0) && (checks.IsRequiredLinkReportRight || checks.IsRequiredLinkReport))
+                    res.msg = "В отчет требуется добавить права.";
+                else {
+                    res.success = true;
+                    res.msg = "ok";
+                }
+
+                return res;
+            };
+            @*---END: Send task report---*@
+
+            composite.sendTaskNotification = function () {
+                var vm = composite.getViewModel();
+                var widget = vm.widget();
+                var model = widget.getModel();
+                var isChanged = Object.keys(widget.oldValues).length > 0;
+                var uId = application.currentUser.id;
+
+                if (model.ID === 0 || isChanged)
+                    return pbaAPI.errorMsg("Сохраните задачу.");
+
+                pbaAPI.proxyclient.corpProp.sendTaskNotification({
+                    taskId: model.ID,
+                    userId: uId
+                }).done(function (res) {
+                    if (res.error && res.error === 1)
+                        return pbaAPI.errorMsg(res.message);
+                    else
+                        return pbaAPI.uploadMsg(res.message);
+                })
+            }
+
+            /*** BEGIN CREATE SCHEDULE STATE ***/
+            composite.createScheduleState = function () {
+                var vm = composite.getViewModel();
+                var widget = vm.widget();
+                var model = widget.getModel();
+                var isChanged = Object.keys(widget.oldValues).length > 0;
+                var listIds = Array();
+                var baseMnemonic = composite.mnemonic;
+                var currentUserId = application.currentUser.id;
+
+                if (model.ID === 0 || isChanged)
+                    return pbaAPI.errorMsg("Сохраните объект.");
+
+                listIds.push(model.ID);
+                var year = new Date().getFullYear() + 1;
+                var targets = [{ Title: "График гос. регистрации", Mnemonic: "ScheduleStateRegistration" }, { Title: "График гос. регистрации (Прекращение прав собственности)", Mnemonic: "ScheduleStateTerminate" }];
+                pbaAPI.selectSimple(targets, {
+                    title: "Выбор ГГР на " + year + " год",
+                    callback: function (res) {
+                        var selectedMnemonc = res.Mnemonic;
+
+                        if (baseMnemonic == "PropertyComplex") {
+                            pbaAPI.openModalDialog(selectedMnemonc, function (item) {
+                                if (!item)
+                                    return pbaAPI.errorMsg("Ошибка при выборе элемента.");
+
+                                var parentEntityName = res.Mnemonic;
+
+                                pbaAPI.proxyclient.corpProp.createScheduleStateRecord({
+                                    complexID: selectedItems[0].ID,
+                                    stateID: item[0].ID
+                                }).done(function (result) {
+                                    if (result.error && result.error != 0) {
+                                        pbaAPI.errorMsg(result.message);
+                                    } else {
+                                        pbaAPI.uploadMsg(result.message);
+                                    }
+                                });
+                            }, { filter: res.TypeCode != null ? 'it.ScheduleStateRegistrationType.Code = "{0}"'.replace("{0}", res.TypeCode) : null })
+                        }
+
+                        if (res.Mnemonic === "ScheduleStateRegistration") {
+                            pbaAPI.proxyclient.corpProp.createScheduleStateRegistrationRecords({
+                                itemsIds: listIds.join(),
+                                elementId: currentUserId,
+                                isAccountingObject: true
+                            }).done(function (result) {
+                                if (result.error && result.error != 0) {
+                                    pbaAPI.errorMsg(result.message);
+                                } else {
+                                    pbaAPI.uploadMsg(result.message);
+                                }
+                            });
+                        }
+                        else {
+                            pbaAPI.proxyclient.corpProp.createScheduleStateTerminateRecords({
+                                itemsIds: listIds.join(),
+                                elementId: currentUserId,
+                                isAccountingObject: true
+                            }).done(function (result) {
+                                if (result.error && result.error != 0) {
+                                    pbaAPI.errorMsg(result.message);
+                                } else {
+                                    pbaAPI.uploadMsg(result.message);
+                                }
+                            });
+                        }
+                    }
+                })
+            };
+
+            /*** END CREATE SCHEDULE STATE ***/
+
+            composite.cancelImport = function () {
+                pbaAPI.confirmEx({
+                    title: "Предупреждение",
+                    text: "<b>Вы действительно хотите отменить импорт?<b>",
+                    callbackYes: function (data) {
+                        kendo.ui.progress(composite.element(), true);
+                        var entity = composite.getCurrentEntity().model;
+                        pbaAPI.proxyclient.corpProp.cancelImport({
+                            id: entity.ID
+                        }).done(function (res) {
+                            kendo.ui.progress(composite.element(), false);
+                            if (res.err && res.err > 0) {
+                                return pbaAPI.errorMsg(res.message);
+                            }
+                            else {
+                                pbaAPI.uploadMsg(res.message);
+                            }
+                            composite.refresh();
+                        })
+                    },
+                    callbackNo: function (data) {
+
+                    }
+                });
+
+            };
+
+            composite.exportMovings = function () {
+                debugger;
+                var vm = this.getViewModel();
+                var form = vm.widget();
+                var m = form.getModel();
+                if (m.Consolidations.length > 0 && m.StartDate && m.EndDate)
+                {
+                    pbaAPI.proxyclient.EUSI.exportMovings({mnemonic : "ExportMoving"},
+                        {
+                            model: m,
+                        }
+                    ).done(function (res) {
+                        if (res.error === 1)
+                            return pbaAPI.errorMsg(res.message);
+                        else {
+                            var data = pbaAPI.base64ToBlob(res.data, res.mimeType);
+                            pbaAPI.download(data, res.filename, res.mimetype);
+                        }
+                    });
+                }
+                else
+                    return pbaAPI.errorMsg("Заполнены не все обязательные поля");
+            }
+
+            composite.exportZip = function () {
+                var vm = this.getViewModel();
+                var form = vm.widget();
+                var m = form.getModel();
+                if (m.Consolidations.length > 0 && m.StartDate && m.EndDate) {
+                    var offsetMiliseconds = new Date().getTimezoneOffset() * 60000;
+                    m.StartDate = new Date(m.StartDate.getTime() - offsetMiliseconds);
+                    m.EndDate = new Date(m.EndDate.getTime() - offsetMiliseconds);
+
+                    pbaAPI.proxyclient.EUSI.exportZip({ mnemonic: "ExportZip" },
+                        {
+                            model: m,
+                        }
+                    ).done(function (res) {
+                        if (res.error === 1)
+                            return pbaAPI.errorMsg(res.message);
+                        else {
+                            var data = pbaAPI.base64ToBlob(res.data, res.mimeType);
+                            pbaAPI.download(data, res.filename, res.mimetype);
+                        }
+                    });
+                }
+            }
+
+            composite.exportZipOS = function () {
+                var vm = this.getViewModel();
+                var form = vm.widget();
+                var m = form.getModel();
+                if (m.Consolidations.length > 0) {
+                    kendo.ui.progress(composite.element(), true);
+                    pbaAPI.proxyclient.EUSI.exportZipOS({ mnemonic: "ExportZipOS" }, {model: m})
+                        .done(function (res) {
+                            kendo.ui.progress(composite.element(), false);
+                            if (res.error === 1)
+                                return pbaAPI.errorMsg(res.message);
+                            else {
+                                var data = pbaAPI.base64ToBlob(res.data, res.mimeType);
+                                pbaAPI.download(data, res.filename, res.mimetype);
+                            }
+                        }
+                    );
+                }
+            }
+            composite.updateTaxBaseCadastralObjects = function () {
+                debugger;
+                var vm = this.getViewModel();
+                var form = vm.widget();
+                var m = form.getModel();
+                if (form.validate()) {
+                    kendo.ui.progress(composite.element(), true);
+                    pbaAPI.proxyclient.EUSI.updateTaxBaseCadastralObjects({ mnemonic: "updateTaxBaseCadastralObjects" }, {model: m})
+                        .done(function (res) {
+                            kendo.ui.progress(composite.element(), false);
+                                    if (res.error === 1)
+                                        return pbaAPI.errorMsg(res.message)
+                                    else {
+                                        return pbaAPI.alertSuccess(res.message);
+                                    };
+                                }
+                        );
+                }
+                else {
+                    var arErrors = form.validator._errors;
+                    if (arErrors) {
+                        errMsg = "Заполнены не все обязательные поля!";
+                    }
+                    pbaAPI.errorMsg(errMsg);
+                }
+                }
+
+            composite.calculateAccountingObject = function () {
+                var vm = this.getViewModel();
+                var form = vm.widget();
+
+                if (form.validate()) {
+                    var model = form.getModel();
+                    kendo.ui.progress(form.element, true);
+                    pbaAPI.proxyclient.EUSI.calculateAccountingObject({
+                        year: model.Year,
+                        consolidationId: model.Consolidation.ID,
+                        taxRateTypeCode: @taxRateTypeCode,
+                        periodCalculatedNU: model.PeriodCalculatedNU
+                    }).done(function (res) {
+                        if (res.error === 1)
+                            pbaAPI.errorMsg(res.message);
+                        else if (res.error === 2)
+                            pbaAPI.alertWarning(res.message);
+                        else
+                            pbaAPI.alertSuccess(res.message);
+
+                        return kendo.ui.progress(form.element, false);
+                    });
+                }
+            }
+            composite.getDVByDate = function (btnId) {
+
+                var newDate = composite.element().find(".toolbar-vm").find("#" + btnId).prop('value');
+                if (composite.params.byDate !== newDate) {
+                    var entity = composite.getCurrentEntity().model;
+                    if (composite.params.byDate) {
+                        pbaAPI.proxyclient.corpProp.getByDate({
+                            mnemonic: this.mnemonic,
+                            id: entity.ID,
+                            date: newDate
+                        }).done(function (res) {
+
+                            if (res.error && res.error !== 0) {
+                                composite.element().find(".toolbar-vm").find('*[id^="historyButtonID"]').val(composite.params.byDate);
+                                if (res.model) {
+                                    pbaAPI.alertWarning(res.message);
+                                    return;
+                                }
+                                else
+                                    composite.criticalError(res.message);
+
+                            } else {
+                                composite.params.byDate = composite.element().find(".toolbar-vm").find('*[id^="historyButtonID"]').prop('value');
+                                composite.initEntity(res);
+                                composite.params.currentID = res.model.ID;
+                                composite.bind();
+                            }
+                        });
+                    }
+                }
+
+            }
+
+            composite.initEntity = function (res) {
+                var currentId = res.model.ID;
+                var entities = this.params.entities;
+
+                var isNew = !currentId || currentId == 0;
+
+                if (currentId in entities) {
+                    if (entities[currentId].model) {
+                        if (isNew && composite.params.events.initNewEntity)
+                            composite.params.events.initNewEntity(entities[currentId].model);
+
+                        entities[currentId];
+                        return;
+                    }
+                }
+                var isNew = !currentId || currentId == 0;
+                if (isNew && composite.params.events.initNewEntity)
+                    composite.params.events.initNewEntity(res.model);
+
+                if (!isNew) {
+                    currentId = res.model.ID;
+                    composite.params.currentID = currentId;
+                }
+
+                if (!(currentId in entities)) {
+                    entities[currentId] = {};
+                }
+
+                var urlMnemonic = location.pathname.split("/").pop();
+
+                if (!corpProp.dv.wnd.testWnd(composite.mnemonic, urlMnemonic))
+                    corpProp.dv.wnd.saveWnd(composite.mnemonic, urlMnemonic, composite.params.currentID);
+
+                var entity = entities[currentId];
+
+                entity.model = res.model;
+                entity.access = res.access;
+                entity.byDate = res.byDate;
+                entity.loaded = true;
+
+                //sib
+                // отмена импорта только для ОБУ.
+                if ((composite.mnemonic == "ImportHistory" || composite.mnemonic == "ImportAccountingObject")
+                    && entity.model.Mnemonic == "AccountingObject"
+                    && !entity.model.IsCanceled)
+                    $("#cancelImport").show();
+                else
+                    $("#cancelImport").hide();
+
+                if (!isNew) {
+                    $("#hideEmptyEditorsID").show();
+                }
+                else
+                    $("#hideEmptyEditorsID").hide();
+
+                if (entity.model.NonCoreAssetListState) {
+                    if (entity.model.NonCoreAssetListState.Code !== '103')
+                        $("*[id^='ncaChangeOG']").hide();
+                    else
+                        $("*[id^='ncaChangeOG']").show();
+                }
+                else $("*[id^='ncaChangeOG']").hide();
+
+                //end sib
+                return entity;
+            }
+
+            composite.hideEmptyEditors = function (btnId) {
+                var checked = composite.element().find(".toolbar-vm").find("#"+btnId).prop('checked');
+                var hideClass = "sib-hide-empty-editorRow";
+                if (checked) {
+                    var entity = composite.getCurrentEntity();
+                    if (entity) {
+                        if (entity.model) {
+                            var view = composite.getViewModel();
+                            var form = view.widget();
+                            $.each(form.getModel(), function (member, value) {
+                                if (!value) {
+                                    var editor = form.getEditorRow(member);
+                                    if (editor && editor.addClass) {
+                                        editor.addClass(hideClass);
+                                    }
+                                }
+
+                            });
+                        }
+                    }
+                }
+                else {
+                    $("." + hideClass).removeClass(hideClass);
+                }
+            };
+
+            composite.updInCorpProp = function () {
+                kendo.ui.progress(composite.element(), true);
+                var entity = composite.getCurrentEntity().model;
+                pbaAPI.proxyclient.corpProp.checkUpdInCorpProp({
+                    id: entity.ID
+                }).done(function (res) {
+                    kendo.ui.progress(composite.element(), false);
+                    pbaAPI.confirmEx({
+                        title: "Предупреждение",
+                        text: res.message + "<b>Вы действительно хотите обновить информацию в реестре прав?<b>",
+                        type: "confirmExUpdInCorpProp",
+                        callbackYes: function (data) {
+                            kendo.ui.progress(composite.element(), true);
+                            var entity = composite.getCurrentEntity().model;
+                            pbaAPI.proxyclient.corpProp.updInCorpProp({
+                                id: entity.ID
+                            }).done(function (res) {
+                                kendo.ui.progress(composite.element(), false);
+                                if (res.err && res.err > 0) {
+                                    return pbaAPI.errorMsg(res.message);
+                                }
+                                else {
+                                    pbaAPI.uploadMsg(res.message);
+                                    composite.refresh();
+                                }
+                            })
+                        },
+                        callbackNo: function (data) {
+
+                        }
+                    });
+                })
+
+            };
+
+            composite.addNCAPreviousPeriod = function () {
+                var entity = composite.getCurrentEntity().model;
+
+                pbaAPI.openModalDialog("NCAListPreviousPeriod", function (item) {
+                        kendo.ui.progress(composite.element(), true);
+                        if (!item)
+                            return pbaAPI.errorMsg("Ошибка при выборе элемента.");
+
+                        pbaAPI.proxyclient.corpProp.addNCAPreviousPeriod({
+                            currentID: entity.ID,
+                            id: item[0].ID
+                        }).done(function (result) {
+                            kendo.ui.progress(composite.element(), false);
+                            if (result.error && result.error != 0) {
+                                pbaAPI.errorMsg(result.message);
+                            } else {
+                                pbaAPI.uploadMsg(result.message);
+                            }
+                        });
+                    },
+                    { filter: 'it.ID != {0}'.replace("{0}", entity.ID) })
+            };
+
+            composite.ncaChangeOG = function () {
+                var entity = composite.getCurrentEntity().model;
+
+                pbaAPI.openModalDialog("NCAChangeOG", function (item) {
+
+                        kendo.ui.progress(composite.element(), true);
+                        if (!item)
+                            return pbaAPI.errorMsg("Ошибка при выборе элемента.");
+
+                        pbaAPI.proxyclient.corpProp.ncaChangeOG({
+                            currentID: entity.ID,
+                            id: item[0].ID
+                        }).done(function (result) {
+                            kendo.ui.progress(composite.element(), false);
+                            if (result.err && result.err != 0) {
+                                pbaAPI.errorMsg(result.message);
+                            } else {
+                                pbaAPI.uploadMsg(result.message);
+                            }
+                            composite.close();
+                        });
+                    },
+                    { customParams: entity.SocietyID})
+            };
+
+            composite.cloneButtonStatus = function (enabled) {
+                var statusButton = composite.element().find("#copy");
+                if (!enabled)
+                    statusButton.prop("disabled", true).addClass("k-state-disabled");
+                else
+                    statusButton.prop("disabled", false).removeClass("k-state-disabled");
+
+            };
+
+            composite.destroy = function () {
+                this.changeObjects = [];
+            };
+
+            composite.getViewModel = function () {
+                return this.getWidget("ViewModel");
+            };
+
+            composite.criticalError = function (msg) {
+                this.hideLoading();
+                this.element().html("<h4 style='color: red;'>" + msg + "</h4>");
+            };
+
+            composite.startLoading = function () {
+                var $content;
+
+                if (this.isModal)
+                    $content = this.params.wnd.element;
+                else
+                    $content = this.element().closest("div");
+
+                $content.addClass("wnd-loading-content");
+
+                this.element().hide();
+            };
+
+            composite.hideLoading = function () {
+                var $content;
+                if (this.isModal)
+                    $content = this.params.wnd.element;
+                else
+                    $content = this.element().closest("div");
+
+                $content.removeClass("wnd-loading-content");
+
+                this.element().fadeIn(300);
+
+                var editors = [composite.getViewModel()];
+
+                for (var i in editors) {
+                    if (editors.hasOwnProperty(i)) {
+                        var editor = editors[i];
+
+                        if (editor && editors.hasOwnProperty(i)) {
+                            var $el = editor.element();
+
+                            if ($el.is(":visible"))
+                                editor.widget().onShown();
+                        }
+                    }
+                }
+            };
+
+            composite.getCurrentEntity = function () {
+                return composite.params.entities[composite.params.currentID];
+            };
+
+            composite.getCurrentModel = function () {
+
+                return composite.getCurrentEntity().model;
+            };
+
+            composite.setCurrentModel = function (model) {
+                composite.getCurrentEntity().model = model;
+                // composite.changeObjects.push(composite.getCurrentModel());
+            };
+
+            composite.isEmpty = function (str) {
+                return (!str || 0 === str.length || !str.trim());
+            }
+
+            composite.setTitle = function (model) {
+                try {
+                    var def = "@Model.ViewModelConfig.Title";
+                    var title;
+                    if (!this.isEmpty(model.Title))
+                        title = def + ": " + model.Title;
+                    if (this.isEmpty(title) && !this.isEmpty(model.Name))
+                        title = def + ": " + model.Name;
+                    else
+                        title = def;
+                    if (this.params)
+                        if (this.params.wnd)
+                            this.params.wnd.title(title);
+                }
+                catch (err) { }
+            }
+
+            composite.bind = function (callback) {
+                this.startLoading();
+
+                this.getModel(function (entity) {
+                    var dfds = [];
+                    composite.setTitle(entity.model);
+                    if (composite.mnemonic === "SibProject") {
+                        if (!entity.model.Status || entity.model.Status.Name === "Черновик")
+                            composite.cloneButtonStatus(false);
+                        else
+                            composite.cloneButtonStatus(true);
+                    }
+
+                    composite.prevID = null;
+                    composite.nextID = null;
+
+                    if (composite.params.currentID !== 0 && composite.count > 1) {
+
+                        if (entity.order > 0) {
+                            composite.prevID = composite.Idx[entity.order - 1];
+                        }
+
+                        if (entity.order < (composite.count - 1)) {
+                            composite.nextID = composite.Idx[entity.order + 1];
+                        }
+                    }
+                    for (var id in composite.widgets) {
+                        if ("asyncBind" in composite.widgets[id]) {
+                            dfds.push(composite.widgets[id].asyncBind({
+                                isReadOnly: !composite.getAccess(entity).Update,
+                                parentForm: composite.params.parentForm,
+                                model: entity.model,
+                                prevID: composite.prevID,
+                                nextID: composite.nextID,
+                                toSave: composite.params.toSave,
+                                isBlocked: composite.params.isBlocked,
+                                isModal: composite.isModal,
+                                changeProperties: composite.params.changeProperties
+                            }));
+                        }
+                    }
+
+                    $.when.apply($, dfds).done(function () {
+                        composite.hideLoading();
+                        if (callback)
+                            callback();
+                    });
+
+                    //sib
+                    // отмена импорта только для ОБУ.
+                    if ((composite.mnemonic == "ImportHistory" || composite.mnemonic == "ImportAccountingObject")
+                        && entity.model.Mnemonic == "AccountingObject"
+                        && !entity.model.IsCanceled)
+                        $("#cancelImport").show();
+                    else
+                        $("#cancelImport").hide();
+
+                    if (entity.model.ID !== 0) {
+                        $("#hideEmptyEditorsID").show();
+                    }
+                    else
+                        $("#hideEmptyEditorsID").hide();
+                    if (entity.model.NonCoreAssetListState) {
+                        if (entity.model.NonCoreAssetListState.Code !== '103')
+                            $("*[id^='ncaChangeOG']").hide();
+                        else
+                            $("*[id^='ncaChangeOG']").show();
+                    }
+                    else $("*[id^='ncaChangeOG']").hide();
+                    //end sib
+                });
+            };
+
+            composite.getAccess = function (obj) {
+                if (this.params.isReadOnly) {
+                    return { Update: false, Delete: false };
+                } else {
+                    return obj.access || { Update: true, Delete: true };
+                }
+            };
+
+            composite.getModel = function (callback) {
+
+                var currentId = this.params.currentID;
+                var entities = this.params.entities;
+
+                var isNew = !currentId || currentId == 0;
+
+                if (currentId in entities) {
+                    if (entities[currentId].model) {
+                        if (isNew && composite.params.events.initNewEntity)
+                            composite.params.events.initNewEntity(entities[currentId].model);
+
+                        callback(entities[currentId]);
+                        return;
+                    }
+                }
+
+                var initEntity = function (res) {
+                    if (isNew && composite.params.events.initNewEntity)
+                        composite.params.events.initNewEntity(res.model);
+
+                    if (!isNew) {
+                        currentId = res.model.ID;
+                        composite.params.currentID = currentId;
+                    }
+
+                    if (!(currentId in entities)) {
+                        entities[currentId] = {};
+                    }
+
+                    var urlMnemonic = location.pathname.split("/").pop();
+
+                    if (!corpProp.dv.wnd.testWnd(composite.mnemonic, urlMnemonic))
+                        corpProp.dv.wnd.saveWnd(composite.mnemonic, urlMnemonic, composite.params.currentID);
+
+                    var entity = entities[currentId];
+
+                    entity.model = res.model;
+                    entity.access = res.access;
+                    entity.byDate = res.byDate;
+                    entity.loaded = true;
+
+                    //sib
+                    // отмена импорта только для ОБУ.
+                    if ((composite.mnemonic == "ImportHistory" || composite.mnemonic == "ImportAccountingObject")
+                        && entity.model.Mnemonic == "AccountingObject"
+                        && !entity.model.IsCanceled)
+                        $("#cancelImport").show();
+                    else
+                        $("#cancelImport").hide();
+
+                    if (!isNew) {
+                        $("#hideEmptyEditorsID").show();
+                    }
+                    else
+                        $("#hideEmptyEditorsID").hide();
+                    if (entity.model.NonCoreAssetListState) {
+                        if (entity.model.NonCoreAssetListState.Code !== '103')
+                            $("*[id^='ncaChangeOG']").hide();
+                        else
+                            $("*[id^='ncaChangeOG']").show();
+                    }
+                    else $("*[id^='ncaChangeOG']").hide();
+                    //end sib
+                    return entity;
+                };
+
+                var done = function (res) {
+                    if (res.error && res.error !== 0) {
+                        composite.element().find(".toolbar-vm").find('*[id^="historyButtonID"]').val(composite.params.byDate);
+                        if (res.model) {
+                            pbaAPI.alertWarning(res.message);
+                            return;
+                        }
+                        else
+                            composite.criticalError(res.message);
+                        return;
+                    } else {
+                        composite.params.byDate = composite.element().find(".toolbar-vm").find('*[id^="historyButtonID"]').prop('value');
+                        callback(initEntity(res));
+                    }
+                };
+
+                if (isNew) {
+                    if (composite.params.createDefault) {
+                        composite.params.createDefault(this.mnemonic).done(done);
+                    } else {
+                        pbaAPI.proxyclient.standard.create_default({
+                            mnemonic: this.mnemonic
+                        }).done(done);
+                    }
+
+                } else {
+                    if (currentId in entities) {
+                        if (composite.params.byDate) {
+                            var dp = composite.element().find(".toolbar-vm").find('*[id^="historyButtonID"]').data('kendoDatePicker');
+                            dp.value(composite.params.byDate);
+                            pbaAPI.proxyclient.corpProp.getByDate({
+                                mnemonic: this.mnemonic,
+                                id: currentId,
+                                date: composite.params.byDate
+                            }).done(done);
+                        }
+                        else {
+                            pbaAPI.proxyclient.crud.get({
+                                mnemonic: this.mnemonic,
+                                id: currentId
+                            }).done(done);
+                        }
+
+                    } else {
+                        //TODO
+                        composite.criticalError("Ошибка инициализации текущей модели");
+                        return null;
+                    }
+                }
+
+            };
+
+            composite.prev = function () {
+                if (composite.prevID) {
+                    composite.params.currentID = composite.prevID;
+                    composite.bind();
+                } else {
+                    composite.refresh();
+                }
+                composite.refreshData();
+            };
+
+            composite.next = function () {
+                if (composite.nextID) {
+                    composite.params.currentID = composite.nextID;
+                    composite.bind();
+                } else {
+                    composite.refresh();
+                }
+                composite.refreshData();
+            };
+
+            composite.copy = function (e) {
+                var model = composite.getCurrentModel();
+                var id = model.ID;
+
+                if (id === 0)
+                    return pbaAPI.errorMsg("Сохраните объект.");
+
+                var editor = composite.getViewModel();
+                var widget = editor.widget();
+                var srcModel = {};
+
+                Object.assign(srcModel, widget.model.model);
+                if ("@Model.Mnemonic".match("ScheduleStateRegistrationRecord") || "@Model.Mnemonic".match("ScheduleStateTerminateRecord")) {
+                    srcModel.ID = 0;
+                    srcModel.SystemNumber = "";
+                    srcModel.InventoryNumber = "";
+                    srcModel.AccountingObject = null;
+                }
+                else {
+                    pbaAPI.proxyclient.crud.getByCode({ mnemonic: "@Model.Mnemonic".replace("List", "") + "Status", code: "Draft" }).done(function (res) {
+                        if (res.error && res.error != 0)
+                            console.log(res.error);
+                        else {
+                            srcModel.ID = 0
+                            srcModel.Executors = null;
+                            srcModel.Title = srcModel.Title + " - Копия";
+                            srcModel.Status = res.model;
+                            srcModel.StatusID = res.model.ID;
+                            srcModel.ProjectID = null;
+                            srcModel.Executors = null;
+                            srcModel.Responsible = null;
+                        }
+                    });
+                }
+                pbaAPI.proxyclient.standard.clone({
+                    mnemonic: "@Model.Mnemonic",
+                    id: id
+                }).done(function(data) {
+                    pbaAPI.openDetailView("@Model.Mnemonic",
+                        {
+                            entity: data.model,
+                            toSave: true
+                        });
+                });
+            };
+
+            composite.openDvSettings = function () {
+                pbaAPI.infoMsg("У данного объекта нет настроек");
+            };
+
+            composite.onChildWidgetChanged = function (e) {
+                if (e.sender.desc === "ToolbarViewModel") {
+                    switch (e.event) {
+                    case "prev":
+                        composite.prev();
+                        break;
+                    case "next":
+                        composite.next();
+                        break;
+                    case "refresh":
+                        if (composite.getViewModel().dirty) {
+                            pbaAPI.confirm("Редактирование", "Вы потеряете все изменения. Обновить?", function () {
+                                composite.refresh();
+                            });
+                        } else {
+                            composite.refresh();
+                        }
+                        break;
+                    case "copy":
+                        composite.copy();
+                        break;
+                    case "save_as_template":
+                        composite.saveAsTemplate();
+                        break;
+                    case "export_movings":
+                        composite.exportMovings();
+                        break;
+                    case "export_zip":
+                        composite.exportZip();
+                        break;
+                    case "export_zipOS":
+                        composite.exportZipOS();
+                        break;
+                    case "btnUpdateTaxBaseCadastralObjects":
+                        composite.updateTaxBaseCadastralObjects();
+                        break;
+                    case "calculate_ao":
+                        composite.calculateAccountingObject();
+                        break;
+                    case "close":
+                        composite.close();
+                        break;
+                    case "save_and_close":
+                    case "save":
+                    case "apply":
+                        var sync = e.event !== "save_and_close";
+                        if (this.mnemonic === "SibTaskMenuList") {
+                            $.when(composite.saveTask(sync)).done(function () {
+                                $.when(composite.save(sync)).done(function () {
+                                    if (e.event === "save_and_close") {
+                                        composite.params.events.save({ sender: composite });
+                                    } else {
+                                        composite.bind();
+                                    }
+                                });
+                            });
+                            break;
+                        }
+                        $.when(composite.save(sync)).done(function () {
+                            if (e.event === "save_and_close") {
+                                composite.params.events.save({ sender: composite });
+                            }
+                            else {
+                                composite.bind();
+                            }
+                        });
+
+                        break;
+                    case "save_":
+                        if (composite.getAccess(composite.getCurrentEntity()).Update) {
+                            $.when(composite.save(false)).done(function () {
+                                $.when(e.params.callback()).done(function () {
+                                    composite.refresh();
+                                });
+                            });
+                        } else {
+                            $.when(e.params.callback()).done(function () {
+                                composite.changeObjects.push(composite.getCurrentModel());
+                                composite.refresh();
+                            });
+                        }
+
+                        break;
+                    case "loadingAndRefresh":
+                    case "loadingAndNext":
+                        composite.startLoading();
+
+                        composite.changeObjects.push(composite.getCurrentModel());
+
+                        $.when(e.params.callback(false)).done(function () {
+                            if (e.event === "loadingAndRefresh")
+                                composite.refresh();
+                            else
+                                composite.next();
+                        });
+
+                        break;
+                    case "addToChangedAndRefresh":
+                        composite.changeObjects.push(composite.getCurrentModel());
+                        composite.refresh();
+
+                        break;
+                    case "sendTaskReport":
+                        composite.sendTaskReport();
+                        composite.refresh();
+                        break;
+
+                    case "sendTaskNotification":
+                        composite.sendTaskNotification();
+                        break;
+                    case "dvSettings":
+                        composite.openDvSettings();
+                        break;
+                    case "updInCorpProp":
+                        composite.updInCorpProp();
+                        composite.refresh();
+                        break;
+                    case "cancelImport":
+                        composite.cancelImport();
+                        break;
+                    case "addNCAPreviousPeriod":
+                        composite.addNCAPreviousPeriod();
+                        break;
+                    case "createScheduleState":
+                        composite.createScheduleState();
+                        break;
+                    case "ncaChangeOG":
+                        composite.ncaChangeOG();
+                        break;
+                    }
+
+                    if (e.event.indexOf("hideEmptyEditors") !== -1) {
+                        composite.hideEmptyEditors(e.event);
+                    }
+                    if (e.event.indexOf("historyButtonID") !== -1) {
+                        composite.getDVByDate(e.event);
+                    }
+                } else if (e.sender.desc === "ViewModel") {
+                    switch (e.event) {
+                    case "close":
+                        composite.close();
+                        break;
+                    }
+                }
+            };
+
+            composite.close = function () {
+                composite.refreshData();
+                corpProp.dv.wnd.delWnd(composite.mnemonic);
+                composite.params.wnd.close();
+            };
+
+            composite.refresh = function () {
+                composite.refreshData();
+                var entity = composite.params.entities[composite.params.currentID];
+                entity.model = null;
+                composite.bind();
+            };
+
+            composite.saveTask = function (sync) {
+                var dfd = $.Deferred();
+                var editor = this.getViewModel();
+
+                var form = editor.widget();
+                form.params = {
+                    baseMnemonic: this.mnemonic,
+                    fromTemplate: (this.params.customQueryParams.save &&
+                            this.params.customQueryParams.save.FromTemplate) ||
+                        null,
+                    templateID: (this.params.customQueryParams.save && this.params.customQueryParams.save.TemplateID) ||
+                        null,
+                };
+
+                var model = form.getModel();
+                if (model.TaskParent) {
+                    pbaAPI.proxyclient.crud.get({
+                        mnemonic: this.mnemonic,
+                        id: model.TaskParent.ID
+                    }).done(
+                        function (parentTaskModel) {
+                            //debugger;
+                            var taskParent = parentTaskModel.model;
+
+                            var start = typeof (model.Period.Start) == "string"
+                                ? parseData(model.Period.Start)
+                                : model.Period.Start;
+                            var parentStart = parseData(taskParent.Start);
+                            var end = typeof (model.Period.End) == "string"
+                                ? parseData(model.Period.End)
+                                : model.Period.End;
+                            var parentEnd = parseData(taskParent.End);
+                            if (start <= parentStart.addDays(-1) || end >= parentEnd.addDays(1)) {
+                                var title = "Предупреждение";
+                                var text =
+                                    "Дата начала или дата окончания нижестоящей задачи выходит(ят) за сроки вышестоящей. " +
+                                        "Изменить срок вышестоящей задачи на срок нижестоящей +-1 день?";
+
+                                pbaAPI.confirm(title, text, callbackYes, callbackNo);
+                            } else {
+                                pbaAPI.proxyclient.crud.save =
+                                    pbaAPI.proxyclient.create_func("{+base_uri}/crud/{mnemonic}",
+                                        { method: "POST" });
+                                return dfd.resolve();
+                            }
+                        });
+
+                    var parseData = function (strdt) {
+                        var parts = strdt.split(".");
+                        return new Date(parts[2].substring(0, 4), parseInt(parts[1]) - 1, parts[0]);
+                    }
+
+                    Date.prototype.addDays = function (days) {
+                        var dat = new Date(this.valueOf());
+                        dat.setDate(dat.getDate() + days);
+                        return dat;
+                    }
+                    var callbackYes = function () {
+                        pbaAPI.proxyclient.crud.save =
+                            pbaAPI.proxyclient.create_func("{+base_uri}/crud/{mnemonic}/saveTask",
+                                { method: "POST" });
+                        return dfd.resolve();
+
+                    };
+                    var callbackNo = function () {
+
+                    };
+                    //debugger;
+                } else {
+                    return dfd.resolve();
+                }
+                return dfd.promise();
+            };
+
+            composite.save = function (sync) {
+                var dfd = $.Deferred();
+
+                var editor = this.getViewModel();
+
+                var form = editor.widget();
+                form.params = {
+                    baseMnemonic: this.mnemonic,
+                    fromTemplate: (this.params.customQueryParams.save && this.params.customQueryParams.save.FromTemplate) || null,
+                    templateID: (this.params.customQueryParams.save && this.params.customQueryParams.save.TemplateID) || null,
+                };
+
+                composite.refreshData();
+                editor.element().trigger("onSave", form);
+                var childs = {};
+                var model = form.getModel();
+                if (form.params.fromTemplate) {
+                    model.ID = 0;
+                    model.IsTemplate = false;
+                }
+                if (form.childs) {
+                    childs = form.childs;
+                }
+
+                if (this.params.events.beforeSave) {
+                    this.params.events.beforeSave({
+                        isNew: model.ID === 0,
+                        pbaForm: form
+                    });
+                }
+
+                var formValidate = { result: form.validate() };
+                if (this.mnemonic === "Appraisal") {
+                    var arAppraisalDate = (model.AppraisalDate) ? model.AppraisalDate.split(/\D/) : null;
+                    var arReportDate = (model.ReportDate) ? model.ReportDate.split(/\D/) : null;
+                    if (arReportDate && arAppraisalDate) {
+                        var appraisalTime = new Date(arAppraisalDate[2], --arAppraisalDate[1], arAppraisalDate[0]).getTime();
+                        var reportTime = new Date(arReportDate[2], --arReportDate[1], arReportDate[0]).getTime();
+                        if (appraisalTime > reportTime) {
+                            formValidate.result = false;
+                            formValidate.msg = "Дата оценки не должна превышать дату отчета.";
+                        }
+                    }
+                }
+
+                if (form.validate()) {
+                    editor.element().trigger("onAfterValidate", form);
+
+                    if (this.params.toSave) {
+
+                        this.startLoading();
+                        var modelToSave = {
+                            model: model,
+                            linkSource: this.params.link,
+                        }
+                        if (childs) {
+                            modelToSave.childs = childs;
+                        }
+                        pbaAPI.proxyclient.crud.save(
+                                 { mnemonic: "@Model.Mnemonic", returnEntireModel: sync },
+                                modelToSave)
+                            .done(function(res) {
+                                if (res.error === 0) {
+
+                                    composite.params.link = null;
+
+                                    composite.changeObjects.push(res.model);
+
+                                    if (composite.isModal)
+                                        pbaAPI.uploadMsg(res.message);
+
+                                    if (sync) {
+                                        var entity;
+
+                                        if (composite.params.currentID === 0) {
+                                            entity = $.extend({}, composite.params.entities[0]);
+
+                                            delete composite.params.entities[0];
+
+                                            entity.model = res.model;
+                                            entity.loaded = true;
+
+                                            if (res.access)
+                                                entity.access = res.access;
+                                            if (res.byDate)
+                                                entity.byDate = res.byDate;
+
+                                            composite.params.entities[res.model.ID] = entity;
+                                            composite.Idx[entity.order] = res.model.ID;
+
+                                            composite.params.currentID = res.model.ID;
+                                        } else {
+                                            entity = composite.params.entities[composite.params.currentID];
+                                            entity.model = res.model;
+
+                                            if (res.access)
+                                                entity.access = res.access;
+                                            if (res.byDate)
+                                                entity.byDate = res.byDate;
+                                        }
+                                    }
+
+                                    dfd.resolve();
+                                } else {
+                                    pbaAPI.errorMsg(res.message);
+
+                                    composite.hideLoading();
+                                }
+                            });
+                    } else {
+                        composite.changeObjects.push(model);
+
+                        dfd.resolve();
+                    }
+                } else {
+                    var arErrors = form.validator._errors;
+                    var errMsg = (formValidate["msg"]) ? formValidate["msg"] + "<br />" : "";
+                    if (arErrors) {
+                        errMsg += "Заполнены не все обязательные поля!";
+                        for (fieldId in arErrors) {
+                            var fieldName = $("#" + fieldId)[0] ? $("#" + fieldId).closest('div.label-editor-row').find("label").html() : $("[name=" + fieldId + "]").closest('div.label-editor-row').find("label").html();
+                            if (fieldName) {
+                                errMsg += "<br />Заполните: " + fieldName;
+                            }
+                        }
+                    }
+                    pbaAPI.errorMsg(errMsg);
+                }
+
+                return dfd.promise();
+            };
+        })();
+    </script>
+}
+else
+{
+    <script>
+        window["@Model.DialogID"] = new CompositeControl("@Model.DialogID");
+
+        (function () {
+            var composite = window["@Model.DialogID"];
+
+            composite.mnemonic = "@Model.Mnemonic";
+            composite.type = "@Model.Type";
+            composite.isModal = composite.type == "Modal";
+            composite.changeObjects = [];
+
+            composite.initDialog = function (params) {
+                composite.hideLoading(params);
+            };
+
+            composite.getCurrentModel = function () {
+                return {};
+            };
+
+            composite.hideLoading = function (params) {
+                var $content;
+
+                if (this.isModal)
+                    $content = params.wnd.element;
+                else
+                    $content = this.element().closest("div");
+
+                $content.removeClass("wnd-loading-content");
+
+                this.element().fadeIn(300);
+            };
+
+            composite.getViewModel = function () {
+                return { dirty: false };
+            };
+
+            composite.destroy = function () {
+                this.changeObjects = [];
+            };
+
+        })();
+    </script>
+}
+
+<div id="@Model.DialogID" style="display:none;" class="dialog dialog--@Model.Type.ToString().ToLower() dialog-vm">
+    @Html.HiddenFor(m => m.DialogID)
+
+    @if (isRead)
+    {
+
+        <div class="dialog__toolbar toolbar-vm">
+            @{ Html.RenderPartial(Model.ViewModelConfig.GetToolbarDetailViewUrl(), toolbarVm); }
+        </div>
+
+        string dialogContentClassName = "dialog__content view-model";
+
+        if (dialogVm.TabsCount > 1)
+        {
+            dialogContentClassName += " dialog__content--with-tabstrip";
+        }
+
+        <div class="@dialogContentClassName">
+            @{ Html.RenderPartial($"~/Views/Standart/Builders/ViewModel.cshtml", dialogVm); }
+
+            @if (AppContext.SecurityUser.IsAdmin && commonEditor.IsAjax)
+            {
+                <script id="property-template" type="text/x-kendo-template">
+                    <a href="javascript:void(0)" data-bind="click: editProperty, text: Name, attr: { class: activeClass }"></a>
+                </script>
+
+                <div id="@dvSettingsWnd">
+                    <div class="tab-content common-tab">
+                        <div class="tab-pane container  active list-group">
+                            <div data-template="property-template" data-bind="source: dvSettings"></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="lock" style="min-height:200px;"><h2>НЕТ ДОСТУПА</h2></div>
+    }
+</div>
+
+<script>
+    $(".k-checkbox[data-bind*=ShowAllColumns]").change(function(event, sender) {
+        if (!event.target.checked)
+            return;
+
+        var elements = $(".grid-preset-columns a");
+
+        for (var i = 0; i < elements.length; i++) {
+            var $element = $(elements[i]);
+            if (!$element.hasClass("active")) {
+                $element.addClass("active");
+                $element.parent().addClass("active");
+            }
+        }
+    });
+
+    $("a.list-group-item").live("click", function(event, sender) {
+        var dialog = window["@Model.DialogID"];
+        var checkbox = $(".k-checkbox[data-bind*=ShowAllColumns]")[0];
+        if (checkbox.checked) {
+            checkbox.checked = false;
+            dialog.getViewModel().widget().getModel().ShowAllColumns = false;
+        }
+    });
+
+    $(function () {
+        var dialog = window["@Model.DialogID"];
+
+        $("#@Model.DialogID").data("dialogVM", dialog);
+
+        @if (IsInefficientLogic)
+        {
+        <text>
+            var ChkIsNonspecialized = $("label:contains('Является непрофильным')").parent().find("input");
+            var ChkIsInefficient = $("label:contains('Является неэффективным')").parent().find("input");
+
+            ChkIsNonspecialized.unbind("click").click(function() {
+                if($(this).is(':checked') && ChkIsInefficient.is(':checked')){
+                    ChkIsInefficient.prop('checked', false);
+                }
+            });
+            ChkIsInefficient.unbind("click").click(function() {
+                if($(this).is(':checked') && ChkIsNonspecialized.is(':checked')){
+                    ChkIsNonspecialized.prop('checked', false);
+                }
+            });
+        </text>
+        }
+    });
+</script>
+
+@if (ViewBag.AutoBind != null && ViewBag.AutoBind)
+{
+    <script>
+        $(function () {
+            var dialog = window["@Model.DialogID"];
+            var id = parseInt("@ViewBag.ID");
+
+            var entities = {};
+
+            entities[id] = { model: null, order: 0, byDate : null };
+
+            dialog.initDialog({
+                currentID: parseInt("@ViewBag.ID"),
+                entities: entities,
+                toSave: true,
+                initCallback: function () {
+                    dialog.getViewModel().widget().onActivate();
+                }
+            });
+        });
+    </script>
+}
+
+@if (AppContext.SecurityUser.IsAdmin && commonEditor.IsAjax)
+{
+    <script>
+        (function () {
+            var getWindow = function () {
+                var kendoWindow = $('#@dvSettingsWnd').data('kendoWindow');
+                if (!kendoWindow) {
+                    kendoWindow = $('#@dvSettingsWnd').kendoWindow({
+                        width: 600,
+                        height: 600,
+                        title: "Настройки отображения",
+                        actions: ["Maximize", "Close"],
+                        modal: true,
+                        activate: function () {
+                            this.trigger('onActivate');
+                        },
+                        resize: function () {
+                            this.trigger('onResize');
+                        }
+                    }).data('kendoWindow');
+                }
+
+                return kendoWindow;
+            };
+            window["@Model.DialogID"].openDvSettings = function() {
+                var modelId = window['@Model.DialogID'].getCurrentModel().ID;
+
+                pbaAPI.proxyclient.standard.getDvSettings({
+                    mnemonic: "@Model.Mnemonic",
+                    id: modelId
+                }).done(function(res) {
+                    var viewModel = kendo.observable({
+                        activeClass: function(e) {
+                            return "list-group-item";
+                        },
+                        editProperty: function(e) {
+                            var item = e.data;
+                            pbaAPI.openDetailView("DvSettingForType",
+                                {
+                                    id: item.ID,
+                                    callback: function(e) {
+                                        if (e.type === "save" || e.type === "save_and_close") {
+                                            var dialog = $("#@Model.DialogID").data("dialogVM");
+                                            dialog.refresh();
+                                            getWindow().close();
+                                        }
+                                    }
+                                });
+                        },
+                        dvSettings: res
+                    });
+                    kendo.bind($("#@dvSettingsWnd"), viewModel);
+                    var kendoWindow = getWindow();
+                    kendoWindow.center().open();
+                });
+            }
+
+            getWindow();
+
+        })();
+    </script>
+}

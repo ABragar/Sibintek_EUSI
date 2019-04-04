@@ -1,0 +1,8 @@
+﻿@using System.Dynamic
+@model WebUI.Models.CorpProp.ImportExport.ExportExcelVm
+@{
+    string btnID = "btnID_" + Guid.NewGuid().ToString("N");
+    var url = string.Format($"/api/export/lndformat/{@Model.Mnemonic}/{Model.Id}");
+}
+
+<button id="@btnID" type="button" class="k-button" onclick="location.href='@url'">Экспорт (формат ЛНД)</button>
